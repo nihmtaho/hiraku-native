@@ -278,4 +278,9 @@ Nguồn cập nhật bắt buộc cho mọi PR (`GIT_WORKFLOW.md` §3, §6). Gi�
 
 | Mã | Trạng thái | PR / commit | Ghi chú (phần còn lại, blocker) |
 |---|---|---|---|
-| S-2, S-3, S-4, S-5, S-6, S-8, ADR-15, Spike 0 | rd | — | M0; chưa có Git, chưa bắt đầu |
+| S-2, S-3, S-4, S-5, S-6, ADR-15, Spike 0 | rd | — | M0; chưa bắt đầu, chưa có mã `core/` |
+| S-1 + S-7, S-1 bổ sung, S-8, Báo cáo spike | bl | — | Chặn bởi Q-11 (thiết bị chuẩn); phần build của S-8 chạy được sau Spike 0 |
+| Q-13, Q-1, Q-6 | dn | — | Đã chốt |
+| Q-11, Q-12, Q-D2 | rv | — | Chờ PO; Q-11 chặn GATE-0 |
+| `ARCHITECTURE.md`, `AGENTS.md` + OpenCode, `COPY.md`, `TEST_PLAN.md` | rv | `bde958f` | Đã soạn, chờ duyệt M0b; 58 test `.opencode` đạt 2026-10-29 |
+| RV-01…RV-08 | rd | — | Việc từ review, chờ quyết định |
