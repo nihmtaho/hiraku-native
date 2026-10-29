@@ -95,3 +95,5 @@ cp .agents/skills/git-hooks/hooks/* .git/hooks/ && chmod +x .git/hooks/commit-ms
 ```
 
 Sau đó chọn Git host, tạo remote và bảo vệ `main`, `develop`: cấm push trực tiếp, bắt buộc PR, required checks (`go test -race`, `check-core.sh`, `check-imports.sh`, `buf lint`/`buf breaking`, `xcodebuild test`), Review PASS đúng SHA, squash cho `develop`. Mở quyền cho Coder (commit/push nhánh task) và Shipper (merge qua entrypoint được bảo vệ) bằng thay đổi `opencode.json` + test guard riêng, do PO review. Cho đến lúc đó: agent chỉ làm trên working-tree và ghi `revision: working-tree`; không báo merged.
+
+Rulesets import sẵn: `.github/rulesets/main.json` (chỉ merge commit) và `develop.json` (chỉ squash). GitHub → Settings → Rules → Rulesets → New ruleset → Import a ruleset. Cả hai cấm push trực tiếp, xóa và force-push, bắt buộc PR. Số approval để 0 vì một tài khoản không tự duyệt PR của mình; nâng lên 1 khi có identity reviewer riêng (OPENCODE §4). Thêm `required_status_checks` khi có CI.
