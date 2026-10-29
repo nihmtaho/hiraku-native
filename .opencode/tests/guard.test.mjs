@@ -30,6 +30,7 @@ for (const agent of ["hiraku-lead", "hiraku-reviewer", "hiraku-shipper", "genera
 for (const path of [
   "opencode.json", "AGENTS.md", "DECISIONS.md", "RELEASE.md",
   ".opencode/plugins/hiraku-guard/index.js", ".opencode/tests/guard.test.mjs",
+  ".pi/settings.json", ".pi/extensions/hiraku-guard.ts",
   ".github/workflows/ci.yml", "core/gen/hirakuv1/study.pb.go",
   "Packages/HirakuBridge/Generated/Study.swift", "Scripts/check-imports.sh",
   "core/scripts/check-core.sh", ".git/config", "policy-alias/agents/fake.md",
