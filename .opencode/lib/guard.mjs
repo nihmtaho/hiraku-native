@@ -34,7 +34,7 @@ function secret(path) {
 
 function protectedPath(path) {
   return /(^|\/)(AGENTS\.md|OPENCODE\.md|DECISIONS\.md|RELEASE\.md|TEST_PLAN\.md|opencode\.jsonc?)$/i.test(path)
-    || /(^|\/)(\.git|\.github|\.opencode)(\/|$)/i.test(path)
+    || /(^|\/)(\.git|\.github|\.opencode|\.pi)(\/|$)/i.test(path)
     || /(^|\/)(?:gen|generated)(\/|$)/i.test(path)
     || /^Frameworks\//i.test(path)
     || /(^|\/)scripts\/(?:check-[^/]+|build-xcframework\.sh|import-rules\.txt)$/i.test(path);

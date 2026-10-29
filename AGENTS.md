@@ -39,6 +39,7 @@ App học từ vựng tiếng Nhật (FSRS). Logic và dữ liệu ở Go core (
 
 ## Quy trình
 - OpenCode 2.2: đọc `OPENCODE.md`; Lead giao task theo `.opencode/templates/task.md`, Coder triển khai, Reviewer độc lập, Shipper kiểm điều kiện tích hợp/phát hành (ADR-31).
+- Pi 1.4: cùng agents, skills, guard qua `.pi/`; xem `OPENCODE.md` §7.
 - Chỉ có hai skills: `hiraku-contract` khi thay RPC/proto/FFI/bridge; `hiraku-feature` khi thêm feature hoặc StudyMode. Sửa nhỏ không cần nạp quy trình mới. Luật Go/Swift và DESIGN/COPY vẫn ở tài liệu nguồn, không tạo skills lặp lại.
 - AI tự merge chỉ khi có Review PASS đúng revision và CI bắt buộc đạt. PO duyệt gate và phát hành; dùng `TEST_PLAN.md`, `RELEASE.md` khi liên quan.
 - Workspace chưa có Git/remote/CI: chỉ review working-tree, không báo đã merge/ship. Không tự tạo remote hoặc mở quyền delivery.
