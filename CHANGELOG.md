@@ -7,6 +7,7 @@ Mục `[Unreleased]` là thay đổi sản phẩm, mỗi PR đã duyệt merge p
 Nhóm: Thêm · Đổi · Sửa · Xóa · Tài liệu · Bảo mật. Mỗi dòng kết thúc bằng `(WP-xx, PR n)`. Chưa có mã sản phẩm.
 
 ### Tài liệu
+- Thêm cấu hình Pi 1.4 (`.pi/`): dùng chung prompt agents, skills và guard của OpenCode; guard bảo vệ thêm `.pi/`.
 - Thêm `GIT_WORKFLOW.md`: nhánh `main`/`develop`, vòng đời task, điều kiện merge, cập nhật CHANGELOG và ROADMAP bắt buộc trong mỗi PR.
 
 ## Bộ OpenCode 2026-10-29

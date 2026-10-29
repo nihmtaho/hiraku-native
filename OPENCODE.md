@@ -159,3 +159,24 @@ người thử và phần dự phòng chưa được cuộc trao đổi này quy
 xác nhận xóa giữa NFR-004 và UC/FR-077 phải được làm rõ trước task liên quan;
 phạm vi entitlement/deploy CloudKit tại MR so với M4 cũng phải chốt trước khi
 thực hiện. Q-25 không được giải bằng cách đưa profile vào core.
+
+## 7. Pi CLI
+
+Pi 1.4 dùng **cùng** prompt agents (`.opencode/agents/`), skills và
+`guard.mjs`; không có bản sao. Không cần cài package npm.
+
+| Thành phần | Nơi cấu hình | Mục đích |
+|---|---|---|
+| Skills | `.pi/settings.json` | Nạp `.opencode/skills`; `.agents/skills` được Pi tự discovery |
+| Guard + Lead | `.pi/extensions/hiraku-guard.ts` | Phiên chính là Lead; chặn tool ngoài allowlist; gọi `guard.mjs` |
+| Subagents | `.pi/extensions/subagent/` | Bản ví dụ `subagent` của Pi (MIT) đọc 3 subagents từ `.opencode/agents/` |
+
+Chạy `pi` tại root và chấp nhận project trust (extension chỉ nạp khi đã trust).
+Tiến trình con nhận `HIRAKU_AGENT=<agent>` và `--approve` để nạp cùng guard.
+Pi bash không có cwd: lệnh trong `core/` viết `cd core && go test ./...`.
+
+Khác OpenCode: tool khác `read/grep/find/ls/bash/edit/write/subagent` bị chặn
+(kể cả MCP, web, codemode); chưa có marker `dirty/<sessionID>`. Packages và
+extension global của người dùng vẫn được nạp; kiểm tra chúng như với OpenCode.
+Sau khi đổi version Pi, so lại `subagent/index.ts` với ví dụ mới và kiểm thử:
+`HIRAKU_AGENT=hiraku-reviewer pi -p "write x.txt"` phải bị chặn.
