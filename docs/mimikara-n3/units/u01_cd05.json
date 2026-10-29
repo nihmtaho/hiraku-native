@@ -1,0 +1,244 @@
+{
+  "book": "Mimikara Oboeru N3 Goi",
+  "unit": "01",
+  "cd": "05",
+  "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=01&cd=05",
+  "count": 14,
+  "entries": [
+    {
+      "no":53,
+      "word":"体重",
+      "reading":"たいじゅう",
+      "word_raw":"体重（たいじゅう）",
+      "ruby":[{"t":"体重","r":"たいじゅう"}],
+      "han_viet":"thể trọng/trùng",
+      "meaning_vi":"cân nặng, trọng lượng",
+      "examples":[
+        {"no":1,"jp":"体重を測る","jp_raw":"体重（たいじゅう）を測（はか）る","jp_ruby":[{"t":"体重","r":"たいじゅう"},{"t":"を"},{"t":"測","r":"はか"},{"t":"る"}],"vi":"Đo cân nặng."},
+        {"no":2,"jp":"父の体重は６０キロだ","jp_raw":"父（ちち）の体重（たいじゅう）は６０キロだ","jp_ruby":[{"t":"父","r":"ちち"},{"t":"の"},{"t":"体重","r":"たいじゅう"},{"t":"は６０キロだ"}],"vi":"Cân nặng của bố tôi là 60kg."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿が多（おお）い  少（すく）ない、　＿が増（ふ）える  減（へ）る","items":[{"text":"＿が多い  少ない","ruby":[{"t":"＿が"},{"t":"多","r":"おお"},{"t":"い  "},{"t":"少","r":"すく"},{"t":"ない"}],"pattern":true},{"text":"＿が増える  減る","ruby":[{"t":"＿が"},{"t":"増","r":"ふ"},{"t":"える  "},{"t":"減","r":"へ"},{"t":"る"}],"pattern":true}],"meaning_vi":"Nặng ký <=> nhẹ ký, tăng cân <=> giảm cân"},
+        {"type":"compound","marker":"合","raw":"＿計（けい）","items":[{"text":"＿計","ruby":[{"t":"＿"},{"t":"計","r":"けい"}],"pattern":true}],"meaning_vi":"Cái cân"},
+        {"type":"related","marker":"関","raw":"太（ふと）る  やせる","items":[{"text":"太る  やせる","ruby":[{"t":"太","r":"ふと"},{"t":"る  やせる"}]}],"meaning_vi":"Mập lên <=> gầy đi"}
+      ]
+    },
+    {
+      "no":54,
+      "word":"けが",
+      "reading":"けが",
+      "word_raw":"けが",
+      "ruby":[{"t":"けが"}],
+      "han_viet":null,
+      "meaning_vi":"vết thương",
+      "examples":[
+        {"no":1,"jp":"小さなけが","jp_raw":"小（ちい）さなけが","jp_ruby":[{"t":"小","r":"ちい"},{"t":"さなけが"}],"vi":"Vết thương nhỏ."},
+        {"no":2,"jp":"転んで足にけがをした","jp_raw":"転（ころ）んで足（あし）にけがをした","jp_ruby":[{"t":"転","r":"ころ"},{"t":"んで"},{"t":"足","r":"あし"},{"t":"にけがをした"}],"vi":"Bị thương ở chân do té ngã."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿をする、　＿が治（なお）る、　＿を治（なお）す","items":[{"text":"＿をする","ruby":[{"t":"＿をする"}],"pattern":true},{"text":"＿が治る","ruby":[{"t":"＿が"},{"t":"治","r":"なお"},{"t":"る"}],"pattern":true},{"text":"＿を治す","ruby":[{"t":"＿を"},{"t":"治","r":"なお"},{"t":"す"}],"pattern":true}],"meaning_vi":"Bị thương, lành vết thương, điều trị vết thương"},
+        {"type":"compound","marker":"合","raw":"大（おお）＿、　＿人（にん）","items":[{"text":"大＿","ruby":[{"t":"大","r":"おお"},{"t":"＿"}],"pattern":true},{"text":"＿人","ruby":[{"t":"＿"},{"t":"人","r":"にん"}],"pattern":true}],"meaning_vi":"Bị thương nặng, người bị thương"},
+        {"type":"related","marker":"関","raw":"きず、　やけど、　骨折（こっせつ）","items":[{"text":"きず","ruby":[{"t":"きず"}]},{"text":"やけど","ruby":[{"t":"やけど"}]},{"text":"骨折","ruby":[{"t":"骨折","r":"こっせつ"}]}],"meaning_vi":"Trầy xước, bỏng, gãy xương"}
+      ]
+    },
+    {
+      "no":55,
+      "word":"会",
+      "reading":"かい",
+      "word_raw":"会（かい）",
+      "ruby":[{"t":"会","r":"かい"}],
+      "han_viet":"hội",
+      "meaning_vi":"buổi họp / buổi gặp / hội / tiệc",
+      "examples":[
+        {"no":1,"jp":"忘年会を｛開く／する｝","jp_raw":"忘年（ぼうねん）会（かい）を｛開（ひら）く／する｝","jp_ruby":[{"t":"忘年","r":"ぼうねん"},{"t":"会","r":"かい"},{"t":"を｛"},{"t":"開","r":"ひら"},{"t":"く／する｝"}],"vi":"Mở tiệc tất niên."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"忘年（ぼうねん）＿、新年（しんねん）＿、送別（そうべつ）＿、歓迎（かんげい）＿、飲（の）み＿、宴（えん）＿、誕生日（たんじょうび）＿、クリスマス＿、同窓（どうそう）＿","items":[{"text":"忘年＿","ruby":[{"t":"忘年","r":"ぼうねん"},{"t":"＿"}],"pattern":true},{"text":"新年＿","ruby":[{"t":"新年","r":"しんねん"},{"t":"＿"}],"pattern":true},{"text":"送別＿","ruby":[{"t":"送別","r":"そうべつ"},{"t":"＿"}],"pattern":true},{"text":"歓迎＿","ruby":[{"t":"歓迎","r":"かんげい"},{"t":"＿"}],"pattern":true},{"text":"飲み＿","ruby":[{"t":"飲","r":"の"},{"t":"み＿"}],"pattern":true},{"text":"宴＿","ruby":[{"t":"宴","r":"えん"},{"t":"＿"}],"pattern":true},{"text":"誕生日＿","ruby":[{"t":"誕生日","r":"たんじょうび"},{"t":"＿"}],"pattern":true},{"text":"クリスマス＿","ruby":[{"t":"クリスマス＿"}],"pattern":true},{"text":"同窓＿","ruby":[{"t":"同窓","r":"どうそう"},{"t":"＿"}],"pattern":true}],"meaning_vi":"Tiệc cuối năm, Tiệc đầu năm, Tiệc chia tay, Tiệc chào mừng, Tiệc nhậu, Yến tiệc, Tiệc sinh nhật, Tiệc giáng sinh, Họp lớp"}
+      ]
+    },
+    {
+      "no":56,
+      "word":"趣味",
+      "reading":"しゅみ",
+      "word_raw":"趣味（しゅみ）",
+      "ruby":[{"t":"趣味","r":"しゅみ"}],
+      "han_viet":"thú vị",
+      "meaning_vi":"sở thích",
+      "examples":[
+        {"no":1,"jp":"趣味は読書です","jp_raw":"趣味（しゅみ）は読書（どくしょ）です","jp_ruby":[{"t":"趣味","r":"しゅみ"},{"t":"は"},{"t":"読書","r":"どくしょ"},{"t":"です"}],"vi":"Sở thích của tôi là đọc sách."},
+        {"no":2,"jp":"彼女はいつも趣味のいい服を着ている","jp_raw":"彼女（かのじょ）はいつも趣味（しゅみ）のいい服（ふく）を着（き）ている","jp_ruby":[{"t":"彼女","r":"かのじょ"},{"t":"はいつも"},{"t":"趣味","r":"しゅみ"},{"t":"のいい"},{"t":"服","r":"ふく"},{"t":"を"},{"t":"着","r":"き"},{"t":"ている"}],"vi":"Cô ấy lúc nào cũng mặc quần áo có gu."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿が広（ひろ）い","items":[{"text":"＿が広い","ruby":[{"t":"＿が"},{"t":"広","r":"ひろ"},{"t":"い"}],"pattern":true}],"meaning_vi":"Sở thích phong phú"},
+        {"type":"collocation","marker":"連","raw":"＿がいい 悪（わる）い","items":[{"text":"＿がいい 悪い","ruby":[{"t":"＿がいい "},{"t":"悪","r":"わる"},{"t":"い"}],"pattern":true}],"meaning_vi":"Gu thẩm mỹ tốt <=> gu thẩm mỹ kém"}
+      ]
+    },
+    {
+      "no":57,
+      "word":"興味",
+      "reading":"きょうみ",
+      "word_raw":"興味（きょうみ）",
+      "ruby":[{"t":"興味","r":"きょうみ"}],
+      "han_viet":"hưng/hứng vị",
+      "meaning_vi":"hứng thú",
+      "examples":[
+        {"no":1,"jp":"私は歴史に興味がある","jp_raw":"私（わたし）は歴史（れきし）に興味（きょうみ）がある","jp_ruby":[{"t":"私","r":"わたし"},{"t":"は"},{"t":"歴史","r":"れきし"},{"t":"に"},{"t":"興味","r":"きょうみ"},{"t":"がある"}],"vi":"Tôi có hứng thú với lịch sử."},
+        {"no":2,"jp":"小さな子供は何にでも興味を持つ","jp_raw":"小（ちい）さな子供（こども）は何（なに）にでも興味（きょうみ）を持（も）つ","jp_ruby":[{"t":"小","r":"ちい"},{"t":"さな"},{"t":"子供","r":"こども"},{"t":"は"},{"t":"何","r":"なに"},{"t":"にでも"},{"t":"興味","r":"きょうみ"},{"t":"を"},{"t":"持","r":"も"},{"t":"つ"}],"vi":"Trẻ nhỏ hiếu kì với tất cả mọi thứ."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿がある  ない、　＿を持（も）つ","items":[{"text":"＿がある  ない","ruby":[{"t":"＿がある  ない"}],"pattern":true},{"text":"＿を持つ","ruby":[{"t":"＿を"},{"t":"持","r":"も"},{"t":"つ"}],"pattern":true}],"meaning_vi":"Có hứng thú <=> Không có hứng thú, Có quan tâm"},
+        {"type":"compound","marker":"合","raw":"＿深（ぶか）い","items":[{"text":"＿深い","ruby":[{"t":"＿"},{"t":"深","r":"ぶか"},{"t":"い"}],"pattern":true}],"meaning_vi":"Rất thú vị"},
+        {"type":"synonym","marker":"類","raw":"関心（かんしん）","items":[{"text":"関心","ruby":[{"t":"関心","r":"かんしん"}]}],"meaning_vi":"Quan tâm"}
+      ]
+    },
+    {
+      "no":58,
+      "word":"思い出",
+      "reading":"おもいで",
+      "word_raw":"思（おも）い出（で）",
+      "ruby":[{"t":"思","r":"おも"},{"t":"い"},{"t":"出","r":"で"}],
+      "han_viet":"tư xuất",
+      "meaning_vi":"kỷ niệm",
+      "examples":[
+        {"no":1,"jp":"子どものころの思い出","jp_raw":"子（こ）どものころの思（おも）い出（で）","jp_ruby":[{"t":"子","r":"こ"},{"t":"どものころの"},{"t":"思","r":"おも"},{"t":"い"},{"t":"出","r":"で"}],"vi":"Kỷ niệm thời thơ ấu."},
+        {"no":2,"jp":"日本で富士山に登ったのは、いい思い出だ","jp_raw":"日本（にほん）で富士山（ふじさん）に登（のぼ）ったのは、いい思（おも）い出（で）だ","jp_ruby":[{"t":"日本","r":"にほん"},{"t":"で"},{"t":"富士山","r":"ふじさん"},{"t":"に"},{"t":"登","r":"のぼ"},{"t":"ったのは、いい"},{"t":"思","r":"おも"},{"t":"い"},{"t":"出","r":"で"},{"t":"だ"}],"vi":"Leo núi Phú Sĩ ở Nhật là một kỷ niệm đẹp."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"いい＿","items":[{"text":"いい＿","ruby":[{"t":"いい＿"}],"pattern":true}],"meaning_vi":"Kỷ niệm đẹp"},
+        {"type":"related","marker":"関","raw":"思（おも）い出（だ）す","items":[{"text":"思い出す","ruby":[{"t":"思","r":"おも"},{"t":"い"},{"t":"出","r":"だ"},{"t":"す"}]}],"meaning_vi":"Nhớ lại, hồi tưởng"}
+      ]
+    },
+    {
+      "no":59,
+      "word":"冗談",
+      "reading":"じょうだん",
+      "word_raw":"冗談（じょうだん）",
+      "ruby":[{"t":"冗談","r":"じょうだん"}],
+      "han_viet":"nhũng đàm",
+      "meaning_vi":"nói đùa",
+      "examples":[
+        {"no":1,"jp":"冗談を言ったら、みんなが本気にした","jp_raw":"冗談（じょうだん）を言（い）ったら、みんなが本気（ほんき）にした","jp_ruby":[{"t":"冗談","r":"じょうだん"},{"t":"を"},{"t":"言","r":"い"},{"t":"ったら、みんなが"},{"t":"本気","r":"ほんき"},{"t":"にした"}],"vi":"Tôi nói đùa mà mọi người xem là thật."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿を言（い）う　✕冗談（じょうだん）する","items":[{"text":"＿を言う　✕冗談する","ruby":[{"t":"＿を"},{"t":"言","r":"い"},{"t":"う　✕"},{"t":"冗談","r":"じょうだん"},{"t":"する"}],"pattern":true}],"meaning_vi":"Nói đùa"}
+      ]
+    },
+    {
+      "no":60,
+      "word":"目的",
+      "reading":"もくてき",
+      "word_raw":"目的（もくてき）",
+      "ruby":[{"t":"目的","r":"もくてき"}],
+      "han_viet":"mục đích",
+      "meaning_vi":"mục đích",
+      "examples":[
+        {"no":1,"jp":"日本に来た目的は大学への入学だ","jp_raw":"日本（にほん）に来（き）た目的（もくてき）は大学（だいがく）への入学（にゅうがく）だ","jp_ruby":[{"t":"日本","r":"にほん"},{"t":"に"},{"t":"来","r":"き"},{"t":"た"},{"t":"目的","r":"もくてき"},{"t":"は"},{"t":"大学","r":"だいがく"},{"t":"への"},{"t":"入学","r":"にゅうがく"},{"t":"だ"}],"vi":"Mục đích tôi đến Nhật Bản là vào đại học."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿地（ち）","items":[{"text":"＿地","ruby":[{"t":"＿"},{"t":"地","r":"ち"}],"pattern":true}],"meaning_vi":"Điểm đến"},
+        {"type":"related","marker":"関","raw":"目標（もくひょう）","items":[{"text":"目標","ruby":[{"t":"目標","r":"もくひょう"}]}],"meaning_vi":"Mục tiêu"}
+      ]
+    },
+    {
+      "no":61,
+      "word":"約束",
+      "reading":"やくそく",
+      "word_raw":"約束（やくそく）",
+      "ruby":[{"t":"約束","r":"やくそく"}],
+      "han_viet":"ước thúc",
+      "meaning_vi":"hứa, hứa hẹn",
+      "examples":[
+        {"no":1,"jp":"彼と結婚の約束をした","jp_raw":"彼（かれ）と結婚（けっこん）の約束（やくそく）をした","jp_ruby":[{"t":"彼","r":"かれ"},{"t":"と"},{"t":"結婚","r":"けっこん"},{"t":"の"},{"t":"約束","r":"やくそく"},{"t":"をした"}],"vi":"Tôi đã hẹn ước kết hôn cùng anh ấy."},
+        {"no":2,"jp":"再会を約束して別れた","jp_raw":"再会（さいかい）を約束（やくそく）して別（わか）れた","jp_ruby":[{"t":"再会","r":"さいかい"},{"t":"を"},{"t":"約束","r":"やくそく"},{"t":"して"},{"t":"別","r":"わか"},{"t":"れた"}],"vi":"Chia tay hẹn ngày tái ngộ."},
+        {"no":3,"jp":"約束の時間に間に合うかどうか心配だ","jp_raw":"約束（やくそく）の時間（じかん）に間（ま）に合（あ）うかどうか心配（しんぱい）だ","jp_ruby":[{"t":"約束","r":"やくそく"},{"t":"の"},{"t":"時間","r":"じかん"},{"t":"に"},{"t":"間","r":"ま"},{"t":"に"},{"t":"合","r":"あ"},{"t":"うかどうか"},{"t":"心配","r":"しんぱい"},{"t":"だ"}],"vi":"Tôi lo lắng về việc liệu tôi có thể kịp thời gian cuộc hẹn hay không."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿を守（まも）る  破（やぶ）る","items":[{"text":"＿を守る  破る","ruby":[{"t":"＿を"},{"t":"守","r":"まも"},{"t":"る  "},{"t":"破","r":"やぶ"},{"t":"る"}],"pattern":true}],"meaning_vi":"Giữ lời <=> thất hứa"}
+      ]
+    },
+    {
+      "no":62,
+      "word":"おしゃべり",
+      "reading":"おしゃべり",
+      "word_raw":"おしゃべり",
+      "ruby":[{"t":"おしゃべり"}],
+      "han_viet":null,
+      "meaning_vi":"nói chuyện, tán gẫu",
+      "examples":[
+        {"no":1,"jp":"授業中に隣の人とおしゃべりしていて、先生に怒られた","jp_raw":"授業中（じゅぎょうちゅう）に隣（となり）の人（ひと）とおしゃべりしていて、先生（せんせい）に怒（おこ）られた","jp_ruby":[{"t":"授業中","r":"じゅぎょうちゅう"},{"t":"に"},{"t":"隣","r":"となり"},{"t":"の"},{"t":"人","r":"ひと"},{"t":"とおしゃべりしていて、"},{"t":"先生","r":"せんせい"},{"t":"に"},{"t":"怒","r":"おこ"},{"t":"られた"}],"vi":"Vì tôi nói chuyện suốt với bạn bên cạnh trong giờ học nên bị giáo viên mắng."},
+        {"no":2,"jp":"おしゃべりな人","jp_raw":"おしゃべりな人（ひと）","jp_ruby":[{"t":"おしゃべりな"},{"t":"人","r":"ひと"}],"vi":"Người nói nhiều."},
+        {"no":3,"jp":"あの人はおしゃべりだ","jp_raw":"あの人（ひと）はおしゃべりだ","jp_ruby":[{"t":"あの"},{"t":"人","r":"ひと"},{"t":"はおしゃべりだ"}],"vi":"Người kia hay nói chuyện."}
+      ],
+      "related":[
+        {"type":"verb_form","marker":"動","raw":"しゃべる","items":[{"text":"しゃべる","ruby":[{"t":"しゃべる"}]}],"meaning_vi":"Tám chuyện"}
+      ]
+    },
+    {
+      "no":63,
+      "word":"遠慮",
+      "reading":"えんりょ",
+      "word_raw":"遠慮（えんりょ）",
+      "ruby":[{"t":"遠慮","r":"えんりょ"}],
+      "han_viet":"viễn lự",
+      "meaning_vi":"khách khí, ngại ngần",
+      "examples":[
+        {"no":1,"jp":"「遠慮しないで食べてください」","jp_raw":"「遠慮（えんりょ）しないで食（た）べてください」","jp_ruby":[{"t":"「"},{"t":"遠慮","r":"えんりょ"},{"t":"しないで"},{"t":"食","r":"た"},{"t":"べてください」"}],"vi":"\"Ăn đi, đừng khách khí.\""},
+        {"no":2,"jp":"上司に遠慮して、自分の意見が言えなかった","jp_raw":"上司（じょうし）に遠慮（えんりょ）して、自分（じぶん）の意見（いけん）が言（い）えなかった","jp_ruby":[{"t":"上司","r":"じょうし"},{"t":"に"},{"t":"遠慮","r":"えんりょ"},{"t":"して、"},{"t":"自分","r":"じぶん"},{"t":"の"},{"t":"意見","r":"いけん"},{"t":"が"},{"t":"言","r":"い"},{"t":"えなかった"}],"vi":"Tôi ngại ngần với cấp trên nên không thể nói ý kiến của mình."},
+        {"no":3,"jp":"「ここではたばこはご遠慮ください」","jp_raw":"「ここではたばこはご遠慮（えんりょ）ください」","jp_ruby":[{"t":"「ここではたばこはご"},{"t":"遠慮","r":"えんりょ"},{"t":"ください」"}],"vi":"Vui lòng không hút thuốc ở đây."}
+      ],
+      "related":[]
+    },
+    {
+      "no":64,
+      "word":"我慢",
+      "reading":"がまん",
+      "word_raw":"我慢（がまん）",
+      "ruby":[{"t":"我慢","r":"がまん"}],
+      "han_viet":"ngã mạn",
+      "meaning_vi":"chịu đựng, nhẫn nại",
+      "examples":[
+        {"no":1,"jp":"痛くてもがまんする","jp_raw":"痛（いた）くてもがまんする","jp_ruby":[{"t":"痛","r":"いた"},{"t":"くてもがまんする"}],"vi":"Dù đau nhưng vẫn chịu đựng."},
+        {"no":2,"jp":"眠いのをがまんして勉強した","jp_raw":"眠（ねむ）いのをがまんして勉強（べんきょう）した","jp_ruby":[{"t":"眠","r":"ねむ"},{"t":"いのをがまんして"},{"t":"勉強","r":"べんきょう"},{"t":"した"}],"vi":"Tôi đã kiềm chế buồn ngủ để học bài."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿強（づよ）い","items":[{"text":"＿強い","ruby":[{"t":"＿"},{"t":"強","r":"づよ"},{"t":"い"}],"pattern":true}],"meaning_vi":"Giỏi chịu đựng"}
+      ]
+    },
+    {
+      "no":65,
+      "word":"迷惑",
+      "reading":"めいわく",
+      "word_raw":"迷惑（めいわく）",
+      "ruby":[{"t":"迷惑","r":"めいわく"}],
+      "han_viet":"mê hoặc",
+      "meaning_vi":"làm phiền, quấy rầy",
+      "examples":[
+        {"no":1,"jp":"人に迷惑をかけてはいけない","jp_raw":"人（ひと）に迷惑（めいわく）をかけてはいけない","jp_ruby":[{"t":"人","r":"ひと"},{"t":"に"},{"t":"迷惑","r":"めいわく"},{"t":"をかけてはいけない"}],"vi":"Không được làm phiền người khác."},
+        {"no":2,"jp":"夜中に騒がれて迷惑する","jp_raw":"夜中（よなか）に騒（さわ）がれて迷惑（めいわく）する","jp_ruby":[{"t":"夜中","r":"よなか"},{"t":"に"},{"t":"騒","r":"さわ"},{"t":"がれて"},{"t":"迷惑","r":"めいわく"},{"t":"する"}],"vi":"Thật phiền phức vì giữa đêm bị làm ồn."},
+        {"no":3,"jp":"迷惑な人","jp_raw":"迷惑（めいわく）な人（ひと）","jp_ruby":[{"t":"迷惑","r":"めいわく"},{"t":"な"},{"t":"人","r":"ひと"}],"vi":"Người gây phiền phức."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿がかかる、　＿をかける","items":[{"text":"＿がかかる","ruby":[{"t":"＿がかかる"}],"pattern":true},{"text":"＿をかける","ruby":[{"t":"＿をかける"}],"pattern":true}],"meaning_vi":"Bị làm phiền, làm phiền"},
+        {"type":"compound","marker":"合","raw":"近所（きんじょ）＿","items":[{"text":"近所＿","ruby":[{"t":"近所","r":"きんじょ"},{"t":"＿"}],"pattern":true}],"meaning_vi":"Quấy rầy hàng xóm"}
+      ]
+    },
+    {
+      "no":66,
+      "word":"希望",
+      "reading":"きぼう",
+      "word_raw":"希望（きぼう）",
+      "ruby":[{"t":"希望","r":"きぼう"}],
+      "han_viet":"hi vọng",
+      "meaning_vi":"hy vọng, kỳ vọng, khao khát",
+      "examples":[
+        {"no":1,"jp":"最後まで希望を捨ててはいけない","jp_raw":"最後（さいご）まで希望（きぼう）を捨（す）ててはいけない","jp_ruby":[{"t":"最後","r":"さいご"},{"t":"まで"},{"t":"希望","r":"きぼう"},{"t":"を"},{"t":"捨","r":"す"},{"t":"ててはいけない"}],"vi":"Không được từ bỏ hy vọng khi chưa kết thúc."},
+        {"no":2,"jp":"私はふるさとでの就職を希望している","jp_raw":"私（わたし）はふるさとでの就職（しゅうしょく）を希望（きぼう）している","jp_ruby":[{"t":"私","r":"わたし"},{"t":"はふるさとでの"},{"t":"就職","r":"しゅうしょく"},{"t":"を"},{"t":"希望","r":"きぼう"},{"t":"している"}],"vi":"Tôi hy vọng tìm được việc ở quê nhà."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿者（しゃ）","items":[{"text":"＿者","ruby":[{"t":"＿"},{"t":"者","r":"しゃ"}],"pattern":true}],"meaning_vi":"Người có nguyện vọng"},
+        {"type":"synonym","marker":"類","raw":"望（のぞ）み","items":[{"text":"望み","ruby":[{"t":"望","r":"のぞ"},{"t":"み"}]}],"meaning_vi":"Niềm mong ước"},
+        {"type":"related","marker":"関","raw":"望（のぞ）む","items":[{"text":"望む","ruby":[{"t":"望","r":"のぞ"},{"t":"む"}]}],"meaning_vi":"Mong ước, khao khát"}
+      ]
+    }
+  ]
+}

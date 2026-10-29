@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lộ trình hiraku — Kanban</title>
+<style>
+:root{
+  --paper:#F4F1EA;--surface:#FFFDF8;--ink:#16130F;--muted:#6B655C;--muted2:#575149;
+  --line:#DED8CC;--soft:#E8E3D9;--ember:#FF4D2E;--blue:#3A6EA5;--amber:#A67C00;--green:#2F9E6F;
+  --gate:#16130F;--gate-ink:#F4F1EA;
+  --serif:Georgia,"Times New Roman",serif;
+  --sans:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#15120E;--surface:#201C16;--ink:#F4F1EA;--muted:#A39C8F;--muted2:#B8B1A4;
+    --line:#3B352B;--soft:#2A251E;--ember:#FF6A4F;--blue:#7FAEDD;--amber:#E0B13A;--green:#4FC38F;
+    --gate:#F4F1EA;--gate-ink:#16130F;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#15120E;--surface:#201C16;--ink:#F4F1EA;--muted:#A39C8F;--muted2:#B8B1A4;
+  --line:#3B352B;--soft:#2A251E;--ember:#FF6A4F;--blue:#7FAEDD;--amber:#E0B13A;--green:#4FC38F;
+  --gate:#F4F1EA;--gate-ink:#16130F;color-scheme:dark;
+}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;height:100%;background:var(--paper);color:var(--ink);font:14px/1.45 var(--sans)}
+.app{height:100%;display:flex;flex-direction:column;min-height:0}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+
+.top{display:flex;flex-wrap:wrap;gap:12px 32px;align-items:flex-end;justify-content:space-between;padding:16px 20px 12px;border-bottom:1.5px solid var(--ink)}
+h1{margin:0;font:400 28px/1.05 var(--serif);letter-spacing:-.02em}
+.sub{margin:6px 0 0;max-width:58ch;color:var(--muted);font-size:13px}
+.stats{display:flex;flex-wrap:wrap;row-gap:8px}
+.stat{padding:0 16px;border-left:1px solid var(--line)}
+.stat:first-child{padding-left:0;border-left:0}
+.stat b{display:block;font:400 22px/1.1 var(--serif);font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--muted)}
+
+.bar{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;padding:10px 20px;border-bottom:1px solid var(--line)}
+.seg{display:inline-flex;border:1.5px solid var(--ink);border-radius:999px;overflow:hidden}
+.seg button{border:0;background:transparent;padding:6px 14px;min-height:34px}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--muted);background:transparent;border-radius:999px;padding:5px 12px;min-height:32px}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+#q{border:1.5px solid var(--ink);border-radius:10px;background:var(--surface);padding:6px 10px;min-height:34px;width:200px}
+.ghost{border:1px solid var(--muted);background:transparent;border-radius:999px;padding:5px 12px;min-height:32px}
+@media (pointer:coarse){.seg button,.chip,.ghost,#q{min-height:44px}}
+
+.board{flex:1;min-height:0;display:flex;gap:12px;overflow-x:auto;padding:14px 20px 16px;align-items:stretch}
+.col{flex:0 0 300px;display:flex;flex-direction:column;min-height:0;background:var(--soft);border-radius:14px}
+.colh{flex:none;padding:12px 14px 10px;border-bottom:1px solid var(--line)}
+.colh h2{margin:0;font:400 19px/1.15 var(--serif);letter-spacing:-.01em}
+.colh .m{margin:3px 0 0;font-size:12px;color:var(--muted2)}
+.colb{flex:1;min-height:0;overflow-y:auto;padding:10px;display:flex;flex-direction:column;gap:8px;border-radius:0 0 14px 14px}
+.colb.over{outline:2px dashed var(--ink);outline-offset:-5px}
+.empty{margin:8px 4px;color:var(--muted2);font-size:13px}
+
+.gate{flex:0 0 36px;align-self:stretch;border:0;border-radius:10px;background:var(--gate);color:var(--gate-ink);writing-mode:vertical-rl;font:400 14px var(--serif);letter-spacing:.06em;padding:12px 0;white-space:nowrap;overflow:hidden}
+
+.card{background:var(--surface);border:1.5px solid var(--ink);border-radius:12px;padding:10px 12px;cursor:pointer;display:flex;flex-direction:column;gap:6px}
+.card.rev{border-style:dashed}
+.card.dn{opacity:.72}
+.card.drag{opacity:.4}
+.c1{display:flex;justify-content:space-between;gap:8px;font-size:12px}
+.cid{font-weight:700;font-variant-numeric:tabular-nums}
+.ceff{color:var(--muted);font-variant-numeric:tabular-nums;text-align:right}
+.ct{font-size:14px;line-height:1.35}
+.meta{display:flex;flex-wrap:wrap;gap:4px}
+.tag{display:inline-flex;align-items:center;font-size:11.5px;line-height:1.4;border:1px solid var(--muted);border-radius:999px;padding:1px 8px;background:transparent}
+.tag.rev{border-style:dashed;border-color:var(--ink)}
+.tag.blk{border:1.5px solid var(--ember)}
+.st::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;border:1.5px solid var(--muted)}
+.st-rd::before{border-color:var(--blue);background:linear-gradient(90deg,var(--blue) 50%,transparent 50%)}
+.st-ip::before{border-color:var(--amber);background:var(--amber)}
+.st-rv::before{border-color:var(--blue);border-radius:1px;transform:rotate(45deg)}
+.st-dn::before{border-color:var(--green);background:var(--green)}
+
+dialog{border:0;padding:0;margin:0 0 0 auto;height:100%;max-height:100%;width:min(460px,100%);max-width:100%;background:var(--surface);color:var(--ink);border-left:1.5px solid var(--ink);overflow-y:auto}
+dialog::backdrop{background:rgba(22,19,15,.45)}
+.sheet{padding:calc(18px + env(safe-area-inset-top,0px)) 22px calc(28px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:14px}
+.shead{display:flex;align-items:center;gap:8px}
+.shead .ghost{margin-left:auto}
+.sheet h3{margin:0;font:400 22px/1.2 var(--serif);letter-spacing:-.01em}
+dl{margin:0;display:grid;grid-template-columns:104px 1fr;gap:10px 12px}
+dt{color:var(--muted);font-size:12.5px}
+dd{margin:0}
+select{width:100%;border:1.5px solid var(--ink);border-radius:10px;background:var(--surface);padding:6px 8px;min-height:36px}
+.sheet ul{margin:0;padding-left:18px}
+.sheet li{margin:3px 0}
+.sheet h4{margin:4px 0 0;font:700 13px var(--sans)}
+.fnd{font-variant-numeric:tabular-nums}
+
+@media (max-width:640px){
+  .top,.bar{padding-left:12px;padding-right:12px}
+  .board{padding-left:12px;padding-right:12px}
+  .col{flex-basis:272px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .card{transition:transform .12s ease}
+  .card:hover{transform:translateY(-1px)}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div>
+      <h1>Lộ trình hiraku</h1>
+      <p class="sub">Kanban theo ROADMAP v1.10 và DECISIONS v1.9. Thẻ viền nét đứt là đề xuất từ đợt review ngày 29/10/2026, chưa nằm trong ROADMAP. Kéo thẻ giữa các cột hoặc mở thẻ để đổi mốc và trạng thái.</p>
+    </div>
+    <div class="stats" id="stats"></div>
+  </header>
+  <div class="bar">
+    <div class="seg" role="group" aria-label="Kiểu xem">
+      <button type="button" data-v="ms" aria-pressed="true">Theo mốc</button>
+      <button type="button" data-v="st" aria-pressed="false">Theo trạng thái</button>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="Lọc theo loại"></div>
+    <input id="q" type="search" placeholder="Tìm thẻ" aria-label="Tìm thẻ">
+    <button type="button" class="ghost" id="reset">Đặt lại vị trí thẻ</button>
+  </div>
+  <main class="board" id="board" aria-label="Bảng kanban"></main>
+</div>
+<dialog id="dlg" aria-labelledby="dt"></dialog>
+
+<script>
+(function(){
+"use strict";
+
+var MS=[
+ {k:"M0",n:"M0 Spike",end:"20/11/2026",eff:"3",rng:"2–4"},
+ {k:"M0b",n:"M0b Chuẩn bị",end:"08/12/2026",eff:"2,5",rng:"2–3,5"},
+ {k:"M1a",n:"M1a Lát cắt iPhone",end:"05/04/2027",eff:"17,75",rng:"15–22,5"},
+ {k:"M1b",n:"M1b iPad và Mac",end:"10/05/2027",eff:"5,25",rng:"4,25–6,75"},
+ {k:"M2",n:"M2 Dữ liệu",end:"18/06/2027",eff:"5,75",rng:"4,75–7,25"},
+ {k:"M3",n:"M3 Hoàn thiện",end:"06/09/2027",eff:"11,25",rng:"9,25–13,75"},
+ {k:"MR",n:"MR Phát hành [Cuối cùng]",end:"17/09/2027",eff:"1,5",rng:"1–2,5"},
+ {k:"M4",n:"M4 Backlog sau MR",end:null,eff:null,rng:"8–11, chưa kể iCloud"}
+];
+var GATES=[
+ {k:"GATE-0",before:"M0",short:"Điều kiện bắt đầu",date:"02/11/2026 (ngày bắt đầu giả định)",
+  cond:["Thiết bị chuẩn có đủ (Q-11)","Dùng Personal Team, đăng ký Apple Developer Program sau cùng (ADR-17)","Repo sẵn sàng"],
+  dec:["Q-11 (Mở)","Q-12 (Đề xuất)","Q-13 (Đã chốt 29/10/2026)"]},
+ {k:"GATE-1",before:"M1a",short:"Go/No-go M1",date:"≈ 08/12/2026",
+  cond:["Bắt buộc đạt: S-1, S-3, S-8","S-7 xác minh phần khả dụng (ADR-17)","S-2 có phương án: dùng thư viện hoặc tự cài","Tài liệu M0b được duyệt","Lịch M1a hiệu chỉnh theo năng suất đo ở M0"],
+  dec:["Q-5","Q-8 (ROADMAP liệt kê ở đây, DECISIONS đặt hạn GATE-3)","Q-D2","Xác nhận ADR-20, 21, 23, 24, 26","S-1 đo trên schema ADR-27"]},
+ {k:"GATE-2",before:"M2",short:"MVP",date:"≈ 10/05/2027",
+  cond:["Tiêu chí ra M1b đạt: SC-001…SC-009, SC-011, SC-012","buf breaking xanh suốt M1","Xem xét thời gian build (ADR-02) và chi phí bridge","Chốt phạm vi M2 và M3"],
+  dec:["Q-7","Q-D5"]},
+ {k:"GATE-3",before:"MR",short:"Nghiệm thu bản develop",date:"≈ 06/09/2027",
+  cond:["SC-010 đạt","Kiểm toán a11y xong","PO xác nhận ứng dụng đạt mong muốn","Bắt đầu đăng ký Apple Developer Program"],
+  dec:["Q-6 (đã đóng 29/10/2026)","Q-8"]},
+ {k:"GATE-4",before:"M4",short:"Sẵn sàng phát hành",date:"≈ 17/09/2027, chưa tính chờ duyệt",
+  cond:["Checklist RELEASE.md đầy đủ","Phản hồi TestFlight đã xử lý","Nộp App Review"],
+  dec:[]}
+];
+var ST=[
+ {k:"bl",n:"Backlog"},{k:"rd",n:"Sẵn sàng"},{k:"ip",n:"Đang làm"},{k:"rv",n:"Chờ duyệt"},{k:"dn",n:"Hoàn thành"}
+];
+var TY={sp:"Spike",wp:"Việc",doc:"Tài liệu",dec:"Quyết định",rev:"Từ review"};
+var FIND={
+ "F-01":"ROADMAP ghi S-2 là “FSRS Swift”, ADR-26 và spec là FSRS Go; S-1 và “S-1 bổ sung” trùng nội dung.",
+ "F-02":"S-5 (hai cửa sổ ghi chung DB) có trong spec nhưng không có trong M0; tham chiếu “UC-21 E3” sai, đúng là UC-08 E6.",
+ "F-03":"ADR-28: danh sách profile do Swift giữ. ADR-29 và ADR-30: danh sách profile là record cloud và Go merge. Chưa rõ ai sở hữu.",
+ "F-04":"ARCHITECTURE còn WordId, Word cố định 4 trường, cấm “GRDB”; spec và UC còn module “Persistence” không tồn tại.",
+ "F-05":"Spec thiếu M0b, M1a, M1b; “P0 = MVP” nhưng UC-17 là P1 mà nằm trong MVP.",
+ "F-06":"Phiên bản, ngày và trạng thái giữa các tài liệu không khớp (ROADMAP 1.7/1.8, ARCHITECTURE 2.0/2.1, Q-8 ở GATE-1 và GATE-3, ADR-06).",
+ "F-07":"Thuật ngữ lệch: “Câu ví dụ” và “Ví dụ”, “field” và “trường”; ProfileBadge chỉ hiện khi từ 2 profile, UC-32 nói Trang chủ hiện tên profile.",
+ "F-08":"Nút “Kiểm tra” (Gõ từ iPhone) và tab Thống kê ở M1a chưa có trong use case.",
+ "F-09":"Xóa mềm không có vòng đời: UI nói “xóa”, MVP không khôi phục, thùng rác ở P2, chưa có chính sách purge hay backup.",
+ "F-10":"Contract chỉ có 6 mã lỗi, mã 3 là “vi phạm nghiệp vụ” chung; UI cần thông điệp riêng cho từng lỗi.",
+ "F-11":"Chuẩn hóa Gõ từ chấp nhận か = が, っ = つ, bỏ ー; phản hồi từng ô khi chuỗi chuẩn hóa khác số ô chưa định nghĩa.",
+ "F-12":"“Đã biết” = state Review: thẻ vừa qua bước học đã tính là đã biết.",
+ "F-13":"Hướng Nghĩa→Từ chưa khớp mẫu thẻ tùy biến và Gõ từ; một card_states cho mọi hướng.",
+ "F-14":"Settings lưu trong DB theo profile, gồm cả cỡ chữ và nhắc ôn là cài đặt cấp ứng dụng.",
+ "F-15":"Hoàn tác chấm điểm xóa mềm log nhưng hạn mức từ mới đếm theo review_logs; thiếu quy tắc khi cửa sổ khác đã chấm thẻ đó.",
+ "F-16":"Nhập: “Ghi đè” có giữ tiến độ học không; CSV Shift-JIS chỉ cảnh báo.",
+ "F-17":"Đồng bộ lần đầu: profile mặc định và deck mẫu tạo riêng mỗi máy sẽ nhân đôi; xóa thắng và không xóa cloud làm tombstone tăng mãi.",
+ "F-18":"Kiểm tra toàn vẹn khi mở chưa có cách làm, có thể phá ngân sách khởi động 1,5 giây.",
+ "F-19":"Nhiều ADR “chờ spike” đã làm nền cho lịch. Cần xác minh sớm modernc build được cho iOS và danh sách phụ thuộc không có net (luật G5).",
+ "F-20":"Cộng các WP lệch con số mốc (M1a 17,25 so với 17,75; M3 11 so với 11,25); dự phòng mỏng; Tết 2027 rơi vào M1a; nhân lực Go và Swift chưa xác nhận.",
+ "F-21":"GATE-0 hạn 02/11/2026: Q-11 còn Mở, Q-12 mới là đề xuất nhưng lịch đã dựa vào Q-12.",
+ "F-22":"Dữ liệu thật trên bản ký tạm đến khoảng 09/2027, sao lưu để ở M2; WAL trong App Group trên iOS cần kiểm khi app bị treo.",
+ "F-23":"SC-002 yêu cầu “≥ 90% người thử” nhưng chưa có kế hoạch thử; TEST_PLAN.md chưa soạn.",
+ "F-24":"Chưa có thiết kế và COPY cho M2 (nhập, sao lưu), thống kê, onboarding, chọn nhiều.",
+ "F-25":"Lỗi biên soạn nhỏ: thứ tự A/E, UC-30 “nhấn giữ biểu tượng” không có FR hay WP, FR-036 chưa xếp lịch."
+};
+
+// Mỗi PR đổi trạng thái (trường thứ 5) cùng giá trị với ROADMAP.md §11; xem GIT_WORKFLOW.md §6.
+// [id, tiêu đề, mốc, loại, trạng thái, ước lượng {d ngày | w tuần | x chữ}, thông tin thêm]
+var raw=[
+ // M0
+ ["Q-11","Chốt thiết bị chuẩn đo hiệu năng: iPhone cũ nhất chạy iOS 26, iPad chip A12 trở lên, Mac Apple silicon","M0","dec","rv",null,{ref:"DECISIONS Q-11",note:"Hạn GATE-0: 02/11/2026. Đang chặn S-1 và S-8.",f:"F-21"}],
+ ["Q-12","Chốt chia M1 thành M1a (iPhone) và M1b (iPad + Mac)","M0","dec","rv",null,{ref:"DECISIONS Q-12, ADR-19",note:"Đề xuất phương án B. ROADMAP v1.8 và ADR-19 đã dựa trên phương án này.",f:"F-21"}],
+ ["Q-13","Quy ước tên tài liệu, đặt ở root repo","M0","dec","dn",null,{ref:"DECISIONS Q-13",note:"PO chốt 29/10/2026."}],
+ ["Q-1","OS tối thiểu: iOS 26, iPadOS 26, macOS 26 (Apple silicon)","M0","dec","dn",null,{ref:"ADR-13"}],
+ ["S-1 + S-7","modernc SQLite với 50.000 từ + 200.000 log; App Group trên 3 nền tảng; kiểm tra sao lưu thiết bị","M0","sp","bl",{d:2.5},{ref:"spec §3.3 S-1, S-7; ADR-23, ADR-06",blk:"Q-11",note:"S-1 bắt buộc đạt ở GATE-1. S-7: chỉ xác minh phần khả dụng trên Personal Team.",f:"F-01"}],
+ ["S-2","Đánh giá thư viện FSRS với bộ test vector tham chiếu","M0","sp","rd",{d:1},{ref:"ADR-26, spec §3.3 S-2",note:"ROADMAP ghi “FSRS Swift”; ADR-26 và spec là FSRS Go.",f:"F-01"}],
+ ["S-3","IME: nhận biết marked text, Return chốt IME, một trường điều khiển ô kana (iOS, iPadOS, macOS)","M0","sp","rd",{d:1.5},{ref:"ADR-09, UC-07",note:"Bắt buộc đạt ở GATE-1."}],
+ ["S-4","Layout thích ứng: Table, NavigationSplitView, inspector 230pt, phụ kiện đáy tab bar","M0","sp","rd",{d:1},{ref:"ADR-15, ADR-18"}],
+ ["S-6","Đóng gói Noto Sans JP (subset), đo kích thước","M0","sp","rd",{d:0.5},{ref:"Q-5",note:"Ngưỡng đề xuất 10 MB; vượt hoặc thiếu glyph thì dùng Hiragino Sans."}],
+ ["ADR-15","Duyệt chrome Liquid Glass trên thiết bị thật","M0","sp","rd",{d:0.5},{ref:"ADR-15"}],
+ ["S-8","Build core/ffi thành c-archive 3 slice, đóng XCFramework, đo RSS và khởi động Go runtime, 1.000 lần hk_call không rò","M0","sp","bl",{d:5},{ref:"ADR-20, ADR-21",blk:"Q-11",note:"Bắt buộc đạt ở GATE-1. Ngưỡng khởi động dưới 300 ms chờ PO xác nhận.",f:"F-19"}],
+ ["S-1 bổ sung","Đo lại modernc trên thiết bị chuẩn; reload theo phạm vi giữ 60 fps","M0","sp","bl",{d:2},{ref:"ADR-24",blk:"Q-11",note:"Trùng nội dung với S-1; cần nêu rõ khác biệt hoặc gộp.",f:"F-01"}],
+ ["Báo cáo spike","Kết quả Đạt/Không đạt kèm số đo từng S-*, đề xuất quyết định","M0","doc","bl",{d:0.5},{ref:"ROADMAP §3.1"}],
+ ["Spike 0","Xác minh modernc.org/sqlite build được cho ios/arm64 và simulator; go list -deps không có net","M0","rev","rd",{x:"1–2 ngày (đề xuất)"},{ref:"ADR-23, luật G5",note:"Chạy trước S-8 để biết sớm có phải chuyển sang mattn/go-sqlite3.",f:"F-19"}],
+ ["S-5","Hai cửa sổ cùng ghi một DB, chấm trùng một thẻ","M0","rev","rd",{x:"≈ 1 ngày (đề xuất)"},{ref:"spec §3.3 S-5, UC-08 E6",note:"Có trong spec nhưng không có trong M0 của ROADMAP.",f:"F-02"}],
+
+ // M0b
+ ["ARCHITECTURE.md","Luật Swift L1–L11, luật Go G1–G8, khuôn mẫu feature, contract hiraku.v1","M0b","doc","rv",{w:0.5},{ref:"ARCHITECTURE v2.1",note:"Đã soạn, chờ duyệt ở M0b."}],
+ ["AGENTS.md","Quy tắc cho công cụ AI và skill hiraku-design","M0b","doc","rv",{w:0.25},{ref:"AGENTS.md",note:"AGENTS.md đã soạn; tài liệu không nêu tình trạng skill hiraku-design."}],
+ ["Wireframe","Wireframe và prototype iPhone: Home, Deck/Words, Flashcard, Gõ từ, Cài đặt","M0b","doc","bl",{w:1.25},{ref:"WIREFRAME_PROMPT.md",note:"Đã có prompt; chưa có wireframe. iPad và Mac vẽ trước M1b."}],
+ ["COPY.md","Bảng chuỗi UI tiếng Việt cho các màn M1a","M0b","doc","rv",{w:0.25},{ref:"COPY v1.5",note:"Bản đề xuất, chờ duyệt."}],
+ ["TEST_PLAN.md","Ma trận thiết bị/OS/IME, kịch bản XCUITest, bộ dữ liệu 50.000 từ, tiêu chí vào/ra","M0b","doc","bl",{w:0.25},{ref:"spec §15",note:"Chưa soạn; cần trước GATE-1.",f:"F-23"}],
+ ["Q-5","Chốt font tiếng Nhật: Noto Sans JP hay Hiragino Sans","M0b","dec","bl",null,{ref:"DECISIONS Q-5, S-6",note:"Hạn GATE-1; chặn WP-05."}],
+ ["Q-D2","Chốt màu chấm trạng thái “Đang học”","M0b","dec","rv",null,{ref:"DECISIONS Q-D2",note:"Đề xuất: dùng state-learning-ink. Hạn GATE-1; chặn WP-05."}],
+ ["ADR 20–26","Xác nhận hoặc thay thế ADR-20, 21, 23, 24, 26 theo kết quả spike","M0b","dec","bl",null,{ref:"DECISIONS §5",note:"GATE-1: S-1, S-3, S-8 phải đạt.",f:"F-19"}],
+ ["RV-01","Đồng bộ tài liệu: ARCHITECTURE v2.2 (card_id, bỏ GRDB, bỏ Persistence), phiên bản, thuật ngữ, ưu tiên và mốc","M0b","rev","rd",{x:"≈ 0,5 tuần (đề xuất)"},{note:"Sửa các điểm mâu thuẫn giữa tài liệu.",f:["F-04","F-05","F-06","F-07","F-08","F-25"]}],
+ ["RV-02","Chốt vòng đời xóa mềm và bảng mã lỗi chi tiết trong contract, trước WP-02a và WP-02b","M0b","rev","rd",{x:"quyết định (đề xuất)"},{ref:"WP-02a, WP-02b",f:["F-09","F-10","F-18"]}],
+ ["RV-03","Chốt mức nghiêm chuẩn hóa Gõ từ, định nghĩa “Đã biết”, hướng thẻ, phạm vi settings theo profile","M0b","rev","rd",{x:"quyết định (đề xuất)"},{ref:"WP-03, WP-04",f:["F-11","F-12","F-13","F-14"]}],
+ ["RV-04","Hiệu chỉnh lịch: dự phòng, Tết 2027, xác nhận nhân lực Go và Swift","M0b","rev","rd",{x:"quyết định (đề xuất)"},{ref:"ROADMAP §1, §2",note:"Chốt cùng GATE-1 khi có năng suất thực đo ở M0.",f:"F-20"}],
+
+ // M1a
+ ["WP-01","Workspace, Go module core/, buf, CI, pipeline XCFramework","M1a","wp","bl",{w:0.75},{ref:"ARCHITECTURE v2.0",dep:["ARCHITECTURE.md"]}],
+ ["WP-02a","Store Go: modernc SQLite, WAL, migration, repository, xóa mềm, schema kiểu ghi chú (ADR-27 Pha A)","M1a","wp","bl",{w:3},{ref:"ADR-23, ADR-27",dep:["WP-01"],f:"F-09"}],
+ ["WP-02b","Bridge: ffi 4 hàm hk_*, HirakuBridge, EventHub, fake Swift","M1a","wp","bl",{w:1.25},{ref:"ADR-21, ADR-24",dep:["WP-01","WP-02a"],f:"F-10"}],
+ ["WP-03","FSRS trong core/domain, RPC Grade, BuildQueue","M1a","wp","bl",{w:1.5},{ref:"ADR-26, UC-08, FR-014…018",dep:["WP-02a","S-2"]}],
+ ["WP-04","core/domain/kana: romaji sang kana, chuẩn hóa, so khớp từng ký tự","M1a","wp","bl",{w:1},{ref:"UC-07, FR-012",dep:["WP-01"],f:"F-11"}],
+ ["WP-05","DesignSystem: token HK*, component, font, AccentColor Ember","M1a","wp","bl",{w:1.5},{ref:"ADR-15, DESIGN.md",dep:["Q-5","Q-D2"]}],
+ ["WP-06","Folders, Decks, Words: CRUD, trùng từ, tìm kiếm, kéo-thả, bảo vệ thay đổi, khôi phục vị trí","M1a","wp","bl",{w:3.5},{ref:"UC-01…UC-04, ADR-18",dep:["WP-02b","WP-05"]}],
+ ["WP-07","StudyKit, FeatureStudy, FeatureFlashcard (2 hoặc 4 nút, màn Xong!)","M1a","wp","bl",{w:1.75},{ref:"UC-06, UC-08",dep:["WP-03","WP-05"]}],
+ ["WP-08","FeatureTyping: IME, ô kana, phản hồi, hiện đáp án đúng","M1a","wp","bl",{w:1.5},{ref:"UC-07, ADR-09",dep:["WP-04","WP-07","S-3"],f:"F-08"}],
+ ["WP-09","FeatureSettings, FeatureHome (banner Ôn hôm nay)","M1a","wp","bl",{w:0.5},{ref:"UC-13, UC-14, FR-050",dep:["WP-05","WP-06"]}],
+ ["WP-10","Hoàn thiện: XCUITest iPhone, a11y, kịch bản kết thúc app giữa phiên, sửa lỗi","M1a","wp","bl",{w:1},{ref:"SC-001…SC-004, SC-007…SC-009",dep:["WP-01…WP-09"],note:"Cộng 11 WP của M1a là 17,25 tuần, mốc ghi 17,75.",f:"F-20"}],
+
+ // M1b
+ ["WP-11","RootSplitView, Table, inspector 230pt, sidebar cây Thư mục → Deck, cửa sổ Settings (macOS)","M1b","wp","bl",{w:2},{ref:"FR-071, FR-080"}],
+ ["WP-12","macOS: thanh menu, phím tắt, nhiều cửa sổ; iPad: nhiều scene; UC-21 đa cửa sổ","M1b","wp","bl",{w:1},{ref:"UC-21, FR-064, FR-072",f:"F-02"}],
+ ["WP-13","Kiểm tra và sửa IME trên iPad (bàn phím phần cứng) và macOS","M1b","wp","bl",{w:0.5},{ref:"R-03"}],
+ ["WP-14","XCUITest iPad và Mac, hiệu năng 50.000 từ trên 3 thiết bị chuẩn, a11y bàn phím","M1b","wp","bl",{w:1},{ref:"SC-006"}],
+ ["WP-15","Hoàn tác chấm điểm: nút, toast, ⌘Z, lắc iPhone; khôi phục card_states từ prev_*","M1b","wp","bl",{w:0.75},{ref:"UC-17, FR-020, ADR-19",f:"F-15"}],
+ ["Q-7","Chốt có cần giữ dữ liệu Flutter cũ (FR-040) không","M1b","dec","bl",null,{ref:"DECISIONS Q-7",note:"Hạn GATE-2. Nếu có: khoảng 1 tuần ở cuối M2."}],
+ ["Q-D5","Chốt cỡ body 15pt trên iPhone","M1b","dec","bl",null,{ref:"DECISIONS Q-D5",note:"Đề xuất chấp nhận; kiểm tra đọc trên thiết bị thật cuối M1a."}],
+ ["RV-05","Kéo WP-20 (sao lưu và khôi phục) lên ngay sau M1a nếu dùng thật bằng bản ký Personal Team","M1b","rev","rd",{x:"quyết định (đề xuất)"},{ref:"ADR-17, ROADMAP §6 rủi ro 9",note:"ADR-17 chỉ ghi “nên”; cần chốt thành quyết định. Thêm ca app bị treo vào S-7.",f:"F-22"}],
+ ["RV-06","Kế hoạch thử người dùng cho SC-002: số người, đối tượng, thời điểm, trước GATE-2","M1b","rev","rd",{x:"≈ 0,25 tuần (đề xuất)"},{ref:"SC-002, ROADMAP §8",f:"F-23"}],
+
+ // M2
+ ["WP-20","Sao lưu và khôi phục gộp, idempotent, nhận backup bản web (logic ở core/domain/backup)","M2","wp","bl",{w:1.75},{ref:"UC-10, UC-11, FR-030, FR-031",f:"F-09"}],
+ ["WP-21","Xuất CSV và JSON","M2","wp","bl",{w:0.5},{ref:"UC-09, FR-032"}],
+ ["WP-22","Nhập CSV, JSON, TSV, dán văn bản: ánh xạ cột, preview, chính sách trùng, transaction","M2","wp","bl",{w:2.5},{ref:"UC-05, FR-033…035",f:"F-16"}],
+ ["WP-23","UI dữ liệu: dung lượng, thời điểm sao lưu, nhắc sao lưu","M2","wp","bl",{w:0.5},{ref:"UC-21, FR-061, FR-062"}],
+ ["WP-24","Kiểm thử và hoàn thiện M2","M2","wp","bl",{w:0.5},{ref:"SC-010"}],
+ ["RV-07","Thiết kế và COPY cho màn nhập (ánh xạ cột, preview, trùng), sao lưu, khôi phục, trước WP-22","M2","rev","rd",{x:"≈ 0,5 tuần (đề xuất)"},{ref:"WIREFRAME_PROMPT, COPY",f:"F-24"}],
+ ["RV-08","Chốt ngữ nghĩa “Ghi đè” (giữ hay xóa tiến độ) và xử lý CSV Shift-JIS","M2","rev","rd",{x:"quyết định (đề xuất)"},{ref:"UC-05, spec §7.5",f:"F-16"}],
+
+ // M3
+ ["WP-30","Thống kê (Swift Charts)","M3","wp","bl",{w:1},{ref:"UC-12, FR-051…053",f:["F-12","F-24"]}],
+ ["WP-31","“Tôi đúng”: dùng lại hoàn tác chấm điểm","M3","wp","bl",{w:0.25},{ref:"UC-07, FR-025",dep:["WP-15"]}],
+ ["WP-32","Thao tác hàng loạt trên từ","M3","wp","bl",{w:1},{ref:"UC-18, FR-008, FR-009"}],
+ ["WP-33","Lần chạy đầu và deck mẫu","M3","wp","bl",{w:0.5},{ref:"UC-16, FR-066",f:"F-24"}],
+ ["WP-34","Hướng thẻ; khoảng ôn dự kiến dưới nút","M3","wp","bl",{w:0.5},{ref:"UC-19, FR-021, FR-026",f:"F-13"}],
+ ["WP-35","Bảng phím tắt và trợ giúp","M3","wp","bl",{w:0.5},{ref:"UC-20"}],
+ ["WP-36","Nhắc ôn hằng ngày (thông báo cục bộ)","M3","wp","bl",{w:0.5},{ref:"UC-28, FR-063",f:"F-14"}],
+ ["WP-37","Duyệt thiết kế, kiểm toán a11y, hiệu năng, sửa lỗi tồn","M3","wp","bl",{w:1.5},{ref:"GATE-3"}],
+ ["WP-40","Hoàn tác chung (UndoManager, toast, xóa từ không hỏi xác nhận)","M3","wp","bl",{w:0.75},{ref:"UC-17, FR-077",f:"F-09"}],
+ ["WP-41","Thêm từ nhanh, nhớ deck gần nhất","M3","wp","bl",{w:0.25},{ref:"UC-30, FR-078",f:"F-25"}],
+ ["WP-42","Sắp xếp và lọc danh sách từ; số từ đến hạn trên thẻ deck và thư mục","M3","wp","bl",{w:0.75},{ref:"UC-04, FR-079"}],
+ ["WP-43","Xúc giác tối thiểu","M3","wp","bl",{w:0.25},{ref:"FR-081, ADR-19"}],
+ ["WP-44","Quản lý kiểu ghi chú và field: nhân bản, sắp xếp, mẫu thẻ, xem trước","M3","wp","bl",{w:2.25},{ref:"UC-31, FR-086…089, ADR-27",note:"Cần DESIGN, COPY và wireframe màn chỉnh field trước khi bắt đầu.",f:"F-07"}],
+ ["WP-45","Quản lý profile: tạo, đổi tên, chuyển, xóa","M3","wp","bl",{w:1},{ref:"UC-32, FR-090, FR-091, ADR-28",f:["F-03","F-07","F-14"]}],
+ ["Q-8","Chốt phát hành macOS: Mac App Store hay phân phối trực tiếp","M3","dec","bl",null,{ref:"DECISIONS Q-8",note:"Đề xuất Mac App Store. ROADMAP §4 liệt kê Q-8 ở cả GATE-1 và GATE-3; DECISIONS đặt hạn GATE-3.",f:"F-06"}],
+ ["Q-6","Đồng bộ iCloud: giữ ở M4, tùy chọn bật/tắt, Go giữ DB, Swift giữ CloudKit","M3","dec","dn",null,{ref:"ADR-29, ADR-30",note:"PO chốt 29/10/2026."}],
+
+ // MR
+ ["Apple Developer","Đăng ký Apple Developer Program","MR","dec","bl",{x:"chờ xét duyệt, không tính"},{ref:"ADR-17",note:"Nộp ngay sau GATE-3."}],
+ ["WP-38","RELEASE.md, signing chính thức, Privacy Manifest, tài sản App Store, entitlement iCloud, deploy schema CloudKit","MR","wp","bl",{w:1.25},{ref:"ADR-17, R-15"}],
+ ["WP-39","Hoàn tất S-7: App Sandbox và App Group trên macOS; chuyển DB sang App Group nếu cần","MR","wp","bl",{w:0.25},{ref:"S-7, ADR-06",f:"F-22"}],
+ ["Beta và Review","TestFlight beta, nộp App Review, xử lý phản hồi","MR","wp","bl",{x:"chờ ngoài, không tính"},{ref:"GATE-4"}],
+
+ // M4
+ ["UC-29","Widget “Đến hạn hôm nay”","M4","wp","bl",{x:"1–1,5 tuần"},{ref:"FR-073, R-12",note:"Cần App Group và link XCFramework của core."}],
+ ["UC-25","Phát âm (TTS)","M4","wp","bl",{x:"1 tuần"},{ref:"FR-068"}],
+ ["UC-24","Tags và lọc","M4","wp","bl",{x:"1,5 tuần"},{ref:"FR-069"}],
+ ["UC-22","Ôn tập tùy chỉnh","M4","wp","bl",{x:"1,5 tuần"},{ref:"FR-023"}],
+ ["UC-23","Chi tiết từ, lịch sử, tạm ngưng","M4","wp","bl",{x:"1–1,5 tuần"},{ref:"FR-024",f:"F-09"}],
+ ["UC-26","Mục tiêu ngày và streak","M4","wp","bl",{x:"0,5 tuần"},{ref:"FR-056"}],
+ ["UC-15","Từ ngẫu nhiên","M4","wp","bl",{x:"0,5 tuần"},{ref:"FR-055"}],
+ ["UC-05 Excel","Nhập Excel (.xlsx)","M4","wp","bl",{x:"1 tuần"},{ref:"ADR-11"}],
+ ["ADR-27 Pha C","Cloze, nhiều mẫu thẻ, nhiều kiểu trong một deck","M4","wp","bl",{x:"chưa ước lượng"},{ref:"ADR-27"}],
+ ["Q-17","Nhập gói .apkg của Anki","M4","wp","bl",{x:"chưa ước lượng"},{ref:"DECISIONS Q-17"}],
+ ["S-9","Spike adapter CKSyncEngine với mock, idempotent, contract sync","M4","sp","bl",{x:"chưa ước lượng"},{ref:"ADR-30, R-21"}],
+ ["UC-27","Đồng bộ iCloud (tùy chọn bật/tắt, mặc định tắt)","M4","wp","bl",{x:"4–8 tuần, chưa tính lại"},{ref:"ADR-29, ADR-30, FR-070, FR-092, FR-093",dep:["S-9"],note:"Test thật trên 3 thiết bị chỉ sau MR."}],
+ ["RV-09","Thiết kế trước S-9: ai sở hữu danh sách profile, ID cố định cho profile mặc định và deck mẫu, xóa profile, chính sách tombstone","M4","rev","bl",{x:"quyết định (đề xuất)"},{ref:"ADR-28, ADR-29, ADR-30",f:["F-03","F-17"]}]
+];
+
+var cards=raw.map(function(r){
+  var o=r[6]||{},e=r[5]||{};
+  return {id:r[0],t:r[1],m:r[2],ty:r[3],s:r[4],d:e.d,w:e.w,x:e.x,
+          dep:o.dep||[],ref:o.ref||"",note:o.note||"",blk:o.blk||"",f:[].concat(o.f||[])};
+});
+var byId={};cards.forEach(function(c){byId[c.id]=c;});
+var MSK={},STK={};MS.forEach(function(m){MSK[m.k]=m;});ST.forEach(function(s){STK[s.k]=s;});
+
+var KEY="hiraku-kanban-v1";
+var S={view:"ms",types:{},q:"",ov:{}};
+try{
+  var j=JSON.parse(localStorage.getItem(KEY)||"null");
+  if(j){S.view=j.view==="st"?"st":"ms";S.ov=(j.ov&&typeof j.ov==="object")?j.ov:{};}
+}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({view:S.view,ov:S.ov}));}catch(e){}}
+
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c];});}
+function fmt(n){return String(Math.round(n*100)/100).replace(".",",");}
+function weeks(c){return c.d!=null?c.d/5:(c.w!=null?c.w:0);}
+function eff(c){
+  if(c.x)return c.x;
+  if(c.d!=null)return fmt(c.d)+" ngày";
+  if(c.w!=null)return fmt(c.w)+" tuần";
+  return "";
+}
+function cur(c){
+  var o=S.ov[c.id]||{};
+  var r={};for(var k in c)r[k]=c[k];
+  if(o.m&&MSK[o.m])r.m=o.m;
+  if(o.s&&STK[o.s])r.s=o.s;
+  return r;
+}
+function setOv(id,p){
+  var base=byId[id],o=S.ov[id]||{};
+  for(var k in p)o[k]=p[k];
+  if(o.m===base.m)delete o.m;
+  if(o.s===base.s)delete o.s;
+  if(Object.keys(o).length)S.ov[id]=o;else delete S.ov[id];
+  save();render();
+}
+function stTag(k){return '<span class="tag st st-'+k+'">'+STK[k].n+'</span>';}
+function typeTag(c){return '<span class="tag'+(c.ty==="rev"?" rev":"")+'">'+TY[c.ty]+'</span>';}
+
+function match(c){
+  var any=false,k;for(k in S.types){if(S.types[k]){any=true;break;}}
+  if(any&&!S.types[c.ty])return false;
+  if(S.q){
+    var h=(c.id+" "+c.t+" "+c.note+" "+c.ref).toLowerCase();
+    if(h.indexOf(S.q)<0)return false;
+  }
+  return true;
+}
+
+function cardEl(c){
+  var blk=(c.blk&&c.s!=="dn")?'<span class="tag blk">Bị chặn: '+esc(c.blk)+'</span>':"";
+  var fs=c.f.map(function(f){return '<span class="tag fnd">'+f+'</span>';}).join("");
+  var pos=S.view==="st"?'<span class="tag">'+esc(MSK[c.m].n.split(" ")[0])+'</span>':(c.s!=="bl"?stTag(c.s):"");
+  return '<article class="card'+(c.ty==="rev"?" rev":"")+(c.s==="dn"?" dn":"")+'" draggable="true" tabindex="0" role="button" data-id="'+esc(c.id)+'" aria-label="'+esc(c.id+": "+c.t)+'">'+
+    '<div class="c1"><span class="cid">'+esc(c.id)+'</span><span class="ceff">'+esc(eff(c))+'</span></div>'+
+    '<div class="ct">'+esc(c.t)+'</div>'+
+    '<div class="meta">'+typeTag(c)+pos+blk+fs+'</div></article>';
+}
+function colEl(k,name,lines,list){
+  return '<section class="col" aria-label="'+esc(name)+'"><header class="colh"><h2>'+name+'</h2>'+
+    lines.map(function(l){return '<p class="m">'+l+'</p>';}).join("")+
+    '</header><div class="colb" data-k="'+k+'">'+
+    (list.length?list.map(cardEl).join(""):'<p class="empty">Không có thẻ</p>')+'</div></section>';
+}
+function gateEl(g){
+  return '<button type="button" class="gate" data-g="'+g.k+'" aria-label="'+esc(g.k+": "+g.short)+'">'+esc(g.k+" "+g.short)+'</button>';
+}
+
+var board=document.getElementById("board");
+function render(){
+  var all=cards.map(cur),vis=all.filter(match),html="";
+  var sl=board.scrollLeft,pos={};
+  Array.prototype.forEach.call(board.querySelectorAll(".colb"),function(e){pos[e.dataset.k]=e.scrollTop;});
+  if(S.view==="ms"){
+    MS.forEach(function(m){
+      var g=GATES.filter(function(x){return x.before===m.k;})[0];
+      if(g)html+=gateEl(g);
+      var inCol=all.filter(function(c){return c.m===m.k;});
+      var sum=inCol.reduce(function(a,c){return a+weeks(c);},0);
+      var lines=[m.end?"Kết thúc ≈ "+m.end:"Chưa lập lịch"];
+      lines.push(m.eff?"Khả dĩ "+m.eff+" tuần-người (khoảng "+m.rng+")":"Khoảng "+m.rng+" tuần-người");
+      if(m.k!=="M4"&&sum)lines.push("Cộng từ thẻ: "+fmt(sum)+" tuần-người");
+      lines.push(inCol.length+" thẻ");
+      html+=colEl(m.k,esc(m.n),lines,vis.filter(function(c){return c.m===m.k;}));
+    });
+  }else{
+    ST.forEach(function(s){
+      var inCol=all.filter(function(c){return c.s===s.k;});
+      var sum=inCol.reduce(function(a,c){return a+weeks(c);},0);
+      var lines=[inCol.length+" thẻ"];
+      if(sum)lines.push("Cộng từ thẻ: "+fmt(sum)+" tuần-người");
+      html+=colEl(s.k,'<span class="st st-'+s.k+'">'+s.n+'</span>',lines,vis.filter(function(c){return c.s===s.k;}));
+    });
+  }
+  board.innerHTML=html;
+  board.scrollLeft=sl;
+  Array.prototype.forEach.call(board.querySelectorAll(".colb"),function(e){e.scrollTop=pos[e.dataset.k]||0;});
+  renderStats(all);
+  Array.prototype.forEach.call(document.querySelectorAll(".seg button"),function(b){b.setAttribute("aria-pressed",String(b.dataset.v===S.view));});
+}
+function renderStats(all){
+  var w=all.filter(function(c){return c.m!=="M4";}).reduce(function(a,c){return a+weeks(c);},0);
+  var done=all.filter(function(c){return c.s==="dn";}).length;
+  var wait=all.filter(function(c){return c.s==="rv";}).length;
+  var blk=all.filter(function(c){return c.blk&&c.s!=="dn";}).length;
+  var rev=all.filter(function(c){return c.ty==="rev";}).length;
+  var items=[
+    [all.length,"thẻ"],
+    [fmt(w),"tuần-người cộng từ thẻ M0–MR (ROADMAP: 47)"],
+    [done+"/"+all.length,"hoàn thành"],
+    [wait,"chờ duyệt"],
+    [blk,"bị chặn"],
+    [rev,"đề xuất từ review"]
+  ];
+  document.getElementById("stats").innerHTML=items.map(function(i){
+    return '<div class="stat"><b>'+i[0]+'</b><span>'+i[1]+'</span></div>';
+  }).join("");
+}
+
+var chips=document.getElementById("chips");
+function renderChips(){
+  chips.innerHTML=Object.keys(TY).map(function(k){
+    return '<button type="button" class="chip" data-t="'+k+'" aria-pressed="'+(!!S.types[k])+'">'+TY[k]+'</button>';
+  }).join("");
+}
+
+var dlg=document.getElementById("dlg");
+function opt(list,sel){
+  return list.map(function(x){return '<option value="'+x.k+'"'+(x.k===sel?" selected":"")+'>'+esc(x.n)+'</option>';}).join("");
+}
+function openCard(id){
+  var base=byId[id];if(!base)return;
+  var c=cur(base);
+  var fl=c.f.length?'<h4>Phát hiện từ review</h4><ul>'+c.f.map(function(f){return '<li><b class="fnd">'+f+'</b> '+esc(FIND[f]||"")+'</li>';}).join("")+'</ul>':"";
+  dlg.dataset.id=id;
+  dlg.innerHTML='<div class="sheet"><div class="shead"><span class="cid">'+esc(c.id)+'</span>'+typeTag(c)+
+    '<button type="button" class="ghost" data-close>Đóng</button></div>'+
+    '<h3 id="dt">'+esc(c.t)+'</h3><dl>'+
+    '<dt>Trạng thái</dt><dd><select data-f="s" aria-label="Trạng thái">'+opt(ST,c.s)+'</select></dd>'+
+    '<dt>Mốc</dt><dd><select data-f="m" aria-label="Mốc">'+opt(MS,c.m)+'</select></dd>'+
+    (eff(c)?'<dt>Ước lượng</dt><dd>'+esc(eff(c))+'</dd>':"")+
+    (c.blk?'<dt>Bị chặn bởi</dt><dd>'+esc(c.blk)+'</dd>':"")+
+    (c.dep.length?'<dt>Phụ thuộc</dt><dd>'+esc(c.dep.join(", "))+'</dd>':"")+
+    (c.ref?'<dt>Tham chiếu</dt><dd>'+esc(c.ref)+'</dd>':"")+
+    (c.note?'<dt>Ghi chú</dt><dd>'+esc(c.note)+'</dd>':"")+
+    '</dl>'+fl+'</div>';
+  if(!dlg.open)dlg.showModal();
+}
+function openGate(k){
+  var g=GATES.filter(function(x){return x.k===k;})[0];if(!g)return;
+  dlg.dataset.id="";
+  dlg.innerHTML='<div class="sheet"><div class="shead"><span class="cid">'+g.k+'</span>'+
+    '<button type="button" class="ghost" data-close>Đóng</button></div>'+
+    '<h3 id="dt">'+esc(g.short)+'</h3><dl><dt>Thời điểm</dt><dd>'+esc(g.date)+'</dd></dl>'+
+    '<h4>Điều kiện qua cổng</h4><ul>'+g.cond.map(function(x){return '<li>'+esc(x)+'</li>';}).join("")+'</ul>'+
+    (g.dec.length?'<h4>Quyết định phải chốt</h4><ul>'+g.dec.map(function(x){return '<li>'+esc(x)+'</li>';}).join("")+'</ul>':"")+'</div>';
+  if(!dlg.open)dlg.showModal();
+}
+
+board.addEventListener("click",function(e){
+  var g=e.target.closest(".gate");if(g){openGate(g.dataset.g);return;}
+  var c=e.target.closest(".card");if(c)openCard(c.dataset.id);
+});
+board.addEventListener("keydown",function(e){
+  if(e.key!=="Enter"&&e.key!==" ")return;
+  var c=e.target.closest(".card");
+  if(c){e.preventDefault();openCard(c.dataset.id);}
+});
+dlg.addEventListener("click",function(e){
+  if(e.target===dlg||e.target.closest("[data-close]"))dlg.close();
+});
+dlg.addEventListener("change",function(e){
+  var f=e.target.dataset&&e.target.dataset.f,id=dlg.dataset.id;
+  if(!f||!id)return;
+  var p={};p[f]=e.target.value;setOv(id,p);
+});
+
+board.addEventListener("dragstart",function(e){
+  var c=e.target.closest(".card");if(!c)return;
+  e.dataTransfer.setData("text/plain",c.dataset.id);
+  e.dataTransfer.effectAllowed="move";
+  c.classList.add("drag");
+});
+board.addEventListener("dragend",function(e){
+  var c=e.target.closest(".card");if(c)c.classList.remove("drag");
+  Array.prototype.forEach.call(board.querySelectorAll(".over"),function(b){b.classList.remove("over");});
+});
+board.addEventListener("dragover",function(e){
+  var b=e.target.closest(".colb");if(!b)return;
+  e.preventDefault();b.classList.add("over");
+});
+board.addEventListener("dragleave",function(e){
+  var b=e.target.closest(".colb");
+  if(b&&!b.contains(e.relatedTarget))b.classList.remove("over");
+});
+board.addEventListener("drop",function(e){
+  var b=e.target.closest(".colb");if(!b)return;
+  e.preventDefault();
+  var id=e.dataTransfer.getData("text/plain");
+  if(!byId[id])return;
+  var p={};p[S.view==="ms"?"m":"s"]=b.dataset.k;setOv(id,p);
+});
+
+document.querySelector(".seg").addEventListener("click",function(e){
+  var b=e.target.closest("button");if(!b)return;
+  S.view=b.dataset.v;save();render();
+});
+chips.addEventListener("click",function(e){
+  var b=e.target.closest(".chip");if(!b)return;
+  S.types[b.dataset.t]=!S.types[b.dataset.t];renderChips();render();
+});
+document.getElementById("q").addEventListener("input",function(e){
+  S.q=e.target.value.trim().toLowerCase();render();
+});
+document.getElementById("reset").addEventListener("click",function(){
+  S.ov={};save();render();
+});
+
+renderChips();render();
+})();
+</script>
+</body>
+</html>

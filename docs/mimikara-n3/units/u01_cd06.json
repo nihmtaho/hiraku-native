@@ -1,0 +1,94 @@
+{
+  "book": "Mimikara Oboeru N3 Goi",
+  "unit": "01",
+  "cd": "06",
+  "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=01&cd=06",
+  "count": 5,
+  "entries": [
+    {
+      "no":67,
+      "word":"夢",
+      "reading":"ゆめ",
+      "word_raw":"夢（ゆめ）",
+      "ruby":[{"t":"夢","r":"ゆめ"}],
+      "han_viet":"mộng",
+      "meaning_vi":"giấc mơ",
+      "examples":[
+        {"no":1,"jp":"きのう、こわい夢を見た","jp_raw":"きのう、こわい夢（ゆめ）を見（み）た","jp_ruby":[{"t":"きのう、こわい"},{"t":"夢","r":"ゆめ"},{"t":"を"},{"t":"見","r":"み"},{"t":"た"}],"vi":"Hôm qua, tôi đã gặp ác mộng."},
+        {"no":2,"jp":"「あなたの将来の夢は何ですか」","jp_raw":"「あなたの将来（しょうらい）の夢（ゆめ）は何（なん）ですか」","jp_ruby":[{"t":"「あなたの"},{"t":"将来","r":"しょうらい"},{"t":"の"},{"t":"夢","r":"ゆめ"},{"t":"は"},{"t":"何","r":"なん"},{"t":"ですか」"}],"vi":"Ước mơ tương lai của bạn là gì?"}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿を見（み）る、　＿からさめる","items":[{"text":"＿を見る","ruby":[{"t":"＿を"},{"t":"見","r":"み"},{"t":"る"}],"pattern":true},{"text":"＿からさめる","ruby":[{"t":"＿からさめる"}],"pattern":true}],"meaning_vi":"Nằm mơ, tỉnh giấc mộng"},
+        {"type":"collocation","marker":"連","raw":"＿がある  ない、　＿を持（も）つ、　＿がかなう、　＿をかなえる","items":[{"text":"＿がある  ない","ruby":[{"t":"＿がある  ない"}],"pattern":true},{"text":"＿を持つ","ruby":[{"t":"＿を"},{"t":"持","r":"も"},{"t":"つ"}],"pattern":true},{"text":"＿がかなう","ruby":[{"t":"＿がかなう"}],"pattern":true},{"text":"＿をかなえる","ruby":[{"t":"＿をかなえる"}],"pattern":true}],"meaning_vi":"Có ước mơ <=> không có hoài bão, có ước mơ, ước mơ thành hiện thực, hiện thực hóa ước mơ"}
+      ]
+    },
+    {
+      "no":68,
+      "word":"賛成",
+      "reading":"さんせい",
+      "word_raw":"賛成（さんせい）",
+      "ruby":[{"t":"賛成","r":"さんせい"}],
+      "han_viet":"tán thành",
+      "meaning_vi":"tán thành, đồng ý",
+      "examples":[
+        {"no":1,"jp":"「賛成の人は手を挙げてください」","jp_raw":"「賛成（さんせい）の人（ひと）は手（て）を挙（あ）げてください」","jp_ruby":[{"t":"「"},{"t":"賛成","r":"さんせい"},{"t":"の"},{"t":"人","r":"ひと"},{"t":"は"},{"t":"手","r":"て"},{"t":"を"},{"t":"挙","r":"あ"},{"t":"げてください」"}],"vi":"\"Ai tán thành thì giơ tay!\""},
+        {"no":2,"jp":"私はその｛提案／意見｝に｛賛成だ／賛成する｝","jp_raw":"私（わたし）はその｛提案（ていあん）／意見（いけん）｝に｛賛成（さんせい）だ／賛成（さんせい）する｝","jp_ruby":[{"t":"私","r":"わたし"},{"t":"はその｛"},{"t":"提案","r":"ていあん"},{"t":"／"},{"t":"意見","r":"いけん"},{"t":"｝に｛"},{"t":"賛成","r":"さんせい"},{"t":"だ／"},{"t":"賛成","r":"さんせい"},{"t":"する｝"}],"vi":"Tôi đồng ý với {đề án / ý kiến} đó."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿意見（いけん）","items":[{"text":"＿意見","ruby":[{"t":"＿"},{"t":"意見","r":"いけん"}],"pattern":true}],"meaning_vi":"Ý kiến tán thành"},
+        {"type":"antonym","marker":"対","raw":"反対（はんたい）","items":[{"text":"反対","ruby":[{"t":"反対","r":"はんたい"}]}],"meaning_vi":"Phản đối"}
+      ]
+    },
+    {
+      "no":69,
+      "word":"反対",
+      "reading":"はんたい",
+      "word_raw":"反対（はんたい）",
+      "ruby":[{"t":"反対","r":"はんたい"}],
+      "han_viet":"phản đối",
+      "meaning_vi":"đối ngược, phản đối",
+      "examples":[
+        {"no":1,"jp":"プラスの反対はマイナスだ","jp_raw":"プラスの反対（はんたい）はマイナスだ","jp_ruby":[{"t":"プラスの"},{"t":"反対","r":"はんたい"},{"t":"はマイナスだ"}],"vi":"Ngược lại với cộng là trừ."},
+        {"no":2,"jp":"彼の意見には反対だ","jp_raw":"彼（かれ）の意見（いけん）には反対（はんたい）だ","jp_ruby":[{"t":"彼","r":"かれ"},{"t":"の"},{"t":"意見","r":"いけん"},{"t":"には"},{"t":"反対","r":"はんたい"},{"t":"だ"}],"vi":"Tôi phản đối với ý kiến ​​của anh ấy."},
+        {"no":3,"jp":"提案に反対する","jp_raw":"提案（ていあん）に反対（はんたい）する","jp_ruby":[{"t":"提案","r":"ていあん"},{"t":"に"},{"t":"反対","r":"はんたい"},{"t":"する"}],"vi":"Phản đối đề án."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿意見（いけん）","items":[{"text":"＿意見","ruby":[{"t":"＿"},{"t":"意見","r":"いけん"}],"pattern":true}],"meaning_vi":"Ý kiến phản đối"},
+        {"type":"antonym","marker":"対","raw":"賛成（さんせい）","items":[{"text":"賛成","ruby":[{"t":"賛成","r":"さんせい"}]}],"meaning_vi":"Tán thành, đồng ý"}
+      ]
+    },
+    {
+      "no":70,
+      "word":"想像",
+      "reading":"そうぞう",
+      "word_raw":"想像（そうぞう）",
+      "ruby":[{"t":"想像","r":"そうぞう"}],
+      "han_viet":"tưởng tượng",
+      "meaning_vi":"tưởng tượng",
+      "examples":[
+        {"no":1,"jp":"想像と現実は違う","jp_raw":"想像（そうぞう）と現実（げんじつ）は違（ちが）う","jp_ruby":[{"t":"想像","r":"そうぞう"},{"t":"と"},{"t":"現実","r":"げんじつ"},{"t":"は"},{"t":"違","r":"ちが"},{"t":"う"}],"vi":"Tưởng tượng và thực tế khác nhau."},
+        {"no":2,"jp":"100 年後の未来を想像する","jp_raw":"100 年（ねん）後（ご）の未来（みらい）を想像（そうぞう）する","jp_ruby":[{"t":"100 "},{"t":"年","r":"ねん"},{"t":"後","r":"ご"},{"t":"の"},{"t":"未来","r":"みらい"},{"t":"を"},{"t":"想像","r":"そうぞう"},{"t":"する"}],"vi":"Hình dung về tương lai 100 năm sau."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿がつく","items":[{"text":"＿がつく","ruby":[{"t":"＿がつく"}],"pattern":true}],"meaning_vi":"Có thể đoán được"},
+        {"type":"compound","marker":"合","raw":"＿力（りょく）","items":[{"text":"＿力","ruby":[{"t":"＿"},{"t":"力","r":"りょく"}],"pattern":true}],"meaning_vi":"Trí tưởng tượng"}
+      ]
+    },
+    {
+      "no":71,
+      "word":"努力",
+      "reading":"どりょく",
+      "word_raw":"努力（どりょく）",
+      "ruby":[{"t":"努力","r":"どりょく"}],
+      "han_viet":"nỗ lực",
+      "meaning_vi":"nỗ lực, sự cố gắng",
+      "examples":[
+        {"no":1,"jp":"一生懸命、努力をする","jp_raw":"一生懸命（いっしょうけんめい）、努力（どりょく）をする","jp_ruby":[{"t":"一生懸命","r":"いっしょうけんめい"},{"t":"、"},{"t":"努力","r":"どりょく"},{"t":"をする"}],"vi":"Cố gắng hết sức."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿を重（かさ）ねる、　＿が実（みの）る","items":[{"text":"＿を重ねる","ruby":[{"t":"＿を"},{"t":"重","r":"かさ"},{"t":"ねる"}],"pattern":true},{"text":"＿が実る","ruby":[{"t":"＿が"},{"t":"実","r":"みの"},{"t":"る"}],"pattern":true}],"meaning_vi":"Tăng cường nỗ lực, thành quả nỗ lực"},
+        {"type":"compound","marker":"合","raw":"＿家（か）","items":[{"text":"＿家","ruby":[{"t":"＿"},{"t":"家","r":"か"}],"pattern":true}],"meaning_vi":"Người cần cù"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "book": "Mimikara Oboeru N3 Goi",
+  "unit": "10",
+  "cd": "58",
+  "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=10&cd=58",
+  "count": 4,
+  "entries": [
+    {
+      "no":792,
+      "word":"散る",
+      "reading":"ちる",
+      "word_raw":"散（ち）る",
+      "ruby":[{"t":"散","r":"ち"},{"t":"る"}],
+      "han_viet":"tán/tản",
+      "meaning_vi":"rơi, tàn",
+      "examples":[
+        {"no":1,"jp":"風で桜が散ってしまった","jp_raw":"風（かぜ）で桜（さくら）が散（ち）ってしまった","jp_ruby":[{"t":"風","r":"かぜ"},{"t":"で"},{"t":"桜","r":"さくら"},{"t":"が"},{"t":"散","r":"ち"},{"t":"ってしまった"}],"vi":"Hoa anh đào rụng vì gió."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"飛（と）び＿","items":[{"text":"飛び＿","ruby":[{"t":"飛","r":"と"},{"t":"び＿"}],"pattern":true}],"meaning_vi":"Bay tung tóe"}
+      ]
+    },
+    {
+      "no":793,
+      "word":"散らす",
+      "reading":"ちらす",
+      "word_raw":"散（ち）らす",
+      "ruby":[{"t":"散","r":"ち"},{"t":"らす"}],
+      "han_viet":"tán/tản",
+      "meaning_vi":"làm rụng, vứt lung tung",
+      "examples":[
+        {"no":1,"jp":"風が桜を散らしてしまった","jp_raw":"風（かぜ）が桜（さくら）を散（ち）らしてしまった","jp_ruby":[{"t":"風","r":"かぜ"},{"t":"が"},{"t":"桜","r":"さくら"},{"t":"を"},{"t":"散","r":"ち"},{"t":"らしてしまった"}],"vi":"Hoa anh đào bị rụng vì gió."}
+      ],
+      "related":[]
+    },
+    {
+      "no":794,
+      "word":"明ける",
+      "reading":"あける",
+      "word_raw":"明（あ）ける",
+      "ruby":[{"t":"明","r":"あ"},{"t":"ける"}],
+      "han_viet":"minh",
+      "meaning_vi":"kết thúc (mùa mưa), bắt đầu (năm mới), trời sáng (hết đêm)",
+      "examples":[
+        {"no":1,"jp":"｛夜／年／梅雨｝が明ける","jp_raw":"｛夜（よ）／年（とし）／梅雨（つゆ）｝が明（あ）ける","jp_ruby":[{"t":"｛"},{"t":"夜","r":"よ"},{"t":"／"},{"t":"年","r":"とし"},{"t":"／"},{"t":"梅雨","r":"つゆ"},{"t":"｝が"},{"t":"明","r":"あ"},{"t":"ける"}],"vi":"Trời sáng/ bắt đầu năm mới/ hết( cuối) mùa mưa."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"｛夜（よ）／年（とし）／梅雨（つゆ）｝＋明（あ）け","items":[{"text":"｛夜／年／梅雨｝＋明け","ruby":[{"t":"｛"},{"t":"夜","r":"よ"},{"t":"／"},{"t":"年","r":"とし"},{"t":"／"},{"t":"梅雨","r":"つゆ"},{"t":"｝＋"},{"t":"明","r":"あ"},{"t":"け"}],"pattern":true}],"meaning_vi":"Bình minh/ năm mới/ cuối mùa mưa"}
+      ]
+    },
+    {
+      "no":795,
+      "word":"差す",
+      "reading":"さす",
+      "word_raw":"差（さ）す",
+      "ruby":[{"t":"差","r":"さ"},{"t":"す"}],
+      "han_viet":"sai",
+      "meaning_vi":"giương (ô), giơ (tay), chiếu (nắng).",
+      "examples":[
+        {"no":1,"jp":"雨がやんで、日が差してきた","jp_raw":"雨（あめ）がやんで、日（ひ）が差（さ）してきた","jp_ruby":[{"t":"雨","r":"あめ"},{"t":"がやんで、"},{"t":"日","r":"ひ"},{"t":"が"},{"t":"差","r":"さ"},{"t":"してきた"}],"vi":"Hết cơn mưa trời lại sáng."},
+        {"no":2,"jp":"かさをさす","jp_raw":"かさをさす","jp_ruby":[{"t":"かさをさす"}],"vi":"Giương ô."},
+        {"no":3,"jp":"目薬をさす","jp_raw":"目（め）薬（ぐすり）をさす","jp_ruby":[{"t":"目","r":"め"},{"t":"薬","r":"ぐすり"},{"t":"をさす"}],"vi":"Nhỏ thuốc nhỏ mắt."}
+      ],
+      "related":[]
+    }
+  ]
+}

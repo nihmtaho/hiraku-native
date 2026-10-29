@@ -1,0 +1,272 @@
+{
+  "book": "Mimikara Oboeru N3 Goi",
+  "unit": "01",
+  "cd": "02",
+  "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=01&cd=02",
+  "count": 17,
+  "entries": [
+    {
+      "no":1,
+      "word":"男性",
+      "reading":"だんせい",
+      "word_raw":"男性（だんせい）",
+      "ruby":[{"t":"男性","r":"だんせい"}],
+      "han_viet":"nam tính",
+      "meaning_vi":"nam giới, đàn ông, giới tính nam",
+      "examples":[
+        {"no":1,"jp":"理想の　{男性／女性}　と結婚する","jp_raw":"理想（りそう）の　{男性（だんせい）／女性（じょせい）}　と結婚（けっこん）する","jp_ruby":[{"t":"理想","r":"りそう"},{"t":"の　{"},{"t":"男性","r":"だんせい"},{"t":"／"},{"t":"女性","r":"じょせい"},{"t":"}　と"},{"t":"結婚","r":"けっこん"},{"t":"する"}],"vi":"Kết hôn với người đàn ông/ phụ nữ lý tưởng."}
+      ],
+      "related":[]
+    },
+    {
+      "no":2,
+      "word":"女性",
+      "reading":"じょせい",
+      "word_raw":"女性（じょせい）",
+      "ruby":[{"t":"女性","r":"じょせい"}],
+      "han_viet":"nữ tính",
+      "meaning_vi":"nữ giới, phụ nữ, giới tính nữ",
+      "examples":[
+        {"no":1,"jp":"「あの｛○女性／○女の人／x女｝はだれですか」","jp_raw":"「あの｛○女性（じょせい）／○女（おんな）の人（ひと）／x女（おんな）｝はだれですか」","jp_ruby":[{"t":"「あの｛○"},{"t":"女性","r":"じょせい"},{"t":"／○"},{"t":"女","r":"おんな"},{"t":"の"},{"t":"人","r":"ひと"},{"t":"／x"},{"t":"女","r":"おんな"},{"t":"｝はだれですか」"}],"vi":"Người phụ nữ kia là ai vậy?"}
+      ],
+      "related":[
+        {"type":"related","marker":"関","raw":"男女（だんじょ）、　性別（せいべつ）","items":[{"text":"男女","ruby":[{"t":"男女","r":"だんじょ"}]},{"text":"性別","ruby":[{"t":"性別","r":"せいべつ"}]}],"meaning_vi":"Nam nữ, giới tính"}
+      ]
+    },
+    {
+      "no":3,
+      "word":"高齢",
+      "reading":"こうれい",
+      "word_raw":"高齢（こうれい）",
+      "ruby":[{"t":"高齢","r":"こうれい"}],
+      "han_viet":"cao linh",
+      "meaning_vi":"tuổi cao",
+      "examples":[
+        {"no":1,"jp":"祖母は高齢だが、まだとても元気だ","jp_raw":"祖母（そぼ）は高齢（こうれい）だが、まだとても元気（げんき）だ","jp_ruby":[{"t":"祖母","r":"そぼ"},{"t":"は"},{"t":"高齢","r":"こうれい"},{"t":"だが、まだとても"},{"t":"元気","r":"げんき"},{"t":"だ"}],"vi":"Bà tôi tuy tuổi đã cao nhưng rất khỏe mạnh."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿者（しゃ）、　＿化（か）社会（しゃかい）","items":[{"text":"＿者","ruby":[{"t":"＿"},{"t":"者","r":"しゃ"}],"pattern":true},{"text":"＿化社会","ruby":[{"t":"＿"},{"t":"化","r":"か"},{"t":"社会","r":"しゃかい"}],"pattern":true}],"meaning_vi":"Người cao tuổi, xã hội già hóa"}
+      ]
+    },
+    {
+      "no":4,
+      "word":"年上",
+      "reading":"としうえ",
+      "word_raw":"年上（としうえ）",
+      "ruby":[{"t":"年上","r":"としうえ"}],
+      "han_viet":"niên thượng",
+      "meaning_vi":"lớn tuổi hơn, hơn tuổi",
+      "examples":[
+        {"no":1,"jp":"年上の友だち","jp_raw":"年上（としうえ）の友（とも）だち","jp_ruby":[{"t":"年上","r":"としうえ"},{"t":"の"},{"t":"友","r":"とも"},{"t":"だち"}],"vi":"Bạn hơn tuổi."},
+        {"no":2,"jp":"彼女は私｛より／の｝三つ年上だ","jp_raw":"彼女（かのじょ）は私（わたし）｛より／の｝三（み）つ年上（としうえ）だ","jp_ruby":[{"t":"彼女","r":"かのじょ"},{"t":"は"},{"t":"私","r":"わたし"},{"t":"｛より／の｝"},{"t":"三","r":"み"},{"t":"つ"},{"t":"年上","r":"としうえ"},{"t":"だ"}],"vi":"Cô ấy lớn hơn tôi 3 tuổi."}
+      ],
+      "related":[
+        {"type":"antonym","marker":"対","raw":"年下（としした）","items":[{"text":"年下","ruby":[{"t":"年下","r":"としした"}]}],"meaning_vi":"Ít tuổi hơn, kém tuổi"},
+        {"type":"related","marker":"関","raw":"年長（ねんちょう）","items":[{"text":"年長","ruby":[{"t":"年長","r":"ねんちょう"}]}],"meaning_vi":"Lớn tuổi hơn, lớn tuổi"}
+      ]
+    },
+    {
+      "no":5,
+      "word":"目上",
+      "reading":"めうえ",
+      "word_raw":"目上（めうえ）",
+      "ruby":[{"t":"目上","r":"めうえ"}],
+      "han_viet":"mục thượng",
+      "meaning_vi":"cấp trên, bề trên",
+      "examples":[
+        {"no":1,"jp":"目上の人には敬語で話したほうがいい","jp_raw":"目上（めうえ）の人（ひと）には敬語（けいご）で話（はな）したほうがいい","jp_ruby":[{"t":"目上","r":"めうえ"},{"t":"の"},{"t":"人","r":"ひと"},{"t":"には"},{"t":"敬語","r":"けいご"},{"t":"で"},{"t":"話","r":"はな"},{"t":"したほうがいい"}],"vi":"Đối với người bề trên nên nói chuyện bằng kính ngữ."}
+      ],
+      "related":[
+        {"type":"antonym","marker":"対","raw":"目下（めした）","items":[{"text":"目下","ruby":[{"t":"目下","r":"めした"}]}],"meaning_vi":"Cấp dưới, bề dưới"}
+      ]
+    },
+    {
+      "no":6,
+      "word":"先輩",
+      "reading":"せんぱい",
+      "word_raw":"先輩（せんぱい）",
+      "ruby":[{"t":"先輩","r":"せんぱい"}],
+      "han_viet":"tiên bối",
+      "meaning_vi":"người đi trước",
+      "examples":[
+        {"no":1,"jp":"田中さんと私は同じ年だが、職場では彼のほうが先輩だ","jp_raw":"田中（たなか）さんと私（わたし）は同（おな）じ年（とし）だが、職場（しょくば）では彼（かれ）のほうが先輩（せんぱい）だ","jp_ruby":[{"t":"田中","r":"たなか"},{"t":"さんと"},{"t":"私","r":"わたし"},{"t":"は"},{"t":"同","r":"おな"},{"t":"じ"},{"t":"年","r":"とし"},{"t":"だが、"},{"t":"職場","r":"しょくば"},{"t":"では"},{"t":"彼","r":"かれ"},{"t":"のほうが"},{"t":"先輩","r":"せんぱい"},{"t":"だ"}],"vi":"Tanaka và tôi cùng tuổi nhưng ở công ty cậu ấy là tiền bối."}
+      ],
+      "related":[]
+    },
+    {
+      "no":7,
+      "word":"後輩",
+      "reading":"こうはい",
+      "word_raw":"後輩（こうはい）",
+      "ruby":[{"t":"後輩","r":"こうはい"}],
+      "han_viet":"hậu bối",
+      "meaning_vi":"người đi sau",
+      "examples":[],
+      "related":[]
+    },
+    {
+      "no":8,
+      "word":"上司",
+      "reading":"じょうし",
+      "word_raw":"上司（じょうし）",
+      "ruby":[{"t":"上司","r":"じょうし"}],
+      "han_viet":"thượng tư",
+      "meaning_vi":"cấp trên",
+      "examples":[
+        {"no":1,"jp":"上司に相談してから決定する","jp_raw":"上司（じょうし）に相談（そうだん）してから決定（けってい）する","jp_ruby":[{"t":"上司","r":"じょうし"},{"t":"に"},{"t":"相談","r":"そうだん"},{"t":"してから"},{"t":"決定","r":"けってい"},{"t":"する"}],"vi":"Tôi sẽ trao đổi với cấp trên rồi mới quyết định."}
+      ],
+      "related":[
+        {"type":"antonym","marker":"対","raw":"部下（ぶか）","items":[{"text":"部下","ruby":[{"t":"部下","r":"ぶか"}]}],"meaning_vi":"Cấp dưới"},
+        {"type":"related","marker":"関","raw":"同僚（どうりょう）","items":[{"text":"同僚","ruby":[{"t":"同僚","r":"どうりょう"}]}],"meaning_vi":"Đồng nghiệp"}
+      ]
+    },
+    {
+      "no":9,
+      "word":"相手",
+      "reading":"あいて",
+      "word_raw":"相手（あいて）",
+      "ruby":[{"t":"相手","r":"あいて"}],
+      "han_viet":"tương/tướng thủ",
+      "meaning_vi":"đối phương",
+      "examples":[
+        {"no":1,"jp":"相手の目を見て話す","jp_raw":"相手（あいて）の目（め）を見（み）て話（はな）す","jp_ruby":[{"t":"相手","r":"あいて"},{"t":"の"},{"t":"目","r":"め"},{"t":"を"},{"t":"見","r":"み"},{"t":"て"},{"t":"話","r":"はな"},{"t":"す"}],"vi":"Nhìn vào mắt người đối diện mà nói chuyện."},
+        {"no":2,"jp":"今度の試合の相手は強そうだ","jp_raw":"今度（こんど）の試合（しあい）の相手（あいて）は強（つよ）そうだ","jp_ruby":[{"t":"今度","r":"こんど"},{"t":"の"},{"t":"試合","r":"しあい"},{"t":"の"},{"t":"相手","r":"あいて"},{"t":"は"},{"t":"強","r":"つよ"},{"t":"そうだ"}],"vi":"Đối thủ trong trận đấu tới có vẻ mạnh."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"話（はなし）＿、　結婚（けっこん）＿、　相談（そうだん）＿","items":[{"text":"話＿","ruby":[{"t":"話","r":"はなし"},{"t":"＿"}],"pattern":true},{"text":"結婚＿","ruby":[{"t":"結婚","r":"けっこん"},{"t":"＿"}],"pattern":true},{"text":"相談＿","ruby":[{"t":"相談","r":"そうだん"},{"t":"＿"}],"pattern":true}],"meaning_vi":"Bạn nói chuyện, đối tượng kết hôn, đối tượng thảo luận"}
+      ]
+    },
+    {
+      "no":10,
+      "word":"知り合い",
+      "reading":"しりあい",
+      "word_raw":"知（し）り合（あ）い",
+      "ruby":[{"t":"知","r":"し"},{"t":"り"},{"t":"合","r":"あ"},{"t":"い"}],
+      "han_viet":"tri hợp",
+      "meaning_vi":"người quen",
+      "examples":[
+        {"no":1,"jp":"知り合いに息子の就職を頼む","jp_raw":"知（し）り合（あ）いに息子（むすこ）の就職（しゅうしょく）を頼（たの）む","jp_ruby":[{"t":"知","r":"し"},{"t":"り"},{"t":"合","r":"あ"},{"t":"いに"},{"t":"息子","r":"むすこ"},{"t":"の"},{"t":"就職","r":"しゅうしょく"},{"t":"を"},{"t":"頼","r":"たの"},{"t":"む"}],"vi":"Nhờ người quen xin việc cho đứa con trai."}
+      ],
+      "related":[
+        {"type":"synonym","marker":"類","raw":"知人（ちじん）","items":[{"text":"知人","ruby":[{"t":"知人","r":"ちじん"}]}],"meaning_vi":"Người quen"},
+        {"type":"related","marker":"関","raw":"友（とも）だち、　友人（ゆうじん）、　親友（しんゆう）","items":[{"text":"友だち","ruby":[{"t":"友","r":"とも"},{"t":"だち"}]},{"text":"友人","ruby":[{"t":"友人","r":"ゆうじん"}]},{"text":"親友","ruby":[{"t":"親友","r":"しんゆう"}]}],"meaning_vi":"Bạn bè, người bạn, bạn thân"}
+      ]
+    },
+    {
+      "no":11,
+      "word":"友人",
+      "reading":"ゆうじん",
+      "word_raw":"友人（ゆうじん）",
+      "ruby":[{"t":"友人","r":"ゆうじん"}],
+      "han_viet":"hữu nhân",
+      "meaning_vi":"bạn, người bạn",
+      "examples":[
+        {"no":1,"jp":"「田中さんを知っていますか」...「ええ、学生時代の友人です」","jp_raw":"「田中（たなか）さんを知（し）っていますか」...「ええ、学生（がくせい）時代（じだい）の友人（ゆうじん）です」","jp_ruby":[{"t":"「"},{"t":"田中","r":"たなか"},{"t":"さんを"},{"t":"知","r":"し"},{"t":"っていますか」...「ええ、"},{"t":"学生","r":"がくせい"},{"t":"時代","r":"じだい"},{"t":"の"},{"t":"友人","r":"ゆうじん"},{"t":"です」"}],"vi":"\"Bạn có biết anh Tanaka không?\" \"Có, là bạn thời học sinh của tôi.\""}
+      ],
+      "related":[
+        {"type":"synonym","marker":"類","raw":"友（とも）だち","items":[{"text":"友だち","ruby":[{"t":"友","r":"とも"},{"t":"だち"}]}],"meaning_vi":"Bạn bè"},
+        {"type":"related","marker":"関","raw":"親友（しんゆう）、　知（し）り合（あ）い","items":[{"text":"親友","ruby":[{"t":"親友","r":"しんゆう"}]},{"text":"知り合い","ruby":[{"t":"知","r":"し"},{"t":"り"},{"t":"合","r":"あ"},{"t":"い"}]}],"meaning_vi":"Bạn thân, người quen biết"}
+      ]
+    },
+    {
+      "no":12,
+      "word":"仲",
+      "reading":"なか",
+      "word_raw":"仲（なか）",
+      "ruby":[{"t":"仲","r":"なか"}],
+      "han_viet":"trọng",
+      "meaning_vi":"quan hệ, mối quan hệ",
+      "examples":[
+        {"no":1,"jp":"私は山本さんと仲がいい","jp_raw":"私（わたし）は山本（やまもと）さんと仲（なか）がいい","jp_ruby":[{"t":"私","r":"わたし"},{"t":"は"},{"t":"山本","r":"やまもと"},{"t":"さんと"},{"t":"仲","r":"なか"},{"t":"がいい"}],"vi":"Tôi thân với anh Yamamoto."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿がいい 悪（わる）い","items":[{"text":"＿がいい 悪い","ruby":[{"t":"＿がいい "},{"t":"悪","r":"わる"},{"t":"い"}],"pattern":true}],"meaning_vi":"Thân thiết <=> không hòa hợp"},
+        {"type":"compound","marker":"合","raw":"＿間（ま）、　＿良（よ）し","items":[{"text":"＿間","ruby":[{"t":"＿"},{"t":"間","r":"ま"}],"pattern":true},{"text":"＿良し","ruby":[{"t":"＿"},{"t":"良","r":"よ"},{"t":"し"}],"pattern":true}],"meaning_vi":"Đồng bọn, bạn bè tốt"}
+      ]
+    },
+    {
+      "no":13,
+      "word":"生年月日",
+      "reading":"せいねんがっぴ",
+      "word_raw":"生年（せいねん）月日（がっぴ）",
+      "ruby":[{"t":"生年","r":"せいねん"},{"t":"月日","r":"がっぴ"}],
+      "han_viet":"sinh niên nguyệt nhật",
+      "meaning_vi":"ngày tháng năm sinh",
+      "examples":[
+        {"no":1,"jp":"書類に生年月日を記入する","jp_raw":"書類（しょるい）に生年（せいねん）月日（がっぴ）を記入（きにゅう）する","jp_ruby":[{"t":"書類","r":"しょるい"},{"t":"に"},{"t":"生年","r":"せいねん"},{"t":"月日","r":"がっぴ"},{"t":"を"},{"t":"記入","r":"きにゅう"},{"t":"する"}],"vi":"Điền ngày tháng năm sinh vào tài liệu."}
+      ],
+      "related":[
+        {"type":"related","marker":"関","raw":"誕生日（たんじょうび）","items":[{"text":"誕生日","ruby":[{"t":"誕生日","r":"たんじょうび"}]}],"meaning_vi":"Sinh nhật"}
+      ]
+    },
+    {
+      "no":14,
+      "word":"誕生",
+      "reading":"たんじょう",
+      "word_raw":"誕生（たんじょう）",
+      "ruby":[{"t":"誕生","r":"たんじょう"}],
+      "han_viet":"đản sinh",
+      "meaning_vi":"ra đời",
+      "examples":[
+        {"no":1,"jp":"新しい命の誕生を祝う","jp_raw":"新（あたら）しい命（いのち）の誕生（たんじょう）を祝（いわ）う","jp_ruby":[{"t":"新","r":"あたら"},{"t":"しい"},{"t":"命","r":"いのち"},{"t":"の"},{"t":"誕生","r":"たんじょう"},{"t":"を"},{"t":"祝","r":"いわ"},{"t":"う"}],"vi":"Chúc mừng sự ra đời của sinh mệnh mới."},
+        {"no":2,"jp":"結婚２年目に子どもが誕生した","jp_raw":"結婚（けっこん）２年目（ねんめ）に子（こ）どもが誕生（たんじょう）した","jp_ruby":[{"t":"結婚","r":"けっこん"},{"t":"２"},{"t":"年目","r":"ねんめ"},{"t":"に"},{"t":"子","r":"こ"},{"t":"どもが"},{"t":"誕生","r":"たんじょう"},{"t":"した"}],"vi":"Đứa bé đã được sinh vào năm thứ hai sau khi kết hôn."},
+        {"no":3,"jp":"新政権が誕生する","jp_raw":"新政権（しんせいけん）が誕生（たんじょう）する","jp_ruby":[{"t":"新政権","r":"しんせいけん"},{"t":"が"},{"t":"誕生","r":"たんじょう"},{"t":"する"}],"vi":"Chính quyền mới sẽ được thành lập."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿日（び）","items":[{"text":"＿日","ruby":[{"t":"＿"},{"t":"日","r":"び"}],"pattern":true}],"meaning_vi":"Ngày sinh"},
+        {"type":"related","marker":"関","raw":"生（う）まれる","items":[{"text":"生まれる","ruby":[{"t":"生","r":"う"},{"t":"まれる"}]}],"meaning_vi":"Được sinh ra"}
+      ]
+    },
+    {
+      "no":15,
+      "word":"年",
+      "reading":"とし",
+      "word_raw":"年（とし）",
+      "ruby":[{"t":"年","r":"とし"}],
+      "han_viet":"niên",
+      "meaning_vi":"năm, tuổi",
+      "examples":[
+        {"no":1,"jp":"年の初めに１年の計画を立てる","jp_raw":"年（とし）の初（はじ）めに１年（ねん）の計画（けいかく）を立（た）てる","jp_ruby":[{"t":"年","r":"とし"},{"t":"の"},{"t":"初","r":"はじ"},{"t":"めに１"},{"t":"年","r":"ねん"},{"t":"の"},{"t":"計画","r":"けいかく"},{"t":"を"},{"t":"立","r":"た"},{"t":"てる"}],"vi":"Lập kế hoạch cho một năm vào đầu năm mới."},
+        {"no":2,"jp":"父は年より若く見える","jp_raw":"父（ちち）は年（とし）より若（わか）く見（み）える","jp_ruby":[{"t":"父","r":"ちち"},{"t":"は"},{"t":"年","r":"とし"},{"t":"より"},{"t":"若","r":"わか"},{"t":"く"},{"t":"見","r":"み"},{"t":"える"}],"vi":"Bố tôi nhìn trẻ hơn so với tuổi."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿が始（はじ）まる終（お）わる、　＿が明（あ）ける、　＿が過（す）ぎる","items":[{"text":"＿が始まる終わる","ruby":[{"t":"＿が"},{"t":"始","r":"はじ"},{"t":"まる"},{"t":"終","r":"お"},{"t":"わる"}],"pattern":true},{"text":"＿が明ける","ruby":[{"t":"＿が"},{"t":"明","r":"あ"},{"t":"ける"}],"pattern":true},{"text":"＿が過ぎる","ruby":[{"t":"＿が"},{"t":"過","r":"す"},{"t":"ぎる"}],"pattern":true}],"meaning_vi":"Bắt đầu năm mới <=> kết thúc một năm, khởi đầu năm mới, trải qua một năm"},
+        {"type":"compound","marker":"合","raw":"＿明（あ）け","items":[{"text":"＿明け","ruby":[{"t":"＿"},{"t":"明","r":"あ"},{"t":"け"}],"pattern":true}],"meaning_vi":"Sự khởi đầu năm mới"},
+        {"type":"collocation","marker":"連","raw":"＿をとる","items":[{"text":"＿をとる","ruby":[{"t":"＿をとる"}],"pattern":true}],"meaning_vi":"Có tuổi"},
+        {"type":"compound","marker":"合","raw":"（お）＿寄（よ）り","items":[{"text":"（お）＿寄り","ruby":[{"t":"（お）＿"},{"t":"寄","r":"よ"},{"t":"り"}],"pattern":true}],"meaning_vi":"Người lớn tuổi"},
+        {"type":"synonym","marker":"類","raw":"年齢（ねんれい）","items":[{"text":"年齢","ruby":[{"t":"年齢","r":"ねんれい"}]}],"meaning_vi":"Tuổi tác"}
+      ]
+    },
+    {
+      "no":16,
+      "word":"出身",
+      "reading":"しゅっしん",
+      "word_raw":"出身（しゅっしん）",
+      "ruby":[{"t":"出身","r":"しゅっしん"}],
+      "han_viet":"xuất thân",
+      "meaning_vi":"xuất thân, gốc gác",
+      "examples":[
+        {"no":1,"jp":"「ご出身はどちらですか」...「東京です」","jp_raw":"「ご出身（しゅっしん）はどちらですか」...「東京（とうきょう）です」","jp_ruby":[{"t":"「ご"},{"t":"出身","r":"しゅっしん"},{"t":"はどちらですか」...「"},{"t":"東京","r":"とうきょう"},{"t":"です」"}],"vi":"\"Bạn đến từ đâu?\" \"Đến từ Tokyo.\""},
+        {"no":2,"jp":"私は｛東京／東京大学　…｝（の）出身です","jp_raw":"私（わたし）は｛東京（とうきょう）／東京（とうきょう）大学（だいがく）　…｝（の）出身（しゅっしん）です","jp_ruby":[{"t":"私","r":"わたし"},{"t":"は｛"},{"t":"東京","r":"とうきょう"},{"t":"／"},{"t":"東京","r":"とうきょう"},{"t":"大学","r":"だいがく"},{"t":"　…｝（の）"},{"t":"出身","r":"しゅっしん"},{"t":"です"}],"vi":"Tôi đến từ {Tokyo / đại học Tokyo…}."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿地（ち）、　＿校（こう）、　［地名（ちめい）／学校名（がっこうめい）　…］＋出身（しゅっしん）","items":[{"text":"＿地","ruby":[{"t":"＿"},{"t":"地","r":"ち"}],"pattern":true},{"text":"＿校","ruby":[{"t":"＿"},{"t":"校","r":"こう"}],"pattern":true},{"text":"［地名／学校名　…］＋出身","ruby":[{"t":"［"},{"t":"地名","r":"ちめい"},{"t":"／"},{"t":"学校名","r":"がっこうめい"},{"t":"　…］＋"},{"t":"出身","r":"しゅっしん"}],"pattern":true}],"meaning_vi":"Nơi sinh, trường đã học"}
+      ]
+    },
+    {
+      "no":17,
+      "word":"故郷",
+      "reading":"こきょう",
+      "word_raw":"故郷（こきょう）",
+      "ruby":[{"t":"故郷","r":"こきょう"}],
+      "han_viet":"cố hương",
+      "meaning_vi":"quê hương",
+      "examples":[
+        {"no":1,"jp":"仕事が忙しくて、もう何年も故郷に帰っていない","jp_raw":"仕事（しごと）が忙（いそが）しくて、もう何年（なんねん）も故郷（こきょう）に帰（かえ）っていない","jp_ruby":[{"t":"仕事","r":"しごと"},{"t":"が"},{"t":"忙","r":"いそが"},{"t":"しくて、もう"},{"t":"何年","r":"なんねん"},{"t":"も"},{"t":"故郷","r":"こきょう"},{"t":"に"},{"t":"帰","r":"かえ"},{"t":"っていない"}],"vi":"Vì công việc bận rộn, nên nhiều năm chưa trở về quê hương."}
+      ],
+      "related":[
+        {"type":"synonym","marker":"類","raw":"ふるさと","items":[{"text":"ふるさと","ruby":[{"t":"ふるさと"}]}],"meaning_vi":"Quê hương"}
+      ]
+    }
+  ]
+}

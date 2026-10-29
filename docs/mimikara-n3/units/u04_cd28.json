@@ -1,0 +1,241 @@
+{
+  "book": "Mimikara Oboeru N3 Goi",
+  "unit": "04",
+  "cd": "28",
+  "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=04&cd=28",
+  "count": 14,
+  "entries": [
+    {
+      "no":397,
+      "word":"中身",
+      "reading":"なかみ",
+      "word_raw":"中身（なかみ）",
+      "ruby":[{"t":"中身","r":"なかみ"}],
+      "han_viet":"trung thân",
+      "meaning_vi":"bên trong, nội dung",
+      "examples":[
+        {"no":1,"jp":"箱を開けて中身を見る","jp_raw":"箱（はこ）を開（あ）けて中身（なかみ）を見（み）る","jp_ruby":[{"t":"箱","r":"はこ"},{"t":"を"},{"t":"開","r":"あ"},{"t":"けて"},{"t":"中身","r":"なかみ"},{"t":"を"},{"t":"見","r":"み"},{"t":"る"}],"vi":"Mở hộp xem bên trong."},
+        {"no":2,"jp":"話の中身が理解できない","jp_raw":"話（はなし）の中身（なかみ）が理解（りかい）できない","jp_ruby":[{"t":"話","r":"はなし"},{"t":"の"},{"t":"中身","r":"なかみ"},{"t":"が"},{"t":"理解","r":"りかい"},{"t":"できない"}],"vi":"Không thể hiểu được nội dung của câu chuyện."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿がある  ない、＿が濃（こ）い  薄（うす）い","items":[{"text":"＿がある  ない","ruby":[{"t":"＿がある  ない"}],"pattern":true},{"text":"＿が濃い  薄い","ruby":[{"t":"＿が"},{"t":"濃","r":"こ"},{"t":"い  "},{"t":"薄","r":"うす"},{"t":"い"}],"pattern":true}],"meaning_vi":"Có nội dung<=> không có nội dung, nhiều nội dung <=> ít nội dung"},
+        {"type":"synonym","marker":"類","raw":"内容（ないよう）","items":[{"text":"内容","ruby":[{"t":"内容","r":"ないよう"}]}],"meaning_vi":"Nội dung"}
+      ]
+    },
+    {
+      "no":398,
+      "word":"特徴",
+      "reading":"とくちょう",
+      "word_raw":"特徴（とくちょう）",
+      "ruby":[{"t":"特徴","r":"とくちょう"}],
+      "han_viet":"đặc trưng",
+      "meaning_vi":"đặc trưng, đặc tính",
+      "examples":[
+        {"no":1,"jp":"商品の特徴を確かめる","jp_raw":"商品（しょうひん）の特徴（とくちょう）を確（たし）かめる","jp_ruby":[{"t":"商品","r":"しょうひん"},{"t":"の"},{"t":"特徴","r":"とくちょう"},{"t":"を"},{"t":"確","r":"たし"},{"t":"かめる"}],"vi":"Kiểm tra lại những đặc tính của sản phẩm."},
+        {"no":2,"jp":"彼女は特徴のある顔をしている","jp_raw":"彼女（かのじょ）は特徴（とくちょう）のある顔（かお）をしている","jp_ruby":[{"t":"彼女","r":"かのじょ"},{"t":"は"},{"t":"特徴","r":"とくちょう"},{"t":"のある"},{"t":"顔","r":"かお"},{"t":"をしている"}],"vi":"Cô ấy có khuôn mặt đặc trưng."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿がある  ない","items":[{"text":"＿がある  ない","ruby":[{"t":"＿がある  ない"}],"pattern":true}],"meaning_vi":"Có đặc trưng <=> không có đặc trưng"},
+        {"type":"compound","marker":"合","raw":"＿的（てき）な","items":[{"text":"＿的な","ruby":[{"t":"＿"},{"t":"的","r":"てき"},{"t":"な"}],"pattern":true}],"meaning_vi":"Tính đặc trưng"},
+        {"type":"synonym","marker":"類","raw":"特色（とくしょく）","items":[{"text":"特色","ruby":[{"t":"特色","r":"とくしょく"}]}],"meaning_vi":"Đặc sắc"}
+      ]
+    },
+    {
+      "no":399,
+      "word":"普通",
+      "reading":"ふつう",
+      "word_raw":"普通（ふつう）",
+      "ruby":[{"t":"普通","r":"ふつう"}],
+      "han_viet":"phổ thông",
+      "meaning_vi":"bình thường, thông thường",
+      "examples":[
+        {"no":1,"jp":"パスポートの申請には１週間ぐらいかかるのがふつうだ","jp_raw":"パスポートの申請（しんせい）には１週間（しゅうかん）ぐらいかかるのがふつうだ","jp_ruby":[{"t":"パスポートの"},{"t":"申請","r":"しんせい"},{"t":"には１"},{"t":"週間","r":"しゅうかん"},{"t":"ぐらいかかるのがふつうだ"}],"vi":"Việc xin hộ chiếu thông thường mất một tuần."},
+        {"no":2,"jp":"私はふつう、朝食にはパンを食べる","jp_raw":"私（わたし）はふつう、朝食（ちょうしょく）にはパンを食（た）べる","jp_ruby":[{"t":"私","r":"わたし"},{"t":"はふつう、"},{"t":"朝食","r":"ちょうしょく"},{"t":"にはパンを"},{"t":"食","r":"た"},{"t":"べる"}],"vi":"Tôi thường ăn bánh mì vào buổi sáng."},
+        {"no":3,"jp":"ふつう（は）、会社員は昼間に働く","jp_raw":"ふつう（は）、会社員（かいしゃいん）は昼間（ひるま）に働（はたら）く","jp_ruby":[{"t":"ふつう（は）、"},{"t":"会社員","r":"かいしゃいん"},{"t":"は"},{"t":"昼間","r":"ひるま"},{"t":"に"},{"t":"働","r":"はたら"},{"t":"く"}],"vi":"Thông thường nhân viên công ty làm việc vào ban ngày."},
+        {"no":4,"jp":"「田中さんって、ちょっと変じゃない？」「そう？ふつうの人だと思うけど」","jp_raw":"「田中（たなか）さんって、ちょっと変（へん）じゃない？」「そう？ふつうの人（ひと）だと思（おも）うけど」","jp_ruby":[{"t":"「"},{"t":"田中","r":"たなか"},{"t":"さんって、ちょっと"},{"t":"変","r":"へん"},{"t":"じゃない？」「そう？ふつうの"},{"t":"人","r":"ひと"},{"t":"だと"},{"t":"思","r":"おも"},{"t":"うけど」"}],"vi":"\"Anh Tanaka có chút gì là lạ ấy nhỉ.\" \"Vậy à tôi thấy anh ấy bình thường ấy mà.\""}
+      ],
+      "related":[]
+    },
+    {
+      "no":400,
+      "word":"当たり前",
+      "reading":"あたりまえ",
+      "word_raw":"当（あ）たり前（まえ）",
+      "ruby":[{"t":"当","r":"あ"},{"t":"たり"},{"t":"前","r":"まえ"}],
+      "han_viet":"đương tiền",
+      "meaning_vi":"tất nhiên",
+      "examples":[
+        {"no":1,"jp":"そんなひどいことをされたら、怒るのがあたりまえだ","jp_raw":"そんなひどいことをされたら、怒（おこ）るのがあたりまえだ","jp_ruby":[{"t":"そんなひどいことをされたら、"},{"t":"怒","r":"おこ"},{"t":"るのがあたりまえだ"}],"vi":"Nếu bị chơi xấu như thế thì nổi giận là chuyện đương nhiên."}
+      ],
+      "related":[
+        {"type":"synonym","marker":"類","raw":"当然（とうぜん）","items":[{"text":"当然","ruby":[{"t":"当然","r":"とうぜん"}]}],"meaning_vi":"Đương nhiên"}
+      ]
+    },
+    {
+      "no":401,
+      "word":"偽",
+      "reading":"にせ",
+      "word_raw":"偽（にせ）",
+      "ruby":[{"t":"偽","r":"にせ"}],
+      "han_viet":"ngụy",
+      "meaning_vi":"giả",
+      "examples":[
+        {"no":1,"jp":"にせ（の）銀行員にだまされてお金を取られた","jp_raw":"にせ（の）銀行員（ぎんこういん）にだまされてお金（かね）を取（と）られた","jp_ruby":[{"t":"にせ（の）"},{"t":"銀行員","r":"ぎんこういん"},{"t":"にだまされてお"},{"t":"金","r":"かね"},{"t":"を"},{"t":"取","r":"と"},{"t":"られた"}],"vi":"Bị nhân viên ngân hàng giả mạo lừa lấy hết tiền."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿物（もの）、＿者（もの）、＿札（さつ）","items":[{"text":"＿物","ruby":[{"t":"＿"},{"t":"物","r":"もの"}],"pattern":true},{"text":"＿者","ruby":[{"t":"＿"},{"t":"者","r":"もの"}],"pattern":true},{"text":"＿札","ruby":[{"t":"＿"},{"t":"札","r":"さつ"}],"pattern":true}],"meaning_vi":"Đồ giả/ kẻ giả mạo/ tiền giả/"},
+        {"type":"related","marker":"関","raw":"本物（ほんもの）","items":[{"text":"本物","ruby":[{"t":"本物","r":"ほんもの"}]}],"meaning_vi":"Đồ thật"}
+      ]
+    },
+    {
+      "no":402,
+      "word":"別",
+      "reading":"べつ",
+      "word_raw":"別（べつ）",
+      "ruby":[{"t":"別","r":"べつ"}],
+      "han_viet":"biệt",
+      "meaning_vi":"khác nhau, riêng biệt",
+      "examples":[
+        {"no":1,"jp":"「米」は「ごはん」とは別（の）ものだ","jp_raw":"「米（こめ）」は「ごはん」とは別（べつ）（の）ものだ","jp_ruby":[{"t":"「"},{"t":"米","r":"こめ"},{"t":"」は「ごはん」とは"},{"t":"別","r":"べつ"},{"t":"（の）ものだ"}],"vi":"Gạo khác với cơm."},
+        {"no":2,"jp":"恋愛と結婚は別だ","jp_raw":"恋愛（れんあい）と結婚（けっこん）は別（べつ）だ","jp_ruby":[{"t":"恋愛","r":"れんあい"},{"t":"と"},{"t":"結婚","r":"けっこん"},{"t":"は"},{"t":"別","r":"べつ"},{"t":"だ"}],"vi":"Tình yêu và kết hôn khác với nhau."},
+        {"no":3,"jp":"別の意見を述べる","jp_raw":"別（べつ）の意見（いけん）を述（の）べる","jp_ruby":[{"t":"別","r":"べつ"},{"t":"の"},{"t":"意見","r":"いけん"},{"t":"を"},{"t":"述","r":"の"},{"t":"べる"}],"vi":"Bày tỏ ý kiến khác."},
+        {"no":4,"jp":"欠席者には別に連絡する","jp_raw":"欠席者（けっせきしゃ）には別（べつ）に連絡（れんらく）する","jp_ruby":[{"t":"欠席者","r":"けっせきしゃ"},{"t":"には"},{"t":"別","r":"べつ"},{"t":"に"},{"t":"連絡","r":"れんらく"},{"t":"する"}],"vi":"Liên lạc riêng với người vắng mặt."},
+        {"no":5,"jp":"男性と女性を別に調査する","jp_raw":"男性（だんせい）と女性（じょせい）を別（べつ）に調査（ちょうさ）する","jp_ruby":[{"t":"男性","r":"だんせい"},{"t":"と"},{"t":"女性","r":"じょせい"},{"t":"を"},{"t":"別","r":"べつ"},{"t":"に"},{"t":"調査","r":"ちょうさ"},{"t":"する"}],"vi":"Điều tra riêng đối với nam và nữ."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿人（じん）、＿物（もの）、性（せい）＿、年齢（ねんれい）＿、国（くに）＿","items":[{"text":"＿人","ruby":[{"t":"＿"},{"t":"人","r":"じん"}],"pattern":true},{"text":"＿物","ruby":[{"t":"＿"},{"t":"物","r":"もの"}],"pattern":true},{"text":"性＿","ruby":[{"t":"性","r":"せい"},{"t":"＿"}],"pattern":true},{"text":"年齢＿","ruby":[{"t":"年齢","r":"ねんれい"},{"t":"＿"}],"pattern":true},{"text":"国＿","ruby":[{"t":"国","r":"くに"},{"t":"＿"}],"pattern":true}],"meaning_vi":"Người khác, vật khác, giới tính, theo độ tuổi, theo quốc gia"},
+        {"type":"synonym","marker":"類","raw":"別々（べつべつ）","items":[{"text":"別々","ruby":[{"t":"別々","r":"べつべつ"}]}],"meaning_vi":"Riêng lẻ từng cái một"},
+        {"type":"collocation","marker":"連","raw":"＿にする","items":[{"text":"＿にする","ruby":[{"t":"＿にする"}],"pattern":true}],"meaning_vi":"Làm riêng, tách riêng"}
+      ]
+    },
+    {
+      "no":403,
+      "word":"国籍",
+      "reading":"こくせき",
+      "word_raw":"国籍（こくせき）",
+      "ruby":[{"t":"国籍","r":"こくせき"}],
+      "han_viet":"quốc tịch",
+      "meaning_vi":"quốc tịch",
+      "examples":[
+        {"no":1,"jp":"私はずっとアメリカで暮らしているが、国籍は日本だ","jp_raw":"私（わたし）はずっとアメリカで暮（く）らしているが、国籍（こくせき）は日本（にほん）だ","jp_ruby":[{"t":"私","r":"わたし"},{"t":"はずっとアメリカで"},{"t":"暮","r":"く"},{"t":"らしているが、"},{"t":"国籍","r":"こくせき"},{"t":"は"},{"t":"日本","r":"にほん"},{"t":"だ"}],"vi":"Tôi cư trú ở Mỹ nhưng quốc tịch Nhật."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿を取（と）る","items":[{"text":"＿を取る","ruby":[{"t":"＿を"},{"t":"取","r":"と"},{"t":"る"}],"pattern":true}],"meaning_vi":"Lấy quốc tịch"}
+      ]
+    },
+    {
+      "no":404,
+      "word":"東洋",
+      "reading":"とうよう",
+      "word_raw":"東洋（とうよう）",
+      "ruby":[{"t":"東洋","r":"とうよう"}],
+      "han_viet":"đông dương",
+      "meaning_vi":"phương Đông",
+      "examples":[
+        {"no":1,"jp":"東洋の文化と西洋の文化を比べる","jp_raw":"東洋（とうよう）の文化（ぶんか）と西洋（せいよう）の文化（ぶんか）を比（くら）べる","jp_ruby":[{"t":"東洋","r":"とうよう"},{"t":"の"},{"t":"文化","r":"ぶんか"},{"t":"と"},{"t":"西洋","r":"せいよう"},{"t":"の"},{"t":"文化","r":"ぶんか"},{"t":"を"},{"t":"比","r":"くら"},{"t":"べる"}],"vi":"So sánh văn hóa phương Đông và phương Tây."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿人（じん）、＿風（ふう）、＿文化（ぶんか）、＿料理（りょうり）","items":[{"text":"＿人","ruby":[{"t":"＿"},{"t":"人","r":"じん"}],"pattern":true},{"text":"＿風","ruby":[{"t":"＿"},{"t":"風","r":"ふう"}],"pattern":true},{"text":"＿文化","ruby":[{"t":"＿"},{"t":"文化","r":"ぶんか"}],"pattern":true},{"text":"＿料理","ruby":[{"t":"＿"},{"t":"料理","r":"りょうり"}],"pattern":true}],"meaning_vi":"Người phương Đông, phong cách Đông, văn hóa Đông, món ăn Đông"},
+        {"type":"related","marker":"関","raw":"アジア、欧米（おうべい）","items":[{"text":"アジア","ruby":[{"t":"アジア"}]},{"text":"欧米","ruby":[{"t":"欧米","r":"おうべい"}]}],"meaning_vi":"Châu Á, Âu Mỹ"}
+      ]
+    },
+    {
+      "no":405,
+      "word":"西洋",
+      "reading":"せいよう",
+      "word_raw":"西洋（せいよう）",
+      "ruby":[{"t":"西洋","r":"せいよう"}],
+      "han_viet":"tây dương",
+      "meaning_vi":"phương Tây",
+      "examples":[
+        {"no":1,"jp":"東洋の文化と西洋の文化を比べる","jp_raw":"東洋の文化と西洋の文化を比べる","jp_ruby":[{"t":"東洋の文化と西洋の文化を比べる"}],"vi":"So sánh văn hóa phương Đông và văn hóa phương Tây."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿人、＿風、＿文化、＿料理","items":[{"text":"＿人","ruby":[{"t":"＿人"}],"pattern":true},{"text":"＿風","ruby":[{"t":"＿風"}],"pattern":true},{"text":"＿文化","ruby":[{"t":"＿文化"}],"pattern":true},{"text":"＿料理","ruby":[{"t":"＿料理"}],"pattern":true}],"meaning_vi":"Người phương Tây, phong cách phương Tây, văn hóa phương Tây, món ăn phương Tây"},
+        {"type":"related","marker":"関","raw":"アジア、欧米","items":[{"text":"アジア","ruby":[{"t":"アジア"}]},{"text":"欧米","ruby":[{"t":"欧米"}]}],"meaning_vi":"Châu Á, Âu Mỹ"}
+      ]
+    },
+    {
+      "no":406,
+      "word":"国際",
+      "reading":"こくさい",
+      "word_raw":"国際（こくさい）",
+      "ruby":[{"t":"国際","r":"こくさい"}],
+      "han_viet":"quốc tế",
+      "meaning_vi":"quốc tế",
+      "examples":[
+        {"no":1,"jp":"日本企業の海外支社でのトラブルが国際問題に発展した","jp_raw":"日本（にほん）企業（きぎょう）の海外（かいがい）支社（ししゃ）でのトラブルが国際（こくさい）問題（もんだい）に発展（はってん）した","jp_ruby":[{"t":"日本","r":"にほん"},{"t":"企業","r":"きぎょう"},{"t":"の"},{"t":"海外","r":"かいがい"},{"t":"支社","r":"ししゃ"},{"t":"でのトラブルが"},{"t":"国際","r":"こくさい"},{"t":"問題","r":"もんだい"},{"t":"に"},{"t":"発展","r":"はってん"},{"t":"した"}],"vi":"Vấn đề ở chi nhánh nước ngoài của xí nghiệp Nhật Bản đã phát triển thành vấn đề quốc tế."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿連合（れんごう）＞国連（こくれん）、＿結婚（けっこん）、＿交流（こうりゅう）、＿問題（もんだい）、＿的（てき）な","items":[{"text":"＿連合＞国連","ruby":[{"t":"＿"},{"t":"連合","r":"れんごう"},{"t":"＞"},{"t":"国連","r":"こくれん"}],"pattern":true},{"text":"＿結婚","ruby":[{"t":"＿"},{"t":"結婚","r":"けっこん"}],"pattern":true},{"text":"＿交流","ruby":[{"t":"＿"},{"t":"交流","r":"こうりゅう"}],"pattern":true},{"text":"＿問題","ruby":[{"t":"＿"},{"t":"問題","r":"もんだい"}],"pattern":true},{"text":"＿的な","ruby":[{"t":"＿"},{"t":"的","r":"てき"},{"t":"な"}],"pattern":true}],"meaning_vi":"Liên hợp quốc, hôn nhân quốc tế, giao lưu quốc tế, vấn đề quốc tế, quốc tế hóa, tính quốc tế"}
+      ]
+    },
+    {
+      "no":407,
+      "word":"自然",
+      "reading":"しぜん",
+      "word_raw":"自然（しぜん）",
+      "ruby":[{"t":"自然","r":"しぜん"}],
+      "han_viet":"tự nhiên",
+      "meaning_vi":"tự nhiên",
+      "examples":[
+        {"no":1,"jp":"山や海へ行って、自然の中で過ごす","jp_raw":"山（やま）や海（うみ）へ行（い）って、自然（しぜん）の中（なか）で過（す）ごす","jp_ruby":[{"t":"山","r":"やま"},{"t":"や"},{"t":"海","r":"うみ"},{"t":"へ"},{"t":"行","r":"い"},{"t":"って、"},{"t":"自然","r":"しぜん"},{"t":"の"},{"t":"中","r":"なか"},{"t":"で"},{"t":"過","r":"す"},{"t":"ごす"}],"vi":"Đi núi đi biển để hòa mình trong thiên nhiên."},
+        {"no":2,"jp":"好きな人といっしょにいたいと思うのは、自然なことだ","jp_raw":"好（す）きな人（ひと）といっしょにいたいと思（おも）うのは、自然（しぜん）なことだ","jp_ruby":[{"t":"好","r":"す"},{"t":"きな"},{"t":"人","r":"ひと"},{"t":"といっしょにいたいと"},{"t":"思","r":"おも"},{"t":"うのは、"},{"t":"自然","r":"しぜん"},{"t":"なことだ"}],"vi":"Việc có suy nghĩ muốn ở bên với người mình thích là điều tự nhiên."},
+        {"no":3,"jp":"意地が悪い人は、自然｛に／と｝、友だちが少なくなる","jp_raw":"意地（いじ）が悪（わる）い人（ひと）は、自然（しぜん）｛に／と｝、友（とも）だちが少（すく）なくなる","jp_ruby":[{"t":"意地","r":"いじ"},{"t":"が"},{"t":"悪","r":"わる"},{"t":"い"},{"t":"人","r":"ひと"},{"t":"は、"},{"t":"自然","r":"しぜん"},{"t":"｛に／と｝、"},{"t":"友","r":"とも"},{"t":"だちが"},{"t":"少","r":"すく"},{"t":"なくなる"}],"vi":"Người có tâm địa xấu xa thì tự nhiên sẽ có ít bạn bè."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿環境（かんきょう）、＿保護（ほご）","items":[{"text":"＿環境","ruby":[{"t":"＿"},{"t":"環境","r":"かんきょう"}],"pattern":true},{"text":"＿保護","ruby":[{"t":"＿"},{"t":"保護","r":"ほご"}],"pattern":true}],"meaning_vi":"Môi trường tự nhiên, bảo vệ tự nhiên"},
+        {"type":"antonym","marker":"対","raw":"人工（じんこう）、不自然（ふしぜん）な","items":[{"text":"人工","ruby":[{"t":"人工","r":"じんこう"}]},{"text":"不自然な","ruby":[{"t":"不自然","r":"ふしぜん"},{"t":"な"}]}],"meaning_vi":"Nhân tạo/ không tự nhiên, không thật"}
+      ]
+    },
+    {
+      "no":408,
+      "word":"景色",
+      "reading":"けしき",
+      "word_raw":"景色（けしき）",
+      "ruby":[{"t":"景色","r":"けしき"}],
+      "han_viet":"cảnh sắc",
+      "meaning_vi":"phong cảnh, cảnh sắc",
+      "examples":[
+        {"no":1,"jp":"初めて日本の山に行った。すばらしい景色だった","jp_raw":"初（はじ）めて日本（にほん）の山（やま）に行（い）った。すばらしい景色（けしき）だった","jp_ruby":[{"t":"初","r":"はじ"},{"t":"めて"},{"t":"日本","r":"にほん"},{"t":"の"},{"t":"山","r":"やま"},{"t":"に"},{"t":"行","r":"い"},{"t":"った。すばらしい"},{"t":"景色","r":"けしき"},{"t":"だった"}],"vi":"Lần đầu tiên đi chơi núi của Nhật Bản, phong cảnh đẹp tuyệt vời."}
+      ],
+      "related":[
+        {"type":"synonym","marker":"類","raw":"風景（ふうけい）","items":[{"text":"風景","ruby":[{"t":"風景","r":"ふうけい"}]}],"meaning_vi":"Phong cảnh"},
+        {"type":"related","marker":"関","raw":"光景（こうけい）","items":[{"text":"光景","ruby":[{"t":"光景","r":"こうけい"}]}],"meaning_vi":"Quang cảnh, cảnh tượng"}
+      ]
+    },
+    {
+      "no":409,
+      "word":"宗教",
+      "reading":"しゅうきょう",
+      "word_raw":"宗教（しゅうきょう）",
+      "ruby":[{"t":"宗教","r":"しゅうきょう"}],
+      "han_viet":"tôn giáo",
+      "meaning_vi":"tôn giáo",
+      "examples":[
+        {"no":1,"jp":"世界にはいろいろな宗教がある","jp_raw":"世界（せかい）にはいろいろな宗教（しゅうきょう）がある","jp_ruby":[{"t":"世界","r":"せかい"},{"t":"にはいろいろな"},{"t":"宗教","r":"しゅうきょう"},{"t":"がある"}],"vi":"Trên thế giới có rất nhiều tôn giáo."}
+      ],
+      "related":[
+        {"type":"related","marker":"関","raw":"イスラム教（きょう）、キリスト教（きょう）、仏教（ぶっきょう）、ユダヤ教（きょう）、信（しん）じる","items":[{"text":"イスラム教","ruby":[{"t":"イスラム"},{"t":"教","r":"きょう"}]},{"text":"キリスト教","ruby":[{"t":"キリスト"},{"t":"教","r":"きょう"}]},{"text":"仏教","ruby":[{"t":"仏教","r":"ぶっきょう"}]},{"text":"ユダヤ教","ruby":[{"t":"ユダヤ"},{"t":"教","r":"きょう"}]},{"text":"信じる","ruby":[{"t":"信","r":"しん"},{"t":"じる"}]}],"meaning_vi":"Theo {Hồi giáo, thiên chúa giáo, phật giáo, đạo Do Thái}"}
+      ]
+    },
+    {
+      "no":410,
+      "word":"愛",
+      "reading":"あい",
+      "word_raw":"愛（あい）",
+      "ruby":[{"t":"愛","r":"あい"}],
+      "han_viet":"ái",
+      "meaning_vi":"tình yêu",
+      "examples":[
+        {"no":1,"jp":"私は｛家族／自然／国　…｝を愛している","jp_raw":"私（わたし）は｛家族（かぞく）／自然（しぜん）／国（くに）　…｝を愛（あい）している","jp_ruby":[{"t":"私","r":"わたし"},{"t":"は｛"},{"t":"家族","r":"かぞく"},{"t":"／"},{"t":"自然","r":"しぜん"},{"t":"／"},{"t":"国","r":"くに"},{"t":"　…｝を"},{"t":"愛","r":"あい"},{"t":"している"}],"vi":"Tôi yêu {gia đình/ tự nhiên/ đất nước…}."},
+        {"no":2,"jp":"神への愛","jp_raw":"神（かみ）への愛（あい）","jp_ruby":[{"t":"神","r":"かみ"},{"t":"への"},{"t":"愛","r":"あい"}],"vi":"Tình yêu với thần thánh."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿情（じょう）、＿読書（どくしょ）、＿国（こく）心（しん）","items":[{"text":"＿情","ruby":[{"t":"＿"},{"t":"情","r":"じょう"}],"pattern":true},{"text":"＿読書","ruby":[{"t":"＿"},{"t":"読書","r":"どくしょ"}],"pattern":true},{"text":"＿国心","ruby":[{"t":"＿"},{"t":"国","r":"こく"},{"t":"心","r":"しん"}],"pattern":true}],"meaning_vi":"Tình yêu, sách được ưa thích, lòng yêu nước"},
+        {"type":"antonym","marker":"対","raw":"憎（にく）しみ","items":[{"text":"憎しみ","ruby":[{"t":"憎","r":"にく"},{"t":"しみ"}]}],"meaning_vi":"Ghét, ghê tởm, oán hận"},
+        {"type":"related","marker":"関","raw":"憎（にく）む","items":[{"text":"憎む","ruby":[{"t":"憎","r":"にく"},{"t":"む"}]}],"meaning_vi":"Ghét, ghê tởm, oán hận"}
+      ]
+    }
+  ]
+}

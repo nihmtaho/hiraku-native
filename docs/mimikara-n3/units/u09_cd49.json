@@ -1,0 +1,255 @@
+{
+  "book": "Mimikara Oboeru N3 Goi",
+  "unit": "09",
+  "cd": "49",
+  "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=09&cd=49",
+  "count": 15,
+  "entries": [
+    {
+      "no":691,
+      "word":"証明",
+      "reading":"しょうめい",
+      "word_raw":"証明（しょうめい）",
+      "ruby":[{"t":"証明","r":"しょうめい"}],
+      "han_viet":"chứng minh",
+      "meaning_vi":"chứng minh",
+      "examples":[
+        {"no":1,"jp":"銀行口座を開くときには、身分を証明するものが必要だ","jp_raw":"銀行（ぎんこう）口座（こうざ）を開（ひら）くときには、身分（みぶん）を証明（しょうめい）するものが必要（ひつよう）だ","jp_ruby":[{"t":"銀行","r":"ぎんこう"},{"t":"口座","r":"こうざ"},{"t":"を"},{"t":"開","r":"ひら"},{"t":"くときには、"},{"t":"身分","r":"みぶん"},{"t":"を"},{"t":"証明","r":"しょうめい"},{"t":"するものが"},{"t":"必要","r":"ひつよう"},{"t":"だ"}],"vi":"Khi mở tài khoản ngân hàng thì cần có vật để chứng minh danh tính."},
+        {"no":2,"jp":"無実を証明する","jp_raw":"無実（むじつ）を証明（しょうめい）する","jp_ruby":[{"t":"無実","r":"むじつ"},{"t":"を"},{"t":"証明","r":"しょうめい"},{"t":"する"}],"vi":"Chứng minh vô tội."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿書（しょ）、身分（みぶん）＿","items":[{"text":"＿書","ruby":[{"t":"＿"},{"t":"書","r":"しょ"}],"pattern":true},{"text":"身分＿","ruby":[{"t":"身分","r":"みぶん"},{"t":"＿"}],"pattern":true}],"meaning_vi":"Chứng minh thư, chứng minh {thân phận, địa vị, danh tính}"}
+      ]
+    },
+    {
+      "no":692,
+      "word":"変更",
+      "reading":"へんこう",
+      "word_raw":"変更（へんこう）",
+      "ruby":[{"t":"変更","r":"へんこう"}],
+      "han_viet":"biến canh",
+      "meaning_vi":"thay đổi",
+      "examples":[
+        {"no":1,"jp":"｛予定／計画／進路　…｝の変更を行う","jp_raw":"｛予定（よてい）／計画（けいかく）／進路（しんろ）　…｝の変更（へんこう）を行（おこな）う","jp_ruby":[{"t":"｛"},{"t":"予定","r":"よてい"},{"t":"／"},{"t":"計画","r":"けいかく"},{"t":"／"},{"t":"進路","r":"しんろ"},{"t":"　…｝の"},{"t":"変更","r":"へんこう"},{"t":"を"},{"t":"行","r":"おこな"},{"t":"う"}],"vi":"Tiến hành thay đổi {dự định/ kế hoạch / lộ trình…}."},
+        {"no":2,"jp":"旅行先を沖縄から北海道に変更する","jp_raw":"旅行（りょこう）先（さき）を沖縄（おきなわ）から北海道（ほっかいどう）に変更（へんこう）する","jp_ruby":[{"t":"旅行","r":"りょこう"},{"t":"先","r":"さき"},{"t":"を"},{"t":"沖縄","r":"おきなわ"},{"t":"から"},{"t":"北海道","r":"ほっかいどう"},{"t":"に"},{"t":"変更","r":"へんこう"},{"t":"する"}],"vi":"Thay đổi điểm du lịch từ Okinawa sang Hokkaido."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"予定（よてい）＿、進路（しんろ）＿","items":[{"text":"予定＿","ruby":[{"t":"予定","r":"よてい"},{"t":"＿"}],"pattern":true},{"text":"進路＿","ruby":[{"t":"進路","r":"しんろ"},{"t":"＿"}],"pattern":true}],"meaning_vi":"Thay đổi dự định, thay đổi lộ trình"},
+        {"type":"synonym","marker":"類","raw":"変（か）える","items":[{"text":"変える","ruby":[{"t":"変","r":"か"},{"t":"える"}]}],"meaning_vi":"Thay đổi"}
+      ]
+    },
+    {
+      "no":693,
+      "word":"保存",
+      "reading":"ほぞん",
+      "word_raw":"保存（ほぞん）",
+      "ruby":[{"t":"保存","r":"ほぞん"}],
+      "han_viet":"bảo tồn",
+      "meaning_vi":"lưu, bảo quản",
+      "examples":[
+        {"no":1,"jp":"食料の保存","jp_raw":"食料（しょくりょう）の保存（ほぞん）","jp_ruby":[{"t":"食料","r":"しょくりょう"},{"t":"の"},{"t":"保存","r":"ほぞん"}],"vi":"Bảo quản thực phẩm."},
+        {"no":2,"jp":"パソコンにデータを保存する","jp_raw":"パソコンにデータを保存（ほぞん）する","jp_ruby":[{"t":"パソコンにデータを"},{"t":"保存","r":"ほぞん"},{"t":"する"}],"vi":"Lưu dữ liệu vào máy tính."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿がきく","items":[{"text":"＿がきく","ruby":[{"t":"＿がきく"}],"pattern":true}],"meaning_vi":"Có thể bảo quản"},
+        {"type":"compound","marker":"合","raw":"冷凍（れいとう）＿、＿食（しょく）","items":[{"text":"冷凍＿","ruby":[{"t":"冷凍","r":"れいとう"},{"t":"＿"}],"pattern":true},{"text":"＿食","ruby":[{"t":"＿"},{"t":"食","r":"しょく"}],"pattern":true}],"meaning_vi":"Bảo quản đông lạnh, thực phẩm bảo quản"}
+      ]
+    },
+    {
+      "no":694,
+      "word":"保護",
+      "reading":"ほご",
+      "word_raw":"保護（ほご）",
+      "ruby":[{"t":"保護","r":"ほご"}],
+      "han_viet":"bảo hộ",
+      "meaning_vi":"bảo hộ, trông nom",
+      "examples":[
+        {"no":1,"jp":"自然を保護する","jp_raw":"自然（しぜん）を保護（ほご）する","jp_ruby":[{"t":"自然","r":"しぜん"},{"t":"を"},{"t":"保護","r":"ほご"},{"t":"する"}],"vi":"Bảo tồn thiên nhiên."},
+        {"no":2,"jp":"プライバシーの保護","jp_raw":"プライバシーの保護（ほご）","jp_ruby":[{"t":"プライバシーの"},{"t":"保護","r":"ほご"}],"vi":"Bảo vệ thông tin riêng tư."},
+        {"no":3,"jp":"迷子の保護","jp_raw":"迷子（まいご）の保護（ほご）","jp_ruby":[{"t":"迷子","r":"まいご"},{"t":"の"},{"t":"保護","r":"ほご"}],"vi":"Trông giữ trẻ lạc."},
+        {"no":4,"jp":"警察に保護される","jp_raw":"警察（けいさつ）に保護（ほご）される","jp_ruby":[{"t":"警察","r":"けいさつ"},{"t":"に"},{"t":"保護","r":"ほご"},{"t":"される"}],"vi":"Được cảnh sát bảo vệ."},
+        {"no":5,"jp":"病気で働けないので、生活保護を受けている","jp_raw":"病気（びょうき）で働（はたら）けないので、生活（せいかつ）保護（ほご）を受（う）けている","jp_ruby":[{"t":"病気","r":"びょうき"},{"t":"で"},{"t":"働","r":"はたら"},{"t":"けないので、"},{"t":"生活","r":"せいかつ"},{"t":"保護","r":"ほご"},{"t":"を"},{"t":"受","r":"う"},{"t":"けている"}],"vi":"Vì bệnh nên không thể làm việc được nên tôi đang nhận trợ cấp về cuộc sống."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"自然（しぜん）＿、動物（どうぶつ）＿、環境（かんきょう）＿、＿者（しゃ）、過（か）＿、生活（せいかつ）＿","items":[{"text":"自然＿","ruby":[{"t":"自然","r":"しぜん"},{"t":"＿"}],"pattern":true},{"text":"動物＿","ruby":[{"t":"動物","r":"どうぶつ"},{"t":"＿"}],"pattern":true},{"text":"環境＿","ruby":[{"t":"環境","r":"かんきょう"},{"t":"＿"}],"pattern":true},{"text":"＿者","ruby":[{"t":"＿"},{"t":"者","r":"しゃ"}],"pattern":true},{"text":"過＿","ruby":[{"t":"過","r":"か"},{"t":"＿"}],"pattern":true},{"text":"生活＿","ruby":[{"t":"生活","r":"せいかつ"},{"t":"＿"}],"pattern":true}],"meaning_vi":"Bảo vệ tự nhiên, bảo vệ động vật, bảo vệ môi trường, người giám hộ, bảo vệ quá mức, trợ cấp sinh hoạt"},
+        {"type":"collocation","marker":"連","raw":"＿を受（う）ける","items":[{"text":"＿を受ける","ruby":[{"t":"＿を"},{"t":"受","r":"う"},{"t":"ける"}],"pattern":true}],"meaning_vi":"Được bảo hộ"}
+      ]
+    },
+    {
+      "no":695,
+      "word":"環境",
+      "reading":"かんきょう",
+      "word_raw":"環境（かんきょう）",
+      "ruby":[{"t":"環境","r":"かんきょう"}],
+      "han_viet":"hoàn cảnh",
+      "meaning_vi":"môi trường",
+      "examples":[
+        {"no":1,"jp":"都心より、環境のいい郊外に住みたい","jp_raw":"都心（としん）より、環境（かんきょう）のいい郊外（こうがい）に住（す）みたい","jp_ruby":[{"t":"都心","r":"としん"},{"t":"より、"},{"t":"環境","r":"かんきょう"},{"t":"のいい"},{"t":"郊外","r":"こうがい"},{"t":"に"},{"t":"住","r":"す"},{"t":"みたい"}],"vi":"Tôi muốn sống ngoại ô có môi trường trong lành hơn là trung tâm thành phố."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿を守（まも）る","items":[{"text":"＿を守る","ruby":[{"t":"＿を"},{"t":"守","r":"まも"},{"t":"る"}],"pattern":true}],"meaning_vi":"Bảo vệ môi trường"},
+        {"type":"compound","marker":"合","raw":"自然（しぜん）＿、＿問題（もんだい）、＿保護（ほご）","items":[{"text":"自然＿","ruby":[{"t":"自然","r":"しぜん"},{"t":"＿"}],"pattern":true},{"text":"＿問題","ruby":[{"t":"＿"},{"t":"問題","r":"もんだい"}],"pattern":true},{"text":"＿保護","ruby":[{"t":"＿"},{"t":"保護","r":"ほご"}],"pattern":true}],"meaning_vi":"Môi trường tự nhiên, vấn đề môi trường, bảo vệ môi trường"}
+      ]
+    },
+    {
+      "no":696,
+      "word":"資源",
+      "reading":"しげん",
+      "word_raw":"資源（しげん）",
+      "ruby":[{"t":"資源","r":"しげん"}],
+      "han_viet":"tư nguyên",
+      "meaning_vi":"tài nguyên",
+      "examples":[
+        {"no":1,"jp":"資源を有効に利用する","jp_raw":"資源（しげん）を有効（ゆうこう）に利用（りよう）する","jp_ruby":[{"t":"資源","r":"しげん"},{"t":"を"},{"t":"有効","r":"ゆうこう"},{"t":"に"},{"t":"利用","r":"りよう"},{"t":"する"}],"vi":"Sử dụng hiệu quả nguồn tài nguyên."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿が｛豊（ゆた）かだ／豊富（ほうふ）だ｝  乏（とぼ）しい","items":[{"text":"＿が｛豊かだ／豊富だ｝  乏しい","ruby":[{"t":"＿が｛"},{"t":"豊","r":"ゆた"},{"t":"かだ／"},{"t":"豊富","r":"ほうふ"},{"t":"だ｝  "},{"t":"乏","r":"とぼ"},{"t":"しい"}],"pattern":true}],"meaning_vi":"Tài nguyên phong phú <=> tài nguyên nghèo nàn."},
+        {"type":"compound","marker":"合","raw":"天然（てんねん）＿、地下（ちか）＿","items":[{"text":"天然＿","ruby":[{"t":"天然","r":"てんねん"},{"t":"＿"}],"pattern":true},{"text":"地下＿","ruby":[{"t":"地下","r":"ちか"},{"t":"＿"}],"pattern":true}],"meaning_vi":"Tài nguyên thiên nhiên, tài nguyên dưới lòng đất"},
+        {"type":"related","marker":"関","raw":"石油（せきゆ）、石炭（せきたん）","items":[{"text":"石油","ruby":[{"t":"石油","r":"せきゆ"}]},{"text":"石炭","ruby":[{"t":"石炭","r":"せきたん"}]}],"meaning_vi":"Dầu, than"}
+      ]
+    },
+    {
+      "no":697,
+      "word":"不足",
+      "reading":"ふそく",
+      "word_raw":"不足（ふそく）",
+      "ruby":[{"t":"不足","r":"ふそく"}],
+      "han_viet":"bất túc",
+      "meaning_vi":"thiếu, không đầy đủ",
+      "examples":[
+        {"no":1,"jp":"野菜が不足した食事","jp_raw":"野菜（やさい）が不足（ふそく）した食事（しょくじ）","jp_ruby":[{"t":"野菜","r":"やさい"},{"t":"が"},{"t":"不足","r":"ふそく"},{"t":"した"},{"t":"食事","r":"しょくじ"}],"vi":"Bữa ăn thiếu rau."},
+        {"no":2,"jp":"戦争で食料が不足する","jp_raw":"戦争（せんそう）で食料（しょくりょう）が不足（ふそく）する","jp_ruby":[{"t":"戦争","r":"せんそう"},{"t":"で"},{"t":"食料","r":"しょくりょう"},{"t":"が"},{"t":"不足","r":"ふそく"},{"t":"する"}],"vi":"Vì chiến tranh nên thiếu thức ăn."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"運動（うんどう）＿、寝（ね）＿、睡眠（すいみん）＿、経験（けいけん）＿","items":[{"text":"運動＿","ruby":[{"t":"運動","r":"うんどう"},{"t":"＿"}],"pattern":true},{"text":"寝＿","ruby":[{"t":"寝","r":"ね"},{"t":"＿"}],"pattern":true},{"text":"睡眠＿","ruby":[{"t":"睡眠","r":"すいみん"},{"t":"＿"}],"pattern":true},{"text":"経験＿","ruby":[{"t":"経験","r":"けいけん"},{"t":"＿"}],"pattern":true}],"meaning_vi":"Thiếu vận động, thiếu ngủ, thiếu kinh nghiệm"}
+      ]
+    },
+    {
+      "no":698,
+      "word":"平均",
+      "reading":"へいきん",
+      "word_raw":"平均（へいきん）",
+      "ruby":[{"t":"平均","r":"へいきん"}],
+      "han_viet":"bình quân",
+      "meaning_vi":"bình quân, đồng đều, trung bình",
+      "examples":[
+        {"no":1,"jp":"テストの点を平均する","jp_raw":"テストの点（てん）を平均（へいきん）する","jp_ruby":[{"t":"テストの"},{"t":"点","r":"てん"},{"t":"を"},{"t":"平均","r":"へいきん"},{"t":"する"}],"vi":"Tính bình quân điểm kiểm tra."},
+        {"no":2,"jp":"1日に平均１８００キロカロリーの食事をとる","jp_raw":"1日（にち）に平均（へいきん）１８００キロカロリーの食事（しょくじ）をとる","jp_ruby":[{"t":"1"},{"t":"日","r":"にち"},{"t":"に"},{"t":"平均","r":"へいきん"},{"t":"１８００キロカロリーの"},{"t":"食事","r":"しょくじ"},{"t":"をとる"}],"vi":"Mỗi ngày tiêu thụ trung bình 1800 kcal."},
+        {"no":3,"jp":"商品の質が平均している","jp_raw":"商品（しょうひん）の質（しつ）が平均（へいきん）している","jp_ruby":[{"t":"商品","r":"しょうひん"},{"t":"の"},{"t":"質","r":"しつ"},{"t":"が"},{"t":"平均","r":"へいきん"},{"t":"している"}],"vi":"Chất lượng của sản phẩm đồng đều/ổn định."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿点（てん）、＿寿命（じゅみょう）、平均（へいきん）＋［数量（すうりょう）］、［数量（すうりょう）］　＋　平均（へいきん）、＿的（てき）な","items":[{"text":"＿点","ruby":[{"t":"＿"},{"t":"点","r":"てん"}],"pattern":true},{"text":"＿寿命","ruby":[{"t":"＿"},{"t":"寿命","r":"じゅみょう"}],"pattern":true},{"text":"平均＋［数量］","ruby":[{"t":"平均","r":"へいきん"},{"t":"＋［"},{"t":"数量","r":"すうりょう"},{"t":"］"}],"pattern":true},{"text":"［数量］　＋　平均","ruby":[{"t":"［"},{"t":"数量","r":"すうりょう"},{"t":"］　＋　"},{"t":"平均","r":"へいきん"}],"pattern":true},{"text":"＿的な","ruby":[{"t":"＿"},{"t":"的","r":"てき"},{"t":"な"}],"pattern":true}],"meaning_vi":"Điểm bình quân/ tuổi thọ bình quân/ lượng số bình quân/ tính bình quân"}
+      ]
+    },
+    {
+      "no":699,
+      "word":"割合",
+      "reading":"わりあい",
+      "word_raw":"割合（わりあい）",
+      "ruby":[{"t":"割合","r":"わりあい"}],
+      "han_viet":"cát hợp",
+      "meaning_vi":"tỷ lệ / phần trăm / mức độ",
+      "examples":[
+        {"no":1,"jp":"デパートの客は女性の割合が高い","jp_raw":"デパートの客（きゃく）は女性（じょせい）の割合（わりあい）が高（たか）い","jp_ruby":[{"t":"デパートの"},{"t":"客","r":"きゃく"},{"t":"は"},{"t":"女性","r":"じょせい"},{"t":"の"},{"t":"割合","r":"わりあい"},{"t":"が"},{"t":"高","r":"たか"},{"t":"い"}],"vi":"Khách hàng của cửa hàng bách hóa này tỉ lệ nữ giới cao."},
+        {"no":2,"jp":"年に１０％の割合で売り上げが伸びている","jp_raw":"年（ねん）に１０％の割合（わりあい）で売（う）り上（あ）げが伸（の）びている","jp_ruby":[{"t":"年","r":"ねん"},{"t":"に１０％の"},{"t":"割合","r":"わりあい"},{"t":"で"},{"t":"売","r":"う"},{"t":"り"},{"t":"上","r":"あ"},{"t":"げが"},{"t":"伸","r":"の"},{"t":"びている"}],"vi":"Doanh thu tăng với tỷ lệ 10% một năm."},
+        {"no":3,"jp":"試験は割合（に）簡単だった","jp_raw":"試験（しけん）は割合（わりあい）（に）簡単（かんたん）だった","jp_ruby":[{"t":"試験","r":"しけん"},{"t":"は"},{"t":"割合","r":"わりあい"},{"t":"（に）"},{"t":"簡単","r":"かんたん"},{"t":"だった"}],"vi":"Kì thi tương đối đơn giản."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿が大（おお）きい  小（ちい）さい、＿が高（たか）い  低（ひく）い","items":[{"text":"＿が大きい  小さい","ruby":[{"t":"＿が"},{"t":"大","r":"おお"},{"t":"きい  "},{"t":"小","r":"ちい"},{"t":"さい"}],"pattern":true},{"text":"＿が高い  低い","ruby":[{"t":"＿が"},{"t":"高","r":"たか"},{"t":"い  "},{"t":"低","r":"ひく"},{"t":"い"}],"pattern":true}],"meaning_vi":"Tỉ lệ lớn <=> tỉ lệ nhỏ, tỷ lệ cao <=> tỉ lệ thấp"},
+        {"type":"synonym","marker":"類","raw":"比率（ひりつ）、わりに、比較的（ひかくてき）","items":[{"text":"比率","ruby":[{"t":"比率","r":"ひりつ"}]},{"text":"わりに","ruby":[{"t":"わりに"}]},{"text":"比較的","ruby":[{"t":"比較的","r":"ひかくてき"}]}],"meaning_vi":"Tỉ suất, tỉ lệ/ tương đối"}
+      ]
+    },
+    {
+      "no":700,
+      "word":"商売",
+      "reading":"しょうばい",
+      "word_raw":"商売（しょうばい）",
+      "ruby":[{"t":"商売","r":"しょうばい"}],
+      "han_viet":"thương mại",
+      "meaning_vi":"thương mại, buôn bán",
+      "examples":[
+        {"no":1,"jp":"父は衣料品の商売をしている","jp_raw":"父（ちち）は衣料品（いりょうひん）の商売（しょうばい）をしている","jp_ruby":[{"t":"父","r":"ちち"},{"t":"は"},{"t":"衣料品","r":"いりょうひん"},{"t":"の"},{"t":"商売","r":"しょうばい"},{"t":"をしている"}],"vi":"Bố tôi đang kinh doanh may mặc."}
+      ],
+      "related":[]
+    },
+    {
+      "no":701,
+      "word":"商品",
+      "reading":"しょうひん",
+      "word_raw":"商品（しょうひん）",
+      "ruby":[{"t":"商品","r":"しょうひん"}],
+      "han_viet":"thương phẩm",
+      "meaning_vi":"hàng hóa, thương phẩm",
+      "examples":[
+        {"no":1,"jp":"店に商品を並べる","jp_raw":"店（みせ）に商品（しょうひん）を並（なら）べる","jp_ruby":[{"t":"店","r":"みせ"},{"t":"に"},{"t":"商品","r":"しょうひん"},{"t":"を"},{"t":"並","r":"なら"},{"t":"べる"}],"vi":"Xếp sản phẩm vào cửa hàng."}
+      ],
+      "related":[]
+    },
+    {
+      "no":702,
+      "word":"質",
+      "reading":"しつ",
+      "word_raw":"質（しつ）",
+      "ruby":[{"t":"質","r":"しつ"}],
+      "han_viet":"chất",
+      "meaning_vi":"chất lượng",
+      "examples":[
+        {"no":1,"jp":"このメーカーの製品は質がいい","jp_raw":"このメーカーの製品（せいひん）は質（しつ）がいい","jp_ruby":[{"t":"このメーカーの"},{"t":"製品","r":"せいひん"},{"t":"は"},{"t":"質","r":"しつ"},{"t":"がいい"}],"vi":"Sản phẩm của nhà sản xuất này có chất lượng tốt."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿がいい  悪（わる）い、＿が高（たか）い、＿が上（あ）がる  下（さ）がる、＿をあげる  下（さ）げる、＿が落（お）ちる","items":[{"text":"＿がいい  悪い","ruby":[{"t":"＿がいい  "},{"t":"悪","r":"わる"},{"t":"い"}],"pattern":true},{"text":"＿が高い","ruby":[{"t":"＿が"},{"t":"高","r":"たか"},{"t":"い"}],"pattern":true},{"text":"＿が上がる  下がる","ruby":[{"t":"＿が"},{"t":"上","r":"あ"},{"t":"がる  "},{"t":"下","r":"さ"},{"t":"がる"}],"pattern":true},{"text":"＿をあげる  下げる","ruby":[{"t":"＿をあげる  "},{"t":"下","r":"さ"},{"t":"げる"}],"pattern":true},{"text":"＿が落ちる","ruby":[{"t":"＿が"},{"t":"落","r":"お"},{"t":"ちる"}],"pattern":true}],"meaning_vi":"Chất lượng tốt <=> chất lượng kém, chất lượng cao, chất lượng tăng lên <=> chất lượng giảm xuống, làm tăng chất lượng <=> làm giảm chất lượng"},
+        {"type":"antonym","marker":"対","raw":"量（りょう）","items":[{"text":"量","ruby":[{"t":"量","r":"りょう"}]}],"meaning_vi":"Lượng"},
+        {"type":"related","marker":"関","raw":"品質（ひんしつ）","items":[{"text":"品質","ruby":[{"t":"品質","r":"ひんしつ"}]}],"meaning_vi":"Chất lượng"}
+      ]
+    },
+    {
+      "no":703,
+      "word":"型",
+      "reading":"かた",
+      "word_raw":"型（かた）",
+      "ruby":[{"t":"型","r":"かた"}],
+      "han_viet":"hình",
+      "meaning_vi":"kiểu",
+      "examples":[
+        {"no":1,"jp":"新しい型のパソコンを買った","jp_raw":"新（あたら）しい型（かた）のパソコンを買（か）った","jp_ruby":[{"t":"新","r":"あたら"},{"t":"しい"},{"t":"型","r":"かた"},{"t":"のパソコンを"},{"t":"買","r":"か"},{"t":"った"}],"vi":"Mua máy tính kiểu mới."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"大（おお）＿  小（こ）＿、新（しん）＿、薄（うす）＿、髪（かみ）＿、血液（けつえき）＿","items":[{"text":"大＿  小＿","ruby":[{"t":"大","r":"おお"},{"t":"＿  "},{"t":"小","r":"こ"},{"t":"＿"}],"pattern":true},{"text":"新＿","ruby":[{"t":"新","r":"しん"},{"t":"＿"}],"pattern":true},{"text":"薄＿","ruby":[{"t":"薄","r":"うす"},{"t":"＿"}],"pattern":true},{"text":"髪＿","ruby":[{"t":"髪","r":"かみ"},{"t":"＿"}],"pattern":true},{"text":"血液＿","ruby":[{"t":"血液","r":"けつえき"},{"t":"＿"}],"pattern":true}],"meaning_vi":"Kiểu to <=> kiểu nhỏ, kiểu mới, kiểu dáng mỏng, kiểu tóc, nhóm máu"}
+      ]
+    },
+    {
+      "no":704,
+      "word":"生産",
+      "reading":"せいさん",
+      "word_raw":"生産（せいさん）",
+      "ruby":[{"t":"生産","r":"せいさん"}],
+      "han_viet":"sinh sản",
+      "meaning_vi":"sản xuất",
+      "examples":[
+        {"no":1,"jp":"日本は農作物の生産が少ない","jp_raw":"日本（にほん）は農作物（のうさくもつ）の生産（せいさん）が少（すく）ない","jp_ruby":[{"t":"日本","r":"にほん"},{"t":"は"},{"t":"農作物","r":"のうさくもつ"},{"t":"の"},{"t":"生産","r":"せいさん"},{"t":"が"},{"t":"少","r":"すく"},{"t":"ない"}],"vi":"Nhật Bản ít sản xuất ra những mặt hàng nông nghiệp."},
+        {"no":2,"jp":"工場でカメラを生産する","jp_raw":"工場（こうじょう）でカメラを生産（せいさん）する","jp_ruby":[{"t":"工場","r":"こうじょう"},{"t":"でカメラを"},{"t":"生産","r":"せいさん"},{"t":"する"}],"vi":"Sản xuất máy ảnh ở nhà máy."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿者（しゃ）、＿量（りょう）、＿高（たか）、大量（たいりょう）＿","items":[{"text":"＿者","ruby":[{"t":"＿"},{"t":"者","r":"しゃ"}],"pattern":true},{"text":"＿量","ruby":[{"t":"＿"},{"t":"量","r":"りょう"}],"pattern":true},{"text":"＿高","ruby":[{"t":"＿"},{"t":"高","r":"たか"}],"pattern":true},{"text":"大量＿","ruby":[{"t":"大量","r":"たいりょう"},{"t":"＿"}],"pattern":true}],"meaning_vi":"Nhà sản xuất, lượng sản xuất, sản lượng, sản xuất số lượng lớn"},
+        {"type":"antonym","marker":"対","raw":"消費（しょうひ）","items":[{"text":"消費","ruby":[{"t":"消費","r":"しょうひ"}]}],"meaning_vi":"Tiêu dùng"}
+      ]
+    },
+    {
+      "no":705,
+      "word":"消費",
+      "reading":"しょうひ",
+      "word_raw":"消費（しょうひ）",
+      "ruby":[{"t":"消費","r":"しょうひ"}],
+      "han_viet":"tiêu phí",
+      "meaning_vi":"tiêu dùng, tiêu hao",
+      "examples":[
+        {"no":1,"jp":"牛乳の消費が減っている","jp_raw":"牛乳（ぎゅうにゅう）の消費（しょうひ）が減（へ）っている","jp_ruby":[{"t":"牛乳","r":"ぎゅうにゅう"},{"t":"の"},{"t":"消費","r":"しょうひ"},{"t":"が"},{"t":"減","r":"へ"},{"t":"っている"}],"vi":"Tiêu dùng sữa đang giảm."},
+        {"no":2,"jp":"運動してカロリーを消費する","jp_raw":"運動（うんどう）してカロリーを消費（しょうひ）する","jp_ruby":[{"t":"運動","r":"うんどう"},{"t":"してカロリーを"},{"t":"消費","r":"しょうひ"},{"t":"する"}],"vi":"Vận động tiêu hao năng lượng."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿者（しゃ）、＿税（ぜい）、＿量（りょう）","items":[{"text":"＿者","ruby":[{"t":"＿"},{"t":"者","r":"しゃ"}],"pattern":true},{"text":"＿税","ruby":[{"t":"＿"},{"t":"税","r":"ぜい"}],"pattern":true},{"text":"＿量","ruby":[{"t":"＿"},{"t":"量","r":"りょう"}],"pattern":true}],"meaning_vi":"Người tiêu dùng, thuế tiêu dùng, lượng tiêu dùng"},
+        {"type":"antonym","marker":"対","raw":"生産（せいさん）","items":[{"text":"生産","ruby":[{"t":"生産","r":"せいさん"}]}],"meaning_vi":"Sản xuất"}
+      ]
+    }
+  ]
+}

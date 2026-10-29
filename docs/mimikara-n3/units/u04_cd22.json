@@ -1,0 +1,262 @@
+{
+  "book": "Mimikara Oboeru N3 Goi",
+  "unit": "04",
+  "cd": "22",
+  "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=04&cd=22",
+  "count": 16,
+  "entries": [
+    {
+      "no":311,
+      "word":"世話",
+      "reading":"せわ",
+      "word_raw":"世話（せわ）",
+      "ruby":[{"t":"世話","r":"せわ"}],
+      "han_viet":"thế thoại",
+      "meaning_vi":"chăm sóc, hỗ trợ",
+      "examples":[
+        {"no":1,"jp":"うちではペットの世話は私の仕事だ","jp_raw":"うちではペットの世話（せわ）は私（わたし）の仕事（しごと）だ","jp_ruby":[{"t":"うちではペットの"},{"t":"世話","r":"せわ"},{"t":"は"},{"t":"私","r":"わたし"},{"t":"の"},{"t":"仕事","r":"しごと"},{"t":"だ"}],"vi":"Ở nhà việc chăm sóc thú nuôi là công việc của tôi."},
+        {"no":2,"jp":"病人の世話をする","jp_raw":"病人（びょうにん）の世話（せわ）をする","jp_ruby":[{"t":"病人","r":"びょうにん"},{"t":"の"},{"t":"世話","r":"せわ"},{"t":"をする"}],"vi":"Chăm sóc bệnh nhân."},
+        {"no":3,"jp":"今度の仕事では、山本さんに大変お世話になった","jp_raw":"今度（こんど）の仕事（しごと）では、山本（やまもと）さんに大変（たいへん）お世話（せわ）になった","jp_ruby":[{"t":"今度","r":"こんど"},{"t":"の"},{"t":"仕事","r":"しごと"},{"t":"では、"},{"t":"山本","r":"やまもと"},{"t":"さんに"},{"t":"大変","r":"たいへん"},{"t":"お"},{"t":"世話","r":"せわ"},{"t":"になった"}],"vi":"Công việc lần này tôi đã được chị (anh) Yamamoto giúp đỡ rất nhiều."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿をする、　＿になる","items":[{"text":"＿をする","ruby":[{"t":"＿をする"}],"pattern":true},{"text":"＿になる","ruby":[{"t":"＿になる"}],"pattern":true}],"meaning_vi":"Chăm sóc, giúp đỡ, Được chăm sóc, giúp đỡ."},
+        {"type":"idiom","marker":"慣","raw":"「お＿になり｛ます／ました｝」（あいさつ）","items":[{"text":"「お＿になり｛ます／ました｝」（あいさつ）","ruby":[{"t":"「お＿になり｛ます／ました｝」（あいさつ）"}],"pattern":true}],"meaning_vi":"Mong được giúp đỡ (dùng trong chào hỏi)."}
+      ]
+    },
+    {
+      "no":312,
+      "word":"家庭",
+      "reading":"かてい",
+      "word_raw":"家庭（かてい）",
+      "ruby":[{"t":"家庭","r":"かてい"}],
+      "han_viet":"gia đình",
+      "meaning_vi":"gia đình",
+      "examples":[
+        {"no":1,"jp":"田中課長は仕事ではきびしいが、家庭ではやさしいお父さんだそうだ","jp_raw":"田中（たなか）課長（かちょう）は仕事（しごと）ではきびしいが、家庭（かてい）ではやさしいお父（とう）さんだそうだ","jp_ruby":[{"t":"田中","r":"たなか"},{"t":"課長","r":"かちょう"},{"t":"は"},{"t":"仕事","r":"しごと"},{"t":"ではきびしいが、"},{"t":"家庭","r":"かてい"},{"t":"ではやさしいお"},{"t":"父","r":"とう"},{"t":"さんだそうだ"}],"vi":"Trưởng phòng Tanaka là một người nghiêm khắc khi làm việc nhưng nghe nói ở nhà ngài ấy lại là một người cha dễ tính."},
+        {"no":2,"jp":"早く結婚して、あたたかい家庭を持ちたい","jp_raw":"早（はや）く結婚（けっこん）して、あたたかい家庭（かてい）を持（も）ちたい","jp_ruby":[{"t":"早","r":"はや"},{"t":"く"},{"t":"結婚","r":"けっこん"},{"t":"して、あたたかい"},{"t":"家庭","r":"かてい"},{"t":"を"},{"t":"持","r":"も"},{"t":"ちたい"}],"vi":"Tôi muốn nhanh chóng kết hôn và có một gia đình ấm cúng."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿を持（も）つ","items":[{"text":"＿を持つ","ruby":[{"t":"＿を"},{"t":"持","r":"も"},{"t":"つ"}],"pattern":true}],"meaning_vi":"Có gia đình."},
+        {"type":"compound","marker":"合","raw":"＿的（てき）な","items":[{"text":"＿的な","ruby":[{"t":"＿"},{"t":"的","r":"てき"},{"t":"な"}],"pattern":true}],"meaning_vi":"Có tính gia đình."},
+        {"type":"related","marker":"関","raw":"主婦（しゅふ）","items":[{"text":"主婦","ruby":[{"t":"主婦","r":"しゅふ"}]}],"meaning_vi":"Vợ, bà nội trợ"}
+      ]
+    },
+    {
+      "no":313,
+      "word":"協力",
+      "reading":"きょうりょく",
+      "word_raw":"協力（きょうりょく）",
+      "ruby":[{"t":"協力","r":"きょうりょく"}],
+      "han_viet":"hiệp lực",
+      "meaning_vi":"hợp tác, hiệp lực",
+      "examples":[
+        {"no":1,"jp":"家族で協力して祖母の介護をした","jp_raw":"家族（かぞく）で協力（きょうりょく）して祖母（そぼ）の介護（かいご）をした","jp_ruby":[{"t":"家族","r":"かぞく"},{"t":"で"},{"t":"協力","r":"きょうりょく"},{"t":"して"},{"t":"祖母","r":"そぼ"},{"t":"の"},{"t":"介護","r":"かいご"},{"t":"をした"}],"vi":"Gia đình cùng đồng lòng chăm sóc bà."},
+        {"no":2,"jp":"「アンケート調査にご協力ください」","jp_raw":"「アンケート調査（ちょうさ）にご協力（きょうりょく）ください」","jp_ruby":[{"t":"「アンケート"},{"t":"調査","r":"ちょうさ"},{"t":"にご"},{"t":"協力","r":"きょうりょく"},{"t":"ください」"}],"vi":"Xin hãy hợp tác trong cuộc điều tra trưng cầu ý kiến."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿を求（もと）める","items":[{"text":"＿を求める","ruby":[{"t":"＿を"},{"t":"求","r":"もと"},{"t":"める"}],"pattern":true}],"meaning_vi":"Yêu cầu sự hợp tác"},
+        {"type":"compound","marker":"合","raw":"＿的（てき）な","items":[{"text":"＿的な","ruby":[{"t":"＿"},{"t":"的","r":"てき"},{"t":"な"}],"pattern":true}],"meaning_vi":"Tính hợp tác"}
+      ]
+    },
+    {
+      "no":314,
+      "word":"感謝",
+      "reading":"かんしゃ",
+      "word_raw":"感謝（かんしゃ）",
+      "ruby":[{"t":"感謝","r":"かんしゃ"}],
+      "han_viet":"cảm tạ",
+      "meaning_vi":"biết ơn, cảm tạ",
+      "examples":[
+        {"no":1,"jp":"アドバイスしてくれた先輩に、とても感謝している","jp_raw":"アドバイスしてくれた先輩（せんぱい）に、とても感謝（かんしゃ）している","jp_ruby":[{"t":"アドバイスしてくれた"},{"t":"先輩","r":"せんぱい"},{"t":"に、とても"},{"t":"感謝","r":"かんしゃ"},{"t":"している"}],"vi":"Tôi rất biết ơn tiền bối đã cho tôi lời khuyên."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"深（ふか）く＿する","items":[{"text":"深く＿する","ruby":[{"t":"深","r":"ふか"},{"t":"く＿する"}],"pattern":true}],"meaning_vi":"Biết ơn sâu sắc"}
+      ]
+    },
+    {
+      "no":315,
+      "word":"（お）礼",
+      "reading":"（お）れい",
+      "word_raw":"（お）礼（れい）",
+      "ruby":[{"t":"（お）"},{"t":"礼","r":"れい"}],
+      "han_viet":"lễ",
+      "meaning_vi":"biết ơn",
+      "examples":[
+        {"no":1,"jp":"お世話になった方にお礼をした","jp_raw":"お世話（せわ）になった方（かた）にお礼（れい）をした","jp_ruby":[{"t":"お"},{"t":"世話","r":"せわ"},{"t":"になった"},{"t":"方","r":"かた"},{"t":"にお"},{"t":"礼","r":"れい"},{"t":"をした"}],"vi":"Tôi đã tạ ơn người đã giúp đỡ tôi."},
+        {"no":2,"jp":"入学祝のお礼にお菓子を送った","jp_raw":"入学祝（にゅうがくいわい）のお礼（れい）にお菓子（かし）を送（おく）った","jp_ruby":[{"t":"入学祝","r":"にゅうがくいわい"},{"t":"のお"},{"t":"礼","r":"れい"},{"t":"にお"},{"t":"菓子","r":"かし"},{"t":"を"},{"t":"送","r":"おく"},{"t":"った"}],"vi":"Tôi đã gửi bánh kẹo để tạ ơn quà mừng nhập học."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"お＿をする、　（お）＿を言（い）う","items":[{"text":"お＿をする","ruby":[{"t":"お＿をする"}],"pattern":true},{"text":"（お）＿を言う","ruby":[{"t":"（お）＿を"},{"t":"言","r":"い"},{"t":"う"}],"pattern":true}],"meaning_vi":"Đáp lễ, nói lời cảm ơn"}
+      ]
+    },
+    {
+      "no":316,
+      "word":"（お）詫び",
+      "reading":"（お）わび",
+      "word_raw":"（お）詫（わ）び",
+      "ruby":[{"t":"（お）"},{"t":"詫","r":"わ"},{"t":"び"}],
+      "han_viet":"sá",
+      "meaning_vi":"lời xin lỗi, tạ lỗi",
+      "examples":[
+        {"no":1,"jp":"迷惑をかけた人におわびをした","jp_raw":"迷惑（めいわく）をかけた人（ひと）におわびをした","jp_ruby":[{"t":"迷惑","r":"めいわく"},{"t":"をかけた"},{"t":"人","r":"ひと"},{"t":"におわびをした"}],"vi":"Tôi đã xin lỗi người mà tôi gây rắc rối."},
+        {"no":2,"jp":"おわびの言葉を言う","jp_raw":"おわびの言葉（ことば）を言（い）う","jp_ruby":[{"t":"おわびの"},{"t":"言葉","r":"ことば"},{"t":"を"},{"t":"言","r":"い"},{"t":"う"}],"vi":"Nói những lời xin lỗi."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"お＿をする、　（お）＿を言（い）う","items":[{"text":"お＿をする","ruby":[{"t":"お＿をする"}],"pattern":true},{"text":"（お）＿を言う","ruby":[{"t":"（お）＿を"},{"t":"言","r":"い"},{"t":"う"}],"pattern":true}],"meaning_vi":"Xin lỗi/ nói lời xin lỗi"},
+        {"type":"verb_form","marker":"動","raw":"わびる","items":[{"text":"わびる","ruby":[{"t":"わびる"}]}],"meaning_vi":"Xin lỗi/ nói lời xin lỗi"}
+      ]
+    },
+    {
+      "no":317,
+      "word":"（お）じぎ",
+      "reading":"（お）じぎ",
+      "word_raw":"（お）じぎ",
+      "ruby":[{"t":"（お）じぎ"}],
+      "han_viet":null,
+      "meaning_vi":"sự cúi chào",
+      "examples":[
+        {"no":1,"jp":"「お客様にはていねいにおじぎをしましょう」","jp_raw":"「お客様（きゃくさま）にはていねいにおじぎをしましょう」","jp_ruby":[{"t":"「お"},{"t":"客様","r":"きゃくさま"},{"t":"にはていねいにおじぎをしましょう」"}],"vi":"\"Hãy lễ phép cúi chào khách hàng.\""}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"｛軽（かる）く／深（ふか）く／ていねいに｝＿する","items":[{"text":"｛軽く／深く／ていねいに｝＿する","ruby":[{"t":"｛"},{"t":"軽","r":"かる"},{"t":"く／"},{"t":"深","r":"ふか"},{"t":"く／ていねいに｝＿する"}],"pattern":true}],"meaning_vi":"Cúi chào nghi lễ (15 độ), cúi chào kính trọng (45 độ), lễ phép cúi chào"}
+      ]
+    },
+    {
+      "no":318,
+      "word":"握手",
+      "reading":"あくしゅ",
+      "word_raw":"握手（あくしゅ）",
+      "ruby":[{"t":"握手","r":"あくしゅ"}],
+      "han_viet":"ác thủ",
+      "meaning_vi":"bắt tay",
+      "examples":[
+        {"no":1,"jp":"コンサートで歌手と握手した","jp_raw":"コンサートで歌手（かしゅ）と握手（あくしゅ）した","jp_ruby":[{"t":"コンサートで"},{"t":"歌手","r":"かしゅ"},{"t":"と"},{"t":"握手","r":"あくしゅ"},{"t":"した"}],"vi":"Tôi đã bắt tay với ca sĩ ở buổi hòa nhạc."}
+      ],
+      "related":[]
+    },
+    {
+      "no":319,
+      "word":"意地悪",
+      "reading":"いじわる",
+      "word_raw":"意地悪（いじわる）",
+      "ruby":[{"t":"意地悪","r":"いじわる"}],
+      "han_viet":"ý địa ác",
+      "meaning_vi":"xấu tính, hay bắt nạt/chơi xấu",
+      "examples":[
+        {"no":1,"jp":"好きな子にはついいじわるしてしまう","jp_raw":"好（す）きな子（こ）にはついいじわるしてしまう","jp_ruby":[{"t":"好","r":"す"},{"t":"きな"},{"t":"子","r":"こ"},{"t":"にはついいじわるしてしまう"}],"vi":"Tôi cứ hay chơi xấu người mình thích."}
+      ],
+      "related":[]
+    },
+    {
+      "no":320,
+      "word":"いたずら",
+      "reading":"いたずら",
+      "word_raw":"いたずら",
+      "ruby":[{"t":"いたずら"}],
+      "han_viet":null,
+      "meaning_vi":"nghịch ngợm, chơi khăm",
+      "examples":[
+        {"no":1,"jp":"いたずらをして、先生に怒られた","jp_raw":"いたずらをして、先生（せんせい）に怒（おこ）られた","jp_ruby":[{"t":"いたずらをして、"},{"t":"先生","r":"せんせい"},{"t":"に"},{"t":"怒","r":"おこ"},{"t":"られた"}],"vi":"Tôi nghịch ngợm và bị thầy mắng."},
+        {"no":2,"jp":"いたずらな子ども","jp_raw":"いたずらな子（こ）ども","jp_ruby":[{"t":"いたずらな"},{"t":"子","r":"こ"},{"t":"ども"}],"vi":"Đứa trẻ nghịch ngợm."}
+      ],
+      "related":[]
+    },
+    {
+      "no":321,
+      "word":"節約",
+      "reading":"せつやく",
+      "word_raw":"節約（せつやく）",
+      "ruby":[{"t":"節約","r":"せつやく"}],
+      "han_viet":"tiết ước",
+      "meaning_vi":"sự tiết kiệm",
+      "examples":[
+        {"no":1,"jp":"生活費の節約","jp_raw":"生活費（せいかつひ）の節約（せつやく）","jp_ruby":[{"t":"生活費","r":"せいかつひ"},{"t":"の"},{"t":"節約","r":"せつやく"}],"vi":"Tiết kiệm phí sinh hoạt."},
+        {"no":2,"jp":"電気や水を節約する","jp_raw":"電気（でんき）や水（みず）を節約（せつやく）する","jp_ruby":[{"t":"電気","r":"でんき"},{"t":"や"},{"t":"水","r":"みず"},{"t":"を"},{"t":"節約","r":"せつやく"},{"t":"する"}],"vi":"Tiết kiệm điện và nước."}
+      ],
+      "related":[
+        {"type":"antonym","marker":"対","raw":"浪費（ろうひ）","items":[{"text":"浪費","ruby":[{"t":"浪費","r":"ろうひ"}]}],"meaning_vi":"Tiêu pha lãng phí."},
+        {"type":"synonym","marker":"類","raw":"倹約（けんやく）","items":[{"text":"倹約","ruby":[{"t":"倹約","r":"けんやく"}]}],"meaning_vi":"Tiết kiệm"}
+      ]
+    },
+    {
+      "no":322,
+      "word":"経営",
+      "reading":"けいえい",
+      "word_raw":"経営（けいえい）",
+      "ruby":[{"t":"経営","r":"けいえい"}],
+      "han_viet":"kinh doanh",
+      "meaning_vi":"quản lý, điều hành (kinh doanh)",
+      "examples":[
+        {"no":1,"jp":"父はスーパーを経営している","jp_raw":"父（ちち）はスーパーを経営（けいえい）している","jp_ruby":[{"t":"父","r":"ちち"},{"t":"はスーパーを"},{"t":"経営","r":"けいえい"},{"t":"している"}],"vi":"Bố tôi đang quản lí một siêu thị."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿者（しゃ）","items":[{"text":"＿者","ruby":[{"t":"＿"},{"t":"者","r":"しゃ"}],"pattern":true}],"meaning_vi":"Người quản lí"}
+      ]
+    },
+    {
+      "no":323,
+      "word":"反省",
+      "reading":"はんせい",
+      "word_raw":"反省（はんせい）",
+      "ruby":[{"t":"反省","r":"はんせい"}],
+      "han_viet":"phản tỉnh",
+      "meaning_vi":"kiểm điểm, xem xét lại",
+      "examples":[
+        {"no":1,"jp":"1日の反省を日記に書く","jp_raw":"1日（にち）の反省（はんせい）を日記（にっき）に書（か）く","jp_ruby":[{"t":"1"},{"t":"日","r":"にち"},{"t":"の"},{"t":"反省","r":"はんせい"},{"t":"を"},{"t":"日記","r":"にっき"},{"t":"に"},{"t":"書","r":"か"},{"t":"く"}],"vi":"Tôi viết nhật kí xem xét lại những việc đã làm trong 1 ngày."},
+        {"no":2,"jp":"「あなたのせいで、みんな迷惑したんですよ。少しは反省しなさい」","jp_raw":"「あなたのせいで、みんな迷惑（めいわく）したんですよ。少（すこ）しは反省（はんせい）しなさい」","jp_ruby":[{"t":"「あなたのせいで、みんな"},{"t":"迷惑","r":"めいわく"},{"t":"したんですよ。"},{"t":"少","r":"すこ"},{"t":"しは"},{"t":"反省","r":"はんせい"},{"t":"しなさい」"}],"vi":"Vì bạn mà đã khiến cho mọi người phiền đấy. Hãy tự kiểm điểm bản thân một chút đi."}
+      ],
+      "related":[]
+    },
+    {
+      "no":324,
+      "word":"実行",
+      "reading":"じっこう",
+      "word_raw":"実行（じっこう）",
+      "ruby":[{"t":"実行","r":"じっこう"}],
+      "han_viet":"thực hành",
+      "meaning_vi":"thực hành, thực hiện",
+      "examples":[
+        {"no":1,"jp":"この計画は実行が難しい","jp_raw":"この計画（けいかく）は実行（じっこう）が難（むずか）しい","jp_ruby":[{"t":"この"},{"t":"計画","r":"けいかく"},{"t":"は"},{"t":"実行","r":"じっこう"},{"t":"が"},{"t":"難","r":"むずか"},{"t":"しい"}],"vi":"Kế hoạch này thực hiện rất khó."},
+        {"no":2,"jp":"作戦を実行する","jp_raw":"作戦（さくせん）を実行（じっこう）する","jp_ruby":[{"t":"作戦","r":"さくせん"},{"t":"を"},{"t":"実行","r":"じっこう"},{"t":"する"}],"vi":"Thực hiện chiến lược."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿力（りょく）","items":[{"text":"＿力","ruby":[{"t":"＿"},{"t":"力","r":"りょく"}],"pattern":true}],"meaning_vi":"Năng lực thực hiện."}
+      ]
+    },
+    {
+      "no":325,
+      "word":"進歩",
+      "reading":"しんぽ",
+      "word_raw":"進歩（しんぽ）",
+      "ruby":[{"t":"進歩","r":"しんぽ"}],
+      "han_viet":"tiến bộ",
+      "meaning_vi":"tiến bộ, tiến triển",
+      "examples":[
+        {"no":1,"jp":"英語を勉強しているが、進歩がない","jp_raw":"英語（えいご）を勉強（べんきょう）しているが、進歩（しんぽ）がない","jp_ruby":[{"t":"英語","r":"えいご"},{"t":"を"},{"t":"勉強","r":"べんきょう"},{"t":"しているが、"},{"t":"進歩","r":"しんぽ"},{"t":"がない"}],"vi":"Tôi đang học tiếng Anh nhưng không tiến bộ mấy."},
+        {"no":2,"jp":"科学技術が進歩する","jp_raw":"科学（かがく）技術（ぎじゅつ）が進歩（しんぽ）する","jp_ruby":[{"t":"科学","r":"かがく"},{"t":"技術","r":"ぎじゅつ"},{"t":"が"},{"t":"進歩","r":"しんぽ"},{"t":"する"}],"vi":"Phát triển khoa học kĩ thuật."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿がある  ない、　＿が速（はや）い  遅（おそ）い","items":[{"text":"＿がある  ない","ruby":[{"t":"＿がある  ない"}],"pattern":true},{"text":"＿が速い  遅い","ruby":[{"t":"＿が"},{"t":"速","r":"はや"},{"t":"い  "},{"t":"遅","r":"おそ"},{"t":"い"}],"pattern":true}],"meaning_vi":"Có tiến bộ <=> không có tiến bộ, tiến bộ nhanh <=> tiến bộ chậm."},
+        {"type":"compound","marker":"合","raw":"＿的（てき）な　（例（れい）．進歩的（しんぽてき）な考（かんが）え）","items":[{"text":"＿的な　（例．進歩的な考え）","ruby":[{"t":"＿"},{"t":"的","r":"てき"},{"t":"な　（"},{"t":"例","r":"れい"},{"t":"．"},{"t":"進歩的","r":"しんぽてき"},{"t":"な"},{"t":"考","r":"かんが"},{"t":"え）"}],"pattern":true}],"meaning_vi":"Tính tiến bộ (ví dụ: Suy nghĩ tiến bộ)"}
+      ]
+    },
+    {
+      "no":326,
+      "word":"変化",
+      "reading":"へんか",
+      "word_raw":"変化（へんか）",
+      "ruby":[{"t":"変化","r":"へんか"}],
+      "han_viet":"biến hóa",
+      "meaning_vi":"thay đổi, biến đổi",
+      "examples":[
+        {"no":1,"jp":"大きな変化","jp_raw":"大（おお）きな変化（へんか）","jp_ruby":[{"t":"大","r":"おお"},{"t":"きな"},{"t":"変化","r":"へんか"}],"vi":"Sự thay đổi lớn."},
+        {"no":2,"jp":"社会が変化する","jp_raw":"社会（しゃかい）が変化（へんか）する","jp_ruby":[{"t":"社会","r":"しゃかい"},{"t":"が"},{"t":"変化","r":"へんか"},{"t":"する"}],"vi":"Xã hội thay đổi."},
+        {"no":3,"jp":"固体が液体に変化する","jp_raw":"固体（こたい）が液体（えきたい）に変化（へんか）する","jp_ruby":[{"t":"固体","r":"こたい"},{"t":"が"},{"t":"液体","r":"えきたい"},{"t":"に"},{"t":"変化","r":"へんか"},{"t":"する"}],"vi":"Biến đổi từ thể rắn sang thể lỏng."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿がある  ない、　＿が起（お）きる","items":[{"text":"＿がある  ない","ruby":[{"t":"＿がある  ない"}],"pattern":true},{"text":"＿が起きる","ruby":[{"t":"＿が"},{"t":"起","r":"お"},{"t":"きる"}],"pattern":true}],"meaning_vi":"Có biến đổi <=> không có biến đổi, Xảy ra biến đổi"},
+        {"type":"related","marker":"関","raw":"変（か）わる","items":[{"text":"変わる","ruby":[{"t":"変","r":"か"},{"t":"わる"}]}],"meaning_vi":"Thay đổi, biến đổi"}
+      ]
+    }
+  ]
+}

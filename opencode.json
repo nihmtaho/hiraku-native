@@ -1,0 +1,78 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "default_agent": "hiraku-lead",
+  "share": "disabled",
+  "update": "notify",
+  "permissions": [
+    { "action": "*", "resource": "*", "effect": "deny" },
+    { "action": "execute", "resource": "*", "effect": "allow" },
+    { "action": "read", "resource": "*", "effect": "allow" },
+    { "action": "glob", "resource": "*", "effect": "allow" },
+    { "action": "grep", "resource": "*", "effect": "allow" },
+    { "action": "question", "resource": "*", "effect": "allow" },
+    { "action": "webfetch", "resource": "https://opencode.ai/*", "effect": "allow" },
+    { "action": "webfetch", "resource": "https://developer.apple.com/*", "effect": "allow" },
+    { "action": "webfetch", "resource": "https://go.dev/*", "effect": "allow" },
+    { "action": "read", "resource": "*.env", "effect": "deny" },
+    { "action": "read", "resource": "*.env.*", "effect": "deny" },
+    { "action": "read", "resource": "*.env.example", "effect": "allow" },
+    { "action": "read", "resource": "*.p8", "effect": "deny" },
+    { "action": "read", "resource": "*.p12", "effect": "deny" },
+    { "action": "read", "resource": "*.pem", "effect": "deny" },
+    { "action": "shell", "resource": "git status --short", "effect": "allow" },
+    { "action": "shell", "resource": "git diff --no-ext-diff --no-textconv", "effect": "allow" },
+    { "action": "shell", "resource": "git diff --no-ext-diff --no-textconv --stat", "effect": "allow" },
+    { "action": "shell", "resource": "git rev-parse HEAD", "effect": "allow" },
+    { "action": "shell", "resource": "node --test .opencode/tests/*.test.mjs", "effect": "allow" }
+  ],
+  "agents": {
+    "build": { "disabled": true },
+    "plan": { "disabled": true },
+    "general": { "disabled": true },
+    "explore": { "disabled": true },
+    "hiraku-lead": {
+      "permissions": [
+        { "action": "edit", "resource": ".opencode/tasks/*.md", "effect": "allow" },
+        { "action": "subagent", "resource": "hiraku-coder", "effect": "allow" },
+        { "action": "subagent", "resource": "hiraku-reviewer", "effect": "allow" },
+        { "action": "subagent", "resource": "hiraku-shipper", "effect": "allow" }
+      ]
+    },
+    "hiraku-coder": {
+      "permissions": [
+        { "action": "edit", "resource": "*", "effect": "allow" },
+        { "action": "skill", "resource": "hiraku-contract", "effect": "allow" },
+        { "action": "skill", "resource": "hiraku-feature", "effect": "allow" },
+        { "action": "shell", "resource": "go test *", "effect": "allow" },
+        { "action": "shell", "resource": "go vet *", "effect": "allow" },
+        { "action": "shell", "resource": "swift test *", "effect": "allow" },
+        { "action": "shell", "resource": "buf lint", "effect": "allow" },
+        { "action": "shell", "resource": "buf generate", "effect": "allow" },
+        { "action": "shell", "resource": "buf breaking *", "effect": "allow" },
+        { "action": "shell", "resource": "bash Scripts/check-imports.sh", "effect": "allow" },
+        { "action": "shell", "resource": "bash core/scripts/check-core.sh", "effect": "allow" },
+        { "action": "shell", "resource": "xcodebuild test -scheme Hiraku -destination *", "effect": "allow" },
+        { "action": "shell", "resource": "bash core/scripts/build-xcframework.sh", "effect": "allow" }
+      ]
+    },
+    "hiraku-reviewer": {
+      "permissions": [
+        { "action": "skill", "resource": "hiraku-contract", "effect": "allow" },
+        { "action": "skill", "resource": "hiraku-feature", "effect": "allow" },
+        { "action": "shell", "resource": "go test *", "effect": "allow" },
+        { "action": "shell", "resource": "go vet *", "effect": "allow" },
+        { "action": "shell", "resource": "swift test *", "effect": "allow" },
+        { "action": "shell", "resource": "buf lint", "effect": "allow" },
+        { "action": "shell", "resource": "buf breaking *", "effect": "allow" },
+        { "action": "shell", "resource": "bash Scripts/check-imports.sh", "effect": "allow" },
+        { "action": "shell", "resource": "bash core/scripts/check-core.sh", "effect": "allow" },
+        { "action": "shell", "resource": "xcodebuild test -scheme Hiraku -destination *", "effect": "allow" }
+      ]
+    },
+    "hiraku-shipper": {
+      "permissions": [
+        { "action": "edit", "resource": ".opencode/tasks/*.md", "effect": "allow" }
+      ]
+    }
+  }
+}

@@ -1,0 +1,259 @@
+{
+  "book": "Mimikara Oboeru N3 Goi",
+  "unit": "09",
+  "cd": "45",
+  "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=09&cd=45",
+  "count": 16,
+  "entries": [
+    {
+      "no":636,
+      "word":"読書",
+      "reading":"どくしょ",
+      "word_raw":"読書（どくしょ）",
+      "ruby":[{"t":"読書","r":"どくしょ"}],
+      "han_viet":"độc thư",
+      "meaning_vi":"đọc sách",
+      "examples":[
+        {"no":1,"jp":"趣味は読書だ","jp_raw":"趣味（しゅみ）は読書（どくしょ）だ","jp_ruby":[{"t":"趣味","r":"しゅみ"},{"t":"は"},{"t":"読書","r":"どくしょ"},{"t":"だ"}],"vi":"Sở thích là đọc sách."},
+        {"no":2,"jp":"休日に読書をする","jp_raw":"休日（きゅうじつ）に読書（どくしょ）をする","jp_ruby":[{"t":"休日","r":"きゅうじつ"},{"t":"に"},{"t":"読書","r":"どくしょ"},{"t":"をする"}],"vi":"Đọc sách vào ngày nghỉ."}
+      ],
+      "related":[]
+    },
+    {
+      "no":637,
+      "word":"演奏",
+      "reading":"えんそう",
+      "word_raw":"演奏（えんそう）",
+      "ruby":[{"t":"演奏","r":"えんそう"}],
+      "han_viet":"diễn tấu",
+      "meaning_vi":"biểu diễn",
+      "examples":[
+        {"no":1,"jp":"楽器を演奏する","jp_raw":"楽器（がっき）を演奏（えんそう）する","jp_ruby":[{"t":"楽器","r":"がっき"},{"t":"を"},{"t":"演奏","r":"えんそう"},{"t":"する"}],"vi":"Biểu diễn nhạc cụ."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿者（しゃ）、　＿会（かい）","items":[{"text":"＿者","ruby":[{"t":"＿"},{"t":"者","r":"しゃ"}],"pattern":true},{"text":"＿会","ruby":[{"t":"＿"},{"t":"会","r":"かい"}],"pattern":true}],"meaning_vi":"Người biểu diễn, hội biểu diễn"}
+      ]
+    },
+    {
+      "no":638,
+      "word":"芸術",
+      "reading":"げいじゅつ",
+      "word_raw":"芸術（げいじゅつ）",
+      "ruby":[{"t":"芸術","r":"げいじゅつ"}],
+      "han_viet":"nghệ thuật",
+      "meaning_vi":"nghệ thuật",
+      "examples":[
+        {"no":1,"jp":"美術、音楽、文学、演劇などは、みな、芸術の一種であると言える","jp_raw":"美術（びじゅつ）、音楽（おんがく）、文学（ぶんがく）、演劇（えんげき）などは、みな、芸術（げいじゅつ）の一種（いっしゅ）であると言（い）える","jp_ruby":[{"t":"美術","r":"びじゅつ"},{"t":"、"},{"t":"音楽","r":"おんがく"},{"t":"、"},{"t":"文学","r":"ぶんがく"},{"t":"、"},{"t":"演劇","r":"えんげき"},{"t":"などは、みな、"},{"t":"芸術","r":"げいじゅつ"},{"t":"の"},{"t":"一種","r":"いっしゅ"},{"t":"であると"},{"t":"言","r":"い"},{"t":"える"}],"vi":"Mỹ thuật, âm nhạc, văn học, kịch…tất cả có thể nói là một loại hình nghệ thuật."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿作品（さくひん）、＿家（か）、＿的（てき）な","items":[{"text":"＿作品","ruby":[{"t":"＿"},{"t":"作品","r":"さくひん"}],"pattern":true},{"text":"＿家","ruby":[{"t":"＿"},{"t":"家","r":"か"}],"pattern":true},{"text":"＿的な","ruby":[{"t":"＿"},{"t":"的","r":"てき"},{"t":"な"}],"pattern":true}],"meaning_vi":"Tác phẩm nghệ thuật, nghệ thuật gia, tính nghệ thuật."}
+      ]
+    },
+    {
+      "no":639,
+      "word":"検査",
+      "reading":"けんさ",
+      "word_raw":"検査（けんさ）",
+      "ruby":[{"t":"検査","r":"けんさ"}],
+      "han_viet":"kiểm tra",
+      "meaning_vi":"kiểm tra",
+      "examples":[
+        {"no":1,"jp":"｛胃／製品　…｝の検査","jp_raw":"｛胃（い）／製品（せいひん）　…｝の検査（けんさ）","jp_ruby":[{"t":"｛"},{"t":"胃","r":"い"},{"t":"／"},{"t":"製品","r":"せいひん"},{"t":"　…｝の"},{"t":"検査","r":"けんさ"}],"vi":"Kiểm tra dạ dày, sản phẩm.."},
+        {"no":2,"jp":"空港では、必ず持ち物の検査がある","jp_raw":"空港（くうこう）では、必（かなら）ず持（も）ち物（もの）の検査（けんさ）がある","jp_ruby":[{"t":"空港","r":"くうこう"},{"t":"では、"},{"t":"必","r":"かなら"},{"t":"ず"},{"t":"持","r":"も"},{"t":"ち"},{"t":"物","r":"もの"},{"t":"の"},{"t":"検査","r":"けんさ"},{"t":"がある"}],"vi":"Ở sân bay, thì chắc chắn sẽ có kiểm tra những đồ mang theo."},
+        {"no":3,"jp":"病院で脳の検査を｛した／受けた｝","jp_raw":"病院（びょういん）で脳（のう）の検査（けんさ）を｛した／受（う）けた｝","jp_ruby":[{"t":"病院","r":"びょういん"},{"t":"で"},{"t":"脳","r":"のう"},{"t":"の"},{"t":"検査","r":"けんさ"},{"t":"を｛した／"},{"t":"受","r":"う"},{"t":"けた｝"}],"vi":"Đã kiểm tra não ở bệnh viện."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿を受（う）ける","items":[{"text":"＿を受ける","ruby":[{"t":"＿を"},{"t":"受","r":"う"},{"t":"ける"}],"pattern":true}],"meaning_vi":"Được kiểm tra/khám xét"},
+        {"type":"compound","marker":"合","raw":"身体（しんたい）＿","items":[{"text":"身体＿","ruby":[{"t":"身体","r":"しんたい"},{"t":"＿"}],"pattern":true}],"meaning_vi":"Kiểm tra thân thể"}
+      ]
+    },
+    {
+      "no":640,
+      "word":"血液",
+      "reading":"けつえき",
+      "word_raw":"血液（けつえき）",
+      "ruby":[{"t":"血液","r":"けつえき"}],
+      "han_viet":"huyết dịch",
+      "meaning_vi":"máu (dịch máu) / huyết dịch",
+      "examples":[
+        {"no":1,"jp":"体の中を血液が流れている","jp_raw":"体（からだ）の中（なか）を血液（けつえき）が流（なが）れている","jp_ruby":[{"t":"体","r":"からだ"},{"t":"の"},{"t":"中","r":"なか"},{"t":"を"},{"t":"血液","r":"けつえき"},{"t":"が"},{"t":"流","r":"なが"},{"t":"れている"}],"vi":"Máu chảy trong cơ thể."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿型（がた）","items":[{"text":"＿型","ruby":[{"t":"＿"},{"t":"型","r":"がた"}],"pattern":true}],"meaning_vi":"Nhóm máu"},
+        {"type":"synonym","marker":"類","raw":"血（ち）","items":[{"text":"血","ruby":[{"t":"血","r":"ち"}]}],"meaning_vi":"Máu"}
+      ]
+    },
+    {
+      "no":641,
+      "word":"治療",
+      "reading":"ちりょう",
+      "word_raw":"治療（ちりょう）",
+      "ruby":[{"t":"治療","r":"ちりょう"}],
+      "han_viet":"trị liệu",
+      "meaning_vi":"trị liệu, chữa bệnh",
+      "examples":[
+        {"no":1,"jp":"病気を治療した","jp_raw":"病気（びょうき）を治療（ちりょう）した","jp_ruby":[{"t":"病気","r":"びょうき"},{"t":"を"},{"t":"治療","r":"ちりょう"},{"t":"した"}],"vi":"Đã chữa bệnh."},
+        {"no":2,"jp":"虫歯の治療を｛した／受けた｝","jp_raw":"虫歯（むしば）の治療（ちりょう）を｛した／受（う）けた｝","jp_ruby":[{"t":"虫歯","r":"むしば"},{"t":"の"},{"t":"治療","r":"ちりょう"},{"t":"を｛した／"},{"t":"受","r":"う"},{"t":"けた｝"}],"vi":"Trị sâu răng."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿を受（う）ける","items":[{"text":"＿を受ける","ruby":[{"t":"＿を"},{"t":"受","r":"う"},{"t":"ける"}],"pattern":true}],"meaning_vi":"Được điều trị"},
+        {"type":"related","marker":"関","raw":"治（なお）す","items":[{"text":"治す","ruby":[{"t":"治","r":"なお"},{"t":"す"}]}],"meaning_vi":"Trị bệnh, sửa chữa."}
+      ]
+    },
+    {
+      "no":642,
+      "word":"症状",
+      "reading":"しょうじょう",
+      "word_raw":"症状（しょうじょう）",
+      "ruby":[{"t":"症状","r":"しょうじょう"}],
+      "han_viet":"chứng trạng",
+      "meaning_vi":"triệu chứng",
+      "examples":[
+        {"no":1,"jp":"かぜの症状は、熱、せき、鼻水などだ","jp_raw":"かぜの症状（しょうじょう）は、熱（ねつ）、せき、鼻水（はなみず）などだ","jp_ruby":[{"t":"かぜの"},{"t":"症状","r":"しょうじょう"},{"t":"は、"},{"t":"熱","r":"ねつ"},{"t":"、せき、"},{"t":"鼻水","r":"はなみず"},{"t":"などだ"}],"vi":"Triệu chứng cảm là ho, sốt, nước mũi.."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿が軽（かる）い  重（おも）い、　＿が出（で）る","items":[{"text":"＿が軽い  重い","ruby":[{"t":"＿が"},{"t":"軽","r":"かる"},{"t":"い  "},{"t":"重","r":"おも"},{"t":"い"}],"pattern":true},{"text":"＿が出る","ruby":[{"t":"＿が"},{"t":"出","r":"で"},{"t":"る"}],"pattern":true}],"meaning_vi":"Triệu chứng nhẹ <=> triệu chứng nặng, xuất hiện triệu chứng."}
+      ]
+    },
+    {
+      "no":643,
+      "word":"予防",
+      "reading":"よぼう",
+      "word_raw":"予防（よぼう）",
+      "ruby":[{"t":"予防","r":"よぼう"}],
+      "han_viet":"dự phòng",
+      "meaning_vi":"đề phòng",
+      "examples":[
+        {"no":1,"jp":"かぜの予防","jp_raw":"かぜの予防（よぼう）","jp_ruby":[{"t":"かぜの"},{"t":"予防","r":"よぼう"}],"vi":"Đề phòng cảm."},
+        {"no":2,"jp":"災害を予防する","jp_raw":"災害（さいがい）を予防（よぼう）する","jp_ruby":[{"t":"災害","r":"さいがい"},{"t":"を"},{"t":"予防","r":"よぼう"},{"t":"する"}],"vi":"Đề phòng tai họa."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿注射（ちゅうしゃ）、＿接種（せっしゅ）","items":[{"text":"＿注射","ruby":[{"t":"＿"},{"t":"注射","r":"ちゅうしゃ"}],"pattern":true},{"text":"＿接種","ruby":[{"t":"＿"},{"t":"接種","r":"せっしゅ"}],"pattern":true}],"meaning_vi":"Tiêm phòng bệnh, tiêm chủng"}
+      ]
+    },
+    {
+      "no":644,
+      "word":"栄養",
+      "reading":"えいよう",
+      "word_raw":"栄養（えいよう）",
+      "ruby":[{"t":"栄養","r":"えいよう"}],
+      "han_viet":"vinh dưỡng",
+      "meaning_vi":"dinh dưỡng",
+      "examples":[
+        {"no":1,"jp":"栄養のある食べ物","jp_raw":"栄養（えいよう）のある食（た）べ物（もの）","jp_ruby":[{"t":"栄養","r":"えいよう"},{"t":"のある"},{"t":"食","r":"た"},{"t":"べ"},{"t":"物","r":"もの"}],"vi":"Đồ ăn dinh dưỡng."},
+        {"no":2,"jp":"健康のために、栄養に気をつけましょう","jp_raw":"健康（けんこう）のために、栄養（えいよう）に気（き）をつけましょう","jp_ruby":[{"t":"健康","r":"けんこう"},{"t":"のために、"},{"t":"栄養","r":"えいよう"},{"t":"に"},{"t":"気","r":"き"},{"t":"をつけましょう"}],"vi":"Để có sức khỏe nên hãy cùng nhau chú ý đến dinh dưỡng."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿がある  ない、＿をとる、＿がつく、＿をつける","items":[{"text":"＿がある  ない","ruby":[{"t":"＿がある  ない"}],"pattern":true},{"text":"＿をとる","ruby":[{"t":"＿をとる"}],"pattern":true},{"text":"＿がつく","ruby":[{"t":"＿がつく"}],"pattern":true},{"text":"＿をつける","ruby":[{"t":"＿をつける"}],"pattern":true}],"meaning_vi":"Có dinh dưỡng<=> không có dinh dưỡng, lấy dinh dưỡng"},
+        {"type":"compound","marker":"合","raw":"＿不足（ぶそく）、＿状態（じょうたい）","items":[{"text":"＿不足","ruby":[{"t":"＿"},{"t":"不足","r":"ぶそく"}],"pattern":true},{"text":"＿状態","ruby":[{"t":"＿"},{"t":"状態","r":"じょうたい"}],"pattern":true}],"meaning_vi":"Không đủ dinh dưỡng, tình trạng dinh dưỡng"}
+      ]
+    },
+    {
+      "no":645,
+      "word":"手術",
+      "reading":"しゅじゅつ",
+      "word_raw":"手術（しゅじゅつ）",
+      "ruby":[{"t":"手術","r":"しゅじゅつ"}],
+      "han_viet":"thủ thuật",
+      "meaning_vi":"phẫu thuật",
+      "examples":[
+        {"no":1,"jp":"胃の手術を｛した／受けた｝","jp_raw":"胃（い）の手術（しゅじゅつ）を｛した／受（う）けた｝","jp_ruby":[{"t":"胃","r":"い"},{"t":"の"},{"t":"手術","r":"しゅじゅつ"},{"t":"を｛した／"},{"t":"受","r":"う"},{"t":"けた｝"}],"vi":"Phẫu thuật dạ dày."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿を受（う）ける","items":[{"text":"＿を受ける","ruby":[{"t":"＿を"},{"t":"受","r":"う"},{"t":"ける"}],"pattern":true}],"meaning_vi":"Phẫu thuật"},
+        {"type":"compound","marker":"合","raw":"外科（げか）＿、整形（せいけい）＿、移植（いしょく）＿","items":[{"text":"外科＿","ruby":[{"t":"外科","r":"げか"},{"t":"＿"}],"pattern":true},{"text":"整形＿","ruby":[{"t":"整形","r":"せいけい"},{"t":"＿"}],"pattern":true},{"text":"移植＿","ruby":[{"t":"移植","r":"いしょく"},{"t":"＿"}],"pattern":true}],"meaning_vi":"Phẫu thuật ngoại khoa, phẫu thuật chỉnh hình, phẫu thuật cấy ghép"}
+      ]
+    },
+    {
+      "no":646,
+      "word":"死亡",
+      "reading":"しぼう",
+      "word_raw":"死亡（しぼう）",
+      "ruby":[{"t":"死亡","r":"しぼう"}],
+      "han_viet":"tử vong",
+      "meaning_vi":"chết",
+      "examples":[
+        {"no":1,"jp":"死亡の原因を調べる","jp_raw":"死亡（しぼう）の原因（げんいん）を調（しら）べる","jp_ruby":[{"t":"死亡","r":"しぼう"},{"t":"の"},{"t":"原因","r":"げんいん"},{"t":"を"},{"t":"調","r":"しら"},{"t":"べる"}],"vi":"Tìm hiểu nguyên nhân chết."},
+        {"no":2,"jp":"事故で３名死亡した","jp_raw":"事故（じこ）で３名（めい）死亡（しぼう）した","jp_ruby":[{"t":"事故","r":"じこ"},{"t":"で３"},{"t":"名","r":"めい"},{"t":"死亡","r":"しぼう"},{"t":"した"}],"vi":"Tai nạn làm 3 người chết."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿者（しゃ）、＿率（りつ）","items":[{"text":"＿者","ruby":[{"t":"＿"},{"t":"者","r":"しゃ"}],"pattern":true},{"text":"＿率","ruby":[{"t":"＿"},{"t":"率","r":"りつ"}],"pattern":true}],"meaning_vi":"Người chết, tỉ lệ tử vong"}
+      ]
+    },
+    {
+      "no":647,
+      "word":"命",
+      "reading":"いのち",
+      "word_raw":"命（いのち）",
+      "ruby":[{"t":"命","r":"いのち"}],
+      "han_viet":"mệnh/mạng",
+      "meaning_vi":"sinh mạng",
+      "examples":[
+        {"no":1,"jp":"命は大切にしなければならない","jp_raw":"命（いのち）は大切（たいせつ）にしなければならない","jp_ruby":[{"t":"命","r":"いのち"},{"t":"は"},{"t":"大切","r":"たいせつ"},{"t":"にしなければならない"}],"vi":"Phải trân trọng sinh mạng."}
+      ],
+      "related":[
+        {"type":"synonym","marker":"類","raw":"生命（せいめい）","items":[{"text":"生命","ruby":[{"t":"生命","r":"せいめい"}]}],"meaning_vi":"Sinh mạng"}
+      ]
+    },
+    {
+      "no":648,
+      "word":"一生",
+      "reading":"いっしょう",
+      "word_raw":"一生（いっしょう）",
+      "ruby":[{"t":"一生","r":"いっしょう"}],
+      "han_viet":"nhất sinh",
+      "meaning_vi":"suốt đời",
+      "examples":[
+        {"no":1,"jp":"ピカソの一生を調べる","jp_raw":"ピカソの一生（いっしょう）を調（しら）べる","jp_ruby":[{"t":"ピカソの"},{"t":"一生","r":"いっしょう"},{"t":"を"},{"t":"調","r":"しら"},{"t":"べる"}],"vi":"Tìm hiểu cuộc đời của Picaso."},
+        {"no":2,"jp":"幸せな一生を送る","jp_raw":"幸（しあわ）せな一生（いっしょう）を送（おく）る","jp_ruby":[{"t":"幸","r":"しあわ"},{"t":"せな"},{"t":"一生","r":"いっしょう"},{"t":"を"},{"t":"送","r":"おく"},{"t":"る"}],"vi":"Sống một cuộc sống hạnh phúc."},
+        {"no":3,"jp":"あなたのことは、一生忘れません","jp_raw":"あなたのことは、一生（いっしょう）忘（わす）れません","jp_ruby":[{"t":"あなたのことは、"},{"t":"一生","r":"いっしょう"},{"t":"忘","r":"わす"},{"t":"れません"}],"vi":"Suốt đời này tôi sẽ không quên bạn."}
+      ],
+      "related":[]
+    },
+    {
+      "no":649,
+      "word":"誤解",
+      "reading":"ごかい",
+      "word_raw":"誤解（ごかい）",
+      "ruby":[{"t":"誤解","r":"ごかい"}],
+      "han_viet":"ngộ giải",
+      "meaning_vi":"hiểu lầm",
+      "examples":[
+        {"no":1,"jp":"誤解がないようにするには、よく話し合うことが大切だ","jp_raw":"誤解（ごかい）がないようにするには、よく話（はな）し合（あ）うことが大切（たいせつ）だ","jp_ruby":[{"t":"誤解","r":"ごかい"},{"t":"がないようにするには、よく"},{"t":"話","r":"はな"},{"t":"し"},{"t":"合","r":"あ"},{"t":"うことが"},{"t":"大切","r":"たいせつ"},{"t":"だ"}],"vi":"Để cho mọi người không hiểu nhầm nên việc bàn bạc thảo luận rất quan trọng."},
+        {"no":2,"jp":"テストで問題の意味を誤解して答えを間違えた","jp_raw":"テストで問題（もんだい）の意味（いみ）を誤解（ごかい）して答（こた）えを間違（まちが）えた","jp_ruby":[{"t":"テストで"},{"t":"問題","r":"もんだい"},{"t":"の"},{"t":"意味","r":"いみ"},{"t":"を"},{"t":"誤解","r":"ごかい"},{"t":"して"},{"t":"答","r":"こた"},{"t":"えを"},{"t":"間違","r":"まちが"},{"t":"えた"}],"vi":"Trong bài thi tôi đã hiểu nhầm ý nghĩa đề thi nên trả lời sai."}
+      ],
+      "related":[]
+    },
+    {
+      "no":650,
+      "word":"後悔",
+      "reading":"こうかい",
+      "word_raw":"後悔（こうかい）",
+      "ruby":[{"t":"後悔","r":"こうかい"}],
+      "han_viet":"hậu hối",
+      "meaning_vi":"hối hận",
+      "examples":[
+        {"no":1,"jp":"私は若いころに勉強しなかったことを、とても後悔している","jp_raw":"私（わたし）は若（わか）いころに勉強（べんきょう）しなかったことを、とても後悔（こうかい）している","jp_ruby":[{"t":"私","r":"わたし"},{"t":"は"},{"t":"若","r":"わか"},{"t":"いころに"},{"t":"勉強","r":"べんきょう"},{"t":"しなかったことを、とても"},{"t":"後悔","r":"こうかい"},{"t":"している"}],"vi":"Tôi đã rất hối hận vì đã không học khi còn trẻ."}
+      ],
+      "related":[]
+    },
+    {
+      "no":651,
+      "word":"訳",
+      "reading":"わけ",
+      "word_raw":"訳（わけ）",
+      "ruby":[{"t":"訳","r":"わけ"}],
+      "han_viet":"dịch",
+      "meaning_vi":"lý do / nguyên nhân / lẽ / nghĩa",
+      "examples":[
+        {"no":1,"jp":"遅刻したわけを話す","jp_raw":"遅刻（ちこく）したわけを話（はな）す","jp_ruby":[{"t":"遅刻","r":"ちこく"},{"t":"したわけを"},{"t":"話","r":"はな"},{"t":"す"}],"vi":"Bạn hãy nói nguyên nhân đến muộn."},
+        {"no":2,"jp":"二人が別れたわけを知りたい","jp_raw":"二人（ふたり）が別（わか）れたわけを知（し）りたい","jp_ruby":[{"t":"二人","r":"ふたり"},{"t":"が"},{"t":"別","r":"わか"},{"t":"れたわけを"},{"t":"知","r":"し"},{"t":"りたい"}],"vi":"Tôi muốn biết nguyên nhân hai người họ chia tay."},
+        {"no":3,"jp":"彼が言っていることは、わけがわからない","jp_raw":"彼（かれ）が言（い）っていることは、わけがわからない","jp_ruby":[{"t":"彼","r":"かれ"},{"t":"が"},{"t":"言","r":"い"},{"t":"っていることは、わけがわからない"}],"vi":"Tôi không hiểu ý nghĩa những lời anh ấy đang nói."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"深（ふか）い＿","items":[{"text":"深い＿","ruby":[{"t":"深","r":"ふか"},{"t":"い＿"}],"pattern":true}],"meaning_vi":"Nguyên nhân sâu xa"},
+        {"type":"synonym","marker":"類","raw":"理由（りゆう）、事情（じじょう）、意味（いみ）、理（り）くつ","items":[{"text":"理由","ruby":[{"t":"理由","r":"りゆう"}]},{"text":"事情","ruby":[{"t":"事情","r":"じじょう"}]},{"text":"意味","ruby":[{"t":"意味","r":"いみ"}]},{"text":"理くつ","ruby":[{"t":"理","r":"り"},{"t":"くつ"}]}],"meaning_vi":"Lí do, sự tình, ý nghĩa, lý lẽ"}
+      ]
+    }
+  ]
+}

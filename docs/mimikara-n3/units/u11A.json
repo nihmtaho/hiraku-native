@@ -1,0 +1,149 @@
+{
+  "book": "Mimikara Oboeru N3 Goi",
+  "unit": "11A",
+  "cd": null,
+  "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=11A",
+  "count": 10,
+  "entries": [
+    {
+      "no":836,
+      "word":"炊ける",
+      "reading":"たける",
+      "word_raw":"炊（た）ける",
+      "ruby":[{"t":"炊","r":"た"},{"t":"ける"}],
+      "han_viet":"xuy",
+      "meaning_vi":"được nấu",
+      "examples":[
+        {"no":1,"jp":"ごはんがたけた","jp_raw":"ごはんがたけた","jp_ruby":[{"t":"ごはんがたけた"}],"vi":"Cơm đã nấu xong."}
+      ],
+      "related":[]
+    },
+    {
+      "no":837,
+      "word":"炊く",
+      "reading":"たく",
+      "word_raw":"炊（た）く",
+      "ruby":[{"t":"炊","r":"た"},{"t":"く"}],
+      "han_viet":"xuy",
+      "meaning_vi":"nấu (cơm)",
+      "examples":[
+        {"no":1,"jp":"ごはんをたく","jp_raw":"ごはんをたく","jp_ruby":[{"t":"ごはんをたく"}],"vi":"Nấu cơm."}
+      ],
+      "related":[]
+    },
+    {
+      "no":838,
+      "word":"煮える",
+      "reading":"にえる",
+      "word_raw":"煮（に）える",
+      "ruby":[{"t":"煮","r":"に"},{"t":"える"}],
+      "han_viet":"chử",
+      "meaning_vi":"được nấu, hầm",
+      "examples":[
+        {"no":1,"jp":"「この野菜をスープで煮て、煮えたら塩で味をつけてください」","jp_raw":"「この野菜（やさい）をスープで煮（に）て、煮（に）えたら塩（しお）で味（あじ）をつけてください」","jp_ruby":[{"t":"「この"},{"t":"野菜","r":"やさい"},{"t":"をスープで"},{"t":"煮","r":"に"},{"t":"て、"},{"t":"煮","r":"に"},{"t":"えたら"},{"t":"塩","r":"しお"},{"t":"で"},{"t":"味","r":"あじ"},{"t":"をつけてください」"}],"vi":"Ninh rau bằng súp, khi rau nhừ rồi cho gia vị muối vào."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"煮（に）もの","items":[{"text":"煮もの","ruby":[{"t":"煮","r":"に"},{"t":"もの"}]}],"meaning_vi":"Đồ nấu"}
+      ]
+    },
+    {
+      "no":839,
+      "word":"煮る",
+      "reading":"にる",
+      "word_raw":"煮（に）る",
+      "ruby":[{"t":"煮","r":"に"},{"t":"る"}],
+      "han_viet":"chử",
+      "meaning_vi":"ninh, nấu",
+      "examples":[],
+      "related":[]
+    },
+    {
+      "no":840,
+      "word":"炒める",
+      "reading":"いためる",
+      "word_raw":"炒（いた）める",
+      "ruby":[{"t":"炒","r":"いた"},{"t":"める"}],
+      "han_viet":"sao",
+      "meaning_vi":"rán, xào",
+      "examples":[
+        {"no":1,"jp":"フライパンに油をひいて、肉と野菜をいためる","jp_raw":"フライパンに油（あぶら）をひいて、肉（にく）と野菜（やさい）をいためる","jp_ruby":[{"t":"フライパンに"},{"t":"油","r":"あぶら"},{"t":"をひいて、"},{"t":"肉","r":"にく"},{"t":"と"},{"t":"野菜","r":"やさい"},{"t":"をいためる"}],"vi":"Cho dầu ăn vào chảo, xào rau và thịt."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"いためもの、野菜（やさい）いため","items":[{"text":"いためもの","ruby":[{"t":"いためもの"}]},{"text":"野菜いため","ruby":[{"t":"野菜","r":"やさい"},{"t":"いため"}]}],"meaning_vi":"Món xào, rau xào."}
+      ]
+    },
+    {
+      "no":841,
+      "word":"焼ける",
+      "reading":"やける",
+      "word_raw":"焼（や）ける",
+      "ruby":[{"t":"焼","r":"や"},{"t":"ける"}],
+      "han_viet":"thiêu",
+      "meaning_vi":"được nướng, được rán",
+      "examples":[
+        {"no":1,"jp":"よく焼けていないぶた肉は食べないほうがいい","jp_raw":"よく焼（や）けていないぶた肉（にく）は食（た）べないほうがいい","jp_ruby":[{"t":"よく"},{"t":"焼","r":"や"},{"t":"けていないぶた"},{"t":"肉","r":"にく"},{"t":"は"},{"t":"食","r":"た"},{"t":"べないほうがいい"}],"vi":"Thịt heo nướng chưa chín kĩ không nên ăn."}
+      ],
+      "related":[]
+    },
+    {
+      "no":842,
+      "word":"焼く",
+      "reading":"やく",
+      "word_raw":"焼（や）く",
+      "ruby":[{"t":"焼","r":"や"},{"t":"く"}],
+      "han_viet":"thiêu",
+      "meaning_vi":"nướng, rán",
+      "examples":[
+        {"no":1,"jp":"フライパンでオムレツを焼く","jp_raw":"フライパンでオムレツを焼（や）く","jp_ruby":[{"t":"フライパンでオムレツを"},{"t":"焼","r":"や"},{"t":"く"}],"vi":"Rán/làm món trứng omelet bằng chảo."},
+        {"no":2,"jp":"トースターでパンを焼く","jp_raw":"トースターでパンを焼（や）く","jp_ruby":[{"t":"トースターでパンを"},{"t":"焼","r":"や"},{"t":"く"}],"vi":"Nướng bánh mì bằng lò nướng điện."},
+        {"no":3,"jp":"炭火で｛肉／魚｝を焼く","jp_raw":"炭火（すみび）で｛肉（にく）／魚（さかな）｝を焼（や）く","jp_ruby":[{"t":"炭火","r":"すみび"},{"t":"で｛"},{"t":"肉","r":"にく"},{"t":"／"},{"t":"魚","r":"さかな"},{"t":"｝を"},{"t":"焼","r":"や"},{"t":"く"}],"vi":"Nướng thịt, cá bằng than."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"焼（や）き｛肉（にく）／魚（さかな）｝、卵焼（たまごや）き","items":[{"text":"焼き｛肉／魚｝","ruby":[{"t":"焼","r":"や"},{"t":"き｛"},{"t":"肉","r":"にく"},{"t":"／"},{"t":"魚","r":"さかな"},{"t":"｝"}]},{"text":"卵焼き","ruby":[{"t":"卵焼","r":"たまごや"},{"t":"き"}]}],"meaning_vi":"Thịt nướng, cá nướng, trứng rán…"}
+      ]
+    },
+    {
+      "no":843,
+      "word":"ゆでる",
+      "reading":"ゆでる",
+      "word_raw":"ゆでる",
+      "ruby":[{"t":"ゆでる"}],
+      "han_viet":null,
+      "meaning_vi":"luộc",
+      "examples":[
+        {"no":1,"jp":"熱い湯で｛卵／野菜　…｝をゆでる","jp_raw":"熱（あつ）い湯（ゆ）で｛卵（たまご）／野菜（やさい）　…｝をゆでる","jp_ruby":[{"t":"熱","r":"あつ"},{"t":"い"},{"t":"湯","r":"ゆ"},{"t":"で｛"},{"t":"卵","r":"たまご"},{"t":"／"},{"t":"野菜","r":"やさい"},{"t":"　…｝をゆでる"}],"vi":"Luộc {trứng/ rau…} bằng nước nóng."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"ゆで卵（たまご）","items":[{"text":"ゆで卵","ruby":[{"t":"ゆで"},{"t":"卵","r":"たまご"}]}],"meaning_vi":"Trứng luộc"}
+      ]
+    },
+    {
+      "no":844,
+      "word":"揚げる",
+      "reading":"あげる",
+      "word_raw":"揚（あ）げる",
+      "ruby":[{"t":"揚","r":"あ"},{"t":"げる"}],
+      "han_viet":"dương",
+      "meaning_vi":"chiên, rán",
+      "examples":[
+        {"no":1,"jp":"油で天ぷらをあげる","jp_raw":"油（あぶら）で天（てん）ぷらをあげる","jp_ruby":[{"t":"油","r":"あぶら"},{"t":"で"},{"t":"天","r":"てん"},{"t":"ぷらをあげる"}],"vi":"Chiên (rán) tempura bằng dầu."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"あげもの","items":[{"text":"あげもの","ruby":[{"t":"あげもの"}]}],"meaning_vi":"Đồ chiên"}
+      ]
+    },
+    {
+      "no":845,
+      "word":"蒸す",
+      "reading":"むす",
+      "word_raw":"蒸（む）す",
+      "ruby":[{"t":"蒸","r":"む"},{"t":"す"}],
+      "han_viet":"chưng",
+      "meaning_vi":"hấp",
+      "examples":[
+        {"no":1,"jp":"湯をわかして、その湯気でギョーザをむす","jp_raw":"湯（ゆ）をわかして、その湯気（ゆげ）でギョーザをむす","jp_ruby":[{"t":"湯","r":"ゆ"},{"t":"をわかして、その"},{"t":"湯気","r":"ゆげ"},{"t":"でギョーザをむす"}],"vi":"Đun sôi nước rồi hấp bánh sủi cảo bằng hơi nước."}
+      ],
+      "related":[]
+    }
+  ]
+}
