@@ -1,0 +1,66 @@
+# AGENTS.md — hiraku
+
+App học từ vựng tiếng Nhật (FSRS). Logic và dữ liệu ở Go core (`core/`); UI ở Swift (iOS/iPadOS/macOS 26+, Apple silicon). Offline mặc định, không tài khoản riêng; đồng bộ iCloud là tùy chọn, mặc định tắt, từ M4 (ADR-29). UI tiếng Việt. Giai đoạn: M0 (spike), chưa có mã.
+
+## Đọc trước (theo mã, đừng đọc cả file)
+- `ARCHITECTURE.md` v2.2: luật Swift (L1–L11), luật Go (G1–G8), checklist §13. **Bắt buộc** cho mọi thay đổi mã.
+- `DECISIONS.md`: ADR-20…30 đã chốt (ADR-27 field tùy biến, ADR-28 profile, ADR-29/30 đồng bộ iCloud); Q mở và đã đóng.
+- `spec.md`, `use-cases.md`, `DESIGN.md`, `ROADMAP.md`: đọc theo mục liên quan.
+- `COPY.md`: chuỗi UI, đọc khi thêm hoặc sửa chuỗi. `WIREFRAME_PROMPT.md`, `CHANGELOG.md`: không cần khi viết mã.
+
+## Ranh giới Go và Swift
+- Go (`core/`) sở hữu: FSRS, kana, hàng đợi, ngày học, transaction chấm điểm, schema, migration, truy vấn, parser, sao lưu, kiểm tra kiểu ghi chú và note (`domain/notetype`), `sort_field`/`search_text`.
+- Swift sở hữu thêm: danh sách profile và profile đang mở (`AppStorage` App Group); chọn đường dẫn DB cho `hk_open`.
+- Swift sở hữu: SwiftUI, Controller, Route, DesignSystem, StudyKit (UI), tích hợp OS, adapter CKSyncEngine (transport CloudKit, ADR-30). Go sở hữu change log và merge của đồng bộ; core không import `net`.
+- Nếu đoạn logic không cần biết đang chạy trên Apple, nó thuộc Go.
+
+## Luật cứng
+1. Contract: `core/proto/hiraku/v1` là nguồn duy nhất. Không sửa tay `gen/` (Go) hoặc thư mục sinh của Swift. Không tái dùng field number.
+2. Chỉ `core/ffi` được import `"C"`. Chỉ `HirakuBridge` gọi `hk_*`.
+3. Go: không `time.Now()` trong `domain`/`service` (thời gian đến qua `now_ms`); không `net`; không biến toàn cục; không `unsafe` ngoài `ffi`.
+4. Swift: Feature chỉ import `HirakuModels`, `DesignSystem` (và `StudyKit` với feature học). Không import `HirakuBridge` hay feature khác.
+5. Mọi ghi nhiều bảng nằm trong một transaction của core. Swift không có transaction.
+6. Thời gian: `AppClock` ở Swift cấp `now_ms`. Không `Date()` hay `Task.sleep` trực tiếp trong Controller.
+7. UI: token `HK*`, `AppIcon` (SF Symbols), String Catalog tiếng Việt. Không hard-code màu, chuỗi, cỡ chữ.
+8. Phụ thuộc mới cần ADR. Đã chốt: `modernc.org/sqlite` (ADR-23), `swift-protobuf`, `google.golang.org/protobuf`, buf (ADR-22). GRDB đã bỏ (ADR-20).
+9. Swift 6 strict; không `try!`, force unwrap trong logic nghiệp vụ.
+10. Field tùy biến (ADR-27): không hard-code bốn field cũ (`word`, `reading`, `meaning`, `example`) ngoài định nghĩa kiểu hệ thống. Logic học, gõ từ, trùng từ, tìm kiếm, kiểu chữ chọn theo **role**, không theo tên field. Giá trị khóa theo `field_id`. Swift không parse `notes.fields`. FSRS và log khóa theo `card_id`, không `word_id`.
+11. Profile (ADR-28): core không biết khái niệm profile, không tự chọn đường dẫn. Không tách DB theo deck. Không truy vấn chéo profile; mọi dữ liệu (hàng đợi, settings, thống kê, sao lưu) là của profile đang mở.
+12. Tên field và tên profile do người dùng đặt là dữ liệu, không vào String Catalog.
+
+## Phong cách mã (C1–C8, áp dụng cho cả Go và Swift; chi tiết ARCHITECTURE §4.4)
+- Đơn giản trước; không trừu tượng "để sau"; không mã cao siêu.
+- Hàm ngắn, tên rõ, return sớm, lồng tối đa 3 cấp.
+- Dùng sẵn thư viện chuẩn và framework.
+- Chỉ sửa phần được yêu cầu.
+- Comment một dòng, **viết bằng tiếng Anh**, chỉ giải thích *vì sao*. Cấm: mô tả lại mã; nhắc FR, UC, ADR, WP; lịch sử; khối dài. Ngoại lệ: `// TODO(Q-xx): …`.
+- Không `print` (Swift) hoặc `fmt.Println` còn lại; không mã chết; không import thừa.
+- Test hành vi, ngắn, mỗi test một ý.
+
+## Quy trình
+- OpenCode 2.2: đọc `OPENCODE.md`; Lead giao task theo `.opencode/templates/task.md`, Coder triển khai, Reviewer độc lập, Shipper kiểm điều kiện tích hợp/phát hành (ADR-31).
+- Chỉ có hai skills: `hiraku-contract` khi thay RPC/proto/FFI/bridge; `hiraku-feature` khi thêm feature hoặc StudyMode. Sửa nhỏ không cần nạp quy trình mới. Luật Go/Swift và DESIGN/COPY vẫn ở tài liệu nguồn, không tạo skills lặp lại.
+- AI tự merge chỉ khi có Review PASS đúng revision và CI bắt buộc đạt. PO duyệt gate và phát hành; dùng `TEST_PLAN.md`, `RELEASE.md` khi liên quan.
+- Workspace chưa có Git/remote/CI: chỉ review working-tree, không báo đã merge/ship. Không tự tạo remote hoặc mở quyền delivery.
+- Khi resume, đọc lại task record và revision; thay đổi mới vô hiệu review/approval cũ. Thiếu tool hoặc kiểm tra chưa chạy phải ghi rõ, không báo PASS.
+- Git: đọc `GIT_WORKFLOW.md`. Nhánh task tạo từ `develop`, PR vào `develop`. Mỗi PR phải cập nhật `CHANGELOG.md` (`[Unreleased]`), `ROADMAP.md` §11 và `ROADMAP hiraku — Kanban.html`; thiếu thì không merge.
+- Quyết định **Mở** trong `DECISIONS`: hỏi người dùng, không tự chọn.
+- Đổi contract: sửa proto, chạy `buf breaking`, cập nhật golden, ghi ADR nếu đổi phá vỡ.
+- Đổi hành vi: cập nhật spec, UC, DESIGN cùng lúc.
+- PR: tiêu đề và mô tả viết bằng tiếng Anh, theo `.github/pull_request_template.md`. Task record theo `.opencode/templates/task.md` (tiếng Anh).
+- Chưa có tài khoản Apple Developer (ADR-17): dùng Personal Team. Việc [Cuối cùng] thuộc mốc MR.
+
+## Kiểm tra cấu hình agent (đã có)
+- `node --test .opencode/tests/*.test.mjs` — tests permissions và guard, cần Node.js 24+.
+- `opencode debug agents --standalone` — kiểm discovery bốn agents; không chạy model.
+- Guard không phải OS sandbox; không đặt credential phát hành trong môi trường coder/reviewer.
+
+## Lệnh (tạo ở WP-01; chưa chạy được)
+- `core/scripts/check-core.sh` — cấm `net`, `time.Now` trong domain/service, `import "C"` ngoài ffi
+- `core/scripts/build-xcframework.sh` — build c-archive và đóng XCFramework
+- `buf lint`, `buf breaking` — kiểm contract
+- `cd core && go test -race ./...` — test core
+- `Scripts/check-imports.sh` — luật import Swift
+- `xcodebuild test -scheme Hiraku -destination '<iOS 26 simulator | macOS>'` — test app
+
+Tài liệu và chuỗi UI: tiếng Việt. Định danh, comment, PR và template: tiếng Anh.

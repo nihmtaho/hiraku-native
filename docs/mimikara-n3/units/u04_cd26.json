@@ -1,0 +1,231 @@
+{
+  "book": "Mimikara Oboeru N3 Goi",
+  "unit": "04",
+  "cd": "26",
+  "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=04&cd=26",
+  "count": 13,
+  "entries": [
+    {
+      "no":371,
+      "word":"確認",
+      "reading":"かくにん",
+      "word_raw":"確認（かくにん）",
+      "ruby":[{"t":"確認","r":"かくにん"}],
+      "han_viet":"xác nhận",
+      "meaning_vi":"xác nhận, xác minh",
+      "examples":[
+        {"no":1,"jp":"まちがいがないかどうか（を）確認する","jp_raw":"まちがいがないかどうか（を）確認（かくにん）する","jp_ruby":[{"t":"まちがいがないかどうか（を）"},{"t":"確認","r":"かくにん"},{"t":"する"}],"vi":"Kiểm tra lại xem có lỗi sai không."}
+      ],
+      "related":[
+        {"type":"related","marker":"関","raw":"確（たし）かめる","items":[{"text":"確かめる","ruby":[{"t":"確","r":"たし"},{"t":"かめる"}]}],"meaning_vi":"Xác nhận, làm cho rõ ràng"}
+      ]
+    },
+    {
+      "no":372,
+      "word":"利用",
+      "reading":"りよう",
+      "word_raw":"利用（りよう）",
+      "ruby":[{"t":"利用","r":"りよう"}],
+      "han_viet":"lợi dụng",
+      "meaning_vi":"sử dụng, khai thác",
+      "examples":[
+        {"no":1,"jp":"水不足なので、水道の利用を減らした","jp_raw":"水不足（みずぶそく）なので、水道（すいどう）の利用（りよう）を減（へ）らした","jp_ruby":[{"t":"水不足","r":"みずぶそく"},{"t":"なので、"},{"t":"水道","r":"すいどう"},{"t":"の"},{"t":"利用","r":"りよう"},{"t":"を"},{"t":"減","r":"へ"},{"t":"らした"}],"vi":"Vì thiếu nước nên phải giảm thiểu việc sử dụng nước sinh hoạt."},
+        {"no":2,"jp":"通学に電車を利用する","jp_raw":"通学（つうがく）に電車（でんしゃ）を利用（りよう）する","jp_ruby":[{"t":"通学","r":"つうがく"},{"t":"に"},{"t":"電車","r":"でんしゃ"},{"t":"を"},{"t":"利用","r":"りよう"},{"t":"する"}],"vi":"Sử dụng xe điện để đến trường."},
+        {"no":3,"jp":"トウモロコシは燃料にも利用される","jp_raw":"トウモロコシは燃料（ねんりょう）にも利用（りよう）される","jp_ruby":[{"t":"トウモロコシは"},{"t":"燃料","r":"ねんりょう"},{"t":"にも"},{"t":"利用","r":"りよう"},{"t":"される"}],"vi":"Ngô cũng được sử dụng làm nhiên liệu."},
+        {"no":4,"jp":"人をだまして利用する","jp_raw":"人（ひと）をだまして利用（りよう）する","jp_ruby":[{"t":"人","r":"ひと"},{"t":"をだまして"},{"t":"利用","r":"りよう"},{"t":"する"}],"vi":"Lừa gạt và lợi dụng người khác."},
+        {"no":5,"jp":"地位を利用して金もうけをする","jp_raw":"地位（ちい）を利用（りよう）して金（かね）もうけをする","jp_ruby":[{"t":"地位","r":"ちい"},{"t":"を"},{"t":"利用","r":"りよう"},{"t":"して"},{"t":"金","r":"かね"},{"t":"もうけをする"}],"vi":"Lợi dụng chức quyền để kiếm tiền."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿者（しゃ）、＿料（りょう）（金（きん））、＿量（りょう）、＿法（ほう）、再（さい）＿","items":[{"text":"＿者","ruby":[{"t":"＿"},{"t":"者","r":"しゃ"}],"pattern":true},{"text":"＿料（金）","ruby":[{"t":"＿"},{"t":"料","r":"りょう"},{"t":"（"},{"t":"金","r":"きん"},{"t":"）"}],"pattern":true},{"text":"＿量","ruby":[{"t":"＿"},{"t":"量","r":"りょう"}],"pattern":true},{"text":"＿法","ruby":[{"t":"＿"},{"t":"法","r":"ほう"}],"pattern":true},{"text":"再＿","ruby":[{"t":"再","r":"さい"},{"t":"＿"}],"pattern":true}],"meaning_vi":"Người sử dụng, phí sử dụng, lượng sử dụng, cách sử dụng, tái sử dụng"},
+        {"type":"synonym","marker":"類","raw":"使用（しよう）、　活用（かつよう）","items":[{"text":"使用","ruby":[{"t":"使用","r":"しよう"}]},{"text":"活用","ruby":[{"t":"活用","r":"かつよう"}]}],"meaning_vi":"Sử dụng"}
+      ]
+    },
+    {
+      "no":373,
+      "word":"理解",
+      "reading":"りかい",
+      "word_raw":"理解（りかい）",
+      "ruby":[{"t":"理解","r":"りかい"}],
+      "han_viet":"lí giải",
+      "meaning_vi":"hiểu",
+      "examples":[
+        {"no":1,"jp":"意味の理解","jp_raw":"意味（いみ）の理解（りかい）","jp_ruby":[{"t":"意味","r":"いみ"},{"t":"の"},{"t":"理解","r":"りかい"}],"vi":"Hiểu rõ ý nghĩa."},
+        {"no":2,"jp":"内容を深く理解する","jp_raw":"内容（ないよう）を深（ふか）く理解（りかい）する","jp_ruby":[{"t":"内容","r":"ないよう"},{"t":"を"},{"t":"深","r":"ふか"},{"t":"く"},{"t":"理解","r":"りかい"},{"t":"する"}],"vi":"Hiểu rõ nội dung."},
+        {"no":3,"jp":"私の上司は、部下に理解があるので働きやすい","jp_raw":"私（わたし）の上司（じょうし）は、部下（ぶか）に理解（りかい）があるので働（はたら）きやすい","jp_ruby":[{"t":"私","r":"わたし"},{"t":"の"},{"t":"上司","r":"じょうし"},{"t":"は、"},{"t":"部下","r":"ぶか"},{"t":"に"},{"t":"理解","r":"りかい"},{"t":"があるので"},{"t":"働","r":"はたら"},{"t":"きやすい"}],"vi":"Sếp của tôi vì hiểu cấp dưới nên làm việc rất dễ dàng."},
+        {"no":4,"jp":"小さい子どもがいる女性が働くには周囲の理解が必要だ","jp_raw":"小（ちい）さい子（こ）どもがいる女性（じょせい）が働（はたら）くには周囲（しゅうい）の理解（りかい）が必要（ひつよう）だ","jp_ruby":[{"t":"小","r":"ちい"},{"t":"さい"},{"t":"子","r":"こ"},{"t":"どもがいる"},{"t":"女性","r":"じょせい"},{"t":"が"},{"t":"働","r":"はたら"},{"t":"くには"},{"t":"周囲","r":"しゅうい"},{"t":"の"},{"t":"理解","r":"りかい"},{"t":"が"},{"t":"必要","r":"ひつよう"},{"t":"だ"}],"vi":"Đối với công việc mà người phụ nữ có con nhỏ làm thì việc thấu hiểu của những người xung quanh là rất quan trọng."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿が速（はや）い  遅（おそ）い、＿が深（ふか）い、＿がある、＿を求（もと）める","items":[{"text":"＿が速い  遅い","ruby":[{"t":"＿が"},{"t":"速","r":"はや"},{"t":"い  "},{"t":"遅","r":"おそ"},{"t":"い"}],"pattern":true},{"text":"＿が深い","ruby":[{"t":"＿が"},{"t":"深","r":"ふか"},{"t":"い"}],"pattern":true},{"text":"＿がある","ruby":[{"t":"＿がある"}],"pattern":true},{"text":"＿を求める","ruby":[{"t":"＿を"},{"t":"求","r":"もと"},{"t":"める"}],"pattern":true}],"meaning_vi":"Hiểu nhanh<=> hiểu chậm/ hiểu biết sâu sắc / biết thông cảm / mong được thấu hiểu"},
+        {"type":"compound","marker":"合","raw":"＿力（りょく）、＿不足（ぶそく）、＿者（しゃ）","items":[{"text":"＿力","ruby":[{"t":"＿"},{"t":"力","r":"りょく"}],"pattern":true},{"text":"＿不足","ruby":[{"t":"＿"},{"t":"不足","r":"ぶそく"}],"pattern":true},{"text":"＿者","ruby":[{"t":"＿"},{"t":"者","r":"しゃ"}],"pattern":true}],"meaning_vi":"Năng lực hiểu, thiếu hiểu biết, người thấu hiểu"}
+      ]
+    },
+    {
+      "no":374,
+      "word":"発見",
+      "reading":"はっけん",
+      "word_raw":"発見（はっけん）",
+      "ruby":[{"t":"発見","r":"はっけん"}],
+      "han_viet":"phát kiến",
+      "meaning_vi":"khám phá, tìm thấy, phát hiện",
+      "examples":[
+        {"no":1,"jp":"大きな発見","jp_raw":"大（おお）きな発見（はっけん）","jp_ruby":[{"t":"大","r":"おお"},{"t":"きな"},{"t":"発見","r":"はっけん"}],"vi":"Phát kiến lớn."},
+        {"no":2,"jp":"新しい種類の動物を発見した","jp_raw":"新（あたら）しい種類（しゅるい）の動物（どうぶつ）を発見（はっけん）した","jp_ruby":[{"t":"新","r":"あたら"},{"t":"しい"},{"t":"種類","r":"しゅるい"},{"t":"の"},{"t":"動物","r":"どうぶつ"},{"t":"を"},{"t":"発見","r":"はっけん"},{"t":"した"}],"vi":"Đã phát hiện ra loài động vật mới."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"新（しん）＿、　大（だい）＿","items":[{"text":"新＿","ruby":[{"t":"新","r":"しん"},{"t":"＿"}],"pattern":true},{"text":"大＿","ruby":[{"t":"大","r":"だい"},{"t":"＿"}],"pattern":true}],"meaning_vi":"Phát hiện mới/ đột phá, phát hiện tuyệt vời"}
+      ]
+    },
+    {
+      "no":375,
+      "word":"発明",
+      "reading":"はつめい",
+      "word_raw":"発明（はつめい）",
+      "ruby":[{"t":"発明","r":"はつめい"}],
+      "han_viet":"phát minh",
+      "meaning_vi":"phát minh",
+      "examples":[
+        {"no":1,"jp":"ベルは電話を発明した","jp_raw":"ベルは電話（でんわ）を発明（はつめい）した","jp_ruby":[{"t":"ベルは"},{"t":"電話","r":"でんわ"},{"t":"を"},{"t":"発明","r":"はつめい"},{"t":"した"}],"vi":"Bell đã phát minh ra điện thoại."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"新（しん）＿、大（だい）＿、＿家（か）","items":[{"text":"新＿","ruby":[{"t":"新","r":"しん"},{"t":"＿"}],"pattern":true},{"text":"大＿","ruby":[{"t":"大","r":"だい"},{"t":"＿"}],"pattern":true},{"text":"＿家","ruby":[{"t":"＿"},{"t":"家","r":"か"}],"pattern":true}],"meaning_vi":"Phát minh mới/ phát minh vĩ đại/ nhà phát minh"}
+      ]
+    },
+    {
+      "no":376,
+      "word":"関係",
+      "reading":"かんけい",
+      "word_raw":"関係（かんけい）",
+      "ruby":[{"t":"関係","r":"かんけい"}],
+      "han_viet":"quan hệ",
+      "meaning_vi":"quan hệ",
+      "examples":[
+        {"no":1,"jp":"「お二人の関係は」「親子／兄弟　…｝です」","jp_raw":"「お二人（ふたり）の関係（かんけい）は」「親子（おやこ）／兄弟（きょうだい）　…｝です」","jp_ruby":[{"t":"「お"},{"t":"二人","r":"ふたり"},{"t":"の"},{"t":"関係","r":"かんけい"},{"t":"は」「"},{"t":"親子","r":"おやこ"},{"t":"／"},{"t":"兄弟","r":"きょうだい"},{"t":"　…｝です」"}],"vi":"Quan hệ của hai người là (cha/ con; anh/ em…)."},
+        {"no":2,"jp":"あの二人は先輩　・　後輩の関係だ","jp_raw":"あの二人（ふたり）は先輩（せんぱい）　・　後輩（こうはい）の関係（かんけい）だ","jp_ruby":[{"t":"あの"},{"t":"二人","r":"ふたり"},{"t":"は"},{"t":"先輩","r":"せんぱい"},{"t":"　・　"},{"t":"後輩","r":"こうはい"},{"t":"の"},{"t":"関係","r":"かんけい"},{"t":"だ"}],"vi":"Hai người đó là quan hệ tiền bối và hậu bối."},
+        {"no":3,"jp":"あの人がどうなっても、私｛に／と｝は関係　（が）ない","jp_raw":"あの人（ひと）がどうなっても、私（わたし）｛に／と｝は関係（かんけい）　（が）ない","jp_ruby":[{"t":"あの"},{"t":"人","r":"ひと"},{"t":"がどうなっても、"},{"t":"私","r":"わたし"},{"t":"｛に／と｝は"},{"t":"関係","r":"かんけい"},{"t":"　（が）ない"}],"vi":"Người đó dù có trở nên như thế nào thì cũng không liên quan đến tôi."},
+        {"no":4,"jp":"部長は不正事件に関係して、会社を辞めさせられた","jp_raw":"部長（ぶちょう）は不正（ふせい）事件（じけん）に関係（かんけい）して、会社（かいしゃ）を辞（や）めさせられた","jp_ruby":[{"t":"部長","r":"ぶちょう"},{"t":"は"},{"t":"不正","r":"ふせい"},{"t":"事件","r":"じけん"},{"t":"に"},{"t":"関係","r":"かんけい"},{"t":"して、"},{"t":"会社","r":"かいしゃ"},{"t":"を"},{"t":"辞","r":"や"},{"t":"めさせられた"}],"vi":"Vì trưởng bộ phận có liên quan đến vụ việc bất chính nên bị đuổi khỏi công ty."},
+        {"no":5,"jp":"「ご職業は」「建設関係の仕事をしています」","jp_raw":"「ご職業（しょくぎょう）は」「建設（けんせつ）関係（かんけい）の仕事（しごと）をしています」","jp_ruby":[{"t":"「ご"},{"t":"職業","r":"しょくぎょう"},{"t":"は」「"},{"t":"建設","r":"けんせつ"},{"t":"関係","r":"かんけい"},{"t":"の"},{"t":"仕事","r":"しごと"},{"t":"をしています」"}],"vi":"\"Nghề nghiệp của bạn là gì?\" \"Tôi đang làm công việc liên quan đến xây dựng.\""}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿がある  ない","items":[{"text":"＿がある  ない","ruby":[{"t":"＿がある  ない"}],"pattern":true}],"meaning_vi":"Có liên quan<=> không liên quan"},
+        {"type":"compound","marker":"合","raw":"＿者（しゃ）、　［名詞（めいし）］　＋関係（かんけい）","items":[{"text":"＿者","ruby":[{"t":"＿"},{"t":"者","r":"しゃ"}],"pattern":true},{"text":"［名詞］　＋関係","ruby":[{"t":"［"},{"t":"名詞","r":"めいし"},{"t":"］　＋"},{"t":"関係","r":"かんけい"}],"pattern":true}],"meaning_vi":"Người liên quan, danh từ + quan hệ"}
+      ]
+    },
+    {
+      "no":377,
+      "word":"団体",
+      "reading":"だんたい",
+      "word_raw":"団体（だんたい）",
+      "ruby":[{"t":"団体","r":"だんたい"}],
+      "han_viet":"đoàn thể",
+      "meaning_vi":"nhóm, đoàn thể",
+      "examples":[
+        {"no":1,"jp":"博物館で団体のチケットを買う","jp_raw":"博物館（はくぶつかん）で団体（だんたい）のチケットを買（か）う","jp_ruby":[{"t":"博物館","r":"はくぶつかん"},{"t":"で"},{"t":"団体","r":"だんたい"},{"t":"のチケットを"},{"t":"買","r":"か"},{"t":"う"}],"vi":"Tôi mua vé theo nhóm vào tham quan viện bảo tàng."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿旅行（りょこう）、　＿割引（わりびき）、　＿行動（こうどう）、　政治（せいじ）＿、　宗教（しゅうきょう）＿","items":[{"text":"＿旅行","ruby":[{"t":"＿"},{"t":"旅行","r":"りょこう"}],"pattern":true},{"text":"＿割引","ruby":[{"t":"＿"},{"t":"割引","r":"わりびき"}],"pattern":true},{"text":"＿行動","ruby":[{"t":"＿"},{"t":"行動","r":"こうどう"}],"pattern":true},{"text":"政治＿","ruby":[{"t":"政治","r":"せいじ"},{"t":"＿"}],"pattern":true},{"text":"宗教＿","ruby":[{"t":"宗教","r":"しゅうきょう"},{"t":"＿"}],"pattern":true}],"meaning_vi":"Du lịch theo đoàn, giảm giá theo nhóm, hoạt động theo đoàn, tổ chức chính trị, tổ chức tôn giáo"},
+        {"type":"antonym","marker":"対","raw":"個人（こじん）","items":[{"text":"個人","ruby":[{"t":"個人","r":"こじん"}]}],"meaning_vi":"Cá nhân"}
+      ]
+    },
+    {
+      "no":378,
+      "word":"選挙",
+      "reading":"せんきょ",
+      "word_raw":"選挙（せんきょ）",
+      "ruby":[{"t":"選挙","r":"せんきょ"}],
+      "han_viet":"tuyển cử",
+      "meaning_vi":"cuộc bầu cử",
+      "examples":[
+        {"no":1,"jp":"1月に選挙が行われる","jp_raw":"1月（がつ）に選挙（せんきょ）が行（おこな）われる","jp_ruby":[{"t":"1"},{"t":"月","r":"がつ"},{"t":"に"},{"t":"選挙","r":"せんきょ"},{"t":"が"},{"t":"行","r":"おこな"},{"t":"われる"}],"vi":"Tháng 1 bầu cử sẽ được tiến hành."},
+        {"no":2,"jp":"選挙で市長を選ぶ","jp_raw":"選挙（せんきょ）で市長（しちょう）を選（えら）ぶ","jp_ruby":[{"t":"選挙","r":"せんきょ"},{"t":"で"},{"t":"市長","r":"しちょう"},{"t":"を"},{"t":"選","r":"えら"},{"t":"ぶ"}],"vi":"Lựa chọn thị trưởng bằng hình thức bầu cử."},
+        {"no":3,"jp":"「あした、役員の選挙をします」","jp_raw":"「あした、役員（やくいん）の選挙（せんきょ）をします」","jp_ruby":[{"t":"「あした、"},{"t":"役員","r":"やくいん"},{"t":"の"},{"t":"選挙","r":"せんきょ"},{"t":"をします」"}],"vi":"\"Ngày mai bầu chọn ủy viên ban chấp hành.\""}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿をする","items":[{"text":"＿をする","ruby":[{"t":"＿をする"}],"pattern":true}],"meaning_vi":"Bầu cử, tuyển, bầu lên"},
+        {"type":"compound","marker":"合","raw":"＿運動（うんどう）、　＿権（けん）、　直接（ちょくせつ）  間接（かんせつ）＿","items":[{"text":"＿運動","ruby":[{"t":"＿"},{"t":"運動","r":"うんどう"}],"pattern":true},{"text":"＿権","ruby":[{"t":"＿"},{"t":"権","r":"けん"}],"pattern":true},{"text":"直接  間接＿","ruby":[{"t":"直接","r":"ちょくせつ"},{"t":"  "},{"t":"間接","r":"かんせつ"},{"t":"＿"}],"pattern":true}],"meaning_vi":"Vận động bầu cử, quyền bầu cử, bầu cử trực tiếp <=> bầu cử gián tiếp"}
+      ]
+    },
+    {
+      "no":379,
+      "word":"税金",
+      "reading":"ぜいきん",
+      "word_raw":"税金（ぜいきん）",
+      "ruby":[{"t":"税金","r":"ぜいきん"}],
+      "han_viet":"thuế kim",
+      "meaning_vi":"thuế",
+      "examples":[
+        {"no":1,"jp":"年度末に税金を払う","jp_raw":"年度末（ねんどまつ）に税金（ぜいきん）を払（はら）う","jp_ruby":[{"t":"年度末","r":"ねんどまつ"},{"t":"に"},{"t":"税金","r":"ぜいきん"},{"t":"を"},{"t":"払","r":"はら"},{"t":"う"}],"vi":"Trả tiền thuế vào cuối năm tài chính."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿を納（おさ）める、　＿がかかる、　＿をかける","items":[{"text":"＿を納める","ruby":[{"t":"＿を"},{"t":"納","r":"おさ"},{"t":"める"}],"pattern":true},{"text":"＿がかかる","ruby":[{"t":"＿がかかる"}],"pattern":true},{"text":"＿をかける","ruby":[{"t":"＿をかける"}],"pattern":true}],"meaning_vi":"Nộp thuế, phải chịu thuế, bị tính thuế, áp thuế vào, tính thuế"},
+        {"type":"related","marker":"関","raw":"消費税（しょうひぜい）、　所得税（しょとくぜい）、　関税（かんぜい）、　増税（ぞうぜい）  減税（げんぜい）、　脱税（だつぜい）","items":[{"text":"消費税","ruby":[{"t":"消費税","r":"しょうひぜい"}]},{"text":"所得税","ruby":[{"t":"所得税","r":"しょとくぜい"}]},{"text":"関税","ruby":[{"t":"関税","r":"かんぜい"}]},{"text":"増税  減税","ruby":[{"t":"増税","r":"ぞうぜい"},{"t":"  "},{"t":"減税","r":"げんぜい"}]},{"text":"脱税","ruby":[{"t":"脱税","r":"だつぜい"}]}],"meaning_vi":"Thuế tiêu dùng, thuế thu nhập cá nhân, thuế quan, tăng thuế<=> giảm thuế, trốn thuế"}
+      ]
+    },
+    {
+      "no":380,
+      "word":"責任",
+      "reading":"せきにん",
+      "word_raw":"責任（せきにん）",
+      "ruby":[{"t":"責任","r":"せきにん"}],
+      "han_viet":"trách nhiệm",
+      "meaning_vi":"trách nhiệm",
+      "examples":[
+        {"no":1,"jp":"「この失敗はあなたの責任ではない」","jp_raw":"「この失敗（しっぱい）はあなたの責任（せきにん）ではない」","jp_ruby":[{"t":"「この"},{"t":"失敗","r":"しっぱい"},{"t":"はあなたの"},{"t":"責任","r":"せきにん"},{"t":"ではない」"}],"vi":"\"Thất bại này không phải là trách nhiệm của bạn.\""},
+        {"no":2,"jp":"社長は倒産の責任をとって辞めた","jp_raw":"社長（しゃちょう）は倒産（とうさん）の責任（せきにん）をとって辞（や）めた","jp_ruby":[{"t":"社長","r":"しゃちょう"},{"t":"は"},{"t":"倒産","r":"とうさん"},{"t":"の"},{"t":"責任","r":"せきにん"},{"t":"をとって"},{"t":"辞","r":"や"},{"t":"めた"}],"vi":"Giám đốc nhận trách nhiệm về vụ phá sản rồi nghỉ việc."},
+        {"no":3,"jp":"事故の責任を追及する","jp_raw":"事故（じこ）の責任（せきにん）を追及（ついきゅう）する","jp_ruby":[{"t":"事故","r":"じこ"},{"t":"の"},{"t":"責任","r":"せきにん"},{"t":"を"},{"t":"追及","r":"ついきゅう"},{"t":"する"}],"vi":"Truy cứu trách nhiệm của vụ việc."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿がある  ない、＿をとる、＿を持（も）つ、＿を果（は）たす、＿が重（おも）い  軽（かる）い、＿を感（かん）じる","items":[{"text":"＿がある  ない","ruby":[{"t":"＿がある  ない"}],"pattern":true},{"text":"＿をとる","ruby":[{"t":"＿をとる"}],"pattern":true},{"text":"＿を持つ","ruby":[{"t":"＿を"},{"t":"持","r":"も"},{"t":"つ"}],"pattern":true},{"text":"＿を果たす","ruby":[{"t":"＿を"},{"t":"果","r":"は"},{"t":"たす"}],"pattern":true},{"text":"＿が重い  軽い","ruby":[{"t":"＿が"},{"t":"重","r":"おも"},{"t":"い  "},{"t":"軽","r":"かる"},{"t":"い"}],"pattern":true},{"text":"＿を感じる","ruby":[{"t":"＿を"},{"t":"感","r":"かん"},{"t":"じる"}],"pattern":true}],"meaning_vi":"Có trách nhiệm <=> không có trách nhiệm, nhận trách nhiệm, mang trách nhiệm, hoàn thành nghĩa vụ, Trách nhiệm nặng nề <=> trách nhiệm nhẹ, cảm thấy có trách nhiệm"},
+        {"type":"compound","marker":"合","raw":"＿者（しゃ）、　無（む）＿な、　＿感（かん）→　責任感（せきにんかん）がある  ない、　責任感（せきにんかん）が強（つよ）い  弱（よわ）い","items":[{"text":"＿者","ruby":[{"t":"＿"},{"t":"者","r":"しゃ"}],"pattern":true},{"text":"無＿な","ruby":[{"t":"無","r":"む"},{"t":"＿な"}],"pattern":true},{"text":"＿感→　責任感がある  ない","ruby":[{"t":"＿"},{"t":"感","r":"かん"},{"t":"→　"},{"t":"責任感","r":"せきにんかん"},{"t":"がある  ない"}],"pattern":true},{"text":"責任感が強い  弱い","ruby":[{"t":"責任感","r":"せきにんかん"},{"t":"が"},{"t":"強","r":"つよ"},{"t":"い  "},{"t":"弱","r":"よわ"},{"t":"い"}]}],"meaning_vi":"Người có trách nhiệm, người phụ trách/ người vô trách nhiệm/ cảm giác trách nhiệm / có ý thức trách nhiệm<=> không có ý thức trách nhiệm/ tinh thần trách nhiệm cao<=> tinh thần trách nhiệm kém"}
+      ]
+    },
+    {
+      "no":381,
+      "word":"書類",
+      "reading":"しょるい",
+      "word_raw":"書類（しょるい）",
+      "ruby":[{"t":"書類","r":"しょるい"}],
+      "han_viet":"thư loại",
+      "meaning_vi":"tài liệu, hồ sơ, giấy tờ",
+      "examples":[
+        {"no":1,"jp":"留学の手続きに必要な書類を準備する","jp_raw":"留学（りゅうがく）の手続（てつづ）きに必要（ひつよう）な書類（しょるい）を準備（じゅんび）する","jp_ruby":[{"t":"留学","r":"りゅうがく"},{"t":"の"},{"t":"手続","r":"てつづ"},{"t":"きに"},{"t":"必要","r":"ひつよう"},{"t":"な"},{"t":"書類","r":"しょるい"},{"t":"を"},{"t":"準備","r":"じゅんび"},{"t":"する"}],"vi":"Chuẩn bị giấy tờ cần thiết để làm thủ tục du học."},
+        {"no":2,"jp":"会議の書類を作る","jp_raw":"会議（かいぎ）の書類（しょるい）を作（つく）る","jp_ruby":[{"t":"会議","r":"かいぎ"},{"t":"の"},{"t":"書類","r":"しょるい"},{"t":"を"},{"t":"作","r":"つく"},{"t":"る"}],"vi":"Soạn tài liệu cuộc họp."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"重要（じゅうよう）＿、　＿審査（しんさ）","items":[{"text":"重要＿","ruby":[{"t":"重要","r":"じゅうよう"},{"t":"＿"}],"pattern":true},{"text":"＿審査","ruby":[{"t":"＿"},{"t":"審査","r":"しんさ"}],"pattern":true}],"meaning_vi":"Tài liệu quan trọng, giấy tờ quan trọng/ thẩm tra hồ sơ"}
+      ]
+    },
+    {
+      "no":382,
+      "word":"題名",
+      "reading":"だいめい",
+      "word_raw":"題名（だいめい）",
+      "ruby":[{"t":"題名","r":"だいめい"}],
+      "han_viet":"đề danh",
+      "meaning_vi":"nhan đề, tên ( sách...)",
+      "examples":[
+        {"no":1,"jp":"コンクールに出す作品に題名をつける","jp_raw":"コンクールに出（だ）す作品（さくひん）に題名（だいめい）をつける","jp_ruby":[{"t":"コンクールに"},{"t":"出","r":"だ"},{"t":"す"},{"t":"作品","r":"さくひん"},{"t":"に"},{"t":"題名","r":"だいめい"},{"t":"をつける"}],"vi":"Đặt tên cho tác phẩm tham gia cuộc thi."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿をつける","items":[{"text":"＿をつける","ruby":[{"t":"＿をつける"}],"pattern":true}],"meaning_vi":"Gắn tên, đặt tên cho"},
+        {"type":"synonym","marker":"類","raw":"タイトル","items":[{"text":"タイトル","ruby":[{"t":"タイトル"}]}],"meaning_vi":"Tiêu đề"}
+      ]
+    },
+    {
+      "no":383,
+      "word":"条件",
+      "reading":"じょうけん",
+      "word_raw":"条件（じょうけん）",
+      "ruby":[{"t":"条件","r":"じょうけん"}],
+      "han_viet":"điều kiện",
+      "meaning_vi":"điều kiện",
+      "examples":[
+        {"no":1,"jp":"運転免許を持っていることが採用の条件だ","jp_raw":"運転（うんてん）免許（めんきょ）を持（も）っていることが採用（さいよう）の条件（じょうけん）だ","jp_ruby":[{"t":"運転","r":"うんてん"},{"t":"免許","r":"めんきょ"},{"t":"を"},{"t":"持","r":"も"},{"t":"っていることが"},{"t":"採用","r":"さいよう"},{"t":"の"},{"t":"条件","r":"じょうけん"},{"t":"だ"}],"vi":"Điều kiện tuyển dụng là phải có bằng lái xe."},
+        {"no":2,"jp":"このアルバイトは条件がいい","jp_raw":"このアルバイトは条件（じょうけん）がいい","jp_ruby":[{"t":"このアルバイトは"},{"t":"条件","r":"じょうけん"},{"t":"がいい"}],"vi":"Công việc làm thêm này có điều kiện tốt."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿がある  ない、　＿が合（あ）う、　＿がいい  悪（わる）い","items":[{"text":"＿がある  ない","ruby":[{"t":"＿がある  ない"}],"pattern":true},{"text":"＿が合う","ruby":[{"t":"＿が"},{"t":"合","r":"あ"},{"t":"う"}],"pattern":true},{"text":"＿がいい  悪い","ruby":[{"t":"＿がいい  "},{"t":"悪","r":"わる"},{"t":"い"}],"pattern":true}],"meaning_vi":"Có điều kiện <=> không có điều kiện, đáp ứng điều kiện, điều kiện phù hợp, điều kiện tốt <=> điều kiện xấu"},
+        {"type":"compound","marker":"合","raw":"必要（ひつよう）＿","items":[{"text":"必要＿","ruby":[{"t":"必要","r":"ひつよう"},{"t":"＿"}],"pattern":true}],"meaning_vi":"Điều kiện cần thiết"}
+      ]
+    }
+  ]
+}

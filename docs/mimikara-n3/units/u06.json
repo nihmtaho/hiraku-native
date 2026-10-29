@@ -1,0 +1,638 @@
+{
+  "book": "Mimikara Oboeru N3 Goi",
+  "unit": "06",
+  "cd": null,
+  "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=06",
+  "count": 40,
+  "entries": [
+    {
+      "no":511,
+      "word":"クラスメート",
+      "reading":"クラスメート",
+      "word_raw":"クラスメート",
+      "ruby":[{"t":"クラスメート"}],
+      "han_viet":null,
+      "meaning_vi":"bạn cùng lớp (classmate)",
+      "examples":[
+        {"no":1,"jp":"クラスメートと仲よくする","jp_raw":"クラスメートと仲（なか）よくする","jp_ruby":[{"t":"クラスメートと"},{"t":"仲","r":"なか"},{"t":"よくする"}],"vi":"Quan hệ tốt với bạn trong lớp."}
+      ],
+      "related":[]
+    },
+    {
+      "no":512,
+      "word":"グループ",
+      "reading":"グループ",
+      "word_raw":"グループ",
+      "ruby":[{"t":"グループ"}],
+      "han_viet":null,
+      "meaning_vi":"nhóm (group)",
+      "examples":[
+        {"no":1,"jp":"３人のグループで旅行をする","jp_raw":"３人（にん）のグループで旅行（りょこう）をする","jp_ruby":[{"t":"３"},{"t":"人","r":"にん"},{"t":"のグループで"},{"t":"旅行","r":"りょこう"},{"t":"をする"}],"vi":"Du lịch nhóm 3 người."},
+        {"no":2,"jp":"形容詞は、イ形容詞とナ形容詞の二つのグループに分かれる","jp_raw":"形容詞（けいようし）は、イ形容詞（けいようし）とナ形容詞（けいようし）の二（ふた）つのグループに分（わ）かれる","jp_ruby":[{"t":"形容詞","r":"けいようし"},{"t":"は、イ"},{"t":"形容詞","r":"けいようし"},{"t":"とナ"},{"t":"形容詞","r":"けいようし"},{"t":"の"},{"t":"二","r":"ふた"},{"t":"つのグループに"},{"t":"分","r":"わ"},{"t":"かれる"}],"vi":"Tính từ thì chia làm hai nhóm là tính từ đuôi I và tính từ đuôi na."}
+      ],
+      "related":[
+        {"type":"related","marker":"関","raw":"ペア","items":[{"text":"ペア","ruby":[{"t":"ペア"}]}],"meaning_vi":"Cặp"}
+      ]
+    },
+    {
+      "no":513,
+      "word":"チーム",
+      "reading":"チーム",
+      "word_raw":"チーム",
+      "ruby":[{"t":"チーム"}],
+      "han_viet":null,
+      "meaning_vi":"đội, nhóm (team)",
+      "examples":[
+        {"no":1,"jp":"私たちのチームが勝った","jp_raw":"私（わたし）たちのチームが勝（か）った","jp_ruby":[{"t":"私","r":"わたし"},{"t":"たちのチームが"},{"t":"勝","r":"か"},{"t":"った"}],"vi":"Đội chúng ta đã thắng."},
+        {"no":2,"jp":"チームを組んで調査する","jp_raw":"チームを組（く）んで調査（ちょうさ）する","jp_ruby":[{"t":"チームを"},{"t":"組","r":"く"},{"t":"んで"},{"t":"調査","r":"ちょうさ"},{"t":"する"}],"vi":"Lập đội và điều tra."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿を組（く）む","items":[{"text":"＿を組む","ruby":[{"t":"＿を"},{"t":"組","r":"く"},{"t":"む"}],"pattern":true}],"meaning_vi":"Lập đội"},
+        {"type":"compound","marker":"合","raw":"＿プレー、＿ワーク、＿メート、｛野球（やきゅう）／サッカー　…｝＋チーム","items":[{"text":"＿プレー","ruby":[{"t":"＿プレー"}],"pattern":true},{"text":"＿ワーク","ruby":[{"t":"＿ワーク"}],"pattern":true},{"text":"＿メート","ruby":[{"t":"＿メート"}],"pattern":true},{"text":"｛野球／サッカー　…｝＋チーム","ruby":[{"t":"｛"},{"t":"野球","r":"やきゅう"},{"t":"／サッカー　…｝＋チーム"}],"pattern":true}],"meaning_vi":"Lối chơi phối hợp đồng đội, teamwork làm việc nhóm, đồng đội, đội bóng chày, đội bóng đá"}
+      ]
+    },
+    {
+      "no":514,
+      "word":"プロフェッショナル（プロ）",
+      "reading":"プロフェッショナル（プロ）",
+      "word_raw":"プロフェッショナル（プロ）",
+      "ruby":[{"t":"プロフェッショナル（プロ）"}],
+      "han_viet":null,
+      "meaning_vi":"chuyên nghiệp, nhà nghề (professional)",
+      "examples":[
+        {"no":1,"jp":"プロのサッカー選手になりたい","jp_raw":"プロのサッカー選手（せんしゅ）になりたい","jp_ruby":[{"t":"プロのサッカー"},{"t":"選手","r":"せんしゅ"},{"t":"になりたい"}],"vi":"Tôi muốn trở thành một cầu thủ bóng đá chuyên nghiệp."},
+        {"no":2,"jp":"彼女の料理はプロ並みだ","jp_raw":"彼女（かのじょ）の料理（りょうり）はプロ並（な）みだ","jp_ruby":[{"t":"彼女","r":"かのじょ"},{"t":"の"},{"t":"料理","r":"りょうり"},{"t":"はプロ"},{"t":"並","r":"な"},{"t":"みだ"}],"vi":"Món ăn của cô ấy ở trình pro rồi."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"プロ＋｛野球（やきゅう）／レスリング　…｝","items":[{"text":"プロ＋｛野球／レスリング　…｝","ruby":[{"t":"プロ＋｛"},{"t":"野球","r":"やきゅう"},{"t":"／レスリング　…｝"}],"pattern":true}],"meaning_vi":"{Bóng chày/ đấu vật…} chuyên nghiệp."},
+        {"type":"antonym","marker":"対","raw":"アマ（チュア）","items":[{"text":"アマ（チュア）","ruby":[{"t":"アマ（チュア）"}]}],"meaning_vi":"Nghiệp dư"},
+        {"type":"synonym","marker":"類","raw":"くろうと","items":[{"text":"くろうと","ruby":[{"t":"くろうと"}]}],"meaning_vi":"Giỏi, chuyên nghiệp"}
+      ]
+    },
+    {
+      "no":515,
+      "word":"アマチュア（アマ）",
+      "reading":"アマチュア（アマ）",
+      "word_raw":"アマチュア（アマ）",
+      "ruby":[{"t":"アマチュア（アマ）"}],
+      "han_viet":null,
+      "meaning_vi":"không chuyên, nghiệp dư (amateur)",
+      "examples":[
+        {"no":1,"jp":"この絵はアマチュアの作品とは思えないほどすばらしい","jp_raw":"この絵（え）はアマチュアの作品（さくひん）とは思（おも）えないほどすばらしい","jp_ruby":[{"t":"この"},{"t":"絵","r":"え"},{"t":"はアマチュアの"},{"t":"作品","r":"さくひん"},{"t":"とは"},{"t":"思","r":"おも"},{"t":"えないほどすばらしい"}],"vi":"Bức tranh tuyệt đến mức tôi không thể nghĩ đó là một tác phẩm nghiệp dư."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"アマチュア＋｛野球（やきゅう）／写真家（しゃしんか）　…｝","items":[{"text":"アマチュア＋｛野球／写真家　…｝","ruby":[{"t":"アマチュア＋｛"},{"t":"野球","r":"やきゅう"},{"t":"／"},{"t":"写真家","r":"しゃしんか"},{"t":"　…｝"}],"pattern":true}],"meaning_vi":"{Bóng chày/ nhiếp ảnh gia...} nghiệp dư."},
+        {"type":"antonym","marker":"対","raw":"プロ　（フェッショナル）","items":[{"text":"プロ　（フェッショナル）","ruby":[{"t":"プロ　（フェッショナル）"}]}],"meaning_vi":"Chuyên nghiệp, pro"},
+        {"type":"synonym","marker":"類","raw":"しろうと","items":[{"text":"しろうと","ruby":[{"t":"しろうと"}]}],"meaning_vi":"Người không chuyên"}
+      ]
+    },
+    {
+      "no":516,
+      "word":"トレーニング",
+      "reading":"トレーニング",
+      "word_raw":"トレーニング",
+      "ruby":[{"t":"トレーニング"}],
+      "han_viet":null,
+      "meaning_vi":"đào tạo, huấn luyện (training)",
+      "examples":[
+        {"no":1,"jp":"勝つためには毎日のトレーニングが必要だ","jp_raw":"勝（か）つためには毎日（まいにち）のトレーニングが必要（ひつよう）だ","jp_ruby":[{"t":"勝","r":"か"},{"t":"つためには"},{"t":"毎日","r":"まいにち"},{"t":"のトレーニングが"},{"t":"必要","r":"ひつよう"},{"t":"だ"}],"vi":"Để chiến thắng cần tập luyện mỗi ngày."}
+      ],
+      "related":[
+        {"type":"synonym","marker":"類","raw":"練習（れんしゅう）、訓練（くんれん）","items":[{"text":"練習","ruby":[{"t":"練習","r":"れんしゅう"}]},{"text":"訓練","ruby":[{"t":"訓練","r":"くんれん"}]}],"meaning_vi":"Luyện tập, rèn luyện"}
+      ]
+    },
+    {
+      "no":517,
+      "word":"マッサージ",
+      "reading":"マッサージ",
+      "word_raw":"マッサージ",
+      "ruby":[{"t":"マッサージ"}],
+      "han_viet":null,
+      "meaning_vi":"xoa bóp, mát-xa (massage)",
+      "examples":[
+        {"no":1,"jp":"頭をマッサージしてもらうと気持ちがいい","jp_raw":"頭（あたま）をマッサージしてもらうと気持（きも）ちがいい","jp_ruby":[{"t":"頭","r":"あたま"},{"t":"をマッサージしてもらうと"},{"t":"気持","r":"きも"},{"t":"ちがいい"}],"vi":"Cảm giác thật tuyệt khi được mát xa đầu."}
+      ],
+      "related":[]
+    },
+    {
+      "no":518,
+      "word":"アドバイス",
+      "reading":"アドバイス",
+      "word_raw":"アドバイス",
+      "ruby":[{"t":"アドバイス"}],
+      "han_viet":null,
+      "meaning_vi":"lời khuyên (advice)",
+      "examples":[
+        {"no":1,"jp":"後輩に仕事のやり方についてアドバイスをする","jp_raw":"後輩（こうはい）に仕事（しごと）のやり方（かた）についてアドバイスをする","jp_ruby":[{"t":"後輩","r":"こうはい"},{"t":"に"},{"t":"仕事","r":"しごと"},{"t":"のやり"},{"t":"方","r":"かた"},{"t":"についてアドバイスをする"}],"vi":"Tôi khuyên đàn em về cách làm việc."},
+        {"no":2,"jp":"「何かアドバイスをいただけませんか」","jp_raw":"「何（なに）かアドバイスをいただけませんか」","jp_ruby":[{"t":"「"},{"t":"何","r":"なに"},{"t":"かアドバイスをいただけませんか」"}],"vi":"\"Cho tôi lời khuyên gì đó được không.\""}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿を与（あた）える、＿をもらう、＿を受（う）ける","items":[{"text":"＿を与える","ruby":[{"t":"＿を"},{"t":"与","r":"あた"},{"t":"える"}],"pattern":true},{"text":"＿をもらう","ruby":[{"t":"＿をもらう"}],"pattern":true},{"text":"＿を受ける","ruby":[{"t":"＿を"},{"t":"受","r":"う"},{"t":"ける"}],"pattern":true}],"meaning_vi":"Cho lời khuyên, nhận lời khuyên"}
+      ]
+    },
+    {
+      "no":519,
+      "word":"アイデア",
+      "reading":"アイデア",
+      "word_raw":"アイデア",
+      "ruby":[{"t":"アイデア"}],
+      "han_viet":null,
+      "meaning_vi":"ý tưởng (idea)",
+      "examples":[
+        {"no":1,"jp":"いいアイデアが浮かんだ","jp_raw":"いいアイデアが浮（う）かんだ","jp_ruby":[{"t":"いいアイデアが"},{"t":"浮","r":"う"},{"t":"かんだ"}],"vi":"Đã nảy ra ý tưởng hay."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿が浮（う）かぶ、＿を思（おも）いつく","items":[{"text":"＿が浮かぶ","ruby":[{"t":"＿が"},{"t":"浮","r":"う"},{"t":"かぶ"}],"pattern":true},{"text":"＿を思いつく","ruby":[{"t":"＿を"},{"t":"思","r":"おも"},{"t":"いつく"}],"pattern":true}],"meaning_vi":"Nảy ra, nghĩ ra ý tưởng"},
+        {"type":"compound","marker":"合","raw":"グッド＿","items":[{"text":"グッド＿","ruby":[{"t":"グッド＿"}],"pattern":true}],"meaning_vi":"Ý tưởng hay."}
+      ]
+    },
+    {
+      "no":520,
+      "word":"トップ",
+      "reading":"トップ",
+      "word_raw":"トップ",
+      "ruby":[{"t":"トップ"}],
+      "han_viet":null,
+      "meaning_vi":"đầu, đỉnh, đầu tiên (top)",
+      "examples":[
+        {"no":1,"jp":"彼はクラスでトップの成績だ","jp_raw":"彼（かれ）はクラスでトップの成績（せいせき）だ","jp_ruby":[{"t":"彼","r":"かれ"},{"t":"はクラスでトップの"},{"t":"成績","r":"せいせき"},{"t":"だ"}],"vi":"Anh ấy có thành tích đứng đầu."},
+        {"no":2,"jp":"日本の科学技術は、世界のトップレベルにある","jp_raw":"日本（にほん）の科学（かがく）技術（ぎじゅつ）は、世界（せかい）のトップレベルにある","jp_ruby":[{"t":"日本","r":"にほん"},{"t":"の"},{"t":"科学","r":"かがく"},{"t":"技術","r":"ぎじゅつ"},{"t":"は、"},{"t":"世界","r":"せかい"},{"t":"のトップレベルにある"}],"vi":"Khoa học kĩ thuật của Nhật Bản thuộc trình độ đỉnh của thế giới."},
+        {"no":3,"jp":"高橋選手がトップでゴールした","jp_raw":"高橋（たかはし）選手（せんしゅ）がトップでゴールした","jp_ruby":[{"t":"高橋","r":"たかはし"},{"t":"選手","r":"せんしゅ"},{"t":"がトップでゴールした"}],"vi":"Tuyển thủ Takahashi đã về đích đầu tiên( marathon)."},
+        {"no":4,"jp":"「これからスピーチコンテストを始めます。トップは中国のチンさんです」","jp_raw":"「これからスピーチコンテストを始（はじ）めます。トップは中国（ちゅうごく）のチンさんです」","jp_ruby":[{"t":"「これからスピーチコンテストを"},{"t":"始","r":"はじ"},{"t":"めます。トップは"},{"t":"中国","r":"ちゅうごく"},{"t":"のチンさんです」"}],"vi":"\"Bây giờ sẽ bắt đầu cuộc thi thuyết trình. Đầu tiên sẽ là bạn Chin đến từ Trung Quốc.\""},
+        {"no":5,"jp":"新聞のトップを見る","jp_raw":"新聞（しんぶん）のトップを見（み）る","jp_ruby":[{"t":"新聞","r":"しんぶん"},{"t":"のトップを"},{"t":"見","r":"み"},{"t":"る"}],"vi":"Đọc tin tức hàng đầu( trang đầu) tờ báo."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿バッター、＿ニュース、＿クラス、＿レベル","items":[{"text":"＿バッター","ruby":[{"t":"＿バッター"}],"pattern":true},{"text":"＿ニュース","ruby":[{"t":"＿ニュース"}],"pattern":true},{"text":"＿クラス","ruby":[{"t":"＿クラス"}],"pattern":true},{"text":"＿レベル","ruby":[{"t":"＿レベル"}],"pattern":true}],"meaning_vi":"Người đánh bóng đầu tiên, tin tức nổi bật nhất, đẳng cấp hàng đầu, trình độ cao nhất"},
+        {"type":"synonym","marker":"類","raw":"最初（さいしょ）、一番（いちばん）、１位（い）、首位（しゅい）、先頭（せんとう）","items":[{"text":"最初","ruby":[{"t":"最初","r":"さいしょ"}]},{"text":"一番","ruby":[{"t":"一番","r":"いちばん"}]},{"text":"１位","ruby":[{"t":"１"},{"t":"位","r":"い"}]},{"text":"首位","ruby":[{"t":"首位","r":"しゅい"}]},{"text":"先頭","ruby":[{"t":"先頭","r":"せんとう"}]}],"meaning_vi":"Thứ 1, vị trí đứng đầu, tiên phong"}
+      ]
+    },
+    {
+      "no":521,
+      "word":"スピード",
+      "reading":"スピード",
+      "word_raw":"スピード",
+      "ruby":[{"t":"スピード"}],
+      "han_viet":null,
+      "meaning_vi":"tốc độ (speed)",
+      "examples":[
+        {"no":1,"jp":"「運転手さん、もう少しスピードを上げてください」","jp_raw":"「運転手（うんてんしゅ）さん、もう少（すこ）しスピードを上（あ）げてください」","jp_ruby":[{"t":"「"},{"t":"運転手","r":"うんてんしゅ"},{"t":"さん、もう"},{"t":"少","r":"すこ"},{"t":"しスピードを"},{"t":"上","r":"あ"},{"t":"げてください」"}],"vi":"\"Bác tài ơi, chạy nhanh hơn một chút giúp với.\""},
+        {"no":2,"jp":"先生の話すスピードが速すぎて理解できない","jp_raw":"先生（せんせい）の話（はな）すスピードが速（はや）すぎて理解（りかい）できない","jp_ruby":[{"t":"先生","r":"せんせい"},{"t":"の"},{"t":"話","r":"はな"},{"t":"すスピードが"},{"t":"速","r":"はや"},{"t":"すぎて"},{"t":"理解","r":"りかい"},{"t":"できない"}],"vi":"Tốc độ nói chuyện của thầy quá nhanh tôi không hiểu nổi."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿が速（はや）い  遅（おそ）い、＿が出（で）る、＿を出（だ）す、＿を上（あ）げる  落（お）とす","items":[{"text":"＿が速い  遅い","ruby":[{"t":"＿が"},{"t":"速","r":"はや"},{"t":"い  "},{"t":"遅","r":"おそ"},{"t":"い"}],"pattern":true},{"text":"＿が出る","ruby":[{"t":"＿が"},{"t":"出","r":"で"},{"t":"る"}],"pattern":true},{"text":"＿を出す","ruby":[{"t":"＿を"},{"t":"出","r":"だ"},{"t":"す"}],"pattern":true},{"text":"＿を上げる  落とす","ruby":[{"t":"＿を"},{"t":"上","r":"あ"},{"t":"げる  "},{"t":"落","r":"お"},{"t":"とす"}],"pattern":true}],"meaning_vi":"Tốc độ nhanh<=> tốc độ chậm, đạt tốc độ,tăng tốc độ <=> giảm tốc độ"},
+        {"type":"compound","marker":"合","raw":"＿違反（いはん）、＿アップ、＿オーバー","items":[{"text":"＿違反","ruby":[{"t":"＿"},{"t":"違反","r":"いはん"}],"pattern":true},{"text":"＿アップ","ruby":[{"t":"＿アップ"}],"pattern":true},{"text":"＿オーバー","ruby":[{"t":"＿オーバー"}],"pattern":true}],"meaning_vi":"Vi phạm tốc độ, tăng tốc độ, vượt quá tốc độ"}
+      ]
+    },
+    {
+      "no":522,
+      "word":"ラッシュ",
+      "reading":"ラッシュ",
+      "word_raw":"ラッシュ",
+      "ruby":[{"t":"ラッシュ"}],
+      "han_viet":null,
+      "meaning_vi":"cao điểm, giờ cao điểm (rush)",
+      "examples":[
+        {"no":1,"jp":"年末年始は、帰省ラッシュでチケットがとりにくい","jp_raw":"年末（ねんまつ）年始（ねんし）は、帰省（きせい）ラッシュでチケットがとりにくい","jp_ruby":[{"t":"年末","r":"ねんまつ"},{"t":"年始","r":"ねんし"},{"t":"は、"},{"t":"帰省","r":"きせい"},{"t":"ラッシュでチケットがとりにくい"}],"vi":"Đầu năm cuối năm là thời gian cao điểm khó mua vé."},
+        {"no":2,"jp":"ラッシュ（＜ラッシュアワー）の時間帯に電車に乗るのは大変だ","jp_raw":"ラッシュ（＜ラッシュアワー）の時間（じかん）帯（たい）に電車（でんしゃ）に乗（の）るのは大変（たいへん）だ","jp_ruby":[{"t":"ラッシュ（＜ラッシュアワー）の"},{"t":"時間","r":"じかん"},{"t":"帯","r":"たい"},{"t":"に"},{"t":"電車","r":"でんしゃ"},{"t":"に"},{"t":"乗","r":"の"},{"t":"るのは"},{"t":"大変","r":"たいへん"},{"t":"だ"}],"vi":"Vào giờ cao điểm đi tàu rất vất vả."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"帰省（きせい）＿、通勤（つうきん）＿、通学（つうがく）＿","items":[{"text":"帰省＿","ruby":[{"t":"帰省","r":"きせい"},{"t":"＿"}],"pattern":true},{"text":"通勤＿","ruby":[{"t":"通勤","r":"つうきん"},{"t":"＿"}],"pattern":true},{"text":"通学＿","ruby":[{"t":"通学","r":"つうがく"},{"t":"＿"}],"pattern":true}],"meaning_vi":"Thời gian về quê cao điểm/ giờ đi làm cao điểm/ giờ đi học cao điểm."}
+      ]
+    },
+    {
+      "no":523,
+      "word":"バイク",
+      "reading":"バイク",
+      "word_raw":"バイク",
+      "ruby":[{"t":"バイク"}],
+      "han_viet":null,
+      "meaning_vi":"xe mô tô (motobike)",
+      "examples":[],
+      "related":[
+        {"type":"synonym","marker":"類","raw":"オートバイ、原付（げんつき）＜原動機（げんどうき）付（つ）き自転車（じてんしゃ）","items":[{"text":"オートバイ","ruby":[{"t":"オートバイ"}]},{"text":"原付＜原動機付き自転車","ruby":[{"t":"原付","r":"げんつき"},{"t":"＜"},{"t":"原動機","r":"げんどうき"},{"t":"付","r":"つ"},{"t":"き"},{"t":"自転車","r":"じてんしゃ"}]}],"meaning_vi":"Motobike/ xe gắn máy"},
+        {"type":"related","marker":"関","raw":"自転車（じてんしゃ）","items":[{"text":"自転車","ruby":[{"t":"自転車","r":"じてんしゃ"}]}],"meaning_vi":"Xe đạp"}
+      ]
+    },
+    {
+      "no":524,
+      "word":"ヘルメット",
+      "reading":"ヘルメット",
+      "word_raw":"ヘルメット",
+      "ruby":[{"t":"ヘルメット"}],
+      "han_viet":null,
+      "meaning_vi":"mũ bảo hiểm (helmet)",
+      "examples":[
+        {"no":1,"jp":"バイクに乗るときは、ヘルメットをかぶる","jp_raw":"バイクに乗（の）るときは、ヘルメットをかぶる","jp_ruby":[{"t":"バイクに"},{"t":"乗","r":"の"},{"t":"るときは、ヘルメットをかぶる"}],"vi":"Khi đi xe máy thì đội mũ bảo hiểm."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿をかぶる  ぬぐ、＿をとる","items":[{"text":"＿をかぶる  ぬぐ","ruby":[{"t":"＿をかぶる  ぬぐ"}],"pattern":true},{"text":"＿をとる","ruby":[{"t":"＿をとる"}],"pattern":true}],"meaning_vi":"Đội mũ <=> bỏ mũ, cởi mũ ra."}
+      ]
+    },
+    {
+      "no":525,
+      "word":"コンタクトレンズ",
+      "reading":"コンタクトレンズ",
+      "word_raw":"コンタクトレンズ",
+      "ruby":[{"t":"コンタクトレンズ"}],
+      "han_viet":null,
+      "meaning_vi":"kính áp tròng (contact lens)",
+      "examples":[],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿を｛する／入（い）れる／はめる／つける｝  ｛はずす／とる｝","items":[{"text":"＿を｛する／入れる／はめる／つける｝  ｛はずす／とる｝","ruby":[{"t":"＿を｛する／"},{"t":"入","r":"い"},{"t":"れる／はめる／つける｝  ｛はずす／とる｝"}],"pattern":true}],"meaning_vi":"Đeo kính <=> bỏ kính ra"},
+        {"type":"related","marker":"関","raw":"めがね","items":[{"text":"めがね","ruby":[{"t":"めがね"}]}],"meaning_vi":"Kính"}
+      ]
+    },
+    {
+      "no":526,
+      "word":"ガラス",
+      "reading":"ガラス",
+      "word_raw":"ガラス",
+      "ruby":[{"t":"ガラス"}],
+      "han_viet":null,
+      "meaning_vi":"kính (glass)",
+      "examples":[
+        {"no":1,"jp":"ボールをぶつけて窓ガラスを割ってしまった","jp_raw":"ボールをぶつけて窓（まど）ガラスを割（わ）ってしまった","jp_ruby":[{"t":"ボールをぶつけて"},{"t":"窓","r":"まど"},{"t":"ガラスを"},{"t":"割","r":"わ"},{"t":"ってしまった"}],"vi":"Đánh bóng làm bể kính cửa sổ."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"窓（まど）＿","items":[{"text":"窓＿","ruby":[{"t":"窓","r":"まど"},{"t":"＿"}],"pattern":true}],"meaning_vi":"Kính cửa sổ"},
+        {"type":"related","marker":"関","raw":"グラス","items":[{"text":"グラス","ruby":[{"t":"グラス"}]}],"meaning_vi":"Cốc thủy tinh"}
+      ]
+    },
+    {
+      "no":527,
+      "word":"プラスチック",
+      "reading":"プラスチック",
+      "word_raw":"プラスチック",
+      "ruby":[{"t":"プラスチック"}],
+      "han_viet":null,
+      "meaning_vi":"nhựa (plastic)",
+      "examples":[
+        {"no":1,"jp":"「プラスチック製品は生ごみの中にいれないでください」","jp_raw":"「プラスチック製品（せいひん）は生（なま）ごみの中（なか）にいれないでください」","jp_ruby":[{"t":"「プラスチック"},{"t":"製品","r":"せいひん"},{"t":"は"},{"t":"生","r":"なま"},{"t":"ごみの"},{"t":"中","r":"なか"},{"t":"にいれないでください」"}],"vi":"Đồ nhựa không được cho vào rác phân hủy."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿製品（せいひん）","items":[{"text":"＿製品","ruby":[{"t":"＿"},{"t":"製品","r":"せいひん"}],"pattern":true}],"meaning_vi":"Sản phẩm nhựa"},
+        {"type":"related","marker":"関","raw":"ビニール、ビニール袋（ぶくろ）、ポリエチレン、ポリ袋（ぶくろ）","items":[{"text":"ビニール","ruby":[{"t":"ビニール"}]},{"text":"ビニール袋","ruby":[{"t":"ビニール"},{"t":"袋","r":"ぶくろ"}]},{"text":"ポリエチレン","ruby":[{"t":"ポリエチレン"}]},{"text":"ポリ袋","ruby":[{"t":"ポリ"},{"t":"袋","r":"ぶくろ"}]}],"meaning_vi":"Nilon, túi nilon, poliêtylen, túi nhựa poli"}
+      ]
+    },
+    {
+      "no":528,
+      "word":"ベランダ",
+      "reading":"ベランダ",
+      "word_raw":"ベランダ",
+      "ruby":[{"t":"ベランダ"}],
+      "han_viet":null,
+      "meaning_vi":"ban công (balcony)",
+      "examples":[
+        {"no":1,"jp":"ベランダに洗たく物を干す","jp_raw":"ベランダに洗（せん）たく物（もの）を干（ほ）す","jp_ruby":[{"t":"ベランダに"},{"t":"洗","r":"せん"},{"t":"たく"},{"t":"物","r":"もの"},{"t":"を"},{"t":"干","r":"ほ"},{"t":"す"}],"vi":"Phơi đồ giặt ở ban công."}
+      ],
+      "related":[
+        {"type":"synonym","marker":"類","raw":"バルコニー","items":[{"text":"バルコニー","ruby":[{"t":"バルコニー"}]}],"meaning_vi":"Ban công"}
+      ]
+    },
+    {
+      "no":529,
+      "word":"ペット",
+      "reading":"ペット",
+      "word_raw":"ペット",
+      "ruby":[{"t":"ペット"}],
+      "han_viet":null,
+      "meaning_vi":"vật nuôi, thú cưng (pet)",
+      "examples":[
+        {"no":1,"jp":"アパートなので、ペットが飼えない","jp_raw":"アパートなので、ペットが飼（か）えない","jp_ruby":[{"t":"アパートなので、ペットが"},{"t":"飼","r":"か"},{"t":"えない"}],"vi":"Vì là chung cư nên không được nuôi động vật."},
+        {"no":2,"jp":"ペットの犬にかまれた","jp_raw":"ペットの犬（いぬ）にかまれた","jp_ruby":[{"t":"ペットの"},{"t":"犬","r":"いぬ"},{"t":"にかまれた"}],"vi":"Bị chó cắn."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿を飼（か）う","items":[{"text":"＿を飼う","ruby":[{"t":"＿を"},{"t":"飼","r":"か"},{"t":"う"}],"pattern":true}],"meaning_vi":"Nuôi thú cưng"},
+        {"type":"compound","marker":"合","raw":"＿ショップ、＿フード","items":[{"text":"＿ショップ","ruby":[{"t":"＿ショップ"}],"pattern":true},{"text":"＿フード","ruby":[{"t":"＿フード"}],"pattern":true}],"meaning_vi":"Cửa hàng thú cưng, thức ăn thú cưng"}
+      ]
+    },
+    {
+      "no":530,
+      "word":"ベンチ",
+      "reading":"ベンチ",
+      "word_raw":"ベンチ",
+      "ruby":[{"t":"ベンチ"}],
+      "han_viet":null,
+      "meaning_vi":"băng ghế dài (bench)",
+      "examples":[
+        {"no":1,"jp":"公園のベンチで休む","jp_raw":"公園（こうえん）のベンチで休（やす）む","jp_ruby":[{"t":"公園","r":"こうえん"},{"t":"のベンチで"},{"t":"休","r":"やす"},{"t":"む"}],"vi":"Nghỉ ngơi trên ghế dài của công viên."},
+        {"no":2,"jp":"駅のホームのベンチにすわる","jp_raw":"駅（えき）のホームのベンチにすわる","jp_ruby":[{"t":"駅","r":"えき"},{"t":"のホームのベンチにすわる"}],"vi":"Ngồi trên ghế đợi của nhà ga."}
+      ],
+      "related":[]
+    },
+    {
+      "no":531,
+      "word":"デザイン",
+      "reading":"デザイン",
+      "word_raw":"デザイン",
+      "ruby":[{"t":"デザイン"}],
+      "han_viet":null,
+      "meaning_vi":"thiết kế (design)",
+      "examples":[
+        {"no":1,"jp":"あのドレスは色もデザインもいい","jp_raw":"あのドレスは色（いろ）もデザインもいい","jp_ruby":[{"t":"あのドレスは"},{"t":"色","r":"いろ"},{"t":"もデザインもいい"}],"vi":"Bộ trang phục kia màu cũng như thiết kế đều đẹp."},
+        {"no":2,"jp":"おしゃれなデザインのブーツ","jp_raw":"おしゃれなデザインのブーツ","jp_ruby":[{"t":"おしゃれなデザインのブーツ"}],"vi":"Đôi giày boot có thiết kế rất thời trang."},
+        {"no":3,"jp":"私たちの学校の制服は、有名なデザイナーがデザインしたものだ","jp_raw":"私（わたし）たちの学校（がっこう）の制服（せいふく）は、有名（ゆうめい）なデザイナーがデザインしたものだ","jp_ruby":[{"t":"私","r":"わたし"},{"t":"たちの"},{"t":"学校","r":"がっこう"},{"t":"の"},{"t":"制服","r":"せいふく"},{"t":"は、"},{"t":"有名","r":"ゆうめい"},{"t":"なデザイナーがデザインしたものだ"}],"vi":"Áo đồng phục của chúng ta là do một nhà thiết kế nổi tiếng thiết kế."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"グラフィック＿、インテリア＿","items":[{"text":"グラフィック＿","ruby":[{"t":"グラフィック＿"}],"pattern":true},{"text":"インテリア＿","ruby":[{"t":"インテリア＿"}],"pattern":true}],"meaning_vi":"Thiết kế đồ họa/ thiết kế nội thất"},
+        {"type":"related","marker":"関","raw":"デザイナー","items":[{"text":"デザイナー","ruby":[{"t":"デザイナー"}]}],"meaning_vi":"Nhà thiết kế"}
+      ]
+    },
+    {
+      "no":532,
+      "word":"バーゲンセール",
+      "reading":"バーゲンセール",
+      "word_raw":"バーゲンセール",
+      "ruby":[{"t":"バーゲンセール"}],
+      "han_viet":null,
+      "meaning_vi":"hạ giá, giảm giá (sale)",
+      "examples":[
+        {"no":1,"jp":"デパートで今バーゲンセールをしている","jp_raw":"デパートで今（いま）バーゲンセールをしている","jp_ruby":[{"t":"デパートで"},{"t":"今","r":"いま"},{"t":"バーゲンセールをしている"}],"vi":"Đang có giảm giá trong trung tâm mua sắm."},
+        {"no":2,"jp":"「このバッグ、バーゲンで買ったの」","jp_raw":"「このバッグ、バーゲンで買（か）ったの」","jp_ruby":[{"t":"「このバッグ、バーゲンで"},{"t":"買","r":"か"},{"t":"ったの」"}],"vi":"\"Cái túi này là tôi mua lúc giảm giá.\""}
+      ],
+      "related":[]
+    },
+    {
+      "no":533,
+      "word":"パート",
+      "reading":"パート",
+      "word_raw":"パート",
+      "ruby":[{"t":"パート"}],
+      "han_viet":null,
+      "meaning_vi":"việc làm part time, một phần (part-time job, part)",
+      "examples":[
+        {"no":1,"jp":"母は週三日、スーパーでパートをしている","jp_raw":"母（はは）は週（しゅう）三日（みっか）、スーパーでパートをしている","jp_ruby":[{"t":"母","r":"はは"},{"t":"は"},{"t":"週","r":"しゅう"},{"t":"三日","r":"みっか"},{"t":"、スーパーでパートをしている"}],"vi":"Mẹ tôi làm thêm ở siêu thị 3 ngày 1 tuần."},
+        {"no":2,"jp":"パートで働く","jp_raw":"パートで働（はたら）く","jp_ruby":[{"t":"パートで"},{"t":"働","r":"はたら"},{"t":"く"}],"vi":"Làm thêm."},
+        {"no":3,"jp":"合唱でソプラノのパートを歌っている","jp_raw":"合唱（がっしょう）でソプラノのパートを歌（うた）っている","jp_ruby":[{"t":"合唱","r":"がっしょう"},{"t":"でソプラノのパートを"},{"t":"歌","r":"うた"},{"t":"っている"}],"vi":"Tôi hát trong phần nữ cao của hợp xướng."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿タイム、＿タイマー","items":[{"text":"＿タイム","ruby":[{"t":"＿タイム"}],"pattern":true},{"text":"＿タイマー","ruby":[{"t":"＿タイマー"}],"pattern":true}],"meaning_vi":"Việc làm bán thời gian, người làm việc bán thời gian"}
+      ]
+    },
+    {
+      "no":534,
+      "word":"コンビニエンスストア",
+      "reading":"コンビニエンスストア",
+      "word_raw":"コンビニエンスストア",
+      "ruby":[{"t":"コンビニエンスストア"}],
+      "han_viet":null,
+      "meaning_vi":"cửa hàng tiện lợi (convenience store)",
+      "examples":[],
+      "related":[]
+    },
+    {
+      "no":535,
+      "word":"レジ（レジスター）",
+      "reading":"レジ（レジスター）",
+      "word_raw":"レジ（レジスター）",
+      "ruby":[{"t":"レジ（レジスター）"}],
+      "han_viet":null,
+      "meaning_vi":"máy tính tiền (cash register)",
+      "examples":[
+        {"no":1,"jp":"スーパーでレジのアルバイトをしている","jp_raw":"スーパーでレジのアルバイトをしている","jp_ruby":[{"t":"スーパーでレジのアルバイトをしている"}],"vi":"Tôi làm thu ngân ở siêu thị."},
+        {"no":2,"jp":"レジに並ぶ","jp_raw":"レジに並（なら）ぶ","jp_ruby":[{"t":"レジに"},{"t":"並","r":"なら"},{"t":"ぶ"}],"vi":"Xếp hàng tính tiền."},
+        {"no":3,"jp":"レジが込んでいる","jp_raw":"レジが込（こ）んでいる","jp_ruby":[{"t":"レジが"},{"t":"込","r":"こ"},{"t":"んでいる"}],"vi":"Quầy tính tiền đông người."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿を打（う）つ","items":[{"text":"＿を打つ","ruby":[{"t":"＿を"},{"t":"打","r":"う"},{"t":"つ"}],"pattern":true}],"meaning_vi":"Bấm máy tính tiền."}
+      ]
+    },
+    {
+      "no":536,
+      "word":"レシート",
+      "reading":"レシート",
+      "word_raw":"レシート",
+      "ruby":[{"t":"レシート"}],
+      "han_viet":null,
+      "meaning_vi":"biên nhận, hóa đơn (receipt)",
+      "examples":[
+        {"no":1,"jp":"レジでお金を払って、レシートを受け取る","jp_raw":"レジでお金（かね）を払（はら）って、レシートを受（う）け取（と）る","jp_ruby":[{"t":"レジでお"},{"t":"金","r":"かね"},{"t":"を"},{"t":"払","r":"はら"},{"t":"って、レシートを"},{"t":"受","r":"う"},{"t":"け"},{"t":"取","r":"と"},{"t":"る"}],"vi":"Trả tiền ở quầy tính tiền rồi nhận hóa đơn."}
+      ],
+      "related":[
+        {"type":"synonym","marker":"類","raw":"領収書（りょうしゅうしょ）","items":[{"text":"領収書","ruby":[{"t":"領収書","r":"りょうしゅうしょ"}]}],"meaning_vi":"Hóa đơn"}
+      ]
+    },
+    {
+      "no":537,
+      "word":"インスタント",
+      "reading":"インスタント",
+      "word_raw":"インスタント",
+      "ruby":[{"t":"インスタント"}],
+      "han_viet":null,
+      "meaning_vi":"(ăn, uống, …)liền, lập tức (instant)",
+      "examples":[
+        {"no":1,"jp":"インスタント食品は便利だ","jp_raw":"インスタント食品（しょくひん）は便利（べんり）だ","jp_ruby":[{"t":"インスタント"},{"t":"食品","r":"しょくひん"},{"t":"は"},{"t":"便利","r":"べんり"},{"t":"だ"}],"vi":"Thực phẩm ăn liền thì tiện lợi."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿ラーメン、＿コーヒー、＿食品（しょくひん）","items":[{"text":"＿ラーメン","ruby":[{"t":"＿ラーメン"}],"pattern":true},{"text":"＿コーヒー","ruby":[{"t":"＿コーヒー"}],"pattern":true},{"text":"＿食品","ruby":[{"t":"＿"},{"t":"食品","r":"しょくひん"}],"pattern":true}],"meaning_vi":"Mì ăn liền, cà phê uống liền, thực phẩm ăn liền"}
+      ]
+    },
+    {
+      "no":538,
+      "word":"ファストフード",
+      "reading":"ファストフード",
+      "word_raw":"ファストフード",
+      "ruby":[{"t":"ファストフード"}],
+      "han_viet":null,
+      "meaning_vi":"thức ăn nhanh (fast food)",
+      "examples":[
+        {"no":1,"jp":"そばは江戸時代のファストフードだった","jp_raw":"そばは江戸（えど）時代（じだい）のファストフードだった","jp_ruby":[{"t":"そばは"},{"t":"江戸","r":"えど"},{"t":"時代","r":"じだい"},{"t":"のファストフードだった"}],"vi":"Soba là thức ăn nhanh thời Edo."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿店（てん）","items":[{"text":"＿店","ruby":[{"t":"＿"},{"t":"店","r":"てん"}],"pattern":true}],"meaning_vi":"Tiệm đồ ăn nhanh."},
+        {"type":"related","marker":"関","raw":"ハンバーガー、フライドチキン","items":[{"text":"ハンバーガー","ruby":[{"t":"ハンバーガー"}]},{"text":"フライドチキン","ruby":[{"t":"フライドチキン"}]}],"meaning_vi":"Hamburger, gà rán"}
+      ]
+    },
+    {
+      "no":539,
+      "word":"フルーツ",
+      "reading":"フルーツ",
+      "word_raw":"フルーツ",
+      "ruby":[{"t":"フルーツ"}],
+      "han_viet":null,
+      "meaning_vi":"hoa quả, trái cây (fruit)",
+      "examples":[
+        {"no":1,"jp":"暖かいところには、いろいろなフルーツがある","jp_raw":"暖（あたた）かいところには、いろいろなフルーツがある","jp_ruby":[{"t":"暖","r":"あたた"},{"t":"かいところには、いろいろなフルーツがある"}],"vi":"Có nhiều loại trái cây ở vùng ấm áp."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿ジュース、＿ケーキ","items":[{"text":"＿ジュース","ruby":[{"t":"＿ジュース"}],"pattern":true},{"text":"＿ケーキ","ruby":[{"t":"＿ケーキ"}],"pattern":true}],"meaning_vi":"Nước ép hoa quả, bánh hoa quả"},
+        {"type":"synonym","marker":"類","raw":"くだもの","items":[{"text":"くだもの","ruby":[{"t":"くだもの"}]}],"meaning_vi":"Hoa quả, trái cây"}
+      ]
+    },
+    {
+      "no":540,
+      "word":"デザート",
+      "reading":"デザート",
+      "word_raw":"デザート",
+      "ruby":[{"t":"デザート"}],
+      "han_viet":null,
+      "meaning_vi":"món tráng miệng (dessert)",
+      "examples":[
+        {"no":1,"jp":"デザートにアイスクリームを食べる","jp_raw":"デザートにアイスクリームを食（た）べる","jp_ruby":[{"t":"デザートにアイスクリームを"},{"t":"食","r":"た"},{"t":"べる"}],"vi":"Ăn kem tráng miệng."}
+      ],
+      "related":[]
+    },
+    {
+      "no":541,
+      "word":"インターネット",
+      "reading":"インターネット",
+      "word_raw":"インターネット",
+      "ruby":[{"t":"インターネット"}],
+      "han_viet":null,
+      "meaning_vi":"internet",
+      "examples":[
+        {"no":1,"jp":"インターネットで世界の環境問題について調べた","jp_raw":"インターネットで世界（せかい）の環境（かんきょう）問題（もんだい）について調（しら）べた","jp_ruby":[{"t":"インターネットで"},{"t":"世界","r":"せかい"},{"t":"の"},{"t":"環境","r":"かんきょう"},{"t":"問題","r":"もんだい"},{"t":"について"},{"t":"調","r":"しら"},{"t":"べた"}],"vi":"Tra cứu vấn đề môi trường của thế giới trên internet."},
+        {"no":2,"jp":"きのうは１日中インターネットをしていた","jp_raw":"きのうは１日中（にちじゅう）インターネットをしていた","jp_ruby":[{"t":"きのうは１"},{"t":"日中","r":"にちじゅう"},{"t":"インターネットをしていた"}],"vi":"Hôm qua tôi lướt Internet cả ngày."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿をする、＿につなぐ、＿に接続（せつぞく）する","items":[{"text":"＿をする","ruby":[{"t":"＿をする"}],"pattern":true},{"text":"＿につなぐ","ruby":[{"t":"＿につなぐ"}],"pattern":true},{"text":"＿に接続する","ruby":[{"t":"＿に"},{"t":"接続","r":"せつぞく"},{"t":"する"}],"pattern":true}],"meaning_vi":"Dùng Internet, kết nối Internet, kết nối Internet"},
+        {"type":"compound","marker":"合","raw":"＿カフェ","items":[{"text":"＿カフェ","ruby":[{"t":"＿カフェ"}],"pattern":true}],"meaning_vi":"Quán cà phê internet"},
+        {"type":"related","marker":"関","raw":"パソコン＜パーソナルコンピューター、ホームページ、メール、ブログ","items":[{"text":"パソコン＜パーソナルコンピューター","ruby":[{"t":"パソコン＜パーソナルコンピューター"}]},{"text":"ホームページ","ruby":[{"t":"ホームページ"}]},{"text":"メール","ruby":[{"t":"メール"}]},{"text":"ブログ","ruby":[{"t":"ブログ"}]}],"meaning_vi":"Máy tính cá nhân, trang chủ, gửi mail, blog"}
+      ]
+    },
+    {
+      "no":542,
+      "word":"チャイム",
+      "reading":"チャイム",
+      "word_raw":"チャイム",
+      "ruby":[{"t":"チャイム"}],
+      "han_viet":null,
+      "meaning_vi":"chuông (chime)",
+      "examples":[
+        {"no":1,"jp":"授業が始まるとき、チャイムが鳴る","jp_raw":"授業（じゅぎょう）が始（はじ）まるとき、チャイムが鳴（な）る","jp_ruby":[{"t":"授業","r":"じゅぎょう"},{"t":"が"},{"t":"始","r":"はじ"},{"t":"まるとき、チャイムが"},{"t":"鳴","r":"な"},{"t":"る"}],"vi":"Khi bắt đầu tiết học thì chuông reo."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿が鳴（な）る、＿を鳴（な）らす","items":[{"text":"＿が鳴る","ruby":[{"t":"＿が"},{"t":"鳴","r":"な"},{"t":"る"}],"pattern":true},{"text":"＿を鳴らす","ruby":[{"t":"＿を"},{"t":"鳴","r":"な"},{"t":"らす"}],"pattern":true}],"meaning_vi":"Chuông reo/ bấm chuông"},
+        {"type":"related","marker":"関","raw":"ベル、ブザー","items":[{"text":"ベル","ruby":[{"t":"ベル"}]},{"text":"ブザー","ruby":[{"t":"ブザー"}]}],"meaning_vi":"Chuông, còi"}
+      ]
+    },
+    {
+      "no":543,
+      "word":"アナウンス",
+      "reading":"アナウンス",
+      "word_raw":"アナウンス",
+      "ruby":[{"t":"アナウンス"}],
+      "han_viet":null,
+      "meaning_vi":"thông báo (announcement)",
+      "examples":[
+        {"no":1,"jp":"電車の中でアナウンスを聞く","jp_raw":"電車（でんしゃ）の中（なか）でアナウンスを聞（き）く","jp_ruby":[{"t":"電車","r":"でんしゃ"},{"t":"の"},{"t":"中","r":"なか"},{"t":"でアナウンスを"},{"t":"聞","r":"き"},{"t":"く"}],"vi":"Nghe thông báo trên tàu điện."},
+        {"no":2,"jp":"緊急ニュースを校内でアナウンスする","jp_raw":"緊急（きんきゅう）ニュースを校内（こうない）でアナウンスする","jp_ruby":[{"t":"緊急","r":"きんきゅう"},{"t":"ニュースを"},{"t":"校内","r":"こうない"},{"t":"でアナウンスする"}],"vi":"Thông báo tin tức khẩn cấp trên trường học."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"場内（じょうない）＿、車内（しゃない）＿","items":[{"text":"場内＿","ruby":[{"t":"場内","r":"じょうない"},{"t":"＿"}],"pattern":true},{"text":"車内＿","ruby":[{"t":"車内","r":"しゃない"},{"t":"＿"}],"pattern":true}],"meaning_vi":"Thông báo trong hội trường, thông báo trong xe"},
+        {"type":"related","marker":"関","raw":"アナウンサー","items":[{"text":"アナウンサー","ruby":[{"t":"アナウンサー"}]}],"meaning_vi":"Người thông báo, phát thanh viên"}
+      ]
+    },
+    {
+      "no":544,
+      "word":"メッセージ",
+      "reading":"メッセージ",
+      "word_raw":"メッセージ",
+      "ruby":[{"t":"メッセージ"}],
+      "han_viet":null,
+      "meaning_vi":"tin nhắn, thông điệp (message)",
+      "examples":[
+        {"no":1,"jp":"留守番電話にメッセージをのこす","jp_raw":"留守番（るすばん）電話（でんわ）にメッセージをのこす","jp_ruby":[{"t":"留守番","r":"るすばん"},{"t":"電話","r":"でんわ"},{"t":"にメッセージをのこす"}],"vi":"Để lại lời nhắn trong điện thoại trả lời tự động khi vắng nhà."},
+        {"no":2,"jp":"メッセージといっしょに花束を送る","jp_raw":"メッセージといっしょに花束（はなたば）を送（おく）る","jp_ruby":[{"t":"メッセージといっしょに"},{"t":"花束","r":"はなたば"},{"t":"を"},{"t":"送","r":"おく"},{"t":"る"}],"vi":"Gửi lời nhắn cùng bó hoa."},
+        {"no":3,"jp":"大統領は国民にメッセージを発表した","jp_raw":"大統領（だいとうりょう）は国民（こくみん）にメッセージを発表（はっぴょう）した","jp_ruby":[{"t":"大統領","r":"だいとうりょう"},{"t":"は"},{"t":"国民","r":"こくみん"},{"t":"にメッセージを"},{"t":"発表","r":"はっぴょう"},{"t":"した"}],"vi":"Tổng thống đã phát biểu thông điệp với nhân dân."},
+        {"no":4,"jp":"この曲には、平和へのメッセージがこめられている","jp_raw":"この曲（きょく）には、平和（へいわ）へのメッセージがこめられている","jp_ruby":[{"t":"この"},{"t":"曲","r":"きょく"},{"t":"には、"},{"t":"平和","r":"へいわ"},{"t":"へのメッセージがこめられている"}],"vi":"Ca khúc này mang thông điệp về hòa bình."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿を残（のこ）す、＿を頼（たの）む、＿を伝（つた）える","items":[{"text":"＿を残す","ruby":[{"t":"＿を"},{"t":"残","r":"のこ"},{"t":"す"}],"pattern":true},{"text":"＿を頼む","ruby":[{"t":"＿を"},{"t":"頼","r":"たの"},{"t":"む"}],"pattern":true},{"text":"＿を伝える","ruby":[{"t":"＿を"},{"t":"伝","r":"つた"},{"t":"える"}],"pattern":true}],"meaning_vi":"Để lại lời nhắn, nhờ chuyển lời nhắn, truyền đạt lời nhắn"},
+        {"type":"synonym","marker":"類","raw":"伝言（でんごん）","items":[{"text":"伝言","ruby":[{"t":"伝言","r":"でんごん"}]}],"meaning_vi":"Gửi lời nhắn tin"}
+      ]
+    },
+    {
+      "no":545,
+      "word":"パンフレット",
+      "reading":"パンフレット",
+      "word_raw":"パンフレット",
+      "ruby":[{"t":"パンフレット"}],
+      "han_viet":null,
+      "meaning_vi":"ấn phẩm quảng cáo (pamphlet)",
+      "examples":[
+        {"no":1,"jp":"旅行会社でパンフレットをたくさんもらってきた","jp_raw":"旅行（りょこう）会社（かいしゃ）でパンフレットをたくさんもらってきた","jp_ruby":[{"t":"旅行","r":"りょこう"},{"t":"会社","r":"かいしゃ"},{"t":"でパンフレットをたくさんもらってきた"}],"vi":"Lấy nhiều tờ rơi ở công ty du lịch."}
+      ],
+      "related":[
+        {"type":"related","marker":"関","raw":"カタログ、ちらし","items":[{"text":"カタログ","ruby":[{"t":"カタログ"}]},{"text":"ちらし","ruby":[{"t":"ちらし"}]}],"meaning_vi":"Tờ rơi quảng cáo."}
+      ]
+    },
+    {
+      "no":546,
+      "word":"カード",
+      "reading":"カード",
+      "word_raw":"カード",
+      "ruby":[{"t":"カード"}],
+      "han_viet":null,
+      "meaning_vi":"thẻ card",
+      "examples":[],
+      "related":[
+        {"type":"compound","marker":"合","raw":"｛キャッシュ／クレジット／テレホン　…｝＋カード","items":[{"text":"｛キャッシュ／クレジット／テレホン　…｝＋カード","ruby":[{"t":"｛キャッシュ／クレジット／テレホン　…｝＋カード"}],"pattern":true}],"meaning_vi":"Thẻ {ngân hàng/ tín dụng/ điện thoại…}"}
+      ]
+    },
+    {
+      "no":547,
+      "word":"インタビュー",
+      "reading":"インタビュー",
+      "word_raw":"インタビュー",
+      "ruby":[{"t":"インタビュー"}],
+      "han_viet":null,
+      "meaning_vi":"phỏng vấn (interview)",
+      "examples":[
+        {"no":1,"jp":"勝ったチームの選手にインタビューする","jp_raw":"勝（か）ったチームの選手（せんしゅ）にインタビューする","jp_ruby":[{"t":"勝","r":"か"},{"t":"ったチームの"},{"t":"選手","r":"せんしゅ"},{"t":"にインタビューする"}],"vi":"Phỏng vấn tuyển thủ của đội thắng."},
+        {"no":2,"jp":"記者のインタビューに答える","jp_raw":"記者（きしゃ）のインタビューに答（こた）える","jp_ruby":[{"t":"記者","r":"きしゃ"},{"t":"のインタビューに"},{"t":"答","r":"こた"},{"t":"える"}],"vi":"Trả lời phỏng vấn của phóng viên."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿を受（う）ける、＿に答（こた）える","items":[{"text":"＿を受ける","ruby":[{"t":"＿を"},{"t":"受","r":"う"},{"t":"ける"}],"pattern":true},{"text":"＿に答える","ruby":[{"t":"＿に"},{"t":"答","r":"こた"},{"t":"える"}],"pattern":true}],"meaning_vi":"Trả lời phỏng vấn của phóng viên."},
+        {"type":"compound","marker":"合","raw":"＿調査（ちょうさ）","items":[{"text":"＿調査","ruby":[{"t":"＿"},{"t":"調査","r":"ちょうさ"}],"pattern":true}],"meaning_vi":"Khảo sát phỏng vấn"}
+      ]
+    },
+    {
+      "no":548,
+      "word":"アンケート",
+      "reading":"アンケート",
+      "word_raw":"アンケート",
+      "ruby":[{"t":"アンケート"}],
+      "han_viet":null,
+      "meaning_vi":"bảng khảo sát / bảng điều tra",
+      "examples":[
+        {"no":1,"jp":"「アンケートにご協力ください」","jp_raw":"「アンケートにご協力（きょうりょく）ください」","jp_ruby":[{"t":"「アンケートにご"},{"t":"協力","r":"きょうりょく"},{"t":"ください」"}],"vi":"Xin hãy hợp tác làm giúp bảng điều tra."},
+        {"no":2,"jp":"アンケートをして学生の生活を調べる","jp_raw":"アンケートをして学生（がくせい）の生活（せいかつ）を調（しら）べる","jp_ruby":[{"t":"アンケートをして"},{"t":"学生","r":"がくせい"},{"t":"の"},{"t":"生活","r":"せいかつ"},{"t":"を"},{"t":"調","r":"しら"},{"t":"べる"}],"vi":"Làm bảng câu hỏi điều tra đời sống sinh viên."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿をする、＿をとる、＿に答（こた）える","items":[{"text":"＿をする","ruby":[{"t":"＿をする"}],"pattern":true},{"text":"＿をとる","ruby":[{"t":"＿をとる"}],"pattern":true},{"text":"＿に答える","ruby":[{"t":"＿に"},{"t":"答","r":"こた"},{"t":"える"}],"pattern":true}],"meaning_vi":"Làm bảng điều tra, lấy bảng điều tra, trả lời điều tra"},
+        {"type":"compound","marker":"合","raw":"＿調査（ちょうさ）","items":[{"text":"＿調査","ruby":[{"t":"＿"},{"t":"調査","r":"ちょうさ"}],"pattern":true}],"meaning_vi":"Điều tra bằng phiếu"}
+      ]
+    },
+    {
+      "no":549,
+      "word":"データ",
+      "reading":"データ",
+      "word_raw":"データ",
+      "ruby":[{"t":"データ"}],
+      "han_viet":null,
+      "meaning_vi":"dữ liệu (data)",
+      "examples":[
+        {"no":1,"jp":"研究のために、データを集めている","jp_raw":"研究（けんきゅう）のために、データを集（あつ）めている","jp_ruby":[{"t":"研究","r":"けんきゅう"},{"t":"のために、データを"},{"t":"集","r":"あつ"},{"t":"めている"}],"vi":"Tôi đang thu thập dữ liệu để phục vụ nghiên cứu."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿を集（あつ）める、＿をとる","items":[{"text":"＿を集める","ruby":[{"t":"＿を"},{"t":"集","r":"あつ"},{"t":"める"}],"pattern":true},{"text":"＿をとる","ruby":[{"t":"＿をとる"}],"pattern":true}],"meaning_vi":"Tập hợp dữ liệu/ lấy dữ liệu"},
+        {"type":"compound","marker":"合","raw":"＿ベース、＿バンク","items":[{"text":"＿ベース","ruby":[{"t":"＿ベース"}],"pattern":true},{"text":"＿バンク","ruby":[{"t":"＿バンク"}],"pattern":true}],"meaning_vi":"Cơ sở dữ liệu/ ngân hàng dữ liệu"}
+      ]
+    },
+    {
+      "no":550,
+      "word":"パーセント",
+      "reading":"パーセント",
+      "word_raw":"パーセント",
+      "ruby":[{"t":"パーセント"}],
+      "han_viet":null,
+      "meaning_vi":"phần trăm (pecent)",
+      "examples":[],
+      "related":[
+        {"type":"compound","marker":"合","raw":"［数字（すうじ）］　＋パーセント","items":[{"text":"［数字］　＋パーセント","ruby":[{"t":"［"},{"t":"数字","r":"すうじ"},{"t":"］　＋パーセント"}],"pattern":true}],"meaning_vi":"Số từ + パーセント"},
+        {"type":"related","marker":"関","raw":"割（わ）り","items":[{"text":"割り","ruby":[{"t":"割","r":"わ"},{"t":"り"}]}],"meaning_vi":"đơn vị % thuần Nhật (1wari = 10%)"}
+      ]
+    }
+  ]
+}

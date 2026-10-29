@@ -1,0 +1,280 @@
+{
+  "book": "Mimikara Oboeru N3 Goi",
+  "unit": "01",
+  "cd": "07",
+  "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=01&cd=07",
+  "count": 17,
+  "entries": [
+    {
+      "no":72,
+      "word":"太陽",
+      "reading":"たいよう",
+      "word_raw":"太陽（たいよう）",
+      "ruby":[{"t":"太陽","r":"たいよう"}],
+      "han_viet":"thái dương",
+      "meaning_vi":"mặt trời, ánh mặt trời",
+      "examples":[
+        {"no":1,"jp":"太陽が昇って、暖かくなった","jp_raw":"太陽（たいよう）が昇（のぼ）って、暖（あたた）かくなった","jp_ruby":[{"t":"太陽","r":"たいよう"},{"t":"が"},{"t":"昇","r":"のぼ"},{"t":"って、"},{"t":"暖","r":"あたた"},{"t":"かくなった"}],"vi":"Mặt trời lên, thời tiết trở nên ấm áp."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿が昇（のぼ）る  沈（しず）む、　＿が出（で）る","items":[{"text":"＿が昇る  沈む","ruby":[{"t":"＿が"},{"t":"昇","r":"のぼ"},{"t":"る  "},{"t":"沈","r":"しず"},{"t":"む"}],"pattern":true},{"text":"＿が出る","ruby":[{"t":"＿が"},{"t":"出","r":"で"},{"t":"る"}],"pattern":true}],"meaning_vi":"Mặt trời mọc <=> Mặt trời lặn, mặt trời ló rạng"},
+        {"type":"synonym","marker":"類","raw":"日（ひ）","items":[{"text":"日","ruby":[{"t":"日","r":"ひ"}]}],"meaning_vi":"Mặt trời, ánh mặt trời"},
+        {"type":"related","marker":"関","raw":"地球（ちきゅう）、　月（つき）、　星（ほし）","items":[{"text":"地球","ruby":[{"t":"地球","r":"ちきゅう"}]},{"text":"月","ruby":[{"t":"月","r":"つき"}]},{"text":"星","ruby":[{"t":"星","r":"ほし"}]}],"meaning_vi":"Trái đất, mặt trăng, ngôi sao"}
+      ]
+    },
+    {
+      "no":73,
+      "word":"地球",
+      "reading":"ちきゅう",
+      "word_raw":"地球（ちきゅう）",
+      "ruby":[{"t":"地球","r":"ちきゅう"}],
+      "han_viet":"địa cầu",
+      "meaning_vi":"trái đất, địa cầu",
+      "examples":[
+        {"no":1,"jp":"地球の環境が悪化している","jp_raw":"地球（ちきゅう）の環境（かんきょう）が悪化（あっか）している","jp_ruby":[{"t":"地球","r":"ちきゅう"},{"t":"の"},{"t":"環境","r":"かんきょう"},{"t":"が"},{"t":"悪化","r":"あっか"},{"t":"している"}],"vi":"Môi trường của trái đất ngày càng xấu đi."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿温暖化（おんだんか）","items":[{"text":"＿温暖化","ruby":[{"t":"＿"},{"t":"温暖化","r":"おんだんか"}],"pattern":true}],"meaning_vi":"Nóng lên toàn cầu"},
+        {"type":"related","marker":"関","raw":"太陽（たいよう）、　月（つき）、　星（ほし）","items":[{"text":"太陽","ruby":[{"t":"太陽","r":"たいよう"}]},{"text":"月","ruby":[{"t":"月","r":"つき"}]},{"text":"星","ruby":[{"t":"星","r":"ほし"}]}],"meaning_vi":"Mặt trời, mặt trăng, ngôi sao"}
+      ]
+    },
+    {
+      "no":74,
+      "word":"温度",
+      "reading":"おんど",
+      "word_raw":"温度（おんど）",
+      "ruby":[{"t":"温度","r":"おんど"}],
+      "han_viet":"ôn độ",
+      "meaning_vi":"nhiệt độ",
+      "examples":[
+        {"no":1,"jp":"温度を測る","jp_raw":"温度（おんど）を測（はか）る","jp_ruby":[{"t":"温度","r":"おんど"},{"t":"を"},{"t":"測","r":"はか"},{"t":"る"}],"vi":"Đo nhiệt độ."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿が高（たか）い  低（ひく）い、　＿が上（あ）がる  下（さ）がる、　＿を上（あ）げる  下（さ）げる","items":[{"text":"＿が高い  低い","ruby":[{"t":"＿が"},{"t":"高","r":"たか"},{"t":"い  "},{"t":"低","r":"ひく"},{"t":"い"}],"pattern":true},{"text":"＿が上がる  下がる","ruby":[{"t":"＿が"},{"t":"上","r":"あ"},{"t":"がる  "},{"t":"下","r":"さ"},{"t":"がる"}],"pattern":true},{"text":"＿を上げる  下げる","ruby":[{"t":"＿を"},{"t":"上","r":"あ"},{"t":"げる  "},{"t":"下","r":"さ"},{"t":"げる"}],"pattern":true}],"meaning_vi":"Nhiệt độ cao <=> nhiệt độ thấp, nhiệt độ tăng <-> nhiệt độ giảm, tăng nhiệt độ <-> giảm nhiệt độ"},
+        {"type":"related","marker":"関","raw":"気温（きおん）、　体温（たいおん）、　湿度（しつど）","items":[{"text":"気温","ruby":[{"t":"気温","r":"きおん"}]},{"text":"体温","ruby":[{"t":"体温","r":"たいおん"}]},{"text":"湿度","ruby":[{"t":"湿度","r":"しつど"}]}],"meaning_vi":"Nhiệt độ, thân nhiệt, độ ẩm"}
+      ]
+    },
+    {
+      "no":75,
+      "word":"湿度",
+      "reading":"しつど",
+      "word_raw":"湿度（しつど）",
+      "ruby":[{"t":"湿度","r":"しつど"}],
+      "han_viet":"thấp độ",
+      "meaning_vi":"độ ẩm",
+      "examples":[
+        {"no":1,"jp":"今年の夏は特に湿度が高い","jp_raw":"今年（ことし）の夏（なつ）は特（とく）に湿度（しつど）が高（たか）い","jp_ruby":[{"t":"今年","r":"ことし"},{"t":"の"},{"t":"夏","r":"なつ"},{"t":"は"},{"t":"特","r":"とく"},{"t":"に"},{"t":"湿度","r":"しつど"},{"t":"が"},{"t":"高","r":"たか"},{"t":"い"}],"vi":"Hè năm nay độ ẩm đặc biệt cao."},
+        {"no":2,"jp":"きょうは湿度が６０％で蒸し暑い","jp_raw":"きょうは湿度（しつど）が６０％で蒸（む）し暑（あつ）い","jp_ruby":[{"t":"きょうは"},{"t":"湿度","r":"しつど"},{"t":"が６０％で"},{"t":"蒸","r":"む"},{"t":"し"},{"t":"暑","r":"あつ"},{"t":"い"}],"vi":"Hôm nay trời oi bức, độ ẩm 60%."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿が高（たか）い  低（ひく）い","items":[{"text":"＿が高い  低い","ruby":[{"t":"＿が"},{"t":"高","r":"たか"},{"t":"い  "},{"t":"低","r":"ひく"},{"t":"い"}],"pattern":true}],"meaning_vi":"Độ ẩm cao <=> độ ẩm thấp"},
+        {"type":"related","marker":"関","raw":"湿気（しっけ）、蒸（む）し暑（あつ）い","items":[{"text":"湿気","ruby":[{"t":"湿気","r":"しっけ"}]},{"text":"蒸し暑い","ruby":[{"t":"蒸","r":"む"},{"t":"し"},{"t":"暑","r":"あつ"},{"t":"い"}]}],"meaning_vi":"Hơi ẩm, oi bức"}
+      ]
+    },
+    {
+      "no":76,
+      "word":"湿気",
+      "reading":"しっけ",
+      "word_raw":"湿気（しっけ）",
+      "ruby":[{"t":"湿気","r":"しっけ"}],
+      "han_viet":"thấp khí",
+      "meaning_vi":"hơi ẩm, sự ẩm ướt",
+      "examples":[
+        {"no":1,"jp":"日本の夏は湿気が多い","jp_raw":"日本（にほん）の夏（なつ）は湿気（しっけ）が多（おお）い","jp_ruby":[{"t":"日本","r":"にほん"},{"t":"の"},{"t":"夏","r":"なつ"},{"t":"は"},{"t":"湿気","r":"しっけ"},{"t":"が"},{"t":"多","r":"おお"},{"t":"い"}],"vi":"Mùa hè ở Nhật Bản rất ẩm ướt."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿が多（おお）い  少（すく）ない","items":[{"text":"＿が多い  少ない","ruby":[{"t":"＿が"},{"t":"多","r":"おお"},{"t":"い  "},{"t":"少","r":"すく"},{"t":"ない"}],"pattern":true}],"meaning_vi":"Có nhiều hơi ẩm <=> ít hơi ẩm"},
+        {"type":"related","marker":"関","raw":"湿度（しつど）、　除湿（じょしつ）、　蒸（む）し暑（あつ）い","items":[{"text":"湿度","ruby":[{"t":"湿度","r":"しつど"}]},{"text":"除湿","ruby":[{"t":"除湿","r":"じょしつ"}]},{"text":"蒸し暑い","ruby":[{"t":"蒸","r":"む"},{"t":"し"},{"t":"暑","r":"あつ"},{"t":"い"}]}],"meaning_vi":"Độ ẩm, hút ẩm, oi bức"}
+      ]
+    },
+    {
+      "no":77,
+      "word":"梅雨",
+      "reading":"つゆ",
+      "word_raw":"梅雨（つゆ）",
+      "ruby":[{"t":"梅雨","r":"つゆ"}],
+      "han_viet":"mai vũ",
+      "meaning_vi":"mùa mưa",
+      "examples":[
+        {"no":1,"jp":"６月から７月は梅雨の時期だ","jp_raw":"６月（がつ）から７月（がつ）は梅雨（つゆ）の時期（じき）だ","jp_ruby":[{"t":"６"},{"t":"月","r":"がつ"},{"t":"から７"},{"t":"月","r":"がつ"},{"t":"は"},{"t":"梅雨","r":"つゆ"},{"t":"の"},{"t":"時期","r":"じき"},{"t":"だ"}],"vi":"Từ tháng 6 đến tháng 7 là mùa mưa."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿に入（はい）る  が明（あ）ける","items":[{"text":"＿に入る  が明ける","ruby":[{"t":"＿に"},{"t":"入","r":"はい"},{"t":"る  が"},{"t":"明","r":"あ"},{"t":"ける"}],"pattern":true}],"meaning_vi":"Bắt đầu mùa mưa <=> kết thúc mùa mưa"},
+        {"type":"compound","marker":"合","raw":"＿入（い）り  明（あ）け","items":[{"text":"＿入り  明け","ruby":[{"t":"＿"},{"t":"入","r":"い"},{"t":"り  "},{"t":"明","r":"あ"},{"t":"け"}],"pattern":true}],"meaning_vi":"Đầu mùa mưa <=> cuối mùa mưa"},
+        {"type":"related","marker":"関","raw":"梅雨（ばいう）前線（ぜんせん）","items":[{"text":"梅雨前線","ruby":[{"t":"梅雨","r":"ばいう"},{"t":"前線","r":"ぜんせん"}]}],"meaning_vi":"Frông mùa mưa"}
+      ]
+    },
+    {
+      "no":78,
+      "word":"かび",
+      "reading":"かび",
+      "word_raw":"かび",
+      "ruby":[{"t":"かび"}],
+      "han_viet":null,
+      "meaning_vi":"nấm mốc",
+      "examples":[
+        {"no":1,"jp":"梅雨の時期はかびがはえやすい","jp_raw":"梅雨（つゆ）の時期（じき）はかびがはえやすい","jp_ruby":[{"t":"梅雨","r":"つゆ"},{"t":"の"},{"t":"時期","r":"じき"},{"t":"はかびがはえやすい"}],"vi":"Mùa mưa nấm mốc dễ phát triển."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿がはえる","items":[{"text":"＿がはえる","ruby":[{"t":"＿がはえる"}],"pattern":true}],"meaning_vi":"Nổi mốc"}
+      ]
+    },
+    {
+      "no":79,
+      "word":"暖房",
+      "reading":"だんぼう",
+      "word_raw":"暖房（だんぼう）",
+      "ruby":[{"t":"暖房","r":"だんぼう"}],
+      "han_viet":"noãn phòng",
+      "meaning_vi":"điều hòa chế độ làm ấm, máy sưởi ấm",
+      "examples":[
+        {"no":1,"jp":"寒いので暖房をつける","jp_raw":"寒（さむ）いので暖房（だんぼう）をつける","jp_ruby":[{"t":"寒","r":"さむ"},{"t":"いので"},{"t":"暖房","r":"だんぼう"},{"t":"をつける"}],"vi":"Bởi vì trời lạnh nên bật máy sưởi ấm."},
+        {"no":2,"jp":"この部屋は暖房がきいていて暖かい","jp_raw":"この部屋（へや）は暖房（だんぼう）がきいていて暖（あたた）かい","jp_ruby":[{"t":"この"},{"t":"部屋","r":"へや"},{"t":"は"},{"t":"暖房","r":"だんぼう"},{"t":"がきいていて"},{"t":"暖","r":"あたた"},{"t":"かい"}],"vi":"Phòng này ấm nhờ hiệu quả của hệ thống sưởi ấm."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿をつける  消（け）す、　＿を入（い）れる、　＿を止（と）める、　＿がきく","items":[{"text":"＿をつける  消す","ruby":[{"t":"＿をつける  "},{"t":"消","r":"け"},{"t":"す"}],"pattern":true},{"text":"＿を入れる","ruby":[{"t":"＿を"},{"t":"入","r":"い"},{"t":"れる"}],"pattern":true},{"text":"＿を止める","ruby":[{"t":"＿を"},{"t":"止","r":"と"},{"t":"める"}],"pattern":true},{"text":"＿がきく","ruby":[{"t":"＿がきく"}],"pattern":true}],"meaning_vi":"Bật máy sưởi ấm <=> tắt máy sưởi ấm, bật máy sưởi ấm, tắt máy sưởi ấm, hiệu quả máy sưởi ấm"},
+        {"type":"antonym","marker":"対","raw":"冷房（れいぼう）、　クーラー","items":[{"text":"冷房","ruby":[{"t":"冷房","r":"れいぼう"}]},{"text":"クーラー","ruby":[{"t":"クーラー"}]}],"meaning_vi":"Điều hòa chế độ làm mát, hệ thống làm mát"},
+        {"type":"related","marker":"関","raw":"エアコン、　ヒーター、　ストーブ","items":[{"text":"エアコン","ruby":[{"t":"エアコン"}]},{"text":"ヒーター","ruby":[{"t":"ヒーター"}]},{"text":"ストーブ","ruby":[{"t":"ストーブ"}]}],"meaning_vi":"Máy điều hòa, máy sưởi, lò sưởi"}
+      ]
+    },
+    {
+      "no":80,
+      "word":"皮",
+      "reading":"かわ",
+      "word_raw":"皮（かわ）",
+      "ruby":[{"t":"皮","r":"かわ"}],
+      "han_viet":"bì",
+      "meaning_vi":"da, vỏ",
+      "examples":[
+        {"no":1,"jp":"｛くだもの／やさい／どうぶつ　…｝の皮","jp_raw":"｛くだもの／やさい／どうぶつ　…｝の皮（かわ）","jp_ruby":[{"t":"｛くだもの／やさい／どうぶつ　…｝の"},{"t":"皮","r":"かわ"}],"vi":"Vỏ, da {Trái cây / rau củ / động vật ...}."},
+        {"no":2,"jp":"りんごの皮をむいて食べる","jp_raw":"りんごの皮（かわ）をむいて食（た）べる","jp_ruby":[{"t":"りんごの"},{"t":"皮","r":"かわ"},{"t":"をむいて"},{"t":"食","r":"た"},{"t":"べる"}],"vi":"Ăn táo gọt vỏ."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿をむく","items":[{"text":"＿をむく","ruby":[{"t":"＿をむく"}],"pattern":true}],"meaning_vi":"Gọt vỏ"},
+        {"type":"compound","marker":"合","raw":"毛（け）＿（けがわ）","items":[{"text":"毛＿（けがわ）","ruby":[{"t":"毛","r":"け"},{"t":"＿（けがわ）"}],"pattern":true}],"meaning_vi":"Lông thú"}
+      ]
+    },
+    {
+      "no":81,
+      "word":"缶",
+      "reading":"かん",
+      "word_raw":"缶（かん）",
+      "ruby":[{"t":"缶","r":"かん"}],
+      "han_viet":"phẫu",
+      "meaning_vi":"lon",
+      "examples":[
+        {"no":1,"jp":"おかしをカンに入れて保存する","jp_raw":"おかしをカンに入（い）れて保存（ほぞん）する","jp_ruby":[{"t":"おかしをカンに"},{"t":"入","r":"い"},{"t":"れて"},{"t":"保存","r":"ほぞん"},{"t":"する"}],"vi":"Bảo quản kẹo bằng cách bỏ vào trong hộp kim loại."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿づめ、　＿ビール、　ドラム＿","items":[{"text":"＿づめ","ruby":[{"t":"＿づめ"}],"pattern":true},{"text":"＿ビール","ruby":[{"t":"＿ビール"}],"pattern":true},{"text":"ドラム＿","ruby":[{"t":"ドラム＿"}],"pattern":true}],"meaning_vi":"Đồ hộp, bia lon, thùng phi"},
+        {"type":"related","marker":"関","raw":"びん、　びんづめ、　ペットボトル","items":[{"text":"びん","ruby":[{"t":"びん"}]},{"text":"びんづめ","ruby":[{"t":"びんづめ"}]},{"text":"ペットボトル","ruby":[{"t":"ペットボトル"}]}],"meaning_vi":"Chai, đồ đóng chai, chai nhựa"}
+      ]
+    },
+    {
+      "no":82,
+      "word":"画面",
+      "reading":"がめん",
+      "word_raw":"画面（がめん）",
+      "ruby":[{"t":"画面","r":"がめん"}],
+      "han_viet":"họa/hoạch diện",
+      "meaning_vi":"màn hình, màn ảnh",
+      "examples":[
+        {"no":1,"jp":"パソコンの画面をずっと見ていると、目が疲れる","jp_raw":"パソコンの画面（がめん）をずっと見（み）ていると、目（め）が疲（つか）れる","jp_ruby":[{"t":"パソコンの"},{"t":"画面","r":"がめん"},{"t":"をずっと"},{"t":"見","r":"み"},{"t":"ていると、"},{"t":"目","r":"め"},{"t":"が"},{"t":"疲","r":"つか"},{"t":"れる"}],"vi":"Cứ nhìn suốt vào màn hình máy tính thì sẽ mỏi mắt."}
+      ],
+      "related":[]
+    },
+    {
+      "no":83,
+      "word":"番組",
+      "reading":"ばんぐみ",
+      "word_raw":"番組（ばんぐみ）",
+      "ruby":[{"t":"番組","r":"ばんぐみ"}],
+      "han_viet":"phiên tổ",
+      "meaning_vi":"chương trình (TV/radio)",
+      "examples":[
+        {"no":1,"jp":"テレビの番組を見る","jp_raw":"テレビの番組（ばんぐみ）を見（み）る","jp_ruby":[{"t":"テレビの"},{"t":"番組","r":"ばんぐみ"},{"t":"を"},{"t":"見","r":"み"},{"t":"る"}],"vi":"Xem chương trình Tivi."},
+        {"no":2,"jp":"新聞の番組欄","jp_raw":"新聞（しんぶん）の番組（ばんぐみ）欄（らん）","jp_ruby":[{"t":"新聞","r":"しんぶん"},{"t":"の"},{"t":"番組","r":"ばんぐみ"},{"t":"欄","r":"らん"}],"vi":"Mục lịch phát sóng chương trình Tivi trên báo."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"テレビ＿、　ニュース＿、　歌（うた）＿、　バラエティー＿","items":[{"text":"テレビ＿","ruby":[{"t":"テレビ＿"}],"pattern":true},{"text":"ニュース＿","ruby":[{"t":"ニュース＿"}],"pattern":true},{"text":"歌＿","ruby":[{"t":"歌","r":"うた"},{"t":"＿"}],"pattern":true},{"text":"バラエティー＿","ruby":[{"t":"バラエティー＿"}],"pattern":true}],"meaning_vi":"Chương trình Tivi, chương trình tin tức, chương trình ca nhạc, chương trình giải trí tổng hợp"}
+      ]
+    },
+    {
+      "no":84,
+      "word":"記事",
+      "reading":"きじ",
+      "word_raw":"記事（きじ）",
+      "ruby":[{"t":"記事","r":"きじ"}],
+      "han_viet":"kí sự",
+      "meaning_vi":"bài viết, phóng sự",
+      "examples":[
+        {"no":1,"jp":"この記事によると、日本に住む外国人が増えているそうだ","jp_raw":"この記事（きじ）によると、日本（にほん）に住（す）む外国（がいこく）人（じん）が増（ふ）えているそうだ","jp_ruby":[{"t":"この"},{"t":"記事","r":"きじ"},{"t":"によると、"},{"t":"日本","r":"にほん"},{"t":"に"},{"t":"住","r":"す"},{"t":"む"},{"t":"外国","r":"がいこく"},{"t":"人","r":"じん"},{"t":"が"},{"t":"増","r":"ふ"},{"t":"えているそうだ"}],"vi":"Theo bài viết này, nghe nói người nước ngoài sống ở Nhật Bản đang gia tăng."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"新聞（しんぶん）＿、　雑誌（ざっし）＿","items":[{"text":"新聞＿","ruby":[{"t":"新聞","r":"しんぶん"},{"t":"＿"}],"pattern":true},{"text":"雑誌＿","ruby":[{"t":"雑誌","r":"ざっし"},{"t":"＿"}],"pattern":true}],"meaning_vi":"Bài báo, bài đăng trên tạp chí"}
+      ]
+    },
+    {
+      "no":85,
+      "word":"近所",
+      "reading":"きんじょ",
+      "word_raw":"近所（きんじょ）",
+      "ruby":[{"t":"近所","r":"きんじょ"}],
+      "han_viet":"cận sở",
+      "meaning_vi":"hàng xóm, vùng lân cận",
+      "examples":[
+        {"no":1,"jp":"近所の人とは仲良くしたほうがいい","jp_raw":"近所（きんじょ）の人（ひと）とは仲良（なかよ）くしたほうがいい","jp_ruby":[{"t":"近所","r":"きんじょ"},{"t":"の"},{"t":"人","r":"ひと"},{"t":"とは"},{"t":"仲良","r":"なかよ"},{"t":"くしたほうがいい"}],"vi":"Nên tạo mối quan hệ tốt với hàng xóm."},
+        {"no":2,"jp":"私はよく近所の公園を散歩する","jp_raw":"私（わたし）はよく近所（きんじょ）の公園（こうえん）を散歩（さんぽ）する","jp_ruby":[{"t":"私","r":"わたし"},{"t":"はよく"},{"t":"近所","r":"きんじょ"},{"t":"の"},{"t":"公園","r":"こうえん"},{"t":"を"},{"t":"散歩","r":"さんぽ"},{"t":"する"}],"vi":"Tôi hay đi dạo ở công viên gần nhà."}
+      ],
+      "related":[
+        {"type":"synonym","marker":"類","raw":"付近（ふきん）、　近（ちか）く","items":[{"text":"付近","ruby":[{"t":"付近","r":"ふきん"}]},{"text":"近く","ruby":[{"t":"近","r":"ちか"},{"t":"く"}]}],"meaning_vi":"Khu vực lân cận, gần"}
+      ]
+    },
+    {
+      "no":86,
+      "word":"警察",
+      "reading":"けいさつ",
+      "word_raw":"警察（けいさつ）",
+      "ruby":[{"t":"警察","r":"けいさつ"}],
+      "han_viet":"cảnh sát",
+      "meaning_vi":"cảnh sát, ngành cảnh sát",
+      "examples":[
+        {"no":1,"jp":"自転車を盗まれたので、警察に届けた","jp_raw":"自転車（じてんしゃ）を盗（ぬす）まれたので、警察（けいさつ）に届（とど）けた","jp_ruby":[{"t":"自転車","r":"じてんしゃ"},{"t":"を"},{"t":"盗","r":"ぬす"},{"t":"まれたので、"},{"t":"警察","r":"けいさつ"},{"t":"に"},{"t":"届","r":"とど"},{"t":"けた"}],"vi":"Vì bị lấy mất xe đạp nên tôi trình báo với cảnh sát."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿署（しょ）、　＿官（かん）","items":[{"text":"＿署","ruby":[{"t":"＿"},{"t":"署","r":"しょ"}],"pattern":true},{"text":"＿官","ruby":[{"t":"＿"},{"t":"官","r":"かん"}],"pattern":true}],"meaning_vi":"Sở cảnh sát, cảnh sát viên"},
+        {"type":"related","marker":"関","raw":"警官（けいかん）、　おまわりさん、　交番（こうばん）","items":[{"text":"警官","ruby":[{"t":"警官","r":"けいかん"}]},{"text":"おまわりさん","ruby":[{"t":"おまわりさん"}]},{"text":"交番","ruby":[{"t":"交番","r":"こうばん"}]}],"meaning_vi":"Cảnh sát, cảnh sát tuần tra, bốt cảnh sát"}
+      ]
+    },
+    {
+      "no":87,
+      "word":"犯人",
+      "reading":"はんにん",
+      "word_raw":"犯人（はんにん）",
+      "ruby":[{"t":"犯人","r":"はんにん"}],
+      "han_viet":"phạm nhân",
+      "meaning_vi":"tội phạm, thủ phạm",
+      "examples":[
+        {"no":1,"jp":"事件の犯人","jp_raw":"事件（じけん）の犯人（はんにん）","jp_ruby":[{"t":"事件","r":"じけん"},{"t":"の"},{"t":"犯人","r":"はんにん"}],"vi":"Thủ phạm của vụ việc."},
+        {"no":2,"jp":"犯人をつかまえる","jp_raw":"犯人（はんにん）をつかまえる","jp_ruby":[{"t":"犯人","r":"はんにん"},{"t":"をつかまえる"}],"vi":"Bắt giữ tội phạm."}
+      ],
+      "related":[]
+    },
+    {
+      "no":88,
+      "word":"小銭",
+      "reading":"こぜに",
+      "word_raw":"小銭（こぜに）",
+      "ruby":[{"t":"小銭","r":"こぜに"}],
+      "han_viet":"tiểu tiền",
+      "meaning_vi":"tiền lẻ, đồng lẻ",
+      "examples":[
+        {"no":1,"jp":"バスに乗ってから小銭がないことに気がつき、とても困った","jp_raw":"バスに乗（の）ってから小銭（こぜに）がないことに気（き）がつき、とても困（こま）った","jp_ruby":[{"t":"バスに"},{"t":"乗","r":"の"},{"t":"ってから"},{"t":"小銭","r":"こぜに"},{"t":"がないことに"},{"t":"気","r":"き"},{"t":"がつき、とても"},{"t":"困","r":"こま"},{"t":"った"}],"vi":"Sau khi lên xe bus tôi mới nhận ra là mình không có tiền lẻ, thật sự éo le."}
+      ],
+      "related":[
+        {"type":"related","marker":"関","raw":"｛１００／１０　…｝円（えん）玉（だま）、　硬貨（こうか）、　（お）札（さつ）","items":[{"text":"｛１００／１０　…｝円玉","ruby":[{"t":"｛１００／１０　…｝"},{"t":"円","r":"えん"},{"t":"玉","r":"だま"}]},{"text":"硬貨","ruby":[{"t":"硬貨","r":"こうか"}]},{"text":"（お）札","ruby":[{"t":"（お）"},{"t":"札","r":"さつ"}]}],"meaning_vi":"Đồng {100/10 ...} yên, đồng xu, tiền giấy"},
+        {"type":"synonym","marker":"類","raw":"細（こま）かいお金（かね）","items":[{"text":"細かいお金","ruby":[{"t":"細","r":"こま"},{"t":"かいお"},{"t":"金","r":"かね"}]}],"meaning_vi":"Tiền lẻ"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,224 @@
+{
+  "book": "Mimikara Oboeru N3 Goi",
+  "source": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full/",
+  "language": "vi",
+  "total_entries": 880,
+  "units": [
+    {
+      "unit": "01",
+      "title_vi": "Danh từ A",
+      "title_en": "Nouns A",
+      "from": 1,
+      "to": 120,
+      "count": 120,
+      "parts": [
+        {"cd": "02", "file": "units/u01_cd02.json", "from": 1, "to": 17, "count": 17, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=01&cd=02"},
+        {"cd": "03", "file": "units/u01_cd03.json", "from": 18, "to": 34, "count": 17, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=01&cd=03"},
+        {"cd": "04", "file": "units/u01_cd04.json", "from": 35, "to": 52, "count": 18, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=01&cd=04"},
+        {"cd": "05", "file": "units/u01_cd05.json", "from": 53, "to": 66, "count": 14, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=01&cd=05"},
+        {"cd": "06", "file": "units/u01_cd06.json", "from": 67, "to": 71, "count": 5, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=01&cd=06"},
+        {"cd": "07", "file": "units/u01_cd07.json", "from": 72, "to": 88, "count": 17, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=01&cd=07"},
+        {"cd": "08", "file": "units/u01_cd08.json", "from": 89, "to": 106, "count": 18, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=01&cd=08"},
+        {"cd": "09", "file": "units/u01_cd09.json", "from": 107, "to": 120, "count": 14, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=01&cd=09"}
+      ]
+    },
+    {
+      "unit": "02",
+      "title_vi": "Động từ A",
+      "title_en": "Verbs A",
+      "from": 121,
+      "to": 220,
+      "count": 100,
+      "parts": [
+        {"cd": "10", "file": "units/u02_cd10.json", "from": 121, "to": 136, "count": 16, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=02&cd=10"},
+        {"cd": "11", "file": "units/u02_cd11.json", "from": 137, "to": 153, "count": 17, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=02&cd=11"},
+        {"cd": "12", "file": "units/u02_cd12.json", "from": 154, "to": 163, "count": 10, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=02&cd=12"},
+        {"cd": "13", "file": "units/u02_cd13.json", "from": 164, "to": 170, "count": 7, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=02&cd=13"},
+        {"cd": "14", "file": "units/u02_cd14.json", "from": 171, "to": 182, "count": 12, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=02&cd=14"},
+        {"cd": "15", "file": "units/u02_cd15.json", "from": 183, "to": 199, "count": 17, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=02&cd=15"},
+        {"cd": "16", "file": "units/u02_cd16.json", "from": 200, "to": 210, "count": 11, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=02&cd=16"},
+        {"cd": "17", "file": "units/u02_cd17.json", "from": 211, "to": 220, "count": 10, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=02&cd=17"}
+      ]
+    },
+    {
+      "unit": "2A",
+      "title_vi": "Tổng hợp – Danh từ gốc động từ",
+      "title_en": "Summary – Verbal nouns",
+      "from": 221,
+      "to": 258,
+      "count": 38,
+      "parts": [
+        {"cd": null, "file": "units/u2A.json", "from": 221, "to": 258, "count": 38, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=2A"}
+      ]
+    },
+    {
+      "unit": "03",
+      "title_vi": "Tính từ A",
+      "title_en": "Adjectives A",
+      "from": 259,
+      "to": 298,
+      "count": 40,
+      "parts": [
+        {"cd": "18", "file": "units/u03_cd18.json", "from": 259, "to": 270, "count": 12, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=03&cd=18"},
+        {"cd": "19", "file": "units/u03_cd19.json", "from": 271, "to": 281, "count": 11, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=03&cd=19"},
+        {"cd": "20", "file": "units/u03_cd20.json", "from": 282, "to": 291, "count": 10, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=03&cd=20"},
+        {"cd": "21", "file": "units/u03_cd21.json", "from": 292, "to": 298, "count": 7, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=03&cd=21"}
+      ]
+    },
+    {
+      "unit": "3A",
+      "title_vi": "Tổng hợp – Tính từ い + ～まる/～める",
+      "title_en": "Summary – i-adjectives + -maru/-meru",
+      "from": 299,
+      "to": 310,
+      "count": 12,
+      "parts": [
+        {"cd": null, "file": "units/u3A.json", "from": 299, "to": 310, "count": 12, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=3A"}
+      ]
+    },
+    {
+      "unit": "04",
+      "title_vi": "Danh từ B",
+      "title_en": "Nouns B",
+      "from": 311,
+      "to": 410,
+      "count": 100,
+      "parts": [
+        {"cd": "22", "file": "units/u04_cd22.json", "from": 311, "to": 326, "count": 16, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=04&cd=22"},
+        {"cd": "23", "file": "units/u04_cd23.json", "from": 327, "to": 341, "count": 15, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=04&cd=23"},
+        {"cd": "24", "file": "units/u04_cd24.json", "from": 342, "to": 356, "count": 15, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=04&cd=24"},
+        {"cd": "25", "file": "units/u04_cd25.json", "from": 357, "to": 370, "count": 14, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=04&cd=25"},
+        {"cd": "26", "file": "units/u04_cd26.json", "from": 371, "to": 383, "count": 13, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=04&cd=26"},
+        {"cd": "27", "file": "units/u04_cd27.json", "from": 384, "to": 396, "count": 13, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=04&cd=27"},
+        {"cd": "28", "file": "units/u04_cd28.json", "from": 397, "to": 410, "count": 14, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=04&cd=28"}
+      ]
+    },
+    {
+      "unit": "05",
+      "title_vi": "Động từ B",
+      "title_en": "Verbs B",
+      "from": 411,
+      "to": 510,
+      "count": 100,
+      "parts": [
+        {"cd": "29", "file": "units/u05_cd29.json", "from": 411, "to": 422, "count": 12, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=05&cd=29"},
+        {"cd": "30", "file": "units/u05_cd30.json", "from": 423, "to": 438, "count": 16, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=05&cd=30"},
+        {"cd": "31", "file": "units/u05_cd31.json", "from": 439, "to": 454, "count": 16, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=05&cd=31"},
+        {"cd": "32", "file": "units/u05_cd32.json", "from": 455, "to": 460, "count": 6, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=05&cd=32"},
+        {"cd": "33", "file": "units/u05_cd33.json", "from": 461, "to": 475, "count": 15, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=05&cd=33"},
+        {"cd": "34", "file": "units/u05_cd34.json", "from": 476, "to": 493, "count": 18, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=05&cd=34"},
+        {"cd": "35", "file": "units/u05_cd35.json", "from": 494, "to": 504, "count": 11, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=05&cd=35"},
+        {"cd": "36", "file": "units/u05_cd36.json", "from": 505, "to": 510, "count": 6, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=05&cd=36"}
+      ]
+    },
+    {
+      "unit": "06",
+      "title_vi": "Katakana A",
+      "title_en": "Katakana A",
+      "from": 511,
+      "to": 550,
+      "count": 40,
+      "parts": [
+        {"cd": null, "file": "units/u06.json", "from": 511, "to": 550, "count": 40, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=06"}
+      ]
+    },
+    {
+      "unit": "07",
+      "title_vi": "Tính từ B",
+      "title_en": "Adjectives B",
+      "from": 551,
+      "to": 590,
+      "count": 40,
+      "parts": [
+        {"cd": "37", "file": "units/u07_cd37.json", "from": 551, "to": 561, "count": 11, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=07&cd=37"},
+        {"cd": "38", "file": "units/u07_cd38.json", "from": 562, "to": 571, "count": 10, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=07&cd=38"},
+        {"cd": "39", "file": "units/u07_cd39.json", "from": 572, "to": 580, "count": 9, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=07&cd=39"},
+        {"cd": "40", "file": "units/u07_cd40.json", "from": 581, "to": 590, "count": 10, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=07&cd=40"}
+      ]
+    },
+    {
+      "unit": "08",
+      "title_vi": "Phó từ A",
+      "title_en": "Adverbs A",
+      "from": 591,
+      "to": 635,
+      "count": 45,
+      "parts": [
+        {"cd": "41", "file": "units/u08_cd41.json", "from": 591, "to": 601, "count": 11, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=08&cd=41"},
+        {"cd": "42", "file": "units/u08_cd42.json", "from": 602, "to": 614, "count": 13, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=08&cd=42"},
+        {"cd": "43", "file": "units/u08_cd43.json", "from": 615, "to": 626, "count": 12, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=08&cd=43"},
+        {"cd": "44", "file": "units/u08_cd44.json", "from": 627, "to": 635, "count": 9, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=08&cd=44"}
+      ]
+    },
+    {
+      "unit": "09",
+      "title_vi": "Danh từ C",
+      "title_en": "Nouns C",
+      "from": 636,
+      "to": 715,
+      "count": 80,
+      "parts": [
+        {"cd": "45", "file": "units/u09_cd45.json", "from": 636, "to": 651, "count": 16, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=09&cd=45"},
+        {"cd": "46", "file": "units/u09_cd46.json", "from": 652, "to": 666, "count": 15, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=09&cd=46"},
+        {"cd": "47", "file": "units/u09_cd47.json", "from": 667, "to": 675, "count": 9, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=09&cd=47"},
+        {"cd": "48", "file": "units/u09_cd48.json", "from": 676, "to": 690, "count": 15, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=09&cd=48"},
+        {"cd": "49", "file": "units/u09_cd49.json", "from": 691, "to": 705, "count": 15, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=09&cd=49"},
+        {"cd": "50", "file": "units/u09_cd50.json", "from": 706, "to": 715, "count": 10, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=09&cd=50"}
+      ]
+    },
+    {
+      "unit": "10",
+      "title_vi": "Động từ C",
+      "title_en": "Verbs C",
+      "from": 716,
+      "to": 795,
+      "count": 80,
+      "parts": [
+        {"cd": "51", "file": "units/u10_cd51.json", "from": 716, "to": 724, "count": 9, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=10&cd=51"},
+        {"cd": "52", "file": "units/u10_cd52.json", "from": 725, "to": 737, "count": 13, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=10&cd=52"},
+        {"cd": "53", "file": "units/u10_cd53.json", "from": 738, "to": 750, "count": 13, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=10&cd=53"},
+        {"cd": "54", "file": "units/u10_cd54.json", "from": 751, "to": 753, "count": 3, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=10&cd=54"},
+        {"cd": "55", "file": "units/u10_cd55.json", "from": 754, "to": 766, "count": 13, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=10&cd=55"},
+        {"cd": "56", "file": "units/u10_cd56.json", "from": 767, "to": 776, "count": 10, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=10&cd=56"},
+        {"cd": "57", "file": "units/u10_cd57.json", "from": 777, "to": 791, "count": 15, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=10&cd=57"},
+        {"cd": "58", "file": "units/u10_cd58.json", "from": 792, "to": 795, "count": 4, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=10&cd=58"}
+      ]
+    },
+    {
+      "unit": "11",
+      "title_vi": "Katakana B",
+      "title_en": "Katakana B",
+      "from": 796,
+      "to": 835,
+      "count": 40,
+      "parts": [
+        {"cd": null, "file": "units/u11.json", "from": 796, "to": 835, "count": 40, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=11"}
+      ]
+    },
+    {
+      "unit": "11A",
+      "title_vi": "Tổng hợp – Động từ nấu ăn",
+      "title_en": "Summary – Cooking verbs",
+      "from": 836,
+      "to": 845,
+      "count": 10,
+      "parts": [
+        {"cd": null, "file": "units/u11A.json", "from": 836, "to": 845, "count": 10, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=11A"}
+      ]
+    },
+    {
+      "unit": "12",
+      "title_vi": "Phó từ B, liên thể từ, liên từ",
+      "title_en": "Adverbs B, prenominals & conjunctions",
+      "from": 846,
+      "to": 880,
+      "count": 35,
+      "parts": [
+        {"cd": "59", "file": "units/u12_cd59.json", "from": 846, "to": 857, "count": 12, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=12&cd=59"},
+        {"cd": "60", "file": "units/u12_cd60.json", "from": 858, "to": 867, "count": 10, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=12&cd=60"},
+        {"cd": "61", "file": "units/u12_cd61.json", "from": 868, "to": 876, "count": 9, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=12&cd=61"},
+        {"cd": "62", "file": "units/u12_cd62.json", "from": 877, "to": 880, "count": 4, "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=12&cd=62"}
+      ]
+    }
+  ]
+}

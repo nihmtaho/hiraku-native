@@ -1,0 +1,174 @@
+{
+  "book": "Mimikara Oboeru N3 Goi",
+  "unit": "09",
+  "cd": "50",
+  "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=09&cd=50",
+  "count": 10,
+  "entries": [
+    {
+      "no":706,
+      "word":"物価",
+      "reading":"ぶっか",
+      "word_raw":"物価（ぶっか）",
+      "ruby":[{"t":"物価","r":"ぶっか"}],
+      "han_viet":"vật giá",
+      "meaning_vi":"giá cả, vật giá, mức giá chung",
+      "examples":[
+        {"no":1,"jp":"東京は物価が高い","jp_raw":"東京（とうきょう）は物価（ぶっか）が高（たか）い","jp_ruby":[{"t":"東京","r":"とうきょう"},{"t":"は"},{"t":"物価","r":"ぶっか"},{"t":"が"},{"t":"高","r":"たか"},{"t":"い"}],"vi":"Tokyo giá cả đắt đỏ."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿が高（たか）い  安（やす）い、＿が上（あ）がる  下（さ）がる","items":[{"text":"＿が高い  安い","ruby":[{"t":"＿が"},{"t":"高","r":"たか"},{"t":"い  "},{"t":"安","r":"やす"},{"t":"い"}],"pattern":true},{"text":"＿が上がる  下がる","ruby":[{"t":"＿が"},{"t":"上","r":"あ"},{"t":"がる  "},{"t":"下","r":"さ"},{"t":"がる"}],"pattern":true}],"meaning_vi":"Giá đắt <=> giá rẻ, tăng giá <=> giảm giá"},
+        {"type":"related","marker":"関","raw":"値上（ねあ）がり  値下（ねさ）がり","items":[{"text":"値上がり  値下がり","ruby":[{"t":"値上","r":"ねあ"},{"t":"がり  "},{"t":"値下","r":"ねさ"},{"t":"がり"}]}],"meaning_vi":"Tăng giá <=> giảm giá"}
+      ]
+    },
+    {
+      "no":707,
+      "word":"倒産",
+      "reading":"とうさん",
+      "word_raw":"倒産（とうさん）",
+      "ruby":[{"t":"倒産","r":"とうさん"}],
+      "han_viet":"đảo sản",
+      "meaning_vi":"phá sản",
+      "examples":[
+        {"no":1,"jp":"会社が倒産する","jp_raw":"会社（かいしゃ）が倒産（とうさん）する","jp_ruby":[{"t":"会社","r":"かいしゃ"},{"t":"が"},{"t":"倒産","r":"とうさん"},{"t":"する"}],"vi":"Công ty phá sản."}
+      ],
+      "related":[]
+    },
+    {
+      "no":708,
+      "word":"携帯",
+      "reading":"けいたい",
+      "word_raw":"携帯（けいたい）",
+      "ruby":[{"t":"携帯","r":"けいたい"}],
+      "han_viet":"huề đới",
+      "meaning_vi":"mang theo, di động",
+      "examples":[
+        {"no":1,"jp":"外国人はいつも外国人登録証を携帯していなければならない","jp_raw":"外国（がいこく）人（じん）はいつも外国（がいこく）人（じん）登録（とうろく）証（しょう）を携帯（けいたい）していなければならない","jp_ruby":[{"t":"外国","r":"がいこく"},{"t":"人","r":"じん"},{"t":"はいつも"},{"t":"外国","r":"がいこく"},{"t":"人","r":"じん"},{"t":"登録","r":"とうろく"},{"t":"証","r":"しょう"},{"t":"を"},{"t":"携帯","r":"けいたい"},{"t":"していなければならない"}],"vi":"Người ngoại quốc luôn luôn phải mang theo thẻ đăng kí nước ngoài."},
+        {"no":2,"jp":"私はたばこを吸うので、いつも携帯用灰皿を持ち歩いている","jp_raw":"私（わたし）はたばこを吸（す）うので、いつも携帯（けいたい）用（よう）灰皿（はいざら）を持（も）ち歩（ある）いている","jp_ruby":[{"t":"私","r":"わたし"},{"t":"はたばこを"},{"t":"吸","r":"す"},{"t":"うので、いつも"},{"t":"携帯","r":"けいたい"},{"t":"用","r":"よう"},{"t":"灰皿","r":"はいざら"},{"t":"を"},{"t":"持","r":"も"},{"t":"ち"},{"t":"歩","r":"ある"},{"t":"いている"}],"vi":"Vì tôi hút thuốc nên luôn mang theo gạt tàn di động."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿電話（でんわ）、＿用（よう）","items":[{"text":"＿電話","ruby":[{"t":"＿"},{"t":"電話","r":"でんわ"}],"pattern":true},{"text":"＿用","ruby":[{"t":"＿"},{"t":"用","r":"よう"}],"pattern":true}],"meaning_vi":"Điện thoại di động, xách tay, cầm tay"}
+      ]
+    },
+    {
+      "no":709,
+      "word":"現代",
+      "reading":"げんだい",
+      "word_raw":"現代（げんだい）",
+      "ruby":[{"t":"現代","r":"げんだい"}],
+      "han_viet":"hiện đại",
+      "meaning_vi":"hiện đại, ngày nay",
+      "examples":[
+        {"no":1,"jp":"現代は情報の時代だと言われている","jp_raw":"現代（げんだい）は情報（じょうほう）の時代（じだい）だと言（い）われている","jp_ruby":[{"t":"現代","r":"げんだい"},{"t":"は"},{"t":"情報","r":"じょうほう"},{"t":"の"},{"t":"時代","r":"じだい"},{"t":"だと"},{"t":"言","r":"い"},{"t":"われている"}],"vi":"Ngày nay được nói là thời đại của thông tin."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿人（じん）、＿社会（しゃかい）","items":[{"text":"＿人","ruby":[{"t":"＿"},{"t":"人","r":"じん"}],"pattern":true},{"text":"＿社会","ruby":[{"t":"＿"},{"t":"社会","r":"しゃかい"}],"pattern":true}],"meaning_vi":"Người hiện đại, xã hội hiện đại"},
+        {"type":"synonym","marker":"類","raw":"今日（こんにち）","items":[{"text":"今日","ruby":[{"t":"今日","r":"こんにち"}]}],"meaning_vi":"Ngày nay"},
+        {"type":"related","marker":"関","raw":"近代（きんだい）・中世（ちゅうせい）・古代（こだい）、現在（げんざい）","items":[{"text":"近代・中世・古代","ruby":[{"t":"近代","r":"きんだい"},{"t":"・"},{"t":"中世","r":"ちゅうせい"},{"t":"・"},{"t":"古代","r":"こだい"}]},{"text":"現在","ruby":[{"t":"現在","r":"げんざい"}]}],"meaning_vi":"Cận đại･trung cổ･cổ đại, hiện tại"}
+      ]
+    },
+    {
+      "no":710,
+      "word":"世紀",
+      "reading":"せいき",
+      "word_raw":"世紀（せいき）",
+      "ruby":[{"t":"世紀","r":"せいき"}],
+      "han_viet":"thế kỉ",
+      "meaning_vi":"thế kỷ",
+      "examples":[
+        {"no":1,"jp":"２１世紀が始まった","jp_raw":"２１世紀（せいき）が始（はじ）まった","jp_ruby":[{"t":"２１"},{"t":"世紀","r":"せいき"},{"t":"が"},{"t":"始","r":"はじ"},{"t":"まった"}],"vi":"Thế kỉ 21 đã bắt đầu."}
+      ],
+      "related":[]
+    },
+    {
+      "no":711,
+      "word":"文化",
+      "reading":"ぶんか",
+      "word_raw":"文化（ぶんか）",
+      "ruby":[{"t":"文化","r":"ぶんか"}],
+      "han_viet":"văn hóa",
+      "meaning_vi":"văn hóa",
+      "examples":[
+        {"no":1,"jp":"日本（の）文化","jp_raw":"日本（にほん）（の）文化（ぶんか）","jp_ruby":[{"t":"日本","r":"にほん"},{"t":"（の）"},{"t":"文化","r":"ぶんか"}],"vi":"Văn hóa Nhật Bản."},
+        {"no":2,"jp":"文化が発達する","jp_raw":"文化（ぶんか）が発達（はったつ）する","jp_ruby":[{"t":"文化","r":"ぶんか"},{"t":"が"},{"t":"発達","r":"はったつ"},{"t":"する"}],"vi":"Văn hóa phát triển."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿的（てき）な、異（い）＿、＿交流（こうりゅう）、＿遺産（いさん）","items":[{"text":"＿的な","ruby":[{"t":"＿"},{"t":"的","r":"てき"},{"t":"な"}],"pattern":true},{"text":"異＿","ruby":[{"t":"異","r":"い"},{"t":"＿"}],"pattern":true},{"text":"＿交流","ruby":[{"t":"＿"},{"t":"交流","r":"こうりゅう"}],"pattern":true},{"text":"＿遺産","ruby":[{"t":"＿"},{"t":"遺産","r":"いさん"}],"pattern":true}],"meaning_vi":"Tính văn hóa, nền văn hóa khác nhau, giao lưu văn hóa, di sản văn hóa"},
+        {"type":"related","marker":"関","raw":"文明（ぶんめい）","items":[{"text":"文明","ruby":[{"t":"文明","r":"ぶんめい"}]}],"meaning_vi":"Văn minh"}
+      ]
+    },
+    {
+      "no":712,
+      "word":"都市",
+      "reading":"とし",
+      "word_raw":"都市（とし）",
+      "ruby":[{"t":"都市","r":"とし"}],
+      "han_viet":"đô thị",
+      "meaning_vi":"đô thị, thành phố",
+      "examples":[
+        {"no":1,"jp":"都市に人口が集中する","jp_raw":"都市（とし）に人口（じんこう）が集中（しゅうちゅう）する","jp_ruby":[{"t":"都市","r":"とし"},{"t":"に"},{"t":"人口","r":"じんこう"},{"t":"が"},{"t":"集中","r":"しゅうちゅう"},{"t":"する"}],"vi":"Dân số tập trung chủ yếu ở các đô thị."},
+        {"no":2,"jp":"新しい都市を建設する","jp_raw":"新（あたら）しい都市（とし）を建設（けんせつ）する","jp_ruby":[{"t":"新","r":"あたら"},{"t":"しい"},{"t":"都市","r":"とし"},{"t":"を"},{"t":"建設","r":"けんせつ"},{"t":"する"}],"vi":"Xây dựng đô thị mới."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"大（だい）＿、｛工業（こうぎょう）／商業（しょうぎょう）　…｝＋都市（とし）、＿部（ぶ）","items":[{"text":"大＿","ruby":[{"t":"大","r":"だい"},{"t":"＿"}],"pattern":true},{"text":"｛工業／商業　…｝＋都市","ruby":[{"t":"｛"},{"t":"工業","r":"こうぎょう"},{"t":"／"},{"t":"商業","r":"しょうぎょう"},{"t":"　…｝＋"},{"t":"都市","r":"とし"}],"pattern":true},{"text":"＿部","ruby":[{"t":"＿"},{"t":"部","r":"ぶ"}],"pattern":true}],"meaning_vi":"Thành phố lớn, thành phố công nghiệp, thương nghiệp, khu đô thị"},
+        {"type":"synonym","marker":"類","raw":"都会（とかい）","items":[{"text":"都会","ruby":[{"t":"都会","r":"とかい"}]}],"meaning_vi":"Đô thị"},
+        {"type":"related","marker":"関","raw":"都心（としん）","items":[{"text":"都心","ruby":[{"t":"都心","r":"としん"}]}],"meaning_vi":"Trung tâm đô thị"}
+      ]
+    },
+    {
+      "no":713,
+      "word":"地方",
+      "reading":"ちほう",
+      "word_raw":"地方（ちほう）",
+      "ruby":[{"t":"地方","r":"ちほう"}],
+      "han_viet":"địa phương",
+      "meaning_vi":"địa phương, vùng",
+      "examples":[
+        {"no":1,"jp":"雨が多い地方では、植物がよく育つ","jp_raw":"雨（あめ）が多（おお）い地方（ちほう）では、植物（しょくぶつ）がよく育（そだ）つ","jp_ruby":[{"t":"雨","r":"あめ"},{"t":"が"},{"t":"多","r":"おお"},{"t":"い"},{"t":"地方","r":"ちほう"},{"t":"では、"},{"t":"植物","r":"しょくぶつ"},{"t":"がよく"},{"t":"育","r":"そだ"},{"t":"つ"}],"vi":"Ở địa phương có mưa nhiều thì thực vật phát triển tốt."},
+        {"no":2,"jp":"地方から都会へ出て働く","jp_raw":"地方（ちほう）から都会（とかい）へ出（で）て働（はたら）く","jp_ruby":[{"t":"地方","r":"ちほう"},{"t":"から"},{"t":"都会","r":"とかい"},{"t":"へ"},{"t":"出","r":"で"},{"t":"て"},{"t":"働","r":"はたら"},{"t":"く"}],"vi":"Từ địa phương ra thành phố làm việc."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"｛東北（とうほく）／関東（かんとう）／熱帯（ねったい）　…｝＋　地方（ちほう）、＿都市（とし）、＿自治体（じちたい）","items":[{"text":"｛東北／関東／熱帯　…｝＋　地方","ruby":[{"t":"｛"},{"t":"東北","r":"とうほく"},{"t":"／"},{"t":"関東","r":"かんとう"},{"t":"／"},{"t":"熱帯","r":"ねったい"},{"t":"　…｝＋　"},{"t":"地方","r":"ちほう"}],"pattern":true},{"text":"＿都市","ruby":[{"t":"＿"},{"t":"都市","r":"とし"}],"pattern":true},{"text":"＿自治体","ruby":[{"t":"＿"},{"t":"自治体","r":"じちたい"}],"pattern":true}],"meaning_vi":"Vùng {Touhoku/ Kanto (ở Nhật), nhiệt đới…}, thành phố địa phương, cơ quan tự trị địa phương"},
+        {"type":"synonym","marker":"類","raw":"地域（ちいき）、いなか","items":[{"text":"地域","ruby":[{"t":"地域","r":"ちいき"}]},{"text":"いなか","ruby":[{"t":"いなか"}]}],"meaning_vi":"Khu vực, quê"},
+        {"type":"antonym","marker":"対","raw":"中央（ちゅうおう）","items":[{"text":"中央","ruby":[{"t":"中央","r":"ちゅうおう"}]}],"meaning_vi":"Trung ương"},
+        {"type":"related","marker":"関","raw":"都会（とかい）","items":[{"text":"都会","ruby":[{"t":"都会","r":"とかい"}]}],"meaning_vi":"Thành phố"}
+      ]
+    },
+    {
+      "no":714,
+      "word":"戦争",
+      "reading":"せんそう",
+      "word_raw":"戦争（せんそう）",
+      "ruby":[{"t":"戦争","r":"せんそう"}],
+      "han_viet":"chiến tranh",
+      "meaning_vi":"chiến tranh",
+      "examples":[
+        {"no":1,"jp":"A国とB国の間で戦争が起きた","jp_raw":"A国（こく）とB国（こく）の間（あいだ）で戦争（せんそう）が起（お）きた","jp_ruby":[{"t":"A"},{"t":"国","r":"こく"},{"t":"とB"},{"t":"国","r":"こく"},{"t":"の"},{"t":"間","r":"あいだ"},{"t":"で"},{"t":"戦争","r":"せんそう"},{"t":"が"},{"t":"起","r":"お"},{"t":"きた"}],"vi":"Đã xảy ra chiến tranh giữa hai nước A và B."},
+        {"no":2,"jp":"戦争が終わって平和になった","jp_raw":"戦争（せんそう）が終（お）わって平和（へいわ）になった","jp_ruby":[{"t":"戦争","r":"せんそう"},{"t":"が"},{"t":"終","r":"お"},{"t":"わって"},{"t":"平和","r":"へいわ"},{"t":"になった"}],"vi":"Chiến tranh kết thúc hòa bình trở lại."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"受験（じゅけん）＿","items":[{"text":"受験＿","ruby":[{"t":"受験","r":"じゅけん"},{"t":"＿"}],"pattern":true}],"meaning_vi":"Cạnh tranh khốc liệt vào kì thi"},
+        {"type":"antonym","marker":"対","raw":"平和（へいわ）","items":[{"text":"平和","ruby":[{"t":"平和","r":"へいわ"}]}],"meaning_vi":"Hòa bình"}
+      ]
+    },
+    {
+      "no":715,
+      "word":"平和",
+      "reading":"へいわ",
+      "word_raw":"平和（へいわ）",
+      "ruby":[{"t":"平和","r":"へいわ"}],
+      "han_viet":"bình hòa",
+      "meaning_vi":"hòa bình",
+      "examples":[
+        {"no":1,"jp":"世界の平和を守る","jp_raw":"世界（せかい）の平和（へいわ）を守（まも）る","jp_ruby":[{"t":"世界","r":"せかい"},{"t":"の"},{"t":"平和","r":"へいわ"},{"t":"を"},{"t":"守","r":"まも"},{"t":"る"}],"vi":"Giữ gìn hòa bình thế giới."},
+        {"no":2,"jp":"争いを平和的に解決した","jp_raw":"争（あらそ）いを平和的（へいわてき）に解決（かいけつ）した","jp_ruby":[{"t":"争","r":"あらそ"},{"t":"いを"},{"t":"平和的","r":"へいわてき"},{"t":"に"},{"t":"解決","r":"かいけつ"},{"t":"した"}],"vi":"Đã giải quyết cuộc chiến bằng biện pháp hòa bình."},
+        {"no":3,"jp":"平和な家庭","jp_raw":"平和（へいわ）な家庭（かてい）","jp_ruby":[{"t":"平和","r":"へいわ"},{"t":"な"},{"t":"家庭","r":"かてい"}],"vi":"Gia đình hòa thuận."},
+        {"no":4,"jp":"平和に暮らす","jp_raw":"平和（へいわ）に暮（く）らす","jp_ruby":[{"t":"平和","r":"へいわ"},{"t":"に"},{"t":"暮","r":"く"},{"t":"らす"}],"vi":"Sống một cách yên bình."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿運動（うんどう）、＿的（てき）な","items":[{"text":"＿運動","ruby":[{"t":"＿"},{"t":"運動","r":"うんどう"}],"pattern":true},{"text":"＿的な","ruby":[{"t":"＿"},{"t":"的","r":"てき"},{"t":"な"}],"pattern":true}],"meaning_vi":"Vận động hòa bình, một cách hòa bình"},
+        {"type":"synonym","marker":"類","raw":"穏（おだ）やかな","items":[{"text":"穏やかな","ruby":[{"t":"穏","r":"おだ"},{"t":"やかな"}]}],"meaning_vi":"Êm đềm, hòa nhã, yên bình"}
+      ]
+    }
+  ]
+}

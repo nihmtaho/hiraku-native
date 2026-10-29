@@ -1,0 +1,290 @@
+{
+  "book": "Mimikara Oboeru N3 Goi",
+  "unit": "01",
+  "cd": "03",
+  "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=01&cd=03",
+  "count": 17,
+  "entries": [
+    {
+      "no":18,
+      "word":"成長",
+      "reading":"せいちょう",
+      "word_raw":"成長（せいちょう）",
+      "ruby":[{"t":"成長","r":"せいちょう"}],
+      "han_viet":"thành trường/trưởng",
+      "meaning_vi":"sinh trưởng, phát triển, trưởng thành",
+      "examples":[
+        {"no":1,"jp":"子どもの成長を喜ぶ","jp_raw":"子（こ）どもの成長（せいちょう）を喜（よろこ）ぶ","jp_ruby":[{"t":"子","r":"こ"},{"t":"どもの"},{"t":"成長","r":"せいちょう"},{"t":"を"},{"t":"喜","r":"よろこ"},{"t":"ぶ"}],"vi":"Vui mừng về sự trưởng thành của đứa con."},
+        {"no":2,"jp":"りっぱな大人に成長する","jp_raw":"りっぱな大人（おとな）に成長（せいちょう）する","jp_ruby":[{"t":"りっぱな"},{"t":"大人","r":"おとな"},{"t":"に"},{"t":"成長","r":"せいちょう"},{"t":"する"}],"vi":"Trưởng thành thành người chững chạc."},
+        {"no":3,"jp":"事業の成長","jp_raw":"事業（じぎょう）の成長（せいちょう）","jp_ruby":[{"t":"事業","r":"じぎょう"},{"t":"の"},{"t":"成長","r":"せいちょう"}],"vi":"Tăng trưởng kinh doanh."},
+        {"no":4,"jp":"経済が大きく成長した","jp_raw":"経済（けいざい）が大（おお）きく成長（せいちょう）した","jp_ruby":[{"t":"経済","r":"けいざい"},{"t":"が"},{"t":"大","r":"おお"},{"t":"きく"},{"t":"成長","r":"せいちょう"},{"t":"した"}],"vi":"Nền kinh tế phát triển mạnh"}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"高度（こうど）経済（けいざい）＿、　＿率（りつ）","items":[{"text":"高度経済＿","ruby":[{"t":"高度","r":"こうど"},{"t":"経済","r":"けいざい"},{"t":"＿"}],"pattern":true},{"text":"＿率","ruby":[{"t":"＿"},{"t":"率","r":"りつ"}],"pattern":true}],"meaning_vi":"Kinh tế phát triển mạnh, tỷ lệ tăng trưởng"}
+      ]
+    },
+    {
+      "no":19,
+      "word":"成人",
+      "reading":"せいじん",
+      "word_raw":"成人（せいじん）",
+      "ruby":[{"t":"成人","r":"せいじん"}],
+      "han_viet":"thành nhân",
+      "meaning_vi":"người trưởng thành",
+      "examples":[
+        {"no":1,"jp":"日本では二十歳以上の人を成人という","jp_raw":"日本（にほん）では二十歳（はたち）以上（いじょう）の人（ひと）を成人（せいじん）という","jp_ruby":[{"t":"日本","r":"にほん"},{"t":"では"},{"t":"二十歳","r":"はたち"},{"t":"以上","r":"いじょう"},{"t":"の"},{"t":"人","r":"ひと"},{"t":"を"},{"t":"成人","r":"せいじん"},{"t":"という"}],"vi":"Ở Nhật người ta gọi người từ 20 tuổi trở lên là người trưởng thành."},
+        {"no":2,"jp":"息子は成人して働いている","jp_raw":"息子（むすこ）は成人（せいじん）して働（はたら）いている","jp_ruby":[{"t":"息子","r":"むすこ"},{"t":"は"},{"t":"成人","r":"せいじん"},{"t":"して"},{"t":"働","r":"はたら"},{"t":"いている"}],"vi":"Con trai tôi đã trưởng thành và đang đi làm."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿式（しき）","items":[{"text":"＿式","ruby":[{"t":"＿"},{"t":"式","r":"しき"}],"pattern":true}],"meaning_vi":"Lễ thành nhân"},
+        {"type":"antonym","marker":"対","raw":"未成年（みせいねん）","items":[{"text":"未成年","ruby":[{"t":"未成年","r":"みせいねん"}]}],"meaning_vi":"Vị thành niên (Ở Nhật là dưới 20 tuổi)"}
+      ]
+    },
+    {
+      "no":20,
+      "word":"合格",
+      "reading":"ごうかく",
+      "word_raw":"合格（ごうかく）",
+      "ruby":[{"t":"合格","r":"ごうかく"}],
+      "han_viet":"hợp cách",
+      "meaning_vi":"thi đỗ, trúng tuyển",
+      "examples":[
+        {"no":1,"jp":"｛大学／入学試験／検査　…｝に合格する","jp_raw":"｛大学（だいがく）／入学（にゅうがく）試験（しけん）／検査（けんさ）　…｝に合格（ごうかく）する","jp_ruby":[{"t":"｛"},{"t":"大学","r":"だいがく"},{"t":"／"},{"t":"入学","r":"にゅうがく"},{"t":"試験","r":"しけん"},{"t":"／"},{"t":"検査","r":"けんさ"},{"t":"　…｝に"},{"t":"合格","r":"ごうかく"},{"t":"する"}],"vi":"Đỗ {Kỳ thi đại học / Kỳ thi nhập học / Kiểm tra ...}."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿者（しゃ）、　＿率（りつ）","items":[{"text":"＿者","ruby":[{"t":"＿"},{"t":"者","r":"しゃ"}],"pattern":true},{"text":"＿率","ruby":[{"t":"＿"},{"t":"率","r":"りつ"}],"pattern":true}],"meaning_vi":"Người trúng tuyển, tỷ lệ trúng tuyển"},
+        {"type":"antonym","marker":"対","raw":"不合格（ふごうかく）　（✕不合格（ふごうかく）する　○不合格（ふごうかく）にする／不合格（ふごうかく）だ）","items":[{"text":"不合格　（✕不合格する　○不合格にする／不合格だ）","ruby":[{"t":"不合格","r":"ふごうかく"},{"t":"　（✕"},{"t":"不合格","r":"ふごうかく"},{"t":"する　○"},{"t":"不合格","r":"ふごうかく"},{"t":"にする／"},{"t":"不合格","r":"ふごうかく"},{"t":"だ）"}]}],"meaning_vi":"Không đỗ (✖Không dùng từ này 　◯ Đánh trượt / Không đỗ)"}
+      ]
+    },
+    {
+      "no":21,
+      "word":"進学",
+      "reading":"しんがく",
+      "word_raw":"進学（しんがく）",
+      "ruby":[{"t":"進学","r":"しんがく"}],
+      "han_viet":"tiến học",
+      "meaning_vi":"học lên",
+      "examples":[
+        {"no":1,"jp":"子どもの進学について考える","jp_raw":"子（こ）どもの進学（しんがく）について考（かんが）える","jp_ruby":[{"t":"子","r":"こ"},{"t":"どもの"},{"t":"進学","r":"しんがく"},{"t":"について"},{"t":"考","r":"かんが"},{"t":"える"}],"vi":"Tôi suy nghĩ về việc học lên của đứa con."},
+        {"no":2,"jp":"大学院に進学する","jp_raw":"大学院（だいがくいん）に進学（しんがく）する","jp_ruby":[{"t":"大学院","r":"だいがくいん"},{"t":"に"},{"t":"進学","r":"しんがく"},{"t":"する"}],"vi":"Tiếp tục học lên cao học."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿率（りつ）","items":[{"text":"＿率","ruby":[{"t":"＿"},{"t":"率","r":"りつ"}],"pattern":true}],"meaning_vi":"Tỷ lệ học lên"}
+      ]
+    },
+    {
+      "no":22,
+      "word":"退学",
+      "reading":"たいがく",
+      "word_raw":"退学（たいがく）",
+      "ruby":[{"t":"退学","r":"たいがく"}],
+      "han_viet":"thoái học",
+      "meaning_vi":"thôi học",
+      "examples":[
+        {"no":1,"jp":"退学の理由を説明する","jp_raw":"退学（たいがく）の理由（りゆう）を説明（せつめい）する","jp_ruby":[{"t":"退学","r":"たいがく"},{"t":"の"},{"t":"理由","r":"りゆう"},{"t":"を"},{"t":"説明","r":"せつめい"},{"t":"する"}],"vi":"Trình bày lý do thôi học."},
+        {"no":2,"jp":"病気で大学を退学した","jp_raw":"病気（びょうき）で大学（だいがく）を退学（たいがく）した","jp_ruby":[{"t":"病気","r":"びょうき"},{"t":"で"},{"t":"大学","r":"だいがく"},{"t":"を"},{"t":"退学","r":"たいがく"},{"t":"した"}],"vi":"Vì bị ốm nên phải thôi học đại học."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿届（とどけ）、　＿処分（しょぶん）","items":[{"text":"＿届","ruby":[{"t":"＿"},{"t":"届","r":"とどけ"}],"pattern":true},{"text":"＿処分","ruby":[{"t":"＿"},{"t":"処分","r":"しょぶん"}],"pattern":true}],"meaning_vi":"_ đơn xin thôi học, _ buộc thôi học"},
+        {"type":"related","marker":"関","raw":"中退（ちゅうたい）","items":[{"text":"中退","ruby":[{"t":"中退","r":"ちゅうたい"}]}],"meaning_vi":"Nghỉ học giữa chừng"}
+      ]
+    },
+    {
+      "no":23,
+      "word":"就職",
+      "reading":"しゅうしょく",
+      "word_raw":"就職（しゅうしょく）",
+      "ruby":[{"t":"就職","r":"しゅうしょく"}],
+      "han_viet":"tựu chức",
+      "meaning_vi":"có việc làm, vào làm việc",
+      "examples":[
+        {"no":1,"jp":"旅行会社に就職する","jp_raw":"旅行（りょこう）会社（がいしゃ）に就職（しゅうしょく）する","jp_ruby":[{"t":"旅行","r":"りょこう"},{"t":"会社","r":"がいしゃ"},{"t":"に"},{"t":"就職","r":"しゅうしょく"},{"t":"する"}],"vi":"Tôi sẽ làm việc ở công ty du lịch."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿活動（かつどう）、　＿試験（しけん）、　＿難（なん）","items":[{"text":"＿活動","ruby":[{"t":"＿"},{"t":"活動","r":"かつどう"}],"pattern":true},{"text":"＿試験","ruby":[{"t":"＿"},{"t":"試験","r":"しけん"}],"pattern":true},{"text":"＿難","ruby":[{"t":"＿"},{"t":"難","r":"なん"}],"pattern":true}],"meaning_vi":"Tìm kiếm việc làm, kỳ thi xin việc, khó xin việc"},
+        {"type":"antonym","marker":"対","raw":"退職（たいしょく）","items":[{"text":"退職","ruby":[{"t":"退職","r":"たいしょく"}]}],"meaning_vi":"Thôi việc, thoái chức"},
+        {"type":"related","marker":"関","raw":"履歴書（りれきしょ）","items":[{"text":"履歴書","ruby":[{"t":"履歴書","r":"りれきしょ"}]}],"meaning_vi":"Sơ yếu lí lịch"}
+      ]
+    },
+    {
+      "no":24,
+      "word":"退職",
+      "reading":"たいしょく",
+      "word_raw":"退職（たいしょく）",
+      "ruby":[{"t":"退職","r":"たいしょく"}],
+      "han_viet":"thoái chức",
+      "meaning_vi":"nghỉ việc",
+      "examples":[
+        {"no":1,"jp":"母の介護のため、退職を決めた","jp_raw":"母（はは）の介護（かいご）のため、退職（たいしょく）を決（き）めた","jp_ruby":[{"t":"母","r":"はは"},{"t":"の"},{"t":"介護","r":"かいご"},{"t":"のため、"},{"t":"退職","r":"たいしょく"},{"t":"を"},{"t":"決","r":"き"},{"t":"めた"}],"vi":"Tôi quyết định thôi việc để chăm sóc mẹ."},
+        {"no":2,"jp":"長年勤めた会社を退職した","jp_raw":"長年（ながねん）勤（つと）めた会社（かいしゃ）を退職（たいしょく）した","jp_ruby":[{"t":"長年","r":"ながねん"},{"t":"勤","r":"つと"},{"t":"めた"},{"t":"会社","r":"かいしゃ"},{"t":"を"},{"t":"退職","r":"たいしょく"},{"t":"した"}],"vi":"Tôi đã nghỉ việc ở công ty làm lâu năm."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"定年（ていねん）＿、　＿金（きん）","items":[{"text":"定年＿","ruby":[{"t":"定年","r":"ていねん"},{"t":"＿"}],"pattern":true},{"text":"＿金","ruby":[{"t":"＿"},{"t":"金","r":"きん"}],"pattern":true}],"meaning_vi":"Về hưu, trợ cấp thôi việc"},
+        {"type":"antonym","marker":"対","raw":"就職（しゅうしょく）","items":[{"text":"就職","ruby":[{"t":"就職","r":"しゅうしょく"}]}],"meaning_vi":"Xin việc"},
+        {"type":"synonym","marker":"類","raw":"辞職（じしょく）","items":[{"text":"辞職","ruby":[{"t":"辞職","r":"じしょく"}]}],"meaning_vi":"Từ chức"}
+      ]
+    },
+    {
+      "no":25,
+      "word":"失業",
+      "reading":"しつぎょう",
+      "word_raw":"失業（しつぎょう）",
+      "ruby":[{"t":"失業","r":"しつぎょう"}],
+      "han_viet":"thất nghiệp",
+      "meaning_vi":"thất nghiệp",
+      "examples":[
+        {"no":1,"jp":"会社が倒産して失業した","jp_raw":"会社（かいしゃ）が倒産（とうさん）して失業（しつぎょう）した","jp_ruby":[{"t":"会社","r":"かいしゃ"},{"t":"が"},{"t":"倒産","r":"とうさん"},{"t":"して"},{"t":"失業","r":"しつぎょう"},{"t":"した"}],"vi":"Vì công ty phá sản nên tôi thất nghiệp."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿率（りつ）、　＿者（しゃ）、　＿保険（ほけん）","items":[{"text":"＿率","ruby":[{"t":"＿"},{"t":"率","r":"りつ"}],"pattern":true},{"text":"＿者","ruby":[{"t":"＿"},{"t":"者","r":"しゃ"}],"pattern":true},{"text":"＿保険","ruby":[{"t":"＿"},{"t":"保険","r":"ほけん"}],"pattern":true}],"meaning_vi":"Tỷ lệ thất nghiệp, người thất nghiệp, bảo hiểm thất nghiệp"},
+        {"type":"related","marker":"関","raw":"くび、　リストラ","items":[{"text":"くび","ruby":[{"t":"くび"}]},{"text":"リストラ","ruby":[{"t":"リストラ"}]}],"meaning_vi":"Đuổi việc, cắt giảm nhân sự"}
+      ]
+    },
+    {
+      "no":26,
+      "word":"残業",
+      "reading":"ざんぎょう",
+      "word_raw":"残業（ざんぎょう）",
+      "ruby":[{"t":"残業","r":"ざんぎょう"}],
+      "han_viet":"tàn nghiệp",
+      "meaning_vi":"làm thêm giờ",
+      "examples":[
+        {"no":1,"jp":"残業が多くて疲れた","jp_raw":"残業（ざんぎょう）が多（おお）くて疲（つか）れた","jp_ruby":[{"t":"残業","r":"ざんぎょう"},{"t":"が"},{"t":"多","r":"おお"},{"t":"くて"},{"t":"疲","r":"つか"},{"t":"れた"}],"vi":"Vì tăng ca nhiều nên mệt mỏi."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿代（だい）、　＿時間（じかん）","items":[{"text":"＿代","ruby":[{"t":"＿"},{"t":"代","r":"だい"}],"pattern":true},{"text":"＿時間","ruby":[{"t":"＿"},{"t":"時間","r":"じかん"}],"pattern":true}],"meaning_vi":"Tiền tăng ca, thời gian tăng ca"}
+      ]
+    },
+    {
+      "no":27,
+      "word":"生活",
+      "reading":"せいかつ",
+      "word_raw":"生活（せいかつ）",
+      "ruby":[{"t":"生活","r":"せいかつ"}],
+      "han_viet":"sinh hoạt",
+      "meaning_vi":"sinh hoạt, cuộc sống",
+      "examples":[
+        {"no":1,"jp":"健康的な生活を送る","jp_raw":"健康的（けんこうてき）な生活（せいかつ）を送（おく）る","jp_ruby":[{"t":"健康的","r":"けんこうてき"},{"t":"な"},{"t":"生活","r":"せいかつ"},{"t":"を"},{"t":"送","r":"おく"},{"t":"る"}],"vi":"Sống cuộc sống khỏe mạnh."},
+        {"no":2,"jp":"「もう日本の生活に慣れましたか」","jp_raw":"「もう日本（にほん）の生活（せいかつ）に慣（な）れましたか」","jp_ruby":[{"t":"「もう"},{"t":"日本","r":"にほん"},{"t":"の"},{"t":"生活","r":"せいかつ"},{"t":"に"},{"t":"慣","r":"な"},{"t":"れましたか」"}],"vi":"\"Bạn đã quen với cuộc sống ở Nhật chưa?\""},
+        {"no":3,"jp":"外国で生活するのは楽しい","jp_raw":"外国（がいこく）で生活（せいかつ）するのは楽（たの）しい","jp_ruby":[{"t":"外国","r":"がいこく"},{"t":"で"},{"t":"生活","r":"せいかつ"},{"t":"するのは"},{"t":"楽","r":"たの"},{"t":"しい"}],"vi":"Cuộc sống ở nước ngoài rất vui."},
+        {"no":4,"jp":"虫の生活を観察する","jp_raw":"虫（むし）の生活（せいかつ）を観察（かんさつ）する","jp_ruby":[{"t":"虫","r":"むし"},{"t":"の"},{"t":"生活","r":"せいかつ"},{"t":"を"},{"t":"観察","r":"かんさつ"},{"t":"する"}],"vi":"Quan sát đời sống của côn trùng ."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿が苦（くる）しい  楽（らく）だ、｛楽（たの）しい／苦（くる）しい／豊（ゆた）かな　…｝＿を送（おく）る","items":[{"text":"＿が苦しい  楽だ","ruby":[{"t":"＿が"},{"t":"苦","r":"くる"},{"t":"しい  "},{"t":"楽","r":"らく"},{"t":"だ"}],"pattern":true},{"text":"｛楽しい／苦しい／豊かな　…｝＿を送る","ruby":[{"t":"｛"},{"t":"楽","r":"たの"},{"t":"しい／"},{"t":"苦","r":"くる"},{"t":"しい／"},{"t":"豊","r":"ゆた"},{"t":"かな　…｝＿を"},{"t":"送","r":"おく"},{"t":"る"}],"pattern":true}],"meaning_vi":"Cuộc sống khổ cực <=> Cuộc sống dễ chịu, cuộc sống {vui vẻ / khốn khó / dư giả ...}"},
+        {"type":"compound","marker":"合","raw":"＿費（ひ）、　学生（がくせい）＿、　社会（しゃかい）＿、　結婚（けっこん）＿、　年金（ねんきん）＿","items":[{"text":"＿費","ruby":[{"t":"＿"},{"t":"費","r":"ひ"}],"pattern":true},{"text":"学生＿","ruby":[{"t":"学生","r":"がくせい"},{"t":"＿"}],"pattern":true},{"text":"社会＿","ruby":[{"t":"社会","r":"しゃかい"},{"t":"＿"}],"pattern":true},{"text":"結婚＿","ruby":[{"t":"結婚","r":"けっこん"},{"t":"＿"}],"pattern":true},{"text":"年金＿","ruby":[{"t":"年金","r":"ねんきん"},{"t":"＿"}],"pattern":true}],"meaning_vi":"Chi phí sinh hoạt, đời sinh viên, đời sống xã hội, đời sống hôn nhân, cuộc sống hưu trí"},
+        {"type":"synonym","marker":"類","raw":"暮（く）らし","items":[{"text":"暮らし","ruby":[{"t":"暮","r":"く"},{"t":"らし"}]}],"meaning_vi":"Cuộc sống"}
+      ]
+    },
+    {
+      "no":28,
+      "word":"通勤",
+      "reading":"つうきん",
+      "word_raw":"通勤（つうきん）",
+      "ruby":[{"t":"通勤","r":"つうきん"}],
+      "han_viet":"thông cần",
+      "meaning_vi":"đi làm",
+      "examples":[
+        {"no":1,"jp":"私は毎日１時間かけて通勤している","jp_raw":"私（わたし）は毎日（まいにち）１時間（じかん）かけて通勤（つうきん）している","jp_ruby":[{"t":"私","r":"わたし"},{"t":"は"},{"t":"毎日","r":"まいにち"},{"t":"１"},{"t":"時間","r":"じかん"},{"t":"かけて"},{"t":"通勤","r":"つうきん"},{"t":"している"}],"vi":"Hàng ngày tôi mất một tiếng đi làm."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿時間（じかん）","items":[{"text":"＿時間","ruby":[{"t":"＿"},{"t":"時間","r":"じかん"}],"pattern":true}],"meaning_vi":"Thời gian đi làm"},
+        {"type":"related","marker":"関","raw":"通学（つうがく）、　通院（つういん）","items":[{"text":"通学","ruby":[{"t":"通学","r":"つうがく"}]},{"text":"通院","ruby":[{"t":"通院","r":"つういん"}]}],"meaning_vi":"Đi học, đi đến bệnh viện"}
+      ]
+    },
+    {
+      "no":29,
+      "word":"学歴",
+      "reading":"がくれき",
+      "word_raw":"学歴（がくれき）",
+      "ruby":[{"t":"学歴","r":"がくれき"}],
+      "han_viet":"học lịch",
+      "meaning_vi":"bằng cấp, quá trình học tập",
+      "examples":[
+        {"no":1,"jp":"学歴が高くても、実力があるかどうかはわからない","jp_raw":"学歴（がくれき）が高（たか）くても、実力（じつりょく）があるかどうかはわからない","jp_ruby":[{"t":"学歴","r":"がくれき"},{"t":"が"},{"t":"高","r":"たか"},{"t":"くても、"},{"t":"実力","r":"じつりょく"},{"t":"があるかどうかはわからない"}],"vi":"Cho dù bằng cấp cao nhưng thực lực thì không biết thế nào."},
+        {"no":2,"jp":"子どもにいい学歴をつけさせたいと思う親が多い","jp_raw":"子（こ）どもにいい学歴（がくれき）をつけさせたいと思（おも）う親（おや）が多（おお）い","jp_ruby":[{"t":"子","r":"こ"},{"t":"どもにいい"},{"t":"学歴","r":"がくれき"},{"t":"をつけさせたいと"},{"t":"思","r":"おも"},{"t":"う"},{"t":"親","r":"おや"},{"t":"が"},{"t":"多","r":"おお"},{"t":"い"}],"vi":"Nhiều bố mẹ muốn con mình có lý lịch học vấn tốt."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿が高（たか）い  低（ひく）い、　＿をつける","items":[{"text":"＿が高い  低い","ruby":[{"t":"＿が"},{"t":"高","r":"たか"},{"t":"い  "},{"t":"低","r":"ひく"},{"t":"い"}],"pattern":true},{"text":"＿をつける","ruby":[{"t":"＿をつける"}],"pattern":true}],"meaning_vi":"Trình độ học vấn cao <=> trình độ học vấn thấp, lấy bằng (đại học …)"},
+        {"type":"compound","marker":"合","raw":"高（こう）＿、　＿社会（しゃかい）","items":[{"text":"高＿","ruby":[{"t":"高","r":"こう"},{"t":"＿"}],"pattern":true},{"text":"＿社会","ruby":[{"t":"＿"},{"t":"社会","r":"しゃかい"}],"pattern":true}],"meaning_vi":"Học vấn cao, xã hội coi trọng bằng cấp"}
+      ]
+    },
+    {
+      "no":30,
+      "word":"給料",
+      "reading":"きゅうりょう",
+      "word_raw":"給料（きゅうりょう）",
+      "ruby":[{"t":"給料","r":"きゅうりょう"}],
+      "han_viet":"cấp liệu",
+      "meaning_vi":"tiền lương",
+      "examples":[
+        {"no":1,"jp":"会社から給料をもらう","jp_raw":"会社（かいしゃ）から給料（きゅうりょう）をもらう","jp_ruby":[{"t":"会社","r":"かいしゃ"},{"t":"から"},{"t":"給料","r":"きゅうりょう"},{"t":"をもらう"}],"vi":"Nhận lương từ công ty."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿日（び）","items":[{"text":"＿日","ruby":[{"t":"＿"},{"t":"日","r":"び"}],"pattern":true}],"meaning_vi":"Ngày nhận lương"},
+        {"type":"related","marker":"関","raw":"時給（じきゅう）、　月給（げっきゅう）","items":[{"text":"時給","ruby":[{"t":"時給","r":"じきゅう"}]},{"text":"月給","ruby":[{"t":"月給","r":"げっきゅう"}]}],"meaning_vi":"Lương theo giờ, lương tháng"}
+      ]
+    },
+    {
+      "no":31,
+      "word":"面接",
+      "reading":"めんせつ",
+      "word_raw":"面接（めんせつ）",
+      "ruby":[{"t":"面接","r":"めんせつ"}],
+      "han_viet":"diện tiếp",
+      "meaning_vi":"phỏng vấn",
+      "examples":[
+        {"no":1,"jp":"きょう、会社の人との面接がある","jp_raw":"きょう、会社（かいしゃ）の人（ひと）との面接（めんせつ）がある","jp_ruby":[{"t":"きょう、"},{"t":"会社","r":"かいしゃ"},{"t":"の"},{"t":"人","r":"ひと"},{"t":"との"},{"t":"面接","r":"めんせつ"},{"t":"がある"}],"vi":"Hôm nay có buổi phỏng vấn với người trong công ty."},
+        {"no":2,"jp":"受験者の面接を行う","jp_raw":"受験者（じゅけんしゃ）の面接（めんせつ）を行（おこな）う","jp_ruby":[{"t":"受験者","r":"じゅけんしゃ"},{"t":"の"},{"t":"面接","r":"めんせつ"},{"t":"を"},{"t":"行","r":"おこな"},{"t":"う"}],"vi":"Tiến hành phỏng vấn thí sinh."},
+        {"no":3,"jp":"先生が学生を面接する","jp_raw":"先生（せんせい）が学生（がくせい）を面接（めんせつ）する","jp_ruby":[{"t":"先生","r":"せんせい"},{"t":"が"},{"t":"学生","r":"がくせい"},{"t":"を"},{"t":"面接","r":"めんせつ"},{"t":"する"}],"vi":"Giáo viên phỏng vấn sinh viên."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿試験（しけん）、　＿官（かん）","items":[{"text":"＿試験","ruby":[{"t":"＿"},{"t":"試験","r":"しけん"}],"pattern":true},{"text":"＿官","ruby":[{"t":"＿"},{"t":"官","r":"かん"}],"pattern":true}],"meaning_vi":"Kỳ thi phỏng vấn, người phỏng vấn"}
+      ]
+    },
+    {
+      "no":32,
+      "word":"休憩",
+      "reading":"きゅうけい",
+      "word_raw":"休憩（きゅうけい）",
+      "ruby":[{"t":"休憩","r":"きゅうけい"}],
+      "han_viet":"hưu khế",
+      "meaning_vi":"nghỉ giải lao",
+      "examples":[
+        {"no":1,"jp":"「ではここで、１０分間の休憩です」","jp_raw":"「ではここで、１０分間（ぷんかん）の休憩（きゅうけい）です」","jp_ruby":[{"t":"「ではここで、１０"},{"t":"分間","r":"ぷんかん"},{"t":"の"},{"t":"休憩","r":"きゅうけい"},{"t":"です」"}],"vi":"\"Thế thì, nghỉ giải lao 10 phút từ bây giờ.\""}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿をとる","items":[{"text":"＿をとる","ruby":[{"t":"＿をとる"}],"pattern":true}],"meaning_vi":"Nghỉ giải lao"},
+        {"type":"compound","marker":"合","raw":"＿時間（じかん）、　＿室（しつ）、　＿所（じょ）","items":[{"text":"＿時間","ruby":[{"t":"＿"},{"t":"時間","r":"じかん"}],"pattern":true},{"text":"＿室","ruby":[{"t":"＿"},{"t":"室","r":"しつ"}],"pattern":true},{"text":"＿所","ruby":[{"t":"＿"},{"t":"所","r":"じょ"}],"pattern":true}],"meaning_vi":"Thời gian giải lao, phòng giải lao, nơi giải lao"}
+      ]
+    },
+    {
+      "no":33,
+      "word":"観光",
+      "reading":"かんこう",
+      "word_raw":"観光（かんこう）",
+      "ruby":[{"t":"観光","r":"かんこう"}],
+      "han_viet":"quan quang",
+      "meaning_vi":"tham quan, du lịch",
+      "examples":[
+        {"no":1,"jp":"「来日の目的は観光です」","jp_raw":"「来日（らいにち）の目的（もくてき）は観光（かんこう）です」","jp_ruby":[{"t":"「"},{"t":"来日","r":"らいにち"},{"t":"の"},{"t":"目的","r":"もくてき"},{"t":"は"},{"t":"観光","r":"かんこう"},{"t":"です」"}],"vi":"Mục đích đến Nhật Bản là du lịch."},
+        {"no":2,"jp":"先週、京都を観光してまわった","jp_raw":"先週（せんしゅう）、京都（きょうと）を観光（かんこう）してまわった","jp_ruby":[{"t":"先週","r":"せんしゅう"},{"t":"、"},{"t":"京都","r":"きょうと"},{"t":"を"},{"t":"観光","r":"かんこう"},{"t":"してまわった"}],"vi":"Tuần trước, tôi đã đi tham quan ở Kyoto."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿客（きゃく）、　＿旅行（りょこう）、　＿地（ち）、　＿バス、　［地名（ちめい）］　＋　観光（かんこう）　（例（れい）．京都（きょうと）観光（かんこう））","items":[{"text":"＿客","ruby":[{"t":"＿"},{"t":"客","r":"きゃく"}],"pattern":true},{"text":"＿旅行","ruby":[{"t":"＿"},{"t":"旅行","r":"りょこう"}],"pattern":true},{"text":"＿地","ruby":[{"t":"＿"},{"t":"地","r":"ち"}],"pattern":true},{"text":"＿バス","ruby":[{"t":"＿バス"}],"pattern":true},{"text":"［地名］　＋　観光　（例．京都観光）","ruby":[{"t":"［"},{"t":"地名","r":"ちめい"},{"t":"］　＋　"},{"t":"観光","r":"かんこう"},{"t":"　（"},{"t":"例","r":"れい"},{"t":"．"},{"t":"京都","r":"きょうと"},{"t":"観光","r":"かんこう"},{"t":"）"}],"pattern":true}],"meaning_vi":"Khách tham quan, tham quan du lịch , khu du lịch, xe khách du lịch, du lịch + [địa điểm] (VD: du lịch Kyoto)"}
+      ]
+    },
+    {
+      "no":34,
+      "word":"帰国",
+      "reading":"きこく",
+      "word_raw":"帰国（きこく）",
+      "ruby":[{"t":"帰国","r":"きこく"}],
+      "han_viet":"quy quốc",
+      "meaning_vi":"về nước",
+      "examples":[
+        {"no":1,"jp":"今度の正月には帰国するつもりだ","jp_raw":"今度（こんど）の正月（しょうがつ）には帰国（きこく）するつもりだ","jp_ruby":[{"t":"今度","r":"こんど"},{"t":"の"},{"t":"正月","r":"しょうがつ"},{"t":"には"},{"t":"帰国","r":"きこく"},{"t":"するつもりだ"}],"vi":"Dịp tết lần này tôi dự định sẽ về nước."}
+      ],
+      "related":[]
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+#!/usr/bin/env sh
+# commit-msg hook: enforce no-AI-trailer + Conventional Commit subject.
+# Installed by git-hooks/scripts/install-hooks.sh. Bypass once with --no-verify.
+set -eu
+MSG_FILE="$1"
+
+# 1) Block AI attribution trailers anywhere in the message.
+AI='co-authored-by:.*(claude|anthropic|openai|chatgpt|gpt|copilot|cursor|gemini|codex|noreply@anthropic)|generated with (claude|copilot|cursor|codex|ai)|🤖 generated'
+if grep -iqE "$AI" "$MSG_FILE"; then
+  echo "commit-msg: AI attribution trailer is not allowed:" >&2
+  grep -inE "$AI" "$MSG_FILE" >&2
+  exit 1
+fi
+
+# First non-comment, non-empty line = subject.
+SUBJECT=$(grep -vE '^\s*#' "$MSG_FILE" | grep -vE '^\s*$' | head -n 1 || true)
+
+# 2) Let special commits through (merge, revert, fixup/squash autosquash).
+case "$SUBJECT" in
+  "Merge "*|"Revert "*|"fixup! "*|"squash! "*|"amend! "*) exit 0 ;;
+esac
+
+# 3) Header only: no body or footer.
+LINES=$(grep -vE '^\s*#' "$MSG_FILE" | grep -cvE '^\s*$' || true)
+if [ "$LINES" -gt 1 ]; then
+  echo "commit-msg: message must be the header line only (no body or footer)." >&2
+  exit 1
+fi
+
+# 4) No task IDs in the header.
+if printf '%s' "$SUBJECT" | grep -qE '[A-Z]{2,}-[0-9]+|#[0-9]+'; then
+  echo "commit-msg: no task IDs in the header: $SUBJECT" >&2
+  exit 1
+fi
+
+# 5) Require Conventional Commit subject.
+TYPES='feat|fix|perf|refactor|docs|style|test|build|ci|chore|revert'
+if ! printf '%s' "$SUBJECT" | grep -qE "^($TYPES)(\([a-z0-9._/-]+\))?!?: .+"; then
+  echo "commit-msg: subject must follow Conventional Commits." >&2
+  echo "  got:      $SUBJECT" >&2
+  echo "  expected: <type>(<scope>)?: <summary>" >&2
+  echo "  types:    $TYPES" >&2
+  exit 1
+fi
+
+# 6) Subject length limit (72 chars).
+LEN=$(printf '%s' "$SUBJECT" | wc -c | tr -d ' ')
+if [ "$LEN" -gt 72 ]; then
+  echo "commit-msg: subject is ${LEN} chars (max 72). Shorten it." >&2
+  exit 1
+fi
+
+exit 0

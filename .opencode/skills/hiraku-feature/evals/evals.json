@@ -1,0 +1,27 @@
+{
+  "skill_name": "hiraku-feature",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "PO đã duyệt một StudyMode mới, core API đã có. Nêu cách thêm mode và nối vào app mà không làm FeatureStudy biết concrete mode. Không sửa file.",
+      "expected_output": "Dùng StudyKit/StudyMode, đăng ký App FeatureRegistry, DI/protocol, fake/AppClock, Controller lifecycle, UI tokens/copy và tests; không import feature chéo.",
+      "files": [],
+      "assertions": [
+        "Nối StudyMode và FeatureRegistry tại App, không import feature chéo.",
+        "Có HirakuTesting, AppClock và start/stop.",
+        "Có package test độc lập và wiring/integration."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Sửa một nhãn nút trong FeatureWords đã có. Có nên tạo package mới và dùng checklist thêm feature? Nếu form có field tùy biến thì có thể đưa tên profile và field người dùng vào String Catalog không? Chỉ trả lời, không sửa file.",
+      "expected_output": "Không tạo module hay kích hoạt quy trình thêm feature cho sửa nhỏ; dùng COPY/catalog cho nhãn tĩnh, không đưa dữ liệu tên người dùng vào catalog.",
+      "files": [],
+      "assertions": [
+        "Không tạo package mới chỉ để sửa nhãn.",
+        "Phân biệt nhãn UI tĩnh với tên field/profile là dữ liệu.",
+        "Không nạp thêm quy trình không cần thiết."
+      ]
+    }
+  ]
+}

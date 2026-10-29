@@ -1,0 +1,226 @@
+{
+  "book": "Mimikara Oboeru N3 Goi",
+  "unit": "04",
+  "cd": "25",
+  "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=04&cd=25",
+  "count": 14,
+  "entries": [
+    {
+      "no":357,
+      "word":"緊張",
+      "reading":"きんちょう",
+      "word_raw":"緊張（きんちょう）",
+      "ruby":[{"t":"緊張","r":"きんちょう"}],
+      "han_viet":"khẩn trương",
+      "meaning_vi":"căng thẳng, lo lắng",
+      "examples":[
+        {"no":1,"jp":"面接では緊張して、うまく答えられなかった","jp_raw":"面接（めんせつ）では緊張（きんちょう）して、うまく答（こた）えられなかった","jp_ruby":[{"t":"面接","r":"めんせつ"},{"t":"では"},{"t":"緊張","r":"きんちょう"},{"t":"して、うまく"},{"t":"答","r":"こた"},{"t":"えられなかった"}],"vi":"Lúc phỏng vấn vì căng thẳng nên tôi không thể trả lời trôi chảy được."},
+        {"no":2,"jp":"試合の前なので、みんな｛○緊張している／✕緊張だ｝","jp_raw":"試合（しあい）の前（まえ）なので、みんな｛○緊張（きんちょう）している／✕緊張（きんちょう）だ｝","jp_ruby":[{"t":"試合","r":"しあい"},{"t":"の"},{"t":"前","r":"まえ"},{"t":"なので、みんな｛○"},{"t":"緊張","r":"きんちょう"},{"t":"している／✕"},{"t":"緊張","r":"きんちょう"},{"t":"だ｝"}],"vi":"Vì trước trận đấu nên mọi người căng thẳng."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿がとける、　＿が高（たか）まる、　＿がゆるむ","items":[{"text":"＿がとける","ruby":[{"t":"＿がとける"}],"pattern":true},{"text":"＿が高まる","ruby":[{"t":"＿が"},{"t":"高","r":"たか"},{"t":"まる"}],"pattern":true},{"text":"＿がゆるむ","ruby":[{"t":"＿がゆるむ"}],"pattern":true}],"meaning_vi":"Căng thẳng giải tỏa, căng thẳng tăng lên, căng thẳng giảm bớt"}
+      ]
+    },
+    {
+      "no":358,
+      "word":"自信",
+      "reading":"じしん",
+      "word_raw":"自信（じしん）",
+      "ruby":[{"t":"自信","r":"じしん"}],
+      "han_viet":"tự tín",
+      "meaning_vi":"tự tin",
+      "examples":[
+        {"no":1,"jp":"体力に自信がある","jp_raw":"体力（たいりょく）に自信（じしん）がある","jp_ruby":[{"t":"体力","r":"たいりょく"},{"t":"に"},{"t":"自信","r":"じしん"},{"t":"がある"}],"vi":"Tự tin vào thể lực."},
+        {"no":2,"jp":"「この成績ならだいじょうぶですよ。もっと自信を持ってください」","jp_raw":"「この成績（せいせき）ならだいじょうぶですよ。もっと自信（じしん）を持（も）ってください」","jp_ruby":[{"t":"「この"},{"t":"成績","r":"せいせき"},{"t":"ならだいじょうぶですよ。もっと"},{"t":"自信","r":"じしん"},{"t":"を"},{"t":"持","r":"も"},{"t":"ってください」"}],"vi":"Với thành tích này thì không sao đâu. Hãy tự tin lên."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿がある  ない、＿を持（も）つ、＿がなくなる、＿をなくす、＿を失（うしな）う、＿がつく、＿をつける","items":[{"text":"＿がある  ない","ruby":[{"t":"＿がある  ない"}],"pattern":true},{"text":"＿を持つ","ruby":[{"t":"＿を"},{"t":"持","r":"も"},{"t":"つ"}],"pattern":true},{"text":"＿がなくなる","ruby":[{"t":"＿がなくなる"}],"pattern":true},{"text":"＿をなくす","ruby":[{"t":"＿をなくす"}],"pattern":true},{"text":"＿を失う","ruby":[{"t":"＿を"},{"t":"失","r":"うしな"},{"t":"う"}],"pattern":true},{"text":"＿がつく","ruby":[{"t":"＿がつく"}],"pattern":true},{"text":"＿をつける","ruby":[{"t":"＿をつける"}],"pattern":true}],"meaning_vi":"Có tự tin <=> không có tự tin/ có tự tin <=> mất tự tin/ đánh mất tự tin/ mất tự tin/ có sự tự tin/ đạt được sự tự tin"}
+      ]
+    },
+    {
+      "no":359,
+      "word":"自慢",
+      "reading":"じまん",
+      "word_raw":"自慢（じまん）",
+      "ruby":[{"t":"自慢","r":"じまん"}],
+      "han_viet":"tự mạn",
+      "meaning_vi":"tự hào, khoe khoang",
+      "examples":[
+        {"no":1,"jp":"自慢の料理を作る","jp_raw":"自慢（じまん）の料理（りょうり）を作（つく）る","jp_ruby":[{"t":"自慢","r":"じまん"},{"t":"の"},{"t":"料理","r":"りょうり"},{"t":"を"},{"t":"作","r":"つく"},{"t":"る"}],"vi":"Làm món tủ."},
+        {"no":2,"jp":"母親は皆に有名大学に入った息子を自慢している","jp_raw":"母親（ははおや）は皆（みな）に有名（ゆうめい）大学（だいがく）に入（はい）った息子（むすこ）を自慢（じまん）している","jp_ruby":[{"t":"母親","r":"ははおや"},{"t":"は"},{"t":"皆","r":"みな"},{"t":"に"},{"t":"有名","r":"ゆうめい"},{"t":"大学","r":"だいがく"},{"t":"に"},{"t":"入","r":"はい"},{"t":"った"},{"t":"息子","r":"むすこ"},{"t":"を"},{"t":"自慢","r":"じまん"},{"t":"している"}],"vi":"Bà mẹ tự hào khoe đứa con trai mình đã đỗ vào trường đại học danh tiếng."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿話（はなし）","items":[{"text":"＿話","ruby":[{"t":"＿"},{"t":"話","r":"はなし"}],"pattern":true}],"meaning_vi":"Khoe khoang, câu chuyện đầy hãnh diện"}
+      ]
+    },
+    {
+      "no":360,
+      "word":"感心",
+      "reading":"かんしん",
+      "word_raw":"感心（かんしん）",
+      "ruby":[{"t":"感心","r":"かんしん"}],
+      "han_viet":"cảm tâm",
+      "meaning_vi":"thán phục, khâm phục",
+      "examples":[
+        {"no":1,"jp":"チンさんの進歩の速さに感心した","jp_raw":"チンさんの進歩（しんぽ）の速（はや）さに感心（かんしん）した","jp_ruby":[{"t":"チンさんの"},{"t":"進歩","r":"しんぽ"},{"t":"の"},{"t":"速","r":"はや"},{"t":"さに"},{"t":"感心","r":"かんしん"},{"t":"した"}],"vi":"Tôi ngưỡng mộ sự tiến bộ nhanh chóng của Chin."},
+        {"no":2,"jp":"太郎君はよく親の手伝いをする、感心な子どもだ","jp_raw":"太郎君（たろうくん）はよく親（おや）の手伝（てつだ）いをする、感心（かんしん）な子（こ）どもだ","jp_ruby":[{"t":"太郎君","r":"たろうくん"},{"t":"はよく"},{"t":"親","r":"おや"},{"t":"の"},{"t":"手伝","r":"てつだ"},{"t":"いをする、"},{"t":"感心","r":"かんしん"},{"t":"な"},{"t":"子","r":"こ"},{"t":"どもだ"}],"vi":"Bé Tarou hay phụ giúp bố mẹ, thật là một cậu bé đáng được khen ngợi."}
+      ],
+      "related":[]
+    },
+    {
+      "no":361,
+      "word":"感動",
+      "reading":"かんどう",
+      "word_raw":"感動（かんどう）",
+      "ruby":[{"t":"感動","r":"かんどう"}],
+      "han_viet":"cảm động",
+      "meaning_vi":"bị xúc động, cảm động",
+      "examples":[
+        {"no":1,"jp":"パラリンピックを見て、とても｛感動した／感動させられた｝","jp_raw":"パラリンピックを見（み）て、とても｛感動（かんどう）した／感動（かんどう）させられた｝","jp_ruby":[{"t":"パラリンピックを"},{"t":"見","r":"み"},{"t":"て、とても｛"},{"t":"感動","r":"かんどう"},{"t":"した／"},{"t":"感動","r":"かんどう"},{"t":"させられた｝"}],"vi":"Xem Paralympic, tôi đã rất xúc động/ làm tôi thấy xúc động (paralympic là đại hội thể thao người khuyết tật)."},
+        {"no":2,"jp":"私はピカソの絵に感動し、自分も画家になりたいと思った","jp_raw":"私（わたし）はピカソの絵（え）に感動（かんどう）し、自分（じぶん）も画家（がか）になりたいと思（おも）った","jp_ruby":[{"t":"私","r":"わたし"},{"t":"はピカソの"},{"t":"絵","r":"え"},{"t":"に"},{"t":"感動","r":"かんどう"},{"t":"し、"},{"t":"自分","r":"じぶん"},{"t":"も"},{"t":"画家","r":"がか"},{"t":"になりたいと"},{"t":"思","r":"おも"},{"t":"った"}],"vi":"Bức tranh của Picasso làm tôi rất xúc động và tôi cũng muốn trở thành một họa sĩ."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿を受（う）ける  ＿を与（あた）える、　深（ふか）く＿する","items":[{"text":"＿を受ける  ＿を与える","ruby":[{"t":"＿を"},{"t":"受","r":"う"},{"t":"ける  ＿を"},{"t":"与","r":"あた"},{"t":"える"}],"pattern":true},{"text":"深く＿する","ruby":[{"t":"深","r":"ふか"},{"t":"く＿する"}],"pattern":true}],"meaning_vi":"Thấy ấn tượng, thấy cảm động <=> Tạo ấn tượng, làm xúc động/ ấn tượng sâu sắc, xúc động mạnh"}
+      ]
+    },
+    {
+      "no":362,
+      "word":"興奮",
+      "reading":"こうふん",
+      "word_raw":"興奮（こうふん）",
+      "ruby":[{"t":"興奮","r":"こうふん"}],
+      "han_viet":"hưng/hứng phấn",
+      "meaning_vi":"hưng phấn",
+      "examples":[
+        {"no":1,"jp":"試合を見ていた観客たちは、興奮して大声を出した","jp_raw":"試合（しあい）を見（み）ていた観客（かんきゃく）たちは、興奮（こうふん）して大声（おおごえ）を出（だ）した","jp_ruby":[{"t":"試合","r":"しあい"},{"t":"を"},{"t":"見","r":"み"},{"t":"ていた"},{"t":"観客","r":"かんきゃく"},{"t":"たちは、"},{"t":"興奮","r":"こうふん"},{"t":"して"},{"t":"大声","r":"おおごえ"},{"t":"を"},{"t":"出","r":"だ"},{"t":"した"}],"vi":"Khán giả xem trận đấu hưng phấn và reo hò ầm ĩ."}
+      ],
+      "related":[]
+    },
+    {
+      "no":363,
+      "word":"感想",
+      "reading":"かんそう",
+      "word_raw":"感想（かんそう）",
+      "ruby":[{"t":"感想","r":"かんそう"}],
+      "han_viet":"cảm tưởng",
+      "meaning_vi":"cảm nghĩ, cảm tưởng",
+      "examples":[
+        {"no":1,"jp":"［ご感想はいかがですか」「すばらしかったです」","jp_raw":"［ご感想（かんそう）はいかがですか」「すばらしかったです」","jp_ruby":[{"t":"［ご"},{"t":"感想","r":"かんそう"},{"t":"はいかがですか」「すばらしかったです」"}],"vi":"Bạn cảm thấy thế nào? Rất tuyệt vời."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿を述（の）べる","items":[{"text":"＿を述べる","ruby":[{"t":"＿を"},{"t":"述","r":"の"},{"t":"べる"}],"pattern":true}],"meaning_vi":"Bày tỏ cảm nhận, bình phẩm, review"}
+      ]
+    },
+    {
+      "no":364,
+      "word":"予想",
+      "reading":"よそう",
+      "word_raw":"予想（よそう）",
+      "ruby":[{"t":"予想","r":"よそう"}],
+      "han_viet":"dự tưởng",
+      "meaning_vi":"dự đoán",
+      "examples":[
+        {"no":1,"jp":"選挙の結果を予想する","jp_raw":"選挙（せんきょ）の結果（けっか）を予想（よそう）する","jp_ruby":[{"t":"選挙","r":"せんきょ"},{"t":"の"},{"t":"結果","r":"けっか"},{"t":"を"},{"t":"予想","r":"よそう"},{"t":"する"}],"vi":"Dự đoán kết quả bầu cử."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿が当（あ）たる  外（はず）れる、　＿を立（た）てる、　＿をうらぎる","items":[{"text":"＿が当たる  外れる","ruby":[{"t":"＿が"},{"t":"当","r":"あ"},{"t":"たる  "},{"t":"外","r":"はず"},{"t":"れる"}],"pattern":true},{"text":"＿を立てる","ruby":[{"t":"＿を"},{"t":"立","r":"た"},{"t":"てる"}],"pattern":true},{"text":"＿をうらぎる","ruby":[{"t":"＿をうらぎる"}],"pattern":true}],"meaning_vi":"Đoán đúng<=> đoán sai, đưa ra dự đoán, ngược với dự đoán"},
+        {"type":"compound","marker":"合","raw":"＿どおり、　＿外（がい）","items":[{"text":"＿どおり","ruby":[{"t":"＿どおり"}],"pattern":true},{"text":"＿外","ruby":[{"t":"＿"},{"t":"外","r":"がい"}],"pattern":true}],"meaning_vi":"Theo như dự đoán, ngoài dự đoán"},
+        {"type":"synonym","marker":"類","raw":"予測（よそく）","items":[{"text":"予測","ruby":[{"t":"予測","r":"よそく"}]}],"meaning_vi":"Dự đoán"}
+      ]
+    },
+    {
+      "no":365,
+      "word":"専門",
+      "reading":"せんもん",
+      "word_raw":"専門（せんもん）",
+      "ruby":[{"t":"専門","r":"せんもん"}],
+      "han_viet":"chuyên môn",
+      "meaning_vi":"chuyên môn, chuyên ngành",
+      "examples":[
+        {"no":1,"jp":"専門は言語学です","jp_raw":"専門（せんもん）は言語学（げんごがく）です","jp_ruby":[{"t":"専門","r":"せんもん"},{"t":"は"},{"t":"言語学","r":"げんごがく"},{"t":"です"}],"vi":"Chuyên môn của tôi là ngôn ngữ học."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿家（か）、　＿知識（ちしき）、　＿分野（ぶんや）、　＿的（てき）な","items":[{"text":"＿家","ruby":[{"t":"＿"},{"t":"家","r":"か"}],"pattern":true},{"text":"＿知識","ruby":[{"t":"＿"},{"t":"知識","r":"ちしき"}],"pattern":true},{"text":"＿分野","ruby":[{"t":"＿"},{"t":"分野","r":"ぶんや"}],"pattern":true},{"text":"＿的な","ruby":[{"t":"＿"},{"t":"的","r":"てき"},{"t":"な"}],"pattern":true}],"meaning_vi":"Nhà chuyên môn/ kiến thức chuyên môn/ lĩnh vực chuyên môn/ tính chuyên môn"}
+      ]
+    },
+    {
+      "no":366,
+      "word":"研究",
+      "reading":"けんきゅう",
+      "word_raw":"研究（けんきゅう）",
+      "ruby":[{"t":"研究","r":"けんきゅう"}],
+      "han_viet":"nghiên cứu",
+      "meaning_vi":"nghiên cứu, tìm hiểu, học tập",
+      "examples":[
+        {"no":1,"jp":"私は大学で日本の政治を研究している","jp_raw":"私（わたし）は大学（だいがく）で日本（にほん）の政治（せいじ）を研究（けんきゅう）している","jp_ruby":[{"t":"私","r":"わたし"},{"t":"は"},{"t":"大学","r":"だいがく"},{"t":"で"},{"t":"日本","r":"にほん"},{"t":"の"},{"t":"政治","r":"せいじ"},{"t":"を"},{"t":"研究","r":"けんきゅう"},{"t":"している"}],"vi":"Tôi đang nghiên cứu chính trị Nhật Bản ở trường đại học."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿者（しゃ）、　＿所（じょ）、　＿会（かい）","items":[{"text":"＿者","ruby":[{"t":"＿"},{"t":"者","r":"しゃ"}],"pattern":true},{"text":"＿所","ruby":[{"t":"＿"},{"t":"所","r":"じょ"}],"pattern":true},{"text":"＿会","ruby":[{"t":"＿"},{"t":"会","r":"かい"}],"pattern":true}],"meaning_vi":"Nhà nghiên cứu, phòng nghiên cứu, hội nghiên cứu"}
+      ]
+    },
+    {
+      "no":367,
+      "word":"調査",
+      "reading":"ちょうさ",
+      "word_raw":"調査（ちょうさ）",
+      "ruby":[{"t":"調査","r":"ちょうさ"}],
+      "han_viet":"điều tra",
+      "meaning_vi":"điều tra, khảo sát",
+      "examples":[
+        {"no":1,"jp":"調査を行う","jp_raw":"調査（ちょうさ）を行（おこな）う","jp_ruby":[{"t":"調査","r":"ちょうさ"},{"t":"を"},{"t":"行","r":"おこな"},{"t":"う"}],"vi":"Tiến hành điều tra."},
+        {"no":2,"jp":"学生の希望を調査する","jp_raw":"学生（がくせい）の希望（きぼう）を調査（ちょうさ）する","jp_ruby":[{"t":"学生","r":"がくせい"},{"t":"の"},{"t":"希望","r":"きぼう"},{"t":"を"},{"t":"調査","r":"ちょうさ"},{"t":"する"}],"vi":"Khảo sát nguyện vọng của học sinh."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"［名詞（めいし）］　＋調査（ちょうさ）","items":[{"text":"［名詞］　＋調査","ruby":[{"t":"［"},{"t":"名詞","r":"めいし"},{"t":"］　＋"},{"t":"調査","r":"ちょうさ"}],"pattern":true}],"meaning_vi":"Danh từ+điều tra ( Câu hỏi điều tra, điều tra bằng phiếu)"}
+      ]
+    },
+    {
+      "no":368,
+      "word":"原因",
+      "reading":"げんいん",
+      "word_raw":"原因（げんいん）",
+      "ruby":[{"t":"原因","r":"げんいん"}],
+      "han_viet":"nguyên nhân",
+      "meaning_vi":"nguyên nhân",
+      "examples":[
+        {"no":1,"jp":"今、警察が事故の原因を調べている","jp_raw":"今（いま）、警察（けいさつ）が事故（じこ）の原因（げんいん）を調（しら）べている","jp_ruby":[{"t":"今","r":"いま"},{"t":"、"},{"t":"警察","r":"けいさつ"},{"t":"が"},{"t":"事故","r":"じこ"},{"t":"の"},{"t":"原因","r":"げんいん"},{"t":"を"},{"t":"調","r":"しら"},{"t":"べている"}],"vi":"Bây giờ cảnh sát đang điều tra nguyên nhân của vụ tai nạn."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿不明（ふめい）","items":[{"text":"＿不明","ruby":[{"t":"＿"},{"t":"不明","r":"ふめい"}],"pattern":true}],"meaning_vi":"Không rõ nguyên nhân"},
+        {"type":"antonym","marker":"対","raw":"結果（けっか）","items":[{"text":"結果","ruby":[{"t":"結果","r":"けっか"}]}],"meaning_vi":"Kết quả"},
+        {"type":"related","marker":"関","raw":"理由（りゆう）","items":[{"text":"理由","ruby":[{"t":"理由","r":"りゆう"}]}],"meaning_vi":"Lí do"}
+      ]
+    },
+    {
+      "no":369,
+      "word":"結果",
+      "reading":"けっか",
+      "word_raw":"結果（けっか）",
+      "ruby":[{"t":"結果","r":"けっか"}],
+      "han_viet":"kết quả",
+      "meaning_vi":"kết quả",
+      "examples":[
+        {"no":1,"jp":"１位になりたかったが、結果は３位だった","jp_raw":"１位（い）になりたかったが、結果（けっか）は３位（い）だった","jp_ruby":[{"t":"１"},{"t":"位","r":"い"},{"t":"になりたかったが、"},{"t":"結果","r":"けっか"},{"t":"は３"},{"t":"位","r":"い"},{"t":"だった"}],"vi":"Tôi muốn vị trí số 1 nhưng kết quả đạt được vị trí thứ 3."},
+        {"no":2,"jp":"経済の悪化が原因で、多くの会社が倒産する結果になった","jp_raw":"経済（けいざい）の悪化（あっか）が原因（げんいん）で、多（おお）くの会社（かいしゃ）が倒産（とうさん）する結果（けっか）になった","jp_ruby":[{"t":"経済","r":"けいざい"},{"t":"の"},{"t":"悪化","r":"あっか"},{"t":"が"},{"t":"原因","r":"げんいん"},{"t":"で、"},{"t":"多","r":"おお"},{"t":"くの"},{"t":"会社","r":"かいしゃ"},{"t":"が"},{"t":"倒産","r":"とうさん"},{"t":"する"},{"t":"結果","r":"けっか"},{"t":"になった"}],"vi":"Vì tình hình kinh tế có chiều hướng xấu đi nên dẫn đến kết quả là nhiều công ty phá sản."},
+        {"no":3,"jp":"努力した結果、初めはできなかったことが、できるようになった","jp_raw":"努力（どりょく）した結果（けっか）、初（はじ）めはできなかったことが、できるようになった","jp_ruby":[{"t":"努力","r":"どりょく"},{"t":"した"},{"t":"結果","r":"けっか"},{"t":"、"},{"t":"初","r":"はじ"},{"t":"めはできなかったことが、できるようになった"}],"vi":"Kết quả của sự nỗ lực là những việc ban đầu không thể làm được nhưng sau đó thì có thể làm được."}
+      ],
+      "related":[
+        {"type":"antonym","marker":"対","raw":"原因（げんいん）","items":[{"text":"原因","ruby":[{"t":"原因","r":"げんいん"}]}],"meaning_vi":"Nguyên nhân"}
+      ]
+    },
+    {
+      "no":370,
+      "word":"解決",
+      "reading":"かいけつ",
+      "word_raw":"解決（かいけつ）",
+      "ruby":[{"t":"解決","r":"かいけつ"}],
+      "han_viet":"giải quyết",
+      "meaning_vi":"giải quyết",
+      "examples":[
+        {"no":1,"jp":"大きな問題が解決した","jp_raw":"大（おお）きな問題（もんだい）が解決（かいけつ）した","jp_ruby":[{"t":"大","r":"おお"},{"t":"きな"},{"t":"問題","r":"もんだい"},{"t":"が"},{"t":"解決","r":"かいけつ"},{"t":"した"}],"vi":"Vấn đề lớn được giải quyết."},
+        {"no":2,"jp":"トラブルを解決する","jp_raw":"トラブルを解決（かいけつ）する","jp_ruby":[{"t":"トラブルを"},{"t":"解決","r":"かいけつ"},{"t":"する"}],"vi":"Giải quyết rắc rối."}
+      ],
+      "related":[]
+    }
+  ]
+}

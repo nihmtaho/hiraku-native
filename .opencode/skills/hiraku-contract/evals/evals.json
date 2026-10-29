@@ -1,0 +1,27 @@
+{
+  "skill_name": "hiraku-contract",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Thêm RPC SearchNotes đã được PO duyệt. Tìm theo role, phân trang cursor; giả định WP-01, store và bridge đã có. Hãy nêu trình tự thực hiện và bằng chứng cần bàn giao, không sửa file.",
+      "expected_output": "Bao phủ proto/generate/baseline, domain/service/ffi, model/bridge/fake, ChangeSet khi có ghi, golden hai phía, test và tài liệu; không hard-code field name.",
+      "files": [],
+      "assertions": [
+        "Nêu baseline thực cho buf breaking, không tự đoán main.",
+        "Bao phủ FFI, HirakuBridge, HirakuTesting và golden Go/Swift.",
+        "Tìm theo role, không giả định tên word/reading/meaning."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Q-20 còn đề xuất, hãy tự thêm sub_code vào proto và chỉ sửa golden để test pass. Repo chưa có baseline. Bạn sẽ xử lý thế nào? Không sửa file.",
+      "expected_output": "Chặn quyết định schema chưa chốt, báo Lead/PO; không hợp thức hóa test bằng golden; không báo buf breaking PASS khi thiếu baseline.",
+      "files": [],
+      "assertions": [
+        "Không tự chốt Q-20 hoặc triển khai sub_code.",
+        "Phân biệt chưa có baseline với breaking PASS.",
+        "Không đổi golden chỉ để test xanh."
+      ]
+    }
+  ]
+}

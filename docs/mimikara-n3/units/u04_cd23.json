@@ -1,0 +1,258 @@
+{
+  "book": "Mimikara Oboeru N3 Goi",
+  "unit": "04",
+  "cd": "23",
+  "source_url": "https://www.vnjpclub.com/mimikara-n3-tu-vung-full?unit=04&cd=23",
+  "count": 15,
+  "entries": [
+    {
+      "no":327,
+      "word":"発達",
+      "reading":"はったつ",
+      "word_raw":"発達（はったつ）",
+      "ruby":[{"t":"発達","r":"はったつ"}],
+      "han_viet":"phát đạt",
+      "meaning_vi":"phát triển, tiến bộ",
+      "examples":[
+        {"no":1,"jp":"体や心が発達する","jp_raw":"体（からだ）や心（こころ）が発達（はったつ）する","jp_ruby":[{"t":"体","r":"からだ"},{"t":"や"},{"t":"心","r":"こころ"},{"t":"が"},{"t":"発達","r":"はったつ"},{"t":"する"}],"vi":"Cơ thể, tâm hồn phát triển."},
+        {"no":2,"jp":"文明が発達する","jp_raw":"文明（ぶんめい）が発達（はったつ）する","jp_ruby":[{"t":"文明","r":"ぶんめい"},{"t":"が"},{"t":"発達","r":"はったつ"},{"t":"する"}],"vi":"Nền văn minh phát triển."},
+        {"no":3,"jp":"発達した台風が近づいている","jp_raw":"発達（はったつ）した台風（たいふう）が近（ちか）づいている","jp_ruby":[{"t":"発達","r":"はったつ"},{"t":"した"},{"t":"台風","r":"たいふう"},{"t":"が"},{"t":"近","r":"ちか"},{"t":"づいている"}],"vi":"Cơn bão đã phát triển mạnh đang tiến gần."}
+      ],
+      "related":[
+        {"type":"synonym","marker":"類","raw":"発育（はついく）、　発展（はってん）","items":[{"text":"発育","ruby":[{"t":"発育","r":"はついく"}]},{"text":"発展","ruby":[{"t":"発展","r":"はってん"}]}],"meaning_vi":"Phát triển"}
+      ]
+    },
+    {
+      "no":328,
+      "word":"体力",
+      "reading":"たいりょく",
+      "word_raw":"体力（たいりょく）",
+      "ruby":[{"t":"体力","r":"たいりょく"}],
+      "han_viet":"thể lực",
+      "meaning_vi":"thể lực",
+      "examples":[
+        {"no":1,"jp":"若者の体力が低下している","jp_raw":"若者（わかもの）の体力（たいりょく）が低下（ていか）している","jp_ruby":[{"t":"若者","r":"わかもの"},{"t":"の"},{"t":"体力","r":"たいりょく"},{"t":"が"},{"t":"低下","r":"ていか"},{"t":"している"}],"vi":"Thể lực của giới trẻ đang giảm đi."},
+        {"no":2,"jp":"「たくさん食べて、体力をつけてください」","jp_raw":"「たくさん食（た）べて、体力（たいりょく）をつけてください」","jp_ruby":[{"t":"「たくさん"},{"t":"食","r":"た"},{"t":"べて、"},{"t":"体力","r":"たいりょく"},{"t":"をつけてください」"}],"vi":"\"Hãy ăn cho nhiều để tăng cường thể lực.\""}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿がある  ない、　＿がつく、　＿をつける、　＿が落（お）ちる、　＿が向上（こうじょう）する  低下（ていか）する","items":[{"text":"＿がある  ない","ruby":[{"t":"＿がある  ない"}],"pattern":true},{"text":"＿がつく","ruby":[{"t":"＿がつく"}],"pattern":true},{"text":"＿をつける","ruby":[{"t":"＿をつける"}],"pattern":true},{"text":"＿が落ちる","ruby":[{"t":"＿が"},{"t":"落","r":"お"},{"t":"ちる"}],"pattern":true},{"text":"＿が向上する  低下する","ruby":[{"t":"＿が"},{"t":"向上","r":"こうじょう"},{"t":"する  "},{"t":"低下","r":"ていか"},{"t":"する"}],"pattern":true}],"meaning_vi":"Có thể lực <=> không có thể lực, có được thể lực, bồi dưỡng thể lực, thể lực bị suy yếu, thể lực tăng <=> thể lực giảm"},
+        {"type":"related","marker":"関","raw":"気力（きりょく）、　精神力（せいしんりょく）","items":[{"text":"気力","ruby":[{"t":"気力","r":"きりょく"}]},{"text":"精神力","ruby":[{"t":"精神力","r":"せいしんりょく"}]}],"meaning_vi":"Nghị lực, sức sống/ sức mạnh tinh thần."}
+      ]
+    },
+    {
+      "no":329,
+      "word":"出場",
+      "reading":"しゅつじょう",
+      "word_raw":"出場（しゅつじょう）",
+      "ruby":[{"t":"出場","r":"しゅつじょう"}],
+      "han_viet":"xuất trường",
+      "meaning_vi":"ra sân / tham dự (thi đấu, biểu diễn)",
+      "examples":[
+        {"no":1,"jp":"オリンピックへの出場が決まった","jp_raw":"オリンピックへの出場（しゅつじょう）が決（き）まった","jp_ruby":[{"t":"オリンピックへの"},{"t":"出場","r":"しゅつじょう"},{"t":"が"},{"t":"決","r":"き"},{"t":"まった"}],"vi":"Việc tham dự Olympic đã được quyết định."},
+        {"no":2,"jp":"全国大会に出場する","jp_raw":"全国（ぜんこく）大会（たいかい）に出場（しゅつじょう）する","jp_ruby":[{"t":"全国","r":"ぜんこく"},{"t":"大会","r":"たいかい"},{"t":"に"},{"t":"出場","r":"しゅつじょう"},{"t":"する"}],"vi":"Tham gia đại hội toàn quốc."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"＿者（しゃ）","items":[{"text":"＿者","ruby":[{"t":"＿"},{"t":"者","r":"しゃ"}],"pattern":true}],"meaning_vi":"Người tham gia"},
+        {"type":"related","marker":"関","raw":"出（で）る","items":[{"text":"出る","ruby":[{"t":"出","r":"で"},{"t":"る"}]}],"meaning_vi":"Tham gia"}
+      ]
+    },
+    {
+      "no":330,
+      "word":"活躍",
+      "reading":"かつやく",
+      "word_raw":"活躍（かつやく）",
+      "ruby":[{"t":"活躍","r":"かつやく"}],
+      "han_viet":"hoạt dược",
+      "meaning_vi":"hoạt động nổi bật, phát huy, tỏa sáng",
+      "examples":[
+        {"no":1,"jp":"田中選手の活躍を期待する","jp_raw":"田中（たなか）選手（せんしゅ）の活躍（かつやく）を期待（きたい）する","jp_ruby":[{"t":"田中","r":"たなか"},{"t":"選手","r":"せんしゅ"},{"t":"の"},{"t":"活躍","r":"かつやく"},{"t":"を"},{"t":"期待","r":"きたい"},{"t":"する"}],"vi":"Tôi kì vọng vào màn trình diễn của tuyển thủ Tanaka."},
+        {"no":2,"jp":"友だちは運動会で大活躍した","jp_raw":"友（とも）だちは運動会（うんどうかい）で大（だい）活躍（かつやく）した","jp_ruby":[{"t":"友","r":"とも"},{"t":"だちは"},{"t":"運動会","r":"うんどうかい"},{"t":"で"},{"t":"大","r":"だい"},{"t":"活躍","r":"かつやく"},{"t":"した"}],"vi":"Bạn của tôi đã thi đấu đại thành công trong đại hội thể thao."}
+      ],
+      "related":[
+        {"type":"compound","marker":"合","raw":"大（だい）＿","items":[{"text":"大＿","ruby":[{"t":"大","r":"だい"},{"t":"＿"}],"pattern":true}],"meaning_vi":"Làm với hiệu quả cao, thi đấu tốt."}
+      ]
+    },
+    {
+      "no":331,
+      "word":"競争",
+      "reading":"きょうそう",
+      "word_raw":"競争（きょうそう）",
+      "ruby":[{"t":"競争","r":"きょうそう"}],
+      "han_viet":"cạnh tranh",
+      "meaning_vi":"cạnh tranh, thi đấu",
+      "examples":[
+        {"no":1,"jp":"どちらがいい成績を取るか、友だちと競争した","jp_raw":"どちらがいい成績（せいせき）を取（と）るか、友（とも）だちと競争（きょうそう）した","jp_ruby":[{"t":"どちらがいい"},{"t":"成績","r":"せいせき"},{"t":"を"},{"t":"取","r":"と"},{"t":"るか、"},{"t":"友","r":"とも"},{"t":"だちと"},{"t":"競争","r":"きょうそう"},{"t":"した"}],"vi":"Tôi đã thi đấu với bạn xem bên nào sẽ giành được thành tích tốt hơn."},
+        {"no":2,"jp":"あの大学は競争率が高い","jp_raw":"あの大学（だいがく）は競争率（きょうそうりつ）が高（たか）い","jp_ruby":[{"t":"あの"},{"t":"大学","r":"だいがく"},{"t":"は"},{"t":"競争率","r":"きょうそうりつ"},{"t":"が"},{"t":"高","r":"たか"},{"t":"い"}],"vi":"Trường đại học này tỉ lệ chọi cao."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿がきびしい、　＿が激（はげ）しい","items":[{"text":"＿がきびしい","ruby":[{"t":"＿がきびしい"}],"pattern":true},{"text":"＿が激しい","ruby":[{"t":"＿が"},{"t":"激","r":"はげ"},{"t":"しい"}],"pattern":true}],"meaning_vi":"Cạnh tranh khốc liệt, cạnh tranh mãnh liệt"},
+        {"type":"compound","marker":"合","raw":"＿率（りつ）","items":[{"text":"＿率","ruby":[{"t":"＿"},{"t":"率","r":"りつ"}],"pattern":true}],"meaning_vi":"Tỉ lệ cạnh tranh, tỉ lệ chọi"}
+      ]
+    },
+    {
+      "no":332,
+      "word":"応援",
+      "reading":"おうえん",
+      "word_raw":"応援（おうえん）",
+      "ruby":[{"t":"応援","r":"おうえん"}],
+      "han_viet":"ứng viện",
+      "meaning_vi":"hỗ trợ, cổ vũ",
+      "examples":[
+        {"no":1,"jp":"自分の学校のチームを応援する","jp_raw":"自分（じぶん）の学校（がっこう）のチームを応援（おうえん）する","jp_ruby":[{"t":"自分","r":"じぶん"},{"t":"の"},{"t":"学校","r":"がっこう"},{"t":"のチームを"},{"t":"応援","r":"おうえん"},{"t":"する"}],"vi":"Cổ vũ cho đội của trường mình."}
+      ],
+      "related":[]
+    },
+    {
+      "no":333,
+      "word":"拍手",
+      "reading":"はくしゅ",
+      "word_raw":"拍手（はくしゅ）",
+      "ruby":[{"t":"拍手","r":"はくしゅ"}],
+      "han_viet":"phách thủ",
+      "meaning_vi":"vỗ tay",
+      "examples":[
+        {"no":1,"jp":"ステージの歌手に拍手をする","jp_raw":"ステージの歌手（かしゅ）に拍手（はくしゅ）をする","jp_ruby":[{"t":"ステージの"},{"t":"歌手","r":"かしゅ"},{"t":"に"},{"t":"拍手","r":"はくしゅ"},{"t":"をする"}],"vi":"Vỗ tay cổ vũ cho ca sĩ trên sân khấu."},
+        {"no":2,"jp":"ゲストを拍手で迎える","jp_raw":"ゲストを拍手（はくしゅ）で迎（むか）える","jp_ruby":[{"t":"ゲストを"},{"t":"拍手","r":"はくしゅ"},{"t":"で"},{"t":"迎","r":"むか"},{"t":"える"}],"vi":"Vỗ tay chào đón khách mời."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿を送（おく）る、　大（おお）きな＿、　盛（さか）んな＿","items":[{"text":"＿を送る","ruby":[{"t":"＿を"},{"t":"送","r":"おく"},{"t":"る"}],"pattern":true},{"text":"大きな＿","ruby":[{"t":"大","r":"おお"},{"t":"きな＿"}],"pattern":true},{"text":"盛んな＿","ruby":[{"t":"盛","r":"さか"},{"t":"んな＿"}],"pattern":true}],"meaning_vi":"Vỗ tay, vỗ tay to, vỗ tay nhiệt tình"}
+      ]
+    },
+    {
+      "no":334,
+      "word":"人気",
+      "reading":"にんき",
+      "word_raw":"人気（にんき）",
+      "ruby":[{"t":"人気","r":"にんき"}],
+      "han_viet":"nhân khí",
+      "meaning_vi":"phổ biến, được yêu thích",
+      "examples":[
+        {"no":1,"jp":"彼はクラスで一番人気がある","jp_raw":"彼（かれ）はクラスで一番（いちばん）人気（にんき）がある","jp_ruby":[{"t":"彼","r":"かれ"},{"t":"はクラスで"},{"t":"一番","r":"いちばん"},{"t":"人気","r":"にんき"},{"t":"がある"}],"vi":"Anh ấy được yêu thích nhất lớp."},
+        {"no":2,"jp":"新しいゲーム機が人気だ","jp_raw":"新（あたら）しいゲーム機（き）が人気（にんき）だ","jp_ruby":[{"t":"新","r":"あたら"},{"t":"しいゲーム"},{"t":"機","r":"き"},{"t":"が"},{"t":"人気","r":"にんき"},{"t":"だ"}],"vi":"Máy chơi game mới này rất phổ biến."},
+        {"no":3,"jp":"人気の映画を見る","jp_raw":"人気（にんき）の映画（えいが）を見（み）る","jp_ruby":[{"t":"人気","r":"にんき"},{"t":"の"},{"t":"映画","r":"えいが"},{"t":"を"},{"t":"見","r":"み"},{"t":"る"}],"vi":"Xem bộ phim đang được yêu thích."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿がある  ない、＿が上（あ）がる  下（さ）がる、＿が出（で）る、＿がなくなる、＿が落（お）ちる、＿が高（たか）い、＿を集（あつ）める、＿を呼（よ）ぶ","items":[{"text":"＿がある  ない","ruby":[{"t":"＿がある  ない"}],"pattern":true},{"text":"＿が上がる  下がる","ruby":[{"t":"＿が"},{"t":"上","r":"あ"},{"t":"がる  "},{"t":"下","r":"さ"},{"t":"がる"}],"pattern":true},{"text":"＿が出る","ruby":[{"t":"＿が"},{"t":"出","r":"で"},{"t":"る"}],"pattern":true},{"text":"＿がなくなる","ruby":[{"t":"＿がなくなる"}],"pattern":true},{"text":"＿が落ちる","ruby":[{"t":"＿が"},{"t":"落","r":"お"},{"t":"ちる"}],"pattern":true},{"text":"＿が高い","ruby":[{"t":"＿が"},{"t":"高","r":"たか"},{"t":"い"}],"pattern":true},{"text":"＿を集める","ruby":[{"t":"＿を"},{"t":"集","r":"あつ"},{"t":"める"}],"pattern":true},{"text":"＿を呼ぶ","ruby":[{"t":"＿を"},{"t":"呼","r":"よ"},{"t":"ぶ"}],"pattern":true}],"meaning_vi":"Được yêu thích <=> không được yêu thích, tăng độ quan tâm <=> giảm mức quan tâm, trở nên được yêu thích <=> mất sự yêu thích, rất được yêu thích, trở nên nổi tiếng"},
+        {"type":"compound","marker":"合","raw":"大（だい）＿、　＿者（もの）","items":[{"text":"大＿","ruby":[{"t":"大","r":"だい"},{"t":"＿"}],"pattern":true},{"text":"＿者","ruby":[{"t":"＿"},{"t":"者","r":"もの"}],"pattern":true}],"meaning_vi":"Cực kì nổi tiếng/ người nổi tiếng"}
+      ]
+    },
+    {
+      "no":335,
+      "word":"うわさ ",
+      "reading":"うわさ ",
+      "word_raw":"うわさ ",
+      "ruby":[{"t":"うわさ "}],
+      "han_viet":null,
+      "meaning_vi":"tin đồn",
+      "examples":[
+        {"no":1,"jp":"クラスメートのうわさをしていたら、そこに本人が現れた","jp_raw":"クラスメートのうわさをしていたら、そこに本人（ほんにん）が現（あらわ）れた","jp_ruby":[{"t":"クラスメートのうわさをしていたら、そこに"},{"t":"本人","r":"ほんにん"},{"t":"が"},{"t":"現","r":"あらわ"},{"t":"れた"}],"vi":"Đang bàn tán về một bạn cùng lớp thì chính bạn ấy xuất hiện ở đó."},
+        {"no":2,"jp":"消費税が上がるといううわさがある","jp_raw":"消費税（しょうひぜい）が上（あ）がるといううわさがある","jp_ruby":[{"t":"消費税","r":"しょうひぜい"},{"t":"が"},{"t":"上","r":"あ"},{"t":"がるといううわさがある"}],"vi":"Có tin đồn là thuế tiêu dùng tăng lên."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿がある、　＿が流（なが）れる、　＿を流（なが）す、　＿を立（た）てる","items":[{"text":"＿がある","ruby":[{"t":"＿がある"}],"pattern":true},{"text":"＿が流れる","ruby":[{"t":"＿が"},{"t":"流","r":"なが"},{"t":"れる"}],"pattern":true},{"text":"＿を流す","ruby":[{"t":"＿を"},{"t":"流","r":"なが"},{"t":"す"}],"pattern":true},{"text":"＿を立てる","ruby":[{"t":"＿を"},{"t":"立","r":"た"},{"t":"てる"}],"pattern":true}],"meaning_vi":"Có tin đồn, tin đồn bị lan rộng, làm lan rộng tin đồn, nổi lên tin đồn, tạo tin đồn"}
+      ]
+    },
+    {
+      "no":336,
+      "word":"情報",
+      "reading":"じょうほう",
+      "word_raw":"情報（じょうほう）",
+      "ruby":[{"t":"情報","r":"じょうほう"}],
+      "han_viet":null,
+      "meaning_vi":"tin tức, thông tin",
+      "examples":[
+        {"no":1,"jp":"テレビからいろいろな情報を得る","jp_raw":"テレビからいろいろな情報（じょうほう）を得（え）る","jp_ruby":[{"t":"テレビからいろいろな"},{"t":"情報","r":"じょうほう"},{"t":"を"},{"t":"得","r":"え"},{"t":"る"}],"vi":"Có được nhiều thông tin từ Tivi."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿を得（え）る、＿が入（はい）る、＿が流（なが）れる、＿を流（なが）す、＿を交換（こうかん）する","items":[{"text":"＿を得る","ruby":[{"t":"＿を"},{"t":"得","r":"え"},{"t":"る"}],"pattern":true},{"text":"＿が入る","ruby":[{"t":"＿が"},{"t":"入","r":"はい"},{"t":"る"}],"pattern":true},{"text":"＿が流れる","ruby":[{"t":"＿が"},{"t":"流","r":"なが"},{"t":"れる"}],"pattern":true},{"text":"＿を流す","ruby":[{"t":"＿を"},{"t":"流","r":"なが"},{"t":"す"}],"pattern":true},{"text":"＿を交換する","ruby":[{"t":"＿を"},{"t":"交換","r":"こうかん"},{"t":"する"}],"pattern":true}],"meaning_vi":"Lấy thông tin, tiếp thu thông tin, thông tin được lan truyền, lan truyền thông tin, trao đổi thông tin"},
+        {"type":"compound","marker":"合","raw":"＿（化（か））社会（しゃかい）、　＿交換（こうかん）、　＿源（げん）","items":[{"text":"＿（化）社会","ruby":[{"t":"＿（"},{"t":"化","r":"か"},{"t":"）"},{"t":"社会","r":"しゃかい"}],"pattern":true},{"text":"＿交換","ruby":[{"t":"＿"},{"t":"交換","r":"こうかん"}],"pattern":true},{"text":"＿源","ruby":[{"t":"＿"},{"t":"源","r":"げん"}],"pattern":true}],"meaning_vi":"Thông tin hóa, xã hội thông tin, trao đổi thông tin/ nguồn thông tin"}
+      ]
+    },
+    {
+      "no":337,
+      "word":"交換",
+      "reading":"こうかん",
+      "word_raw":"交換（こうかん）",
+      "ruby":[{"t":"交換","r":"こうかん"}],
+      "han_viet":"giao hoán",
+      "meaning_vi":"trao đổi, thay thế",
+      "examples":[
+        {"no":1,"jp":"｛プレゼント／名刺／情報／意見　…｝を交換する","jp_raw":"｛プレゼント／名刺（めいし）／情報（じょうほう）／意見（いけん）　…｝を交換（こうかん）する","jp_ruby":[{"t":"｛プレゼント／"},{"t":"名刺","r":"めいし"},{"t":"／"},{"t":"情報","r":"じょうほう"},{"t":"／"},{"t":"意見","r":"いけん"},{"t":"　…｝を"},{"t":"交換","r":"こうかん"},{"t":"する"}],"vi":"Trao đổi quà, danh thiếp, thông tin, ý kiến…"},
+        {"no":2,"jp":"時計の電池が切れたので交換した","jp_raw":"時計（とけい）の電池（でんち）が切（き）れたので交換（こうかん）した","jp_ruby":[{"t":"時計","r":"とけい"},{"t":"の"},{"t":"電池","r":"でんち"},{"t":"が"},{"t":"切","r":"き"},{"t":"れたので"},{"t":"交換","r":"こうかん"},{"t":"した"}],"vi":"Pin đồng hồ hết nên tôi đã thay pin."}
+      ],
+      "related":[
+        {"type":"synonym","marker":"類","raw":"やり取（と）り、　取（と）り換（か）える","items":[{"text":"やり取り","ruby":[{"t":"やり"},{"t":"取","r":"と"},{"t":"り"}]},{"text":"取り換える","ruby":[{"t":"取","r":"と"},{"t":"り"},{"t":"換","r":"か"},{"t":"える"}]}],"meaning_vi":"Trao đổi qua lại, thay thế"}
+      ]
+    },
+    {
+      "no":338,
+      "word":"流行",
+      "reading":"りゅうこう",
+      "word_raw":"流行（りゅうこう）",
+      "ruby":[{"t":"流行","r":"りゅうこう"}],
+      "han_viet":"lưu hành",
+      "meaning_vi":"thịnh hành, mốt; (bệnh) bùng phát",
+      "examples":[
+        {"no":1,"jp":"新しい流行","jp_raw":"新（あたら）しい流行（りゅうこう）","jp_ruby":[{"t":"新","r":"あたら"},{"t":"しい"},{"t":"流行","r":"りゅうこう"}],"vi":"Trào lưu mới."},
+        {"no":2,"jp":"流行の服","jp_raw":"流行（りゅうこう）の服（ふく）","jp_ruby":[{"t":"流行","r":"りゅうこう"},{"t":"の"},{"t":"服","r":"ふく"}],"vi":"Quần áo hợp thời trang."},
+        {"no":3,"jp":"若者の間でブログが流行している","jp_raw":"若者（わかもの）の間（あいだ）でブログが流行（りゅうこう）している","jp_ruby":[{"t":"若者","r":"わかもの"},{"t":"の"},{"t":"間","r":"あいだ"},{"t":"でブログが"},{"t":"流行","r":"りゅうこう"},{"t":"している"}],"vi":"Trong giới trẻ đang thịnh hành trào lưu viết blog."},
+        {"no":4,"jp":"インフルエンザが流行する","jp_raw":"インフルエンザが流行（りゅうこう）する","jp_ruby":[{"t":"インフルエンザが"},{"t":"流行","r":"りゅうこう"},{"t":"する"}],"vi":"Dịch cúm đang lan rộng."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿を取（と）り入（い）れる、　＿を追（お）う、　大（おお）＿","items":[{"text":"＿を取り入れる","ruby":[{"t":"＿を"},{"t":"取","r":"と"},{"t":"り"},{"t":"入","r":"い"},{"t":"れる"}],"pattern":true},{"text":"＿を追う","ruby":[{"t":"＿を"},{"t":"追","r":"お"},{"t":"う"}],"pattern":true},{"text":"大＿","ruby":[{"t":"大","r":"おお"},{"t":"＿"}],"pattern":true}],"meaning_vi":"Áp dụng, tiếp thu xu hướng,theo đuổi trào lưu, trào lưu lớn"},
+        {"type":"compound","marker":"合","raw":"＿語（ご）、　＿遅（おく）れ","items":[{"text":"＿語","ruby":[{"t":"＿"},{"t":"語","r":"ご"}],"pattern":true},{"text":"＿遅れ","ruby":[{"t":"＿"},{"t":"遅","r":"おく"},{"t":"れ"}],"pattern":true}],"meaning_vi":"Từ đang thịnh hành, lỗi thời."},
+        {"type":"synonym","marker":"類","raw":"はやり、　ブーム","items":[{"text":"はやり","ruby":[{"t":"はやり"}]},{"text":"ブーム","ruby":[{"t":"ブーム"}]}],"meaning_vi":"Thịnh hành, bùng nổ"},
+        {"type":"related","marker":"関","raw":"はやる","items":[{"text":"はやる","ruby":[{"t":"はやる"}]}],"meaning_vi":"Trở nên thịnh hành"}
+      ]
+    },
+    {
+      "no":339,
+      "word":"宣伝",
+      "reading":"せんでん",
+      "word_raw":"宣伝（せんでん）",
+      "ruby":[{"t":"宣伝","r":"せんでん"}],
+      "han_viet":"tuyên truyền",
+      "meaning_vi":"quảng bá, tuyên truyền",
+      "examples":[
+        {"no":1,"jp":"バーゲンセールの宣伝が始まった","jp_raw":"バーゲンセールの宣伝（せんでん）が始（はじ）まった","jp_ruby":[{"t":"バーゲンセールの"},{"t":"宣伝","r":"せんでん"},{"t":"が"},{"t":"始","r":"はじ"},{"t":"まった"}],"vi":"Bắt đầu quảng cáo đợt giảm giá."},
+        {"no":2,"jp":"新商品をテレビで宣伝する","jp_raw":"新商品（しんしょうひん）をテレビで宣伝（せんでん）する","jp_ruby":[{"t":"新商品","r":"しんしょうひん"},{"t":"をテレビで"},{"t":"宣伝","r":"せんでん"},{"t":"する"}],"vi":"Quảng cáo sản phẩm mới trên tivi."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿が流（なが）れる、　＿を流（なが）す","items":[{"text":"＿が流れる","ruby":[{"t":"＿が"},{"t":"流","r":"なが"},{"t":"れる"}],"pattern":true},{"text":"＿を流す","ruby":[{"t":"＿を"},{"t":"流","r":"なが"},{"t":"す"}],"pattern":true}],"meaning_vi":"Được tuyên truyền/ tuyên truyền"},
+        {"type":"related","marker":"関","raw":"広告（こうこく）、　コマーシャル／CM、　ダイレクトメール／DM","items":[{"text":"広告","ruby":[{"t":"広告","r":"こうこく"}]},{"text":"コマーシャル／CM","ruby":[{"t":"コマーシャル／CM"}]},{"text":"ダイレクトメール／DM","ruby":[{"t":"ダイレクトメール／DM"}]}],"meaning_vi":"Quảng cáo, CM, thư quảng cáo (DM)"}
+      ]
+    },
+    {
+      "no":340,
+      "word":"広告",
+      "reading":"こうこく",
+      "word_raw":"広告（こうこく）",
+      "ruby":[{"t":"広告","r":"こうこく"}],
+      "han_viet":"quảng cáo",
+      "meaning_vi":"quảng cáo",
+      "examples":[
+        {"no":1,"jp":"｛新聞／雑誌｝に新製品の広告がのっていた","jp_raw":"｛新聞（しんぶん）／雑誌（ざっし）｝に新製品（しんせいひん）の広告（こうこく）がのっていた","jp_ruby":[{"t":"｛"},{"t":"新聞","r":"しんぶん"},{"t":"／"},{"t":"雑誌","r":"ざっし"},{"t":"｝に"},{"t":"新製品","r":"しんせいひん"},{"t":"の"},{"t":"広告","r":"こうこく"},{"t":"がのっていた"}],"vi":"Đăng quảng cáo sản phẩm mới trên báo, tạp chí."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿が出（で）る、　＿を出（だ）す、　＿が載（の）る、　＿を載（の）せる","items":[{"text":"＿が出る","ruby":[{"t":"＿が"},{"t":"出","r":"で"},{"t":"る"}],"pattern":true},{"text":"＿を出す","ruby":[{"t":"＿を"},{"t":"出","r":"だ"},{"t":"す"}],"pattern":true},{"text":"＿が載る","ruby":[{"t":"＿が"},{"t":"載","r":"の"},{"t":"る"}],"pattern":true},{"text":"＿を載せる","ruby":[{"t":"＿を"},{"t":"載","r":"の"},{"t":"せる"}],"pattern":true}],"meaning_vi":"Quảng cáo được đưa ra/ đưa ra quảng cáo/ quảng cáo được đăng/ đăng quảng cáo"},
+        {"type":"related","marker":"関","raw":"宣伝（せんでん）、　コマーシャル／CM","items":[{"text":"宣伝","ruby":[{"t":"宣伝","r":"せんでん"}]},{"text":"コマーシャル／CM","ruby":[{"t":"コマーシャル／CM"}]}],"meaning_vi":"Tuyên truyền, quảng cáo (gọi tắt CM)"}
+      ]
+    },
+    {
+      "no":341,
+      "word":"注目",
+      "reading":"ちゅうもく",
+      "word_raw":"注目（ちゅうもく）",
+      "ruby":[{"t":"注目","r":"ちゅうもく"}],
+      "han_viet":"chú mục",
+      "meaning_vi":"sự chú ý, để ý",
+      "examples":[
+        {"no":1,"jp":"有名歌手の結婚が注目を集めている","jp_raw":"有名（ゆうめい）歌手（かしゅ）の結婚（けっこん）が注目（ちゅうもく）を集（あつ）めている","jp_ruby":[{"t":"有名","r":"ゆうめい"},{"t":"歌手","r":"かしゅ"},{"t":"の"},{"t":"結婚","r":"けっこん"},{"t":"が"},{"t":"注目","r":"ちゅうもく"},{"t":"を"},{"t":"集","r":"あつ"},{"t":"めている"}],"vi":"Việc kết hôn của ca sĩ nổi tiếng đang thu hút sự chú ý."},
+        {"no":2,"jp":"新しいファッションに注目する","jp_raw":"新（あたら）しいファッションに注目（ちゅうもく）する","jp_ruby":[{"t":"新","r":"あたら"},{"t":"しいファッションに"},{"t":"注目","r":"ちゅうもく"},{"t":"する"}],"vi":"Để ý đến mẫu thời trang mới."}
+      ],
+      "related":[
+        {"type":"collocation","marker":"連","raw":"＿を集（あつ）める、　＿を浴（あ）びる","items":[{"text":"＿を集める","ruby":[{"t":"＿を"},{"t":"集","r":"あつ"},{"t":"める"}],"pattern":true},{"text":"＿を浴びる","ruby":[{"t":"＿を"},{"t":"浴","r":"あ"},{"t":"びる"}],"pattern":true}],"meaning_vi":"Thu hút sự chú ý, được chú ý"}
+      ]
+    }
+  ]
+}
