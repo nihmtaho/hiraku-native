@@ -8,6 +8,8 @@ Nhóm: Thêm · Đổi · Sửa · Xóa · Tài liệu · Bảo mật. Mỗi dò
 
 ### Tài liệu
 - Thêm cấu hình Pi 1.4 (`.pi/`): dùng chung prompt agents, skills và guard của OpenCode; guard bảo vệ thêm `.pi/`.
+- Chốt Q-11 (đo trên MacBook của PO, chưa có iPhone/iPad thật) và Q-12 (phương án B); ghi yêu cầu dựng lại lịch cho một AI coding (Q-29).
+- Cập nhật trạng thái Git: đã có remote `origin`, vẫn chưa có CI; quyền delivery của agent giữ đóng (AGENTS, ADR-31, OPENCODE, GIT_WORKFLOW, ROADMAP §11).
 - Thêm `GIT_WORKFLOW.md`: nhánh `main`/`develop`, vòng đời task, điều kiện merge, cập nhật CHANGELOG và ROADMAP bắt buộc trong mỗi PR.
 - Đồng bộ trạng thái ROADMAP §11 và Kanban: TEST_PLAN/AGENTS sang chờ duyệt, S-8 về backlog (chặn Q-11), bỏ ghi chú đã lỗi thời, thêm Q-19…Q-29 vào cổng.
 

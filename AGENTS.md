@@ -42,7 +42,7 @@ App học từ vựng tiếng Nhật (FSRS). Logic và dữ liệu ở Go core (
 - Pi 1.4: cùng agents, skills, guard qua `.pi/`; xem `OPENCODE.md` §7.
 - Chỉ có hai skills: `hiraku-contract` khi thay RPC/proto/FFI/bridge; `hiraku-feature` khi thêm feature hoặc StudyMode. Sửa nhỏ không cần nạp quy trình mới. Luật Go/Swift và DESIGN/COPY vẫn ở tài liệu nguồn, không tạo skills lặp lại.
 - AI tự merge chỉ khi có Review PASS đúng revision và CI bắt buộc đạt. PO duyệt gate và phát hành; dùng `TEST_PLAN.md`, `RELEASE.md` khi liên quan.
-- Workspace chưa có Git/remote/CI: chỉ review working-tree, không báo đã merge/ship. Không tự tạo remote hoặc mở quyền delivery.
+- Đã có Git và remote `origin` (GitHub) nhưng chưa có CI/required checks: quyền delivery của agent vẫn đóng, chỉ review revision cụ thể, không báo đã merge/ship khi thiếu CI. Không tự mở quyền delivery.
 - Khi resume, đọc lại task record và revision; thay đổi mới vô hiệu review/approval cũ. Thiếu tool hoặc kiểm tra chưa chạy phải ghi rõ, không báo PASS.
 - Git: đọc `GIT_WORKFLOW.md`. Nhánh task tạo từ `develop`, PR vào `develop`. Mỗi PR phải cập nhật `CHANGELOG.md` (`[Unreleased]`), `ROADMAP.md` §11 và `ROADMAP hiraku — Kanban.html`; thiếu thì không merge.
 - Quyết định **Mở** trong `DECISIONS`: hỏi người dùng, không tự chọn.

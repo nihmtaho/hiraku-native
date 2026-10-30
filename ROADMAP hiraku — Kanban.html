@@ -150,7 +150,7 @@ var MS=[
 var GATES=[
  {k:"GATE-0",before:"M0",short:"Điều kiện bắt đầu",date:"02/11/2026 (ngày bắt đầu giả định)",
   cond:["Thiết bị chuẩn có đủ (Q-11)","Dùng Personal Team, đăng ký Apple Developer Program sau cùng (ADR-17)","Repo sẵn sàng"],
-  dec:["Q-11 (Mở)","Q-12 (Đề xuất)","Q-13 (Đã chốt 29/10/2026)","Q-29 (chốt một phần 29/10/2026)"]},
+  dec:["Q-11 (chốt một phần 30/10/2026)","Q-12 (Đã chốt 30/10/2026)","Q-13 (Đã chốt 29/10/2026)","Q-29 (chốt một phần 29/10/2026)"]},
  {k:"GATE-1",before:"M1a",short:"Go/No-go M1",date:"≈ 08/12/2026",
   cond:["Bắt buộc đạt: S-1, S-3, S-8","S-7 xác minh phần khả dụng (ADR-17)","S-2 có phương án: dùng thư viện hoặc tự cài","Tài liệu M0b được duyệt","Lịch M1a hiệu chỉnh theo năng suất đo ở M0"],
   dec:["Q-5","Q-D2","Q-19, Q-20, Q-21, Q-22, Q-24, Q-27, Q-28","Xác nhận ADR-20, 21, 23, 24, 26","S-1 đo trên schema ADR-27"]},
@@ -200,8 +200,8 @@ var FIND={
 // [id, tiêu đề, mốc, loại, trạng thái, ước lượng {d ngày | w tuần | x chữ}, thông tin thêm]
 var raw=[
  // M0
- ["Q-11","Chốt thiết bị chuẩn đo hiệu năng: iPhone cũ nhất chạy iOS 26, iPad chip A12 trở lên, Mac Apple silicon","M0","dec","rv",null,{ref:"DECISIONS Q-11",note:"Hạn GATE-0: 02/11/2026. Đang chặn S-1 và S-8.",f:"F-21"}],
- ["Q-12","Chốt chia M1 thành M1a (iPhone) và M1b (iPad + Mac)","M0","dec","rv",null,{ref:"DECISIONS Q-12, ADR-19",note:"Đề xuất phương án B. ROADMAP v1.8 và ADR-19 đã dựa trên phương án này.",f:"F-21"}],
+ ["Q-11","Chốt thiết bị chuẩn đo hiệu năng: iPhone cũ nhất chạy iOS 26, iPad chip A12 trở lên, Mac Apple silicon","M0","dec","rv",null,{ref:"DECISIONS Q-11",note:"Chốt một phần 30/10/2026: đo trên MacBook của PO; chưa có iPhone/iPad thật nên số đo iOS/iPadOS chưa xác minh.",f:"F-21"}],
+ ["Q-12","Chốt chia M1 thành M1a (iPhone) và M1b (iPad + Mac)","M0","dec","dn",null,{ref:"DECISIONS Q-12, ADR-19",note:"PO duyệt phương án B (30/10/2026).",f:"F-21"}],
  ["Q-13","Quy ước tên tài liệu, đặt ở root repo","M0","dec","dn",null,{ref:"DECISIONS Q-13",note:"PO chốt 29/10/2026."}],
  ["Q-1","OS tối thiểu: iOS 26, iPadOS 26, macOS 26 (Apple silicon)","M0","dec","dn",null,{ref:"ADR-13"}],
  ["S-1 + S-7","modernc SQLite với 50.000 từ + 200.000 log; App Group trên 3 nền tảng; kiểm tra sao lưu thiết bị","M0","sp","bl",{d:2.5},{ref:"spec §3.3 S-1, S-7; ADR-23, ADR-06",blk:"Q-11",note:"S-1 bắt buộc đạt ở GATE-1. S-7: chỉ xác minh phần khả dụng trên Personal Team.",f:"F-01"}],

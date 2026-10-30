@@ -70,8 +70,8 @@ Tài liệu này là **nơi duy nhất** ghi trạng thái các quyết định.
 
 | ID | Quyết định | Trạng thái | Chủ | Hạn | Chặn |
 |---|---|---|---|---|---|
-| Q-11 | Thiết bị chuẩn đo hiệu năng | Mở | PO | GATE-0 | S-1, S-8 |
-| Q-12 | Chia M1 thành M1a (iPhone) và M1b (iPad + Mac) | Đề xuất | PO | GATE-0 | Lịch M1 |
+| Q-11 | Thiết bị chuẩn đo hiệu năng | Đã chốt một phần: MacBook của PO; chưa có iPhone/iPad thật | PO | GATE-0 | S-1, S-8 |
+| Q-12 | Chia M1 thành M1a (iPhone) và M1b (iPad + Mac) | Đã chốt: phương án B | PO | GATE-0 | Lịch M1 |
 | Q-13 | Quy ước tên tài liệu và nơi lưu | Đã chốt: tên file (bỏ `_native-swift`), đặt ở root repo | PO | GATE-0 | Không |
 | Q-5 | Đóng gói Noto Sans JP hay dùng Hiragino Sans | Mở | Design | GATE-1 | M1a (WP-05) |
 | Q-8 | Phát hành macOS: Mac App Store hay trực tiếp **[Cuối cùng]** | Đề xuất | PO | GATE-3 | MR (entitlement) |
@@ -88,7 +88,7 @@ Tài liệu này là **nơi duy nhất** ghi trạng thái các quyết định.
 | Q-26 | Nhập: ngữ nghĩa "Ghi đè"; CSV Shift-JIS | Mở | PO | GATE-2 | WP-22 |
 | Q-27 | Kéo WP-20 (sao lưu/khôi phục) lên ngay sau M1a | Đề xuất | PO | GATE-1 | Lịch M1b |
 | Q-28 | Thuật ngữ UI: "deck" hay "bộ thẻ", "profile" | Đề xuất | PO, Design | GATE-1 | COPY, String Catalog |
-| Q-29 | Nhân lực: đã chốt AI coding (ADR-31); còn dự phòng và người thử SC-002 | Mở một phần | PO | GATE-0 | Lịch toàn bộ |
+| Q-29 | Nhân lực: một AI coding (ADR-31); lịch phải dựng lại theo mô hình này; còn dự phòng và người thử SC-002 | Mở một phần | PO | GATE-0 | Lịch toàn bộ |
 | Q-14 (nhắc lại) | Xem ADR-17 | Đã chốt | — | — | — |
 
 Q-4, Q-A, Q-B, Q-C, Q-D, Q-E đã được đóng bởi ADR-26, ADR-23, ADR-22, ADR-24, ADR-25 tương ứng; Q-6 đóng bởi ADR-29 và ADR-30 (2026-10-29); không còn trong danh sách mở.
@@ -323,7 +323,7 @@ Q-4, Q-A, Q-B, Q-C, Q-D, Q-E đã được đóng bởi ADR-26, ADR-23, ADR-22, 
 - **Skills**: chỉ `hiraku-contract` và `hiraku-feature` cho hai quy trình nhiều bước lặp lại. Không tạo skills task/core/design/review/delivery để lặp prompt agent hoặc tài liệu.
 - **Công cụ phát triển**: Node.js 24+ và thư viện chuẩn cho guard/tests; plugin v2 dùng object `id`/`setup`, không thêm package npm. Không thêm dependency runtime của ứng dụng và không thay ADR-20…30.
 - **Giới hạn**: guard/permissions không phải OS sandbox; môi trường coder/reviewer không có credential phát hành. Policy/checker chỉ thay qua bảo trì được PO duyệt, không cho agent tự sửa để qua kiểm tra.
-- **Delivery**: chưa có Git/remote/CI nên quyền commit/push/merge/publish đóng. Chỉ mở entrypoint được bảo vệ sau khi có môi trường và bằng chứng đúng revision; không dùng admin bypass. Phát hành cần PO approval gắn version/commit/kênh/artifact thật.
+- **Delivery**: đã có Git/remote nhưng chưa có CI/required checks nên quyền commit/push/merge/publish đóng. Chỉ mở entrypoint được bảo vệ sau khi có môi trường và bằng chứng đúng revision; không dùng admin bypass. Phát hành cần PO approval gắn version/commit/kênh/artifact thật.
 - **Hệ quả**: `OPENCODE.md` giữ quy trình; task record giữ bàn giao; `TEST_PLAN.md` và `RELEASE.md` giữ checklist. Người thử và thiết bị thật vẫn cần; phần dự phòng/người thử của Q-29 chưa được tự chốt.
 - **Trạng thái**: Đã chốt về mô hình vận hành; hạ tầng Git/CI và các gate sản phẩm vẫn phải được xác minh riêng.
 
@@ -332,10 +332,12 @@ Q-4, Q-A, Q-B, Q-C, Q-D, Q-E đã được đóng bởi ADR-26, ADR-23, ADR-22, 
 ## 4. Quyết định đề xuất và mở
 
 ### Q-11 — Thiết bị chuẩn đo hiệu năng · PO · GATE-0
-- **Cần bạn cung cấp**: tên máy và OS của iPhone cũ nhất chạy được iOS 26 (từ iPhone 11 trở lên), một iPad (chip A12 trở lên), một Mac Apple silicon (M1 trở lên).
+- **Đã chốt (PO, 2026-10-30)**: đo trực tiếp trên MacBook của PO (thiết bị development). Hệ quả: số đo iPhone/iPad thật không có; S-1, S-8 và SC-006 trên iOS/iPadOS chỉ chạy được trên simulator hoặc ghi **chưa xác minh**, không được tính đạt. Chưa có quyết định cách GATE-1 xử lý phần này (thêm thiết bị hoặc chấp nhận rủi ro): cần PO.
+- **Cần bạn cung cấp (ban đầu)**: tên máy và OS của iPhone cũ nhất chạy được iOS 26 (từ iPhone 11 trở lên), một iPad (chip A12 trở lên), một Mac Apple silicon (M1 trở lên).
 - **Dùng cho**: S-1 (dựng hàng đợi < 200 ms, tìm kiếm < 150 ms, cuộn 60 fps, khởi động < 1,5 s), S-8 (RSS, khởi động Go runtime), SC-006.
 
 ### Q-12 — Chia M1 thành M1a/M1b · PO · GATE-0
+- **Đã chốt (PO, 2026-10-30)**: duyệt phương án B.
 - **Phương án**: (A) M1 một khối, ba nền tảng cùng lúc; (B) **M1a** = lát cắt dọc P0 trên iPhone, **M1b** = vỏ iPad/Mac, `Table`, menu, đa cửa sổ.
 - **Đề xuất**: B. Giảm rủi ro IME bị trải ra ba nền tảng cùng lúc; cho phản hồi sớm trên iPhone.
 - **Hệ quả nếu B**: `ROADMAP.md` lập theo B. Nếu chọn A, gộp WP-11…WP-14 vào M1a và lịch M1a tăng tương ứng.
@@ -409,6 +411,7 @@ Q-4, Q-A, Q-B, Q-C, Q-D, Q-E đã được đóng bởi ADR-26, ADR-23, ADR-22, 
 ### Q-29 — Nhân lực và dự phòng · PO · GATE-0
 - **Vấn đề**: lịch giả định một lập trình viên toàn thời gian thành thạo cả Go và Swift (ROADMAP §1); dự phòng M3 chỉ khoảng 2%; SC-002 cần người thử.
 - **Đã chốt (PO, 2026-10-29)**: dùng AI Agents cho coding và ship, bốn vai trò theo ADR-31. Đây không phải xác nhận các ước lượng nhân lực/lịch cũ còn đúng.
+- **Yêu cầu PO (2026-10-30)**: dựng lại lịch theo một AI coding thay vì một lập trình viên; chờ chốt giả định (xem ROADMAP §1).
 - **Còn cần PO**: mức dự phòng; nhóm/người thử trước GATE-2. Không coi AI thay người thử cho SC-002 hoặc tự nghiệm thu trải nghiệm.
 
 ### Q-16 — Tổ chức DB *(đã đóng bởi ADR-28)*
