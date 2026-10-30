@@ -11,15 +11,29 @@
 | Giả định | Nội dung |
 |---|---|
 | Nhân lực | **Đã chuyển sang AI Agents (ADR-31)**: Lead, Coder, Reviewer độc lập và Shipper; PO duyệt gate/phát hành. Các con số tuần-người trong bảng dưới là giả định lịch sử của một lập trình viên toàn thời gian, không phải dự báo năng suất AI. Giữ làm tham chiếu và hiệu chỉnh bằng bằng chứng M0; không tự suy ra hệ số tăng tốc. |
-| Ngày bắt đầu | Thứ Hai **2026-11-02**, sau khi đóng GATE-0. Đây là giả định để minh họa lịch, không phải cam kết. |
+| Lịch (Q-29, 2026-10-30) | **Một AI coding thực hiện tuần tự**, PO duyệt cổng. Lịch chuyển sang **theo cổng**: thứ tự mốc/WP và điểm chờ PO hoặc thiết bị, không cam kết số tuần. Mọi cột tuần-người và ngày kết thúc ở §2–§3 là số lịch sử của một lập trình viên, chỉ để tham chiếu. Số tuần mới chỉ đưa ra ở GATE-1 từ năng suất đo ở M0. |
+| Ngày bắt đầu | M0 bắt đầu khi GATE-0 đóng; ngày cụ thể do PO chọn, không có ngày cam kết. |
 | Độ chính xác | Đây là ước lượng chuyên môn khi chưa có dữ liệu năng suất; sai số khoảng ±30–50%. Ba cột: lạc quan / khả dĩ / bi quan. **Chốt lại lịch ở GATE-1** bằng năng suất thực đo ở M0. |
 | Tài khoản Apple Developer | Đăng ký **sau cùng**, khi PO nghiệm thu bản develop (ADR-17). Đến lúc đó dùng Personal Team; mọi việc cần tài khoản gom vào mốc **MR [Cuối cùng]**. |
 | Chưa tính | Kỳ nghỉ (đặc biệt Tết Nguyên Đán, khoảng đầu tháng 2/2027), thời gian chờ xét duyệt đăng ký Apple Developer Program và thời gian chờ App Review. Chừa 1–2 tuần cho Tết nếu lịch rơi vào đó. |
+| Thiết bị đo | **MacBook của PO** (Q-11, 2026-10-30). Chưa có iPhone/iPad thật: số đo iOS/iPadOS chưa xác minh cho tới khi có thiết bị. |
 | Phạm vi | Chỉ cam kết M0 → M1 (spec §1.3). M2, M3 là kế hoạch; M4 là backlog. Tên **M1** trong spec tương ứng **M1a + M1b** ở đây (theo Q-12). |
 
 ---
 
 ## 2. Tổng quan lộ trình
+
+**Lịch theo cổng (hiện hành)**: M0 → M0b → **GATE-1** → M1a → M1b → **GATE-2** → M2 → M3 → **GATE-3** → MR → **GATE-4**. AI làm tuần tự từng WP; thời gian thực bị quyết định bởi các điểm chờ ngoài AI:
+
+| Điểm chờ | Khi nào | Người |
+|---|---|---|
+| Duyệt cổng GATE-1/2/3/4 | cuối mỗi mốc | PO |
+| iPhone/iPad thật cho S-1, S-8, IME, SC-006 (hiện chỉ có MacBook) | M0, M1a, M1b | PO |
+| Người thử SC-002, SC-001 | M1a, GATE-2 | PO |
+| CI chưa có; WP-01 dựng CI trước khi AI tự merge | đầu M1a | AI + PO |
+| Đăng ký Apple Developer, chờ xét duyệt, App Review | MR | PO |
+
+Bảng dưới là **số lịch sử của một lập trình viên**, giữ để tham chiếu (xem §1).
 
 | Mốc | Nội dung | Ước lượng (tuần-người) lạc quan / khả dĩ / bi quan | Kết thúc dự kiến (khả dĩ) | Cổng ra |
 |---|---|---|---|---|
@@ -164,7 +178,7 @@ Chỉ bắt đầu sau GATE-3 (PO xác nhận ứng dụng đạt mong muốn �
 
 | Cổng | Điều kiện vào bước kế tiếp | Quyết định phải chốt (`DECISIONS.md`) |
 |---|---|---|
-| **GATE-0** (trước M0) | Thiết bị chuẩn có đủ (Q-11); dùng Personal Team, đăng ký Apple Developer Program sau cùng (ADR-17); repo sẵn sàng | Q-11, Q-12, Q-13 (Q-1 đã chốt: ADR-13); Q-29 |
+| **GATE-0** (trước M0) | Thiết bị chuẩn: MacBook (Q-11 đã chốt một phần; thiếu iPhone/iPad thật); dùng Personal Team, đăng ký Apple Developer Program sau cùng (ADR-17); repo sẵn sàng | Q-11, Q-12, Q-13 (Q-1 đã chốt: ADR-13); Q-29 |
 | **GATE-1** (sau M0 + M0b; Go/No-go M1) | **Bắt buộc đạt**: S-1, S-3, S-8; S-7 xác minh phần khả dụng (ADR-17). S-2 phải có phương án (dùng hoặc tự cài). Tài liệu M0b được duyệt. Lịch M1a hiệu chỉnh theo năng suất đo được | Q-5, Q-D2; Q-19, Q-20, Q-21, Q-22, Q-24, Q-27, Q-28; xác nhận ADR-20, 21, 23, 24, 26; S-1 đo trên schema ADR-27 |
 | **GATE-2** (MVP) | Tiêu chí ra M1b đạt; `buf breaking` xanh suốt M1; xem xét thời gian build của ADR-02 và chi phí bridge; chốt phạm vi M2–M3 | Q-7, Q-D5, Q-23, Q-26 |
 | **GATE-3** (PO nghiệm thu bản develop; mở MR) | SC-010 đạt; kiểm toán a11y xong; PO xác nhận ứng dụng đạt mong muốn; bắt đầu đăng ký Apple Developer Program | Q-8 (Q-6 đã đóng 2026-10-29) |
@@ -278,4 +292,4 @@ Nguồn cập nhật bắt buộc cho mọi PR (`GIT_WORKFLOW.md` §3, §6). Gi�
 
 | Mã | Trạng thái | PR / commit | Ghi chú (phần còn lại, blocker) |
 |---|---|---|---|
-| S-2, S-3, S-4, S-5, S-6, S-8, ADR-15, Spike 0 | rd | — | M0; chưa có Git, chưa bắt đầu |
+| S-2, S-3, S-4, S-5, S-6, S-8, ADR-15, Spike 0 | rd | — | M0; đã có Git/remote, chưa có CI, chưa bắt đầu |
