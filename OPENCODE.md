@@ -43,9 +43,9 @@ Khi có Git, giữ record theo quy ước repo và liên kết PR/issue nếu d�
 Comment trong mã, tiêu đề và mô tả PR, cùng task record viết bằng tiếng Anh. PR
 dùng `.github/pull_request_template.md`; task dùng `.opencode/templates/task.md`.
 
-Trạng thái hiện tại: **folder chưa có Git**, chưa có core/App, remote, CI hoặc
-required checks. Được chuẩn bị và review working-tree, không được đánh dấu đã
-merge hoặc đã phát hành. Không tự chọn Git host, tạo remote hoặc repository.
+Trạng thái hiện tại: **đã có Git và remote `origin` (GitHub)**; chưa có core/App, CI hoặc
+required checks. Không được đánh dấu đã merge hoặc đã phát hành khi thiếu CI.
+Không tự tạo remote hoặc repository mới.
 
 ## 3. Quyền và hooks
 
@@ -119,7 +119,7 @@ phát hành: nó có thể tự duyệt `ask`; cấu hình này dùng deny cho d
 
 Chính sách PO đã chốt: AI tự merge khi Review độc lập và CI đạt; PO duyệt gate
 sản phẩm và phát hành. **Quyền commit/push/merge/publish hiện đóng có chủ đích.**
-Thiếu Git/remote/CI không thể khắc phục bằng một cấu hình giả.
+Thiếu CI/required checks không thể khắc phục bằng một cấu hình giả.
 
 Trước khi cấp quyền delivery, người vận hành phải cấu hình repository/nhánh đích,
 bot có quyền tối thiểu, Review PASS đúng SHA, required checks, CI trên revision

@@ -86,12 +86,11 @@ Hai nơi phải khớp: bảng `ROADMAP.md` §11 và mảng `raw` trong `ROADMAP
 
 ## 8. Điều kiện môi trường (người vận hành, một lần)
 
-Workspace **chưa có Git**; quyền commit/push/merge của agent đang đóng (OPENCODE §4). Việc cần PO/người vận hành làm, không agent nào tự làm:
+Repo đã có Git và remote `origin` (GitHub); chưa có CI, hooks cài sẵn hay branch protection, và quyền commit/push/merge của agent vẫn đóng (OPENCODE §4). Việc còn lại cho PO/người vận hành, không agent nào tự làm:
 
 ```sh
-git init -b main && git add -A && git commit -m "chore: initial import"
 git switch -c develop
 cp .agents/skills/git-hooks/hooks/* .git/hooks/ && chmod +x .git/hooks/commit-msg .git/hooks/pre-commit
 ```
 
-Sau đó chọn Git host, tạo remote và bảo vệ `main`, `develop`: cấm push trực tiếp, bắt buộc PR, required checks (`go test -race`, `check-core.sh`, `check-imports.sh`, `buf lint`/`buf breaking`, `xcodebuild test`), Review PASS đúng SHA, squash cho `develop`. Mở quyền cho Coder (commit/push nhánh task) và Shipper (merge qua entrypoint được bảo vệ) bằng thay đổi `opencode.json` + test guard riêng, do PO review. Cho đến lúc đó: agent chỉ làm trên working-tree và ghi `revision: working-tree`; không báo merged.
+Sau đó bảo vệ `main`, `develop`: cấm push trực tiếp, bắt buộc PR, required checks (`go test -race`, `check-core.sh`, `check-imports.sh`, `buf lint`/`buf breaking`, `xcodebuild test`), Review PASS đúng SHA, squash cho `develop`. Mở quyền cho Coder (commit/push nhánh task) và Shipper (merge qua entrypoint được bảo vệ) bằng thay đổi `opencode.json` + test guard riêng, do PO review. Cho đến lúc đó: agent không báo merged.
