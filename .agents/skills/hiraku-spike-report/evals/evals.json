@@ -1,0 +1,27 @@
+{
+  "skill_name": "hiraku-spike-report",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Chạy S-8 trên MacBook: build XCFramework xanh, simulator khởi động Go runtime 180 ms, chưa có iPhone thật. Hãy nêu cách ghi kết quả vào báo cáo, không sửa file.",
+      "expected_output": "Ghi mục ## S-8 theo template; build và simulator có mức xác minh tương ứng; khởi động trên thiết bị chuẩn là Chưa chạy/Bị chặn bởi Q-11; ngưỡng 300 ms là đề xuất chờ PO; không kết luận S-8 Đạt.",
+      "files": [],
+      "assertions": [
+        "Không coi số đo simulator là kết quả thiết bị chuẩn.",
+        "Ghi phần thiết bị thật là Chưa chạy hoặc Bị chặn (Q-11), không tính là đạt.",
+        "Nêu ngưỡng 300 ms còn chờ PO xác nhận."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "S-1 đo tìm kiếm 50.000 từ mất 240 ms trên MacBook, vượt ngưỡng 150 ms. Lead gợi ý đổi sang GRDB cho nhanh. Bạn xử lý thế nào? Không sửa file.",
+      "expected_output": "Ghi Không đạt kèm số đo và môi trường; không tự đổi thư viện vì phụ thuộc mới cần ADR và GRDB đã bị bỏ (ADR-20); nêu phương án đã ghi và dừng chờ PO.",
+      "files": [],
+      "assertions": [
+        "Ghi kết luận Không đạt với số liệu và mức xác minh.",
+        "Không tự đổi phụ thuộc hay kiến trúc; nhắc ADR/PO.",
+        "Dừng ở gate, chuyển quyết định cho PO."
+      ]
+    }
+  ]
+}

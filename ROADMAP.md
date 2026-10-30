@@ -1,8 +1,8 @@
 # Lộ trình triển khai — hiraku (開く) · Native Swift
 
 **Ngày**: 2026-10-29
-**Phiên bản**: 1.10 (thêm §11 theo dõi trạng thái WP theo `GIT_WORKFLOW.md`) · 1.9 (rà soát 2026-10-29: S-2 sửa thành FSRS Go; thêm S-5 và Spike 0 vào M0; làm rõ S-1 bổ sung; ghi chênh lệch 0,5 tuần ở M1a và Tết 2027; bỏ Q-8 khỏi GATE-1, Q-6 khỏi GATE-3; thêm Q-19…Q-29 vào cổng) · 1.8 (đồng bộ iCloud: ADR-29, ADR-30, rủi ro 17; M4 giữ nguyên) · 1.7 (UI quản lý profile vào M3 — ADR-28, WP-45) · 1.6 (field tùy biến theo deck — ADR-27: Pha A vào M1a, Pha B vào M2–M3; Q-16, Q-17) · 1.5 (bản nháp, chuyển logic sang Go core: WP-02a/02b, S-8, ADR-20…26; — hiệu chỉnh lại ở GATE-1; mốc MR "Cuối cùng" theo ADR-17; thêm việc theo ADR-18)
-**Tài liệu liên quan**: `spec.md` (§1.3 giai đoạn, §3.3 spike), `use-cases.md` (§8 thứ tự), `DECISIONS.md` (cổng và quyết định), `DESIGN.md`, `ARCHITECTURE.md` v2.2
+**Phiên bản**: 1.10 (thêm §11 theo dõi trạng thái WP theo `docs/process/GIT_WORKFLOW.md`) · 1.9 (rà soát 2026-10-29: S-2 sửa thành FSRS Go; thêm S-5 và Spike 0 vào M0; làm rõ S-1 bổ sung; ghi chênh lệch 0,5 tuần ở M1a và Tết 2027; bỏ Q-8 khỏi GATE-1, Q-6 khỏi GATE-3; thêm Q-19…Q-29 vào cổng) · 1.8 (đồng bộ iCloud: ADR-29, ADR-30, rủi ro 17; M4 giữ nguyên) · 1.7 (UI quản lý profile vào M3 — ADR-28, WP-45) · 1.6 (field tùy biến theo deck — ADR-27: Pha A vào M1a, Pha B vào M2–M3; Q-16, Q-17) · 1.5 (bản nháp, chuyển logic sang Go core: WP-02a/02b, S-8, ADR-20…26; — hiệu chỉnh lại ở GATE-1; mốc MR "Cuối cùng" theo ADR-17; thêm việc theo ADR-18)
+**Tài liệu liên quan**: `docs/product/spec.md` (§1.3 giai đoạn, §3.3 spike), `docs/product/use-cases.md` (§8 thứ tự), `docs/architecture/DECISIONS.md` (cổng và quyết định), `docs/product/DESIGN.md`, `docs/architecture/ARCHITECTURE.md` v2.2
 
 ---
 
@@ -58,7 +58,7 @@ Ghi chú v1.7: WP-45 (UI profile, ADR-28) cộng +1 vào M3; GATE-3 và GATE-4 d
 
 | Việc | Nội dung | Ước lượng (ngày) |
 |---|---|---|
-| S-1 + S-7 | modernc.org/sqlite (Go core) trên 50.000 từ + 200.000 log, đo reload theo `ChangeSet`/`EventHub` (ADR-24); App Group trên 3 nền tảng, target phụ đọc cùng DB, kiểm tra sao lưu thiết bị/iCloud | 2,5 |
+| S-1 + S-7 | `github.com/mattn/go-sqlite3` (Go core) trên 50.000 từ + 200.000 log, đo reload theo `ChangeSet`/`EventHub` (ADR-24); App Group trên 3 nền tảng, target phụ đọc cùng DB, kiểm tra sao lưu thiết bị/iCloud | 2,5 |
 | S-2 | Đánh giá thư viện FSRS Go với bộ test vector tham chiếu (ADR-26) | 1 |
 | S-3 | IME: nhận biết compose, Return chốt IME, ô kana điều khiển bởi một trường nhập, trên iOS/iPadOS/macOS | 1,5 |
 | S-4 | Layout thích ứng: `Table`, `NavigationSplitView`, inspector 230pt, phụ kiện đáy tab bar (ADR-15) | 1 |
@@ -67,24 +67,24 @@ Ghi chú v1.7: WP-45 (UI profile, ADR-28) cộng +1 vào M3; GATE-3 và GATE-4 d
 | S-8 | Build `core/ffi` thành c-archive cho ba slice; đóng XCFramework tự động; chạy trên simulator và thiết bị thật; đo RSS và khởi động Go runtime; 1.000 lần `hk_call` không rò bộ nhớ (ADR-21) | 5 |
 | S-1 bổ sung | Đo lại S-1 trên schema ADR-27 (`notes`/`cards`, `search_text`) trong cùng thiết bị chuẩn; kiểm tra reload theo phạm vi giữ 60 fps | 2 |
 | S-5 | Hai cửa sổ cùng ghi một DB; chấm trùng một thẻ (spec §3.3 S-5, UC-08 E6) | 1 (đề xuất) |
-| Spike 0 | Xác minh `modernc.org/sqlite` build được cho ios/arm64 và simulator, `go list -deps` không có `net` (luật G5); chạy trước S-8 | 1–2 (đề xuất) |
+| Spike 0 | Xác minh `github.com/mattn/go-sqlite3` build được cho ios/arm64 và simulator, `go list -deps` không có `net` (luật G5); chạy trước S-8 | 1–2 (đề xuất) |
 | Báo cáo | Kết quả từng S-*, số đo trên thiết bị chuẩn (Q-11), đề xuất quyết định | 0,5 |
 
 Ghi chú: S-5 và Spike 0 chưa nằm trong ước lượng 3 tuần của M0 (khoảng +2 đến +3 ngày); hiệu chỉnh ở GATE-1.
 
 **Sản phẩm bàn giao**: báo cáo spike; mã thử nghiệm (không đưa vào sản phẩm).
 **Lưu ý ADR-17**: với Personal Team, S-7 chỉ xác minh được phần khả dụng; phần chưa xác minh (App Sandbox + App Group trên macOS, widget, sao lưu thiết bị/iCloud) ghi rõ trong báo cáo, hoàn tất ở WP-39 (MR). Nếu App Group không dùng được, dev dùng container thường qua `DatabaseLocation`.
-**Tiêu chí ra**: mỗi S-* có kết quả Đạt/Không đạt kèm số đo; đủ dữ liệu để chốt Q-5, Q-8, Q-D2 và xác nhận hoặc thay thế ADR-20, 21, 23, 24, 26 (S-1, S-2, S-8).
+**Tiêu chí ra**: mỗi S-* có kết quả Đạt/Không đạt kèm số đo; đủ dữ liệu để chốt Q-5, Q-8, Q-D2 và xác nhận hoặc thay thế ADR-20, 21, 24, 26, 32 (S-1, S-2, S-8).
 
 ### 3.2 M0b — Chuẩn bị M1 (≈ 2,5 tuần)
 
 | Sản phẩm | Nội dung | Ước lượng (tuần) |
 |---|---|---|
-| `ARCHITECTURE.md` | Tách từ spec v3.1 §2.2–2.3, §3, §5 (nay spec chỉ còn con trỏ): luật Swift (L1–L11) và Go (G1–G8), khuôn mẫu feature và domain Go, contract `hiraku.v1`, script kiểm tra core và `import`, cách thêm feature/`StudyMode` | 0,5 |
+| `docs/architecture/ARCHITECTURE.md` | Tách từ spec v3.1 §2.2–2.3, §3, §5 (nay spec chỉ còn con trỏ): luật Swift (L1–L11) và Go (G1–G8), khuôn mẫu feature và domain Go, contract `hiraku.v1`, script kiểm tra core và `import`, cách thêm feature/`StudyMode` | 0,5 |
 | `AGENTS.md` + bộ OpenCode (ADR-31) | Bốn agents, hai skills `hiraku-contract`/`hiraku-feature`, permissions, guard và task packet; DESIGN/COPY đọc trực tiếp, không tạo skill thiết kế trùng tài liệu | 0,25 (ước lượng lịch sử) |
-| Wireframe/prototype (prompt: `WIREFRAME_PROMPT.md`) | Home, Deck/Words, Flashcard, Gõ từ, Cài đặt cho iPhone (ưu tiên); iPad/Mac vẽ trước M1b | 1,25 |
+| Wireframe/prototype (prompt: `docs/product/WIREFRAME_PROMPT.md`) | Home, Deck/Words, Flashcard, Gõ từ, Cài đặt cho iPhone (ưu tiên); iPad/Mac vẽ trước M1b | 1,25 |
 | `COPY.md` | Bảng chuỗi UI tiếng Việt cho các màn M1a, làm nền String Catalog (bản đề xuất đã có, chờ duyệt) | 0,25 |
-| `TEST_PLAN.md` | Đã có khung ma trận thiết bị/OS/IME, dữ liệu và tiêu chí; còn xác nhận Q-11, người thử SC-002 và kiểm thử sản phẩm thực tế | 0,25 |
+| `docs/process/TEST_PLAN.md` | Đã có khung ma trận thiết bị/OS/IME, dữ liệu và tiêu chí; còn xác nhận Q-11, người thử SC-002 và kiểm thử sản phẩm thực tế | 0,25 |
 
 **Tiêu chí ra**: tài liệu được duyệt; quyết định GATE-1 đã chốt; lịch M1a hiệu chỉnh theo số đo M0.
 
@@ -96,8 +96,8 @@ Phạm vi: UC-01, 02, 03, 04, 06, 07, 08, 13, 14, phần lõi UC-21 (ghi nguyên
 
 | WP | Nội dung | Phụ thuộc | Ước lượng (tuần) |
 |---|---|---|---|
-| WP-01 | Workspace, Go module `core/`, buf (lint, breaking), CI (`go test -race`, `xcodebuild test`, `check-core.sh`, `check-imports.sh`), pipeline XCFramework, cấu trúc repo theo Q-13 | `ARCHITECTURE.md` v2.2 | 0,75 |
-| WP-02a | Store Go: `modernc.org/sqlite`, WAL, migration theo `PRAGMA user_version`, repository, xóa mềm, golden test (ADR-23); schema kiểu ghi chú `note_types`/`notes`/`cards`, kiểu hệ thống, `domain/notetype` (ADR-27 Pha A) | WP-01 | 3 |
+| WP-01 | Workspace, Go module `core/`, buf (lint, breaking), CI (`go test -race`, `xcodebuild test`, `check-core.sh`, `check-imports.sh`), pipeline XCFramework, cấu trúc repo theo Q-13 | `docs/architecture/ARCHITECTURE.md` v2.2 | 0,75 |
+| WP-02a | Store Go: `github.com/mattn/go-sqlite3`, WAL, migration theo `PRAGMA user_version`, repository, xóa mềm, golden test (ADR-23, ADR-32); schema kiểu ghi chú `note_types`/`notes`/`cards`, kiểu hệ thống, `domain/notetype` (ADR-27 Pha A) | WP-01 | 3 |
 | WP-02b | Bridge: `ffi` (`hk_open`, `hk_call`, `hk_free`, `hk_close`), `HirakuBridge` (actor, `EventHub`, ánh xạ proto ↔ model), XCFramework, fake Swift trong `HirakuTesting` (ADR-21, ADR-24) | WP-01, WP-02a | 1,25 |
 | WP-03 | FSRS trong `core/domain/fsrs` (thư viện Go hoặc tự cài, ADR-26), RPC `Grade` (transaction, đọc lại trong tx), `BuildQueue` (ngày học, hạn mức, chèn lại 20 phút, `elapsed_ms`) | WP-02a, S-2 | 1,5 |
 | WP-04 | `core/domain/kana`: romaji → kana, chuẩn hóa, so khớp từng ký tự, golden test bảng | WP-01 | 1 |
@@ -156,7 +156,7 @@ Cần wireframe và `COPY.md` cho màn nhập (ánh xạ cột, preview, chính 
 | WP-44 | Quản lý kiểu ghi chú: nhân bản kiểu, thêm/đổi tên/sắp xếp/xóa field, mẫu thẻ, xem trước; chọn kiểu khi tạo deck; RPC sửa kiểu ở core (ADR-27 Pha B) | UC-31, UC-02; FR-086…FR-089 | 2,25 |
 | WP-45 | Quản lý profile: tạo, đổi tên, chuyển, xóa; danh sách ở `AppStorage` App Group; `hk_close`/`hk_open` khi chuyển; tên profile trên sidebar/Trang chủ; dung lượng từng profile ở màn dữ liệu (ADR-28) | UC-32; FR-090, FR-091 | 1 |
 
-Tổng WP ≈ 11 tuần; phần còn lại của 11,25 tuần là dự phòng. WP-44 cần `DESIGN.md`, `COPY.md` và wireframe cho màn chỉnh field trước khi bắt đầu. FR-082…FR-085 (P2) chưa xếp lịch; FR-084 làm sau MR.
+Tổng WP ≈ 11 tuần; phần còn lại của 11,25 tuần là dự phòng. WP-44 cần `docs/product/DESIGN.md`, `COPY.md` và wireframe cho màn chỉnh field trước khi bắt đầu. FR-082…FR-085 (P2) chưa xếp lịch; FR-084 làm sau MR.
 **Tiêu chí ra (GATE-3)**: PO nghiệm thu bản develop — xem §4.
 
 ### 3.7 MR — Đăng ký tài khoản và phát hành **[Cuối cùng]** (≈ 1,5 tuần, chưa tính chờ duyệt)
@@ -166,7 +166,7 @@ Chỉ bắt đầu sau GATE-3 (PO xác nhận ứng dụng đạt mong muốn �
 | WP | Nội dung | Ước lượng (tuần) |
 |---|---|---|
 | (PO) | Đăng ký Apple Developer Program; chốt Q-8 (Mac App Store hay trực tiếp) | chờ xét duyệt, không tính |
-| WP-38 | Chuẩn bị phát hành: `RELEASE.md`, bundle ID và signing chính thức, universal purchase, Privacy Manifest, tài sản App Store, chính sách riêng tư, entitlement iCloud và deploy schema CloudKit lên Production (R-15, ADR-29) | 1,25 |
+| WP-38 | Chuẩn bị phát hành: `docs/process/RELEASE.md`, bundle ID và signing chính thức, universal purchase, Privacy Manifest, tài sản App Store, chính sách riêng tư, entitlement iCloud và deploy schema CloudKit lên Production (R-15, ADR-29) | 1,25 |
 | WP-39 | Hoàn tất S-7 (App Sandbox + App Group trên macOS, sao lưu thiết bị/iCloud); nếu dev dùng container thường thì chuyển DB sang App Group bằng sao lưu/khôi phục | 0,25 |
 | (ngoài ước lượng) | TestFlight beta, nộp App Review, xử lý phản hồi | chờ ngoài |
 
@@ -176,15 +176,15 @@ Chỉ bắt đầu sau GATE-3 (PO xác nhận ứng dụng đạt mong muốn �
 
 ## 4. Cổng quyết định
 
-| Cổng | Điều kiện vào bước kế tiếp | Quyết định phải chốt (`DECISIONS.md`) |
+| Cổng | Điều kiện vào bước kế tiếp | Quyết định phải chốt (`docs/architecture/DECISIONS.md`) |
 |---|---|---|
 | **GATE-0** (trước M0) | Thiết bị chuẩn: MacBook (Q-11 đã chốt một phần; thiếu iPhone/iPad thật); dùng Personal Team, đăng ký Apple Developer Program sau cùng (ADR-17); repo sẵn sàng | Q-11, Q-12, Q-13 (Q-1 đã chốt: ADR-13); Q-29 |
-| **GATE-1** (sau M0 + M0b; Go/No-go M1) | **Bắt buộc đạt**: S-1, S-3, S-8; S-7 xác minh phần khả dụng (ADR-17). S-2 phải có phương án (dùng hoặc tự cài). Tài liệu M0b được duyệt. Lịch M1a hiệu chỉnh theo năng suất đo được | Q-5, Q-D2; Q-19, Q-20, Q-21, Q-22, Q-24, Q-27, Q-28; xác nhận ADR-20, 21, 23, 24, 26; S-1 đo trên schema ADR-27 |
+| **GATE-1** (sau M0 + M0b; Go/No-go M1) | **Bắt buộc đạt**: S-1, S-3, S-8; S-7 xác minh phần khả dụng (ADR-17). S-2 phải có phương án (dùng hoặc tự cài). Tài liệu M0b được duyệt. Lịch M1a hiệu chỉnh theo năng suất đo được | Q-5, Q-D2; Q-19, Q-20, Q-21, Q-22, Q-24, Q-27, Q-28; xác nhận ADR-20, 21, 24, 26, 32; S-1 đo trên schema ADR-27 |
 | **GATE-2** (MVP) | Tiêu chí ra M1b đạt; `buf breaking` xanh suốt M1; xem xét thời gian build của ADR-02 và chi phí bridge; chốt phạm vi M2–M3 | Q-7, Q-D5, Q-23, Q-26 |
 | **GATE-3** (PO nghiệm thu bản develop; mở MR) | SC-010 đạt; kiểm toán a11y xong; PO xác nhận ứng dụng đạt mong muốn; bắt đầu đăng ký Apple Developer Program | Q-8 (Q-6 đã đóng 2026-10-29) |
-| **GATE-4** (sẵn sàng phát hành, sau MR) | Checklist `RELEASE.md` đầy đủ; phản hồi TestFlight đã xử lý; nộp App Review | — |
+| **GATE-4** (sẵn sàng phát hành, sau MR) | Checklist `docs/process/RELEASE.md` đầy đủ; phản hồi TestFlight đã xử lý; nộp App Review | — |
 
-Nếu GATE-1 trượt S-1, S-3 hoặc S-8, dừng M1 và họp lại (S-8 trượt có thể quay lại ADR-03, +2 đến 3 tuần-người) theo bảng "Điều kiện kích hoạt xem lại" ở `DECISIONS.md` §5.
+Nếu GATE-1 trượt S-1, S-3 hoặc S-8, dừng M1 và họp lại (S-8 trượt có thể quay lại ADR-03, +2 đến 3 tuần-người) theo bảng "Điều kiện kích hoạt xem lại" ở `docs/architecture/DECISIONS.md` §5.
 
 ---
 
@@ -192,13 +192,13 @@ Nếu GATE-1 trượt S-1, S-3 hoặc S-8, dừng M1 và họp lại (S-8 trư�
 
 | Tài liệu | Cần trước | Ghi chú |
 |---|---|---|
-| `ARCHITECTURE.md` v2.2, `AGENTS.md` | GATE-1 | Đã soạn (có ADR-27, ADR-28); duyệt ở M0b |
+| `docs/architecture/ARCHITECTURE.md` v2.2, `AGENTS.md` | GATE-1 | Đã soạn (có ADR-27, ADR-28); duyệt ở M0b |
 | Wireframe iPhone | GATE-1 | iPad/Mac: trước khi bắt đầu M1b |
 | Contract `hiraku.v1` và golden testdata | WP-01 | Nguồn sự thật cho Swift và Go (ADR-22) |
 | `COPY.md` | Bắt đầu WP-06 | Bản đầu cho các màn M1a |
-| `TEST_PLAN.md` | GATE-1 | Đã có khung; cập nhật bằng chứng theo từng mốc, không coi tài liệu đã có là test đã đạt |
+| `docs/process/TEST_PLAN.md` | GATE-1 | Đã có khung; cập nhật bằng chứng theo từng mốc, không coi tài liệu đã có là test đã đạt |
 | `DATA_FORMAT.md` | Bắt đầu M2 | Chỉ cần nếu muốn tách schema/backup/nhập khỏi spec |
-| `RELEASE.md` | WP-38 (MR) | Đã có checklist; hoàn thiện bằng chứng sau GATE-3. Phạm vi entitlement/deploy CloudKit tại MR so với M4 cần chốt trước khi thực hiện (`OPENCODE.md` §6) |
+| `docs/process/RELEASE.md` | WP-38 (MR) | Đã có checklist; hoàn thiện bằng chứng sau GATE-3. Phạm vi entitlement/deploy CloudKit tại MR so với M4 cần chốt trước khi thực hiện (`docs/process/AGENT_WORKFLOW.md` §6) |
 
 ---
 
@@ -229,14 +229,14 @@ Nếu GATE-1 trượt S-1, S-3 hoặc S-8, dừng M1 và họp lại (S-8 trư�
 ## 7. Definition of Done
 
 **Mức feature/UC** (mọi WP):
-1. Chức năng đúng kịch bản chính, thay thế và biên trong `use-cases.md`.
+1. Chức năng đúng kịch bản chính, thay thế và biên trong `docs/product/use-cases.md`.
 2. Controller có test với `InMemory*Repository` và `AppClock` giả; logic nghiệp vụ có test đơn vị.
 3. UC P0 có kịch bản XCUITest.
 4. VoiceOver, Dynamic Type, bàn phím (Mac/iPad) kiểm tra được; không chỉ dựa vào màu.
 5. Chuỗi UI nằm trong String Catalog; token từ `DesignSystem`, không hard-code.
 6. CI xanh, gồm kiểm tra đồ thị `import` và strict concurrency không cảnh báo.
 7. Không lệch tài liệu: nếu hành vi đổi, đã cập nhật spec/UC/DESIGN/DECISIONS.
-8. Mã theo `ARCHITECTURE.md` C1–C8: đơn giản, vừa đủ, comment ngắn chỉ về mã.
+8. Mã theo `docs/architecture/ARCHITECTURE.md` C1–C8: đơn giản, vừa đủ, comment ngắn chỉ về mã.
 9. Go: `go vet` và `go test -race` xanh; `buf breaking` không báo lỗi; `check-core.sh` xanh; golden contract cập nhật cùng thay đổi.
 
 **Mức mốc**: các tiêu chí ra ở §3 và cổng ở §4.
@@ -246,7 +246,7 @@ Nếu GATE-1 trượt S-1, S-3 hoặc S-8, dừng M1 và họp lại (S-8 trư�
 ## 8. Theo dõi và kiểm soát thay đổi
 
 - **Nhịp**: rà soát hằng tuần (tiến độ WP, burn-up tuần-người, rủi ro mới, quyết định đến hạn).
-- **Kiểm soát thay đổi**: thêm/bớt phạm vi sau GATE-1 phải nêu tác động lịch (tuần-người) và ghi vào `DECISIONS.md`. Đổi nhỏ trong WP không cần ghi.
+- **Kiểm soát thay đổi**: thêm/bớt phạm vi sau GATE-1 phải nêu tác động lịch (tuần-người) và ghi vào `docs/architecture/DECISIONS.md`. Đổi nhỏ trong WP không cần ghi.
 - **Chỉ số sản phẩm**: không có telemetry (ADR-12). Đo qua khảo sát ngắn và, sau MR, TestFlight: tỷ lệ hoàn thành SC-001/SC-002, số lỗi mất dữ liệu (mục tiêu 0), thời gian tạo 20 từ đầu tiên.
 - **Hiệu chỉnh lịch**: tại GATE-1 và GATE-2, so sánh tuần-người thực với ước lượng và cập nhật các mốc sau.
 
@@ -256,7 +256,7 @@ Nếu GATE-1 trượt S-1, S-3 hoặc S-8, dừng M1 và họp lại (S-8 trư�
 
 | Mục | UC / FR | Ước lượng thô (tuần) |
 |---|---|---|
-| Widget "Đến hạn hôm nay" (làm sau khi đăng ký tài khoản; App Group trên Personal Team chưa xác nhận; widget cần link XCFramework của core, xem R-12 trong `spec.md`) | UC-29; FR-073 | 1–1,5 |
+| Widget "Đến hạn hôm nay" (làm sau khi đăng ký tài khoản; App Group trên Personal Team chưa xác nhận; widget cần link XCFramework của core, xem R-12 trong `docs/product/spec.md`) | UC-29; FR-073 | 1–1,5 |
 | Phát âm (TTS) | UC-25; FR-068 | 1 |
 | Tags và lọc | UC-24; FR-069 | 1,5 |
 | Ôn tập tùy chỉnh | UC-22; FR-023 | 1,5 |
@@ -288,14 +288,16 @@ Tổng không kể iCloud khoảng 8–11 tuần-người; lập lại ước l�
 
 ## 11. Theo dõi trạng thái WP
 
-Nguồn cập nhật bắt buộc cho mọi PR (`GIT_WORKFLOW.md` §3, §6). Giá trị trùng Kanban: `bl` Backlog · `rd` Sẵn sàng · `ip` Đang làm · `rv` Chờ duyệt · `dn` Hoàn thành. Mục không có trong bảng là `bl`. Cập nhật **cùng PR** với mã, và đổi cùng giá trị trong `ROADMAP hiraku — Kanban.html` (mảng `raw`, trường thứ 5).
+Nguồn cập nhật bắt buộc cho mọi PR (`docs/process/GIT_WORKFLOW.md` §3, §6). Giá trị trùng Kanban: `bl` Backlog · `rd` Sẵn sàng · `ip` Đang làm · `rv` Chờ duyệt · `dn` Hoàn thành. Mục không có trong bảng là `bl`. Cập nhật **cùng PR** với mã, và đổi cùng giá trị trong `ROADMAP hiraku — Kanban.html` (mảng `raw`, trường thứ 5).
 
 | Mã | Trạng thái | PR / commit | Ghi chú (phần còn lại, blocker) |
 |---|---|---|---|
-| S-2, S-3, S-4, S-5, S-6, ADR-15, Spike 0 | rd | — | M0; đã có Git/remote, chưa có CI, chưa bắt đầu, chưa có mã `core/` |
+| Spike 0 | rv | — | Working-tree; `mattn/go-sqlite3 v1.14.52`, không còn `net`, build 3 slice xanh (build-only, Q-11 partial); chờ review — ADR-32 do PO đắp |
+| S-3, S-4, S-5, S-6, ADR-15 | rd | — | M0; đã có Git/remote, chưa có CI, chưa bắt đầu, chưa có mã `core/` |
+| S-2 | rv | — | Working-tree: Không đạt khớp vector (go-fsrs/v4 v4.0.0; 3/17 due lệch, dung sai 0); chờ review — PO cân nhắc ngữ nghĩa ts-fsrs. |
 | S-1 + S-7, S-1 bổ sung, S-8, Báo cáo spike | bl | — | Q-11 chốt một phần (MacBook, chưa có iPhone/iPad thật); phần build của S-8 chạy được sau Spike 0 |
 | Q-13, Q-1, Q-6 | dn | — | Đã chốt |
 | Q-12 | dn | — | PO duyệt phương án B (2026-10-30) |
 | Q-11, Q-D2 | rv | — | Q-11 chốt một phần (MacBook; thiếu iPhone/iPad thật), Q-D2 chờ Design |
-| `ARCHITECTURE.md`, `AGENTS.md` + OpenCode, `COPY.md`, `TEST_PLAN.md` | rv | `bde958f` | Đã soạn, chờ duyệt M0b; 58 test `.opencode` đạt 2026-10-29 |
+| `docs/architecture/ARCHITECTURE.md`, `AGENTS.md`, `COPY.md`, `docs/process/TEST_PLAN.md` | rv | `bde958f` | Đã soạn, chờ duyệt M0b; 58 test `.opencode` đạt 2026-10-29 |
 | RV-01…RV-08 | rd | — | Việc từ review, chờ quyết định |

@@ -1,9 +1,5 @@
 {
-  "name": "hiraku-agent-config",
+  "name": "hiraku-opencode",
   "private": true,
-  "type": "module",
-  "engines": { "node": ">=24" },
-  "scripts": {
-    "test": "node --test tests/*.test.mjs"
-  }
+  "type": "module"
 }

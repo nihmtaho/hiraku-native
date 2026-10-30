@@ -1,0 +1,14 @@
+{
+  "tiers": {
+    "cheap": {
+      "opencode": "opencode-go/deepseek-v4.1-flash",
+      "pi": "opencode-go/deepseek-v4.1-flash",
+      "commandcode": "deepseek/deepseek-v4.1-flash"
+    }
+  },
+  "roles": {
+    "explore": "cheap",
+    "plan": "cheap",
+    "shipper": "cheap"
+  }
+}

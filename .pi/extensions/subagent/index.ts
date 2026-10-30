@@ -473,7 +473,7 @@ export default function (pi: ExtensionAPI) {
 		description: [
 			"Delegate tasks to specialized subagents with isolated context.",
 			"Modes: single (agent + task), parallel (tasks array), chain (sequential with {previous} placeholder).",
-			"Agents: hiraku-coder, hiraku-reviewer, hiraku-shipper (from .opencode/agents).",
+			"Agents: hiraku-coder, hiraku-reviewer, hiraku-shipper, explore, general, plan (from .pi/agents).",
 		].join(" "),
 		parameters: SubagentParams,
 
