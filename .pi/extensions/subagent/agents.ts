@@ -19,28 +19,31 @@ export interface AgentDiscoveryResult {
 	projectAgentsDir: string | null;
 }
 
-// Prompts stay in .opencode/agents so OpenCode and Pi share one source; Pi only adds tool lists.
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), "../../..");
-const agentsDir = path.join(root, ".opencode", "agents");
-const subagentTools: Record<string, string[]> = {
-	"hiraku-coder": ["read", "grep", "find", "ls", "bash", "edit", "write"],
-	"hiraku-reviewer": ["read", "grep", "find", "ls", "bash"],
-	"hiraku-shipper": ["read", "grep", "find", "ls", "bash", "edit", "write"],
-};
+const agentsDir = path.join(root, ".pi", "agents");
 
+type Frontmatter = { name?: unknown; description?: unknown; tools?: unknown; mode?: unknown; model?: unknown };
+
+// The primary agent (Lead) runs the interactive session, so only subagents are listed.
 export function discoverAgents(_cwd: string, _scope: AgentScope): AgentDiscoveryResult {
-	const agents = Object.entries(subagentTools).map(([name, tools]) => {
-		const filePath = path.join(agentsDir, `${name}.md`);
-		const { frontmatter, body } = parseFrontmatter<{ description?: unknown }>(fs.readFileSync(filePath, "utf-8"));
-		return {
-			name,
+	const agents = fs.readdirSync(agentsDir)
+		.filter((file) => file.endsWith(".md"))
+		.sort()
+		.map((file) => {
+			const filePath = path.join(agentsDir, file);
+			const { frontmatter, body } = parseFrontmatter<Frontmatter>(fs.readFileSync(filePath, "utf-8"));
+			return { frontmatter, body, filePath };
+		})
+		.filter(({ frontmatter }) => frontmatter.mode !== "primary")
+		.map(({ frontmatter, body, filePath }) => ({
+			name: String(frontmatter.name ?? path.basename(filePath, ".md")),
 			description: String(frontmatter.description ?? ""),
-			tools,
+			tools: String(frontmatter.tools ?? "").split(",").map((tool) => tool.trim()).filter(Boolean),
+			model: frontmatter.model ? String(frontmatter.model) : undefined,
 			systemPrompt: body,
 			source: "project" as const,
 			filePath,
-		};
-	});
+		}));
 	return { agents, projectAgentsDir: agentsDir };
 }
 

@@ -1,0 +1,101 @@
+{
+  "featureModels": {
+    "planning": "deepseek/deepseek-v4.1-flash"
+  },
+  "permissions": {
+    "allow": [
+      "Shell",
+      "Edit(/.agents/tasks/*.md)"
+    ],
+    "deny": [
+      "Shell(git merge)",
+      "Shell(git merge *)",
+      "Shell(git tag)",
+      "Shell(git tag *)",
+      "Shell(git rebase)",
+      "Shell(git rebase *)",
+      "Shell(git reset --hard)",
+      "Shell(git reset --hard *)",
+      "Shell(git filter-branch)",
+      "Shell(git filter-branch *)",
+      "Shell(gh pr merge)",
+      "Shell(gh pr merge *)",
+      "Shell(gh pr review)",
+      "Shell(gh pr review *)",
+      "Shell(gh release)",
+      "Shell(gh release *)",
+      "Shell(gh api)",
+      "Shell(gh api *)",
+      "Shell(gh repo delete)",
+      "Shell(gh repo delete *)",
+      "Shell(gh repo create)",
+      "Shell(gh repo create *)",
+      "Shell(gh repo edit)",
+      "Shell(gh repo edit *)",
+      "Shell(xcrun altool)",
+      "Shell(xcrun altool *)",
+      "Shell(xcrun notarytool)",
+      "Shell(xcrun notarytool *)",
+      "Shell(fastlane)",
+      "Shell(fastlane *)",
+      "Shell(codesign)",
+      "Shell(codesign *)",
+      "Shell(security find-*)",
+      "Shell(security dump-*)",
+      "Shell(security export)",
+      "Shell(security export *)",
+      "Read(**/*.p8)",
+      "Read(**/*.p12)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)",
+      "Read(**/*.keychain-db)",
+      "Edit(/.agents/hiraku/**)",
+      "Edit(/.agents/skills/**)",
+      "Edit(/.agents/templates/**)",
+      "Edit(/.opencode/**)",
+      "Edit(/.pi/**)",
+      "Edit(/.commandcode/**)",
+      "Edit(/.github/**)",
+      "Edit(/.git/**)",
+      "Edit(AGENTS.md)",
+      "Edit(/docs/process/AGENT_WORKFLOW.md)",
+      "Edit(/docs/architecture/DECISIONS.md)",
+      "Edit(/docs/process/RELEASE.md)",
+      "Edit(/docs/process/TEST_PLAN.md)",
+      "Edit(opencode.json)",
+      "Edit(**/gen/**)",
+      "Edit(**/generated/**)",
+      "Edit(/Frameworks/**)",
+      "Edit(**/scripts/check-*)",
+      "Edit(**/scripts/build-xcframework.sh)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "shell|read|write|edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$COMMANDCODE_PROJECT_DIR/.commandcode/hooks/guard.mjs\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$COMMANDCODE_PROJECT_DIR/.commandcode/hooks/session-start.mjs\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "attribution": {
+    "commit": ""
+  }
+}

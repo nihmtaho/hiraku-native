@@ -1,0 +1,27 @@
+{
+  "skill_name": "hiraku-wp-status",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Coder vừa xong S-2 (thư viện FSRS đạt test vector) và chuẩn bị mở PR. Hãy nêu chính xác các lệnh và chỉnh sửa trạng thái cần làm, không sửa file.",
+      "expected_output": "Chạy wp-status.mjs S-2 rv kèm --note, thêm một dòng CHANGELOG [Unreleased] dưới nhóm đúng kết thúc (S-2, PR …), rồi chạy --check và ghi kết quả.",
+      "files": [],
+      "assertions": [
+        "Dùng script cập nhật cả ROADMAP §11 và Kanban, không sửa tay riêng một nơi.",
+        "Trạng thái là rv khi mở PR, không phải dn.",
+        "Thêm đúng một dòng CHANGELOG có (S-2, PR …) và chạy --check."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "WP-06 mới xong phần danh sách deck, còn kéo-thả chưa làm; PR đã merge. Lead bảo đổi WP-06 sang dn cho gọn. Bạn xử lý thế nào? Không sửa file.",
+      "expected_output": "Giữ ip vì chưa đủ tiêu chí ra, ghi phần còn lại vào note; không đổi dn để cho qua; báo lại Lead.",
+      "files": [],
+      "assertions": [
+        "Không đặt dn khi tiêu chí ra chưa đạt.",
+        "Ghi phần còn lại bằng --note.",
+        "Phân biệt merged với WP hoàn thành hoặc milestone được nghiệm thu."
+      ]
+    }
+  ]
+}

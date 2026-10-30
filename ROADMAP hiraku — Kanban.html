@@ -161,7 +161,7 @@ var GATES=[
   cond:["SC-010 đạt","Kiểm toán a11y xong","PO xác nhận ứng dụng đạt mong muốn","Bắt đầu đăng ký Apple Developer Program"],
   dec:["Q-6 (đã đóng 29/10/2026)","Q-8"]},
  {k:"GATE-4",before:"M4",short:"Sẵn sàng phát hành",date:"≈ 17/09/2027, chưa tính chờ duyệt",
-  cond:["Checklist RELEASE.md đầy đủ","Phản hồi TestFlight đã xử lý","Nộp App Review"],
+  cond:["Checklist docs/process/RELEASE.md đầy đủ","Phản hồi TestFlight đã xử lý","Nộp App Review"],
   dec:[]}
 ];
 var ST=[
@@ -187,16 +187,16 @@ var FIND={
  "F-16":"Nhập: “Ghi đè” có giữ tiến độ học không; CSV Shift-JIS chỉ cảnh báo.",
  "F-17":"Đồng bộ lần đầu: profile mặc định và deck mẫu tạo riêng mỗi máy sẽ nhân đôi; xóa thắng và không xóa cloud làm tombstone tăng mãi.",
  "F-18":"Kiểm tra toàn vẹn khi mở chưa có cách làm, có thể phá ngân sách khởi động 1,5 giây.",
- "F-19":"Nhiều ADR “chờ spike” đã làm nền cho lịch. Cần xác minh sớm modernc build được cho iOS và danh sách phụ thuộc không có net (luật G5).",
+ "F-19":"Nhiều ADR “chờ spike” đã làm nền cho lịch. Spike 0 đã xác minh driver build được cho iOS và đồ thị không có net (luật G5); rủi ro còn lại là hiệu năng S-1/S-8 và XCFramework chưa được đo.",
  "F-20":"Cộng các WP lệch con số mốc (M1a 17,25 so với 17,75; M3 11 so với 11,25); dự phòng mỏng; Tết 2027 rơi vào M1a; nhân lực Go và Swift chưa xác nhận.",
  "F-21":"GATE-0 hạn 02/11/2026: Q-11 còn Mở, Q-12 mới là đề xuất nhưng lịch đã dựa vào Q-12.",
  "F-22":"Dữ liệu thật trên bản ký tạm đến khoảng 09/2027, sao lưu để ở M2; WAL trong App Group trên iOS cần kiểm khi app bị treo.",
- "F-23":"SC-002 yêu cầu “≥ 90% người thử” nhưng chưa có kế hoạch thử; TEST_PLAN.md chưa soạn.",
+ "F-23":"SC-002 yêu cầu “≥ 90% người thử” nhưng chưa có kế hoạch thử; docs/process/TEST_PLAN.md chưa soạn.",
  "F-24":"Chưa có thiết kế và COPY cho M2 (nhập, sao lưu), thống kê, onboarding, chọn nhiều.",
  "F-25":"Lỗi biên soạn nhỏ: thứ tự A/E, UC-30 “nhấn giữ biểu tượng” không có FR hay WP, FR-036 chưa xếp lịch."
 };
 
-// Mỗi PR đổi trạng thái (trường thứ 5) cùng giá trị với ROADMAP.md §11; xem GIT_WORKFLOW.md §6.
+// Mỗi PR đổi trạng thái (trường thứ 5) cùng giá trị với ROADMAP.md §11; xem docs/process/GIT_WORKFLOW.md §6.
 // [id, tiêu đề, mốc, loại, trạng thái, ước lượng {d ngày | w tuần | x chữ}, thông tin thêm]
 var raw=[
  // M0
@@ -204,39 +204,39 @@ var raw=[
  ["Q-12","Chốt chia M1 thành M1a (iPhone) và M1b (iPad + Mac)","M0","dec","dn",null,{ref:"DECISIONS Q-12, ADR-19",note:"PO duyệt phương án B (30/10/2026).",f:"F-21"}],
  ["Q-13","Quy ước tên tài liệu, đặt ở root repo","M0","dec","dn",null,{ref:"DECISIONS Q-13",note:"PO chốt 29/10/2026."}],
  ["Q-1","OS tối thiểu: iOS 26, iPadOS 26, macOS 26 (Apple silicon)","M0","dec","dn",null,{ref:"ADR-13"}],
- ["S-1 + S-7","modernc SQLite với 50.000 từ + 200.000 log; App Group trên 3 nền tảng; kiểm tra sao lưu thiết bị","M0","sp","bl",{d:2.5},{ref:"spec §3.3 S-1, S-7; ADR-23, ADR-06",blk:"Q-11",note:"S-1 bắt buộc đạt ở GATE-1. S-7: chỉ xác minh phần khả dụng trên Personal Team.",f:"F-01"}],
- ["S-2","Đánh giá thư viện FSRS với bộ test vector tham chiếu","M0","sp","rd",{d:1},{ref:"ADR-26, spec §3.3 S-2",note:"Đã sửa ở ROADMAP v1.9: FSRS Go (ADR-26)."}],
+ ["S-1 + S-7","github.com/mattn/go-sqlite3 với 50.000 từ + 200.000 log; App Group trên 3 nền tảng; kiểm tra sao lưu thiết bị","M0","sp","bl",{d:2.5},{ref:"spec §3.3 S-1, S-7; ADR-23, ADR-32, ADR-06",blk:"Q-11",note:"S-1 bắt buộc đạt ở GATE-1. S-7: chỉ xác minh phần khả dụng trên Personal Team.",f:"F-01"}],
+ ["S-2","Đánh giá thư viện FSRS với bộ test vector tham chiếu","M0","sp","rv",{d:1},{ref:"ADR-26, spec §3.3 S-2",note:"Working-tree: Không đạt khớp vector (go-fsrs/v4 v4.0.0; 3/17 due lệch, dung sai 0); chờ review — PO cân nhắc ngữ nghĩa ts-fsrs."}],
  ["S-3","IME: nhận biết marked text, Return chốt IME, một trường điều khiển ô kana (iOS, iPadOS, macOS)","M0","sp","rd",{d:1.5},{ref:"ADR-09, UC-07",note:"Bắt buộc đạt ở GATE-1."}],
  ["S-4","Layout thích ứng: Table, NavigationSplitView, inspector 230pt, phụ kiện đáy tab bar","M0","sp","rd",{d:1},{ref:"ADR-15, ADR-18"}],
  ["S-6","Đóng gói Noto Sans JP (subset), đo kích thước","M0","sp","rd",{d:0.5},{ref:"Q-5",note:"Ngưỡng đề xuất 10 MB; vượt hoặc thiếu glyph thì dùng Hiragino Sans."}],
  ["ADR-15","Duyệt chrome Liquid Glass trên thiết bị thật","M0","sp","rd",{d:0.5},{ref:"ADR-15"}],
  ["S-8","Build core/ffi thành c-archive 3 slice, đóng XCFramework, đo RSS và khởi động Go runtime, 1.000 lần hk_call không rò","M0","sp","bl",{d:5},{ref:"ADR-20, ADR-21",blk:"Q-11",note:"Bắt buộc đạt ở GATE-1. Ngưỡng khởi động dưới 300 ms chờ PO xác nhận.",f:"F-19"}],
- ["S-1 bổ sung","Đo lại modernc trên thiết bị chuẩn; reload theo phạm vi giữ 60 fps","M0","sp","bl",{d:2},{ref:"ADR-24",blk:"Q-11",note:"Đo lại trên schema ADR-27 (notes/cards, search_text); ROADMAP v1.9 đã làm rõ."}],
+ ["S-1 bổ sung","Đo lại github.com/mattn/go-sqlite3 trên thiết bị chuẩn; reload theo phạm vi giữ 60 fps","M0","sp","bl",{d:2},{ref:"ADR-24, ADR-32",blk:"Q-11",note:"Đo lại trên schema ADR-27 (notes/cards, search_text); ROADMAP v1.9 đã làm rõ."}],
  ["Báo cáo spike","Kết quả Đạt/Không đạt kèm số đo từng S-*, đề xuất quyết định","M0","doc","bl",{d:0.5},{ref:"ROADMAP §3.1"}],
- ["Spike 0","Xác minh modernc.org/sqlite build được cho ios/arm64 và simulator; go list -deps không có net","M0","rev","rd",{x:"1–2 ngày (đề xuất)"},{ref:"ADR-23, luật G5",note:"Chạy trước S-8 để biết sớm có phải chuyển sang mattn/go-sqlite3.",f:"F-19"}],
+ ["Spike 0","Xác minh mattn/go-sqlite3 build được cho ios/arm64 và simulator; go list -deps không có net","M0","rev","rv",{x:"1–2 ngày (đề xuất)"},{ref:"mattn/go-sqlite3, luật G5",note:"Working-tree: mattn v1.14.52, không còn net, 3 slice build xanh (build-only); chờ review.",f:"F-19"}],
  ["S-5","Hai cửa sổ cùng ghi một DB, chấm trùng một thẻ","M0","rev","rd",{x:"≈ 1 ngày (đề xuất)"},{ref:"spec §3.3 S-5, UC-08 E6",note:"Đã thêm vào M0 ở ROADMAP v1.9."}],
 
  // M0b
- ["ARCHITECTURE.md","Luật Swift L1–L11, luật Go G1–G8, khuôn mẫu feature, contract hiraku.v1","M0b","doc","rv",{w:0.5},{ref:"ARCHITECTURE v2.2",note:"Đã soạn, chờ duyệt ở M0b."}],
- ["AGENTS.md","Quy tắc cho AI Agents và bộ OpenCode (bốn agents, hai skills)","M0b","doc","rv",{w:0.25},{ref:"AGENTS.md, OPENCODE.md, ADR-31",note:"Đã soạn; 58 test cấu hình OpenCode đạt (29/10/2026). Chờ PO duyệt."}],
- ["Wireframe","Wireframe và prototype iPhone: Home, Deck/Words, Flashcard, Gõ từ, Cài đặt","M0b","doc","bl",{w:1.25},{ref:"WIREFRAME_PROMPT.md",note:"Đã có prompt; chưa có wireframe. iPad và Mac vẽ trước M1b."}],
+ ["docs/architecture/ARCHITECTURE.md","Luật Swift L1–L11, luật Go G1–G8, khuôn mẫu feature, contract hiraku.v1","M0b","doc","rv",{w:0.5},{ref:"ARCHITECTURE v2.2",note:"Đã soạn, chờ duyệt ở M0b."}],
+ ["AGENTS.md","Quy tắc cho AI Agents và bộ OpenCode (bốn agents, hai skills)","M0b","doc","rv",{w:0.25},{ref:"AGENTS.md, docs/process/AGENT_WORKFLOW.md, ADR-31",note:"Đã soạn; 58 test cấu hình OpenCode đạt (29/10/2026). Chờ PO duyệt."}],
+ ["Wireframe","Wireframe và prototype iPhone: Home, Deck/Words, Flashcard, Gõ từ, Cài đặt","M0b","doc","bl",{w:1.25},{ref:"docs/product/WIREFRAME_PROMPT.md",note:"Đã có prompt; chưa có wireframe. iPad và Mac vẽ trước M1b."}],
  ["COPY.md","Bảng chuỗi UI tiếng Việt cho các màn M1a","M0b","doc","rv",{w:0.25},{ref:"COPY v1.5",note:"Bản đề xuất, chờ duyệt."}],
- ["TEST_PLAN.md","Ma trận thiết bị/OS/IME, kịch bản XCUITest, bộ dữ liệu 50.000 từ, tiêu chí vào/ra","M0b","doc","rv",{w:0.25},{ref:"TEST_PLAN.md",note:"Đã có khung; còn Q-11 và người thử SC-002.",f:"F-23"}],
+ ["docs/process/TEST_PLAN.md","Ma trận thiết bị/OS/IME, kịch bản XCUITest, bộ dữ liệu 50.000 từ, tiêu chí vào/ra","M0b","doc","rv",{w:0.25},{ref:"docs/process/TEST_PLAN.md",note:"Đã có khung; còn Q-11 và người thử SC-002.",f:"F-23"}],
  ["Q-5","Chốt font tiếng Nhật: Noto Sans JP hay Hiragino Sans","M0b","dec","bl",null,{ref:"DECISIONS Q-5, S-6",note:"Hạn GATE-1; chặn WP-05."}],
  ["Q-D2","Chốt màu chấm trạng thái “Đang học”","M0b","dec","rv",null,{ref:"DECISIONS Q-D2",note:"Đề xuất: dùng state-learning-ink. Hạn GATE-1; chặn WP-05."}],
- ["ADR 20–26","Xác nhận hoặc thay thế ADR-20, 21, 23, 24, 26 theo kết quả spike","M0b","dec","bl",null,{ref:"DECISIONS §5",note:"GATE-1: S-1, S-3, S-8 phải đạt.",f:"F-19"}],
+ ["ADR 20–26","Xác nhận hoặc thay thế ADR-20, 21, 24, 26, 32 theo kết quả spike","M0b","dec","bl",null,{ref:"DECISIONS §5",note:"GATE-1: S-1, S-3, S-8 phải đạt.",f:"F-19"}],
  ["RV-01","Đồng bộ tài liệu: ARCHITECTURE v2.2 (card_id, bỏ GRDB, bỏ Persistence), phiên bản, thuật ngữ, ưu tiên và mốc","M0b","rev","rd",{x:"≈ 0,5 tuần (đề xuất)"},{note:"Sửa các điểm mâu thuẫn giữa tài liệu.",f:["F-04","F-05","F-06","F-07","F-08","F-25"]}],
  ["RV-02","Chốt vòng đời xóa mềm và bảng mã lỗi chi tiết trong contract, trước WP-02a và WP-02b","M0b","rev","rd",{x:"quyết định (đề xuất)"},{ref:"WP-02a, WP-02b",f:["F-09","F-10","F-18"]}],
  ["RV-03","Chốt mức nghiêm chuẩn hóa Gõ từ, định nghĩa “Đã biết”, hướng thẻ, phạm vi settings theo profile","M0b","rev","rd",{x:"quyết định (đề xuất)"},{ref:"WP-03, WP-04",f:["F-11","F-12","F-13","F-14"]}],
  ["RV-04","Hiệu chỉnh lịch: dự phòng, Tết 2027, xác nhận nhân lực Go và Swift","M0b","rev","rd",{x:"quyết định (đề xuất)"},{ref:"ROADMAP §1, §2",note:"Chốt cùng GATE-1 khi có năng suất thực đo ở M0.",f:"F-20"}],
 
  // M1a
- ["WP-01","Workspace, Go module core/, buf, CI, pipeline XCFramework","M1a","wp","bl",{w:0.75},{ref:"ARCHITECTURE v2.2",dep:["ARCHITECTURE.md"]}],
- ["WP-02a","Store Go: modernc SQLite, WAL, migration, repository, xóa mềm, schema kiểu ghi chú (ADR-27 Pha A)","M1a","wp","bl",{w:3},{ref:"ADR-23, ADR-27",dep:["WP-01"],f:"F-09"}],
+ ["WP-01","Workspace, Go module core/, buf, CI, pipeline XCFramework","M1a","wp","bl",{w:0.75},{ref:"ARCHITECTURE v2.2",dep:["docs/architecture/ARCHITECTURE.md"]}],
+ ["WP-02a","Store Go: github.com/mattn/go-sqlite3, WAL, migration, repository, xóa mềm, schema kiểu ghi chú (ADR-27 Pha A)","M1a","wp","bl",{w:3},{ref:"ADR-23, ADR-32, ADR-27",dep:["WP-01"],f:"F-09"}],
  ["WP-02b","Bridge: ffi 4 hàm hk_*, HirakuBridge, EventHub, fake Swift","M1a","wp","bl",{w:1.25},{ref:"ADR-21, ADR-24",dep:["WP-01","WP-02a"],f:"F-10"}],
  ["WP-03","FSRS trong core/domain, RPC Grade, BuildQueue","M1a","wp","bl",{w:1.5},{ref:"ADR-26, UC-08, FR-014…018",dep:["WP-02a","S-2"]}],
  ["WP-04","core/domain/kana: romaji sang kana, chuẩn hóa, so khớp từng ký tự","M1a","wp","bl",{w:1},{ref:"UC-07, FR-012",dep:["WP-01"],f:"F-11"}],
- ["WP-05","DesignSystem: token HK*, component, font, AccentColor Ember","M1a","wp","bl",{w:1.5},{ref:"ADR-15, DESIGN.md",dep:["Q-5","Q-D2"]}],
+ ["WP-05","DesignSystem: token HK*, component, font, AccentColor Ember","M1a","wp","bl",{w:1.5},{ref:"ADR-15, docs/product/DESIGN.md",dep:["Q-5","Q-D2"]}],
  ["WP-06","Folders, Decks, Words: CRUD, trùng từ, tìm kiếm, kéo-thả, bảo vệ thay đổi, khôi phục vị trí","M1a","wp","bl",{w:3.5},{ref:"UC-01…UC-04, ADR-18",dep:["WP-02b","WP-05"]}],
  ["WP-07","StudyKit, FeatureStudy, FeatureFlashcard (2 hoặc 4 nút, màn Xong!)","M1a","wp","bl",{w:1.75},{ref:"UC-06, UC-08",dep:["WP-03","WP-05"]}],
  ["WP-08","FeatureTyping: IME, ô kana, phản hồi, hiện đáp án đúng","M1a","wp","bl",{w:1.5},{ref:"UC-07, ADR-09",dep:["WP-04","WP-07","S-3"],f:"F-08"}],
@@ -283,7 +283,7 @@ var raw=[
 
  // MR
  ["Apple Developer","Đăng ký Apple Developer Program","MR","dec","bl",{x:"chờ xét duyệt, không tính"},{ref:"ADR-17",note:"Nộp ngay sau GATE-3."}],
- ["WP-38","RELEASE.md, signing chính thức, Privacy Manifest, tài sản App Store, entitlement iCloud, deploy schema CloudKit","MR","wp","bl",{w:1.25},{ref:"ADR-17, R-15"}],
+ ["WP-38","docs/process/RELEASE.md, signing chính thức, Privacy Manifest, tài sản App Store, entitlement iCloud, deploy schema CloudKit","MR","wp","bl",{w:1.25},{ref:"ADR-17, R-15"}],
  ["WP-39","Hoàn tất S-7: App Sandbox và App Group trên macOS; chuyển DB sang App Group nếu cần","MR","wp","bl",{w:0.25},{ref:"S-7, ADR-06",f:"F-22"}],
  ["Beta và Review","TestFlight beta, nộp App Review, xử lý phản hồi","MR","wp","bl",{x:"chờ ngoài, không tính"},{ref:"GATE-4"}],
 

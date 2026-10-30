@@ -1,5 +1,5 @@
 ---
-name: Changelog
+name: changelog
 # Cross-tool rule keys (ignored by Claude Code / OpenCode):
 alwaysApply: false         # Cursor
 trigger: model_decision    # Windsurf

@@ -3,7 +3,7 @@
 **Ngày**: 2026-10-29
 **Phiên bản**: 1.6 (nút “Kiểm tra” = nộp đáp án; thuật ngữ đồng bộ rà soát 2026-10-29) · 1.5 (thêm chuỗi profile — ADR-28, UC-32) · 1.4 (thêm chuỗi kiểu ghi chú và field tùy biến — ADR-27, UC-31) · 1.3 (bản đề xuất, chờ duyệt; thêm chuỗi hoàn tác, bảo vệ thay đổi, thêm nhanh, sắp xếp/lọc theo ADR-18)
 **Phạm vi**: các màn của M1a (iPhone) cộng chuỗi menu macOS của M1b. Chuỗi của M2–M4 thêm khi tới mốc.
-**Tài liệu liên quan**: `use-cases.md` (nguồn kịch bản và một số câu đã chốt), `spec.md` §8.2 (String Catalog), `DESIGN.md` (kiểu chữ), `ARCHITECTURE.md` (L8: không hard-code chuỗi)
+**Tài liệu liên quan**: `docs/product/use-cases.md` (nguồn kịch bản và một số câu đã chốt), `docs/product/spec.md` §8.2 (String Catalog), `docs/product/DESIGN.md` (kiểu chữ), `docs/architecture/ARCHITECTURE.md` (L8: không hard-code chuỗi)
 
 ---
 

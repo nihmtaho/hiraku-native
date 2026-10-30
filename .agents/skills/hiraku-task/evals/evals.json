@@ -1,0 +1,27 @@
+{
+  "skill_name": "hiraku-task",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "PO bảo bắt đầu WP-04 (romaji → kana). Hãy nêu cách tạo task record và những gì phải kiểm trước khi giao Coder, không sửa file.",
+      "expected_output": "Chạy task-context.mjs WP-04; thấy Q-21 (chuẩn hóa Gõ từ) còn Mở trực tiếp chặn WP-04 nên hỏi PO hoặc tách phần không phụ thuộc; tạo .agents/tasks/wp-04-… theo mẫu, tiêu chí quan sát được, base SHA, cập nhật trạng thái bằng hiraku-wp-status.",
+      "files": [],
+      "assertions": [
+        "Dùng task-context.mjs thay vì đọc cả ROADMAP và DECISIONS.",
+        "Nhận ra Q-21 đang Mở chặn WP-04 và không tự chốt.",
+        "Record đặt ở .agents/tasks/ theo mẫu, tiêu chí không chỉ là tests pass."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Resume task wp-03-fsrs-grade: record ghi Review PASS ở commit abc123, nhưng HEAD nhánh giờ là def456. Lead muốn gọi Shipper ngay. Bạn làm gì? Không sửa file.",
+      "expected_output": "So revision thực với record; PASS cũ hết hiệu lực vì revision đổi; ghi vào Next và gọi lại Reviewer cho def456 trước Shipper.",
+      "files": [],
+      "assertions": [
+        "Đối chiếu revision thực, không tin record cũ.",
+        "Coi Review PASS ở abc123 là hết hiệu lực cho def456.",
+        "Không gọi Shipper trước khi có review mới."
+      ]
+    }
+  ]
+}
