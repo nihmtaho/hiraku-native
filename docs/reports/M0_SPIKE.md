@@ -444,3 +444,19 @@ Kết luận: phương án A (đóng gói) đạt cả ba tiêu chí S-6 → đ�
 
 Chưa xác minh: danh sách JLPT N5–N1 chính thức (không có nguồn trong repo; dùng JIS X 0208 làm cận trên); chạy macOS (chỉ build); thiết bị thật; trọng số khác 400 (mỗi static weight thêm ≈ 2,3 MB); đăng ký bằng `CTFontManagerRegisterFontsForURL` lúc chạy thay vì Info.plist như DESIGN §Font (một đoạn mã dùng chung hai nền tảng; DESIGN cần cập nhật khi chốt).
 
+
+## S-3 — IME: nhận biết compose và Return chốt IME
+
+Cài đặt: `App/Hiraku/KanaInputField.swift` bọc `UITextField` (iOS/iPadOS) và `NSTextField` (macOS) thành một trường nhập thật (ADR-09); `ImeCheckView` (debug) phản chiếu text thành từng ô, đổi màu ô khi đang compose, đếm số lần nộp.
+
+- **Nhận biết compose**: iOS `markedTextRange != nil` (cập nhật qua `.editingChanged`); macOS `NSTextView.hasMarkedText()` (qua `controlTextDidChange`). `updateUIView`/`updateNSView` không ghi đè text khi đang compose để không hủy marked text.
+- **Return chốt IME**: iOS `textFieldShouldReturn` — có marked text thì `unmarkText()` và không nộp; macOS `control(_:textView:doCommandBy:)` với `insertNewline:` — có marked text thì trả `false` để IME xử lý, không nộp.
+
+| Kiểm tra | Cách | Kết quả |
+|---|---|---|
+| Build macOS, iOS simulator | `xcodebuild` (hai destination) | `BUILD SUCCEEDED` |
+| iOS: compose được nhận biết | iPhone 18 Pro simulator, nút debug đặt marked text "か" bằng `setMarkedText` | `composing: true`, ô vàng, text `djか` |
+| iOS: Return khi đang compose | nút debug gọi đường `textFieldShouldReturn` | `composing: false`, `submits: 0` — Đạt |
+| iOS: Return sau khi chốt | như trên | `submits: 1`, `graded: djか` — Đạt |
+
+**Chưa xác minh (đây là điểm chính của S-3):** marked text trong các kiểm tra trên do mã debug đặt bằng API, **không phải IME Nhật thật**. Chưa kiểm: bàn phím kana/romaji thật trên iPhone, bàn phím phần cứng trên iPad, IME macOS; macOS chỉ build, chưa chạy; việc `textFieldShouldReturn` có được gọi khi IME thật đang compose hay không (nhánh `markedTextRange != nil` có thể không bao giờ chạy trên iOS, khi đó IME tự tiêu thụ Return và kết quả vẫn đúng); thanh gợi ý và VoiceOver. Cần PO thử tay trên thiết bị theo SC-007 trước khi coi S-3 Đạt (GATE-1).
