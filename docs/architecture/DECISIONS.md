@@ -56,10 +56,10 @@ Tài liệu này là **nơi duy nhất** ghi trạng thái các quyết định.
 | ADR-20 | Go core làm nguồn nghiệp vụ và dữ liệu; Swift giữ UI | **Đã chốt, chờ spike** (S-8, S-1) | 2026-10-28 | Thay ADR-03 |
 | ADR-21 | Tích hợp cgo qua c-archive và XCFramework; ABI bốn hàm, payload protobuf | **Đã chốt, chờ spike** (S-8) | 2026-10-28 | Q-A (bối cảnh) |
 | ADR-22 | Contract protobuf `hiraku.v1` là nguồn duy nhất; buf lint và buf breaking | Đã chốt | 2026-10-28 | Q-B |
-| ADR-23 | SQLite qua `modernc.org/sqlite`; Go sở hữu DB; Swift không mở DB | **Đã chốt, chờ spike** (S-1) | 2026-10-28 | Q-A |
+| ADR-23 | SQLite qua `modernc.org/sqlite`; Go sở hữu DB; Swift không mở DB | **Đã thay thế bởi ADR-32** | 2026-10-28 | Q-A |
 | ADR-24 | Làm mới chủ động qua `ChangeSet` và `EventHub`; Go không gọi ngược | **Đã chốt, chờ spike** (S-1 đo reload) | 2026-10-28 | Q-C |
 | ADR-25 | Monorepo, thư mục `core/` ở gốc; chưa xây nền tảng thứ hai | Đã chốt | 2026-10-28 | Q-D, Q-E |
-| ADR-26 | FSRS: thư viện Go nếu đạt S-2; nếu không, tự cài trong `core/domain/fsrs` | **Đã chốt, chờ spike** (S-2) | 2026-10-28 | Q-4 |
+| ADR-26 | FSRS: thư viện Go nếu đạt S-2; nếu không, tự cài trong `core/domain/fsrs` | Đã chốt — tự cài trong `core/domain/fsrs` (S-2 Không đạt) | 2026-10-28 | Q-4 |
 | ADR-30 | Kiến trúc đồng bộ iCloud: Go giữ SQLite, change log và merge; Swift chỉ giữ adapter CKSyncEngine; không đổi ADR-20 và ADR-23 | **Đã chốt (PO, 2026-10-29), chờ S-9** | 2026-10-29 | Q-6 |
 | ADR-29 | Đồng bộ iCloud là tính năng tùy chọn bật/tắt, mặc định tắt, giữ ở M4; tắt không làm mất hay đổi dữ liệu trên máy | **Đã chốt (PO, 2026-10-28 và 2026-10-29)** | 2026-10-28 | Q-6 |
 | ADR-28 | Một DB cho mỗi profile; profile dùng để tách ngôn ngữ học và giới hạn dung lượng mỗi DB; không tách theo deck | Đã chốt | 2026-10-28 | Q-16 |
@@ -147,7 +147,7 @@ Q-4, Q-A, Q-B, Q-C, Q-D, Q-E đã được đóng bởi ADR-26, ADR-23, ADR-22, 
 - **Quyết định**: CSV, JSON, TSV/dán văn bản; Excel (.xlsx) hoãn vì cần thư viện bên thứ ba; xem lại sau M3 nếu có nhu cầu thật. Parser và ghi file do Go core thực hiện (ADR-20).
 
 ### ADR-12 — Không mạng, không telemetry
-- **Quyết định**: ứng dụng không phát request mạng; core Go không import `net` hoặc thư viện mạng (kiểm tra bằng `check-core.sh`); macOS không xin entitlement `network.client`; không SDK phân tích; Privacy Manifest khai báo không thu thập.
+- **Quyết định**: ứng dụng không phát request mạng; core Go không import `net`, `net/http`, `net/rpc` hay package mạng khác; `net/url` và `net/netip` chỉ được phép xuất hiện như phụ thuộc gián tiếp của driver SQLite (ADR-32), không được import trong mã hiraku (kiểm tra bằng `check-core.sh`); macOS không xin entitlement `network.client`; không SDK phân tích; Privacy Manifest khai báo không thu thập.
 - **Hệ quả**: không đo được chỉ số sử dụng tự động; đo qua TestFlight/khảo sát (`ROADMAP.md` §8). Đồng bộ iCloud (ADR-29, ADR-30) đã xem lại: phần mạng chỉ dùng khi người dùng bật; phần còn lại giữ nguyên.
 
 ### ADR-13 — Mức OS tối thiểu
@@ -221,7 +221,7 @@ Q-4, Q-A, Q-B, Q-C, Q-D, Q-E đã được đóng bởi ADR-26, ADR-23, ADR-22, 
 - **Thay thế cho**: Q-B (JSON Schema bị loại vì ít kiểm soát kiểu hơn cho mục tiêu đa nền tảng).
 - **Trạng thái**: *Đã chốt.*
 
-### ADR-23 — SQLite qua `modernc.org/sqlite`; Go sở hữu DB
+### ADR-23 — SQLite qua `modernc.org/sqlite`; Go sở hữu DB *(đã thay thế bởi ADR-32)*
 - **Quyết định**: Go mở file DB tại đường dẫn Swift cấp qua `hk_open` (App Group, ADR-06). Một handle; một connection ghi; pool đọc; WAL; `busy_timeout`. Swift không import SQLite và không mở DB.
 - **Migration**: danh sách có tiền tố tăng dần trong `core/store/migrations`, theo dõi bằng `PRAGMA user_version`. Không sửa migration đã phát hành. Schema spec §4 không đổi.
 - **Lý do chọn modernc** (thuần Go): không cần toolchain C cho từng slice; CI đơn giản hơn; đường đi tự nhiên cho wasm sau này. Đánh đổi: hiệu năng có thể thấp hơn bản C.
@@ -440,6 +440,17 @@ Q-4, Q-A, Q-B, Q-C, Q-D, Q-E đã được đóng bởi ADR-26, ADR-23, ADR-22, 
 
 ---
 
+### ADR-32 — SQLite qua `mattn/go-sqlite3` *(thay thế ADR-23)*
+- **Bối cảnh**: Spike 0 (2026-10-30) cho thấy `modernc.org/sqlite` kéo `net` vào đồ thị qua `modernc.org/libc → github.com/google/uuid`, vi phạm G5/ADR-12. Chuyển sang `mattn/go-sqlite3` (cgo), ba slice vẫn build và không còn package `net` trong đồ thị.
+- **Quyết định**: dùng `github.com/mattn/go-sqlite3` cho `core/store`; Go vẫn sở hữu DB, Swift không mở DB; migration và `PRAGMA user_version` giữ nguyên.
+- **G5 áp dụng cho driver mới**: cho phép `net/url`, `net/netip` (chỉ để mattn phân tích DSN); cấm `net`, `net/http`, `net/rpc`, `net/smtp`, `net/mail` và mọi package mạng khác; mã hiraku không được import bất kỳ package `net*` nào. `check-core.sh` kiểm `go list -deps` và so với danh sách cho phép này.
+- **Lý do**: ADR-21 đã bắt buộc cgo cho `core/ffi`, nên lý do "khỏi cần C toolchain" của ADR-23 không còn; mattn chỉ kéo hai package thuần cú pháp `net/url`/`net/netip` (không socket, không DNS), giữ được khả năng kiểm toán "không mạng".
+- **Hệ quả**: build cần `CC` theo SDK (`iphoneos`, `iphonesimulator`, macOS) và `MACOSX_DEPLOYMENT_TARGET=26.0`; script build đặt `CC`; S-1 đo lại trên driver mới.
+- **Thay thế**: ADR-23.
+- **Trạng thái**: Đã chốt (PO, 2026-10-30).
+
+---
+
 ## 5. Điều kiện kích hoạt xem lại
 
 | Kết quả spike | Quyết định bị ảnh hưởng | Hành động |
@@ -455,4 +466,4 @@ Q-4, Q-A, Q-B, Q-C, Q-D, Q-E đã được đóng bởi ADR-26, ADR-23, ADR-22, 
 | S-1: tìm kiếm qua `notes.search_text` không đạt < 150 ms | ADR-27 | Thêm chỉ mục FTS5 cho `search_text`; nếu vẫn không đạt, xem lại cách lưu field |
 | S-7 không đạt | ADR-06, Q-8, ADR-17 | Quay lại container thường; widget (FR-073) cần phương án khác |
 | S-9 không đạt (adapter CKSyncEngine không ổn định với mock hoặc contract sync) | ADR-30, ADR-29 | Xem lại contract sync; nếu không khả thi, đánh giá lại tính năng đồng bộ ở M4 |
-| Spike 0 không đạt (modernc không build cho iOS hoặc có `net` trong phụ thuộc) | ADR-23, ADR-12 | Chuyển sang `mattn/go-sqlite3` hoặc xử lý phụ thuộc; ghi ADR thay thế |
+| Spike 0 không đạt (modernc không build cho iOS hoặc có `net` trong phụ thuộc) | ADR-23, ADR-12 | Chuyển sang `mattn/go-sqlite3` hoặc xử lý phụ thuộc; ghi ADR thay thế — **đã kích hoạt 2026-10-30, xem ADR-32** |

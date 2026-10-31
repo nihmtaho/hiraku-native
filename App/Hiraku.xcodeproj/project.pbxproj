@@ -10,6 +10,9 @@
 		AA0000000000000000000013 /* HirakuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000005 /* HirakuApp.swift */; };
 		AA0000000000000000000014 /* ShellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000006 /* ShellView.swift */; };
 		AA0000000000000000000015 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000007 /* Localizable.xcstrings */; };
+		AA0000000000000000000020 /* HirakuBridge in Frameworks */ = {isa = PBXBuildFile; productRef = AA0000000000000000000021 /* HirakuBridge */; };
+		AA0000000000000000000023 /* PingCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000024 /* PingCheckView.swift */; };
+		AA0000000000000000000025 /* Spike8.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000026 /* Spike8.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -17,6 +20,8 @@
 		AA0000000000000000000006 /* ShellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellView.swift; sourceTree = "<group>"; };
 		AA0000000000000000000007 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		AA0000000000000000000008 /* Hiraku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hiraku.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA0000000000000000000024 /* PingCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingCheckView.swift; sourceTree = "<group>"; };
+		AA0000000000000000000026 /* Spike8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spike8.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -24,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA0000000000000000000020 /* HirakuBridge in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +49,8 @@
 			children = (
 				AA0000000000000000000005 /* HirakuApp.swift */,
 				AA0000000000000000000006 /* ShellView.swift */,
+				AA0000000000000000000024 /* PingCheckView.swift */,
+				AA0000000000000000000026 /* Spike8.swift */,
 				AA0000000000000000000007 /* Localizable.xcstrings */,
 			);
 			path = Hiraku;
@@ -72,6 +80,9 @@
 			dependencies = (
 			);
 			name = Hiraku;
+			packageProductDependencies = (
+				AA0000000000000000000021 /* HirakuBridge */,
+			);
 			productName = Hiraku;
 			productReference = AA0000000000000000000008 /* Hiraku.app */;
 			productType = "com.apple.product-type.application";
@@ -100,6 +111,9 @@
 				Base,
 			);
 			mainGroup = AA0000000000000000000002;
+			packageReferences = (
+				AA0000000000000000000022 /* XCLocalSwiftPackageReference "HirakuBridge" */,
+			);
 			productRefGroup = AA0000000000000000000004 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,6 +141,8 @@
 			files = (
 				AA0000000000000000000013 /* HirakuApp.swift in Sources */,
 				AA0000000000000000000014 /* ShellView.swift in Sources */,
+				AA0000000000000000000023 /* PingCheckView.swift in Sources */,
+				AA0000000000000000000025 /* Spike8.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +204,21 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				"OTHER_LDFLAGS[sdk=macosx*]" = (
+					"$(inherited)",
+					-force_load,
+					"$(PROJECT_DIR)/../core/.spike/darwin_arm64.a",
+				);
+				"OTHER_LDFLAGS[sdk=iphoneos*]" = (
+					"$(inherited)",
+					-force_load,
+					"$(PROJECT_DIR)/../core/.spike/ios_arm64.a",
+				);
+				"OTHER_LDFLAGS[sdk=iphonesimulator*]" = (
+					"$(inherited)",
+					-force_load,
+					"$(PROJECT_DIR)/../core/.spike/iossimulator_arm64.a",
+				);
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_STRICT_CONCURRENCY = complete;
@@ -211,6 +242,21 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				"OTHER_LDFLAGS[sdk=macosx*]" = (
+					"$(inherited)",
+					-force_load,
+					"$(PROJECT_DIR)/../core/.spike/darwin_arm64.a",
+				);
+				"OTHER_LDFLAGS[sdk=iphoneos*]" = (
+					"$(inherited)",
+					-force_load,
+					"$(PROJECT_DIR)/../core/.spike/ios_arm64.a",
+				);
+				"OTHER_LDFLAGS[sdk=iphonesimulator*]" = (
+					"$(inherited)",
+					-force_load,
+					"$(PROJECT_DIR)/../core/.spike/iossimulator_arm64.a",
+				);
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_STRICT_CONCURRENCY = complete;
@@ -220,6 +266,21 @@
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		AA0000000000000000000022 /* XCLocalSwiftPackageReference "HirakuBridge" */ = {
+			isa = XCLocalSwiftPackageReference;
+			"relativePath" = "../Packages/HirakuBridge";
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AA0000000000000000000021 /* HirakuBridge */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA0000000000000000000022 /* XCLocalSwiftPackageReference "HirakuBridge" */;
+			productName = HirakuBridge;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCConfigurationList section */
 		AA000000000000000000000D /* Build configuration list for PBXProject "Hiraku" */ = {

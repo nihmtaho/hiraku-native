@@ -361,3 +361,66 @@ Ngoại lệ tạm thời có chủ đích: `DesignSystem` chưa tồn tại nê
 - **Thiết bị thật**: không cài lên iPhone/iPad (Q-11), không chạy iPad sau khi build.
 - **Release/archive**: chỉ build cấu hình Debug; chưa `archive`, chưa ký phân phối.
 - **Phạm vi ngoài shell**: App Group và widget (S-7), `HirakuBridge`/XCFramework (S-8), IME (S-3), layout thích ứng (S-4), font (S-6) — chưa có trong app này.
+
+## S-8 — XCFramework + bridge hk_* + đo khởi động Go runtime
+
+Đường thành phẩm của ADR-21: `core/ffi` (c-archive) → `core/.spike/Hiraku.xcframework` → package Swift `Packages/HirakuBridge` → app chạy và ping.
+
+Ràng buộc của spike:
+
+- **Payload rỗng — chỉ chứng minh transport**: `hk_call` chỉ chấp nhận `method = "ping"` và trả `HKBytes` rỗng (data nil, len 0). Method enum và payload protobuf `hiraku.v1` (golden, `buf`) thuộc WP-01; đây không phải contract thật.
+- Đúng bốn hàm ABI: `hk_open(db_path, &handle, &err)`, `hk_call(handle, method, req, &resp)`, `hk_free(bytes)`, `hk_close(handle)`. Mã lỗi 0…5 của ADR-21 (0 thành công, 1 tham số sai, 4 lỗi lưu trữ, 5 panic đã recover; 2/3 chưa có nhánh sinh ra vì spike không có nghiệp vụ). Mỗi hàm export có `recover`.
+- Không con trỏ Go qua ranh giới: handle là id trong bảng của `ffi`; reply/err là bộ đệm do C malloc hoặc rỗng; Swift đọc xong gọi `hk_free` ngay, kể cả nhánh lỗi. Không `time.Now`, không `net`.
+- `hk_open` mở DB **tại đường dẫn** Swift cấp; SQLite `:memory:` không đánh địa chỉ được qua path nên scratch DB là `.agents/tmp/m0-06/hiraku-s8.sqlite` (app tự tạo thư mục).
+- `core/spike/storage` và `core/spike/fsrs*` giữ nguyên.
+
+### Bài kiểm tra và kết quả
+
+| # | Hạng mục | Lệnh (cwd root) | Exit | Kết quả |
+|---|---|---|---|---|
+| 1 | Build 3 slice + đóng gói | `bash core/scripts/build-xcframework.sh` | 0 | Đạt — 3 slice 7.9 MB mỗi file; `Hiraku.xcframework` 24 MB |
+| 2 | Ký hiệu export | `nm -gU core/.spike/*.a \| grep _hk_` | 0 | Đạt — đủ `_hk_open/_hk_call/_hk_free/_hk_close` ở cả 3 slice |
+| 3 | Test Go | `cd core && go test -race -count=1 ./...` | 0 | Đạt |
+| 4 | Vet ffi | `cd core && go vet ./ffi` | 0 | Đạt |
+| 5 | Kiểm project | `plutil -convert xml1 -o /dev/stdout App/Hiraku.xcodeproj/project.pbxproj`; `xcodebuild -list` | 0; 0 | Đạt — phân giải package: `HirakuBridge … @ local` |
+| 6 | Build macOS | `xcodebuild -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=macOS' build` | 0 | Đạt — `** BUILD SUCCEEDED **` |
+| 7 | Run + đo macOS | `HK_SPIKE_RUN=1 HK_SPIKE_OUT=…/m0-06/spike8-macos.json …/Debug/Hiraku.app/Contents/MacOS/Hiraku` | 0 | Đạt — tiến trình sống, đo xong, `kill` sạch |
+| 8 | Build simulator | `xcodebuild … -destination 'platform=iOS Simulator,name=iPhone 18 Pro' build` | 0 | Đạt — `** BUILD SUCCEEDED **` |
+| 9 | Boot/cài/chạy | `simctl boot` + `simctl install` + `SIMCTL_CHILD_HK_SPIKE_RUN=1 SIMCTL_CHILD_HK_SPIKE_OUT=… xcrun simctl launch 379C674F-6B1F-43CC-B5F1-75963192C629 com.example.hiraku` | 0; 0; 0 | Đạt — `com.example.hiraku: 73915`; PID còn sống sau 8 s; screenshot `.agents/tmp/m0-06/spike8-sim.png` hiện dòng kết quả và nút ping |
+
+Layout framework (`core/.spike/Hiraku.xcframework`, 24 MB): `Info.plist` + `ios-arm64/` (Headers + ios_arm64.a), `ios-arm64-simulator/` (Headers + iossimulator_arm64.a), `macos-arm64/` (Headers + darwin_arm64.a). Headers = `hk.h` + `module.modulemap`.
+
+Kết quả đo lần lượt, **simulator/host, not device** (từ JSON `.agents/tmp/m0-06/spike8-{macos,sim}.json`):
+
+- **macOS host**: cold 0.992 ms; median 20 lần open→ping 0.064 ms; 1.000 `hk_call("ping")` median 0.0000 ms (dưới độ phân giải in), p95 0.001 ms; RSS 89.632 → 89.632 KB (không tăng) — leak check Đạt.
+- **iOS simulator** (iPhone 18 Pro, runtime iOS 27.0): cold 10.788 ms; median 20 lần 0.134 ms; 1.000 call median 0.001 ms, p95 0.001 ms; RSS 198.336 → 198.400 KB (+64 KB, dao động GC không tăng đơn điệu) — leak check Đạt.
+- Do chưa có thiết bị chuẩn, mọi con số trên đều chỉ có giá trị *biết đường ranh giới sống được*; **ngưỡng "< 300 ms" chỉ là đề xuất** và phần thiết bị (SC-006) chờ PO.
+
+### Cách nối
+
+- `core/scripts/build-xcframework.sh`: gọi lại `spike-build.sh` (CC/sysroot/min-version, `set -eu`, delete-before-build), rồi `xcodebuild -create-xcframework` với headers `core/ffi/include/{hk.h,module.modulemap}`.
+- `core/ffi/ffi.go`: bốn hàm ADR-21, recover từng hàm, mã lỗi, bảng handle int64 + mutex trong `ffi` (riêng `core/ffi/**` được import "C" theo G2), không `time.Now`/`net`.
+- `Packages/HirakuBridge`: C target `CHirakuBridge` (hk.h + `spike_metrics.c` đo `CLOCK_MONOTONIC` và `mach_task_basic_info`), Swift target `HirakuBridge` (API an toàn kiểu: `open`/`call`/`close`, đọc reply rồi `hk_free`; `HirakuSpikeMetrics.timeNs/rssKb`). Không force unwrap, không `try!`.
+- `App/Hiraku/{PingCheckView,Spike8}.swift` (debug-only, `#if DEBUG`): view có nút "S-8 ping check" (mở → ping → đóng, hiển thị kết quả); harness đo chạy khi env `HK_SPIKE_RUN=1`, ghi JSON ra `HK_SPIKE_OUT`, không print.
+- `App/Hiraku.xcodeproj/project.pbxproj`: thêm `XCLocalSwiftPackageReference ../Packages/HirakuBridge` + product dependency + per-SDK `OTHER_LDFLAGS[sdk=…]= -force_load <flat .a>` (3 file `core/.spike/{darwin,ios,iossimulator}_arm64.a`). vì vậy không dựa vào cơ chế chọn slice tự động của xcframework.
+
+### Chưa xác minh / vượt QR
+
+- **Thiết bị chuẩn**: cần PO chạy app trên iPhone/iPad thật (SC-006). Ngưỡng **"< 300 ms" là đề xuất cần PO xác nhận** trên thiết bị.
+- **Contract thật `hiraku.v1`** (method enum, protobuf, mã lỗi 2/3, giao thức `err` trả về thông điệp, golden): WP-01.
+- **Test riêng cho package `main` ffi**: `go vet`/`go test ./...` sạch; spike dùng run thực trên hai platform thay vì unit test riêng (chưa có golden file để test).
+- **"Go counters tăng đơn điệu" trong ADR-21/S-8**: spike dùng RSS `mach_task_basic_info` như đề bài; việc đo `runtime.ReadMemStats`/`runtime/metrics` của Go cụ thể còn cần hook debug riêng — chưa có thiết bị để đo.
+- **Kiểm từ ngoài**: `footprint`/`ps rss` không chạy được đối chiếu chính xác trong cùng lúc app đang chạy; chỉ có số RSS in-process. RSS máy có dao động GC bình thường.
+
+### Kết luận S-8 theo dòng chấp nhận
+
+| Dòng | Verdict |
+|---|---|
+| Archive + framework (script, 3 slice, headers, exit 0) | Đạt |
+| ABI: 4 hàm ADR-21, `recover`, mã lỗi 0…5, không Go pointer | Đạt |
+| Bridge package type-safe, `hk_free` ngay sau đọc; app link; màn hình debug ping thành công | Đạt |
+| Chạy macOS + simulator với DB path scratch | Đạt |
+| Đo: startup (cold + 20 lần), per-call 1.000 (median/p95), leak RSS | Đạt — **simulator/host, not device** |
+| Thiết bị chuẩn (SC-006), ngưỡng 300 ms, contract thật WP-01 | chưa xác minh |
+
+Cảnh báo driver: build c-archive in cảnh báo `gethostuuid() is disabled` từ `sqlite3-binding.c` của mattn (lỗi subsystem có chủ đích của sandbox Apple); không ảnh hưởng hành vi trên Apple và đã xuất hiện từ Spike 0.
