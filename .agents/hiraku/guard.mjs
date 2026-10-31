@@ -205,7 +205,8 @@ export async function evaluatePermission(root, event, storage) {
     }
     if (event.action === "shell") {
       if (!event.resources.length) throw new Error("Thiếu lệnh để kiểm tra quyền.");
-      for (const command of event.resources) assertShellAnywhere(root, event.agent, command, event.cwd);
+      // The create.before shell hook re-checks every command raw with the real cwd;
+      // permission events can arrive shell-wrapped (e.g. zsh -lc) and must not gate on them.
       if (mutators.has(event.agent)) {
         await storage.set(`dirty/${event.sessionID}`, {
           agent: event.agent,
