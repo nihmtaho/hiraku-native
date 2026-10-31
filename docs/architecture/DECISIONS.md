@@ -335,6 +335,7 @@ Q-4, Q-A, Q-B, Q-C, Q-D, Q-E đã được đóng bởi ADR-26, ADR-23, ADR-22, 
 
 ### Q-11 — Thiết bị chuẩn đo hiệu năng · PO · GATE-0
 - **Đã chốt (PO, 2026-10-30)**: đo trực tiếp trên MacBook của PO (thiết bị development). Hệ quả: số đo iPhone/iPad thật không có; S-1, S-8 và SC-006 trên iOS/iPadOS chỉ chạy được trên simulator hoặc ghi **chưa xác minh**, không được tính đạt. Chưa có quyết định cách GATE-1 xử lý phần này (thêm thiết bị hoặc chấp nhận rủi ro): cần PO.
+- **PO bỏ qua thiết bị thật trong M0 (2026-10-31)**: mọi phần cần iPhone/iPad ghi **chưa xác minh**, không tính đạt, và không chặn đóng task M0; nợ chuyển sang giai đoạn có thiết bị.
 - **Cần bạn cung cấp (ban đầu)**: tên máy và OS của iPhone cũ nhất chạy được iOS 26 (từ iPhone 11 trở lên), một iPad (chip A12 trở lên), một Mac Apple silicon (M1 trở lên).
 - **Dùng cho**: S-1 (dựng hàng đợi < 200 ms, tìm kiếm < 150 ms, cuộn 60 fps, khởi động < 1,5 s), S-8 (RSS, khởi động Go runtime), SC-006.
 

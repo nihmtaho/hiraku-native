@@ -6,6 +6,8 @@ Base: `develop` = `62502e9e0996f6f8222c908c67714d725195e33e` · Ngày chạy: 20
 
 Trạng thái ngày 2026-10-31, mọi số đo trên MacBook M4 Pro host và iOS simulator; **chưa có phép đo nào trên iPhone/iPad thật** (Q-11).
 
+**PO bỏ qua thiết bị thật (2026-10-31)**: các phần cần thiết bị ghi "chưa xác minh", không tính đạt (theo Q-11) và không chặn việc đóng task M0. Cột "Còn thiếu" giữ nguyên các phần đó làm nợ cho giai đoạn có thiết bị. Việc duy nhất không phải thiết bị là S-3 (IME thật, kiểm được bằng bàn phím tiếng Nhật trên macOS hoặc simulator).
+
 | Việc | Kết quả | Còn thiếu |
 |---|---|---|
 | Spike 0 | Đạt (build-only): `mattn/go-sqlite3`, không `net`, ba slice build | — |
@@ -20,7 +22,7 @@ Trạng thái ngày 2026-10-31, mọi số đo trên MacBook M4 Pro host và iOS
 | S-8 (GATE-1 bắt buộc) | Đạt trên macOS và simulator: archive, ABI, bridge, startup, rò bộ nhớ | Thiết bị chuẩn, ngưỡng 300 ms (PO) |
 | ADR-15 | **Chưa duyệt** | PO duyệt chrome kính trên thiết bị theo tiêu chí ADR-15 |
 
-**GATE-1 chưa đóng được**: S-1 và S-8 đạt ở phần máy chủ/simulator nhưng chưa có thiết bị, và S-3 chưa có bằng chứng IME thật.
+**GATE-1 do PO quyết**. Chưa có bằng chứng: S-3 với IME thật (GATE-1 bắt buộc), thiết bị cho S-1/S-8 (đã bỏ qua, ghi chưa xác minh), S-7 và ADR-15.
 
 ### Đề xuất quyết định (thuộc PO/Design)
 
@@ -38,9 +40,10 @@ Trạng thái ngày 2026-10-31, mọi số đo trên MacBook M4 Pro host và iOS
 
 ### Cần bạn hoặc thiết bị
 
-1. iPhone/iPad thật: S-1, S-8, S-4, S-3, ADR-15 và S-7.
-2. Quyền Screen Recording/Accessibility cho phiên Claude Code nếu muốn chụp macOS tự động.
-3. Quyết định Q-5, ADR-26 và ngưỡng 300 ms.
+1. Thử tay S-3 với bàn phím tiếng Nhật thật trên macOS (không cần thiết bị).
+2. ADR-15: duyệt chrome kính, có thể duyệt từ ảnh simulator của S-4 (đã bỏ qua thiết bị thật).
+3. Quyền Screen Recording/Accessibility cho phiên Claude Code nếu muốn chụp macOS tự động.
+4. Quyết định Q-5, ADR-26 và ngưỡng 300 ms.
 
 ## Spike 0
 
