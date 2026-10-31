@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { isAbsolute, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -5,14 +6,24 @@ import {
   agents, assertEditBaseline, assertPathAccess, assertShell, assertShellBaseline,
 } from "../../.agents/hiraku/guard.mjs";
 
-const root = fileURLToPath(new URL("../../", import.meta.url));
+const hookRoot = fileURLToPath(new URL("../../", import.meta.url));
+
+// A linked worktree has its own root; the hook file may live in another checkout.
+function repoRoot(cwd) {
+  try {
+    return execFileSync("git", ["rev-parse", "--show-toplevel"], { cwd, encoding: "utf8" }).trim();
+  } catch {
+    return hookRoot;
+  }
+}
 
 // Claude Code names its built-in agents differently from the shared guard.
 const builtIn = { Explore: "explore", Plan: "plan", "general-purpose": "general" };
 
 export function decide(payload) {
   const input = payload.tool_input ?? {};
-  const cwd = payload.cwd || root;
+  const cwd = payload.cwd || hookRoot;
+  const root = repoRoot(cwd);
   const at = (path) => (isAbsolute(path) ? path : resolve(cwd, path));
   const agent = builtIn[payload.agent_type] ?? payload.agent_type;
   // Calls from an unknown caller only get the checks that are closed for every role.

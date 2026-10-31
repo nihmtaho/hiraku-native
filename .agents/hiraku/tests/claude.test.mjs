@@ -24,7 +24,7 @@ test("reviewer cannot edit and shipper runs on the cheap model", () => {
 test("settings close delivery and policy, keep shell open, drop AI attribution, wire the hook", () => {
   const { allow, deny } = settings.permissions;
   assert.ok(allow.includes("Bash"));
-  for (const rule of ["Bash(git merge *)", "Bash(gh pr merge *)", "Bash(gh api *)", "Edit(/.agents/hiraku/**)", "Edit(/.claude/**)"]) {
+  for (const rule of ["Bash(git merge *)", "Bash(gh pr merge *)", "Bash(gh api *)", "Edit(/.agents/hiraku/**)", "Edit(/.claude/hooks/**)", "Edit(/.claude/agents/**)", "Edit(/.claude/settings.json)"]) {
     assert.ok(deny.includes(rule), rule);
   }
   assert.ok(!deny.some((rule) => /git (push|commit)|gh pr create|delivery\.mjs/.test(rule)));
