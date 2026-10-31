@@ -1,0 +1,445 @@
+{
+  "reference": {
+    "library": "fsrs",
+    "version": "6.3.2",
+    "algorithm": "FSRS-6",
+    "source": "PyPI fsrs 6.3.2, Scheduler defaults",
+    "interpreter": "CPython 3.13.5"
+  },
+  "settings": {
+    "request_retention": 0.9,
+    "maximum_interval": 36500,
+    "enable_short_term": true,
+    "enable_fuzz": false,
+    "learning_steps_minutes": [
+      1,
+      10
+    ],
+    "relearning_steps_minutes": [
+      10
+    ]
+  },
+  "weights": [
+    0.212,
+    1.2931,
+    2.3065,
+    8.2956,
+    6.4133,
+    0.8334,
+    3.0194,
+    0.001,
+    1.8722,
+    0.1666,
+    0.796,
+    1.4835,
+    0.0614,
+    0.2629,
+    1.6483,
+    0.6014,
+    1.8729,
+    0.5425,
+    0.0912,
+    0.0658,
+    0.1542
+  ],
+  "mapping": {
+    "state": "0=New, 1=Learning, 2=Review, 3=Relearning (candidate encoding; reference has no New state)",
+    "remaining_steps": "len(steps) - reference step, 0 in Review",
+    "reps": "reviews applied so far (increment on every review)",
+    "lapses": "increment only when rating=Again from Review (spec §7.1)",
+    "enable_short_term": "spec field name, not a py-fsrs parameter: py-fsrs has no toggle; non-empty learning steps (1m/10m) imply short-term behaviour"
+  },
+  "vectors": [
+    {
+      "name": "new/r1",
+      "input": {
+        "state": 0,
+        "due": "2026-10-30T09:00:00Z",
+        "stability": 0.0,
+        "difficulty": 0.0,
+        "reps": 0,
+        "lapses": 0,
+        "remaining_steps": 0,
+        "last_review": null
+      },
+      "now": "2026-10-30T09:00:00Z",
+      "rating": 1,
+      "want": {
+        "state": 1,
+        "due": "2026-10-30T09:01:00Z",
+        "stability": 0.212,
+        "difficulty": 6.4133,
+        "reps": 1,
+        "lapses": 0
+      }
+    },
+    {
+      "name": "new/r2",
+      "input": {
+        "state": 0,
+        "due": "2026-10-30T09:00:00Z",
+        "stability": 0.0,
+        "difficulty": 0.0,
+        "reps": 0,
+        "lapses": 0,
+        "remaining_steps": 0,
+        "last_review": null
+      },
+      "now": "2026-10-30T09:00:00Z",
+      "rating": 2,
+      "want": {
+        "state": 1,
+        "due": "2026-10-30T09:05:30Z",
+        "stability": 1.2931,
+        "difficulty": 5.112170705601056,
+        "reps": 1,
+        "lapses": 0
+      }
+    },
+    {
+      "name": "new/r3",
+      "input": {
+        "state": 0,
+        "due": "2026-10-30T09:00:00Z",
+        "stability": 0.0,
+        "difficulty": 0.0,
+        "reps": 0,
+        "lapses": 0,
+        "remaining_steps": 0,
+        "last_review": null
+      },
+      "now": "2026-10-30T09:00:00Z",
+      "rating": 3,
+      "want": {
+        "state": 1,
+        "due": "2026-10-30T09:10:00Z",
+        "stability": 2.3065,
+        "difficulty": 2.118103970459016,
+        "reps": 1,
+        "lapses": 0
+      }
+    },
+    {
+      "name": "new/r4",
+      "input": {
+        "state": 0,
+        "due": "2026-10-30T09:00:00Z",
+        "stability": 0.0,
+        "difficulty": 0.0,
+        "reps": 0,
+        "lapses": 0,
+        "remaining_steps": 0,
+        "last_review": null
+      },
+      "now": "2026-10-30T09:00:00Z",
+      "rating": 4,
+      "want": {
+        "state": 2,
+        "due": "2026-11-07T09:00:00Z",
+        "stability": 8.2956,
+        "difficulty": 1.0,
+        "reps": 1,
+        "lapses": 0
+      }
+    },
+    {
+      "name": "good-good-again-good/r3",
+      "input": {
+        "state": 0,
+        "due": "2026-10-30T09:00:00Z",
+        "stability": 0.0,
+        "difficulty": 0.0,
+        "reps": 0,
+        "lapses": 0,
+        "remaining_steps": 0,
+        "last_review": null
+      },
+      "now": "2026-10-30T09:00:00Z",
+      "rating": 3,
+      "want": {
+        "state": 1,
+        "due": "2026-10-30T09:10:00Z",
+        "stability": 2.3065,
+        "difficulty": 2.118103970459016,
+        "reps": 1,
+        "lapses": 0
+      }
+    },
+    {
+      "name": "good-good-again-good/r3",
+      "input": {
+        "state": 1,
+        "due": "2026-10-30T09:10:00Z",
+        "stability": 2.3065,
+        "difficulty": 2.118103970459016,
+        "reps": 1,
+        "lapses": 0,
+        "remaining_steps": 1,
+        "last_review": "2026-10-30T09:00:00Z"
+      },
+      "now": "2026-10-30T09:10:00Z",
+      "rating": 3,
+      "want": {
+        "state": 2,
+        "due": "2026-11-01T09:10:00Z",
+        "stability": 2.3065,
+        "difficulty": 2.111214235785395,
+        "reps": 2,
+        "lapses": 0
+      }
+    },
+    {
+      "name": "good-good-again-good/r1",
+      "input": {
+        "state": 2,
+        "due": "2026-11-01T09:10:00Z",
+        "stability": 2.3065,
+        "difficulty": 2.111214235785395,
+        "reps": 2,
+        "lapses": 0,
+        "remaining_steps": 0,
+        "last_review": "2026-10-30T09:10:00Z"
+      },
+      "now": "2026-11-01T09:10:00Z",
+      "rating": 1,
+      "want": {
+        "state": 3,
+        "due": "2026-11-01T09:20:00Z",
+        "stability": 0.6077016626638644,
+        "difficulty": 7.392238132342694,
+        "reps": 3,
+        "lapses": 1
+      }
+    },
+    {
+      "name": "good-good-again-good/r3",
+      "input": {
+        "state": 3,
+        "due": "2026-11-01T09:20:00Z",
+        "stability": 0.6077016626638644,
+        "difficulty": 7.392238132342694,
+        "reps": 3,
+        "lapses": 1,
+        "remaining_steps": 1,
+        "last_review": "2026-11-01T09:10:00Z"
+      },
+      "now": "2026-11-01T09:20:00Z",
+      "rating": 3,
+      "want": {
+        "state": 2,
+        "due": "2026-11-02T09:20:00Z",
+        "stability": 0.6597976257475758,
+        "difficulty": 7.38007426350719,
+        "reps": 4,
+        "lapses": 1
+      }
+    },
+    {
+      "name": "lapse-from-review/r4",
+      "input": {
+        "state": 0,
+        "due": "2026-10-30T09:00:00Z",
+        "stability": 0.0,
+        "difficulty": 0.0,
+        "reps": 0,
+        "lapses": 0,
+        "remaining_steps": 0,
+        "last_review": null
+      },
+      "now": "2026-10-30T09:00:00Z",
+      "rating": 4,
+      "want": {
+        "state": 2,
+        "due": "2026-11-07T09:00:00Z",
+        "stability": 8.2956,
+        "difficulty": 1.0,
+        "reps": 1,
+        "lapses": 0
+      }
+    },
+    {
+      "name": "lapse-from-review/r1",
+      "input": {
+        "state": 2,
+        "due": "2026-11-07T09:00:00Z",
+        "stability": 8.2956,
+        "difficulty": 1.0,
+        "reps": 1,
+        "lapses": 0,
+        "remaining_steps": 0,
+        "last_review": "2026-10-30T09:00:00Z"
+      },
+      "now": "2026-11-07T09:00:00Z",
+      "rating": 1,
+      "want": {
+        "state": 3,
+        "due": "2026-11-07T09:10:00Z",
+        "stability": 1.3886324609821161,
+        "difficulty": 7.0269895692968385,
+        "reps": 2,
+        "lapses": 1
+      }
+    },
+    {
+      "name": "lapse-after-good-then-good/r3",
+      "input": {
+        "state": 0,
+        "due": "2026-10-30T09:00:00Z",
+        "stability": 0.0,
+        "difficulty": 0.0,
+        "reps": 0,
+        "lapses": 0,
+        "remaining_steps": 0,
+        "last_review": null
+      },
+      "now": "2026-10-30T09:00:00Z",
+      "rating": 3,
+      "want": {
+        "state": 1,
+        "due": "2026-10-30T09:10:00Z",
+        "stability": 2.3065,
+        "difficulty": 2.118103970459016,
+        "reps": 1,
+        "lapses": 0
+      }
+    },
+    {
+      "name": "lapse-after-good-then-good/r3",
+      "input": {
+        "state": 1,
+        "due": "2026-10-30T09:10:00Z",
+        "stability": 2.3065,
+        "difficulty": 2.118103970459016,
+        "reps": 1,
+        "lapses": 0,
+        "remaining_steps": 1,
+        "last_review": "2026-10-30T09:00:00Z"
+      },
+      "now": "2026-10-30T09:10:00Z",
+      "rating": 3,
+      "want": {
+        "state": 2,
+        "due": "2026-11-01T09:10:00Z",
+        "stability": 2.3065,
+        "difficulty": 2.111214235785395,
+        "reps": 2,
+        "lapses": 0
+      }
+    },
+    {
+      "name": "lapse-after-good-then-good/r1",
+      "input": {
+        "state": 2,
+        "due": "2026-11-01T09:10:00Z",
+        "stability": 2.3065,
+        "difficulty": 2.111214235785395,
+        "reps": 2,
+        "lapses": 0,
+        "remaining_steps": 0,
+        "last_review": "2026-10-30T09:10:00Z"
+      },
+      "now": "2026-11-01T09:10:00Z",
+      "rating": 1,
+      "want": {
+        "state": 3,
+        "due": "2026-11-01T09:20:00Z",
+        "stability": 0.6077016626638644,
+        "difficulty": 7.392238132342694,
+        "reps": 3,
+        "lapses": 1
+      }
+    },
+    {
+      "name": "lapse-after-good-then-good/r3",
+      "input": {
+        "state": 3,
+        "due": "2026-11-01T09:20:00Z",
+        "stability": 0.6077016626638644,
+        "difficulty": 7.392238132342694,
+        "reps": 3,
+        "lapses": 1,
+        "remaining_steps": 1,
+        "last_review": "2026-11-01T09:10:00Z"
+      },
+      "now": "2026-11-01T09:20:00Z",
+      "rating": 3,
+      "want": {
+        "state": 2,
+        "due": "2026-11-02T09:20:00Z",
+        "stability": 0.6597976257475758,
+        "difficulty": 7.38007426350719,
+        "reps": 4,
+        "lapses": 1
+      }
+    },
+    {
+      "name": "lapse-after-good-then-good/r3",
+      "input": {
+        "state": 2,
+        "due": "2026-11-02T09:20:00Z",
+        "stability": 0.6597976257475758,
+        "difficulty": 7.38007426350719,
+        "reps": 4,
+        "lapses": 1,
+        "remaining_steps": 0,
+        "last_review": "2026-11-01T09:20:00Z"
+      },
+      "now": "2026-11-02T09:20:00Z",
+      "rating": 3,
+      "want": {
+        "state": 2,
+        "due": "2026-11-04T09:20:00Z",
+        "stability": 2.4892333541386376,
+        "difficulty": 7.3679225585405215,
+        "reps": 5,
+        "lapses": 1
+      }
+    },
+    {
+      "name": "midnight-gap/r3",
+      "input": {
+        "state": 0,
+        "due": "2026-10-30T23:55:00Z",
+        "stability": 0.0,
+        "difficulty": 0.0,
+        "reps": 0,
+        "lapses": 0,
+        "remaining_steps": 0,
+        "last_review": null
+      },
+      "now": "2026-10-30T23:55:00Z",
+      "rating": 3,
+      "want": {
+        "state": 1,
+        "due": "2026-10-31T00:05:00Z",
+        "stability": 2.3065,
+        "difficulty": 2.118103970459016,
+        "reps": 1,
+        "lapses": 0
+      }
+    },
+    {
+      "name": "midnight-gap/r3",
+      "input": {
+        "state": 1,
+        "due": "2026-10-31T00:05:00Z",
+        "stability": 2.3065,
+        "difficulty": 2.118103970459016,
+        "reps": 1,
+        "lapses": 0,
+        "remaining_steps": 1,
+        "last_review": "2026-10-30T23:55:00Z"
+      },
+      "now": "2026-10-31T00:05:00Z",
+      "rating": 3,
+      "want": {
+        "state": 2,
+        "due": "2026-11-02T00:05:00Z",
+        "stability": 2.3065,
+        "difficulty": 2.111214235785395,
+        "reps": 2,
+        "lapses": 0
+      }
+    }
+  ]
+}
