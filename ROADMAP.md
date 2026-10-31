@@ -294,15 +294,16 @@ Nguồn cập nhật bắt buộc cho mọi PR (`docs/process/GIT_WORKFLOW.md` �
 |---|---|---|---|
 | Spike 0 | dn | 8 | Working-tree; `mattn/go-sqlite3 v1.14.52`, không còn `net`, build 3 slice xanh (build-only, Q-11 partial); ADR-32 đã chốt (PR 8) |
 | ADR-15 | rd | — | M0; đã có Git/remote, chưa có CI, chưa bắt đầu, chưa có mã `core/` |
-| S-5 | rv | — | Spike Đạt ở thiết kế một handle một writer; deferred lock lỗi busy với hai handle (cần immediate); chưa chạy UI hai cửa sổ — chờ review |
-| S-4 | rv | — | Thành phần gốc dựng được trên iPhone/iPad simulator; macOS chưa chụp, thiết bị thật chưa xác minh — chờ review |
+| S-5 | dn | 15 | Đạt ở thiết kế một handle một writer; deferred lock lỗi busy với hai handle (WP-02a dùng immediate); UI hai cửa sổ chưa xác minh |
+| S-4 | dn | 17 | Thành phần gốc dựng được trên iPhone/iPad simulator; macOS chưa chụp, thiết bị thật chưa xác minh (bỏ qua thiết bị) |
 | S-3 | rv | — | Wrapper UIKit/AppKit chạy trên simulator với marked text lập trình; IME Nhật thật, iPad bàn phím, macOS chưa xác minh — cần PO thử tay (SC-007) |
-| S-6 | rv | — | Spike Đạt trên simulator: 2,19 MB, 0 glyph thiếu (N3), OFL; đề xuất Q-5 = A; macOS/thiết bị chưa chạy — chờ review |
+| S-6 | dn | 10 | Spike Đạt trên simulator: 2,19 MB, 0 glyph thiếu (N3), OFL; đề xuất Q-5 = A; macOS/thiết bị chưa xác minh (bỏ qua thiết bị) |
 | S-2 | dn | 8 | Working-tree: Không đạt khớp vector (go-fsrs/v4 v4.0.0; 3/17 due lệch, dung sai 0); PO cân nhắc ngữ nghĩa ts-fsrs. |
 | S-1 | dn | 8 | Nửa Go Đạt trên MacBook; iOS/iPadOS và 60 fps chưa xác minh (S-1 bổ sung). |
-| S-7, Báo cáo spike | bl | — | Q-11 chốt một phần (MacBook, chưa có iPhone/iPad thật); phần build của S-8 chạy được sau Spike 0 |
-| S-1 bổ sung | rv | — | Đã chạy lại trên schema ADR-27, nhiễu do máy tải; 60 fps và thiết bị chưa xác minh — chờ review |
-| S-8 | rv | — | Working-tree: XCFramework + hk_* spike Đạt trên macOS và simulator; phần thiết bị (SC-006) chưa xác minh, ngưỡng 300 ms chờ PO — chờ review |
+| S-7 | bl | — | Q-11 chốt một phần (MacBook, chưa có iPhone/iPad thật); phần build của S-8 chạy được sau Spike 0 |
+| Báo cáo spike | rv | — | Đã có bảng tổng hợp M0; chờ iPhone/iPad thật, S-7, ADR-15 và quyết định PO |
+| S-1 bổ sung | dn | 16 | Đã chạy lại trên schema ADR-27, nhiễu do máy tải; 60 fps và thiết bị chưa xác minh (bỏ qua thiết bị) |
+| S-8 | dn | 8 | Đạt trên macOS và simulator; thiết bị (SC-006) và ngưỡng 300 ms chưa xác minh (bỏ qua thiết bị) |
 | Q-13, Q-1, Q-6 | dn | — | Đã chốt |
 | Q-12 | dn | — | PO duyệt phương án B (2026-10-30) |
 | Q-11, Q-D2 | rv | — | Q-11 chốt một phần (MacBook; thiếu iPhone/iPad thật), Q-D2 chờ Design |

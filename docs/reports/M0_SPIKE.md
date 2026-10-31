@@ -2,6 +2,49 @@
 
 Base: `develop` = `62502e9e0996f6f8222c908c67714d725195e33e` · Ngày chạy: 2026-10-30 · Làm trên working-tree, chưa commit/push.
 
+## Tổng hợp M0 (đầu vào GATE-1)
+
+Trạng thái ngày 2026-10-31, mọi số đo trên MacBook M4 Pro host và iOS simulator; **chưa có phép đo nào trên iPhone/iPad thật** (Q-11).
+
+**PO bỏ qua thiết bị thật (2026-10-31)**: các phần cần thiết bị ghi "chưa xác minh", không tính đạt (theo Q-11) và không chặn việc đóng task M0. Cột "Còn thiếu" giữ nguyên các phần đó làm nợ cho giai đoạn có thiết bị. Việc duy nhất không phải thiết bị là S-3 (IME thật, kiểm được bằng bàn phím tiếng Nhật trên macOS hoặc simulator).
+
+| Việc | Kết quả | Còn thiếu |
+|---|---|---|
+| Spike 0 | Đạt (build-only): `mattn/go-sqlite3`, không `net`, ba slice build | — |
+| S-1 (GATE-1 bắt buộc) | Đạt trên MacBook; hàng đợi có biên mỏng (≈1,3× ngưỡng 200 ms khi máy sạch) | Thiết bị chuẩn, 60 fps |
+| S-1 bổ sung | Schema ADR-27 đã là schema của S-1; chạy lại bị nhiễu do máy tải, giữ kết luận S-1 | Đo lại khi máy rảnh, 60 fps |
+| S-2 | Không đạt: `go-fsrs/v4` lệch 3/17 `due` → tự cài FSRS (ADR-26) | PO cân nhắc ngữ nghĩa ts-fsrs |
+| S-3 (GATE-1 bắt buộc) | Wrapper `UITextField`/`NSTextField` nhận biết compose và không tính Return chốt IME, kiểm bằng marked text lập trình trên iOS simulator | **IME Nhật thật** (iPhone, iPad bàn phím, macOS), macOS chạy |
+| S-4 | Không thấy thành phần gốc nào không đáp ứng; dựng trên iPhone và iPad simulator | macOS, iPad ngang, thiết bị thật |
+| S-5 | Đạt với một handle một writer; `deferred` lock lỗi khi có hai handle | Hai cửa sổ UI, hai tiến trình |
+| S-6 | Đạt: 2,19 MB, 0 glyph thiếu cho 880 mục N3, OFL 1.1 | macOS và thiết bị chạy thật |
+| S-7 | **Chưa làm** | App Group, widget, sao lưu: cần thiết bị và Personal Team |
+| S-8 (GATE-1 bắt buộc) | Đạt trên macOS và simulator: archive, ABI, bridge, startup, rò bộ nhớ | Thiết bị chuẩn, ngưỡng 300 ms (PO) |
+| ADR-15 | **Chưa duyệt** | PO duyệt chrome kính trên thiết bị theo tiêu chí ADR-15 |
+
+**GATE-1 do PO quyết**. Chưa có bằng chứng: S-3 với IME thật (GATE-1 bắt buộc), thiết bị cho S-1/S-8 (đã bỏ qua, ghi chưa xác minh), S-7 và ADR-15.
+
+### Đề xuất quyết định (thuộc PO/Design)
+
+- **Q-5 = A**: đóng gói Noto Sans JP (S-6 đạt cả ba tiêu chí).
+- **ADR-26**: xác nhận tự cài FSRS (S-2 không đạt).
+- **ADR-20, 21, 24, 32**: chưa có tín hiệu cần thay (S-1, S-8, Spike 0 đạt trên host); xác nhận sau khi có thiết bị.
+- **Ngưỡng startup 300 ms (S-8)**: PO xác nhận trên thiết bị.
+
+### Việc đưa vào M1
+
+- WP-02a: mọi handle ghi mở với `_txlock=immediate` hoặc chỉ một writer (S-5); cân nhắc `ANALYZE`/index cho hàng đợi có cap (S-1).
+- WP-02b: bỏ `-force_load` và ký hiệu `hksample_*` của spike, sinh `hk.h` từ một nguồn (review S-8).
+- DesignSystem: đăng ký font bằng `CTFontManagerRegisterFontsForURL` thay vì Info.plist hoặc sửa DESIGN (S-6); ẩn phụ kiện đáy ở Trang chủ và đặt ưu tiên cột `Table` (S-4); `AccentColor` Ember và độ tương phản tab chọn trên kính (ADR-15).
+- IME: thử tay bàn phím thật theo SC-007 trước khi coi S-3 đạt (R-03).
+
+### Cần bạn hoặc thiết bị
+
+1. Thử tay S-3 với bàn phím tiếng Nhật thật trên macOS (không cần thiết bị).
+2. ADR-15: duyệt chrome kính, có thể duyệt từ ảnh simulator của S-4 (đã bỏ qua thiết bị thật).
+3. Quyền Screen Recording/Accessibility cho phiên Claude Code nếu muốn chụp macOS tự động.
+4. Quyết định Q-5, ADR-26 và ngưỡng 300 ms.
+
 ## Spike 0
 
 Mục tiêu: chứng minh Go core dựng được cho ba slice Apple với `github.com/mattn/go-sqlite3` (cgo) và đồ thị phụ thuộc không có `net` (`docs/product/spec.md` §3.3 S-0, luật G5/ADR-12). PO chọn mattn ngày 2026-10-30 sau khi bản `modernc.org/sqlite` kéo `net` vào đồ thị. Kết quả iOS/iPadOS là **build verified, not device verified** (Q-11 mới chốt một phần trên MacBook).
