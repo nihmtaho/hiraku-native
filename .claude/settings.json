@@ -69,7 +69,9 @@
       "Edit(/Frameworks/**)",
       "Edit(**/scripts/check-*)",
       "Edit(**/scripts/build-xcframework.sh)",
-      "Edit(/.claude/**)",
+      "Edit(/.claude/hooks/**)",
+      "Edit(/.claude/agents/**)",
+      "Edit(/.claude/settings.json)",
       "Edit(/.commandcode/**)"
     ]
   },
