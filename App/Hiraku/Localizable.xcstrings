@@ -1,0 +1,16 @@
+{
+  "sourceLanguage" : "vi",
+  "strings" : {
+    "Khung M0 — chưa có tính năng" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Khung M0 — chưa có tính năng"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
