@@ -40,6 +40,10 @@ chứng chắc chắn cho quy tắc cần review thủ công.
   kiểm tra cần thêm.
 - `BLOCKED`: thiếu quyết định, môi trường, diff hoặc kiểm tra bắt buộc.
 
+Sau khi PR đã mở, ghi verdict bằng đúng một lệnh:
+`node .agents/hiraku/delivery.mjs review <pr> <PASS|FAIL> --sha <head-sha>`, với SHA
+bạn đã đọc diff; script từ chối nếu head đã đổi. Chỉ ghi `PASS` khi mọi mục trên đạt và
+bạn thực sự đã đọc diff của đúng SHA đó; không ghi `PASS` cho PR do chính phiên này viết.
 Working-tree chỉ có verdict cho bản nháp, không có PASS đủ điều kiện merge. Ghi
 rõ lệnh đã chạy, phần chưa xác minh và revision; thay đổi mới vô hiệu verdict.
 Gửi kết quả về Lead, không giao việc trực tiếp cho coder; chỉ được gọi

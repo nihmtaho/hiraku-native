@@ -65,6 +65,7 @@ Tài liệu này là **nơi duy nhất** ghi trạng thái các quyết định.
 | ADR-28 | Một DB cho mỗi profile; profile dùng để tách ngôn ngữ học và giới hạn dung lượng mỗi DB; không tách theo deck | Đã chốt | 2026-10-28 | Q-16 |
 | ADR-27 | Kiểu ghi chú và field tùy biến theo deck; `notes`/`cards` thay `words`; chia Pha A (M1a), B (M2–M3), C (M4) | Đã chốt, chờ đo S-1 trên schema mới | 2026-10-28 | Yêu cầu khách hàng; sửa ADR-04 |
 | ADR-31 | OpenCode: bốn agents, skills cho quy trình lặp lại (sửa 2026-10-30); AI tự merge khi Review độc lập và CI đạt, PO duyệt gate/phát hành | Đã chốt | 2026-10-29 | `docs/process/AGENT_WORKFLOW.md`; Q-29 xác nhận một phần |
+| ADR-33 | Delivery tự động: Reviewer ghi status `hiraku/review` theo SHA, Shipper bật auto-merge squash qua `delivery.mjs`; ruleset `develop` bắt buộc `ci` + `hiraku/review` | Đã chốt | 2026-10-31 | Làm rõ ADR-31; `docs/process/AGENT_WORKFLOW.md` §4 |
 
 ### 2.2 Đề xuất và mở
 
@@ -448,6 +449,15 @@ Q-4, Q-A, Q-B, Q-C, Q-D, Q-E đã được đóng bởi ADR-26, ADR-23, ADR-22, 
 - **Hệ quả**: build cần `CC` theo SDK (`iphoneos`, `iphonesimulator`, macOS) và `MACOSX_DEPLOYMENT_TARGET=26.0`; script build đặt `CC`; S-1 đo lại trên driver mới.
 - **Thay thế**: ADR-23.
 - **Trạng thái**: Đã chốt (PO, 2026-10-30).
+
+
+### ADR-33 — Delivery tự động qua entrypoint được bảo vệ *(làm rõ ADR-31)*
+- **Bối cảnh**: ADR-31 cho phép AI tự merge khi Review độc lập và CI đạt, nhưng quyền delivery đóng vì chưa có CI, required checks hay cách ràng verdict vào SHA. PO yêu cầu agents tự review và tự merge (2026-10-31).
+- **Quyết định**: (1) Reviewer ghi commit status `hiraku/review` cho đúng head SHA; (2) workflow `ci` (Linux: `go vet`, `go test -race`, test guard/delivery, `wp-status --check`); (3) Shipper bật auto-merge squash `--match-head-commit`; (4) ruleset `develop` bắt buộc `ci` + `hiraku/review` và nhánh mới nhất. (2)–(3) chỉ qua `.agents/hiraku/delivery.mjs`, guard chỉ cho đúng vai và đúng cú pháp; lệnh `gh pr merge/review/api` thô vẫn đóng.
+- **Lý do**: status gắn SHA nên push mới tự vô hiệu verdict; GitHub không cho tài khoản duy nhất approve PR của chính mình; auto-merge để ruleset, không phải agent, quyết định thời điểm merge.
+- **Giới hạn**: cùng một tài khoản ghi review nên độc lập chỉ dựa vào phiên/quy trình; guard không phải sandbox; CI chưa có Xcode/simulator (bổ sung ở WP-01); PR chạm policy/checker vẫn do người vận hành merge.
+- **Việc của người vận hành**: áp dụng `.github/rulesets/develop.json`; bật "Allow auto-merge"; không đặt token admin cho agents.
+- **Trạng thái**: Đã chốt (PO, 2026-10-31).
 
 ---
 

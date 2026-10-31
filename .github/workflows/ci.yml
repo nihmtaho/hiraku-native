@@ -1,0 +1,36 @@
+name: ci
+
+on:
+  pull_request:
+    branches: [develop, main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  # One required check named "ci": the ruleset matches this job name.
+  ci:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: core/go.mod
+          cache-dependency-path: core/go.sum
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Go vet and race tests
+        working-directory: core
+        run: |
+          go vet ./...
+          go test -race -count=1 ./...
+      - name: Agent guard and delivery tests
+        run: node --test .agents/hiraku/tests/*.test.mjs
+      - name: ROADMAP and Kanban agree
+        run: node .agents/skills/hiraku-wp-status/scripts/wp-status.mjs --check
