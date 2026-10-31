@@ -6,6 +6,7 @@ export const root = fileURLToPath(new URL("../../", import.meta.url));
 
 const readOnlyPi = ["read", "grep", "find", "ls"];
 const readOnlyCommandCode = ["read_file", "read_directory", "grep", "glob"];
+const readOnlyClaude = ["Read", "Grep", "Glob"];
 
 // Each tool gets its own agent files; only the frontmatter differs, the role body is shared.
 const targets = {
@@ -23,6 +24,25 @@ const targets = {
     explore: { path: ".pi/agents/explore.md", role: "explore", meta: { name: "explore", tools: readOnlyPi } },
     general: { path: ".pi/agents/general.md", role: "general", meta: { name: "general", tools: [...readOnlyPi, "bash", "edit", "write"] } },
     plan: { path: ".pi/agents/plan.md", role: "plan", meta: { name: "plan", tools: readOnlyPi } },
+  },
+  claude: {
+    // `agent` in .claude/settings.json runs the main session as the Lead; built-ins (Explore, Plan, general-purpose) need no files.
+    "hiraku-lead": {
+      path: ".claude/agents/hiraku-lead.md", role: "lead",
+      meta: { name: "hiraku-lead", tools: [...readOnlyClaude, "Edit", "Write", "Bash", "TodoWrite", "Agent(hiraku-coder, hiraku-reviewer, hiraku-shipper, Explore, Plan, general-purpose)"] },
+    },
+    "hiraku-coder": {
+      path: ".claude/agents/hiraku-coder.md", role: "coder",
+      meta: { name: "hiraku-coder", tools: [...readOnlyClaude, "Edit", "Write", "Bash", "TodoWrite", "Agent(Explore)"] },
+    },
+    "hiraku-reviewer": {
+      path: ".claude/agents/hiraku-reviewer.md", role: "reviewer",
+      meta: { name: "hiraku-reviewer", tools: [...readOnlyClaude, "Bash", "Agent(Explore)"] },
+    },
+    "hiraku-shipper": {
+      path: ".claude/agents/hiraku-shipper.md", role: "shipper",
+      meta: { name: "hiraku-shipper", tools: [...readOnlyClaude, "Bash", "Edit", "Write"] },
+    },
   },
   commandcode: {
     // The main session is the Lead; a SessionStart hook injects this prompt, so it must not sit in agents/.

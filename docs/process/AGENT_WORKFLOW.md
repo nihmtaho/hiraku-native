@@ -8,6 +8,7 @@ từng công cụ nằm trong thư mục của nó và có README riêng:
 | OpenCode | `.opencode/`, `opencode.json` | `.opencode/README.md` |
 | Pi | `.pi/` | `.pi/README.md` |
 | Command Code | `.commandcode/` | `.commandcode/README.md` |
+| Claude Code | `.claude/` | `.claude/README.md` |
 
 Node.js 24+ cho guard và tests. Không thêm thư viện npm. Model chỉ ghim cho vai
 nhẹ qua `.agents/hiraku/models.json` (§2); không lưu credential trong repo.
