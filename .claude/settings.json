@@ -1,0 +1,90 @@
+{
+  "agent": "hiraku-lead",
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "permissions": {
+    "allow": [
+      "Bash",
+      "Edit(/.agents/tasks/*.md)"
+    ],
+    "deny": [
+      "Bash(git merge)",
+      "Bash(git merge *)",
+      "Bash(git tag)",
+      "Bash(git tag *)",
+      "Bash(git rebase)",
+      "Bash(git rebase *)",
+      "Bash(git reset --hard)",
+      "Bash(git reset --hard *)",
+      "Bash(git filter-branch)",
+      "Bash(git filter-branch *)",
+      "Bash(gh pr merge)",
+      "Bash(gh pr merge *)",
+      "Bash(gh pr review)",
+      "Bash(gh pr review *)",
+      "Bash(gh release)",
+      "Bash(gh release *)",
+      "Bash(gh api)",
+      "Bash(gh api *)",
+      "Bash(gh repo delete)",
+      "Bash(gh repo delete *)",
+      "Bash(gh repo create)",
+      "Bash(gh repo create *)",
+      "Bash(gh repo edit)",
+      "Bash(gh repo edit *)",
+      "Bash(xcrun altool)",
+      "Bash(xcrun altool *)",
+      "Bash(xcrun notarytool)",
+      "Bash(xcrun notarytool *)",
+      "Bash(fastlane)",
+      "Bash(fastlane *)",
+      "Bash(codesign)",
+      "Bash(codesign *)",
+      "Bash(security find-*)",
+      "Bash(security dump-*)",
+      "Bash(security export)",
+      "Bash(security export *)",
+      "Read(**/*.p8)",
+      "Read(**/*.p12)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)",
+      "Read(**/*.keychain-db)",
+      "Edit(/.agents/hiraku/**)",
+      "Edit(/.agents/skills/**)",
+      "Edit(/.agents/templates/**)",
+      "Edit(/.opencode/**)",
+      "Edit(/.pi/**)",
+      "Edit(/.github/**)",
+      "Edit(/.git/**)",
+      "Edit(AGENTS.md)",
+      "Edit(/docs/process/AGENT_WORKFLOW.md)",
+      "Edit(/docs/architecture/DECISIONS.md)",
+      "Edit(/docs/process/RELEASE.md)",
+      "Edit(/docs/process/TEST_PLAN.md)",
+      "Edit(opencode.json)",
+      "Edit(**/gen/**)",
+      "Edit(**/generated/**)",
+      "Edit(/Frameworks/**)",
+      "Edit(**/scripts/check-*)",
+      "Edit(**/scripts/build-xcframework.sh)",
+      "Edit(/.claude/**)",
+      "Edit(/.commandcode/**)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Read|Edit|Write|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/guard.mjs\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
