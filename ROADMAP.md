@@ -292,11 +292,11 @@ Nguồn cập nhật bắt buộc cho mọi PR (`docs/process/GIT_WORKFLOW.md` �
 
 | Mã | Trạng thái | PR / commit | Ghi chú (phần còn lại, blocker) |
 |---|---|---|---|
-| Spike 0 | rv | — | Working-tree; `mattn/go-sqlite3 v1.14.52`, không còn `net`, build 3 slice xanh (build-only, Q-11 partial); chờ review — ADR-32 do PO đắp |
+| Spike 0 | dn | 8 | Working-tree; `mattn/go-sqlite3 v1.14.52`, không còn `net`, build 3 slice xanh (build-only, Q-11 partial); ADR-32 đã chốt (PR 8) |
 | S-3, S-4, S-5, ADR-15 | rd | — | M0; đã có Git/remote, chưa có CI, chưa bắt đầu, chưa có mã `core/` |
 | S-6 | rv | — | Spike Đạt trên simulator: 2,19 MB, 0 glyph thiếu (N3), OFL; đề xuất Q-5 = A; macOS/thiết bị chưa chạy — chờ review |
-| S-2 | rv | — | Working-tree: Không đạt khớp vector (go-fsrs/v4 v4.0.0; 3/17 due lệch, dung sai 0); chờ review — PO cân nhắc ngữ nghĩa ts-fsrs. |
-| S-1 | rv | — | Nửa Go Đạt trên MacBook; iOS/iPadOS và 60 fps chưa xác minh — chờ review. |
+| S-2 | dn | 8 | Working-tree: Không đạt khớp vector (go-fsrs/v4 v4.0.0; 3/17 due lệch, dung sai 0); PO cân nhắc ngữ nghĩa ts-fsrs. |
+| S-1 | dn | 8 | Nửa Go Đạt trên MacBook; iOS/iPadOS và 60 fps chưa xác minh (S-1 bổ sung). |
 | S-7, S-1 bổ sung, Báo cáo spike | bl | — | Q-11 chốt một phần (MacBook, chưa có iPhone/iPad thật); phần build của S-8 chạy được sau Spike 0 |
 | S-8 | rv | — | Working-tree: XCFramework + hk_* spike Đạt trên macOS và simulator; phần thiết bị (SC-006) chưa xác minh, ngưỡng 300 ms chờ PO — chờ review |
 | Q-13, Q-1, Q-6 | dn | — | Đã chốt |

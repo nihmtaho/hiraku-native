@@ -2,10 +2,10 @@
 
 ## Contract
 
-- Status: review
+- Status: done (host/simulator half); device half (SC-006 + threshold) remains PO-only, "chưa xác minh"
 - Owner: hiraku-coder
 - Milestone / WP: M0 / S-8 (GATE-1 must-achieve)
-- Branch / PR: `feat/m0-s8-bridge`, PR #8 (head `dd7423b`; feature commit reviewed as `f36767e`, 18 files +676/−9; plus `04b7060` docs(adr) ADR-32 and `dd7423b` task record)
+- Branch / PR: `feat/m0-s8-bridge` → PR #8 **merged 2026-10-31** (merge commit `01551ea`, develop)
 - Base / head SHA: base `develop` = `b2a923f` · head `f36767e` (PR #7 merged earlier as `340c570`)
 - Dependencies: `m0-05-app-skeleton` (app shell `App/Hiraku.xcodeproj` is the host); `m0-02-mattn` (driver + build script) merged via PR #6 or present in the tree
 - Required reading: `docs/architecture/DECISIONS.md` ADR-21, ADR-12/ADR-32, §5 (S-8 fallback conditions); `AGENTS.md` laws G2 (only `core/ffi` imports C), G3 (no `time.Now` in domain/service, no globals), B2 (Swift only `HirakuBridge` calls `hk_*`), timing laws; `docs/product/spec.md` §3.3 S-8, NFR-002/003
