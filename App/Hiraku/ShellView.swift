@@ -13,6 +13,7 @@ struct ShellView: View {
             #if DEBUG
             PingCheckView(result: $pingResult)
             FontCheckView()
+            ImeCheckView()
             #endif
         }
         .padding()

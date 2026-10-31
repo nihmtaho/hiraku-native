@@ -293,7 +293,8 @@ Nguồn cập nhật bắt buộc cho mọi PR (`docs/process/GIT_WORKFLOW.md` �
 | Mã | Trạng thái | PR / commit | Ghi chú (phần còn lại, blocker) |
 |---|---|---|---|
 | Spike 0 | dn | 8 | Working-tree; `mattn/go-sqlite3 v1.14.52`, không còn `net`, build 3 slice xanh (build-only, Q-11 partial); ADR-32 đã chốt (PR 8) |
-| S-3, S-4, S-5, ADR-15 | rd | — | M0; đã có Git/remote, chưa có CI, chưa bắt đầu, chưa có mã `core/` |
+| S-4, S-5, ADR-15 | rd | — | M0; đã có Git/remote, chưa có CI, chưa bắt đầu, chưa có mã `core/` |
+| S-3 | rv | — | Wrapper UIKit/AppKit chạy trên simulator với marked text lập trình; IME Nhật thật, iPad bàn phím, macOS chưa xác minh — cần PO thử tay (SC-007) |
 | S-6 | rv | — | Spike Đạt trên simulator: 2,19 MB, 0 glyph thiếu (N3), OFL; đề xuất Q-5 = A; macOS/thiết bị chưa chạy — chờ review |
 | S-2 | dn | 8 | Working-tree: Không đạt khớp vector (go-fsrs/v4 v4.0.0; 3/17 due lệch, dung sai 0); PO cân nhắc ngữ nghĩa ts-fsrs. |
 | S-1 | dn | 8 | Nửa Go Đạt trên MacBook; iOS/iPadOS và 60 fps chưa xác minh (S-1 bổ sung). |
