@@ -211,7 +211,7 @@ var raw=[
  ["S-4","Layout thích ứng: Table, NavigationSplitView, inspector 230pt, phụ kiện đáy tab bar","M0","sp","rd",{d:1},{ref:"ADR-15, ADR-18"}],
  ["S-6","Đóng gói Noto Sans JP (subset), đo kích thước","M0","sp","rd",{d:0.5},{ref:"Q-5",note:"Ngưỡng đề xuất 10 MB; vượt hoặc thiếu glyph thì dùng Hiragino Sans."}],
  ["ADR-15","Duyệt chrome Liquid Glass trên thiết bị thật","M0","sp","rd",{d:0.5},{ref:"ADR-15"}],
- ["S-8","Build core/ffi thành c-archive 3 slice, đóng XCFramework, đo RSS và khởi động Go runtime, 1.000 lần hk_call không rò","M0","sp","bl",{d:5},{ref:"ADR-20, ADR-21",blk:"Q-11",note:"Bắt buộc đạt ở GATE-1. Ngưỡng khởi động dưới 300 ms chờ PO xác nhận.",f:"F-19"}],
+ ["S-8","Build core/ffi thành c-archive 3 slice, đóng XCFramework, đo RSS và khởi động Go runtime, 1.000 lần hk_call không rò","M0","sp","rv",{d:5},{ref:"ADR-20, ADR-21",blk:"Q-11",note:"Working-tree: XCFramework + hk_* spike Đạt trên macOS và simulator; phần thiết bị (SC-006) chưa xác minh, ngưỡng 300 ms chờ PO — chờ review",f:"F-19"}],
  ["S-1 bổ sung","Đo lại github.com/mattn/go-sqlite3 trên thiết bị chuẩn; reload theo phạm vi giữ 60 fps","M0","sp","bl",{d:2},{ref:"ADR-24, ADR-32",blk:"Q-11",note:"Đo lại trên schema ADR-27 (notes/cards, search_text); ROADMAP v1.9 đã làm rõ."}],
  ["Báo cáo spike","Kết quả Đạt/Không đạt kèm số đo từng S-*, đề xuất quyết định","M0","doc","bl",{d:0.5},{ref:"ROADMAP §3.1"}],
  ["Spike 0","Xác minh mattn/go-sqlite3 build được cho ios/arm64 và simulator; go list -deps không có net","M0","rev","rv",{x:"1–2 ngày (đề xuất)"},{ref:"mattn/go-sqlite3, luật G5",note:"Working-tree: mattn v1.14.52, không còn net, 3 slice build xanh (build-only); chờ review.",f:"F-19"}],

@@ -1,0 +1,4 @@
+module HirakuFFI {
+    header "hk.h"
+    export *
+}

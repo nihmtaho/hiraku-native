@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct ShellView: View {
+    @State private var pingResult = "—"
+
     var body: some View {
         VStack(spacing: 8) {
             Text(verbatim: "hiraku")
@@ -8,6 +10,9 @@ struct ShellView: View {
             Text("Khung M0 — chưa có tính năng")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
+            #if DEBUG
+            PingCheckView(result: $pingResult)
+            #endif
         }
         .padding()
     }
