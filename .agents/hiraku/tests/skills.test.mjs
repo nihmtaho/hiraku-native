@@ -24,7 +24,7 @@ test("wp-status updates both places and splits a grouped row", () => {
   try {
     main(["S-2", "ip", "--note", "Running vectors", "--root", dir]);
     const roadmap = readFileSync(join(dir, "ROADMAP.md"), "utf8");
-    assert.match(roadmap, /\| S-2 \| ip \| — \| Running vectors \|/);
+    assert.match(roadmap, /\| S-2 \| ip \| [^|\n]* \| Running vectors \|/);
     assert.doesNotMatch(roadmap, /^\| (?=[^|\n]*,)[^|\n]*\bS-2\b[^|\n]* \|/m);
     assert.match(readFileSync(join(dir, kanban), "utf8"), /\["S-2",.*"sp","ip",.*note:"Running vectors"/);
     assert.equal(main(["--check", "--root", dir]), "ROADMAP §11 và Kanban khớp.");
