@@ -480,3 +480,22 @@ Kết luận: trong thiết kế hiện tại (một handle core, một writer) 
 
 Chưa xác minh: hai cửa sổ thật (macOS/iPad) qua UI, hai tiến trình khác nhau (test dùng hai handle trong một tiến trình, cùng cơ chế khóa file), widget ghi (S-7), thiết bị thật.
 
+## S-1 bổ sung — đo lại trên schema ADR-27
+
+Fixture S-1 đã dựng trên schema ADR-27 (`note_types`/`note_type_fields`/`card_templates`/`notes`/`cards`/`card_states`, `search_text`, `sort_field`; xem bảng Fixture ở S-1), nên đây là lần chạy lại cả bộ đo trên cùng MacBook (M4 Pro) ngày 2026-10-31, không đổi mã. Cùng lệnh như S-1; DB dựng lại từ đầu (`TestBuildFixture`: 90.759.168 B sau VACUUM, khớp lần trước).
+
+**Điều kiện đo không sạch**: lúc chạy, load average 5,6–5,9 (GeForceNOW, WindowServer và Claude chạy nền), nên mọi số có nhiễu; số sạch ngày 2026-10-30 vẫn là số tham chiếu.
+
+| Hạng mục | 2026-10-30 (sạch) | 2026-10-31 (máy tải) | Ngưỡng |
+|---|---|---|---|
+| Cold open không kiểm tra / `quick_check` / `integrity_check` (median) | 0,595 / 90,0 / 324,1 ms | 0,602 / 70,5 / 289,4 ms | < 1,5 s |
+| Dựng hàng đợi cap 1.000 (median / p95) | 132,0 / 136,8 ms | lần 1: 817,6 / 1.138 ms · lần 2: 210,9 / 853,2 ms | < 200 ms |
+| Dựng hàng đợi không cap (median / p95) | 149,1 / 150,6 ms | lần 1: 934,8 / 1.296 ms · lần 2: 156,6 / 164,0 ms | < 200 ms |
+| Tìm `LIKE` 3 ký tự substring (median / p95) | 5,6 / 6,0 ms | lần 1: 37,8 / 44,8 ms · lần 2: 5,7 / 5,9 ms | < 150 ms |
+| Transaction chấm điểm (median / p95) | 115,9 / 155,5 µs | 583,2 µs / 2,32 ms | — |
+| ChangeSet reload 1 giờ / 7 ngày (median) | 1,2 / 17,1 ms | 7,2 / 132,8 ms | — |
+
+Đọc kết quả: khi máy rảnh hơn (lần 2) tìm kiếm và hàng đợi không cap trở về mức cũ; hàng đợi có cap vẫn có đuôi dài (median 211 ms, p95 853 ms) cho thấy biên 200 ms rất mỏng (≈1,3× khi sạch) và nhạy với tải nền. Không rút kết luận Đạt/Không đạt mới từ lần chạy nhiễu: giữ kết luận S-1 (Đạt trên MacBook sạch, biên mỏng) và chuyển việc đo hàng đợi sang thiết bị chuẩn kèm phương án `ANALYZE`/index đã ghi ở "Chưa xác minh" của S-1.
+
+**Chưa xác minh**: giữ 60 fps khi reload theo phạm vi `ChangeSet` (cần UI Swift và Instruments trên thiết bị; không đo được trên simulator hay host), thiết bị chuẩn iPhone/iPad (Q-11), đo lại khi máy rảnh.
+
