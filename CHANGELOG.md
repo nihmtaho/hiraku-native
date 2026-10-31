@@ -7,6 +7,7 @@ Mục `[Unreleased]` là thay đổi sản phẩm, mỗi PR đã duyệt merge p
 Nhóm: Thêm · Đổi · Sửa · Xóa · Tài liệu · Bảo mật. Mỗi dòng kết thúc bằng `(WP-xx, PR n)`. Chưa có mã sản phẩm.
 
 ### Thêm
+- Spike S-6: subset Noto Sans JP Regular (JIS X 0208, wght 400) 2,19 MB tại `App/Hiraku/Fonts` kèm OFL, script `Scripts/build-noto-jp.py`, đăng ký lúc chạy và màn hình debug so với fallback hệ thống; đủ glyph cho 880 mục N3, đạt ngưỡng 10 MB — Q-5 đề xuất A, chưa chạy macOS/thiết bị thật (S-6).
 - Spike S-8 (WIP, chờ review): `core/ffi` bốn hàm ABI ADR-21 (`hk_open/hk_call/hk_free/hk_close`, mã lỗi 0…5, `recover`), script `core/scripts/build-xcframework.sh` đóng `core/.spike/Hiraku.xcframework` (3 slice, 24 MB), package Swift `Packages/HirakuBridge` và màn hình debug S-8 trong app; đo trên macOS host và iPhone 18 Pro simulator: cold open→ping 0.99/10.79 ms, median 20 lần 0.064/0.134 ms, p95 1.000 call 0.001 ms, RSS không tăng — payload rỗng (transport-prove), phần thiết bị và ngưỡng 300 ms chưa xác minh (S-8).
 - Khung app M0: `App/Hiraku.xcodeproj` (một target multiplatform, iOS/iPadOS + macOS, deployment target 26.0, Swift 6 strict concurrency), một màn hình SwiftUI hiển thị tên app và nhãn "Khung M0 — chưa có tính năng", bundle id tạm `com.example.hiraku`, build và chạy trên iPhone 18 Pro simulator và macOS (App shell, PR 6)
 - Spike S-1 (nửa Go, MacBook): đo schema §4 với 50k note/200k log tại `core/spike/storage`, kết quả ở `docs/reports/M0_SPIKE.md` §S-1; iOS/iPadOS và 60 fps chưa xác minh (S-1).

@@ -12,6 +12,7 @@ struct ShellView: View {
                 .foregroundStyle(.secondary)
             #if DEBUG
             PingCheckView(result: $pingResult)
+            FontCheckView()
             #endif
         }
         .padding()
