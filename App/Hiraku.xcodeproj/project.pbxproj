@@ -17,6 +17,7 @@
 		AA000000000000000000002A /* FontCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000029 /* FontCheckView.swift */; };
 		AA0000000000000000000031 /* KanaInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000030 /* KanaInputField.swift */; };
 		AA0000000000000000000033 /* ImeCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000032 /* ImeCheckView.swift */; };
+		AA0000000000000000000035 /* AdaptiveCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000034 /* AdaptiveCheckView.swift */; };
 		AA000000000000000000002D /* NotoSansJP-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000002C /* NotoSansJP-Regular.ttf */; };
 		AA000000000000000000002F /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000002E /* OFL.txt */; };
 /* End PBXBuildFile section */
@@ -32,6 +33,7 @@
 		AA0000000000000000000029 /* FontCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontCheckView.swift; sourceTree = "<group>"; };
 		AA0000000000000000000030 /* KanaInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanaInputField.swift; sourceTree = "<group>"; };
 		AA0000000000000000000032 /* ImeCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImeCheckView.swift; sourceTree = "<group>"; };
+		AA0000000000000000000034 /* AdaptiveCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveCheckView.swift; sourceTree = "<group>"; };
 		AA000000000000000000002C /* NotoSansJP-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Regular.ttf"; sourceTree = "<group>"; };
 		AA000000000000000000002E /* OFL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,6 +78,7 @@
 				AA0000000000000000000029 /* FontCheckView.swift */,
 				AA0000000000000000000030 /* KanaInputField.swift */,
 				AA0000000000000000000032 /* ImeCheckView.swift */,
+				AA0000000000000000000034 /* AdaptiveCheckView.swift */,
 				AA000000000000000000002B /* Fonts */,
 				AA0000000000000000000007 /* Localizable.xcstrings */,
 			);
@@ -175,6 +178,7 @@
 				AA000000000000000000002A /* FontCheckView.swift in Sources */,
 				AA0000000000000000000031 /* KanaInputField.swift in Sources */,
 				AA0000000000000000000033 /* ImeCheckView.swift in Sources */,
+				AA0000000000000000000035 /* AdaptiveCheckView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

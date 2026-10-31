@@ -499,3 +499,17 @@ Fixture S-1 đã dựng trên schema ADR-27 (`note_types`/`note_type_fields`/`ca
 
 **Chưa xác minh**: giữ 60 fps khi reload theo phạm vi `ChangeSet` (cần UI Swift và Instruments trên thiết bị; không đo được trên simulator hay host), thiết bị chuẩn iPhone/iPad (Q-11), đo lại khi máy rảnh.
 
+## S-4 — Layout thích ứng
+
+Mã: `App/Hiraku/AdaptiveCheckView.swift` (debug-only, bật bằng biến môi trường `HK_SPIKE_S4=1`, chọn trong `HirakuApp`). Một `@Observable` controller (`SampleWordsController`) cấp dữ liệu giả cho cả hai View. Compact (`horizontalSizeClass == .compact`): `TabView` + `NavigationStack` + `List` + `tabViewBottomAccessory` ("Đến hạn: 12 từ" + "Ôn ngay"). Regular: `NavigationSplitView` (sidebar) + `Table` ba cột + `.inspector` với `inspectorColumnWidth(min:ideal:max: 230)`. Tất cả là thành phần hệ thống, không tùy biến kiểu dáng (ADR-15). Chạy: `SIMCTL_CHILD_HK_SPIKE_S4=1 xcrun simctl launch <udid> com.example.hiraku`.
+
+| Nền tảng | Cách kiểm | Kết quả |
+|---|---|---|
+| macOS | `xcodebuild -destination 'platform=macOS' build` | `BUILD SUCCEEDED`; app khởi chạy (tiến trình chạy); **không chụp được màn hình** (thiếu quyền Screen Recording/Accessibility) → hiển thị macOS chưa xác minh |
+| iPhone 18 Pro simulator (iOS 27.0) | build + chụp ảnh | `TabView` kính với ba tab và phụ kiện đáy hiển thị; tab Deck là `List` cuộn dưới kính, chữ Noto Sans JP đọc rõ; phụ kiện đáy hiện ở **mọi** tab kể cả Trang chủ (ADR-15 muốn ẩn ở Trang chủ: cần điều kiện theo tab chọn, chưa làm) |
+| iPad Pro 11-inch (M5) simulator, dọc | build + chụp ảnh | `NavigationSplitView` sidebar + `Table` + inspector hiển thị, inspector 230pt; Table chỉ hiện hai cột "Từ", "Cách đọc" — cột "Nghĩa" bị ẩn khi sidebar và inspector cùng mở ở bề ngang dọc (cần kiểm ngang, đóng sidebar/inspector, và đặt ưu tiên cột) |
+
+Kết luận: các thành phần gốc (`TabView` + phụ kiện đáy, `NavigationSplitView`, `Table`, `inspector`) dựng được với một controller dùng chung, khác biệt nằm ở View, nên **chưa có dấu hiệu S-4 không đáp ứng** (điều kiện xem lại ADR-15). Cần xác minh trên thiết bị thật theo ADR-15: nội dung cuộn dưới kính đọc được, tab đang chọn đọc được, phụ kiện đáy và tab bar không che CTA — ảnh simulator không thay kiểm thiết bị.
+
+Chưa xác minh: macOS (hiển thị), iPad ngang và đa cửa sổ, thiết bị thật, tương phản tab chọn Ember trên kính (chưa đặt `AccentColor`), ẩn phụ kiện đáy theo tab, ba cột của Table ở bề ngang hẹp.
+
