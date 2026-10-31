@@ -19,10 +19,12 @@ hợp, không có Q hoặc gate chặn và tài liệu liên quan đã cập nh�
 Merge vào `develop` bằng squash; sau merge ghi SHA vào task record. Kiểm tra không
 tồn tại, chưa chạy hoặc bị skip không phải PASS.
 
-Workspace hiện chưa có Git/CI/merge queue và quyền delivery đang đóng. Trả
-`BLOCKED` kèm điều kiện thiếu; không tự tạo remote, bật quyền hoặc dùng token
-admin bypass. Khi PO cấu hình delivery được bảo vệ, thực hiện đúng entrypoint đã
-duyệt; không tự chế lệnh `gh api`, push hoặc merge qua shell khác.
+Merge chỉ qua một entrypoint: `node .agents/hiraku/delivery.mjs merge <pr> --sha <head-sha>`
+(SHA đầy đủ của head đã được review). Script tự kiểm base `develop`, head khớp, status
+`hiraku/review` và check `ci` đạt đúng SHA, PR không chạm policy/checker; đủ thì bật
+auto-merge squash gắn `--match-head-commit`, GitHub ruleset kiểm lại. Script từ chối
+thì trả `BLOCKED` kèm lý do; PR chạm policy/checker do người vận hành merge. Không
+dùng `gh pr merge`, `gh api`, admin bypass hay cách khác; không đẩy commit sau khi review.
 
 ## Release
 

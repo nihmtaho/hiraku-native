@@ -30,7 +30,7 @@
 | Duyệt cổng GATE-1/2/3/4 | cuối mỗi mốc | PO |
 | iPhone/iPad thật cho S-1, S-8, IME, SC-006 (hiện chỉ có MacBook) | M0, M1a, M1b | PO |
 | Người thử SC-002, SC-001 | M1a, GATE-2 | PO |
-| CI chưa có; WP-01 dựng CI trước khi AI tự merge | đầu M1a | AI + PO |
+| CI Linux và ruleset đã dựng (ADR-33); còn job Xcode/simulator và WP-01 mở rộng CI | đầu M1a | AI + PO |
 | Đăng ký Apple Developer, chờ xét duyệt, App Review | MR | PO |
 
 Bảng dưới là **số lịch sử của một lập trình viên**, giữ để tham chiếu (xem §1).

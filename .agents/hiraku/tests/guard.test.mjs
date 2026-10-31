@@ -257,3 +257,30 @@ test("PR title and body must not credit AI", () => {
   assert.throws(ship('gh pr create --base develop --title "feat: x" --body-file -'), /stdin/);
   assert.throws(ship('gh pr create --base develop --title "feat: x" --body-file .agents/tmp/missing.md'), /đọc/);
 });
+
+test("only Reviewer records a verdict and only Shipper merges, both through delivery.mjs", () => {
+  const sha = "a".repeat(40);
+  const review = `node .agents/hiraku/delivery.mjs review 7 PASS --sha ${sha}`;
+  const merge = `node .agents/hiraku/delivery.mjs merge 7 --sha ${sha}`;
+  assert.doesNotThrow(() => assertShell(root, "hiraku-reviewer", review));
+  assert.doesNotThrow(() => assertShell(root, "hiraku-shipper", merge));
+  for (const agent of ["hiraku-lead", "hiraku-coder", "general", "hiraku-shipper"]) {
+    assert.throws(() => assertShell(root, agent, review), agent);
+  }
+  for (const agent of ["hiraku-lead", "hiraku-coder", "general", "hiraku-reviewer"]) {
+    assert.throws(() => assertShell(root, agent, merge), agent);
+  }
+});
+
+test("delivery.mjs rejects other paths, short SHAs and chained use", () => {
+  const sha = "a".repeat(40);
+  for (const command of [
+    `node ./.agents/hiraku/delivery.mjs merge 7 --sha ${sha}`,
+    `node /tmp/delivery.mjs merge 7 --sha ${sha}`,
+    "node .agents/hiraku/delivery.mjs merge 7 --sha abc123",
+    `node .agents/hiraku/delivery.mjs merge 7 --sha ${sha} --extra`,
+    `echo x && node .agents/hiraku/delivery.mjs merge 7 --sha ${sha}; gh pr merge 7`,
+  ]) {
+    assert.throws(() => assertShell(root, "hiraku-shipper", command), command);
+  }
+});

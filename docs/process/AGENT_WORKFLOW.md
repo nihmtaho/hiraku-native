@@ -33,8 +33,8 @@ không cấp thêm quyền, không tạo lại task/review/delivery thành skill
 |---|---|---|---|---|
 | `hiraku-lead` | phiên chính | Mọi lệnh trừ delivery | Chỉ `.agents/tasks/`, `.agents/tmp/` | coder, reviewer, shipper, explore, general, plan |
 | `hiraku-coder` | subagent | Mọi lệnh trừ delivery; commit/push nhánh task | Source/docs trừ policy | explore |
-| `hiraku-reviewer` | subagent | Mọi lệnh trừ delivery, commit/push, PR | Không | explore |
-| `hiraku-shipper` | subagent | Mọi lệnh trừ delivery, commit/push; được `gh pr create --base develop` | Chỉ `.agents/tasks/`, `.agents/tmp/` | Không |
+| `hiraku-reviewer` | subagent | Mọi lệnh trừ delivery, commit/push, PR; chỉ `delivery.mjs review` ghi verdict | Không | explore |
+| `hiraku-shipper` | subagent | Mọi lệnh trừ delivery, commit/push; được `gh pr create --base develop` và `delivery.mjs merge` | Chỉ `.agents/tasks/`, `.agents/tmp/` | Không |
 | `explore` | subagent | Git đọc | Không | Không |
 | `general` | subagent | Như Coder, trừ commit/push | Source/docs trừ policy | Không |
 | `plan` | lập kế hoạch | Git đọc | Không | explore |
@@ -56,10 +56,12 @@ file; skill chỉ nạp mô tả, toàn văn khi dùng. Vì vậy:
 - **Bàn giao:** Coder được `git commit` (cấm `--amend`, `--no-verify`) và
   `git push [-u] origin <type>/...` (`feat|fix|refactor|docs|test|chore|hotfix`);
   cấm force push, refspec sang nhánh khác, đẩy `develop`/`main`.
-- **Delivery đóng với mọi vai:** guard quét toàn bộ raw command (cả sau `&&`, `;`,
+- **Delivery thô đóng với mọi vai:** guard quét toàn bộ raw command (cả sau `&&`, `;`,
   `|`) và chặn `git merge/tag/rebase/reset --hard/filter-branch`,
   `gh pr merge/review`, `gh release`, `gh api`, `gh repo create/edit/delete`,
-  `xcrun altool/notarytool`, `fastlane`, `codesign`, `security`.
+  `xcrun altool/notarytool`, `fastlane`, `codesign`, `security`. Hai việc duy nhất đi
+  qua `.agents/hiraku/delivery.mjs` (§4): Reviewer ghi verdict, Shipper bật merge; guard
+  chỉ nhận đúng đường dẫn, đúng vai, SHA đầy đủ.
 - **Đường dẫn:** mọi vai bị chặn đọc secret (`.env*` trừ `.env.example`, `*.p8`,
   `*.p12`, `*.pem`, `*.key`, keychain) và sửa policy (`AGENTS.md`,
   `docs/process/AGENT_WORKFLOW.md`, `docs/architecture/DECISIONS.md`, `docs/process/RELEASE.md`, `docs/process/TEST_PLAN.md`, cấu hình agent,
@@ -78,8 +80,8 @@ quyền sửa file: Reviewer không sửa source, Shipper chỉ sửa task recor
 lệnh shell; guard chặn qua tool edit, còn shell dựa vào prompt và review.
 
 Shell tự do vẫn chịu luật cứng trong `AGENTS.md`: phụ thuộc mới cần ADR, không
-sửa tay generated, không sửa policy/checker để làm task xanh. Merge, rebase nhánh đã push, tag và
-phát hành do người vận hành thực hiện cho tới khi có CI và required checks.
+sửa tay generated, không sửa policy/checker để làm task xanh. Rebase nhánh đã push, tag và
+phát hành do người vận hành thực hiện; merge vào `develop` đi qua `delivery.mjs` (§4).
 
 ### Giới hạn bảo vệ
 
@@ -116,22 +118,43 @@ approval cũ. Thiếu tool hoặc kiểm tra chưa chạy phải ghi rõ, không
 Comment trong mã, tiêu đề và mô tả PR, cùng task record viết bằng tiếng Anh. PR
 dùng `.github/pull_request_template.md`; task dùng `.agents/templates/task.md`; record ở `.agents/tasks/<task-id>.md`.
 
-Trạng thái hiện tại: **đã có Git và remote `origin` (GitHub)**; chưa có core/App, CI hoặc
-required checks. Không được đánh dấu đã merge hoặc đã phát hành khi thiếu CI.
+Trạng thái hiện tại: **đã có Git, remote `origin` (GitHub), workflow CI `ci` và ruleset
+`develop` bắt buộc `ci` + `hiraku/review`** (sau khi người vận hành áp dụng, xem §4). Chưa
+có job build Xcode/simulator. Không được đánh dấu đã merge hoặc đã phát hành khi thiếu CI.
 Không tự tạo remote hoặc repository mới.
 
 ## 4. Merge và phát hành
 
 Chính sách PO đã chốt: AI tự merge khi Review độc lập và CI đạt; PO duyệt gate
-sản phẩm và phát hành. **Coder commit/push nhánh task và Shipper mở PR vào `develop` đã mở; quyền merge/tag/publish hiện đóng có chủ đích.**
-Thiếu CI/required checks không thể khắc phục bằng một cấu hình giả.
+sản phẩm và phát hành (ADR-33). Coder commit/push nhánh task, Shipper mở PR vào
+`develop`, Reviewer ghi verdict và Shipper bật merge; tag/publish vẫn đóng.
 
-Trước khi cấp quyền delivery, người vận hành phải cấu hình repository/nhánh đích,
-bot có quyền tối thiểu, Review PASS đúng SHA, required checks, CI trên revision
-tích hợp/merge queue và bảo vệ policy/checker. Nếu Git host yêu cầu approval của
-tài khoản khác, dùng identity độc lập; không dùng admin bypass hoặc cùng identity
-để giả review độc lập. Chỉ mở đúng entrypoint/workflow được bảo vệ, không mở shell
-tổng quát cho Shipper. Đây là điều kiện môi trường, không phải skill còn thiếu.
+Luồng, mọi bước gắn với head SHA:
+
+1. Reviewer (phiên độc lập, không phải phiên đã viết mã) đọc diff của SHA đó rồi chạy
+   `node .agents/hiraku/delivery.mjs review <pr> <PASS|FAIL> --sha <sha>`. Script đặt commit
+   status `hiraku/review`; push mới đổi SHA nên verdict cũ không còn áp dụng.
+2. Workflow `.github/workflows/ci.yml` (job `ci`, Linux) chạy `go vet`, `go test -race`,
+   test guard/delivery và `wp-status --check` trên merge ref của PR.
+3. Shipper chạy `node .agents/hiraku/delivery.mjs merge <pr> --sha <sha>`. Script kiểm
+   base `develop`, head khớp, `hiraku/review` và `ci` đều success trên SHA, PR không draft và
+   không chạm policy/checker (`protectedPath` trong `guard.mjs`, trừ `.agents/tasks/`), rồi bật
+   auto-merge squash với `--match-head-commit`.
+4. Ruleset `develop` (`.github/rulesets/develop.json`) kiểm lại độc lập với agent: squash
+   duy nhất, `ci` và `hiraku/review` bắt buộc, nhánh phải mới nhất so với `develop`, không bypass.
+
+PR chạm policy/checker (`AGENTS.md`, `docs/process/`, `DECISIONS.md`, `.github/`, `.agents/` trừ
+tasks, cấu hình agent, script kiểm) do người vận hành review và merge; script từ chối.
+
+Giới hạn cần biết:
+
+- `hiraku/review` do cùng một tài khoản GitHub ghi; tính độc lập dựa vào phiên và quy trình
+  (Reviewer không ghi `PASS` cho PR phiên đó viết), không do GitHub cưỡng chế. Muốn cưỡng
+  chế thật, thêm bot account approve riêng.
+- CI chưa có job Xcode/simulator: PR có Swift vẫn phải ghi bằng chứng build trong PR.
+- Guard không phải OS sandbox (xem trên): shell tự do có thể gọi `gh` qua interpreter.
+  Lớp chặn cuối là ruleset và quyền token; không đặt token admin trong môi trường agent.
+- Áp dụng ruleset và bật "Allow auto-merge" là việc của người vận hành (xem ADR-33).
 
 PO duyệt release theo `docs/process/RELEASE.md`, gắn version/commit/kênh/artifact. Merge không
 đồng nghĩa milestone được PO nghiệm thu. Upload TestFlight không đồng nghĩa
