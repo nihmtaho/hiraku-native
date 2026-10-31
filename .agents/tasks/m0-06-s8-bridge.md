@@ -5,8 +5,8 @@
 - Status: review
 - Owner: hiraku-coder
 - Milestone / WP: M0 / S-8 (GATE-1 must-achieve)
-- Branch / PR: none for this task; keep working on the already-merged-tree state (develop = `340c570` after PR #7); decide the branch at PR time. Do not rebase the open PR #6 branch (`chore/m0-spikes`) into this work.
-- Base / head SHA: `develop` = `340c570` (PR #7 merged)
+- Branch / PR: `feat/m0-s8-bridge`, PR #8 (head `f36767e`, 18 files +676/−9 on top of `develop` = `b2a923f`); created after PR #6 merged
+- Base / head SHA: base `develop` = `b2a923f` · head `f36767e` (PR #7 merged earlier as `340c570`)
 - Dependencies: `m0-05-app-skeleton` (app shell `App/Hiraku.xcodeproj` is the host); `m0-02-mattn` (driver + build script) merged via PR #6 or present in the tree
 - Required reading: `docs/architecture/DECISIONS.md` ADR-21, ADR-12/ADR-32, §5 (S-8 fallback conditions); `AGENTS.md` laws G2 (only `core/ffi` imports C), G3 (no `time.Now` in domain/service, no globals), B2 (Swift only `HirakuBridge` calls `hk_*`), timing laws; `docs/product/spec.md` §3.3 S-8, NFR-002/003
 - Blocking Q / gate: S-8 is a GATE-1 must-achieve. The proposed threshold "Go runtime start < 300 ms on the reference device" still needs PO confirmation; Q-11 keeps the device half unverified. This spike measures on macOS host and iOS simulator and explicitly marks the device numbers "chưa xác minh".
