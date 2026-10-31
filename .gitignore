@@ -4,3 +4,7 @@ node_modules/
 core/.spike/
 .commandcode/taste/
 .commandcode/settings.local.json
+DerivedData/
+build/
+xcuserdata/
+*.xcuserstate

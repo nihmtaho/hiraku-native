@@ -295,9 +295,11 @@ Nguồn cập nhật bắt buộc cho mọi PR (`docs/process/GIT_WORKFLOW.md` �
 | Spike 0 | rv | — | Working-tree; `mattn/go-sqlite3 v1.14.52`, không còn `net`, build 3 slice xanh (build-only, Q-11 partial); chờ review — ADR-32 do PO đắp |
 | S-3, S-4, S-5, S-6, ADR-15 | rd | — | M0; đã có Git/remote, chưa có CI, chưa bắt đầu, chưa có mã `core/` |
 | S-2 | rv | — | Working-tree: Không đạt khớp vector (go-fsrs/v4 v4.0.0; 3/17 due lệch, dung sai 0); chờ review — PO cân nhắc ngữ nghĩa ts-fsrs. |
-| S-1 + S-7, S-1 bổ sung, S-8, Báo cáo spike | bl | — | Q-11 chốt một phần (MacBook, chưa có iPhone/iPad thật); phần build của S-8 chạy được sau Spike 0 |
+| S-1 | rv | — | Nửa Go Đạt trên MacBook; iOS/iPadOS và 60 fps chưa xác minh — chờ review. |
+| S-7, S-1 bổ sung, S-8, Báo cáo spike | bl | — | Q-11 chốt một phần (MacBook, chưa có iPhone/iPad thật); phần build của S-8 chạy được sau Spike 0 |
 | Q-13, Q-1, Q-6 | dn | — | Đã chốt |
 | Q-12 | dn | — | PO duyệt phương án B (2026-10-30) |
 | Q-11, Q-D2 | rv | — | Q-11 chốt một phần (MacBook; thiếu iPhone/iPad thật), Q-D2 chờ Design |
 | `docs/architecture/ARCHITECTURE.md`, `AGENTS.md`, `COPY.md`, `docs/process/TEST_PLAN.md` | rv | `bde958f` | Đã soạn, chờ duyệt M0b; 58 test `.opencode` đạt 2026-10-29 |
 | RV-01…RV-08 | rd | — | Việc từ review, chờ quyết định |
+| App shell | rv | — | Working-tree: App/Hiraku.xcodeproj build và chạy trên iPhone 18 Pro simulator lẫn macOS; bundle id/team vẫn tạm; chờ review. |
