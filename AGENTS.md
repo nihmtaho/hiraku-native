@@ -25,7 +25,7 @@ App học từ vựng tiếng Nhật (FSRS). Logic và dữ liệu ở Go core (
 5. Mọi ghi nhiều bảng nằm trong một transaction của core. Swift không có transaction.
 6. Thời gian: `AppClock` ở Swift cấp `now_ms`. Không `Date()` hay `Task.sleep` trực tiếp trong Controller.
 7. UI: token `HK*`, `AppIcon` (SF Symbols), String Catalog tiếng Việt. Không hard-code màu, chuỗi, cỡ chữ.
-8. Phụ thuộc mới cần ADR. Đã chốt: `modernc.org/sqlite` (ADR-23), `swift-protobuf`, `google.golang.org/protobuf`, buf (ADR-22). GRDB đã bỏ (ADR-20).
+8. Phụ thuộc mới cần ADR. Đã chốt: `github.com/mattn/go-sqlite3` (ADR-32), `swift-protobuf`, `google.golang.org/protobuf`, buf (ADR-22). GRDB đã bỏ (ADR-20).
 9. Swift 6 strict; không `try!`, force unwrap trong logic nghiệp vụ.
 10. Field tùy biến (ADR-27): không hard-code bốn field cũ (`word`, `reading`, `meaning`, `example`) ngoài định nghĩa kiểu hệ thống. Logic học, gõ từ, trùng từ, tìm kiếm, kiểu chữ chọn theo **role**, không theo tên field. Giá trị khóa theo `field_id`. Swift không parse `notes.fields`. FSRS và log khóa theo `card_id`, không `word_id`.
 11. Profile (ADR-28): core không biết khái niệm profile, không tự chọn đường dẫn. Không tách DB theo deck. Không truy vấn chéo profile; mọi dữ liệu (hàng đợi, settings, thống kê, sao lưu) là của profile đang mở.
