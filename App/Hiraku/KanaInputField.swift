@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Single real text field per ADR-09: IME, suggestions and VoiceOver stay native.
+// Single real text field so IME, suggestions and VoiceOver stay native.
 // SwiftUI does not expose marked text, so the platform field is wrapped.
 struct KanaInputField {
     @Binding var text: String
@@ -125,8 +125,8 @@ extension KanaInputField: NSViewRepresentable {
                 self?.sync(field)
             }
             parent.probe?.pressReturn = { [weak self, weak field] in
-                guard let self, let editor = self.editor(of: field) else { return }
-                _ = self.control(field ?? NSTextField(), textView: editor,
+                guard let self, let field, let editor = self.editor(of: field) else { return }
+                _ = self.control(field, textView: editor,
                                  doCommandBy: #selector(NSResponder.insertNewline(_:)))
             }
         }
