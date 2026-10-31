@@ -460,3 +460,23 @@ Cài đặt: `App/Hiraku/KanaInputField.swift` bọc `UITextField` (iOS/iPadOS) 
 | iOS: Return sau khi chốt | như trên | `submits: 1`, `graded: djか` — Đạt |
 
 **Chưa xác minh (đây là điểm chính của S-3):** marked text trong các kiểm tra trên do mã debug đặt bằng API, **không phải IME Nhật thật**. Chưa kiểm: bàn phím kana/romaji thật trên iPhone, bàn phím phần cứng trên iPad, IME macOS; macOS chỉ build, chưa chạy; việc `textFieldShouldReturn` có được gọi khi IME thật đang compose hay không (nhánh `markedTextRange != nil` có thể không bao giờ chạy trên iOS, khi đó IME tự tiêu thụ Return và kết quả vẫn đúng); thanh gợi ý và VoiceOver. Cần PO thử tay trên thiết bị theo SC-007 trước khi coi S-3 Đạt (GATE-1).
+
+## S-5 — Hai cửa sổ cùng chấm một DB
+
+Mã: `core/spike/storage/concurrent_grade_test.go`, chạy trên bản sao fixture S-1 (50.000 thẻ) với `gradeOnce` của S-1 (đọc `card_states` trong transaction, cập nhật, ghi một `review_logs`). Hai "cửa sổ" là hai goroutine chấm xen kẽ cùng 10 thẻ, mỗi cửa sổ 200 lần; thẻ trùng giữa hai cửa sổ chính là tình huống UC-08 E6. Kiểm: `PRAGMA integrity_check = ok`, đúng 400 `review_logs` mới, và với mỗi thẻ `prev_reps` của các log xếp theo thứ tự liền nhau (0,1,2…): một lần chấm dùng trạng thái cũ sẽ lặp giá trị.
+
+```sh
+cd core
+HIRAKU_SPIKE_S1=1 go test -race -run 'TestTwoWindows|TestTwoHandles' -v -count=1 ./spike/storage
+```
+
+| # | Kịch bản | Kết quả | Kết luận |
+|---|---|---|---|
+| 1 | Một handle core dùng chung (`MaxOpenConns(1)`, thiết kế R-05) | 400/400 lần chấm thành công, 356 ms, không log mất/trùng, `prev_reps` liền mạch, `integrity_check` ok, `-race` sạch | Đạt |
+| 2 | Hai handle riêng cùng một file, `_txlock=immediate` | 400/400 thành công, 379 ms, cùng kiểm tra đạt | Đạt |
+| 3 | Hai handle riêng, `_txlock=deferred` (mặc định) | **267–282/400 lần chấm lỗi `database is locked`** (ba lần chạy), DB không hỏng (`integrity_check` ok) | Không dùng được |
+
+Kết luận: trong thiết kế hiện tại (một handle core, một writer) S-5 **Đạt**: chấm trùng thẻ không hỏng dữ liệu và mỗi lần chấm đọc lại trạng thái mới nhất. Phát hiện cho WP-02a: transaction chấm điểm bắt đầu bằng `SELECT` rồi `UPDATE` nên với `deferred` sẽ lỗi `SQLITE_BUSY` ngay khi có hai handle (cửa sổ phụ, widget/extension ở tiến trình khác, S-7) dù đã có `busy_timeout`; mọi handle ghi phải mở với `_txlock=immediate`, hoặc chỉ một handle ghi.
+
+Chưa xác minh: hai cửa sổ thật (macOS/iPad) qua UI, hai tiến trình khác nhau (test dùng hai handle trong một tiến trình, cùng cơ chế khóa file), widget ghi (S-7), thiết bị thật.
+

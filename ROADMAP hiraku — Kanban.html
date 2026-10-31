@@ -216,7 +216,7 @@ var raw=[
  ["Báo cáo spike","Kết quả Đạt/Không đạt kèm số đo từng S-*, đề xuất quyết định","M0","doc","bl",{d:0.5},{ref:"ROADMAP §3.1"}],
  ["Spike 0","Xác minh mattn/go-sqlite3 build được cho ios/arm64 và simulator; go list -deps không có net","M0","rev","dn",{x:"1–2 ngày (đề xuất)"},{ref:"mattn/go-sqlite3, luật G5",note:"Working-tree: mattn v1.14.52, không còn net, 3 slice build xanh (build-only); ADR-32 chốt (PR 8).",f:"F-19"}],
  ["App shell","Khung SwiftUI tối thiểu, một target multiplatform iOS/iPadOS + macOS, làm host cho S-3, S-4, S-6, S-7, S-8","M0","wp","rv",{x:"≈ 0,5 ngày (đề xuất)"},{ref:"m0-05-app-skeleton; ADR-13, ADR-17",note:"Working-tree: App/Hiraku.xcodeproj build và chạy trên iPhone 18 Pro simulator lẫn macOS; bundle id/team vẫn tạm; chờ review."}],
- ["S-5","Hai cửa sổ cùng ghi một DB, chấm trùng một thẻ","M0","rev","rd",{x:"≈ 1 ngày (đề xuất)"},{ref:"spec §3.3 S-5, UC-08 E6",note:"Đã thêm vào M0 ở ROADMAP v1.9."}],
+ ["S-5","Hai cửa sổ cùng ghi một DB, chấm trùng một thẻ","M0","rev","rv",{x:"≈ 1 ngày (đề xuất)"},{ref:"spec §3.3 S-5, UC-08 E6",note:"Spike Đạt ở thiết kế một handle một writer; deferred lock lỗi busy với hai handle (cần immediate); chưa chạy UI hai cửa sổ — chờ review"}],
 
  // M0b
  ["docs/architecture/ARCHITECTURE.md","Luật Swift L1–L11, luật Go G1–G8, khuôn mẫu feature, contract hiraku.v1","M0b","doc","rv",{w:0.5},{ref:"ARCHITECTURE v2.2",note:"Đã soạn, chờ duyệt ở M0b."}],
