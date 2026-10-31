@@ -424,3 +424,23 @@ Kết quả đo lần lượt, **simulator/host, not device** (từ JSON `.agent
 | Thiết bị chuẩn (SC-006), ngưỡng 300 ms, contract thật WP-01 | chưa xác minh |
 
 Cảnh báo driver: build c-archive in cảnh báo `gethostuuid() is disabled` từ `sqlite3-binding.c` của mattn (lỗi subsystem có chủ đích của sandbox Apple); không ảnh hưởng hành vi trên Apple và đã xuất hiện từ Spike 0.
+
+## S-6 — Đóng gói Noto Sans JP
+
+Nguồn: `google/fonts` `ofl/notosansjp/NotoSansJP[wght].ttf` (variable, 9.589.900 B, v2.004) và `OFL.txt` cùng thư mục, tải 2026-10-31. OFL 1.1 cho phép đóng gói và subset; Reserved Font Name là "Source", bản subset giữ tên "Noto Sans JP" nên hợp lệ; `OFL.txt` được đưa vào bundle.
+
+Build: `uv run --with fonttools --with brotli Scripts/build-noto-jp.py <NotoSansJP[wght].ttf> App/Hiraku/Fonts/NotoSansJP-Regular.ttf`. Cố định `wght=400` (DESIGN `jp-hero`/`jp-term` đều 400), bỏ hinting, giữ `kern/vert/vrt2/palt/ccmp`, sửa name/PostScript thành `NotoSansJP-Regular`. Charset: ASCII, dấu câu CJK/fullwidth, kana, toàn bộ JIS X 0208 (6.355 kanji ⊃ jōyō ⊃ JLPT N5–N1) — 7.192 codepoint yêu cầu, 7.167 có glyph trong font.
+
+| Chỉ số | Kết quả |
+|---|---|
+| Kích thước file | 2.293.328 B (2,19 MiB), ngưỡng 10 MB → Đạt |
+| Thêm vào app | ≈ 2,2 MB (`du`: 2240 KB trong `.app`, cả iOS simulator và macOS) |
+| Glyph | 1.251 ký tự non-Latin của 880 mục N3 (`docs/mimikara-n3`): thiếu 0 → Đạt |
+| Giấy phép | OFL 1.1 → Đạt |
+| Hiển thị | `FontCheckView` (debug) trên iPhone 18 Pro simulator: `CTFontCopyFamilyName == "Noto Sans JP"`, 開/kana/kanji hiếm (憂鬱, 薔薇) đúng, đối chiếu cạnh fallback hệ thống → Đạt |
+| Build | macOS và iOS simulator `BUILD SUCCEEDED` |
+
+Kết luận: phương án A (đóng gói) đạt cả ba tiêu chí S-6 → đề xuất chốt Q-5 = A (quyền PO/Design).
+
+Chưa xác minh: danh sách JLPT N5–N1 chính thức (không có nguồn trong repo; dùng JIS X 0208 làm cận trên); chạy macOS (chỉ build); thiết bị thật; trọng số khác 400 (mỗi static weight thêm ≈ 2,3 MB); đăng ký bằng `CTFontManagerRegisterFontsForURL` lúc chạy thay vì Info.plist như DESIGN §Font (một đoạn mã dùng chung hai nền tảng; DESIGN cần cập nhật khi chốt).
+

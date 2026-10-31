@@ -13,6 +13,10 @@
 		AA0000000000000000000020 /* HirakuBridge in Frameworks */ = {isa = PBXBuildFile; productRef = AA0000000000000000000021 /* HirakuBridge */; };
 		AA0000000000000000000023 /* PingCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000024 /* PingCheckView.swift */; };
 		AA0000000000000000000025 /* Spike8.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000026 /* Spike8.swift */; };
+		AA0000000000000000000028 /* NotoFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000027 /* NotoFont.swift */; };
+		AA000000000000000000002A /* FontCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000029 /* FontCheckView.swift */; };
+		AA000000000000000000002D /* NotoSansJP-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000002C /* NotoSansJP-Regular.ttf */; };
+		AA000000000000000000002F /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000002E /* OFL.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		AA0000000000000000000008 /* Hiraku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hiraku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA0000000000000000000024 /* PingCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingCheckView.swift; sourceTree = "<group>"; };
 		AA0000000000000000000026 /* Spike8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spike8.swift; sourceTree = "<group>"; };
+		AA0000000000000000000027 /* NotoFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotoFont.swift; sourceTree = "<group>"; };
+		AA0000000000000000000029 /* FontCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontCheckView.swift; sourceTree = "<group>"; };
+		AA000000000000000000002C /* NotoSansJP-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Regular.ttf"; sourceTree = "<group>"; };
+		AA000000000000000000002E /* OFL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +44,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA000000000000000000002B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				AA000000000000000000002C /* NotoSansJP-Regular.ttf */,
+				AA000000000000000000002E /* OFL.txt */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		AA0000000000000000000002 = {
 			isa = PBXGroup;
 			children = (
@@ -51,6 +68,9 @@
 				AA0000000000000000000006 /* ShellView.swift */,
 				AA0000000000000000000024 /* PingCheckView.swift */,
 				AA0000000000000000000026 /* Spike8.swift */,
+				AA0000000000000000000027 /* NotoFont.swift */,
+				AA0000000000000000000029 /* FontCheckView.swift */,
+				AA000000000000000000002B /* Fonts */,
 				AA0000000000000000000007 /* Localizable.xcstrings */,
 			);
 			path = Hiraku;
@@ -129,6 +149,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA0000000000000000000015 /* Localizable.xcstrings in Resources */,
+				AA000000000000000000002D /* NotoSansJP-Regular.ttf in Resources */,
+				AA000000000000000000002F /* OFL.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +165,8 @@
 				AA0000000000000000000014 /* ShellView.swift in Sources */,
 				AA0000000000000000000023 /* PingCheckView.swift in Sources */,
 				AA0000000000000000000025 /* Spike8.swift in Sources */,
+				AA0000000000000000000028 /* NotoFont.swift in Sources */,
+				AA000000000000000000002A /* FontCheckView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

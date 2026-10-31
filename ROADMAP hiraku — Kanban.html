@@ -209,7 +209,7 @@ var raw=[
  ["S-2","Đánh giá thư viện FSRS với bộ test vector tham chiếu","M0","sp","rv",{d:1},{ref:"ADR-26, spec §3.3 S-2",note:"Working-tree: Không đạt khớp vector (go-fsrs/v4 v4.0.0; 3/17 due lệch, dung sai 0); chờ review — PO cân nhắc ngữ nghĩa ts-fsrs."}],
  ["S-3","IME: nhận biết marked text, Return chốt IME, một trường điều khiển ô kana (iOS, iPadOS, macOS)","M0","sp","rd",{d:1.5},{ref:"ADR-09, UC-07",note:"Bắt buộc đạt ở GATE-1."}],
  ["S-4","Layout thích ứng: Table, NavigationSplitView, inspector 230pt, phụ kiện đáy tab bar","M0","sp","rd",{d:1},{ref:"ADR-15, ADR-18"}],
- ["S-6","Đóng gói Noto Sans JP (subset), đo kích thước","M0","sp","rd",{d:0.5},{ref:"Q-5",note:"Ngưỡng đề xuất 10 MB; vượt hoặc thiếu glyph thì dùng Hiragino Sans."}],
+ ["S-6","Đóng gói Noto Sans JP (subset), đo kích thước","M0","sp","rv",{d:0.5},{ref:"Q-5",note:"Spike Đạt trên simulator: 2,19 MB, 0 glyph thiếu (N3), OFL; đề xuất Q-5 = A; macOS/thiết bị chưa chạy — chờ review"}],
  ["ADR-15","Duyệt chrome Liquid Glass trên thiết bị thật","M0","sp","rd",{d:0.5},{ref:"ADR-15"}],
  ["S-8","Build core/ffi thành c-archive 3 slice, đóng XCFramework, đo RSS và khởi động Go runtime, 1.000 lần hk_call không rò","M0","sp","rv",{d:5},{ref:"ADR-20, ADR-21",blk:"Q-11",note:"Working-tree: XCFramework + hk_* spike Đạt trên macOS và simulator; phần thiết bị (SC-006) chưa xác minh, ngưỡng 300 ms chờ PO — chờ review",f:"F-19"}],
  ["S-1 bổ sung","Đo lại github.com/mattn/go-sqlite3 trên thiết bị chuẩn; reload theo phạm vi giữ 60 fps","M0","sp","bl",{d:2},{ref:"ADR-24, ADR-32",blk:"Q-11",note:"Đo lại trên schema ADR-27 (notes/cards, search_text); ROADMAP v1.9 đã làm rõ."}],
