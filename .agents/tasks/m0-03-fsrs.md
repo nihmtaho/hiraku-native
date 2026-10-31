@@ -2,7 +2,7 @@
 
 ## Contract
 
-- Status: blocked
+- Status: done (merged via PR 6)
 - Owner: hiraku-coder
 - Milestone / WP: M0 / S-2 (feeds GATE-1; blocks WP-03)
 - Branch / PR: none; working tree only (the tree already carries the uncommitted `.agents/` migration and Spike 0 files — do not commit)
