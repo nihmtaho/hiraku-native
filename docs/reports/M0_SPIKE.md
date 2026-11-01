@@ -20,9 +20,9 @@ Trạng thái ngày 2026-10-31, mọi số đo trên MacBook M4 Pro host và iOS
 | S-6 | Đạt: 2,19 MB, 0 glyph thiếu cho 880 mục N3, OFL 1.1 | macOS và thiết bị chạy thật |
 | S-7 | **Chưa làm** | App Group, widget, sao lưu: cần thiết bị và Personal Team |
 | S-8 (GATE-1 bắt buộc) | Đạt trên macOS và simulator: archive, ABI, bridge, startup, rò bộ nhớ | Thiết bị chuẩn, ngưỡng 300 ms (PO) |
-| ADR-15 | **Chưa duyệt** | PO duyệt chrome kính trên thiết bị theo tiêu chí ADR-15 |
+| ADR-15 | Đạt (simulator): (a)(b)(c) Đạt trên simulator với tint Ember; 2 ảnh Miễn (PO 2026-11-01) | macOS/60fps/thiết bị chưa xác minh |
 
-**GATE-1 do PO quyết**. Chưa có bằng chứng: S-3 với IME thật (GATE-1 bắt buộc), thiết bị cho S-1/S-8 (đã bỏ qua, ghi chưa xác minh), S-7 và ADR-15.
+**GATE-1 do PO quyết**. Chưa có bằng chứng: S-3 với IME thật (GATE-1 bắt buộc), thiết bị cho S-1/S-8 (đã bỏ qua, ghi chưa xác minh), S-7.
 
 ### Đề xuất quyết định (thuộc PO/Design)
 
