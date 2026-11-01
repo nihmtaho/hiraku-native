@@ -46,6 +46,7 @@ Nhóm: Thêm · Đổi · Sửa · Xóa · Tài liệu · Bảo mật. Mỗi dò
 - Thêm `OPENCODE.md`, mẫu task, `TEST_PLAN.md` và `RELEASE.md`; đóng quyền delivery khi chưa có Git/remote/CI, không coi checklist là bằng chứng đã đạt.
 - Cập nhật AGENTS/ROADMAP theo mô hình AI; sửa mẫu Package.swift để khai báo package HirakuTesting mà test target đang dùng.
 - Không tự chốt nghiệp vụ xóa, Q-25 hoặc phạm vi CloudKit MR/M4; ghi blocker rõ trong quy trình.
+- Duyệt chrome kính ADR-15 từ ảnh simulator S-4 (iPhone 18 Pro và iPad Pro 13-inch dọc, SDK 27.2): đề xuất (a) Đạt, (b) Đạt (round 2 đặt tint Ember `#FF4D2E` trên `TabView` màn debug, tab đang chọn đọc rõ), (c) Đạt; PO 2026-11-01 miễn ảnh iPad ngang và tab Deck iPhone (join đợt kiểm thiết bị); macOS và thiết bị thật giữ chưa xác minh — chờ PO duyệt (ADR-15, PR 20).
 
 ## Đợt rà soát 2026-10-29
 

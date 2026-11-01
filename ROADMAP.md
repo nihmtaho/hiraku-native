@@ -293,7 +293,7 @@ Nguồn cập nhật bắt buộc cho mọi PR (`docs/process/GIT_WORKFLOW.md` �
 | Mã | Trạng thái | PR / commit | Ghi chú (phần còn lại, blocker) |
 |---|---|---|---|
 | Spike 0 | dn | 8 | Working-tree; `mattn/go-sqlite3 v1.14.52`, không còn `net`, build 3 slice xanh (build-only, Q-11 partial); ADR-32 đã chốt (PR 8) |
-| ADR-15 | rd | — | M0; đã có Git/remote, chưa có CI, chưa bắt đầu, chưa có mã `core/` |
+| ADR-15 | rv | — | Task m0-07-adr15: review từ ảnh simulator S-4, branch docs/m0-07-adr15-glass-review, PR 20; thiết bị giữ chưa xác minh |
 | S-5 | dn | 15 | Đạt ở thiết kế một handle một writer; deferred lock lỗi busy với hai handle (WP-02a dùng immediate); UI hai cửa sổ chưa xác minh |
 | S-4 | dn | 17 | Thành phần gốc dựng được trên iPhone/iPad simulator; macOS chưa chụp, thiết bị thật chưa xác minh (bỏ qua thiết bị) |
 | S-3 | rv | — | Wrapper UIKit/AppKit chạy trên simulator với marked text lập trình; IME Nhật thật, iPad bàn phím, macOS chưa xác minh — cần PO thử tay (SC-007) |
