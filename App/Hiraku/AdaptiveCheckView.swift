@@ -48,6 +48,8 @@ struct AdaptiveCheckView: View {
             }
             Tab("Cài đặt", systemImage: "gearshape") { Text(verbatim: "Settings") }
         }
+        // Mirror the Ember accent so the simulator shot tests the real selected-tab tint.
+        .tint(Color(red: 1.0, green: 0.302, blue: 0.180))
         #if os(iOS)
         .tabViewBottomAccessory {
             HStack {
