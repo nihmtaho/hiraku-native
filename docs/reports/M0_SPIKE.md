@@ -556,3 +556,35 @@ Kết luận: các thành phần gốc (`TabView` + phụ kiện đáy, `Navigat
 
 Chưa xác minh: macOS (hiển thị), iPad ngang và đa cửa sổ, thiết bị thật, tương phản tab chọn Ember trên kính (chưa đặt `AccentColor`), ẩn phụ kiện đáy theo tab, ba cột của Table ở bề ngang hẹp.
 
+## ADR-15 — Duyệt chrome kính (bằng chứng simulator S-4, chờ PO)
+
+Base: working-tree trên `docs/m0-07-adr15-glass-review` (từ `develop` = `1947c9f3a9c94af7d1087c7d3046ffb7a7a27a18`, rút gọn `1947c9f`) · Ngày chạy: 2026-11-01 · Kết luận: **chờ PO duyệt** (mức `simulator`; thiết bị thật giữ "chưa xác minh" theo Q-11 và PO waiver 2026-10-31)
+
+Câu hỏi (DECISIONS §ADR-15): chrome gốc Liquid Glass có đáp ứng ba tiêu chí — (a) nội dung cuộn dưới kính đọc được trên nền giấy; (b) tab đang chọn đọc được với tint Ember (nếu không, tint tab về mực); (c) phụ kiện đáy và tab bar không che CTA — trước khi chốt cho WP-05?
+Tiêu chí đạt: cả ba tiêu chí Đạt trên thiết bị thật; simulator chỉ làm bằng chứng duyệt trước (PO waiver 2026-10-31), phần thiết bị ghi "chưa xác minh", không tính đạt.
+
+Môi trường: MacBook Pro `Mac16,8` arm64; Xcode `27.2` (`27B52`), SDK `iPhoneSimulator27.2` (`24B8118`); runtime simulator iOS `27.0`. API kính dùng trong spike, theo tài liệu WWDC25, xác minh với SDK đang dùng: `TabView`, `tabViewBottomAccessory` (iOS 26+), `NavigationSplitView`, `Table`, `.inspector`, `inspectorColumnWidth`. Spike chưa đặt `AccentColor` Ember nên tab chọn hiện màu xanh mặc định của hệ thống.
+
+| # | Hạng mục | Lệnh (cwd) | Exit | Kết quả | Mức xác minh | Bằng chứng |
+|---|---|---|---|---|---|---|
+| 1 | Build iPhone | `HK_SPIKE_S4=1 xcodebuild -project App/Hiraku.xcodeproj -scheme Hiraku -configuration Debug -destination 'platform=iOS Simulator,name=iPhone 18 Pro' build` (root) | 0 | Đạt | simulator | `BUILD SUCCEEDED` |
+| 2 | Chạy + chụp iPhone 18 Pro, dọc | `simctl install` + `SIMCTL_CHILD_HK_SPIKE_S4=1 simctl launch booted com.example.hiraku` + `simctl io booted screenshot` | 0 | Đạt | simulator | pid 45908; `.agents/tmp/m0-07/iphone18pro-portrait.png` (1206×2622): tab bar kính ba tab, tab "Trang chủ" đang chọn đọc rõ, phụ kiện đáy "Đến hạn: 12 từ / Ôn ngay" hiện đầy đủ, không che CTA |
+| 3 | Chạy + chụp iPad Pro 13-inch (M5), dọc | `simctl boot` + `install` + `SIMCTL_CHILD_HK_SPIKE_S4=1 simctl launch` + `simctl io screenshot` | 0 | Đạt | simulator | pid 47036; `.agents/tmp/m0-07/ipad13-portrait.png` (2064×2752): `NavigationSplitView` + `Table` đủ ba cột "Từ / Cách đọc / Nghĩa" + inspector 230pt ("Phiên học / Đến hạn: 12 / Chọn: —"), chữ Noto Sans JP đọc rõ trên nền giấy |
+| 4 | iPad ngang | — (không có CLI xoay; bản Xcode này không kèm Simulator.app) | — | **Chưa chạy** | — | Bị chặn bởi toolchain headless, không phải bởi mã |
+| 5 | Tab Deck iPhone (List cuộn dưới kính) | — (không chạm được vào tab khi không có Simulator.app) | — | **Chưa chạy** | — | Như trên; app mặc định mở tab Trang chủ |
+| 6 | macOS hiển thị, thiết bị thật, 60 fps | — | — | **Chưa xác minh** | — | Theo Q-11 và waiver: simulator không thay kiểm thiết bị |
+
+### Verdict từng tiêu chí (đề xuất, chờ PO duyệt)
+
+- (a) Nội dung cuộn dưới kính đọc được trên nền giấy: **Đạt (simulator)** — chữ Noto trên nền giấy đọc rõ trong cả hai ảnh; kính hệ thống (tab bar, toolbar) không làm mờ nội dung tới mức khó đọc. Phạm vi: trạng thái List-cuộn-dưới-kính của tab Deck iPhone chưa chụp được (#5) → giữ "chưa xác minh" cho trạng thái đó và cho thiết bị thật.
+- (b) Tab đang chọn đọc được với tint Ember: **Chưa xác minh** — spike chưa đặt `AccentColor` nên ảnh chỉ cho thấy màu chọn mặc định của hệ thống (đọc rõ, nhưng không phải Ember). Cần build đặt Ember + chụp lại ở WP-05, xác minh cuối trên thiết bị. Nếu Ember không đạt trên kính, phương án lùi đã chốt trong ADR-15 là tint tab về mực, thuộc WP-05 (không triển khai ở task này).
+- (c) Phụ kiện đáy và tab bar không che CTA: **Đạt (simulator)** — phụ kiện đáy và tab bar hiện đầy đủ, nút "Ôn ngay" không bị che, không có CTA nào khác bị che. Ghi chú (không chặn verdict): phụ kiện đáy hiện ở mọi tab kể cả Trang chủ; ẩn theo tab đã ghi cho WP-05 từ S-4.
+
+Phát hiện thêm cho S-4: trên iPad 13-inch dọc, `Table` hiện đủ ba cột (khác với 11-inch dọc chỉ hiện hai cột ở S-4) — câu hỏi ưu tiên cột thu hẹp còn đúng cho bề ngang hẹp và iPad ngang (#4).
+
+### Còn lại và quyết định cần PO
+
+1. Duyệt Đạt / Không đạt từng tiêu chí (a)(b)(c) từ hai ảnh simulator trong PR; cập nhật dòng ADR-15 ở bảng Tổng hợp sau verdict.
+2. (b): xác nhận đặt `AccentColor` Ember + chụp lại ở WP-05, verdict cuối về tương phản Ember để lại cho thiết bị thật.
+3. Thiết bị thật + macOS hiển thị + iPad ngang + 60 fps: giữ "chưa xác minh", không chặn GATE-1 (waiver 2026-10-31).
+
