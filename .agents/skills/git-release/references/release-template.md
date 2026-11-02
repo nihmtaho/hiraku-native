@@ -53,7 +53,7 @@ have commits are printed.
 
 ## Rules
 - Bullet format: `- (scope) summary by @author`; drop `(scope)` when absent.
-- Lead a MAJOR release with a short **Breaking changes** paragraph and migration steps.
+- The coordinator flags a MAJOR release with a short **Breaking changes** paragraph and migration steps.
 - Keep bullets human-readable: trim the `type(scope):` prefix (the script does this).
 - Never include AI attribution lines.
 

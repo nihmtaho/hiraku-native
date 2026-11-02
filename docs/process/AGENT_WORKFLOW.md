@@ -32,13 +32,14 @@ không cấp thêm quyền, không tạo lại task/review/delivery thành skill
 
 | Vai | Loại | Shell | Sửa file | Gọi agent |
 |---|---|---|---|---|
-| Vai | Loại | Shell | Sửa file | Gọi agent |
-|---|---|---|---|---|
 | `hiraku-coordinator` | phiên chính | Mọi lệnh trừ commit/push của senior; `delivery.mjs review` và `merge` | Chỉ `.agents/tasks/`, `.agents/tmp/` | `hiraku-senior` |
 | `hiraku-senior` | subagent | Mọi lệnh trừ delivery; commit, push nhánh task (kể cả `--force-with-lease`), rebase nhánh task, `gh pr create --base develop` | Source/docs trừ policy; `.agents/tasks/` | Không |
 
 Hai vai chỉ gọi skill (`hiraku-task`, `hiraku-review`, `hiraku-ship`,
 `hiraku-coding`, `hiraku-create-pr`); quy trình nằm trong skill, không lặp lại ở đây.
+Điều phối được shell tự do (PO, 2026-11-03). Guard không chặn sửa file qua shell của
+điều phối, nên ràng buộc "điều phối không sửa source" dựa vào quy tắc và review; đây là
+waiver có chủ đích, không phải lỗ hổng chưa biết.
 Senior không tự review thành verdict và không merge. Điều phối là người review và
 cũng là người merge (chấp nhận có chủ đích, PO 2026-11-03); điều đó không thay
 thế việc review trên đúng head SHA.

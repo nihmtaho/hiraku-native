@@ -12,8 +12,6 @@
       "Shell(git merge *)",
       "Shell(git tag)",
       "Shell(git tag *)",
-      "Shell(git rebase)",
-      "Shell(git rebase *)",
       "Shell(git reset --hard)",
       "Shell(git reset --hard *)",
       "Shell(git filter-branch)",

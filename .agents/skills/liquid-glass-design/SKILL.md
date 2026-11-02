@@ -290,4 +290,4 @@ Mục này ưu tiên hơn nội dung phía trên khi mâu thuẫn. Luật gốc:
 - Dùng skill này để hiểu và kiểm chrome gốc trên thiết bị (ADR-15 mục Kiểm tra), không để tạo chrome mới.
 
 Nếu đang review: dùng như checklist read-only; vi phạm mục này là finding. Mâu
-thuẫn chưa rõ thì BLOCKED và hỏi Lead.
+thuẫn chưa rõ thì BLOCKED và hỏi điều phối.

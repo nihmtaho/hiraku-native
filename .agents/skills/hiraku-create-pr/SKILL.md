@@ -15,8 +15,8 @@ Pushed branch name, the task record path, and the base branch.
 2. **Look for an existing PR.** Search by head branch. If one exists, update it
    and do not open a second one.
 3. **Fill the template.** Use the repo PR template. Summary, linked task, changes,
-   checks with exit codes and artifact paths, risks. English only.
-4. **Update tracking files** the record names (CHANGELOG `[Unreleased]`, roadmap
+   checks with exit codes and artifact paths, risks, in the language the binding sets.
+4. **Update tracking files** the record names (changelog, roadmap
    status). Push them as part of the same branch.
 5. **Open or update the PR** against the base. Do not mark ready while checks are
    failing or required evidence is missing.

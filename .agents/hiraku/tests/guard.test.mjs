@@ -282,3 +282,34 @@ test("delivery.mjs rejects other paths, short SHAs and chained use", () => {
     assert.throws(() => assertShell(root, coordinator, command), command);
   }
 });
+
+test("git and gh global options cannot hide delivery or bare force-push", () => {
+  for (const command of ["git -C . push --force origin develop", "git --no-pager push -f origin feat/x"]) {
+    assert.throws(() => assertShell(root, senior, command), command);
+  }
+  for (const command of ["git -C . merge develop", "git --no-pager merge develop", "gh -R owner/repo pr merge 23"]) {
+    for (const agent of [coordinator, senior]) assert.throws(() => assertShell(root, agent, command), `${agent}: ${command}`);
+  }
+  assert.doesNotThrow(() => assertShell(root, senior, "git -c core.x=1 push origin feat/x"));
+});
+
+test("a squashed -n flag does not skip hooks", () => {
+  assert.throws(() => assertShell(root, senior, "git commit -nm x"));
+  assert.doesNotThrow(() => assertShell(root, senior, 'git commit -m "feat(core): x"'));
+});
+
+test("senior cannot set the runtime identity or start another agent CLI", () => {
+  for (const command of ["HIRAKU_AGENT=hiraku-coordinator pi -p merge", "env HIRAKU_AGENT=x node a.mjs", "cd core && claude -p hi"]) {
+    assert.throws(() => assertShell(root, senior, command), command);
+  }
+  assert.throws(() => assertShell(root, coordinator, "HIRAKU_AGENT=hiraku-senior pi -p x"));
+  assert.doesNotThrow(() => assertShell(root, senior, "grep claude AGENTS.md"));
+});
+
+test("workflow policy docs are protected for every role", () => {
+  for (const agent of [coordinator, senior]) {
+    for (const path of ["docs/process/AGENT_WORKFLOW.md", "docs/process/GIT_WORKFLOW.md"]) {
+      assert.throws(() => assertPathAccess(root, agent, "edit", path), `${agent}: ${path}`);
+    }
+  }
+});

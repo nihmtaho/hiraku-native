@@ -42,4 +42,4 @@ golden và rủi ro tương thích. Thiếu tool, generator, baseline, fake ho�
 bắt buộc thì nêu rõ BLOCKED/PARTIAL, không tự viết payload Swift thay proto.
 
 Nếu đang review: dùng các bước như checklist read-only; không chạy generator,
-đổi golden hoặc sửa source. Verdict theo prompt Reviewer.
+đổi golden hoặc sửa source. Verdict theo quy trình review của điều phối.

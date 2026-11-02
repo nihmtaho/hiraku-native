@@ -114,3 +114,13 @@ test("shared task, release and validation references exist", () => {
   assert.match(task, /Independent review/);
   assert.match(task, /PO approval/);
 });
+
+test("senior cannot reach delivery, force or rebase -i through shell; gh global flags are closed", () => {
+  for (const command of ["node .agents/hiraku/delivery.mjs merge 7 --sha " + "a".repeat(40), "git push --force origin develop", "git push -f origin feat/x", "git rebase -i develop", "gh -R owner/repo pr merge 7"]) {
+    assert.equal(permission(senior, "shell", command), "deny", command);
+  }
+  assert.equal(permission(senior, "shell", "git push --force-with-lease origin feat/x"), "allow");
+  assert.equal(permission(senior, "edit", "docs/process/GIT_WORKFLOW.md"), "deny");
+  assert.equal(permission(coordinator, "shell", "gh -R owner/repo pr merge 7"), "deny");
+  assert.equal(permission(coordinator, "shell", "node .agents/hiraku/delivery.mjs merge 7 --sha " + "a".repeat(40)), "allow");
+});

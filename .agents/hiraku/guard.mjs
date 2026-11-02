@@ -37,7 +37,7 @@ function secret(path) {
 }
 
 export function protectedPath(path) {
-  return /(^|\/)(AGENTS\.md|OPENCODE\.md|DECISIONS\.md|RELEASE\.md|TEST_PLAN\.md|opencode\.jsonc?)$/i.test(path)
+  return /(^|\/)(AGENTS\.md|OPENCODE\.md|AGENT_WORKFLOW\.md|GIT_WORKFLOW\.md|DECISIONS\.md|RELEASE\.md|TEST_PLAN\.md|opencode\.jsonc?)$/i.test(path)
     || /(^|\/)(\.git|\.github|\.agents|\.opencode|\.pi|\.commandcode|\.claude)(\/|$)/i.test(path)
     || /(^|\/)(?:gen|generated)(\/|$)/i.test(path)
     || /^Frameworks\//i.test(path)
@@ -82,11 +82,18 @@ export function assertEditBaseline(root, resource) {
 }
 
 // Raw merge, review and API stay closed for every agent; only delivery.mjs (see handoff) reaches them.
+function normalize(command) {
+  return command
+    .replace(/(^|[\s;&|(`])git((?:\s+(?:-[Cc]\s+\S+|-c\s+\S+|--git-dir=\S+|--work-tree=\S+|--no-pager|-P|--paginate|--no-optional-locks))+)(?=\s)/g, "$1git")
+    .replace(/(^|[\s;&|(`])gh((?:\s+(?:-R\s*\S+|--repo[= ]\S+|--hostname[= ]\S+))+)(?=\s)/g, "$1gh");
+}
+
 const delivery = /(^|[\s;&|(`])(?:git\s+(?:merge|tag|filter-branch|reset\s+--hard|rebase\s+(?:-i|--interactive))|gh\s+(?:pr\s+(?:merge|review)|release|repo\s+(?:delete|create|edit)|api)|xcrun\s+(?:altool|notarytool)|fastlane|codesign|security\s+(?:find|dump|export))(?=$|[\s;&|)`])/;
 // Rebase is the senior's conflict tool on its own task branch; other callers stay out.
 const rebase = /(^|[\s;&|(`])git\s+rebase(?=$|[\s;&|)`])/;
 
 function assertDeliveryClosed(command, agent) {
+  command = normalize(command);
   if (delivery.test(command)) throw new Error("Merge/tag/release/signing đang đóng; chỉ người vận hành thực hiện.");
   if (rebase.test(command) && agent !== senior) throw new Error("Rebase chỉ Senior làm trên nhánh task.");
 }
@@ -94,7 +101,7 @@ function assertDeliveryClosed(command, agent) {
 const taskBranch = "(?:feat|fix|refactor|docs|test|chore|hotfix)/[a-z0-9][a-z0-9._-]*";
 const handoff = {
   [senior]: [
-    /^git commit(?: (?!--amend\b|--no-verify\b|-n\b)[^\s]+| "[^"]*"| '[^']*')*$/,
+    /^git commit(?: (?!--amend\b|--no-verify\b|-[A-Za-z]*n[A-Za-z]*(?=\s|$))[^\s]+| "[^"]*"| '[^']*')*$/,
     new RegExp(`^git push((?: -u| --set-upstream| --force-with-lease)*) origin (?:HEAD:)?${taskBranch}$`),
     /^gh pr create (?=.*--base develop(?:\s|$))(?!.*--base (?!develop))(?:[^;&|`$<>]|"[^"`$]*"|'[^']*')*$/,
     /^gh pr (?:view|list|checks|status|diff)(?: [^\s;&|`$<>]+)*$/,
@@ -129,7 +136,7 @@ function assertNoAiCredit(root, part) {
 
 // Senior pushes task branches and opens PRs; coordinator records the verdict and merges through delivery.mjs.
 function assertHandoff(root, agent, command) {
-  for (const part of command.split(/&&|\|\||[;|\n]/).map((x) => x.trim())) {
+  for (const part of command.split(/&&|\|\||[;|\n]/).map((x) => normalize(x.trim()))) {
     assertNoAiCredit(root, part);
     if (!handoffCommand.test(part)) {
       if (/(?:git\s+(?:commit|push)|gh\s+pr|delivery\.mjs)\b/.test(part)) {
@@ -154,9 +161,17 @@ export function assertShellBaseline(root, command, cwd = root) {
   assertDeliveryClosed(command, null);
 }
 
+const nestedAgent = /(^|[;&|(`]\s*)(?:env\s+\S+=\S+\s+)*(?:claude|opencode|pi|cmd|commandcode)(?=\s|$)/;
+
+function assertIdentity(agent, command) {
+  if (/\bHIRAKU_AGENT\b/.test(command)) throw new Error("Không đặt HIRAKU_AGENT trong lệnh: danh tính do runtime cấp.");
+  if (agent === senior && nestedAgent.test(normalize(command))) throw new Error("Senior không gọi CLI agent lồng nhau.");
+}
+
 export function assertShell(root, agent, command, cwd = root) {
   if (!agents.has(agent)) throw new Error("Agent không được chạy shell.");
   assertCommandShape(root, command, cwd);
+  assertIdentity(agent, command);
   assertDeliveryClosed(command, agent);
   assertHandoff(root, agent, command);
 }

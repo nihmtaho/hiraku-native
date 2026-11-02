@@ -4,7 +4,7 @@
 # Usage: new-branch.sh [-b <base-branch>] <type> <summary words...>
 #   type    : feat|fix|hotfix|refactor|docs|test|chore|release
 #   summary : one or more words; joined and sanitized to kebab-case.
-#             Lead with an issue id to get <type>/<id>-<summary>.
+#             the coordinator with an issue id to get <type>/<id>-<summary>.
 #
 # Examples:
 #   new-branch.sh feat passkey login            -> feat/passkey-login

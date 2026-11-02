@@ -254,6 +254,16 @@
           "action": "shell",
           "resource": "gh pr create*",
           "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "gh -R*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "gh --repo*",
+          "effect": "deny"
         }
       ]
     },
@@ -377,6 +387,56 @@
         {
           "action": "shell",
           "resource": "codesign*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "gh -R*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "gh --repo*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "node .agents/hiraku/delivery.mjs*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "git push --force *",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "git push -f*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "git rebase -i*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "git rebase --interactive*",
+          "effect": "deny"
+        },
+        {
+          "action": "edit",
+          "resource": "AGENTS.md",
+          "effect": "deny"
+        },
+        {
+          "action": "edit",
+          "resource": "docs/process/AGENT_WORKFLOW.md",
+          "effect": "deny"
+        },
+        {
+          "action": "edit",
+          "resource": "docs/process/GIT_WORKFLOW.md",
           "effect": "deny"
         }
       ]

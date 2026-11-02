@@ -6,7 +6,7 @@ compatibility: Git; run from the repo root. Binding (base, paths, test commands)
 
 ## Input
 
-Task record path (`.agents/tasks/<id>.md`), base branch, and any review findings.
+Task record path (the binding names where records live), base branch, and any review findings.
 Stop and report if the record is missing or its acceptance criteria are empty.
 
 ## Steps
@@ -16,7 +16,7 @@ Stop and report if the record is missing or its acceptance criteria are empty.
 2. **Isolate.** Create a branch `<type>/<task-id>` from the base, or a dedicated
    worktree. Never reuse a dirty tree from another task.
 3. **Implement.** Change only the files listed in the record. Keep comments and
-   identifiers in English. Do not change policy, generated output or CI unless the
+   identifiers as the binding requires. Do not change policy, generated output or CI unless the
    record names them.
 4. **Test.** Run every check in the record's Checks table. Record the real exit
    code and output path. A skipped or missing command is `Not run`, never PASS.
