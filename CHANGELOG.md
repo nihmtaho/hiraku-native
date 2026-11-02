@@ -19,7 +19,7 @@ Nhóm: Thêm · Đổi · Sửa · Xóa · Tài liệu · Bảo mật. Mỗi dò
 - Spike S-2: đánh giá `github.com/open-spaced-repetition/go-fsrs/v4 v4.0.0` (MIT, FSRS-6) bằng 17 vector sinh từ `fsrs 6.3.2` trong `core/spike/fsrs_vectors.json`; `state`/`reps`/`lapses` khớp 17/17 nhưng 3/17 `due` lệch với dung sai 0 (làm tròn bước Hard, ép thứ tự hard/good/easy, ngày đã trôi theo ngày lịch UTC) nên kết luận **Không đạt** → tự cài trong `core/domain/fsrs` theo ADR-26; gỡ thư viện khỏi `core/go.mod`/`go.sum`, giữ 17 vector làm golden và script sinh lại `core/spike/gen_fsrs_vectors.py` (S-2, PR 6)
 
 ### Đổi
-- Gộp agents còn hai vai `hiraku-coordinator` (điều phối: review, merge) và `hiraku-senior` (implement, PR); bốn skill chung `hiraku-coding`, `hiraku-review`, `hiraku-create-pr`, `hiraku-ship`; guard, cấu hình OpenCode/Pi/Command Code/Claude Code và test cập nhật theo vai mới; rebase và `--force-with-lease` chỉ cho senior trên nhánh task (m0b-01, PR TBD).
+- Gộp agents còn hai vai `hiraku-coordinator` (điều phối: review, merge) và `hiraku-senior` (implement, PR); bốn skill chung `hiraku-coding`, `hiraku-review`, `hiraku-create-pr`, `hiraku-ship`; guard, cấu hình OpenCode/Pi/Command Code/Claude Code và test cập nhật theo vai mới; rebase và `--force-with-lease` chỉ cho senior trên nhánh task (m0b-01, PR 23).
 
 ### Tài liệu
 - Duyệt chrome kính ADR-15: (a)(b)(c) Đạt trên simulator với tint Ember, 2 ảnh Miễn (PO 2026-11-01); macOS/60fps/thiết bị chưa xác minh (ADR-15, PR 21).
