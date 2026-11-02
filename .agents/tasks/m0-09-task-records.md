@@ -1,0 +1,52 @@
+# m0-09-task-records — Commit the m0-07/m0-08 task records
+
+## Contract
+
+- Status: ready
+- Owner: hiraku-coder
+- Milestone / WP: M0 / housekeeping (follows m0-07-adr15 PR 20 and m0-08-adr15-close PR 21, both merged)
+- Branch / PR: `docs/m0-09-task-records` from `develop`
+- Base / head SHA: `develop` = `454d9932f8a5c10ed67e45569d2aa92d51639937`
+- Dependencies: none
+- Required reading: `.agents/tasks/m0-07-adr15.md`, `.agents/tasks/m0-08-adr15-close.md` (content frozen — commit as-is, do not edit)
+- Blocking Q / gate: none
+- Goal: commit the two untracked task records so they join the tracked set like m0-00…m0-06.
+- Out of scope: editing the records, touching source/docs, `.serena/` (leave untracked).
+- Files / modules allowed to change: `.agents/tasks/m0-07-adr15.md`, `.agents/tasks/m0-08-adr15-close.md`, `.agents/tasks/m0-09-task-records.md` (add only, records frozen — commit as-is, do not edit content). CHANGELOG: none (pure `chore`, housekeeping of agent records — state the reason in the PR).
+- Permissions or PO decisions granted: PO ordered "commit tài liệu lên trước" (2026-11-01).
+
+## Acceptance criteria
+
+1. `git status` shows all three record files tracked; `git diff --cached --stat` lists exactly those three files.
+2. No other file added, modified, or deleted; `.serena/` stays untracked.
+
+## Checks
+
+| Criterion | Command / manual check | Result / exit code | Revision / artifact |
+|---|---|---|---|
+| Scope | `git status --short` + `git diff --cached --stat` | Not run | |
+| Consistency | `node .agents/skills/hiraku-wp-status/scripts/wp-status.mjs --check` | Not run | |
+
+## Coding
+
+Not started.
+
+## Independent review
+
+- Reviewer / session:
+- Revision:
+- Verdict:
+- Findings:
+- Checks the reviewer actually ran:
+
+## Delivery
+
+- CHANGELOG entry and ROADMAP/Kanban status updated in the PR: n/a (`chore` housekeeping, reason in PR)
+- Status: not requested
+- CI / integration revision:
+- Gate / PO approval:
+- Actions actually taken / evidence from the target system:
+
+## Next
+
+Commit, push, review, open PR, merge. Owner: hiraku-coder.
