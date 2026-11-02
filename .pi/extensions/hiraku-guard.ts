@@ -5,8 +5,8 @@ import { type ExtensionAPI, parseFrontmatter } from "@earendil-works/pi-coding-a
 import { assertPathAccess, assertShell, delegates } from "../../.agents/hiraku/guard.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
-// The subagent extension sets HIRAKU_AGENT for child processes; the interactive session is the Lead.
-const agent = process.env.HIRAKU_AGENT ?? "hiraku-lead";
+// The subagent extension sets HIRAKU_AGENT for child processes; the interactive session is the coordinator.
+const agent = process.env.HIRAKU_AGENT ?? "hiraku-coordinator";
 const readTools = new Set(["read", "grep", "find", "ls"]);
 
 function check(toolName: string, input: Record<string, any>) {
@@ -39,7 +39,7 @@ export default function (pi: ExtensionAPI) {
 		return undefined;
 	});
 
-	if (agent !== "hiraku-lead") return;
-	const lead = parseFrontmatter(readFileSync(join(root, ".pi/agents/hiraku-lead.md"), "utf-8")).body;
+	if (agent !== "hiraku-coordinator") return;
+	const lead = parseFrontmatter(readFileSync(join(root, ".pi/agents/hiraku-coordinator.md"), "utf-8")).body;
 	pi.on("before_agent_start", async (event) => ({ systemPrompt: `${event.systemPrompt}\n\n${lead}` }));
 }

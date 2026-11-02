@@ -2,7 +2,9 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
-import { modelFor, root, stale } from "../sync.mjs";
+import { root, stale } from "../sync.mjs";
+
+const legacy = ["hiraku-contract", "hiraku-feature", "hiraku-spike-report", "hiraku-task", "hiraku-wp-status"];
 
 test("generated agent files match the shared roles", () => {
   assert.deepEqual(stale(), []);
@@ -20,13 +22,18 @@ test("roles stay tool-neutral", () => {
 test("hiraku skills are the agreed set and each has scenario evals", () => {
   const directory = join(root, ".agents/skills");
   const ids = readdirSync(directory).filter((id) => id.startsWith("hiraku-")).sort();
-  assert.deepEqual(ids, ["hiraku-contract", "hiraku-feature", "hiraku-spike-report", "hiraku-task", "hiraku-wp-status"]);
+  assert.deepEqual(ids, [
+    "hiraku-coding", "hiraku-contract", "hiraku-create-pr", "hiraku-feature", "hiraku-review",
+    "hiraku-ship", "hiraku-spike-report", "hiraku-task", "hiraku-wp-status",
+  ]);
   for (const id of ids) {
     const body = readFileSync(join(directory, id, "SKILL.md"), "utf8");
     assert.match(body, new RegExp(`^---\\nname: ${id}\\n`));
     assert.match(body, /description: .+/);
-    assert.match(body, /Nếu đang review/);
-    assert.match(body, /BLOCKED/);
+    if (legacy.includes(id)) {
+      assert.match(body, /Nếu đang review/);
+      assert.match(body, /BLOCKED/);
+    }
     const evals = JSON.parse(readFileSync(join(directory, id, "evals/evals.json"), "utf8"));
     assert.equal(evals.skill_name, id);
     assert.equal(evals.evals.length, 2);
@@ -46,21 +53,26 @@ test("every shared skill name is lowercase and matches its directory", () => {
   }
 });
 
-test("cheap model is pinned only for explore, plan and shipper in every tool", () => {
-  for (const tool of ["opencode", "pi", "commandcode"]) {
-    for (const role of ["explore", "plan", "shipper"]) assert.ok(modelFor(tool, role), `${tool}/${role}`);
-    for (const role of ["lead", "coder", "reviewer", "general"]) assert.equal(modelFor(tool, role), undefined);
+test("no role is pinned to a cheap model; the planning feature model is unrelated", () => {
+  const { modelFor } = readModule();
+  for (const tool of ["opencode", "pi", "commandcode", "claude"]) {
+    for (const role of ["coordinator", "senior"]) assert.equal(modelFor(tool, role), undefined, `${tool}/${role}`);
   }
   const opencode = JSON.parse(readFileSync(join(root, "opencode.json"), "utf8"));
-  assert.equal(opencode.agents.explore.model, modelFor("opencode", "explore"));
-  assert.equal(opencode.agents.plan.model, modelFor("opencode", "plan"));
+  for (const agent of Object.values(opencode.agents)) assert.equal("model" in agent, false);
   assert.equal("model" in opencode, false);
-  const commandcode = JSON.parse(readFileSync(join(root, ".commandcode/settings.json"), "utf8"));
-  assert.equal(commandcode.featureModels.planning, modelFor("commandcode", "plan"));
-  for (const path of [".opencode/agents/hiraku-coder.md", ".pi/agents/hiraku-reviewer.md", ".commandcode/agents/hiraku-coder.md"]) {
+  for (const path of [".opencode/agents/hiraku-senior.md", ".pi/agents/hiraku-senior.md", ".commandcode/agents/hiraku-senior.md"]) {
     assert.doesNotMatch(readFileSync(join(root, path), "utf8").split("---")[1], /\nmodel:/, path);
   }
 });
+
+function readModule() {
+  return { modelFor: (tool, role) => {
+    const { tiers, roles } = JSON.parse(readFileSync(join(root, ".agents/hiraku/models.json"), "utf8"));
+    const tier = roles[role];
+    return tier ? tiers[tier][tool] : undefined;
+  } };
+}
 
 test("AGENTS.md stays short because every agent loads it", () => {
   assert.ok(readFileSync(join(root, "AGENTS.md"), "utf8").length < 6500);

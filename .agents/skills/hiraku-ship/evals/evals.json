@@ -1,0 +1,28 @@
+{
+  "skill_name": "hiraku-ship",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "PR #12 đã PASS ở head SHA abcdef1234567890abcdef1234567890abcdef12, nhưng CI vẫn đang chạy. Hãy merge nếu đủ điều kiện.",
+      "expected_output": "Thấy CI còn pending nên chờ và kiểm tra lại, không merge; khi CI xanh và head vẫn khớp SHA đã review thì merge qua delivery.mjs merge --sha; xác nhận trạng thái merged từ host.",
+      "files": [],
+      "assertions": [
+        "Chờ khi CI còn pending, không merge",
+        "Kiểm head SHA vẫn khớp SHA đã review",
+        "Merge qua delivery.mjs merge --sha, không gọi gh pr merge trực tiếp",
+        "Xác nhận trạng thái merged từ host sau khi merge"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "CI của PR #12 fail ở job ci. Điều phối cần xử lý tiếp như thế nào?",
+      "expected_output": "Không merge và không chạy lại để che lỗi; trả tên check và đường dẫn log cho senior; không tạo tag hay release.",
+      "files": [],
+      "assertions": [
+        "Không merge và không chạy lại để che lỗi",
+        "Trả tên check và đường dẫn log cho senior",
+        "Không tạo tag hay release"
+      ]
+    }
+  ]
+}

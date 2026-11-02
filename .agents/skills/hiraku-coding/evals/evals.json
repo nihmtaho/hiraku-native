@@ -1,0 +1,29 @@
+{
+  "skill_name": "hiraku-coding",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Điều phối giao task WP-04 với record .agents/tasks/wp-04-kana.md, base develop. Hãy làm việc theo record: khảo sát, tạo nhánh task, implement phạm vi được giao, chạy kiểm tra và tự review. Không merge và không ghi verdict.",
+      "expected_output": "Tạo nhánh feat/wp-04-kana từ develop hoặc worktree riêng; chỉ sửa file trong record; chạy đủ lệnh trong bảng Checks và ghi exit code thật; báo cáo kết quả tự review cho điều phối.",
+      "files": [],
+      "assertions": [
+        "Tạo nhánh theo <type>/<task-id> từ develop hoặc worktree riêng",
+        "Chỉ sửa file trong record; không sửa policy, generated hay CI",
+        "Ghi kết quả kiểm tra thật; lệnh không chạy được ghi Not run",
+        "Không gọi delivery.mjs review hoặc merge"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Điều phối trả findings cho PR đang mở: sửa đúng các lỗi đã nêu. Nhánh task đã lệch so với develop và có xung đột khi rebase. Hãy xử lý và push.",
+      "expected_output": "Chỉ sửa findings được nêu; rebase develop, giải xung đột trên nhánh task, chạy lại kiểm tra; push bằng git push --force-with-lease trên nhánh task; nêu SHA mới và cảnh báo review cũ đã mất hiệu lực.",
+      "files": [],
+      "assertions": [
+        "Chỉ sửa đúng findings được nêu",
+        "Push bằng --force-with-lease trên nhánh task, không dùng --force trần",
+        "Không push lên develop hoặc main",
+        "Nêu SHA mới và yêu cầu review lại"
+      ]
+    }
+  ]
+}

@@ -18,6 +18,9 @@ Nhóm: Thêm · Đổi · Sửa · Xóa · Tài liệu · Bảo mật. Mỗi dò
 - Thêm spike M0: module Go `core/`, smoke test SQLite chạy `-race` và script build c-archive cho ba slice Apple; chuyển từ `modernc.org/sqlite` (kéo `net` vào đồ thị qua `modernc.org/libc → github.com/google/uuid`) sang `github.com/mattn/go-sqlite3 v1.14.52` (cgo), `go list -deps` không còn `net`, ba slice build xanh.
 - Spike S-2: đánh giá `github.com/open-spaced-repetition/go-fsrs/v4 v4.0.0` (MIT, FSRS-6) bằng 17 vector sinh từ `fsrs 6.3.2` trong `core/spike/fsrs_vectors.json`; `state`/`reps`/`lapses` khớp 17/17 nhưng 3/17 `due` lệch với dung sai 0 (làm tròn bước Hard, ép thứ tự hard/good/easy, ngày đã trôi theo ngày lịch UTC) nên kết luận **Không đạt** → tự cài trong `core/domain/fsrs` theo ADR-26; gỡ thư viện khỏi `core/go.mod`/`go.sum`, giữ 17 vector làm golden và script sinh lại `core/spike/gen_fsrs_vectors.py` (S-2, PR 6)
 
+### Đổi
+- Gộp agents còn hai vai `hiraku-coordinator` (điều phối: review, merge) và `hiraku-senior` (implement, PR); bốn skill chung `hiraku-coding`, `hiraku-review`, `hiraku-create-pr`, `hiraku-ship`; guard, cấu hình OpenCode/Pi/Command Code/Claude Code và test cập nhật theo vai mới; rebase và `--force-with-lease` chỉ cho senior trên nhánh task (m0b-01, PR TBD).
+
 ### Tài liệu
 - Duyệt chrome kính ADR-15: (a)(b)(c) Đạt trên simulator với tint Ember, 2 ảnh Miễn (PO 2026-11-01); macOS/60fps/thiết bị chưa xác minh (ADR-15, PR 21).
 - Báo cáo M0 (PO bỏ qua thiết bị thật, Q-11): bảng tổng hợp kết quả Spike 0, S-1…S-8 và ADR-15, đề xuất cho Q-5/ADR-26, việc đưa vào M1 và việc còn chờ PO hoặc thiết bị (Báo cáo spike).

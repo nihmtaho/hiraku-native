@@ -11,21 +11,14 @@ function frontmatter(file) {
   return Object.fromEntries(head.split("\n").map((line) => line.split(/: (.*)/s).slice(0, 2)));
 }
 
-test("pi has its own lead, three hiraku subagents and explore/general/plan", () => {
-  assert.deepEqual(readdirSync(directory).sort(), [
-    "explore.md", "general.md", "hiraku-coder.md", "hiraku-lead.md",
-    "hiraku-reviewer.md", "hiraku-shipper.md", "plan.md",
-  ]);
-  assert.equal(frontmatter("hiraku-lead.md").mode, "primary");
+test("pi has the coordinator as primary and the senior as its only subagent", () => {
+  assert.deepEqual(readdirSync(directory).sort(), ["hiraku-coordinator.md", "hiraku-senior.md"]);
+  assert.equal(frontmatter("hiraku-coordinator.md").mode, "primary");
 });
 
-test("pi subagent tools keep roles separate", () => {
-  const tools = (file) => frontmatter(file).tools.split(", ");
-  for (const file of ["explore.md", "plan.md", "hiraku-reviewer.md"]) {
-    assert.ok(!tools(file).includes("edit") && !tools(file).includes("write"), file);
-  }
-  for (const file of ["explore.md", "plan.md"]) assert.ok(!tools(file).includes("bash"), file);
-  assert.ok(tools("hiraku-coder.md").includes("edit"));
+test("pi senior can edit and run shell", () => {
+  const tools = frontmatter("hiraku-senior.md").tools.split(", ");
+  assert.ok(tools.includes("edit") && tools.includes("bash"));
 });
 
 test("pi config reads only its own agents and the shared guard", () => {
@@ -33,7 +26,7 @@ test("pi config reads only its own agents and the shared guard", () => {
   const guard = readFileSync(join(root, ".pi/extensions/hiraku-guard.ts"), "utf8");
   assert.match(loader, /"\.pi", "agents"/);
   assert.match(guard, /\.agents\/hiraku\/guard\.mjs/);
-  assert.match(guard, /\.pi\/agents\/hiraku-lead\.md/);
+  assert.match(guard, /\.pi\/agents\/hiraku-coordinator\.md/);
   assert.doesNotMatch(loader + guard, /\.opencode|\.commandcode/);
   assert.equal(existsSync(join(root, ".pi/settings.json")), false);
 });

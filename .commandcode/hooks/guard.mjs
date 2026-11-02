@@ -13,7 +13,7 @@ export function decide(payload) {
     case "shell_command":
       return assertShellBaseline(root, input.command, input.directory ? at(input.directory) : cwd);
     case "read_file":
-      return assertPathAccess(root, "explore", "read", at(input.absolute_path));
+      return assertPathAccess(root, "unknown", "read", at(input.absolute_path));
     case "write_file":
     case "edit_file":
       return assertEditBaseline(root, at(input.file_path));

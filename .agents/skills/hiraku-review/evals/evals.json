@@ -1,0 +1,29 @@
+{
+  "skill_name": "hiraku-review",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Senior báo PR #12 sẵn sàng ở head SHA 1234567890abcdef1234567890abcdef12345678. Hãy review chất lượng theo record, ghi verdict cho đúng SHA và nêu findings nếu có.",
+      "expected_output": "Đọc diff đúng SHA; đối chiếu tiêu chí chấp nhận và danh sách file trong record; ghi verdict qua delivery.mjs review với SHA đầy đủ; không dùng tự review của senior làm PASS.",
+      "files": [],
+      "assertions": [
+        "Đọc diff đúng head SHA của PR",
+        "Đối chiếu tiêu chí chấp nhận và danh sách file trong record",
+        "Ghi verdict qua delivery.mjs review với --sha đầy đủ 40 ký tự",
+        "Không coi tự review của senior là PASS"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "PR #12 đã PASS ở SHA cũ nhưng senior vừa push commit mới. Hãy xử lý trước khi merge.",
+      "expected_output": "Coi verdict cũ đã hết hiệu lực; review lại trên SHA mới; không ghi PASS cho SHA cũ; nếu đây là lần FAIL thứ hai thì dừng và hỏi PO.",
+      "files": [],
+      "assertions": [
+        "Coi verdict cũ đã hết hiệu lực khi head đổi",
+        "Review lại trên SHA mới",
+        "Không ghi PASS cho SHA cũ",
+        "Sau hai lần FAIL thì dừng và hỏi PO thay vì gửi tiếp"
+      ]
+    }
+  ]
+}

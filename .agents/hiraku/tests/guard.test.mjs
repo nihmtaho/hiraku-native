@@ -6,6 +6,9 @@ import { join } from "node:path";
 import { assertEditBaseline, assertPathAccess, assertShell, assertShellBaseline, evaluatePermission } from "../guard.mjs";
 import plugin from "../../../.opencode/plugins/hiraku-guard/index.js";
 
+const coordinator = "hiraku-coordinator";
+const senior = "hiraku-senior";
+
 const fixture = mkdtempSync(join(tmpdir(), "hiraku-guard-"));
 const root = join(fixture, "project");
 const outside = join(fixture, "outside");
@@ -17,65 +20,60 @@ mkdirSync(join(root, ".agents"));
 symlinkSync(join(root, ".agents"), join(root, "policy-alias"));
 after(() => rmSync(fixture, { recursive: true }));
 
-test("coder can edit a new product file", () => {
-  assert.doesNotThrow(() => assertPathAccess(root, "hiraku-coder", "edit", "core/domain/kana/kana.go"));
+test("senior can edit a new product file", () => {
+  assert.doesNotThrow(() => assertPathAccess(root, senior, "edit", "core/domain/kana/kana.go"));
 });
 
-for (const agent of ["hiraku-lead", "hiraku-reviewer", "hiraku-shipper", "explore", "plan"]) {
-  test(`${agent} cannot edit product source`, () => {
-    assert.throws(() => assertPathAccess(root, agent, "edit", "App/Main.swift"));
-  });
+test("coordinator cannot edit product source", () => {
+  assert.throws(() => assertPathAccess(root, coordinator, "edit", "App/Main.swift"));
+});
+
+for (const agent of [coordinator, senior]) {
+  for (const path of [
+    "opencode.json", "AGENTS.md", "docs/architecture/DECISIONS.md", "docs/process/RELEASE.md",
+    ".opencode/plugins/hiraku-guard/index.js", ".opencode/agents/hiraku-senior.md",
+    ".agents/hiraku/guard.mjs", ".agents/hiraku/roles/senior.md", ".agents/skills/hiraku-contract/SKILL.md",
+    ".commandcode/settings.json", ".commandcode/agents/hiraku-senior.md", ".pi/agents/hiraku-senior.md",
+    ".pi/extensions/hiraku-guard.ts",
+    ".github/workflows/ci.yml", "core/gen/hirakuv1/study.pb.go",
+    "Packages/HirakuBridge/Generated/Study.swift", "Scripts/check-imports.sh",
+    "core/scripts/check-core.sh", ".git/config", "policy-alias/agents/fake.md",
+  ]) {
+    test(`${agent} cannot edit protected path ${path}`, () => {
+      assert.throws(() => assertPathAccess(root, agent, "edit", path));
+    });
+  }
 }
 
-for (const path of [
-  "opencode.json", "AGENTS.md", "docs/architecture/DECISIONS.md", "docs/process/RELEASE.md",
-  ".opencode/plugins/hiraku-guard/index.js", ".opencode/agents/hiraku-coder.md",
-  ".agents/hiraku/guard.mjs", ".agents/hiraku/roles/coder.md", ".agents/skills/hiraku-contract/SKILL.md",
-  ".commandcode/settings.json", ".commandcode/agents/hiraku-coder.md", ".pi/agents/hiraku-coder.md",
-  ".pi/extensions/hiraku-guard.ts",
-  ".github/workflows/ci.yml", "core/gen/hirakuv1/study.pb.go",
-  "Packages/HirakuBridge/Generated/Study.swift", "Scripts/check-imports.sh",
-  "core/scripts/check-core.sh", ".git/config", "policy-alias/agents/fake.md",
-]) {
-  test(`coder cannot edit protected path ${path}`, () => {
-    assert.throws(() => assertPathAccess(root, "hiraku-coder", "edit", path));
-  });
-}
-
-test("multi-role task ownership is limited to lead and shipper", () => {
-  for (const agent of ["hiraku-lead", "hiraku-shipper"]) {
+test("both roles edit task records; unknown callers edit nothing", () => {
+  for (const agent of [coordinator, senior]) {
     assert.doesNotThrow(() => assertPathAccess(root, agent, "edit", ".agents/tasks/wp-01.md"));
   }
-  assert.throws(() => assertPathAccess(root, "hiraku-coder", "edit", ".agents/tasks/wp-01.md"));
+  assert.throws(() => assertPathAccess(root, "unknown", "edit", ".agents/tasks/wp-01.md"));
 });
 
 for (const path of ["../outside/file", "escape/new/file", "/etc/passwd"]) {
   test(`reject external access ${path}`, () => {
-    assert.throws(() => assertPathAccess(root, "hiraku-coder", "edit", path));
+    assert.throws(() => assertPathAccess(root, senior, "edit", path));
   });
 }
 
 for (const path of [".env", ".env.local", "AuthKey.p8", "signing.p12", "private.key", "dev.pem"]) {
   test(`deny credential read ${path}`, () => {
-    assert.throws(() => assertPathAccess(root, "hiraku-reviewer", "read", path));
+    assert.throws(() => assertPathAccess(root, coordinator, "read", path));
   });
 }
 
 test("example environment file is readable", () => {
-  assert.doesNotThrow(() => assertPathAccess(root, "hiraku-coder", "read", ".env.example"));
+  assert.doesNotThrow(() => assertPathAccess(root, senior, "read", ".env.example"));
 });
 
 test("malformed path fails closed", () => {
-  assert.throws(() => assertPathAccess(root, "hiraku-coder", "edit", ""));
+  assert.throws(() => assertPathAccess(root, senior, "edit", ""));
 });
 
-test("general edits source but not policy", () => {
-  assert.doesNotThrow(() => assertPathAccess(root, "general", "edit", "App/Main.swift"));
-  assert.throws(() => assertPathAccess(root, "general", "edit", "opencode.json"));
-});
-
-test("every hiraku role and general run arbitrary non-delivery commands", () => {
-  for (const agent of ["hiraku-lead", "hiraku-coder", "hiraku-reviewer", "hiraku-shipper", "general"]) {
+test("both roles run arbitrary non-delivery commands", () => {
+  for (const agent of [coordinator, senior]) {
     for (const command of [
       "buf generate", "go mod tidy", "go test ./... | tail -5", "brew install buf",
       "python3 scripts/x.py", "cd core && go test -race ./...", "git checkout -b feat/x",
@@ -84,70 +82,73 @@ test("every hiraku role and general run arbitrary non-delivery commands", () => 
       "git add -A",
     ]) assert.doesNotThrow(() => assertShell(root, agent, command), `${agent}: ${command}`);
   }
-  assert.doesNotThrow(() => assertShell(root, "hiraku-coder", "go mod init hiraku/core", join(root, "core")));
+  assert.doesNotThrow(() => assertShell(root, senior, "go mod init hiraku/core", join(root, "core")));
 });
 
 for (const command of [
-  "git merge main", "git status --short && git tag v1", "go test ./...; git rebase develop",
+  "git merge main", "git status --short && git tag v1", "git rebase -i develop",
   "echo x | gh pr merge 1", "gh api repos/owner/repo/releases", "(git merge main)",
   "xcrun altool --upload-app", "xcrun notarytool submit", "fastlane beta", "git reset --hard HEAD~1",
 ]) {
-  test(`delivery stays closed for every agent ${JSON.stringify(command)}`, () => {
-    for (const agent of ["hiraku-lead", "hiraku-coder", "general", "hiraku-reviewer"]) {
+  test(`delivery stays closed for both roles ${JSON.stringify(command)}`, () => {
+    for (const agent of [coordinator, senior]) {
       assert.throws(() => assertShell(root, agent, command));
     }
   });
 }
 
-test("coder commits and pushes only task branches", () => {
-  for (const command of [
-    'git add -A && git commit -m "feat(core): add kana table"',
-    "git push -u origin feat/wp-01-core", "git push origin fix/q-21-normalize",
-  ]) assert.doesNotThrow(() => assertShell(root, "hiraku-coder", command), command);
-  for (const command of [
-    "git push origin develop", "git push origin main", "git push -f origin feat/x",
-    "git push --force-with-lease origin feat/x", "git push origin feat/x:develop",
-    "git commit --amend -m x", "git commit --no-verify -m x", "echo $(git push origin feat/x)",
-    "gh pr create --base develop",
-  ]) assert.throws(() => assertShell(root, "hiraku-coder", command), command);
-  for (const agent of ["hiraku-lead", "general", "hiraku-reviewer", "hiraku-shipper"]) {
-    assert.throws(() => assertShell(root, agent, "git commit -m x"));
-    assert.throws(() => assertShell(root, agent, "git push -u origin feat/x"));
+test("rebase belongs to senior on its own branch; coordinator and unknown callers stay out", () => {
+  for (const command of ["git rebase develop", "git rebase --continue", "go test ./... && git rebase develop"]) {
+    assert.doesNotThrow(() => assertShell(root, senior, command), command);
+    assert.throws(() => assertShell(root, coordinator, command), command);
+    assert.throws(() => assertShellBaseline(root, command), command);
   }
 });
 
-test("shipper opens pull requests into develop only", () => {
+test("senior commits and pushes only task branches, including force-with-lease", () => {
+  for (const command of [
+    'git add -A && git commit -m "feat(core): add kana table"',
+    "git push -u origin feat/wp-01-core", "git push origin fix/q-21-normalize",
+    "git push --force-with-lease origin feat/wp-01-core",
+  ]) assert.doesNotThrow(() => assertShell(root, senior, command), command);
+  for (const command of [
+    "git push origin develop", "git push origin main", "git push -f origin feat/x",
+    "git push --force origin feat/x", "git push origin feat/x:develop",
+    "git commit --amend -m x", "git commit --no-verify -m x", "echo $(git push origin feat/x)",
+  ]) assert.throws(() => assertShell(root, senior, command), command);
+  assert.throws(() => assertShell(root, coordinator, "git commit -m x"));
+  assert.throws(() => assertShell(root, coordinator, "git push -u origin feat/x"));
+});
+
+test("senior opens pull requests into develop; coordinator only reads them", () => {
   mkdirSync(join(root, ".agents/tasks"), { recursive: true });
   writeFileSync(join(root, ".agents/tasks/wp-04.md"), "PR body\n");
   for (const command of [
     'gh pr create --base develop --title "feat(core): kana" --body-file .agents/tasks/wp-04.md',
     "gh pr view 3", "gh pr checks 3",
-  ]) assert.doesNotThrow(() => assertShell(root, "hiraku-shipper", command), command);
+  ]) assert.doesNotThrow(() => assertShell(root, senior, command), command);
   for (const command of [
     "gh pr create --base main --title x", "gh pr create --title x",
     "gh pr create --base develop --base main", "gh pr merge 3 --squash",
-  ]) assert.throws(() => assertShell(root, "hiraku-shipper", command), command);
-  for (const agent of ["hiraku-lead", "hiraku-coder", "general"]) {
-    assert.throws(() => assertShell(root, agent, "gh pr create --base develop --title x"));
-  }
+  ]) assert.throws(() => assertShell(root, senior, command), command);
+  assert.throws(() => assertShell(root, coordinator, "gh pr create --base develop --title x"));
+  assert.doesNotThrow(() => assertShell(root, coordinator, "gh pr view 3"));
 });
 
 test("shell cwd must stay inside the workspace", () => {
-  assert.throws(() => assertShell(root, "hiraku-coder", "ls", outside));
-  assert.throws(() => assertShell(root, "hiraku-lead", "ls", join(root, "escape")));
+  assert.throws(() => assertShell(root, senior, "ls", outside));
+  assert.throws(() => assertShell(root, coordinator, "ls", join(root, "escape")));
 });
 
-test("explore and plan only inspect", () => {
-  for (const agent of ["explore", "plan"]) {
-    assert.doesNotThrow(() => assertShell(root, agent, "git diff --stat"));
-    assert.throws(() => assertShell(root, agent, "go test ./..."));
-  }
+test("unknown callers get no role shell and no edits", () => {
   assert.throws(() => assertShell(root, "unknown", "git status"));
+  assert.throws(() => assertShell(root, "explore", "go test ./..."));
+  assert.doesNotThrow(() => assertShellBaseline(root, "go test ./..."));
 });
 
 test("patch touching product and protected file is denied as a whole", async () => {
   const event = {
-    action: "edit", agent: "hiraku-coder", sessionID: "test",
+    action: "edit", agent: senior, sessionID: "test",
     resources: ["App/Main.swift", ".opencode/package.json"], effect: "allow",
   };
   await evaluatePermission(root, event, { set: () => assert.fail("denied edit must not be recorded as allowed") });
@@ -157,17 +158,17 @@ test("patch touching product and protected file is denied as a whole", async () 
 test("an allowed mutation invalidates prior review conservatively", async () => {
   const writes = [];
   const event = {
-    action: "edit", agent: "hiraku-coder", sessionID: "test",
+    action: "edit", agent: senior, sessionID: "test",
     resources: ["App/Main.swift"], effect: "allow",
   };
   await evaluatePermission(root, event, { set: async (...args) => writes.push(args) });
   assert.equal(event.effect, "allow");
-  assert.deepEqual(writes, [["dirty/test", { agent: "hiraku-coder", reviewInvalidated: true }]]);
+  assert.deepEqual(writes, [["dirty/test", { agent: senior, reviewInvalidated: true }]]);
 });
 
 test("storage failure denies mutation instead of losing review invalidation", async () => {
   const event = {
-    action: "edit", agent: "hiraku-coder", sessionID: "test",
+    action: "edit", agent: senior, sessionID: "test",
     resources: ["App/Main.swift"], effect: "allow",
   };
   await evaluatePermission(root, event, { set: async () => { throw new Error("storage unavailable"); } });
@@ -175,11 +176,10 @@ test("storage failure denies mutation instead of losing review invalidation", as
   assert.match(event.message, /storage unavailable/);
 });
 
-test("subagents cannot delegate recursively; lead may use explore and general", async () => {
+test("only the coordinator delegates, and only to the senior", async () => {
   for (const [agent, target, effect] of [
-    ["hiraku-coder", "hiraku-reviewer", "deny"], ["hiraku-coder", "explore", "allow"],
-    ["explore", "general", "deny"], ["general", "hiraku-coder", "deny"],
-    ["hiraku-lead", "general", "allow"], ["hiraku-lead", "explore", "allow"],
+    [coordinator, senior, "allow"], [coordinator, "general", "deny"],
+    [senior, coordinator, "deny"], [senior, senior, "deny"],
   ]) {
     const event = { action: "subagent", agent, sessionID: "t", resources: [target], effect: "allow" };
     await evaluatePermission(root, event, {});
@@ -187,16 +187,15 @@ test("subagents cannot delegate recursively; lead may use explore and general", 
   }
 });
 
-test("shell permission records review invalidation for full-shell agents only", async () => {
+test("shell permission records review invalidation for both roles", async () => {
   const writes = [];
   const storage = { set: async (...args) => writes.push(args) };
-  const coder = { action: "shell", agent: "hiraku-coder", sessionID: "c", resources: ["go mod tidy"], effect: "allow" };
-  await evaluatePermission(root, coder, storage);
-  assert.equal(coder.effect, "allow");
-  const reviewer = { action: "shell", agent: "hiraku-reviewer", sessionID: "r", resources: ["go test ./..."], effect: "allow" };
-  await evaluatePermission(root, reviewer, storage);
-  assert.equal(reviewer.effect, "allow");
-  assert.deepEqual(writes.map(([key]) => key), ["dirty/c"]);
+  for (const [agent, sessionID] of [[coordinator, "c"], [senior, "s"]]) {
+    const event = { action: "shell", agent, sessionID, resources: ["go test ./..."], effect: "allow" };
+    await evaluatePermission(root, event, storage);
+    assert.equal(event.effect, "allow");
+  }
+  assert.deepEqual(writes.map(([key]) => key), ["dirty/c", "dirty/s"]);
 });
 
 test("plugin re-checks raw shell per agent and closes delivery when agent is unknown", async () => {
@@ -211,11 +210,12 @@ test("plugin re-checks raw shell per agent and closes delivery when agent is unk
   const shell = hooks["shell.create.before"];
   assert.deepEqual(stored.get("loaded"), { version: "2.2.0" });
   assert.throws(() => shell({ command: "git status --short && gh pr merge 1", cwd: root }));
-  assert.throws(() => shell({ agent: "hiraku-lead", command: "git status --short && git push origin feat/x", cwd: root }));
+  assert.throws(() => shell({ agent: coordinator, command: "git status --short && git push origin feat/x", cwd: root }));
+  assert.throws(() => shell({ agent: senior, command: "git status --short && gh pr merge 1", cwd: root }));
   assert.throws(() => shell({ command: "git merge main", cwd: root }));
   assert.doesNotThrow(() => shell({ command: "go mod tidy && go test ./...", cwd: join(root, "core") }));
-  assert.doesNotThrow(() => shell({ agent: "hiraku-lead", command: "ls | wc -l", cwd: root }));
-  assert.doesNotThrow(() => shell({ agent: "hiraku-reviewer", command: "ls | wc -l", cwd: root }));
+  assert.doesNotThrow(() => shell({ agent: coordinator, command: "ls | wc -l", cwd: root }));
+  assert.doesNotThrow(() => shell({ agent: senior, command: "ls | wc -l", cwd: root }));
   assert.throws(() => shell({ agent: "explore", command: "ls | wc -l", cwd: root }));
 });
 
@@ -235,11 +235,11 @@ test("shell baseline closes delivery but leaves role checks to role-aware hooks"
 
 test("root keeps only shared entry docs; loose docs, reports and logs are rejected", () => {
   for (const path of ["CHANGELOG.md", "COPY.md", "ROADMAP.md", "Package.swift", "docs/plans/wp-01.md", ".agents/tmp/run.log"]) {
-    assert.doesNotThrow(() => assertPathAccess(root, "hiraku-coder", "edit", path), path);
+    assert.doesNotThrow(() => assertPathAccess(root, senior, "edit", path), path);
     assert.doesNotThrow(() => assertEditBaseline(root, path), path);
   }
   for (const path of ["M0_SPIKE.md", "notes.txt", "test-output.log", "plan.md", "result.json"]) {
-    assert.throws(() => assertPathAccess(root, "hiraku-coder", "edit", path), path);
+    assert.throws(() => assertPathAccess(root, senior, "edit", path), path);
     assert.throws(() => assertEditBaseline(root, path), path);
   }
 });
@@ -249,26 +249,24 @@ test("PR title and body must not credit AI", () => {
   writeFileSync(join(root, ".agents/tmp/pr-ok.md"), "## Summary\nAdd kana table.\n");
   writeFileSync(join(root, ".agents/tmp/pr-ai.md"), "## Summary\nAdd kana table.\n\n🤖 Generated by AI\n");
   writeFileSync(join(root, ".agents/tmp/pr-co.md"), "Body\n\nCo-authored-by: Claude <noreply@anthropic.com>\n");
-  const ship = (command) => () => assertShell(root, "hiraku-shipper", command);
-  assert.doesNotThrow(ship('gh pr create --base develop --title "feat(core): kana" --body-file .agents/tmp/pr-ok.md'));
-  assert.throws(ship('gh pr create --base develop --title "feat: x" --body-file .agents/tmp/pr-ai.md'), /AI/);
-  assert.throws(ship('gh pr create --base develop --title "feat: x" --body-file .agents/tmp/pr-co.md'), /AI/);
-  assert.throws(ship('gh pr create --base develop --title "feat: x" --body "Generated with Claude Code"'), /AI/);
-  assert.throws(ship('gh pr create --base develop --title "feat: x" --body-file -'), /stdin/);
-  assert.throws(ship('gh pr create --base develop --title "feat: x" --body-file .agents/tmp/missing.md'), /đọc/);
+  const open = (command) => () => assertShell(root, senior, command);
+  assert.doesNotThrow(open('gh pr create --base develop --title "feat(core): kana" --body-file .agents/tmp/pr-ok.md'));
+  assert.throws(open('gh pr create --base develop --title "feat: x" --body-file .agents/tmp/pr-ai.md'), /AI/);
+  assert.throws(open('gh pr create --base develop --title "feat: x" --body-file .agents/tmp/pr-co.md'), /AI/);
+  assert.throws(open('gh pr create --base develop --title "feat: x" --body "Generated with Claude Code"'), /AI/);
+  assert.throws(open('gh pr create --base develop --title "feat: x" --body-file -'), /stdin/);
+  assert.throws(open('gh pr create --base develop --title "feat: x" --body-file .agents/tmp/missing.md'), /đọc/);
 });
 
-test("only Reviewer records a verdict and only Shipper merges, both through delivery.mjs", () => {
+test("only the coordinator records a verdict and merges, both through delivery.mjs", () => {
   const sha = "a".repeat(40);
   const review = `node .agents/hiraku/delivery.mjs review 7 PASS --sha ${sha}`;
   const merge = `node .agents/hiraku/delivery.mjs merge 7 --sha ${sha}`;
-  assert.doesNotThrow(() => assertShell(root, "hiraku-reviewer", review));
-  assert.doesNotThrow(() => assertShell(root, "hiraku-shipper", merge));
-  for (const agent of ["hiraku-lead", "hiraku-coder", "general", "hiraku-shipper"]) {
-    assert.throws(() => assertShell(root, agent, review), agent);
-  }
-  for (const agent of ["hiraku-lead", "hiraku-coder", "general", "hiraku-reviewer"]) {
-    assert.throws(() => assertShell(root, agent, merge), agent);
+  assert.doesNotThrow(() => assertShell(root, coordinator, review));
+  assert.doesNotThrow(() => assertShell(root, coordinator, merge));
+  for (const command of [review, merge]) {
+    assert.throws(() => assertShell(root, senior, command), command);
+    assert.throws(() => assertShell(root, "unknown", command), command);
   }
 });
 
@@ -281,6 +279,6 @@ test("delivery.mjs rejects other paths, short SHAs and chained use", () => {
     `node .agents/hiraku/delivery.mjs merge 7 --sha ${sha} --extra`,
     `echo x && node .agents/hiraku/delivery.mjs merge 7 --sha ${sha}; gh pr merge 7`,
   ]) {
-    assert.throws(() => assertShell(root, "hiraku-shipper", command), command);
+    assert.throws(() => assertShell(root, coordinator, command), command);
   }
 });

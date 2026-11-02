@@ -1,22 +1,13 @@
 import { readFileSync, realpathSync } from "node:fs";
 import { dirname, isAbsolute, relative, resolve, sep } from "node:path";
 
-export const agents = new Set([
-  "hiraku-lead", "hiraku-coder", "hiraku-reviewer", "hiraku-shipper",
-  "explore", "general", "plan",
-]);
+const coordinator = "hiraku-coordinator";
+const senior = "hiraku-senior";
 
-// Every hiraku role needs an unrestricted shell to inspect, test and verify autonomously;
-// roles stay separate through edit rights, delegation and the commit/push/PR handoff rules.
-export const fullShell = new Set(["hiraku-lead", "hiraku-coder", "hiraku-reviewer", "hiraku-shipper", "general"]);
-const mutators = new Set(["hiraku-lead", "hiraku-coder", "general"]);
-const sourceEditors = new Set(["hiraku-coder", "general"]);
-export const delegates = {
-  "hiraku-lead": ["hiraku-coder", "hiraku-reviewer", "hiraku-shipper", "explore", "general", "plan"],
-  "hiraku-coder": ["explore"],
-  "hiraku-reviewer": ["explore"],
-  plan: ["explore"],
-};
+export const agents = new Set([coordinator, senior]);
+const sourceEditors = new Set([senior]);
+const taskEditors = new Set([coordinator, senior]);
+export const delegates = { [coordinator]: [senior] };
 
 function canonicalPath(path) {
   try {
@@ -66,14 +57,15 @@ function assertPlacement(path) {
   }
 }
 
+const taskRecord = /^\.agents\/tasks\/[a-z0-9]+(?:-[a-z0-9]+)*\.md$/;
+
 export function assertPathAccess(root, agent, action, resource) {
   const path = projectPath(root, resource);
   if (secret(path)) throw new Error("Không cho agent truy cập credential hoặc signing secret.");
   if (action !== "edit") return;
   if (!agents.has(agent)) throw new Error("Agent không thuộc bộ hiraku.");
-  if (path.startsWith(".agents/tmp/") && agent !== "hiraku-reviewer") return;
-  const task = /^\.agents\/tasks\/[a-z0-9]+(?:-[a-z0-9]+)*\.md$/.test(path);
-  if (task && (agent === "hiraku-lead" || agent === "hiraku-shipper")) return;
+  if (path.startsWith(".agents/tmp/")) return;
+  if (taskRecord.test(path) && taskEditors.has(agent)) return;
   if (!sourceEditors.has(agent)) throw new Error("Agent này không được sửa source.");
   if (protectedPath(path)) throw new Error("Policy, checker và generated không được sửa trực tiếp bởi agent.");
   assertPlacement(path);
@@ -83,35 +75,33 @@ export function assertPathAccess(root, agent, action, resource) {
 export function assertEditBaseline(root, resource) {
   const path = projectPath(root, resource);
   if (secret(path)) throw new Error("Không cho agent truy cập credential hoặc signing secret.");
-  if (/^\.agents\/tasks\/[a-z0-9]+(?:-[a-z0-9]+)*\.md$/.test(path)) return;
+  if (taskRecord.test(path)) return;
   if (path.startsWith(".agents/tmp/")) return;
   if (protectedPath(path)) throw new Error("Policy, checker và generated không được sửa trực tiếp bởi agent.");
   assertPlacement(path);
 }
 
-const inspection = new Set([
-  "git status --short",
-  "git diff --no-ext-diff --no-textconv",
-  "git diff --no-ext-diff --no-textconv --stat",
-  "git rev-parse HEAD",
-  "node --test .agents/hiraku/tests/*.test.mjs",
-]);
+// Raw merge, review and API stay closed for every agent; only delivery.mjs (see handoff) reaches them.
+const delivery = /(^|[\s;&|(`])(?:git\s+(?:merge|tag|filter-branch|reset\s+--hard|rebase\s+(?:-i|--interactive))|gh\s+(?:pr\s+(?:merge|review)|release|repo\s+(?:delete|create|edit)|api)|xcrun\s+(?:altool|notarytool)|fastlane|codesign|security\s+(?:find|dump|export))(?=$|[\s;&|)`])/;
+// Rebase is the senior's conflict tool on its own task branch; other callers stay out.
+const rebase = /(^|[\s;&|(`])git\s+rebase(?=$|[\s;&|)`])/;
 
-// Raw merge/review/api stay closed for every agent and chained command; only delivery.mjs (see handoff) reaches them.
-const delivery = /(^|[\s;&|(`])(?:git\s+(?:merge|tag|rebase|reset\s+--hard|filter-branch)|gh\s+(?:pr\s+(?:merge|review)|release|repo\s+(?:delete|create|edit)|api)|xcrun\s+(?:altool|notarytool)|fastlane|codesign|security\s+(?:find|dump|export))(?=$|[\s;&|)`])/;
+function assertDeliveryClosed(command, agent) {
+  if (delivery.test(command)) throw new Error("Merge/tag/release/signing đang đóng; chỉ người vận hành thực hiện.");
+  if (rebase.test(command) && agent !== senior) throw new Error("Rebase chỉ Senior làm trên nhánh task.");
+}
 
 const taskBranch = "(?:feat|fix|refactor|docs|test|chore|hotfix)/[a-z0-9][a-z0-9._-]*";
 const handoff = {
-  "hiraku-coder": [
+  [senior]: [
     /^git commit(?: (?!--amend\b|--no-verify\b|-n\b)[^\s]+| "[^"]*"| '[^']*')*$/,
-    new RegExp(`^git push(?: -u| --set-upstream)? origin (?:HEAD:)?${taskBranch}$`),
-  ],
-  "hiraku-reviewer": [
-    /^node \.agents\/hiraku\/delivery\.mjs review \d+ (?:PASS|FAIL) --sha [0-9a-f]{40}$/,
-  ],
-  "hiraku-shipper": [
-    /^node \.agents\/hiraku\/delivery\.mjs merge \d+ --sha [0-9a-f]{40}$/,
+    new RegExp(`^git push((?: -u| --set-upstream| --force-with-lease)*) origin (?:HEAD:)?${taskBranch}$`),
     /^gh pr create (?=.*--base develop(?:\s|$))(?!.*--base (?!develop))(?:[^;&|`$<>]|"[^"`$]*"|'[^']*')*$/,
+    /^gh pr (?:view|list|checks|status|diff)(?: [^\s;&|`$<>]+)*$/,
+  ],
+  [coordinator]: [
+    /^node \.agents\/hiraku\/delivery\.mjs review \d+ (?:PASS|FAIL) --sha [0-9a-f]{40}$/,
+    /^node \.agents\/hiraku\/delivery\.mjs merge \d+ --sha [0-9a-f]{40}$/,
     /^gh pr (?:view|list|checks|status|diff)(?: [^\s;&|`$<>]+)*$/,
   ],
 };
@@ -137,54 +127,42 @@ function assertNoAiCredit(root, part) {
   if (aiCredit.test(body)) throw new Error("Body PR có dòng ghi công AI ('Generated by AI', Co-authored-by AI): xóa trước khi tạo PR.");
 }
 
-// Coder pushes task branches, Shipper opens and merges PRs, Reviewer records the verdict; tag/release stay closed.
+// Senior pushes task branches and opens PRs; coordinator records the verdict and merges through delivery.mjs.
 function assertHandoff(root, agent, command) {
   for (const part of command.split(/&&|\|\||[;|\n]/).map((x) => x.trim())) {
     assertNoAiCredit(root, part);
     if (!handoffCommand.test(part)) {
       if (/(?:git\s+(?:commit|push)|gh\s+pr|delivery\.mjs)\b/.test(part)) {
-        throw new Error("Lệnh commit/push/PR phải đứng đầu một đoạn lệnh.");
+        throw new Error("Lệnh commit/push/PR/delivery phải đứng đầu một đoạn lệnh.");
       }
       continue;
     }
     if (!(handoff[agent] ?? []).some((rule) => rule.test(part))) {
-      throw new Error("Commit/push chỉ cho Coder trên nhánh task; PR chỉ Shipper tạo vào develop.");
+      throw new Error("Lệnh này không thuộc vai của agent: commit/push/PR cho Senior; review/merge cho Điều phối qua delivery.mjs.");
     }
   }
 }
 
-// Hooks that cannot tell which agent is calling check only what is closed for everyone.
-export function assertShellBaseline(root, command, cwd = root) {
+function assertCommandShape(root, command, cwd) {
   if (typeof command !== "string" || command.trim() === "") throw new Error("Lệnh không hợp lệ.");
   projectPath(root, cwd);
-  if (delivery.test(command)) {
-    throw new Error("Merge/tag/release/signing đang đóng; chỉ người vận hành thực hiện.");
-  }
+}
+
+// Hooks that cannot tell which agent is calling check only what is closed for everyone.
+export function assertShellBaseline(root, command, cwd = root) {
+  assertCommandShape(root, command, cwd);
+  assertDeliveryClosed(command, null);
 }
 
 export function assertShell(root, agent, command, cwd = root) {
   if (!agents.has(agent)) throw new Error("Agent không được chạy shell.");
-  assertShellBaseline(root, command, cwd);
+  assertCommandShape(root, command, cwd);
+  assertDeliveryClosed(command, agent);
   assertHandoff(root, agent, command);
-  if (fullShell.has(agent)) return;
-  command = command.trim();
-  if (/[\n\r]/.test(command)) throw new Error("Lệnh không hợp lệ.");
-  const directory = projectPath(root, cwd);
-  if (directory === "" && inspection.has(command)) return;
-  if (/[;&|<>`$]/.test(command)) throw new Error("Agent này chỉ chạy lệnh đơn trong allowlist.");
-  if (/^git (?:status|log|show|diff|rev-parse|branch|ls-files|blame)(?: [A-Za-z0-9_./:=@^~-]+)*$/.test(command)) return;
-  throw new Error("Agent chỉ đọc: chỉ được chạy git đọc.");
 }
 
-// Permission events may omit cwd; restricted commands are valid at root or core, re-checked with real cwd later.
-function assertShellAnywhere(root, agent, command, cwd) {
-  if (cwd) return assertShell(root, agent, command, cwd);
-  try {
-    assertShell(root, agent, command, root);
-  } catch (error) {
-    if (fullShell.has(agent)) throw error;
-    assertShell(root, agent, command, resolve(root, "core"));
-  }
+async function markDirty(storage, event) {
+  await storage.set(`dirty/${event.sessionID}`, { agent: event.agent, reviewInvalidated: true });
 }
 
 export async function evaluatePermission(root, event, storage) {
@@ -194,12 +172,7 @@ export async function evaluatePermission(root, event, storage) {
       for (const resource of event.resources) {
         assertPathAccess(root, event.agent, event.action, resource);
       }
-      if (event.action === "edit") {
-        await storage.set(`dirty/${event.sessionID}`, {
-          agent: event.agent,
-          reviewInvalidated: true,
-        });
-      }
+      if (event.action === "edit") await markDirty(storage, event);
     }
     if (event.action === "subagent") {
       const allowed = delegates[event.agent] ?? [];
@@ -209,14 +182,8 @@ export async function evaluatePermission(root, event, storage) {
     }
     if (event.action === "shell") {
       if (!event.resources.length) throw new Error("Thiếu lệnh để kiểm tra quyền.");
-      // The create.before shell hook re-checks every command raw with the real cwd;
-      // permission events can arrive shell-wrapped (e.g. zsh -lc) and must not gate on them.
-      if (mutators.has(event.agent)) {
-        await storage.set(`dirty/${event.sessionID}`, {
-          agent: event.agent,
-          reviewInvalidated: true,
-        });
-      }
+      // Both roles run a full shell; any mutation may invalidate an earlier review.
+      if (agents.has(event.agent)) await markDirty(storage, event);
     }
   } catch (error) {
     event.effect = "deny";

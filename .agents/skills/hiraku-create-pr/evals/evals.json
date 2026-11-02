@@ -1,0 +1,29 @@
+{
+  "skill_name": "hiraku-create-pr",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Nhánh feat/wp-04-kana đã push lên origin nhưng chưa có PR. Hãy tạo PR vào develop theo template, kèm bảng kiểm tra và head SHA.",
+      "expected_output": "Kiểm nhánh đã push và không phải develop; dùng template PR bằng tiếng Anh, không có dòng ghi công AI; đưa kết quả kiểm tra thật; báo số PR và head SHA cho điều phối.",
+      "files": [],
+      "assertions": [
+        "Kiểm nhánh đã push và không phải develop",
+        "Dùng template PR, không có dòng ghi công AI",
+        "Đưa kết quả kiểm tra thật; thiếu bằng chứng ghi Not run",
+        "Báo số PR và head SHA cho điều phối"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "PR cho nhánh feat/wp-04-kana đã tồn tại nhưng nhánh lệch so với develop. Hãy cập nhật PR.",
+      "expected_output": "Tìm PR hiện có theo nhánh và không mở PR thứ hai; rebase lên develop, chạy lại kiểm tra, push bằng --force-with-lease; nêu SHA mới và yêu cầu review lại.",
+      "files": [],
+      "assertions": [
+        "Tìm PR hiện có theo nhánh, không mở PR thứ hai",
+        "Rebase lên develop rồi push bằng --force-with-lease",
+        "Nêu SHA mới và yêu cầu review lại",
+        "Không đánh dấu sẵn sàng khi kiểm tra đang fail"
+      ]
+    }
+  ]
+}

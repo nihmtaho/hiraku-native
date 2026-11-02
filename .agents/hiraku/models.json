@@ -7,9 +7,5 @@
       "claude": "haiku"
     }
   },
-  "roles": {
-    "explore": "cheap",
-    "plan": "cheap",
-    "shipper": "cheap"
-  }
+  "roles": {}
 }

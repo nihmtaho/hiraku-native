@@ -6,11 +6,11 @@ import { agents, assertPathAccess, assertShell } from "../../.agents/hiraku/guar
 const root = fileURLToPath(new URL("../../", import.meta.url));
 const active = new Map<string, string>();
 
-// Hooks do not say which agent is calling: no running subagent means the Lead (main session).
-// Unknown subagent types fall back to the read-only explore role.
+// Hooks do not say which agent is calling: no running subagent means the coordinator (main session).
+// Unknown subagent types map to a name outside the role set: reads only, no edits or shell.
 function callers(): string[] {
-	if (active.size === 0) return ["hiraku-lead"];
-	return [...new Set(active.values())].map((type) => (agents.has(type) ? type : "explore"));
+	if (active.size === 0) return ["hiraku-coordinator"];
+	return [...new Set(active.values())].map((type) => (agents.has(type) ? type : "unknown"));
 }
 
 function check(agent: string, toolName: string, input: Record<string, any>) {

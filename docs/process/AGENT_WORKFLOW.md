@@ -32,37 +32,39 @@ không cấp thêm quyền, không tạo lại task/review/delivery thành skill
 
 | Vai | Loại | Shell | Sửa file | Gọi agent |
 |---|---|---|---|---|
-| `hiraku-lead` | phiên chính | Mọi lệnh trừ delivery | Chỉ `.agents/tasks/`, `.agents/tmp/` | coder, reviewer, shipper, explore, general, plan |
-| `hiraku-coder` | subagent | Mọi lệnh trừ delivery; commit/push nhánh task | Source/docs trừ policy | explore |
-| `hiraku-reviewer` | subagent | Mọi lệnh trừ delivery, commit/push, PR; chỉ `delivery.mjs review` ghi verdict | Không | explore |
-| `hiraku-shipper` | subagent | Mọi lệnh trừ delivery, commit/push; được `gh pr create --base develop` và `delivery.mjs merge` | Chỉ `.agents/tasks/`, `.agents/tmp/` | Không |
-| `explore` | subagent | Git đọc | Không | Không |
-| `general` | subagent | Như Coder, trừ commit/push | Source/docs trừ policy | Không |
-| `plan` | lập kế hoạch | Git đọc | Không | explore |
+| Vai | Loại | Shell | Sửa file | Gọi agent |
+|---|---|---|---|---|
+| `hiraku-coordinator` | phiên chính | Mọi lệnh trừ commit/push của senior; `delivery.mjs review` và `merge` | Chỉ `.agents/tasks/`, `.agents/tmp/` | `hiraku-senior` |
+| `hiraku-senior` | subagent | Mọi lệnh trừ delivery; commit, push nhánh task (kể cả `--force-with-lease`), rebase nhánh task, `gh pr create --base develop` | Source/docs trừ policy; `.agents/tasks/` | Không |
 
-`general` làm việc phụ cho Lead (nghiên cứu, thử lệnh, môi trường), không thay
-Coder cho task WP. Không có vai tự merge.
+Hai vai chỉ gọi skill (`hiraku-task`, `hiraku-review`, `hiraku-ship`,
+`hiraku-coding`, `hiraku-create-pr`); quy trình nằm trong skill, không lặp lại ở đây.
+Senior không tự review thành verdict và không merge. Điều phối là người review và
+cũng là người merge (chấp nhận có chủ đích, PO 2026-11-03); điều đó không thay
+thế việc review trên đúng head SHA.
 
 **Chi phí.** Mỗi subagent nạp lại system prompt, `AGENTS.md`, prompt vai và đọc lại
 file; skill chỉ nạp mô tả, toàn văn khi dùng. Vì vậy:
 
-- Reviewer luôn là subagent riêng (review độc lập cần ngữ cảnh riêng).
-- Việc nhỏ (vài file, vài lệnh) Lead tự làm, không gọi subagent.
+- Review độc lập cần ngữ cảnh riêng: điều phối đọc diff và bằng chứng, không chỉ đọc
+  báo cáo của senior.
+- Việc nhỏ (vài file, vài lệnh) tự làm, không mở thêm phiên.
 - Quy trình lặp lại viết thành skill trong `.agents/skills/`, không thêm agent.
 - `AGENTS.md` chỉ giữ luật thường trực; chi tiết để ở tài liệu đọc khi cần.
-- Model rẻ cho vai nhẹ, khai báo một nơi ở `.agents/hiraku/models.json`
-  (`explore`, `plan`, `hiraku-shipper`); vai khác dùng model của phiên do người
-  vận hành chọn. Đổi model: sửa file này rồi chạy `sync.mjs`.
+- Chưa có model ghim cho vai; `.agents/hiraku/models.json` để trống, vai dùng model của
+  phiên do người vận hành chọn.
 
-- **Bàn giao:** Coder được `git commit` (cấm `--amend`, `--no-verify`) và
-  `git push [-u] origin <type>/...` (`feat|fix|refactor|docs|test|chore|hotfix`);
-  cấm force push, refspec sang nhánh khác, đẩy `develop`/`main`.
+- **Bàn giao:** Senior được `git commit` (cấm `--amend`, `--no-verify`) và
+  `git push [-u] origin <type>/...` (`feat|fix|refactor|docs|test|chore|hotfix`), kể cả
+  `--force-with-lease` trên nhánh task sau rebase; cấm `--force` trần, refspec sang nhánh
+  khác, đẩy `develop`/`main`.
 - **Delivery thô đóng với mọi vai:** guard quét toàn bộ raw command (cả sau `&&`, `;`,
-  `|`) và chặn `git merge/tag/rebase/reset --hard/filter-branch`,
-  `gh pr merge/review`, `gh release`, `gh api`, `gh repo create/edit/delete`,
-  `xcrun altool/notarytool`, `fastlane`, `codesign`, `security`. Hai việc duy nhất đi
-  qua `.agents/hiraku/delivery.mjs` (§4): Reviewer ghi verdict, Shipper bật merge; guard
-  chỉ nhận đúng đường dẫn, đúng vai, SHA đầy đủ.
+  `|`) và chặn `git merge/tag/reset --hard/filter-branch`, `gh pr merge/review`,
+  `gh release`, `gh api`, `gh repo create/edit/delete`, `xcrun altool/notarytool`,
+  `fastlane`, `codesign`, `security`. Hai việc duy nhất đi qua
+  `.agents/hiraku/delivery.mjs` (§4): Điều phối ghi verdict `review` và bật `merge`;
+  guard chỉ nhận đúng đường dẫn, đúng vai, SHA đầy đủ. Rebase chỉ senior làm trên nhánh
+  task; rebase tương tác (`-i`) bị chặn với mọi vai.
 - **Đường dẫn:** mọi vai bị chặn đọc secret (`.env*` trừ `.env.example`, `*.p8`,
   `*.p12`, `*.pem`, `*.key`, keychain) và sửa policy (`AGENTS.md`,
   `docs/process/AGENT_WORKFLOW.md`, `docs/architecture/DECISIONS.md`, `docs/process/RELEASE.md`, `docs/process/TEST_PLAN.md`, cấu hình agent,
@@ -74,15 +76,13 @@ file; skill chỉ nạp mô tả, toàn văn khi dùng. Vì vậy:
   `.json`, …) ở root ngoài danh sách cho phép. Kế hoạch vào `docs/plans/`, kết quả
   vào `docs/reports/`, file tạm vào `.agents/tmp/` (xem `docs/README.md`).
 
-Shell tự do cho mọi vai hiraku và `general` (kể cả `cd … &&`, pipe, interpreter),
-cwd trong workspace. `explore` và `plan` chỉ chạy git đọc
-(`git status|diff|log|show|rev-parse|branch|ls-files|blame`). Shell không thay
-quyền sửa file: Reviewer không sửa source, Shipper chỉ sửa task record, kể cả qua
-lệnh shell; guard chặn qua tool edit, còn shell dựa vào prompt và review.
+Shell tự do cho hai vai (kể cả `cd … &&`, pipe, interpreter), cwd trong workspace.
+Shell không thay quyền sửa file: điều phối không sửa source, senior không sửa policy;
+guard chặn qua tool edit, còn shell dựa vào prompt và review.
 
 Shell tự do vẫn chịu luật cứng trong `AGENTS.md`: phụ thuộc mới cần ADR, không
-sửa tay generated, không sửa policy/checker để làm task xanh. Rebase nhánh đã push, tag và
-phát hành do người vận hành thực hiện; merge vào `develop` đi qua `delivery.mjs` (§4).
+sửa tay generated, không sửa policy/checker để làm task xanh. Tag và phát hành do
+người vận hành thực hiện; merge vào `develop` đi qua `delivery.mjs` (§4).
 
 ### Giới hạn bảo vệ
 
@@ -99,12 +99,13 @@ cấu hình dùng deny cho delivery.
 
 ## 3. Quy trình
 
-PO giao mục tiêu cho Lead. Lead đọc milestone/WP, gate và Q liên quan, tạo task
-packet rồi giao coder. Reviewer nhận task và diff trong phiên độc lập. Findings
-quay về coder qua Lead. Shipper chỉ tích hợp khi đủ điều kiện; không tự sửa mã.
+PO giao mục tiêu cho điều phối. Điều phối viết task record (`hiraku-task`) và giao
+senior. Senior implement, tự review, tạo PR và báo kết quả (`hiraku-coding`,
+`hiraku-create-pr`). Điều phối review PR trong phiên của mình (`hiraku-review`):
+FAIL thì gửi findings về senior; PASS thì merge qua `hiraku-ship`.
 
 `backlog → ready → coding → review → ready-to-merge → merged`; có thể chuyển
-`blocked` ở mọi bước. Sau hai vòng sửa–review không đạt, Lead chẩn đoán lại hoặc
+`blocked` ở mọi bước. Sau hai vòng sửa–review không đạt, điều phối chẩn đoán lại hoặc
 hỏi PO. Không tăng quyền để vượt blocker.
 
 Mỗi task ghi mục tiêu/ngoài phạm vi, file, FR/UC/SC/ADR, phụ thuộc/Q, base/head,
@@ -127,17 +128,19 @@ Không tự tạo remote hoặc repository mới.
 ## 4. Merge và phát hành
 
 Chính sách PO đã chốt: AI tự merge khi Review độc lập và CI đạt; PO duyệt gate
-sản phẩm và phát hành (ADR-33). Coder commit/push nhánh task, Shipper mở PR vào
-`develop`, Reviewer ghi verdict và Shipper bật merge; tag/publish vẫn đóng.
+sản phẩm và phát hành (ADR-33). Senior commit/push nhánh task và mở PR vào `develop`;
+điều phối ghi verdict `hiraku/review` và merge; tag/publish vẫn đóng.
 
 Luồng, mọi bước gắn với head SHA:
 
-1. Reviewer (phiên độc lập, không phải phiên đã viết mã) đọc diff của SHA đó rồi chạy
+1. Senior tự review chỉ là kiểm tra nội bộ, không phải verdict. Điều phối đọc diff của
+   đúng SHA trong phiên của mình rồi chạy
    `node .agents/hiraku/delivery.mjs review <pr> <PASS|FAIL> --sha <sha>`. Script đặt commit
    status `hiraku/review`; push mới đổi SHA nên verdict cũ không còn áp dụng.
 2. Workflow `.github/workflows/ci.yml` (job `ci`, Linux) chạy `go vet`, `go test -race`,
-   test guard/delivery và `wp-status --check` trên merge ref của PR.
-3. Shipper chạy `node .agents/hiraku/delivery.mjs merge <pr> --sha <sha>`. Script kiểm
+   test guard/delivery và `wp-status --check` trên merge ref của PR. Khi `ci` còn
+   pending, điều phối chờ và kiểm lại; khi `ci` fail, trả tên check và log cho senior.
+3. Điều phối chạy `node .agents/hiraku/delivery.mjs merge <pr> --sha <sha>`. Script kiểm
    base `develop`, head khớp, `hiraku/review` và `ci` đều success trên SHA, PR không draft và
    không chạm policy/checker (`protectedPath` trong `guard.mjs`, trừ `.agents/tasks/`), rồi bật
    auto-merge squash với `--match-head-commit`.
@@ -150,8 +153,9 @@ tasks, cấu hình agent, script kiểm) do người vận hành review và merg
 Giới hạn cần biết:
 
 - `hiraku/review` do cùng một tài khoản GitHub ghi; tính độc lập dựa vào phiên và quy trình
-  (Reviewer không ghi `PASS` cho PR phiên đó viết), không do GitHub cưỡng chế. Muốn cưỡng
-  chế thật, thêm bot account approve riêng.
+  (điều phối không ghi `PASS` cho PR phiên đó viết), không do GitHub cưỡng chế. Điều phối
+  vừa review vừa merge là chấp nhận có chủ đích (PO 2026-11-03). Muốn cưỡng chế thật,
+  thêm bot account approve riêng.
 - CI chưa có job Xcode/simulator: PR có Swift vẫn phải ghi bằng chứng build trong PR.
 - Guard không phải OS sandbox (xem trên): shell tự do có thể gọi `gh` qua interpreter.
   Lớp chặn cuối là ruleset và quyền token; không đặt token admin trong môi trường agent.

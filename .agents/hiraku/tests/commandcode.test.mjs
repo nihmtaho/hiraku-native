@@ -8,13 +8,11 @@ import roles from "../../../.commandcode/mods/hiraku-roles.ts";
 
 const settings = JSON.parse(readFileSync(join(root, ".commandcode/settings.json"), "utf8"));
 
-test("commandcode has its own subagents; Lead is the main session, not a subagent", () => {
-  assert.deepEqual(readdirSync(join(root, ".commandcode/agents")).sort(),
-    ["hiraku-coder.md", "hiraku-reviewer.md", "hiraku-shipper.md"]);
-  const reviewer = readFileSync(join(root, ".commandcode/agents/hiraku-reviewer.md"), "utf8");
-  assert.match(reviewer, /^---\nname: hiraku-reviewer\n/);
-  assert.match(reviewer, /disallowedTools: edit_file, write_file/);
-  assert.doesNotMatch(readFileSync(join(root, ".commandcode/lead.md"), "utf8"), /^---/);
+test("commandcode has the senior as its subagent; the coordinator is the main session", () => {
+  assert.deepEqual(readdirSync(join(root, ".commandcode/agents")).sort(), ["hiraku-senior.md"]);
+  const senior = readFileSync(join(root, ".commandcode/agents/hiraku-senior.md"), "utf8");
+  assert.match(senior, /^---\nname: hiraku-senior\n/);
+  assert.doesNotMatch(readFileSync(join(root, ".commandcode/coordinator.md"), "utf8"), /^---/);
 });
 
 test("settings close delivery for everyone, keep shell open and wire both hooks", () => {
@@ -47,7 +45,7 @@ async function loadMod() {
   return { handlers, run };
 }
 
-test("mod treats the main session as Lead", async () => {
+test("mod treats the main session as the coordinator", async () => {
   const { run } = await loadMod();
   assert.equal(await run("shell_command", { command: "brew list | head" }), undefined);
   assert.equal((await run("edit_file", { file_path: "App/Main.swift" }))?.block, true);
@@ -57,20 +55,20 @@ test("mod treats the main session as Lead", async () => {
 
 test("mod applies the active subagent role", async () => {
   const { handlers, run } = await loadMod();
-  handlers.subagent_start({ toolCallId: "a", subagentType: "hiraku-coder" });
+  handlers.subagent_start({ toolCallId: "a", subagentType: "hiraku-senior" });
   assert.equal(await run("shell_command", { command: "git add -A && git commit -m \"feat(core): x\"" }), undefined);
   assert.equal(await run("shell_command", { command: "git push -u origin feat/wp-01-core" }), undefined);
   assert.equal((await run("shell_command", { command: "git push origin develop" }))?.block, true);
   assert.equal(await run("edit_file", { file_path: "App/Main.swift" }), undefined);
   handlers.subagent_stop({ toolCallId: "a" });
 
-  handlers.subagent_start({ toolCallId: "b", subagentType: "hiraku-shipper" });
-  assert.equal(await run("shell_command", { command: "gh pr create --base develop --title x" }), undefined);
+  handlers.subagent_start({ toolCallId: "b", subagentType: "hiraku-coordinator" });
+  assert.equal(await run("shell_command", { command: "node .agents/hiraku/delivery.mjs merge 7 --sha " + "a".repeat(40) }), undefined);
   assert.equal((await run("shell_command", { command: "git push -u origin feat/x" }))?.block, true);
   handlers.subagent_stop({ toolCallId: "b" });
 
   handlers.subagent_start({ toolCallId: "c", subagentType: "Explore" });
   assert.equal((await run("shell_command", { command: "go test ./..." }))?.block, true);
-  handlers.subagent_start({ toolCallId: "d", subagentType: "hiraku-coder" });
+  handlers.subagent_start({ toolCallId: "d", subagentType: "hiraku-senior" });
   assert.equal((await run("edit_file", { file_path: "App/Main.swift" }))?.block, true);
 });

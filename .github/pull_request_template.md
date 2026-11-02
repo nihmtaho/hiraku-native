@@ -28,7 +28,7 @@
 
 ## Independent review
 
-- Reviewer / session:
+- Coordinator / session:
 - Revision:
 - Verdict: PASS | CHANGES_REQUESTED | BLOCKED
 
