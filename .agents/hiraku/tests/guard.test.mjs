@@ -114,7 +114,7 @@ test("senior commits and pushes only task branches, including force-with-lease",
   for (const command of [
     "git push origin develop", "git push origin main", "git push -f origin feat/x",
     "git push --force origin feat/x", "git push origin feat/x:develop",
-    "git commit --amend -m x", "git commit --no-verify -m x", "echo $(git push origin feat/x)",
+    "git commit --amend -m x", "git commit --no-verify -m x", "echo $(git push --force origin feat/x)",
   ]) assert.throws(() => assertShell(root, senior, command), command);
   assert.throws(() => assertShell(root, coordinator, "git commit -m x"));
   assert.throws(() => assertShell(root, coordinator, "git push -u origin feat/x"));
@@ -336,4 +336,29 @@ test("quoted or path-qualified identity escalation is denied for senior", () => 
   }
   assert.throws(() => assertShell(root, coordinator, 'H"IRAKU"_AGENT=hiraku-senior pi -p x'));
   assert.doesNotThrow(() => assertShell(root, senior, "grep claude AGENTS.md"));
+});
+
+test("quoted, cased, escaped, wrapped and substituted git cannot reach delivery or force-push", () => {
+  for (const [agent, command] of [
+    [coordinator, '"git" merge develop'], [senior, '"git" push --force origin develop'], [senior, "GIT merge develop"],
+    [senior, "g\\it push -f origin develop"], [senior, "sh -c 'git merge develop'"], [senior, 'eval "git merge develop"'],
+    [senior, "command git merge develop"], [senior, "sudo git merge develop"], [senior, "echo $(git push --force origin develop)"],
+    [senior, "git --exec-path=/x merge develop"], [senior, "git --attr-source HEAD merge develop"], [senior, "git --config-env=x=Y merge develop"],
+  ]) assert.throws(() => assertShell(root, agent, command), `${agent}: ${command}`);
+});
+
+test("every gh global flag and binary path still reaches the delivery denial", () => {
+  for (const command of ["gh -R o/r pr merge 7", "gh --paginate api x", "gh --repo o/r api repos/x", "/usr/bin/gh pr merge 7"]) {
+    assert.throws(() => assertShell(root, coordinator, command), command);
+    assert.throws(() => assertShell(root, senior, command), command);
+  }
+});
+
+test("identity cannot be set or re-issued through quotes, wrappers or absolute paths", () => {
+  for (const command of [
+    'H"IRAKU"_AGENT=hiraku-coordinator pi -p merge', "/usr/local/bin/pi -p merge", "env -i pi x", "env -- pi -p merge",
+    "env -u HOME pi x", "nohup opencode run x", "exec claude -p x", "timeout -s KILL 5 claude -p x", "bash -c \"pi -p merge\"",
+    'FOO="a b" pi x', "echo ok; pi x",
+  ]) assert.throws(() => assertShell(root, senior, command), command);
+  assert.doesNotThrow(() => assertShell(root, senior, "echo pi is fine"));
 });

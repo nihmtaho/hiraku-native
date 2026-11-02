@@ -81,28 +81,107 @@ export function assertEditBaseline(root, resource) {
   assertPlacement(path);
 }
 
-// Raw merge, review and API stay closed for every agent; only delivery.mjs (see handoff) reaches them.
-function normalize(command) {
-  return command
-    .replace(/(^|[\s;&|(`])(?:\S*\/)?git((?:\s+(?:-[Cc]\s*\S+|--git-dir[= ]\S+|--work-tree[= ]\S+|--namespace[= ]\S+|--[a-z][\w-]*|-[A-Za-z]))*)(?=\s|$)/g, "$1git")
-    .replace(/(^|[\s;&|(`])(?:\S*\/)?gh((?:\s+(?:-R\s*\S+|--repo[= ]\S+|--hostname[= ]\S+))*)(?=\s|$)/g, "$1gh");
+// Commands are split and canonicalized before any rule runs, so quotes, case, wrappers,
+// global options and binary paths cannot change which verb a rule sees.
+const assignment = /^[A-Za-z_][A-Za-z0-9_]*=/;
+const wrappers = new Set(["env", "nohup", "exec", "command", "nice", "time", "timeout", "sudo", "builtin"]);
+const wrapperValueOpts = { env: ["-u", "-C", "-S"], nice: ["-n"], timeout: ["-s", "-k"], sudo: ["-u", "-g", "-C"], exec: ["-a"] };
+const shells = new Set(["sh", "bash", "zsh", "dash"]);
+const gitValueOpts = new Set(["-C", "-c", "--git-dir", "--work-tree", "--namespace", "--attr-source", "--super-prefix", "--config-env"]);
+const ghValueOpts = new Set(["-R", "--repo", "--hostname"]);
+const agentClis = new Set(["claude", "opencode", "pi", "cmd", "commandcode"]);
+const maxDepth = 8;
+
+// Splits a command line into simple commands; quotes and escapes are resolved, unquoted operators end a command.
+function splitCommands(text) {
+  const commands = [];
+  let words = [];
+  let word = null;
+  let quote = null;
+  const endWord = () => { if (word !== null) { words.push(word); word = null; } };
+  const endCommand = () => { endWord(); if (words.length) commands.push(words); words = []; };
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (quote === "'") {
+      if (c === "'") quote = null; else word += c;
+    } else if (c === "\\" && i + 1 < text.length) {
+      word = (word ?? "") + text[++i];
+    } else if (quote === '"') {
+      if (c === '"') quote = null; else word += c;
+    } else if (c === "'" || c === '"') {
+      quote = c;
+      word ??= "";
+    } else if (c === "\n" || ";&|()`".includes(c)) {
+      endCommand();
+    } else if (/\s/.test(c)) {
+      endWord();
+    } else {
+      word = (word ?? "") + c;
+    }
+  }
+  endCommand();
+  return commands;
 }
 
+// Skips leading options; value options named in valueOpts take the next token when given without "=".
+function skipOptions(rest, valueOpts) {
+  let k = 0;
+  while (k < rest.length && rest[k].startsWith("-")) k += valueOpts.has(rest[k]) ? 2 : 1;
+  return k;
+}
 
-const delivery = /(^|[\s;&|(`])(?:git\s+(?:merge|tag|filter-branch|reset\s+--hard|rebase\s+(?:-i|--interactive))|gh\s+(?:pr\s+(?:merge|review)|release|repo\s+(?:delete|create|edit)|api)|xcrun\s+(?:altool|notarytool)|fastlane|codesign|security\s+(?:find|dump|export))(?=$|[\s;&|)`])/;
+function skipWrapper(name, rest) {
+  const values = new Set(wrapperValueOpts[name] ?? []);
+  let k = 0;
+  while (k < rest.length && (rest[k].startsWith("-") || (name === "env" && assignment.test(rest[k])))) {
+    k += values.has(rest[k]) ? 2 : 1;
+  }
+  return name === "timeout" ? k + 1 : k;
+}
+
+function segmentsOf(text, depth = 0) {
+  if (depth > maxDepth) throw new Error("Lệnh lồng quá sâu để kiểm tra.");
+  const substitutions = [...text.matchAll(/\$\(([^()]*)\)|`([^`]*)`/g)].map((m) => m[1] ?? m[2]);
+  return [
+    ...substitutions.flatMap((s) => segmentsOf(s, depth + 1)),
+    ...splitCommands(text).flatMap((words) => canonical(words, depth)),
+  ];
+}
+
+// Returns canonical command strings: wrappers, assignments and shell -c / eval are resolved, argv0 is a lowercase basename.
+function canonical(words, depth) {
+  let i = 0;
+  while (i < words.length && assignment.test(words[i])) i++;
+  if (i >= words.length) return [];
+  const name = words[i].split("/").pop().toLowerCase();
+  const rest = words.slice(i + 1);
+  if (wrappers.has(name)) return canonical(rest.slice(skipWrapper(name, rest)), depth);
+  if (shells.has(name)) {
+    const k = rest.findIndex((w) => /^-[a-zA-Z]*c[a-zA-Z]*$/.test(w));
+    if (k >= 0 && rest[k + 1] !== undefined) return segmentsOf(rest[k + 1], depth + 1);
+  }
+  if (name === "eval") return segmentsOf(rest.join(" "), depth + 1);
+  if (name === "git") return [["git", ...rest.slice(skipOptions(rest, gitValueOpts))].join(" ")];
+  if (name === "gh") return [["gh", ...rest.slice(skipOptions(rest, ghValueOpts))].join(" ")];
+  return [[name, ...rest].join(" ")];
+}
+
+const delivery = /^(?:git (?:merge|tag|filter-branch|reset --hard|rebase (?:-i|--interactive))|gh (?:pr (?:merge|review)|release|repo (?:delete|create|edit)|api)|xcrun (?:altool|notarytool)|fastlane|codesign|security (?:find|dump|export)[\w-]*)(?=$| )/;
 // Rebase is the senior's conflict tool on its own task branch; other callers stay out.
-const rebase = /(^|[\s;&|(`])git\s+rebase(?=$|[\s;&|)`])/;
+const rebase = /^git rebase(?=$| )/;
 
+// Raw merge, review and API stay closed for every agent; only delivery.mjs (see handoff) reaches them.
 function assertDeliveryClosed(command, agent) {
-  command = normalize(command);
-  if (delivery.test(command)) throw new Error("Merge/tag/release/signing đang đóng; chỉ người vận hành thực hiện.");
-  if (rebase.test(command) && agent !== senior) throw new Error("Rebase chỉ Senior làm trên nhánh task.");
+  for (const cmd of segmentsOf(command)) {
+    if (delivery.test(cmd)) throw new Error("Merge/tag/release/signing đang đóng; chỉ người vận hành thực hiện.");
+    if (rebase.test(cmd) && agent !== senior) throw new Error("Rebase chỉ Senior làm trên nhánh task.");
+  }
 }
 
 const taskBranch = "(?:feat|fix|refactor|docs|test|chore|hotfix)/[a-z0-9][a-z0-9._-]*";
 const handoff = {
   [senior]: [
-    /^git commit(?: (?!--amend\b|--no-verify\b|-[A-Za-z]*n[A-Za-z]*(?=\s|$))[^\s]+| "[^"]*"| '[^']*')*$/,
+    /^git commit(?: (?!--amend\b|--no-verify\b|--no-v\S*|-[A-Za-z]*n[A-Za-z]*(?=\s|$))[^\s]+)*$/,
     new RegExp(`^git push((?: -u| --set-upstream| --force-with-lease)*) origin (?:HEAD:)?${taskBranch}$`),
     /^gh pr create (?=.*--base develop(?:\s|$))(?!.*--base (?!develop))(?:[^;&|`$<>]|"[^"`$]*"|'[^']*')*$/,
     /^gh pr (?:view|list|checks|status|diff)(?: [^\s;&|`$<>]+)*$/,
@@ -114,17 +193,17 @@ const handoff = {
   ],
 };
 
-const handoffCommand = /^(?:git\s+(?:commit|push)|gh\s+pr|node\s+\S*delivery\.mjs)\b/;
+const handoffCommand = /^(?:git (?:commit|push)|gh pr|node \S*delivery\.mjs)(?=$| )/;
 
 // PR titles and bodies must not credit AI; checks inline text and the --body-file content.
 const aiCredit = /generated (?:by|with) (?:ai|an ai|claude|copilot|chatgpt|gpt|opencode|command ?code)|ai[- ]generated|co-authored-by:[^\n]*(?:ai|bot|claude|copilot|gpt|opencode|commandcode|anthropic|openai)|🤖/i;
 
 function assertNoAiCredit(root, part) {
-  if (!/^gh\s+pr\s+(?:create|edit)\b/.test(part)) return;
+  if (!/^gh pr (?:create|edit)(?= |$)/.test(part)) return;
   if (aiCredit.test(part)) throw new Error("Không ghi 'Generated by AI'/đồng tác giả AI trong tiêu đề hoặc body PR.");
-  const file = /--body-file[= ]+(?:"([^"]+)"|'([^']+)'|(\S+))/.exec(part);
+  const file = /--body-file[= ]+(\S+)/.exec(part);
   if (!file) return;
-  const path = file[1] ?? file[2] ?? file[3];
+  const path = file[1];
   if (path === "-") throw new Error("Body PR phải từ file trong workspace để kiểm tra, không đọc từ stdin.");
   let body;
   try {
@@ -137,15 +216,10 @@ function assertNoAiCredit(root, part) {
 
 // Senior pushes task branches and opens PRs; coordinator records the verdict and merges through delivery.mjs.
 function assertHandoff(root, agent, command) {
-  for (const part of command.split(/&&|\|\||[;|\n]/).map((x) => normalize(x.trim()))) {
-    assertNoAiCredit(root, part);
-    if (!handoffCommand.test(part)) {
-      if (/(?:git\s+(?:commit|push)|gh\s+pr|delivery\.mjs)\b/.test(part)) {
-        throw new Error("Lệnh commit/push/PR/delivery phải đứng đầu một đoạn lệnh.");
-      }
-      continue;
-    }
-    if (!(handoff[agent] ?? []).some((rule) => rule.test(part))) {
+  for (const cmd of segmentsOf(command)) {
+    assertNoAiCredit(root, cmd);
+    if (!handoffCommand.test(cmd)) continue;
+    if (!(handoff[agent] ?? []).some((rule) => rule.test(cmd))) {
       throw new Error("Lệnh này không thuộc vai của agent: commit/push/PR cho Senior; review/merge cho Điều phối qua delivery.mjs.");
     }
   }
@@ -162,16 +236,13 @@ export function assertShellBaseline(root, command, cwd = root) {
   assertDeliveryClosed(command, null);
 }
 
-// Quotes and backslashes can split a name the shell rejoins; check the unquoted command.
-const unquoted = (command) => command.replace(/["'\\]/g, "");
-const nestedAgent = /(^|[;&|(`]\s*)(?:(?:\S*\/)?env\s+)?(?:\S+=\S+\s+)*(?:\S*\/)?(?:claude|opencode|pi|cmd|commandcode)(?=\s|$)/;
-
+// Identity comes from the runtime; no shell may set it, and a senior may not start another agent CLI.
 function assertIdentity(agent, command) {
-  const plain = unquoted(command);
-  if (/HIRAKU_AGENT/.test(plain)) throw new Error("Không đặt HIRAKU_AGENT trong lệnh: danh tính do runtime cấp.");
-  if (agent === senior && nestedAgent.test(normalize(plain))) throw new Error("Senior không gọi CLI agent lồng nhau.");
+  if (/HIRAKU_AGENT/.test(command.replace(/["'\\]/g, ""))) throw new Error("Không đặt HIRAKU_AGENT trong lệnh: danh tính do runtime cấp.");
+  if (agent === senior && segmentsOf(command).some((cmd) => agentClis.has(cmd.split(" ")[0]))) {
+    throw new Error("Senior không gọi CLI agent lồng nhau.");
+  }
 }
-
 
 export function assertShell(root, agent, command, cwd = root) {
   if (!agents.has(agent)) throw new Error("Agent không được chạy shell.");
