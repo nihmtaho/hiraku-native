@@ -84,9 +84,10 @@ export function assertEditBaseline(root, resource) {
 // Raw merge, review and API stay closed for every agent; only delivery.mjs (see handoff) reaches them.
 function normalize(command) {
   return command
-    .replace(/(^|[\s;&|(`])git((?:\s+(?:-[Cc]\s+\S+|-c\s+\S+|--git-dir=\S+|--work-tree=\S+|--no-pager|-P|--paginate|--no-optional-locks))+)(?=\s)/g, "$1git")
-    .replace(/(^|[\s;&|(`])gh((?:\s+(?:-R\s*\S+|--repo[= ]\S+|--hostname[= ]\S+))+)(?=\s)/g, "$1gh");
+    .replace(/(^|[\s;&|(`])(?:\S*\/)?git((?:\s+(?:-[Cc]\s*\S+|--git-dir[= ]\S+|--work-tree[= ]\S+|--namespace[= ]\S+|--[a-z][\w-]*|-[A-Za-z]))*)(?=\s|$)/g, "$1git")
+    .replace(/(^|[\s;&|(`])(?:\S*\/)?gh((?:\s+(?:-R\s*\S+|--repo[= ]\S+|--hostname[= ]\S+))*)(?=\s|$)/g, "$1gh");
 }
+
 
 const delivery = /(^|[\s;&|(`])(?:git\s+(?:merge|tag|filter-branch|reset\s+--hard|rebase\s+(?:-i|--interactive))|gh\s+(?:pr\s+(?:merge|review)|release|repo\s+(?:delete|create|edit)|api)|xcrun\s+(?:altool|notarytool)|fastlane|codesign|security\s+(?:find|dump|export))(?=$|[\s;&|)`])/;
 // Rebase is the senior's conflict tool on its own task branch; other callers stay out.
@@ -161,12 +162,16 @@ export function assertShellBaseline(root, command, cwd = root) {
   assertDeliveryClosed(command, null);
 }
 
-const nestedAgent = /(^|[;&|(`]\s*)(?:env\s+\S+=\S+\s+)*(?:claude|opencode|pi|cmd|commandcode)(?=\s|$)/;
+// Quotes and backslashes can split a name the shell rejoins; check the unquoted command.
+const unquoted = (command) => command.replace(/["'\\]/g, "");
+const nestedAgent = /(^|[;&|(`]\s*)(?:(?:\S*\/)?env\s+)?(?:\S+=\S+\s+)*(?:\S*\/)?(?:claude|opencode|pi|cmd|commandcode)(?=\s|$)/;
 
 function assertIdentity(agent, command) {
-  if (/\bHIRAKU_AGENT\b/.test(command)) throw new Error("Không đặt HIRAKU_AGENT trong lệnh: danh tính do runtime cấp.");
-  if (agent === senior && nestedAgent.test(normalize(command))) throw new Error("Senior không gọi CLI agent lồng nhau.");
+  const plain = unquoted(command);
+  if (/HIRAKU_AGENT/.test(plain)) throw new Error("Không đặt HIRAKU_AGENT trong lệnh: danh tính do runtime cấp.");
+  if (agent === senior && nestedAgent.test(normalize(plain))) throw new Error("Senior không gọi CLI agent lồng nhau.");
 }
+
 
 export function assertShell(root, agent, command, cwd = root) {
   if (!agents.has(agent)) throw new Error("Agent không được chạy shell.");

@@ -313,3 +313,27 @@ test("workflow policy docs are protected for every role", () => {
     }
   }
 });
+
+test("git options and binary paths cannot hide merge or bare force-push", () => {
+  for (const command of [
+    "git --no-advice merge develop", "git --bare merge develop", "git -Cdir push --force origin develop",
+    "/usr/bin/git merge develop", "git --git-dir .git merge develop", "git --no-advice push --force origin develop",
+  ]) {
+    for (const agent of [coordinator, senior]) {
+      if (/merge/.test(command) && agent === senior) continue;
+      assert.throws(() => assertShell(root, agent, command), `${agent}: ${command}`);
+    }
+  }
+  assert.doesNotThrow(() => assertShell(root, senior, "git --no-advice push --force-with-lease origin feat/x"));
+});
+
+test("quoted or path-qualified identity escalation is denied for senior", () => {
+  for (const command of [
+    'H"IRAKU"_AGENT=hiraku-coordinator pi -p merge', 'HIRAKU_AG""ENT=x pi -p merge',
+    "/usr/local/bin/pi -p merge", "/usr/bin/env FOO=1 claude -p hi", "FOO=1 opencode run x",
+  ]) {
+    assert.throws(() => assertShell(root, senior, command), command);
+  }
+  assert.throws(() => assertShell(root, coordinator, 'H"IRAKU"_AGENT=hiraku-senior pi -p x'));
+  assert.doesNotThrow(() => assertShell(root, senior, "grep claude AGENTS.md"));
+});
