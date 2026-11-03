@@ -1,18 +1,17 @@
 # Vận hành AI — hiraku
 
 Quy trình chung cho mọi công cụ AI (ADR-31, sửa theo m0b-01). Repo không còn agent
-tùy chỉnh ở bốn công cụ (OpenCode, Pi, Command Code, Claude Code) và không còn guard
-cấp công cụ. Điều phối và các bước lặp lại nằm trong skills ở `.agents/skills/`; agent
-dựng sẵn của công cụ chỉ dùng để đọc và review độc lập.
+tùy chỉnh ở bốn công cụ (OpenCode, Pi, Command Code, Claude Code), không còn guard cấp
+công cụ và không còn script delivery. Điều phối và các bước lặp lại nằm trong skills ở
+`.agents/skills/`; agent dựng sẵn của công cụ chỉ dùng để đọc và review độc lập.
 
 ## 1. Thành phần
 
 | Thành phần | Đường dẫn | Mục đích |
 |---|---|---|
 | Skills | `.agents/skills/` | Điều phối và quy trình: `hiraku-coordinator`, `hiraku-task`, `hiraku-coding`, `hiraku-review`, `hiraku-create-pr`, `hiraku-ship`; kỹ thuật (`hiraku-contract`, `hiraku-feature`, `hiraku-spike-report`); Git; Swift/Go. Mọi công cụ tự discovery |
-| Delivery | `.agents/hiraku/delivery.mjs` | Ghi verdict `hiraku/review` theo SHA và bật auto-merge squash |
 | Task | `.agents/templates/task.md`, `.agents/tasks/` | Hợp đồng và record bàn giao |
-| Tests | `.agents/hiraku/tests/` | Delivery và skills (ROADMAP/Kanban, task-context) |
+| Tests | `.agents/hiraku/tests/` | Skills (ROADMAP/Kanban, task-context) |
 | Cấu hình công cụ | `.claude/`, `.opencode/`, `.pi/`, `.commandcode/`, `opencode.json` | Chỉ phần chung; xem README từng thư mục |
 
 Quy trình lặp lại mới: viết skill trong `.agents/skills/`, không thêm agent.
@@ -21,35 +20,28 @@ Quy trình lặp lại mới: viết skill trong `.agents/skills/`, không thêm
 
 | Vai | Thực hiện bởi | Làm | Không làm |
 |---|---|---|---|
-| Coordinator | skill `hiraku-coordinator` trong phiên chính | Tạo task record, giao senior, gọi review, ship | Sửa source; tự review PR do phiên mình viết |
+| Coordinator | skill `hiraku-coordinator` trong phiên chính | Tạo task record, giao senior, gọi review, merge | Sửa source; tự review PR do phiên mình viết |
 | Senior | skill `hiraku-coding` (và `hiraku-create-pr`) | Code, test, commit/push nhánh task, mở PR | Merge, tag, tự duyệt |
-| Review | skill `hiraku-review` trong subagent dựng sẵn (ngữ cảnh mới) | Đọc diff theo SHA, ghi verdict PASS/FAIL | Sửa file; ghi PASS cho PR của phiên đã viết |
-| Ship | skill `hiraku-ship` trong phiên coordinator | Kiểm điều kiện, gọi `delivery.mjs merge` | Tag, release; merge khi thiếu PASS đúng SHA |
+| Review | skill `hiraku-review` trong subagent dựng sẵn (ngữ cảnh mới) | Đọc diff theo SHA, trả verdict PASS/FAIL | Sửa file; PASS cho PR của phiên đã viết |
+| Ship | skill `hiraku-ship` trong phiên coordinator | Merge bằng `gh pr merge` đúng SHA đã review | Tag, release |
 | Đọc và lập kế hoạch | built-in `Explore`, `Plan` | Tìm, tóm tắt, lập kế hoạch | Sửa file |
 
-Review độc lập nghĩa là ngữ cảnh mới, không phải quyền riêng. Không có cấu hình nào
-ngăn một phiên sửa file hay gọi merge; ràng buộc còn lại nằm ở quy trình, ở
-`delivery.mjs` và ở ruleset GitHub (§6).
+Các mục "Không làm" là quy ước, không có cơ chế kỹ thuật chặn (§6).
 
-## 3. Quy tắc
+## 3. Quy ước
 
-- **Merge:** chỉ qua `node .agents/hiraku/delivery.mjs merge <pr> --sha <sha>`. Script kiểm
-  base `develop`, head khớp SHA, `hiraku/review` và `ci` đều success trên SHA, PR không draft;
-  rồi bật auto-merge squash với `--match-head-commit`. Ruleset `develop` kiểm lại.
-- **Verdict:** chỉ `node .agents/hiraku/delivery.mjs review <pr> <PASS|FAIL> --sha <sha>`, sau
-  khi đọc diff đúng SHA đó. Push mới đổi SHA và làm verdict cũ hết hiệu lực.
-- **Không dùng** trong mọi phiên: `git merge`, `git tag`, `git rebase`, `git reset --hard`,
-  `gh pr merge`, `gh pr review`, `gh api`, `gh release`, `gh repo create|edit|delete`,
-  `xcrun altool|notarytool`, `fastlane`, `codesign`, `security find|dump|export`. Đây là
-  quy trình; không còn guard cấp công cụ chặn chúng.
-- **Force push:** chỉ `git push --force-with-lease` trên nhánh task sau rebase. Không bao giờ
-  lên `develop` hoặc `main`; không dùng `--force` trần.
+- **Merge:** `gh pr merge <pr> --squash --match-head-commit <sha>`, chỉ sau khi review trả PASS
+  trên đúng SHA đó.
+- **Verdict:** review trả PASS hoặc FAIL cho coordinator, kèm SHA và findings. Verdict không
+  được đăng lên GitHub. Push mới đổi SHA và làm verdict cũ hết hiệu lực.
+- **Force push:** chỉ `git push --force-with-lease` trên nhánh task sau rebase. Không lên
+  `develop` hoặc `main`; không dùng `--force` trần.
 - **Secret:** không đọc `.env*` (trừ `.env.example`), `*.p8`, `*.p12`, `*.pem`, `*.key`, keychain.
 - **Policy và checker:** PR chạm `AGENTS.md`, `docs/process/`, `docs/architecture/DECISIONS.md`,
   `.github/`, `.agents/` (trừ `.agents/tasks/`), cấu hình công cụ agent, `opencode.json`, script
-  `check-*`, `build-xcframework.sh`, thư mục `gen/` và `generated/` do người vận hành review và
-  merge. `hiraku-ship` kiểm danh sách này trước khi gọi merge.
-- **Tag và phát hành** đóng với agent (ADR-33). Chỉ làm khi PO yêu cầu rõ trong phiên.
+  `check-*`, `build-xcframework.sh`, thư mục `gen/` và `generated/` nên do người vận hành review
+  trước khi merge.
+- **Tag và phát hành** thuộc PO và người vận hành (ADR-33).
 - **Nơi đặt file:** file tạm và log của AI vào `.agents/tmp/`; tài liệu vào `docs/plans/`
   hoặc `docs/reports/`.
 - **Không ghi** "Generated by AI", đồng tác giả AI hay biểu tượng robot trong commit, tiêu đề và body PR.
@@ -65,11 +57,11 @@ hiraku-coding      → commit, push nhánh task
 hiraku-create-pr   → PR vào develop (hoặc cập nhật PR)
 subagent dựng sẵn + hiraku-review → PASS | FAIL trên đúng head SHA
 FAIL               → hiraku-coding sửa, push SHA mới, review lại (tối đa hai vòng)
-PASS               → hiraku-ship → delivery.mjs merge
+PASS               → hiraku-ship → gh pr merge --squash --match-head-commit <sha>
 ```
 
 Dừng và hỏi PO khi: Q Mở chặn task; sau hai vòng không đạt; PR chạm policy/checker; mọi việc
-tag hoặc release. CI đang pending thì chờ, không merge. CI fail thì senior sửa.
+tag hoặc release. CI đang pending thì chờ; CI fail thì senior sửa.
 
 Trạng thái task và WP theo `docs/process/GIT_WORKFLOW.md` §2. Trước khi đóng task, chạy
 `hiraku-wp-status --check`.
@@ -90,21 +82,20 @@ node .agents/skills/hiraku-wp-status/scripts/wp-status.mjs --check
 
 ## 6. Giới hạn đã biết
 
-- Không còn guard cấp công cụ: vi phạm §3 không bị chặn tự động, chỉ phát hiện qua review và ruleset.
+- Không có cơ chế chặn ở tầng công cụ hay ở tầng script. Các mục §3 là quy ước.
 - Không phải OS sandbox. Shell của phiên chạy với quyền của người dùng.
-- `hiraku/review` do cùng tài khoản GitHub ghi. Độc lập dựa vào phiên và quy trình, không do
-  GitHub cưỡng chế. Muốn cưỡng chế, thêm bot account approve riêng.
-- `hiraku/review` và `ci` vẫn là check bắt buộc trong `.github/rulesets/develop.json`. Đổi
-  ruleset là việc của người vận hành trên GitHub.
+- Ruleset `develop` (`.github/rulesets/develop.json`) vẫn yêu cầu check `ci` và `hiraku/review`.
+  Không còn ai đăng `hiraku/review`, nên GitHub sẽ từ chối merge cho đến khi người vận hành đổi
+  ruleset hoặc bỏ check đó.
 - CI (`.github/workflows/ci.yml`) chạy job `ci`: `go vet`, `go test -race`, `wp-status --check`.
   Chưa có job Xcode/simulator: PR có Swift phải ghi bằng chứng build trong PR.
-- ADR-31 và ADR-33 vẫn mô tả mô hình bốn agent; cần amendment do PO chốt.
+- ADR-31 và ADR-33 vẫn mô tả mô hình bốn agent và script delivery; cần amendment do PO chốt.
 
 ## 7. Quyết định áp dụng và Q mở
 
 PO, 2026-11-03 (m0b-01): bỏ agent tùy chỉnh ở cả bốn công cụ; dùng skill điều phối và built-in
-agent; bỏ guard cấp công cụ; bỏ bước test agent trong `ci.yml`. Job `ci` giữ nguyên vì ruleset
-yêu cầu đúng tên này.
+agent; bỏ guard cấp công cụ; bỏ script `delivery.mjs` và bước kiểm policy đi kèm; bỏ bước test
+agent trong `ci.yml`. Job `ci` giữ nguyên vì ruleset yêu cầu đúng tên này.
 
 Không tự chốt Q trong DECISIONS. Q-29 chỉ xác nhận phần AI coding; thiết bị, người thử và phần
 dự phòng chưa được quyết định. Mâu thuẫn xác nhận xóa giữa NFR-004 và UC/FR-077 phải được làm rõ

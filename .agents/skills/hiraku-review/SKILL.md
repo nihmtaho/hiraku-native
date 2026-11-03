@@ -1,6 +1,6 @@
 ---
 name: hiraku-review
-description: Review độc lập một PR hoặc diff hiraku theo đúng head SHA: đối chiếu task và luật kiến trúc, chạy kiểm tra, rồi ghi verdict PASS hoặc FAIL qua delivery.mjs. Dùng khi coordinator giao review một PR, hoặc khi cần kiểm một SHA trước khi merge. Chạy trong phiên độc lập, không phải phiên đã viết mã.
+description: Review độc lập một PR hoặc diff hiraku theo đúng head SHA: đối chiếu task và luật kiến trúc, chạy kiểm tra, rồi trả verdict PASS hoặc FAIL cho coordinator. Dùng khi coordinator giao review một PR, hoặc khi cần kiểm một SHA trước khi merge. Chạy trong phiên độc lập, không phải phiên đã viết mã.
 compatibility: gh đã đăng nhập; Node.js 24+; chạy từ root dự án.
 ---
 
@@ -30,10 +30,8 @@ Bạn review độc lập và không sửa gì. Báo cáo của senior chỉ là
    - `PASS`: đủ bằng chứng, không còn finding chặn, và đã đọc đúng SHA.
    - `FAIL`: có finding với file và dòng, mức độ, đường tái hiện, và kiểm tra cần thêm.
    - `BLOCKED`: thiếu quyết định, môi trường, diff hoặc kiểm tra bắt buộc. Không ghi verdict.
-9. Chỉ với `PASS` hoặc `FAIL`, ghi đúng một lệnh:
-   `node .agents/hiraku/delivery.mjs review <pr> <PASS|FAIL> --sha <head-sha>`.
-   Script từ chối nếu head đã đổi.
-10. Trả coordinator: verdict, SHA, findings, lệnh đã chạy kèm exit code, phần chưa xác minh.
+9. Trả coordinator: verdict, SHA, findings, lệnh đã chạy kèm exit code, phần chưa xác minh.
+   Không đăng status lên GitHub; coordinator quyết định từ verdict này.
 
 ## Giới hạn
 
