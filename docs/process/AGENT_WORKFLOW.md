@@ -39,8 +39,7 @@ Các mục "Không làm" là quy ước, không có cơ chế kỹ thuật chặ
 - **Secret:** không đọc `.env*` (trừ `.env.example`), `*.p8`, `*.p12`, `*.pem`, `*.key`, keychain.
 - **Policy và checker:** PR chạm `AGENTS.md`, `docs/process/`, `docs/architecture/DECISIONS.md`,
   `.github/`, `.agents/` (trừ `.agents/tasks/`), cấu hình công cụ agent, `opencode.json`, script
-  `check-*`, `build-xcframework.sh`, thư mục `gen/` và `generated/` nên do người vận hành review trước khi merge; không có bước kiểm tự động
-  trước khi merge.
+  `check-*`, `build-xcframework.sh`, thư mục `gen/` và `generated/` nên do người vận hành review trước khi merge; không có bước kiểm tự động.
 - **Tag và phát hành** thuộc PO và người vận hành (ADR-33).
 - **Nơi đặt file:** file tạm và log của AI vào `.agents/tmp/`; tài liệu vào `docs/plans/`
   hoặc `docs/reports/`.
