@@ -20,7 +20,7 @@ compatibility: gh đã đăng nhập; nhánh task đã push; chạy từ root d�
 5. Ghi số PR, URL và head SHA vào task record.
 6. Nếu PR chạm policy hoặc checker (`AGENTS.md`, `docs/process/`, `docs/architecture/DECISIONS.md`,
    `.github/`, `.agents/` trừ `.agents/tasks/`, cấu hình công cụ agent, script `check-*`),
-   ghi cảnh báo trong body: "Chạm policy/checker, người vận hành merge."
+   ghi cảnh báo trong body: "Chạm policy/checker, nên người vận hành review trước khi merge."
 
 ## Giới hạn
 

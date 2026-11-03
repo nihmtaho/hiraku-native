@@ -39,7 +39,7 @@ Các mục "Không làm" là quy ước, không có cơ chế kỹ thuật chặ
 - **Secret:** không đọc `.env*` (trừ `.env.example`), `*.p8`, `*.p12`, `*.pem`, `*.key`, keychain.
 - **Policy và checker:** PR chạm `AGENTS.md`, `docs/process/`, `docs/architecture/DECISIONS.md`,
   `.github/`, `.agents/` (trừ `.agents/tasks/`), cấu hình công cụ agent, `opencode.json`, script
-  `check-*`, `build-xcframework.sh`, thư mục `gen/` và `generated/` nên do người vận hành review
+  `check-*`, `build-xcframework.sh`, thư mục `gen/` và `generated/` nên do người vận hành review trước khi merge; không có bước kiểm tự động
   trước khi merge.
 - **Tag và phát hành** thuộc PO và người vận hành (ADR-33).
 - **Nơi đặt file:** file tạm và log của AI vào `.agents/tmp/`; tài liệu vào `docs/plans/`
@@ -60,8 +60,8 @@ FAIL               → hiraku-coding sửa, push SHA mới, review lại (tối 
 PASS               → hiraku-ship → gh pr merge --squash --match-head-commit <sha>
 ```
 
-Dừng và hỏi PO khi: Q Mở chặn task; sau hai vòng không đạt; PR chạm policy/checker; mọi việc
-tag hoặc release. CI đang pending thì chờ; CI fail thì senior sửa.
+Dừng và hỏi PO khi: Q Mở chặn task; sau hai vòng không đạt; mọi việc
+tag hoặc release. CI đang pending thì chờ; CI fail thì senior sửa. PR chạm policy/checker không bị chặn tự động; theo quy ước người vận hành review trước khi merge (§3).
 
 Trạng thái task và WP theo `docs/process/GIT_WORKFLOW.md` §2. Trước khi đóng task, chạy
 `hiraku-wp-status --check`.
