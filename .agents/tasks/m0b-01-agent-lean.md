@@ -69,3 +69,5 @@ No source, policy, or config files touched by agent in this step.
 ## Next
 
 PO decisions PO-1…PO-4 recorded 2026-11-02; baseline done. Next action: OPERATOR performs the migration by hand (roles, `sync.mjs`, `guard.mjs`, `models.json`, adapter regen, new `hiraku-*` skills, `AGENTS.md` trim, workflow docs, tests, CHANGELOG `[Unreleased]`), honoring: no self-merge role, review bound to head SHA, policy PRs operator-merged, sequential seniors, tag/release still closed. No Coder/Reviewer/Shipper subagents to dispatch for this task — agent delivery path is closed by design here. Any change of revision invalidates earlier review and approval; re-read this record on resume.
+
+(8) PO, 2026-11-03 (confirmed in session): removal of `.agents/hiraku/delivery.mjs` and the tool-level guard (`guard.mjs` and per-tool hooks/plugins/extensions) is confirmed. Merge and verdict are by convention; no automated gate.
