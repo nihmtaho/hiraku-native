@@ -2,7 +2,7 @@
 
 ## Contract
 
-- Status: applied in working tree 2026-11-03 (uncommitted, not merged). Scope and guard/CI decisions from the PO answers below supersede PO-1…PO-4 where they conflict; ADR-31/33 amendment and GitHub ruleset update are still open.
+- Status: applied in PR #34 (`chore/m0b-01-agent-lean`), not merged. Scope and guard/CI decisions from the PO answers below supersede PO-1…PO-4 where they conflict; ADR-31/33 amendment and GitHub ruleset update are still open.
 - Owner: operator (PO side) for migration; Lead for baseline (done)
 - Milestone / WP: M0b / process housekeeping (no WP; agent infrastructure, not product logic)
 - Branch / PR: `chore/m0b-01-agent-lean`, PR #34 (base `develop`)
@@ -68,6 +68,6 @@ No source, policy, or config files touched by agent in this step.
 
 ## Next
 
-PO decisions PO-1…PO-4 recorded 2026-11-02; baseline done. Next action: OPERATOR performs the migration by hand (roles, `sync.mjs`, `guard.mjs`, `models.json`, adapter regen, new `hiraku-*` skills, `AGENTS.md` trim, workflow docs, tests, CHANGELOG `[Unreleased]`), honoring: no self-merge role, review bound to head SHA, policy PRs operator-merged, sequential seniors, tag/release still closed. No Coder/Reviewer/Shipper subagents to dispatch for this task — agent delivery path is closed by design here. Any change of revision invalidates earlier review and approval; re-read this record on resume.
+PO decisions PO-1…PO-4 recorded 2026-11-02; baseline done. Next action: migration is in PR #34; operator decides ruleset `hiraku/review`, ADR-31/33 amendment and merge of policy PRs (roles, `sync.mjs`, `guard.mjs`, `models.json`, adapter regen, new `hiraku-*` skills, `AGENTS.md` trim, workflow docs, tests, CHANGELOG `[Unreleased]`), honoring: no self-merge role, review bound to head SHA, policy PRs operator-merged, sequential seniors, tag/release still closed. No Coder/Reviewer/Shipper subagents to dispatch for this task — agent delivery path is closed by design here. Any change of revision invalidates earlier review and approval; re-read this record on resume.
 
 (8) PO, 2026-11-03 (confirmed in session): removal of `.agents/hiraku/delivery.mjs` and the tool-level guard (`guard.mjs` and per-tool hooks/plugins/extensions) is confirmed. Merge and verdict are by convention; no automated gate.

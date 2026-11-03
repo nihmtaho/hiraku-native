@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Prints only the ROADMAP/DECISIONS rows a task needs, so the Lead does not load whole documents.
+// Prints only the ROADMAP/DECISIONS rows a task needs, so the coordinator does not load whole documents.
 import { readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";

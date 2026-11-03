@@ -14,7 +14,7 @@ ghi `--blk`). Năm giá trị: `bl` `rd` `ip` `rv` `dn`. Mã không có ở §11
 
 1. Lấy mã chính xác như trong mảng `raw` của `ROADMAP hiraku — Kanban.html`
    (ví dụ `S-2`, `S-1 + S-7`, `WP-03`, `RV-04`). Không tự đặt mã mới; mã chưa có
-   thẻ Kanban thì báo Lead.
+   thẻ Kanban thì báo coordinator.
 2. Cập nhật hai nơi bằng một lệnh (script tách hàng gộp ở §11 nếu cần):
 
    ```sh

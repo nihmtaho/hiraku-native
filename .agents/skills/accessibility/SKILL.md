@@ -155,4 +155,4 @@ Mục này ưu tiên hơn nội dung phía trên khi mâu thuẫn. Luật gốc:
 - Kiểm toán a11y đầy đủ thuộc M3 (GATE-3); tương phản Ember trên kính theo ADR-15.
 
 Nếu đang review: dùng như checklist read-only; vi phạm mục này là finding. Mâu
-thuẫn chưa rõ thì BLOCKED và hỏi Lead.
+thuẫn chưa rõ thì BLOCKED và hỏi coordinator.

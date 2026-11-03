@@ -86,7 +86,7 @@ Cập nhật bằng skill `hiraku-wp-status` (`node .agents/skills/hiraku-wp-sta
 
 ## 8. Điều kiện môi trường (người vận hành, một lần)
 
-Repo đã có Git và remote `origin` (GitHub); CI (`.github/workflows/ci.yml`) và ruleset (`.github/rulesets/`) đã có trong repo, cần xác nhận đã áp dụng trên GitHub; hooks cài sẵn và quyền commit/push/merge của agent vẫn đóng (AGENT_WORKFLOW §3). Việc còn lại cho PO/người vận hành, không agent nào tự làm:
+Repo đã có Git và remote `origin` (GitHub); CI (`.github/workflows/ci.yml`) và ruleset (`.github/rulesets/`) đã có trong repo, cần xác nhận đã áp dụng trên GitHub; hooks cài sẵn và quyền commit/push/merge theo quy ước trong AGENT_WORKFLOW §3, không có cơ chế kỹ thuật chặn. Việc còn lại cho PO/người vận hành, không agent nào tự làm:
 
 ```sh
 git switch -c develop
