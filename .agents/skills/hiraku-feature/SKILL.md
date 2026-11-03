@@ -36,7 +36,7 @@ theo màn cần làm. Chưa có quyết định nghiệp vụ thì không cài t
    không tuyên bố simulator đã thay nghiệm thu thiết bị thật.
 8. Cập nhật import rules và bảng module/feature khi thực sự thêm module; cập nhật
    spec/UC/DESIGN/COPY theo thay đổi. Policy/checker bị bảo vệ thì trả thay đổi
-   cần PO/người vận hành áp dụng, không vượt guard.
+   cần PO/người vận hành áp dụng, không tự vượt quy trình.
 9. Chạy test package độc lập với fake, check-imports và App integration/XCUITest
    liên quan. Kiểm tra độc lập package không yêu cầu link core thật.
 

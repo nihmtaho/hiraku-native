@@ -35,7 +35,7 @@ Tạo nhánh **luôn** chỉ rõ base, vì script tự dò sẽ chọn `main`:
 Đẩy thêm commit sau Review PASS thì PASS cũ vô hiệu; review lại đúng SHA mới. Sau hai vòng sửa không đạt: quay coordinator (AGENT_WORKFLOW §4).
 Rebase nhánh task lên `develop` (không merge `develop` vào nhánh task) khi cần cập nhật; dùng skill `git-rebase`. Không force-push nhánh đã có review trừ khi review lại.
 
-## 3. Điều kiện bắt buộc trước merge (`hiraku-ship` kiểm trước khi merge)
+## 3. Điều kiện bắt buộc trước merge (coordinator xác nhận trước khi merge)
 
 1. Review PASS đúng head SHA; CI bắt buộc xanh trên revision tích hợp.
 2. **CHANGELOG**: PR thêm mục dưới `## [Unreleased]` của `CHANGELOG.md` (§5). PR chỉ chạm tài liệu quy trình nội bộ cũng ghi mục `Tài liệu`; chỉ `chore` thuần công cụ mới được bỏ, kèm lý do trong PR.
@@ -86,13 +86,13 @@ Cập nhật bằng skill `hiraku-wp-status` (`node .agents/skills/hiraku-wp-sta
 
 ## 8. Điều kiện môi trường (người vận hành, một lần)
 
-Repo đã có Git và remote `origin` (GitHub); chưa có CI, hooks cài sẵn hay branch protection, và quyền commit/push/merge của agent vẫn đóng (AGENT_WORKFLOW §3). Việc còn lại cho PO/người vận hành, không agent nào tự làm:
+Repo đã có Git và remote `origin` (GitHub); CI (`.github/workflows/ci.yml`) và ruleset (`.github/rulesets/`) đã có trong repo, cần xác nhận đã áp dụng trên GitHub; hooks cài sẵn và quyền commit/push/merge của agent vẫn đóng (AGENT_WORKFLOW §3). Việc còn lại cho PO/người vận hành, không agent nào tự làm:
 
 ```sh
 git switch -c develop
 cp .agents/skills/git-hooks/hooks/* .git/hooks/ && chmod +x .git/hooks/commit-msg .git/hooks/pre-commit
 ```
 
-Sau đó bảo vệ `main`, `develop`: cấm push trực tiếp, bắt buộc PR, required checks (`go test -race`, `check-core.sh`, `check-imports.sh`, `buf lint`/`buf breaking`, `xcodebuild test`), Review PASS đúng SHA, squash cho `develop`. Quyền commit/push nhánh task cho senior và merge qua `delivery.mjs` cho coordinator không còn guard cấp công cụ; ruleset là gate chính, do PO review. Cho đến lúc đó: agent không báo merged.
+Sau đó bảo vệ `main`, `develop`: cấm push trực tiếp, bắt buộc PR, required checks (`go test -race`, `check-core.sh`, `check-imports.sh`, `buf lint`/`buf breaking`, `xcodebuild test`), Review PASS đúng SHA, squash cho `develop`. Quyền commit/push nhánh task cho senior và merge bằng `gh pr merge` cho coordinator không còn cơ chế kỹ thuật chặn; ruleset là gate chính, do PO review. Cho đến lúc đó: agent không báo merged.
 
 Rulesets import sẵn: `.github/rulesets/main.json` (chỉ merge commit) và `develop.json` (chỉ squash). GitHub → Settings → Rules → Rulesets → New ruleset → Import a ruleset. Cả hai cấm push trực tiếp, xóa và force-push, bắt buộc PR. Số approval để 0 vì một tài khoản không tự duyệt PR của mình; nâng lên 1 khi có identity reviewer riêng (AGENT_WORKFLOW §6). Thêm `required_status_checks` khi có CI.

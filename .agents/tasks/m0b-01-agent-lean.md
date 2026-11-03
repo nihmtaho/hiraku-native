@@ -5,7 +5,7 @@
 - Status: applied in working tree 2026-11-03 (uncommitted, not merged). Scope and guard/CI decisions from the PO answers below supersede PO-1…PO-4 where they conflict; ADR-31/33 amendment and GitHub ruleset update are still open.
 - Owner: operator (PO side) for migration; Lead for baseline (done)
 - Milestone / WP: M0b / process housekeeping (no WP; agent infrastructure, not product logic)
-- Branch / PR: none yet (expected `<type>/m0b-01-agent-lean` from `develop` once unblocked; note: policy-touching PRs are refused by `delivery.mjs` and must be operator-applied)
+- Branch / PR: `chore/m0b-01-agent-lean`, PR #34 (base `develop`)
 - Base / head SHA: `develop` = `db6bb6f75b5c702a440a6436544f53277b6a1565`; working tree dirty at record creation (`M .agents/tasks/m0-09-task-records.md`, `M .claude/settings.json`, `?? .serena/`)
 - Dependencies: none (no WP dependency; blocked on PO decisions below, not on other WPs)
 - Required reading: `docs/process/AGENT_WORKFLOW.md` (§1 shared sources incl. "skills do not grant rights, do not remake task/review/delivery into skills"; §2 roles/rights; §4 merge/release, ADR-33); `docs/process/GIT_WORKFLOW.md` (§1 branches, §3 pre-merge incl. policy-toucher rule); `docs/architecture/DECISIONS.md` (ADR-31, ADR-33, Q-29 partially open); `.agents/hiraku/roles/*.md`, `.agents/hiraku/guard.mjs`, `.agents/hiraku/sync.mjs`, `.agents/hiraku/models.json`; existing skills `hiraku-task`, `hiraku-wp-status` as reuse reference
