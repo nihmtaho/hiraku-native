@@ -27,7 +27,7 @@ ghi `--blk`). Năm giá trị: `bl` `rd` `ip` `rv` `dn`. Mã không có ở §11
    đúng chỗ đó, không bỏ qua.
 3. Với PR có thay đổi: thêm **một dòng** dưới nhóm đúng (`Thêm`, `Đổi`, `Sửa`, `Xóa`,
    `Tài liệu`, `Bảo mật`) trong `## [Unreleased]` của `CHANGELOG.md`, tiếng Việt,
-   kết thúc bằng `(<mã>, PR <n>)`. Chưa có số PR thì ghi `PR —`, Shipper bổ sung.
+   kết thúc bằng `(<mã>, PR <n>)`. Chưa có số PR thì ghi `PR —`, coordinator bổ sung.
    Không sửa phần lịch sử bên dưới `[Unreleased]`.
 4. Kiểm tra khớp và đưa kết quả vào bàn giao:
 

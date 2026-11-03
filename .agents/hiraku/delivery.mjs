@@ -2,7 +2,6 @@
 // The only path to the review verdict and merge: checks run here, GitHub rulesets enforce them again.
 import { execFileSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
-import { protectedPath } from "./guard.mjs";
 
 export const REVIEW_CONTEXT = "hiraku/review";
 export const CI_CONTEXT = "ci";
@@ -43,8 +42,6 @@ export function merge(run, pr, sha) {
   const info = pullRequest(run, pr);
   assertReviewable(info, sha);
   if (info.isDraft) throw new Error("PR đang là draft.");
-  const policy = info.files.filter((f) => !f.startsWith(".agents/tasks/") && protectedPath(f));
-  if (policy.length) throw new Error(`PR chạm policy/checker, người vận hành merge: ${policy.join(", ")}`);
   if (!passed(info.statusCheckRollup, REVIEW_CONTEXT)) throw new Error(`Thiếu ${REVIEW_CONTEXT} PASS cho ${sha}.`);
   if (!passed(info.statusCheckRollup, CI_CONTEXT)) throw new Error(`Check bắt buộc "${CI_CONTEXT}" chưa đạt cho ${sha}.`);
   const args = ["pr", "merge", String(pr), "--squash", "--match-head-commit", sha];

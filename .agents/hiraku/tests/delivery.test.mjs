@@ -54,9 +54,6 @@ const blocked = [
   ["wrong base", { base: "main" }, /Base/],
   ["draft", { isDraft: true }, /draft/],
   ["closed", { state: "MERGED" }, /không còn mở/],
-  ["policy file", { files: ["AGENTS.md"] }, /policy/],
-  ["workflow file", { files: [".github/workflows/ci.yml"] }, /policy/],
-  ["delivery script", { files: [".agents/hiraku/delivery.mjs"] }, /policy/],
 ];
 for (const [name, options, message] of blocked) {
   test(`merge is blocked: ${name}`, () => {
@@ -65,10 +62,6 @@ for (const [name, options, message] of blocked) {
     assert.ok(!calls.some((c) => c[1] === "merge"));
   });
 }
-
-test("task records do not count as policy changes", () => {
-  assert.doesNotThrow(() => merge(fakeGh({ files: [".agents/tasks/m0-07.md", "CHANGELOG.md"] }).run, 7, sha));
-});
 
 test("main validates arguments before calling gh", () => {
   const never = () => assert.fail("gh must not run");

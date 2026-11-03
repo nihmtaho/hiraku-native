@@ -2,7 +2,7 @@
 
 **Trạng thái hiện tại:** chưa có repository Git, remote, pipeline sản phẩm hoặc
 artifact phát hành. Không có bước nào dưới đây mặc nhiên được xem là đã đạt.
-Đây là checklist của Shipper, không phải quyền publish.
+Đây là checklist của coordinator, không phải quyền publish.
 
 ## Merge một task
 
@@ -10,7 +10,7 @@ artifact phát hành. Không có bước nào dưới đây mặc nhiên đượ
 |---|---|
 | Repository, base và head rõ ràng | Remote/nhánh đích do PO chọn; head SHA thực |
 | Task đúng milestone và không bị Q/gate chặn | Task packet và trạng thái quyết định |
-| Review độc lập PASS | Reviewer/session hoặc identity; đúng head SHA |
+| Review độc lập PASS | Review độc lập (phiên khác) hoặc identity; đúng head SHA |
 | Kiểm tra bắt buộc đạt | Required checks và kết quả CI trên revision tích hợp |
 | Nội dung không đổi sau review | Diff/head đối chiếu; thay đổi mới phải review lại |
 | Policy và dữ liệu được bảo vệ | Không admin bypass; không sửa checker để né lỗi |
@@ -31,7 +31,7 @@ khoản, quyết định kênh Mac (Q-8), điều khoản và signing credential
   migration vị trí DB nếu có, bảo toàn dữ liệu và sao lưu.
 - Kiểm tra bundle ID, signing, entitlement theo đúng tính năng/phạm vi được
   duyệt. Không tự bật iCloud hay deploy CloudKit trước khi giải quyết điểm
-  MR/M4 trong OPENCODE §6 và Q liên quan.
+  MR/M4 trong AGENT_WORKFLOW §7 và Q liên quan.
 - Chuẩn bị Privacy Manifest, chính sách riêng tư, metadata, ảnh chụp và tài sản
   App Store; không khai báo “không thu thập” chỉ vì checklist có câu đó, phải
   đối chiếu binary và dependency thực.
@@ -45,7 +45,7 @@ kênh và artifact cụ thể**. Không dùng văn bản do agent tự ghi như 
 đã duyệt. Đổi một trong các mục đó cần duyệt lại.
 
 Credentials chỉ có ở môi trường phát hành được bảo vệ; coder/reviewer không
-nhận token, certificate hoặc private key. Shipper thực hiện qua workflow được
+nhận token, certificate hoặc private key. Coordinator (`hiraku-ship`) thực hiện qua workflow được
 PO cấu hình; trước khi có workflow, trả BLOCKED thay vì mở shell để ship tay.
 
 Ghi riêng: archive/build thành công, upload TestFlight, kết quả beta, nộp review,
