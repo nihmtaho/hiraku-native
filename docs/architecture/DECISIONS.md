@@ -66,6 +66,7 @@ Tài liệu này là **nơi duy nhất** ghi trạng thái các quyết định.
 | ADR-27 | Kiểu ghi chú và field tùy biến theo deck; `notes`/`cards` thay `words`; chia Pha A (M1a), B (M2–M3), C (M4) | Đã chốt, chờ đo S-1 trên schema mới | 2026-10-28 | Yêu cầu khách hàng; sửa ADR-04 |
 | ADR-31 | OpenCode: bốn agents, skills cho quy trình lặp lại (sửa 2026-10-30); AI tự merge khi Review độc lập và CI đạt, PO duyệt gate/phát hành | **Được sửa bởi m0b-01 (2026-11-04): bỏ bốn agents, dùng skill điều phối** | 2026-10-29 | `docs/process/AGENT_WORKFLOW.md`; Q-29 xác nhận một phần |
 | ADR-33 | Delivery tự động: Reviewer ghi status `hiraku/review` theo SHA, Shipper bật auto-merge squash qua `delivery.mjs`; ruleset `develop` bắt buộc `ci` + `hiraku/review` | **Được sửa bởi m0b-01 (2026-11-04): bỏ status `hiraku/review` và `delivery.mjs`; ruleset chỉ còn `ci`** | 2026-10-31 | Làm rõ ADR-31; `docs/process/AGENT_WORKFLOW.md` §4 |
+| ADR-34 | Review độc lập cần subagent ngữ cảnh mới; harness không có thì người vận hành (hoặc session thứ hai) làm reviewer, không tự PASS trong phiên viết mã | Đã chốt | 2026-11-04 | `docs/process/AGENT_WORKFLOW.md` §2, §4 |
 
 ### 2.2 Đề xuất và mở
 
@@ -461,6 +462,16 @@ Q-4, Q-A, Q-B, Q-C, Q-D, Q-E đã được đóng bởi ADR-26, ADR-23, ADR-22, 
 - **Việc của người vận hành**: áp dụng `.github/rulesets/develop.json`; bật "Allow auto-merge"; không đặt token admin cho agents.
 - **Sửa đổi m0b-01 (PO, 2026-11-04)**: bỏ commit status `hiraku/review`, bỏ `delivery.mjs` và auto-merge; merge bằng `gh pr merge --squash --match-head-commit <sha>` sau review PASS đúng SHA; ruleset `develop` chỉ còn bắt buộc check `ci`. Verdict và merge là quy ước, không còn gate tự động.
 - **Trạng thái**: Đã chốt (PO, 2026-10-31).
+
+
+### ADR-34 — Review độc lập cần subagent ngữ cảnh mới
+- **Bối cảnh**: verdict PASS chỉ có giá trị khi reviewer chạy trong ngữ cảnh mới, chưa thấy phiên viết mã (AGENT_WORKFLOW §2, §4). Harness Pi hiện tại không kèm công cụ subagent (cần gói bổ sung như `pi-subagents` mới có), nên phiên coordinator/senior không tự tạo được reviewer độc lập; tự review lại bài của mình không tính là độc lập.
+- **Quyết định**:
+  1. Không tự ghi PASS trong cùng phiên đã viết mã. Không có subagent tool thì verdict độc lập để trống và ghi rõ `reviewer: none (no subagent tool)`.
+  2. Chưa thêm dependency `pi-subagents` hay package tương đương (khi thêm cần ADR riêng theo luật phụ thuộc của AGENTS). Fallback hiện tại: người vận hành review tay trên GitHub, hoặc một session agent thứ hai hoàn toàn riêng làm reviewer với skill `hiraku-review`.
+  3. PR chạm policy/checker luôn cần người vận hành review trước khi merge, kể cả khi đã có PASS.
+- **Hệ quả**: PR #35 là trường hợp đầu tiên áp dụng: merge theo lệnh trực tiếp của người vận hành, không có verdict độc lập.
+- **Trạng thái**: Đã chốt (PO, 2026-11-04).
 
 ---
 
