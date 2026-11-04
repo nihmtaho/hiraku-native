@@ -83,18 +83,19 @@ node .agents/skills/hiraku-wp-status/scripts/wp-status.mjs --check
 
 - Không có cơ chế chặn ở tầng công cụ hay ở tầng script. Các mục §3 là quy ước.
 - Không phải OS sandbox. Shell của phiên chạy với quyền của người dùng.
-- Ruleset `develop` (`.github/rulesets/develop.json`) vẫn yêu cầu check `ci` và `hiraku/review`.
-  Không còn ai đăng `hiraku/review`, nên GitHub sẽ từ chối merge cho đến khi người vận hành đổi
-  ruleset hoặc bỏ check đó.
+- Ruleset `develop` (`.github/rulesets/develop.json`) chỉ yêu cầu check `ci` (m0b-01 bỏ `hiraku/review`, 2026-11-04). Verdict review và merge là quy ước, không còn gate tự động.
 - CI (`.github/workflows/ci.yml`) chạy job `ci`: `go vet`, `go test -race`, `wp-status --check`.
   Chưa có job Xcode/simulator: PR có Swift phải ghi bằng chứng build trong PR.
-- ADR-31 và ADR-33 vẫn mô tả mô hình bốn agent và script delivery; cần amendment do PO chốt.
+- ADR-31 và ADR-33 đã được sửa bởi m0b-01 (2026-11-04): bỏ mô hình bốn agent và script delivery; điều phối bằng skills.
 
 ## 7. Quyết định áp dụng và Q mở
 
 PO, 2026-11-03 (m0b-01): bỏ agent tùy chỉnh ở cả bốn công cụ; dùng skill điều phối và built-in
 agent; bỏ guard cấp công cụ; bỏ script `delivery.mjs` và bước kiểm policy đi kèm; bỏ bước test
 agent trong `ci.yml`. Job `ci` giữ nguyên vì ruleset yêu cầu đúng tên này.
+
+PO, 2026-11-04 (m0b-01, tiếp §7): bỏ check `hiraku/review` khỏi ruleset `develop` (chỉ còn `ci`);
+amendment ADR-31/33 ghi nhận bỏ mô hình bốn agent, guard cấp công cụ và `delivery.mjs`.
 
 Không tự chốt Q trong DECISIONS. Q-29 chỉ xác nhận phần AI coding; thiết bị, người thử và phần
 dự phòng chưa được quyết định. Mâu thuẫn xác nhận xóa giữa NFR-004 và UC/FR-077 phải được làm rõ

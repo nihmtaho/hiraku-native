@@ -50,24 +50,31 @@ Baseline (read-only, Lead, 2026-11-02, base `db6bb6f` on `develop`, single workt
 
 No source, policy, or config files touched by agent in this step.
 
-## Independent review
+## Independent review (coordinator check, 2026-11-04, Pi main session — NOT a fresh subagent)
 
-- Reviewer / session:
-- Revision:
-- Verdict:
+- Reviewer / session: coordinator, Pi main session on branch `chore/m0b-01-agent-lean` (session did not write PR code; Pi has no subagent tool so a fresh-context review was not possible — operator review still required per AGENT_WORKFLOW §3 policy-PR rule).
+- Revision: `0382613458c31d9ac63719f1cb2a18aa3e5f59cb` (PR #34 head, base `develop`, state OPEN, `ci` SUCCESS run 41604502436).
+- Verdict: PASS (process scope) with operator gate open — see findings. No `hiraku/review` status posted (no automated gate by design).
 - Findings:
-- Checks the reviewer actually ran:
+  - Scope: 82 files, +463/−4334. Custom agent dirs gone (`.pi/agents/`, `.opencode/agents/`, `.commandcode/agents/`, `.claude/agents/` all removed); `grep` for old role names clean except `docs/architecture/DECISIONS.md` (ADR-31/33 still describe four-agent model — amendment open, already tracked) and `.agents/tmp/` fixtures (gitignored temp, ignore).
+  - Minor scope note (not blocking): `Lead→coordinator`, `Coder/Reviewer→senior`, `OPENCODE→AGENT_WORKFLOW` renames in 5 non-hiraku skills, `docs/process/RELEASE.md`, and removal of agent-test step in `ci.yml` were not in the original allowed-files list, but all follow the same migration and the `ci.yml` removal is PO-confirmed (AGENT_WORKFLOW §7). Treat allowed-list as superseded for these lines.
+  - Eval fixtures under `.agents/skills/*/evals/` still use old role names — left as test data per PR body, accepted.
+  - CHANGELOG `[Unreleased]` entry present (m0b-01, PR 34) with old agent entries marked superseded — accepted for a chore PR.
+  - `wp-status --check`: "ROADMAP §11 và Kanban khớp." (no WP attached, correct).
+- Checks the reviewer actually ran: `node --test .agents/hiraku/tests/*.test.mjs` → 5 pass 0 fail; `wp-status.mjs --check` → exit 0; `node -e JSON.parse` on `opencode.json`, `.commandcode/settings.json`, `.agents/hiraku/package.json`, `.claude/settings.json` → ok; `gh pr view 34 --json` → head `03826134`, `ci` SUCCESS, no reviews; Go tests not run (no `core/` change).
 
 ## Delivery
 
-- CHANGELOG entry and ROADMAP/Kanban status updated in the PR: no (blocked, no PR)
-- Status: blocked
-- CI / integration revision:
-- Gate / PO approval:
-- Actions actually taken / evidence from the target system:
+- CHANGELOG entry and ROADMAP/Kanban status updated in the PR: yes (CHANGELOG `[Unreleased]` m0b-01 entry; ROADMAP §11/Kanban unchanged — chore, no WP, `--check` passes).
+- Status: ready for operator — coordinator does NOT merge policy PRs per AGENT_WORKFLOW §3.
+- CI / integration revision: `ci` SUCCESS @ `03826134` (run 41604502436, 2026-11-03T08:36:41Z).
+- Gate / PO approval: PO decisions (1)–(8) on record; operator review + merge still required (policy PR). Ruleset fixed 2026-11-04: repo file and live GitHub ruleset `protect-develop` (id 26097957) now require only `ci` — no bypass needed.
+- Actions actually taken / evidence from the target system: review checks run 2026-11-04 (see Independent review); no commit/push/merge done in this session.
 
 ## Next
 
 PO decisions PO-1…PO-4 recorded 2026-11-02; baseline done. Next action: migration is in PR #34; operator decides ruleset `hiraku/review`, ADR-31/33 amendment and merge of policy PRs (roles, `sync.mjs`, `guard.mjs`, `models.json`, adapter regen, new `hiraku-*` skills, `AGENTS.md` trim, workflow docs, tests, CHANGELOG `[Unreleased]`), honoring: no self-merge role, review bound to head SHA, policy PRs operator-merged, sequential seniors, tag/release still closed. No Coder/Reviewer/Shipper subagents to dispatch for this task — agent delivery path is closed by design here. Any change of revision invalidates earlier review and approval; re-read this record on resume.
 
 (8) PO, 2026-11-03 (confirmed in session): removal of `.agents/hiraku/delivery.mjs` and the tool-level guard (`guard.mjs` and per-tool hooks/plugins/extensions) is confirmed. Merge and verdict are by convention; no automated gate.
+
+(9) PO, 2026-11-04 (this session): ruleset `develop` fixed — `hiraku/review` removed from required checks (repo `.github/rulesets/develop.json` + live GitHub ruleset `protect-develop`, verified only `ci` remains). ADR-31/33 amended in DECISIONS (table status + amendment bullets; history preserved). AGENT_WORKFLOW §6–§7 updated to match. Checks: `develop.json` parses, `wp-status --check` passes, skill tests 5 pass. Edits uncommitted on `chore/m0b-01-agent-lean`; committing them changes PR #34 head SHA and invalidates the 2026-11-04 review of `03826134` — re-review new SHA before merge.
