@@ -54,6 +54,12 @@ test("wp-status rejects unknown ids and statuses without writing", () => {
   }
 });
 
+test("task record template has execution plan and github issues", () => {
+  const tpl = readFileSync(join(root, ".agents/templates/task.md"), "utf8");
+  assert.match(tpl, /## Execution plan/);
+  assert.match(tpl, /## GitHub issues/);
+});
+
 test("task-context surfaces a directly blocking open question", () => {
   const result = context(root, "WP-04");
   assert.equal(result.work.length, 1);

@@ -29,13 +29,21 @@ compatibility: Node.js 24+; chạy từ root dự án.
    bị; không dùng "tests pass" thay mô tả hành vi. Điền bảng Checks với lệnh cụ thể,
    cột kết quả để `Not run`.
 6. Ghi base: `git rev-parse develop` (hoặc working-tree). Đổi trạng thái WP bằng
-   skill `hiraku-wp-status` (`rd`→`ip` khi senior bắt đầu).
-7. Resume: đọc lại record, so revision thực với record; revision đổi thì đánh dấu
+   skill `hiraku-wp-status` (`rd`→`ip` khi senior bắt đầu). Ghi dòng `Execution plan:`
+   trỏ tới plan superpowers giữ checkbox tiến độ; khi giao việc mention cả record
+   lẫn plan, resume đọc cả hai.
+7. Chẻ plan thành 2–5 slices (code/test/docs/verify, mỗi lát đóng được bằng 1 PR).
+   Kiểm trùng trước khi tạo: `gh issue list --search "[<task-id>] <slice>"`. Tạo bằng
+   `gh issue create --template task-slice.md --title "[<task-id>] <slice>: <goal>"`
+   với labels `M0,wp-xx,type:*` và Links về cả record lẫn plan anchor. Ghi bảng issues
+   (số issue, slice, plan anchor, trạng thái) vào record. Record chuẩn cho hợp đồng,
+   plan chuẩn cho tiến độ, issue chuẩn cho trạng thái lát.
+8. Resume: đọc lại record và plan, so revision thực với record; revision đổi thì đánh dấu
    review/approval cũ hết hiệu lực trong "Next".
 
 ## Bàn giao và điều kiện dừng
 
-Task packet cho senior gồm: đường dẫn record, base, phạm vi file, tiêu chí, lệnh
+Task packet cho senior gồm: đường dẫn record và plan, base, phạm vi file, tiêu chí, lệnh
 kiểm tra và Q đang chặn. Thiếu thông tin hành vi hoặc Q trực tiếp chưa chốt thì
 record ở `blocked`, trả BLOCKED kèm câu hỏi cụ thể cho PO, không giao senior đoán.
 
