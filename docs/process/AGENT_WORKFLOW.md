@@ -51,6 +51,7 @@ vẫn áp dụng đầy đủ.
 ## 4. Luồng một task
 
 ```
+kickoff mỗi mốc M     → record mỏng + plan skeleton + GitHub issues (PO duyệt)
 hiraku-coordinator → hiraku-task            task record; blocked nếu còn Q chặn
 hiraku-coding      → commit, push nhánh task
 hiraku-create-pr   → PR vào develop (hoặc cập nhật PR)
