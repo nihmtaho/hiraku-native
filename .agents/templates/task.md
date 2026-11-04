@@ -20,6 +20,19 @@
 Describe observable results, error and rollback cases, data, and environment or device.
 Do not use "tests pass" in place of a behavior description.
 
+## Execution plan
+
+- Plan: `docs/plans/<date>-<topic>.md` (superpowers plan holds checkbox progress and ledger; do not copy it here)
+- When working, mention both this record and the plan path; on resume, read both.
+
+## GitHub issues
+
+| # | Slice | Plan anchor | Status |
+|---|---|---|---|
+| | | | open |
+
+Record is authority for the contract; plan is authority for progress; issues track slice status.
+
 ## Checks
 
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |

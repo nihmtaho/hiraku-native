@@ -9,12 +9,18 @@ sau đó chỉ mở mục tài liệu mà task nhắc tới.
 
 ## Quy trình
 
+0. kickoff trước mỗi mốc M: chạy `task-context.mjs` cho mọi WP/spike thuộc M, tạo record
+   mỏng + plan skeleton có checkbox từng slice (theo `hiraku-task` bước 7), tạo GitHub
+   issues con, trình PO danh sách tiêu đề + labels để duyệt. Không tạo issue trùng,
+   không giao senior khi task `blocked`.
 1. Nạp `hiraku-task`, tạo hoặc cập nhật `.agents/tasks/<task-id>.md`. Task `blocked`
    (phụ thuộc chưa xong, hoặc Q trực tiếp còn Mở) thì dừng phần đó và hỏi PO đúng Q.
    Không giao senior khi còn blocker.
 2. Cần đọc rộng hoặc lập kế hoạch: dùng built-in `Explore` hoặc `Plan` (chỉ đọc).
    Việc nhỏ (vài file, vài lệnh) tự làm bằng shell, không tạo subagent.
-3. Giao senior: nạp `hiraku-coding` trong phiên này, với task record làm task packet.
+3. Giao senior: nạp `hiraku-coding` trong phiên này, với task record và plan làm task packet
+   (mention cả hai paths; senior thực thi plan bằng executing-plans, cập nhật checkbox
+   + ledger và bảng issues trong record).
    Một senior tại một thời điểm (Q-29). Chỉ chạy song song khi có worktree cô lập và
    không chồng file hoặc contract.
 4. Khi senior báo `IMPLEMENTED` và đã push nhánh: nạp `hiraku-create-pr` để mở PR.
