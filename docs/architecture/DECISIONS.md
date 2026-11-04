@@ -64,8 +64,8 @@ Tài liệu này là **nơi duy nhất** ghi trạng thái các quyết định.
 | ADR-29 | Đồng bộ iCloud là tính năng tùy chọn bật/tắt, mặc định tắt, giữ ở M4; tắt không làm mất hay đổi dữ liệu trên máy | **Đã chốt (PO, 2026-10-28 và 2026-10-29)** | 2026-10-28 | Q-6 |
 | ADR-28 | Một DB cho mỗi profile; profile dùng để tách ngôn ngữ học và giới hạn dung lượng mỗi DB; không tách theo deck | Đã chốt | 2026-10-28 | Q-16 |
 | ADR-27 | Kiểu ghi chú và field tùy biến theo deck; `notes`/`cards` thay `words`; chia Pha A (M1a), B (M2–M3), C (M4) | Đã chốt, chờ đo S-1 trên schema mới | 2026-10-28 | Yêu cầu khách hàng; sửa ADR-04 |
-| ADR-31 | OpenCode: bốn agents, skills cho quy trình lặp lại (sửa 2026-10-30); AI tự merge khi Review độc lập và CI đạt, PO duyệt gate/phát hành | Đã chốt | 2026-10-29 | `docs/process/AGENT_WORKFLOW.md`; Q-29 xác nhận một phần |
-| ADR-33 | Delivery tự động: Reviewer ghi status `hiraku/review` theo SHA, Shipper bật auto-merge squash qua `delivery.mjs`; ruleset `develop` bắt buộc `ci` + `hiraku/review` | Đã chốt | 2026-10-31 | Làm rõ ADR-31; `docs/process/AGENT_WORKFLOW.md` §4 |
+| ADR-31 | OpenCode: bốn agents, skills cho quy trình lặp lại (sửa 2026-10-30); AI tự merge khi Review độc lập và CI đạt, PO duyệt gate/phát hành | **Được sửa bởi m0b-01 (2026-11-04): bỏ bốn agents, dùng skill điều phối** | 2026-10-29 | `docs/process/AGENT_WORKFLOW.md`; Q-29 xác nhận một phần |
+| ADR-33 | Delivery tự động: Reviewer ghi status `hiraku/review` theo SHA, Shipper bật auto-merge squash qua `delivery.mjs`; ruleset `develop` bắt buộc `ci` + `hiraku/review` | **Được sửa bởi m0b-01 (2026-11-04): bỏ status `hiraku/review` và `delivery.mjs`; ruleset chỉ còn `ci`** | 2026-10-31 | Làm rõ ADR-31; `docs/process/AGENT_WORKFLOW.md` §4 |
 
 ### 2.2 Đề xuất và mở
 
@@ -327,6 +327,7 @@ Q-4, Q-A, Q-B, Q-C, Q-D, Q-E đã được đóng bởi ADR-26, ADR-23, ADR-22, 
 - **Giới hạn**: guard/permissions không phải OS sandbox; môi trường coder/reviewer không có credential phát hành. Policy/checker chỉ thay qua bảo trì được PO duyệt, không cho agent tự sửa để qua kiểm tra.
 - **Delivery**: đã có Git/remote nhưng chưa có CI/required checks nên quyền commit/push/merge/publish đóng. Chỉ mở entrypoint được bảo vệ sau khi có môi trường và bằng chứng đúng revision; không dùng admin bypass. Phát hành cần PO approval gắn version/commit/kênh/artifact thật.
 - **Hệ quả**: `docs/process/AGENT_WORKFLOW.md` giữ quy trình chung (2026-10-30: dùng cho OpenCode, Pi, Command Code; mỗi công cụ cấu hình riêng, vai trò và guard chung ở `.agents/`); task record giữ bàn giao; `docs/process/TEST_PLAN.md` và `docs/process/RELEASE.md` giữ checklist. Người thử và thiết bị thật vẫn cần; phần dự phòng/người thử của Q-29 chưa được tự chốt.
+- **Sửa đổi m0b-01 (PO, 2026-11-04)**: bỏ mô hình bốn agents (lead/coder/reviewer/shipper) và agent tùy chỉnh ở cả bốn công cụ; điều phối bằng skills (`hiraku-coordinator`, `hiraku-coding`, `hiraku-review`, `hiraku-create-pr`, `hiraku-ship`) chạy trong phiên chính, review độc lập chạy trong subagent dựng sẵn của công cụ; bỏ guard cấp công cụ và script `delivery.mjs`. Hai vai trò skill duy nhất: `hiraku-coordinator` (điều phối, merge) và senior (triển khai). Merge vẫn yêu cầu review PASS đúng head SHA và `ci` xanh; tag/release vẫn đóng.
 - **Trạng thái**: Đã chốt về mô hình vận hành; hạ tầng Git/CI và các gate sản phẩm vẫn phải được xác minh riêng.
 
 ---
@@ -458,6 +459,7 @@ Q-4, Q-A, Q-B, Q-C, Q-D, Q-E đã được đóng bởi ADR-26, ADR-23, ADR-22, 
 - **Lý do**: status gắn SHA nên push mới tự vô hiệu verdict; GitHub không cho tài khoản duy nhất approve PR của chính mình; auto-merge để ruleset, không phải agent, quyết định thời điểm merge.
 - **Giới hạn**: cùng một tài khoản ghi review nên độc lập chỉ dựa vào phiên/quy trình; guard không phải sandbox; CI chưa có Xcode/simulator (bổ sung ở WP-01); PR chạm policy/checker vẫn do người vận hành merge.
 - **Việc của người vận hành**: áp dụng `.github/rulesets/develop.json`; bật "Allow auto-merge"; không đặt token admin cho agents.
+- **Sửa đổi m0b-01 (PO, 2026-11-04)**: bỏ commit status `hiraku/review`, bỏ `delivery.mjs` và auto-merge; merge bằng `gh pr merge --squash --match-head-commit <sha>` sau review PASS đúng SHA; ruleset `develop` chỉ còn bắt buộc check `ci`. Verdict và merge là quy ước, không còn gate tự động.
 - **Trạng thái**: Đã chốt (PO, 2026-10-31).
 
 ---

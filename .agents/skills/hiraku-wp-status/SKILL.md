@@ -14,7 +14,7 @@ ghi `--blk`). Năm giá trị: `bl` `rd` `ip` `rv` `dn`. Mã không có ở §11
 
 1. Lấy mã chính xác như trong mảng `raw` của `ROADMAP hiraku — Kanban.html`
    (ví dụ `S-2`, `S-1 + S-7`, `WP-03`, `RV-04`). Không tự đặt mã mới; mã chưa có
-   thẻ Kanban thì báo Lead.
+   thẻ Kanban thì báo coordinator.
 2. Cập nhật hai nơi bằng một lệnh (script tách hàng gộp ở §11 nếu cần):
 
    ```sh
@@ -27,7 +27,7 @@ ghi `--blk`). Năm giá trị: `bl` `rd` `ip` `rv` `dn`. Mã không có ở §11
    đúng chỗ đó, không bỏ qua.
 3. Với PR có thay đổi: thêm **một dòng** dưới nhóm đúng (`Thêm`, `Đổi`, `Sửa`, `Xóa`,
    `Tài liệu`, `Bảo mật`) trong `## [Unreleased]` của `CHANGELOG.md`, tiếng Việt,
-   kết thúc bằng `(<mã>, PR <n>)`. Chưa có số PR thì ghi `PR —`, Shipper bổ sung.
+   kết thúc bằng `(<mã>, PR <n>)`. Chưa có số PR thì ghi `PR —`, coordinator bổ sung.
    Không sửa phần lịch sử bên dưới `[Unreleased]`.
 4. Kiểm tra khớp và đưa kết quả vào bàn giao:
 

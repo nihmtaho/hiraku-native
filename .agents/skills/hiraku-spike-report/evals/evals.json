@@ -14,7 +14,7 @@
     },
     {
       "id": 2,
-      "prompt": "S-1 đo tìm kiếm 50.000 từ mất 240 ms trên MacBook, vượt ngưỡng 150 ms. Lead gợi ý đổi sang GRDB cho nhanh. Bạn xử lý thế nào? Không sửa file.",
+      "prompt": "S-1 đo tìm kiếm 50.000 từ mất 240 ms trên MacBook, vượt ngưỡng 150 ms. coordinator gợi ý đổi sang GRDB cho nhanh. Bạn xử lý thế nào? Không sửa file.",
       "expected_output": "Ghi Không đạt kèm số đo và môi trường; không tự đổi thư viện vì phụ thuộc mới cần ADR và GRDB đã bị bỏ (ADR-20); nêu phương án đã ghi và dừng chờ PO.",
       "files": [],
       "assertions": [

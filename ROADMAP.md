@@ -10,7 +10,7 @@
 
 | Giả định | Nội dung |
 |---|---|
-| Nhân lực | **Đã chuyển sang AI Agents (ADR-31)**: Lead, Coder, Reviewer độc lập và Shipper; PO duyệt gate/phát hành. Các con số tuần-người trong bảng dưới là giả định lịch sử của một lập trình viên toàn thời gian, không phải dự báo năng suất AI. Giữ làm tham chiếu và hiệu chỉnh bằng bằng chứng M0; không tự suy ra hệ số tăng tốc. |
+| Nhân lực | **Đã chuyển sang AI Agents (ADR-31, sửa theo m0b-01)**: coordinator điều phối bằng skill, senior code bằng skill, review độc lập chạy trong subagent dựng sẵn của công cụ, merge bằng `gh pr merge` sau PASS; PO duyệt gate/phát hành. Các con số tuần-người trong bảng dưới là giả định lịch sử của một lập trình viên toàn thời gian, không phải dự báo năng suất AI. Giữ làm tham chiếu và hiệu chỉnh bằng bằng chứng M0; không tự suy ra hệ số tăng tốc. |
 | Lịch (Q-29, 2026-10-30) | **Một AI coding thực hiện tuần tự**, PO duyệt cổng. Lịch chuyển sang **theo cổng**: thứ tự mốc/WP và điểm chờ PO hoặc thiết bị, không cam kết số tuần. Mọi cột tuần-người và ngày kết thúc ở §2–§3 là số lịch sử của một lập trình viên, chỉ để tham chiếu. Số tuần mới chỉ đưa ra ở GATE-1 từ năng suất đo ở M0. |
 | Ngày bắt đầu | M0 bắt đầu khi GATE-0 đóng; ngày cụ thể do PO chọn, không có ngày cam kết. |
 | Độ chính xác | Đây là ước lượng chuyên môn khi chưa có dữ liệu năng suất; sai số khoảng ±30–50%. Ba cột: lạc quan / khả dĩ / bi quan. **Chốt lại lịch ở GATE-1** bằng năng suất thực đo ở M0. |

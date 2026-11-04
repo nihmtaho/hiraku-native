@@ -199,4 +199,4 @@ Mục này ưu tiên hơn nội dung phía trên khi mâu thuẫn. Luật gốc:
 - Không mock file system/mạng ở Feature: dữ liệu và IO thuộc Go core; test Swift dùng fake Repository và `AppClock` giả.
 
 Nếu đang review: dùng như checklist read-only; vi phạm mục này là finding. Mâu
-thuẫn chưa rõ thì BLOCKED và hỏi Lead.
+thuẫn chưa rõ thì BLOCKED và hỏi coordinator.
