@@ -16,6 +16,14 @@ function copy() {
   return dir;
 }
 
+test("issue template task-slice exists and links back to task record and plan", () => {
+  const body = readFileSync(join(root, ".github/ISSUE_TEMPLATE/task-slice.md"), "utf8");
+  assert.match(body, /^---\nname: Task slice/m);
+  assert.match(body, /Parent task record/);
+  assert.match(body, /Execution plan/);
+  assert.match(body, /Acceptance/);
+});
+
 test("repository ROADMAP §11 and Kanban agree", () => {
   assert.deepEqual(mismatches(readFileSync(join(root, "ROADMAP.md"), "utf8"), readFileSync(join(root, kanban), "utf8")), []);
 });
