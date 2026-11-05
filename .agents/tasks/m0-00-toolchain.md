@@ -2,7 +2,7 @@
 
 ## Contract
 
-- Status: blocked
+- Status: done (superseded — policy change applied via m0b-01, merged as `c277749`/PR 34, 2026-11-04)
 - Owner: PO / operator (policy change; Lead cannot edit)
 - Milestone / WP: M0 (prerequisite)
 - Branch / PR: none
@@ -68,10 +68,7 @@ Second defect found: `evaluatePermission` guesses `cwd = root` for every shell r
 ## Delivery
 
 - CHANGELOG entry and ROADMAP/Kanban status updated in the PR: no PR; record only
-- Status: blocked
-- CI / integration revision:
-- Gate / PO approval: PO approved the direction on 2026-10-30; the patch still has to be applied
-- Actions actually taken / evidence from the target system: none
+- Status: resolved 2026-11-04 — the same policy change was applied via m0b-01 and merged (PR 34, `c277749`, CI SUCCESS); no separate patch needed.
 
 ## Next
 

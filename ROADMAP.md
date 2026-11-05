@@ -296,17 +296,17 @@ Nguồn cập nhật bắt buộc cho mọi PR (`docs/process/GIT_WORKFLOW.md` �
 | ADR-15 | dn | — | PO duyet (PR 20, merge 6ec5cb9): (a)(b)(c) Dat tren simulator voi tint Ember; 2 anh landscape/Deck-tab Mien; macOS/60fps/thiet bi chua xac minh |
 | S-5 | dn | 15 | Đạt ở thiết kế một handle một writer; deferred lock lỗi busy với hai handle (WP-02a dùng immediate); UI hai cửa sổ chưa xác minh |
 | S-4 | dn | 17 | Thành phần gốc dựng được trên iPhone/iPad simulator; macOS chưa chụp, thiết bị thật chưa xác minh (bỏ qua thiết bị) |
-| S-3 | rv | — | Wrapper UIKit/AppKit chạy trên simulator với marked text lập trình; IME Nhật thật, iPad bàn phím, macOS chưa xác minh — cần PO thử tay (SC-007) |
-| S-6 | dn | 10 | Spike Đạt trên simulator: 2,19 MB, 0 glyph thiếu (N3), OFL; đề xuất Q-5 = A; macOS/thiết bị chưa xác minh (bỏ qua thiết bị) |
-| S-2 | dn | 8 | Working-tree: Không đạt khớp vector (go-fsrs/v4 v4.0.0; 3/17 due lệch, dung sai 0); PO cân nhắc ngữ nghĩa ts-fsrs. |
+| S-3 | dn | — | PO PASS 2026-11-04: wrapper chay tren simulator voi marked text lap trinh; IME Nhat that, iPad ban phim, macOS cho giai doan test thiet bi that |
+| S-6 | dn | 10 | Spike Đạt trên simulator: 2,19 MB, 0 glyph thiếu (N3), OFL; Q-5 = A đã chốt (PO 2026-11-04) kèm sửa DESIGN §Font; macOS/thiết bị chưa xác minh (bỏ qua thiết bị) |
+| S-2 | dn | 8 | Working-tree: Không đạt khớp vector (go-fsrs/v4 v4.0.0; 3/17 due lệch, dung sai 0); PO xác nhận tự cài trong `core/domain/fsrs` theo ADR-26 (2026-11-04), WP-03. |
 | S-1 | dn | 8 | Nửa Go Đạt trên MacBook; iOS/iPadOS và 60 fps chưa xác minh (S-1 bổ sung). |
 | S-7 | bl | — | Q-11 chốt một phần (MacBook, chưa có iPhone/iPad thật); phần build của S-8 chạy được sau Spike 0 |
-| Báo cáo spike | rv | — | Đã có bảng tổng hợp M0; chờ iPhone/iPad thật, S-7, ADR-15 và quyết định PO |
+| Báo cáo spike | rv | — | Đã có bảng tổng hợp M0; 4 quyết định PO chốt và waiver S-3 tại chat 2026-11-04 (Q-5=A, ADR-26 tự cài, 300 ms tạm, ADR-15 duyệt); còn nợ thiết bị: S-7, IME thật, SC-006 |
 | S-1 bổ sung | dn | 16 | Đã chạy lại trên schema ADR-27, nhiễu do máy tải; 60 fps và thiết bị chưa xác minh (bỏ qua thiết bị) |
-| S-8 | dn | 8 | Đạt trên macOS và simulator; thiết bị (SC-006) và ngưỡng 300 ms chưa xác minh (bỏ qua thiết bị) |
+| S-8 | dn | 8 | Đạt trên macOS và simulator; thiết bị (SC-006) chưa xác minh; ngưỡng 300 ms tạm chấp nhận, đo lại trên thiết bị (PO 2026-11-04) |
 | Q-13, Q-1, Q-6 | dn | — | Đã chốt |
 | Q-12 | dn | — | PO duyệt phương án B (2026-10-30) |
 | Q-11, Q-D2 | rv | — | Q-11 chốt một phần (MacBook; thiếu iPhone/iPad thật), Q-D2 chờ Design |
 | `docs/architecture/ARCHITECTURE.md`, `AGENTS.md`, `COPY.md`, `docs/process/TEST_PLAN.md` | rv | `bde958f` | Đã soạn, chờ duyệt M0b; 58 test `.opencode` đạt 2026-10-29 |
 | RV-01…RV-08 | rd | — | Việc từ review, chờ quyết định |
-| App shell | rv | — | Working-tree: App/Hiraku.xcodeproj build và chạy trên iPhone 18 Pro simulator lẫn macOS; bundle id/team vẫn tạm; chờ review. |
+| App shell | rv | — | App/Hiraku.xcodeproj build va chay tren iPhone 18 Pro simulator lan macOS; bundle id com.nihmtaho.hiraku (PO 2026-11-04); cho review. |

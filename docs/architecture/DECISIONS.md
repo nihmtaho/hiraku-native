@@ -75,7 +75,7 @@ Tài liệu này là **nơi duy nhất** ghi trạng thái các quyết định.
 | Q-11 | Thiết bị chuẩn đo hiệu năng | Đã chốt một phần: MacBook của PO; chưa có iPhone/iPad thật | PO | GATE-0 | S-1, S-8 |
 | Q-12 | Chia M1 thành M1a (iPhone) và M1b (iPad + Mac) | Đã chốt: phương án B | PO | GATE-0 | Lịch M1 |
 | Q-13 | Quy ước tên tài liệu và nơi lưu | Đã chốt: tên file (bỏ `_native-swift`), đặt ở root repo | PO | GATE-0 | Không |
-| Q-5 | Đóng gói Noto Sans JP hay dùng Hiragino Sans | Mở | Design | GATE-1 | M1a (WP-05) |
+| Q-5 | Đóng gói Noto Sans JP hay dùng Hiragino Sans | Đã chốt — A: đóng gói Noto Sans JP (PO 2026-11-04) | Design | GATE-1 | M1a (WP-05) |
 | Q-8 | Phát hành macOS: Mac App Store hay trực tiếp **[Cuối cùng]** | Đề xuất | PO | GATE-3 | MR (entitlement) |
 | Q-D2 | Màu chấm trạng thái "Đang học" | Đề xuất | Design | GATE-1 | M1a (WP-05) |
 | Q-7 | Nhập dữ liệu Flutter cũ (FR-040) | Mở | PO | GATE-2 | Phạm vi M2 |
@@ -171,6 +171,7 @@ Q-4, Q-A, Q-B, Q-C, Q-D, Q-E đã được đóng bởi ADR-26, ADR-23, ADR-22, 
 - **Quyết định**: dùng thành phần hệ thống, không tùy biến kiểu dáng: `TabView`, `NavigationSplitView`, toolbar (nhóm nút kính, `ToolbarSpacer`), sheet, inspector (cột phải phiên học), `Table` và `.searchable` gốc. `AccentColor` = Ember. Nội dung giữ phẳng nền giấy.
 - **Hệ quả**: đóng Q-D1, D-3, D-4; bỏ component `table-header` và `sidebar-item-active`; tab đang chọn tô Ember cần kiểm tra tương phản trên kính.
 - **Kiểm tra ở M0** (thiết bị thật): nội dung cuộn dưới kính đọc được trên nền giấy; tab chọn đọc được (nếu không, tint tab về mực); phụ kiện đáy và tab bar không che CTA. Tên API theo tài liệu WWDC25, xác minh với SDK đang dùng.
+- **Duyệt (PO, 2026-11-04)**: (a)(b)(c) Đạt trên ảnh simulator (tint Ember, `docs/reports/M0_SPIKE.md` §ADR-15); thiết bị thật/macOS/60 fps giữ "chưa xác minh" theo waiver 2026-10-31, không chặn GATE-1.
 - **Xem lại khi**: S-4 phát hiện thành phần gốc không đáp ứng.
 
 ### ADR-16 — Phong cách mã cho AI agent
@@ -210,7 +211,7 @@ Q-4, Q-A, Q-B, Q-C, Q-D, Q-E đã được đóng bởi ADR-26, ADR-23, ADR-22, 
 - **Mã lỗi**: 0 thành công; 1 tham số sai; 2 không tìm thấy; 3 vi phạm nghiệp vụ; 4 lỗi lưu trữ; 5 lỗi nội bộ (panic đã được recover). Go không trả chuỗi tiếng Việt; Swift ánh xạ mã sang String Catalog.
 - **Quy tắc ranh giới**: mọi hàm export có `recover`; không truyền con trỏ Go qua ranh giới; không callback ngược từ Go sang Swift; chuỗi do Go cấp phát phải được Swift giải phóng bằng `hk_free` ngay sau khi đọc.
 - **Ràng buộc hiệu năng**: lời gọi đồng bộ; mỗi lời gọi nghiệp vụ p95 ≤ 100 ms. Import, sao lưu và các job dài chia thành lô hoặc session (`ImportBegin → ImportAppend → ImportCommit`).
-- **Ngưỡng S-8 đề xuất (cần PO xác nhận)**: khởi động Go runtime < 300 ms trên thiết bị chuẩn.
+- **Ngưỡng S-8**: khởi động Go runtime < 300 ms trên thiết bị chuẩn — **PO tạm chấp nhận (2026-11-04)**; đo lại và xác nhận trên thiết bị khi có (Q-11).
 - **Phương án dự phòng**: S-8 trượt trên CI thì thử gomobile cho phần API nhỏ; nếu cả hai không đạt thì quay lại ADR-03 (xem §5).
 - **Phụ thuộc mới**: không có ngoài cgo; được ADR này bao phủ theo L9.
 - **Trạng thái**: *Đã chốt, chờ spike S-8.*
@@ -251,7 +252,8 @@ Q-4, Q-A, Q-B, Q-C, Q-D, Q-E đã được đóng bởi ADR-26, ADR-23, ADR-22, 
 - **Ràng buộc**: `Next(card, rating, now, settings)` là hàm thuần; không đọc đồng hồ, không ghi DB. `Preview` (FR-026) cũng là hàm thuần.
 - **Thay thế cho**: Q-4.
 - **Chưa xác minh**: tình trạng và giấy phép các thư viện FSRS Go hiện có. Việc này thuộc S-2.
-- **Trạng thái**: *Đã chốt, chờ spike S-2.*
+- **Kết luận S-2 (2026-10-30)**: `go-fsrs/v4` trượt tiêu chí vector (3/17 `due` lệch) → tự cài trong `core/domain/fsrs` theo đúng quyết định này; **PO xác nhận (2026-11-04)**.
+- **Trạng thái**: *Đã chốt — tự cài trong `core/domain/fsrs` (WP-03), dùng 17 vector `core/spike/fsrs_vectors.json` làm golden.*
 
 ### ADR-27 — Kiểu ghi chú và field tùy biến theo deck
 - **Bối cảnh**: khách hàng yêu cầu người dùng tự định nghĩa field cho deck, tương tự Anki (2026-10-28). Schema hiện tại cố định bốn cột trong `words`.
@@ -338,6 +340,7 @@ Q-4, Q-A, Q-B, Q-C, Q-D, Q-E đã được đóng bởi ADR-26, ADR-23, ADR-22, 
 ### Q-11 — Thiết bị chuẩn đo hiệu năng · PO · GATE-0
 - **Đã chốt (PO, 2026-10-30)**: đo trực tiếp trên MacBook của PO (thiết bị development). Hệ quả: số đo iPhone/iPad thật không có; S-1, S-8 và SC-006 trên iOS/iPadOS chỉ chạy được trên simulator hoặc ghi **chưa xác minh**, không được tính đạt. Chưa có quyết định cách GATE-1 xử lý phần này (thêm thiết bị hoặc chấp nhận rủi ro): cần PO.
 - **PO bỏ qua thiết bị thật trong M0 (2026-10-31)**: mọi phần cần iPhone/iPad ghi **chưa xác minh**, không tính đạt, và không chặn đóng task M0; nợ chuyển sang giai đoạn có thiết bị.
+- **PO lùi thử tay S-3 (2026-11-04)**: chấp nhận đợi bàn phím tiếng Nhật thật (iPhone/iPad/macOS) để kiểm compose/Return theo SC-007; S-3 giữ **chưa xác minh trên IME thật**, không chặn đóng task M0; nợ như trên.
 - **Cần bạn cung cấp (ban đầu)**: tên máy và OS của iPhone cũ nhất chạy được iOS 26 (từ iPhone 11 trở lên), một iPad (chip A12 trở lên), một Mac Apple silicon (M1 trở lên).
 - **Dùng cho**: S-1 (dựng hàng đợi < 200 ms, tìm kiếm < 150 ms, cuộn 60 fps, khởi động < 1,5 s), S-8 (RSS, khởi động Go runtime), SC-006.
 
@@ -351,9 +354,7 @@ Q-4, Q-A, Q-B, Q-C, Q-D, Q-E đã được đóng bởi ADR-26, ADR-23, ADR-22, 
 - **Đã chốt (PO, 2026-10-29)**: bỏ hậu tố `_native-swift`; tên chuẩn `docs/product/spec.md`, `docs/product/use-cases.md`, `docs/product/DESIGN.md`, `docs/architecture/ARCHITECTURE.md`, `docs/architecture/DECISIONS.md`, `ROADMAP.md`, `AGENTS.md`, `COPY.md`, `docs/product/WIREFRAME_PROMPT.md`, `CHANGELOG.md`; đặt ở root repo, không dùng thư mục `Docs/` (trùng `docs/` trên macOS).
 
 ### Q-5 — Font tiếng Nhật · Design · GATE-1
-- **Phương án**: (A) đóng gói Noto Sans JP (subset); (B) dùng Hiragino Sans hệ thống.
-- **Đề xuất**: A để đúng nhận diện.
-- **Tiêu chí (S-6)**: hiển thị đủ kana và kanji dùng trong JLPT N5–N1; kích thước app tăng không quá ngưỡng đề xuất 10 MB; giấy phép cho phép đóng gói. Vượt ngưỡng hoặc thiếu glyph → B.
+- **Đã chốt (PO, 2026-11-04 tại chat)**: phương án **A** — đóng gói Noto Sans JP subset (S-6 đạt cả ba tiêu chí: 2,19 MB, 0 glyph thiếu 880 mục N3, OFL 1.1). Kèm sửa DESIGN §Font: đăng ký lúc chạy bằng `CTFontManagerRegisterFontsForURL` thay vì Info.plist.
 
 ### Q-8 — Phát hành macOS **[Cuối cùng]** · PO · GATE-3
 - **Phương án**: (A) Mac App Store (App Sandbox, universal purchase); (B) phân phối trực tiếp (notarize).

@@ -2,10 +2,10 @@
 
 ## Contract
 
-- Status: ready
+- Status: superseded 2026-11-04 — record m0-09 is merged; status updates are plainly done via ROADMAP §11 and the PR flow since ADR-31's replacement.
 - Owner: hiraku-coder
 - Milestone / WP: M0 / housekeeping (follows m0-07-adr15 PR 20 and m0-08-adr15-close PR 21, both merged)
-- Branch / PR: `docs/m0-09-task-records` from `develop`
+- Branch / PR: `docs/m0-09-task-records` from `develop`; PR #22 https://github.com/nihmtaho/hiraku-native/pull/22
 - Base / head SHA: `develop` = `454d9932f8a5c10ed67e45569d2aa92d51639937`
 - Dependencies: none
 - Required reading: `.agents/tasks/m0-07-adr15.md`, `.agents/tasks/m0-08-adr15-close.md` (content frozen — commit as-is, do not edit)
@@ -42,11 +42,11 @@ Not started.
 ## Delivery
 
 - CHANGELOG entry and ROADMAP/Kanban status updated in the PR: n/a (`chore` housekeeping, reason in PR)
-- Status: not requested
-- CI / integration revision:
-- Gate / PO approval:
-- Actions actually taken / evidence from the target system:
+- Status: merged as `db6bb6f` (PR 22, squash, 2026-11-02). Operator published `hiraku/review` PASS on `60d8218` and ran `delivery.mjs merge`; Shipper verified CI SUCCESS on the exact head (run 41385144798) + --check exit 0 before merging.
+- CI / integration revision: `ci` SUCCESS @ `60d8218d771fc916614703d36192f8f70ce26fb8` (run 41385144798, 2026-11-02T03:51:37Z)
+- Gate / PO approval: PO ordered the commit (2026-11-01); independent review PASS on `60d8218`; operator published the review status
+- Actions actually taken / evidence from the target system: PR #22 merged into `develop` as `db6bb6f`; the three records are now tracked on develop; Lead reconciled (`--check` match).
 
 ## Next
 
-Commit, push, review, open PR, merge. Owner: hiraku-coder.
+Done 2026-11-02: merged (`db6bb6f`). No further action; branch cleanup (delete merged task branches) needs Coder/operator push rights.
