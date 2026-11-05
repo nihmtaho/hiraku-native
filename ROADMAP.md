@@ -94,6 +94,8 @@ Ghi chú lịch: cộng 11 WP dưới đây là 17,25 tuần; 0,5 tuần chênh 
 
 Phạm vi: UC-01, 02, 03, 04, 06, 07, 08, 13, 14, phần lõi UC-21 (ghi nguyên tử), phím tắt học (FR-022 P0, dùng được với bàn phím phần cứng).
 
+**Lịch M1a hiệu chỉnh theo năng suất M0 (PO chốt 2026-11-05, đề xuất của Lead)**: M0 làm trong ~5 ngày làm việc cho khối giả định 2–3 tuần (Spike 0…S-8 + báo cáo) ⇒ năng suất đo ≈ 2,5–3×. Áp hệ số biên an toàn (spike dễ hơn code build/thích ứng) ⇒ M1a **khả dĩ 8 tuần** (lạc quan 7, bi quan 10), bắt đầu 09/11/2026 ngay sau GATE-1, kết thúc khả dĩ ≈ 04/01/2027 (bi quan ≈ 25/01/2027, trước Tết 06/02/2027). WP tuần tự một AI theo thứ tự bảng dưới.
+
 | WP | Nội dung | Phụ thuộc | Ước lượng (tuần) |
 |---|---|---|---|
 | WP-01 | Workspace, Go module `core/`, buf (lint, breaking), CI (`go test -race`, `xcodebuild test`, `check-core.sh`, `check-imports.sh`), pipeline XCFramework, cấu trúc repo theo Q-13 | `docs/architecture/ARCHITECTURE.md` v2.2 | 0,75 |
@@ -306,7 +308,11 @@ Nguồn cập nhật bắt buộc cho mọi PR (`docs/process/GIT_WORKFLOW.md` �
 | S-8 | dn | 8 | Đạt trên macOS và simulator; thiết bị (SC-006) chưa xác minh; ngưỡng 300 ms tạm chấp nhận, đo lại trên thiết bị (PO 2026-11-04) |
 | Q-13, Q-1, Q-6 | dn | — | Đã chốt |
 | Q-12 | dn | — | PO duyệt phương án B (2026-10-30) |
-| Q-11, Q-D2 | rv | — | Q-11 chốt một phần (MacBook; thiếu iPhone/iPad thật), Q-D2 chờ Design |
-| `docs/architecture/ARCHITECTURE.md`, `AGENTS.md`, `COPY.md`, `docs/process/TEST_PLAN.md` | rv | `bde958f` | Đã soạn, chờ duyệt M0b; 58 test `.opencode` đạt 2026-10-29 |
+| Q-11 | rv | — | Chốt một phần (MacBook; thiếu iPhone/iPad thật); PO chốt thiết bị kiểm thử = simulator trên macOS 2026-11-05, phần thiết bị thật là nợ bổ sung |
+| Q-D2 | dn | — | PO chốt B: `state-learning-ink` #A67C00 cho chấm/chữ trạng thái, #D9A300 chỉ vùng tô lớn (2026-11-05) |
+| `docs/architecture/ARCHITECTURE.md`, `AGENTS.md` | dn | 23e2503 | PO duyệt thành chính thức 2026-11-05 sau đối chiếu m0b-01; duyệt ban đầu 2026-10-29 |
+| `COPY.md` | rv | — | Bản đề xuất đã có, chờ PO duyệt để mở WP-06 |
+| `docs/process/TEST_PLAN.md` | dn | 23e2503 | PO chốt thiết bị chuẩn = simulator trên macOS 2026-11-05; người thử SC-002 chờ duyệt riêng |
+| Wireframe iPhone | dn | — | PO giữ nguyên khung hiện có 2026-11-05; iPad/Mac vẽ trước M1b |
 | RV-01…RV-08 | rd | — | Việc từ review, chờ quyết định |
 | App shell | rv | — | App/Hiraku.xcodeproj build va chay tren iPhone 18 Pro simulator lan macOS; bundle id com.nihmtaho.hiraku (PO 2026-11-04); cho review. |

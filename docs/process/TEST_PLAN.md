@@ -3,8 +3,10 @@
 ## Trạng thái và nguyên tắc
 
 Hiện ở M0, chưa có mã sản phẩm. Bộ OpenCode có kiểm tra riêng, không thay kiểm
-thử ứng dụng. Thiết bị chuẩn theo Q-11 và người thử SC-002 chưa được xác nhận;
-kết quả tương ứng phải ghi chưa xác minh, không tự thay bằng simulator.
+thử ứng dụng. **Thiết bị chuẩn là simulator trên macOS (PO chốt 2026-11-05)**:
+kết quả đo tại simulator/máy macOS tính là đã xác minh cho GATE-1/M1. Phần cần
+iPhone/iPad/Mac thiệt và người thử SC-002 giữ làm bổ sung: ghi "chưa xác minh",
+không chặn, không tự thay khi chưa có thiết bị.
 
 Mỗi task ghi tiêu chí → test/lệnh → môi trường/toolchain → revision → kết quả
 và artifact. Kết quả gồm đạt, không đạt, chưa chạy hoặc bị chặn; hai trạng thái
@@ -24,7 +26,7 @@ model trên mọi task.
 
 | Phạm vi | Tự động | Bằng chứng khác |
 |---|---|---|
-| M0 S-0/S-8 | Build iOS arm64, iOS simulator arm64, macOS arm64; vòng lặp FFI/error/panic/lifetime | RSS, runtime startup, kiểm rò và chạy thiết bị thật theo tiêu chí spike |
+| M0 S-0/S-8 | Build iOS arm64, iOS simulator arm64, macOS arm64; vòng lặp FFI/error/panic/lifetime | RSS, runtime startup, kiểm rò; phần chạy thiết bị thật là bổ sung (nợ Q-11) |
 | Core domain | Vector FSRS, bảng kana, ngày học, hàng đợi/limit, field role và validation | Quyết định Q nghiệp vụ phải chốt trước khi đóng băng expected output |
 | Store/service | SQLite file tạm, migration, rollback, golden proto, concurrency/grade đúng một log | Kill/crash giữa ghi; không dùng DB của người dùng |
 | Bridge | XCFramework thật, mapping/error/ChangeSet/EventHub, ownership handle | Xác minh reload theo phạm vi và không chặn main thread |
@@ -38,8 +40,8 @@ model trên mọi task.
 ## Hiệu năng và truy cập
 
 Dữ liệu tổng hợp: 50.000 từ và 200.000 log theo spike, schema notes/cards và
-search_text hiện hành. Đo trên mỗi thiết bị tối thiểu đã chốt, ghi OS/build,
-dataset và phương pháp đo.
+search_text hiện hành. Đo trên thiết bị chuẩn hiện hành (simulator trên macOS —
+PO 2026-11-05), ghi OS/build, dataset và phương pháp đo.
 
 Ngưỡng theo NFR-002: cuộn 60 fps, tìm kiếm <150 ms, dựng hàng đợi <200 ms,
 khởi động nguội <1,5 s. Không suy ra các ngưỡng này từ unit test hoặc máy mạnh hơn.

@@ -77,7 +77,7 @@ Tài liệu này là **nơi duy nhất** ghi trạng thái các quyết định.
 | Q-13 | Quy ước tên tài liệu và nơi lưu | Đã chốt: tên file (bỏ `_native-swift`), đặt ở root repo | PO | GATE-0 | Không |
 | Q-5 | Đóng gói Noto Sans JP hay dùng Hiragino Sans | Đã chốt — A: đóng gói Noto Sans JP (PO 2026-11-04) | Design | GATE-1 | M1a (WP-05) |
 | Q-8 | Phát hành macOS: Mac App Store hay trực tiếp **[Cuối cùng]** | Đề xuất | PO | GATE-3 | MR (entitlement) |
-| Q-D2 | Màu chấm trạng thái "Đang học" | Đề xuất | Design | GATE-1 | M1a (WP-05) |
+| Q-D2 | Màu chấm trạng thái "Đang học" | Đã chốt — B: `state-learning-ink` #A67C00 (PO 2026-11-05) | Design | GATE-1 | M1a (WP-05) |
 | Q-7 | Nhập dữ liệu Flutter cũ (FR-040) | Mở | PO | GATE-2 | Phạm vi M2 |
 | Q-D5 | Cỡ body 15pt trên iPhone | Đề xuất | Design | GATE-2 | Không |
 | Q-19 | Vòng đời xóa mềm: purge, thùng rác, backup có chứa dữ liệu đã xóa | Mở | PO | GATE-1 | WP-02a |
@@ -364,8 +364,7 @@ Q-4, Q-A, Q-B, Q-C, Q-D, Q-E đã được đóng bởi ADR-26, ADR-23, ADR-22, 
 ### Q-D2 — Màu chấm "Đang học" · Design · GATE-1
 - **Bối cảnh**: `state-learning` (#D9A300) trên nền thẻ chỉ đạt 2,25:1 (ngưỡng 3:1 cho thành phần đồ họa mang thông tin).
 - **Phương án**: (A) giữ màu, luôn kèm nhãn chữ/VoiceOver; (B) dùng `state-learning-ink` (#A67C00, 3,75:1) cho mọi chấm và chữ trạng thái trên nền sáng, giữ #D9A300 chỉ cho vùng tô lớn có chú giải; (C) giữ màu và thêm viền mực 1pt.
-- **Đề xuất**: B.
-- **Tác động**: một dòng trong bảng token của DESIGN; chốt trước khi đóng băng token ở WP-05.
+- **Đã chốt (PO, 2026-11-05)**: phương án **B** — dùng `state-learning-ink` (#A67C00, 3,75:1) cho mọi chấm và chữ trạng thái trên nền sáng, giữ #D9A300 chỉ cho vùng tô lớn có chú giải.
 
 ### Q-7 — Dữ liệu Flutter cũ (FR-040) · PO · GATE-2
 - **Câu hỏi cho bạn**: có dữ liệu thật trong bản Flutter cũ cần giữ không?

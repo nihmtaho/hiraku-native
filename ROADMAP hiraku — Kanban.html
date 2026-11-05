@@ -219,13 +219,13 @@ var raw=[
  ["S-5","Hai cửa sổ cùng ghi một DB, chấm trùng một thẻ","M0","rev","dn",{x:"≈ 1 ngày (đề xuất)"},{ref:"spec §3.3 S-5, UC-08 E6",note:"Đạt ở thiết kế một handle một writer; deferred lock lỗi busy với hai handle (WP-02a dùng immediate); UI hai cửa sổ chưa xác minh"}],
 
  // M0b
- ["docs/architecture/ARCHITECTURE.md","Luật Swift L1–L11, luật Go G1–G8, khuôn mẫu feature, contract hiraku.v1","M0b","doc","rv",{w:0.5},{ref:"ARCHITECTURE v2.2",note:"Đã soạn, chờ duyệt ở M0b."}],
+ ["docs/architecture/ARCHITECTURE.md","Luật Swift L1–L11, luật Go G1–G8, khuôn mẫu feature, contract hiraku.v1","M0b","doc","dn",{w:0.5},{ref:"ARCHITECTURE v2.2",note:"PO duyệt thành chính thức 2026-11-05 (đối chiếu m0b-01); AGENTS.md duyệt cùng lúc."}],
  ["AGENTS.md","Quy tắc cho AI Agents và bộ OpenCode (bốn agents, hai skills)","M0b","doc","rv",{w:0.25},{ref:"AGENTS.md, docs/process/AGENT_WORKFLOW.md, ADR-31",note:"Đã soạn; 58 test cấu hình OpenCode đạt (29/10/2026). Chờ PO duyệt."}],
- ["Wireframe","Wireframe và prototype iPhone: Home, Deck/Words, Flashcard, Gõ từ, Cài đặt","M0b","doc","bl",{w:1.25},{ref:"docs/product/WIREFRAME_PROMPT.md",note:"Đã có prompt; chưa có wireframe. iPad và Mac vẽ trước M1b."}],
+ ["Wireframe","Wireframe và prototype iPhone: Home, Deck/Words, Flashcard, Gõ từ, Cài đặt","M0b","doc","dn",{w:1.25},{ref:"docs/product/WIREFRAME_PROMPT.md",note:"PO duyệt giữ nguyên 2026-11-05 (dùng prompt, chưa vẽ); iPad/Mac trước M1b."}],
  ["COPY.md","Bảng chuỗi UI tiếng Việt cho các màn M1a","M0b","doc","rv",{w:0.25},{ref:"COPY v1.5",note:"Bản đề xuất, chờ duyệt."}],
- ["docs/process/TEST_PLAN.md","Ma trận thiết bị/OS/IME, kịch bản XCUITest, bộ dữ liệu 50.000 từ, tiêu chí vào/ra","M0b","doc","rv",{w:0.25},{ref:"docs/process/TEST_PLAN.md",note:"Đã có khung; còn Q-11 và người thử SC-002.",f:"F-23"}],
+ ["docs/process/TEST_PLAN.md","Ma trận thiết bị/OS/IME, kịch bản XCUITest, bộ dữ liệu 50.000 từ, tiêu chí vào/ra","M0b","doc","dn",{w:0.25},{ref:"docs/process/TEST_PLAN.md",note:"PO chốt thiết bị chuẩn = simulator trên macOS 2026-11-05; người thử SC-002 chờ duyệt riêng.",f:"F-23"}],
  ["Q-5","Chốt font tiếng Nhật: Noto Sans JP hay Hiragino Sans","M0b","dec","bl",null,{ref:"DECISIONS Q-5, S-6",note:"Hạn GATE-1; chặn WP-05."}],
- ["Q-D2","Chốt màu chấm trạng thái “Đang học”","M0b","dec","rv",null,{ref:"DECISIONS Q-D2",note:"Đề xuất: dùng state-learning-ink. Hạn GATE-1; chặn WP-05."}],
+ ["Q-D2","Chốt màu chấm trạng thái “Đang học”","M0b","dec","dn",null,{ref:"DECISIONS Q-D2",note:"Đã chốt B (PO 2026-11-05): state-learning-ink #A67C00 cho chấm/chữ, #D9A300 chỉ vùng tô lớn."}],
  ["ADR 20–26","Xác nhận hoặc thay thế ADR-20, 21, 24, 26, 32 theo kết quả spike","M0b","dec","bl",null,{ref:"DECISIONS §5",note:"GATE-1: S-1, S-3, S-8 phải đạt.",f:"F-19"}],
  ["RV-01","Đồng bộ tài liệu: ARCHITECTURE v2.2 (card_id, bỏ GRDB, bỏ Persistence), phiên bản, thuật ngữ, ưu tiên và mốc","M0b","rev","rd",{x:"≈ 0,5 tuần (đề xuất)"},{note:"Sửa các điểm mâu thuẫn giữa tài liệu.",f:["F-04","F-05","F-06","F-07","F-08","F-25"]}],
  ["RV-02","Chốt vòng đời xóa mềm và bảng mã lỗi chi tiết trong contract, trước WP-02a và WP-02b","M0b","rev","rd",{x:"quyết định (đề xuất)"},{ref:"WP-02a, WP-02b",f:["F-09","F-10","F-18"]}],
