@@ -2,7 +2,7 @@
 
 ## Contract
 
-- Status: blocked
+- Status: done 2026-11-04 — app shell landed (PR 6, bundle id `com.nihmtaho.hiraku` settled by PO 2026-11-04); host verified for S-8 measurements; S-7's device parts remain blocked by Q-11 (out of this task's scope).
 - Owner: hiraku-coder
 - Milestone / WP: M0 (infrastructure for S-3, S-4, S-6, S-7, S-8)
 - Branch / PR: none; working tree only
@@ -58,10 +58,10 @@ Not started.
 ## Delivery
 
 - CHANGELOG entry and ROADMAP/Kanban status updated in the PR: required in working tree
-- Status: not requested
-- CI / integration revision:
-- Gate / PO approval:
-- Actions actually taken / evidence from the target system:
+- Status: done 2026-11-04
+- CI / integration revision: iOS simulator + macOS builds exit 0 (`BUILD SUCCEEDED`); app launched on both, evidence in `docs/reports/M0_SPIKE.md` §App shell
+- Gate / PO approval: PO approved the minimal shell on 2026-10-31; bundle id `com.nihmtaho.hiraku` approved 2026-11-04
+- Actions actually taken / evidence from the target system: shell run and screenshotted on simulator, launched/quit on macOS via System Events; now the host for S-8's runs
 
 ## Next
 

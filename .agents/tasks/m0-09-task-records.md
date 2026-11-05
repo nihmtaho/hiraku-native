@@ -2,7 +2,7 @@
 
 ## Contract
 
-- Status: ready
+- Status: superseded 2026-11-04 — record m0-09 is merged; status updates are plainly done via ROADMAP §11 and the PR flow since ADR-31's replacement.
 - Owner: hiraku-coder
 - Milestone / WP: M0 / housekeeping (follows m0-07-adr15 PR 20 and m0-08-adr15-close PR 21, both merged)
 - Branch / PR: `docs/m0-09-task-records` from `develop`; PR #22 https://github.com/nihmtaho/hiraku-native/pull/22

@@ -2,7 +2,8 @@
 
 ## Contract
 
-- Status: blocked
+- Status: done 2026-11-04 — Spike 0 landed on develop (PR 8, squash `67decc7…` lineage): `mattn/go-sqlite3 v1.14.52`, no `net`, three slices build; see ROADMAP §11 Spike 0 `dn`.
+- CI / integration revision: go smoke test exit 0 on host; slice archives in `core/.spike/` (build-only, Q-11 partial)
 - Owner: hiraku-coder
 - Milestone / WP: M0 / Spike 0 (blocks S-8)
 - Branch / PR: `chore/m0-01-spike0` from `develop` (no Git delivery rights; work in working-tree)
@@ -52,10 +53,10 @@ Not started.
 ## Delivery
 
 - CHANGELOG entry and ROADMAP/Kanban status updated in the PR: required when run
-- Status: not requested
-- CI / integration revision:
-- Gate / PO approval:
-- Actions actually taken / evidence from the target system:
+- Status: done 2026-11-04
+- CI / integration revision: `go test -race ./...` exit 0 on host; smoke and record in `docs/reports/M0_SPIKE.md` §Spike 0
+- Gate / PO approval: PO chose `mattn/go-sqlite3` on 2026-10-30; ADR-32 recorded (PR 8)
+- Actions actually taken / evidence from the target system: three c-archive slices built and verified by symbol inspection; working-tree work committed and merged via PR 8
 
 ## Next
 
