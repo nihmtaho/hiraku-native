@@ -207,7 +207,7 @@ Bảng màu xây trên tương phản cao giữa mực và giấy, cộng một 
 - **Border-soft / Divider:** đường phân cách trang trí, không dùng làm biên duy nhất của điều khiển.
 - **Faint (#A39C8F):** placeholder, trạng thái disabled, trang trí. Không mang thông tin.
 - **Tertiary-container (#FFE9E3):** nền thông báo lỗi nhẹ, ô sai.
-- **Ba màu trạng thái học** (chấm 8pt, không thay màu nhấn): `state-new` (Mới), `state-learning` (Đang học), `state-known` (Đã biết). `state-learning-ink` (#A67C00) dùng khi trạng thái xuất hiện dưới dạng **chữ**.
+- **Ba màu trạng thái học** (chấm 8pt, không thay màu nhấn): `state-new` (Mới), `state-learning` (Đang học), `state-known` (Đã biết). Q-D2 đã chốt (PO 2026-11-05): chấm và chữ trạng thái trên nền sáng dùng `state-learning-ink` (#A67C00); `state-learning` (#D9A300) chỉ cho vùng tô lớn có chú giải.
 
 **Ember được dùng cho đúng các việc sau**: CTA (`button-primary`); tiến độ (thanh tiến độ phiên, slider, toggle bật); tín hiệu "Again"/lỗi (nút Again, ô sai); điểm nhấn nhận diện được duyệt (dấu · wordmark, số lượng trong banner, Cách đọc ở mặt sau thẻ). Không dùng Ember cho nền, đường kẻ, icon không tương tác.
 
@@ -482,6 +482,6 @@ Nhật ký, tiêu chí và hạn chốt của các mục dưới đây nằm ở
 
 | # | Vấn đề | Đề xuất |
 |---|---|---|
-| Q-D2 | Chấm `state-learning` chỉ đạt 2,25:1 | Giữ màu thương hiệu kèm nhãn chữ; hoặc dùng `state-learning-ink` cho chấm. Cần quyết định |
+| Q-D2 | Chấm `state-learning` chỉ đạt 2,25:1 | **Đã chốt (PO 2026-11-05): dùng `state-learning-ink` (#A67C00) cho chấm và chữ; `state-learning` chỉ cho vùng tô lớn có chú giải** |
 | Q-D4 | Dark Mode (Q-2 spec) | Hoãn; khi làm, thiết kế bộ token tối riêng thay vì đảo màu |
 | Q-D5 | Cỡ nền body iPhone 15pt thay vì 17pt mặc định của iOS | Chấp nhận mật độ editorial; người dùng tăng bằng Dynamic Type/`font_scale` |

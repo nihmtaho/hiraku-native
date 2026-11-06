@@ -4,6 +4,7 @@ node_modules/
 core/.spike/
 .commandcode/taste/
 .commandcode/settings.local.json
+.serena/
 DerivedData/
 build/
 xcuserdata/
