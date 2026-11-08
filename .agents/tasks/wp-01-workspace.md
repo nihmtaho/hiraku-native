@@ -6,7 +6,7 @@
 - Owner: coordinator / senior (Q-29)
 - Milestone / WP: M1a / WP-01
 - Branch / PR: `feat/wp-01-workspace` from `develop`
-- Base / head SHA: dbb9b5b / 5171add
+- Base / head SHA: dbb9b5b / 85f2273
 - Dependencies: docs/architecture/ARCHITECTURE.md v2.2
 - Required reading: ARCHITECTURE §3, §6.1, §6.4; ADR-21, ADR-22; docs/process/TEST_PLAN.md
 - Blocking Q / gate: none; S-7 App Group waived to device debt by PO 2026-11-08
@@ -40,14 +40,14 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
-| buf lint | `buf lint` (repo root) | 0 | 5171add |
-| buf breaking | `buf breaking --against '.git#branch=develop'` | Not run — new module has no baseline on develop | 5171add |
-| Go tests | `cd core && go vet ./... && go test -race -count=1 ./...` | 0 | 5171add |
-| Core boundary script | `core/scripts/check-core.sh` | 0; planted `_ "net"` gives 1 and names the file | 5171add |
-| Swift import script | `Scripts/check-imports.sh` | 0 | 5171add |
-| Xcode tests | `xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=macOS'` | 0, 1 test passed (SQLite WAL reopen) | 5171add |
-| XCFramework build | `core/scripts/build-xcframework.sh` | 0, `Frameworks/HirakuCore.xcframework`, 24 MB, three slices | 5171add |
-| App Group (S-7) | add `com.apple.security.application-groups`, build for simulator | Blocked by signing; PO waiver 2026-11-08 — WAL verified in app container, App Group is device debt | 5171add |
+| buf lint | `buf lint` (repo root) | 0 | 85f2273 |
+| buf breaking | `buf breaking --against '.git#branch=develop'` | Not run — new module has no baseline on develop | 85f2273 |
+| Go tests | `cd core && go vet ./... && go test -race -count=1 ./...` | 0 | 85f2273 |
+| Core boundary script | `core/scripts/check-core.sh` | 0; planted `_ "net"` gives 1 and names the file | 85f2273 |
+| Swift import script | `Scripts/check-imports.sh` | 0 | 85f2273 |
+| Xcode tests | `xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=macOS'` | 0, 1 test passed (SQLite WAL reopen) | 85f2273 |
+| XCFramework build | `core/scripts/build-xcframework.sh` | 0, `Frameworks/HirakuCore.xcframework`, 24 MB, three slices | 85f2273 |
+| App Group (S-7) | add `com.apple.security.application-groups`, build for simulator | Blocked by signing; PO waiver 2026-11-08 — WAL verified in app container, App Group is device debt | 85f2273 |
 
 ## Coding
 
