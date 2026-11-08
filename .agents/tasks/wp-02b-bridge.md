@@ -2,11 +2,11 @@
 
 ## Contract
 
-- Status: blocked
+- Status: review
 - Owner: coordinator / senior (Q-29)
 - Milestone / WP: M1a / WP-02b
-- Branch / PR: `feat/wp-02b-bridge` from `develop`
-- Base / head SHA: 2df7fd5 / —
+- Branch / PR: `feat/wp-02b-bridge` from `develop` (PR pending)
+- Base / head SHA: cf7f1b4 / NEW_SHA
 - Dependencies: WP-01, WP-02a
 - Required reading: ARCHITECTURE §6.4, §7; ADR-21, ADR-24; DECISIONS Q-20
 - Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
@@ -42,6 +42,14 @@ Record is authority for the contract; plan is authority for progress; issues tra
 | Swift bridge tests | `xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination "platform=macOS"` | Not run | — |
 
 ## Coding
+
+- `hk_call` now takes the contract `Method` enum as `uint32`; `hk.h` updated in both copies.
+- `dispatch` is the only FFI logic: handle lookup, service call, panic recovery, `hiraku.v1.Error` body on failure.
+- `service` adds PING and error mapping (not found, business sub-codes, storage).
+- Go tests: ping, unknown method, malformed payload, invalid handle, error round-trip.
+- Swift: generated protobuf (SwiftProtobuf), `HirakuBridge` actor, `EventHub`, `HirakuTesting.FakeBridge`.
+- App spike views use the actor; bridge test opens a temp DB, pings, checks unknown method.
+- Package links `hk_*` from the app archive via `dynamic_lookup`.
 
 ## Independent review
 

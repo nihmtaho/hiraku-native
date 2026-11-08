@@ -1,4 +1,5 @@
 import Foundation
+import HirakuBridge
 import SQLite3
 import Testing
 
@@ -32,3 +33,21 @@ import Testing
         #expect(sqlite3_column_int(statement, 0) >= 1)
     }
 }
+
+@Test func bridgePingAndUnknownMethod() async throws {
+    let path = FileManager.default.temporaryDirectory
+        .appendingPathComponent("hiraku-bridge-\(UUID().uuidString).sqlite").path
+    defer { try? FileManager.default.removeItem(atPath: path) }
+    let bridge = HirakuBridge()
+    try await bridge.open(path: path)
+    #expect(try await bridge.call(.ping).isEmpty)
+    do {
+        _ = try await bridge.call(methodRaw(99))
+        Issue.record("unknown method did not fail")
+    } catch let error as HirakuContractError {
+        #expect(error.code == .notFound)
+    }
+    await bridge.close()
+}
+
+private func methodRaw(_ raw: Int32) -> Hiraku_V1_Method { Hiraku_V1_Method(rawValue: Int(raw)) ?? .unspecified }

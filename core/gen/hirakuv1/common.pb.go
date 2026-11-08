@@ -21,6 +21,52 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type Method int32
+
+const (
+	Method_METHOD_UNSPECIFIED Method = 0
+	Method_METHOD_PING        Method = 1
+)
+
+// Enum value maps for Method.
+var (
+	Method_name = map[int32]string{
+		0: "METHOD_UNSPECIFIED",
+		1: "METHOD_PING",
+	}
+	Method_value = map[string]int32{
+		"METHOD_UNSPECIFIED": 0,
+		"METHOD_PING":        1,
+	}
+)
+
+func (x Method) Enum() *Method {
+	p := new(Method)
+	*p = x
+	return p
+}
+
+func (x Method) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (Method) Descriptor() protoreflect.EnumDescriptor {
+	return file_hiraku_v1_common_proto_enumTypes[0].Descriptor()
+}
+
+func (Method) Type() protoreflect.EnumType {
+	return &file_hiraku_v1_common_proto_enumTypes[0]
+}
+
+func (x Method) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use Method.Descriptor instead.
+func (Method) EnumDescriptor() ([]byte, []int) {
+	return file_hiraku_v1_common_proto_rawDescGZIP(), []int{0}
+}
+
 type ErrorCode int32
 
 const (
@@ -63,11 +109,11 @@ func (x ErrorCode) String() string {
 }
 
 func (ErrorCode) Descriptor() protoreflect.EnumDescriptor {
-	return file_hiraku_v1_common_proto_enumTypes[0].Descriptor()
+	return file_hiraku_v1_common_proto_enumTypes[1].Descriptor()
 }
 
 func (ErrorCode) Type() protoreflect.EnumType {
-	return &file_hiraku_v1_common_proto_enumTypes[0]
+	return &file_hiraku_v1_common_proto_enumTypes[1]
 }
 
 func (x ErrorCode) Number() protoreflect.EnumNumber {
@@ -76,7 +122,7 @@ func (x ErrorCode) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use ErrorCode.Descriptor instead.
 func (ErrorCode) EnumDescriptor() ([]byte, []int) {
-	return file_hiraku_v1_common_proto_rawDescGZIP(), []int{0}
+	return file_hiraku_v1_common_proto_rawDescGZIP(), []int{1}
 }
 
 type ErrorSubCode int32
@@ -115,11 +161,11 @@ func (x ErrorSubCode) String() string {
 }
 
 func (ErrorSubCode) Descriptor() protoreflect.EnumDescriptor {
-	return file_hiraku_v1_common_proto_enumTypes[1].Descriptor()
+	return file_hiraku_v1_common_proto_enumTypes[2].Descriptor()
 }
 
 func (ErrorSubCode) Type() protoreflect.EnumType {
-	return &file_hiraku_v1_common_proto_enumTypes[1]
+	return &file_hiraku_v1_common_proto_enumTypes[2]
 }
 
 func (x ErrorSubCode) Number() protoreflect.EnumNumber {
@@ -128,7 +174,7 @@ func (x ErrorSubCode) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use ErrorSubCode.Descriptor instead.
 func (ErrorSubCode) EnumDescriptor() ([]byte, []int) {
-	return file_hiraku_v1_common_proto_rawDescGZIP(), []int{1}
+	return file_hiraku_v1_common_proto_rawDescGZIP(), []int{2}
 }
 
 type EntityType int32
@@ -170,11 +216,11 @@ func (x EntityType) String() string {
 }
 
 func (EntityType) Descriptor() protoreflect.EnumDescriptor {
-	return file_hiraku_v1_common_proto_enumTypes[2].Descriptor()
+	return file_hiraku_v1_common_proto_enumTypes[3].Descriptor()
 }
 
 func (EntityType) Type() protoreflect.EnumType {
-	return &file_hiraku_v1_common_proto_enumTypes[2]
+	return &file_hiraku_v1_common_proto_enumTypes[3]
 }
 
 func (x EntityType) Number() protoreflect.EnumNumber {
@@ -183,7 +229,7 @@ func (x EntityType) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use EntityType.Descriptor instead.
 func (EntityType) EnumDescriptor() ([]byte, []int) {
-	return file_hiraku_v1_common_proto_rawDescGZIP(), []int{2}
+	return file_hiraku_v1_common_proto_rawDescGZIP(), []int{3}
 }
 
 type ChangeKind int32
@@ -219,11 +265,11 @@ func (x ChangeKind) String() string {
 }
 
 func (ChangeKind) Descriptor() protoreflect.EnumDescriptor {
-	return file_hiraku_v1_common_proto_enumTypes[3].Descriptor()
+	return file_hiraku_v1_common_proto_enumTypes[4].Descriptor()
 }
 
 func (ChangeKind) Type() protoreflect.EnumType {
-	return &file_hiraku_v1_common_proto_enumTypes[3]
+	return &file_hiraku_v1_common_proto_enumTypes[4]
 }
 
 func (x ChangeKind) Number() protoreflect.EnumNumber {
@@ -232,7 +278,7 @@ func (x ChangeKind) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use ChangeKind.Descriptor instead.
 func (ChangeKind) EnumDescriptor() ([]byte, []int) {
-	return file_hiraku_v1_common_proto_rawDescGZIP(), []int{3}
+	return file_hiraku_v1_common_proto_rawDescGZIP(), []int{4}
 }
 
 type Change struct {
@@ -404,7 +450,10 @@ const file_hiraku_v1_common_proto_rawDesc = "" +
 	"\achanges\x18\x01 \x03(\v2\x11.hiraku.v1.ChangeR\achanges\"e\n" +
 	"\x05Error\x12(\n" +
 	"\x04code\x18\x01 \x01(\x0e2\x14.hiraku.v1.ErrorCodeR\x04code\x122\n" +
-	"\bsub_code\x18\x02 \x01(\x0e2\x17.hiraku.v1.ErrorSubCodeR\asubCode*\xae\x01\n" +
+	"\bsub_code\x18\x02 \x01(\x0e2\x17.hiraku.v1.ErrorSubCodeR\asubCode*1\n" +
+	"\x06Method\x12\x16\n" +
+	"\x12METHOD_UNSPECIFIED\x10\x00\x12\x0f\n" +
+	"\vMETHOD_PING\x10\x01*\xae\x01\n" +
 	"\tErrorCode\x12\x1a\n" +
 	"\x16ERROR_CODE_UNSPECIFIED\x10\x00\x12\x1f\n" +
 	"\x1bERROR_CODE_INVALID_ARGUMENT\x10\x01\x12\x18\n" +
@@ -442,23 +491,24 @@ func file_hiraku_v1_common_proto_rawDescGZIP() []byte {
 	return file_hiraku_v1_common_proto_rawDescData
 }
 
-var file_hiraku_v1_common_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
+var file_hiraku_v1_common_proto_enumTypes = make([]protoimpl.EnumInfo, 5)
 var file_hiraku_v1_common_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_hiraku_v1_common_proto_goTypes = []any{
-	(ErrorCode)(0),    // 0: hiraku.v1.ErrorCode
-	(ErrorSubCode)(0), // 1: hiraku.v1.ErrorSubCode
-	(EntityType)(0),   // 2: hiraku.v1.EntityType
-	(ChangeKind)(0),   // 3: hiraku.v1.ChangeKind
-	(*Change)(nil),    // 4: hiraku.v1.Change
-	(*ChangeSet)(nil), // 5: hiraku.v1.ChangeSet
-	(*Error)(nil),     // 6: hiraku.v1.Error
+	(Method)(0),       // 0: hiraku.v1.Method
+	(ErrorCode)(0),    // 1: hiraku.v1.ErrorCode
+	(ErrorSubCode)(0), // 2: hiraku.v1.ErrorSubCode
+	(EntityType)(0),   // 3: hiraku.v1.EntityType
+	(ChangeKind)(0),   // 4: hiraku.v1.ChangeKind
+	(*Change)(nil),    // 5: hiraku.v1.Change
+	(*ChangeSet)(nil), // 6: hiraku.v1.ChangeSet
+	(*Error)(nil),     // 7: hiraku.v1.Error
 }
 var file_hiraku_v1_common_proto_depIdxs = []int32{
-	3, // 0: hiraku.v1.Change.kind:type_name -> hiraku.v1.ChangeKind
-	2, // 1: hiraku.v1.Change.entity:type_name -> hiraku.v1.EntityType
-	4, // 2: hiraku.v1.ChangeSet.changes:type_name -> hiraku.v1.Change
-	0, // 3: hiraku.v1.Error.code:type_name -> hiraku.v1.ErrorCode
-	1, // 4: hiraku.v1.Error.sub_code:type_name -> hiraku.v1.ErrorSubCode
+	4, // 0: hiraku.v1.Change.kind:type_name -> hiraku.v1.ChangeKind
+	3, // 1: hiraku.v1.Change.entity:type_name -> hiraku.v1.EntityType
+	5, // 2: hiraku.v1.ChangeSet.changes:type_name -> hiraku.v1.Change
+	1, // 3: hiraku.v1.Error.code:type_name -> hiraku.v1.ErrorCode
+	2, // 4: hiraku.v1.Error.sub_code:type_name -> hiraku.v1.ErrorSubCode
 	5, // [5:5] is the sub-list for method output_type
 	5, // [5:5] is the sub-list for method input_type
 	5, // [5:5] is the sub-list for extension type_name
@@ -476,7 +526,7 @@ func file_hiraku_v1_common_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_hiraku_v1_common_proto_rawDesc), len(file_hiraku_v1_common_proto_rawDesc)),
-			NumEnums:      4,
+			NumEnums:      5,
 			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   0,

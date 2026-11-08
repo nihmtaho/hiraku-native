@@ -18,14 +18,16 @@ struct PingCheckView: View {
     }
 
     private func run() {
-        do {
-            let db = Spike8DB.scratchPath()
-            let handle = try HirakuBridge.open(path: db)
-            let reply = try HirakuBridge.call(handle: handle, method: "ping")
-            try HirakuBridge.close(handle)
-            result = "ping OK, reply bytes: \(reply.count)"
-        } catch {
-            result = "ping FAILED: \(error)"
+        Task {
+            let bridge = HirakuBridge()
+            do {
+                try await bridge.open(path: Spike8DB.scratchPath())
+                let reply = try await bridge.call(.ping)
+                await bridge.close()
+                result = "ping OK, reply bytes: \(reply.count)"
+            } catch {
+                result = "ping FAILED: \(error)"
+            }
         }
     }
 
@@ -33,9 +35,9 @@ struct PingCheckView: View {
     private func measureIfRequested() {
         guard Spike8.runRequested else { return }
         result = "measuring…"
-        DispatchQueue.global(qos: .userInitiated).async {
-            let numbers = Spike8.measure(dbPath: Spike8DB.scratchPath())
-            DispatchQueue.main.async {
+        Task.detached {
+            let numbers = await Spike8.measure(dbPath: Spike8DB.scratchPath())
+            await MainActor.run {
                 self.result = numbers.summary
             }
         }

@@ -69,7 +69,7 @@ enum Spike8 {
         return sorted[index - 1]
     }
 
-    static func measure(dbPath: String) -> Numbers {
+    static func measure(dbPath: String) async -> Numbers {
         var coldMs = Double.nan
         var startups: [Double] = []
         var perCalls: [Double] = []
@@ -77,30 +77,31 @@ enum Spike8 {
         var rssAfter = UInt64(0)
         var failure = ""
 
+        let bridge = HirakuBridge()
         do {
             let coldStart = HirakuSpikeMetrics.timeNs()
-            let coldHandle = try HirakuBridge.open(path: dbPath)
-            _ = try HirakuBridge.call(handle: coldHandle, method: "ping")
+            try await bridge.open(path: dbPath)
+            _ = try await bridge.call(.ping)
             coldMs = Double(HirakuSpikeMetrics.timeNs() - coldStart) / 1_000_000
-            try HirakuBridge.close(coldHandle)
+            await bridge.close()
 
             for _ in 0 ..< 20 {
                 let start0 = HirakuSpikeMetrics.timeNs()
-                let handle = try HirakuBridge.open(path: dbPath)
-                _ = try HirakuBridge.call(handle: handle, method: "ping")
+                try await bridge.open(path: dbPath)
+                _ = try await bridge.call(.ping)
                 startups.append(Double(HirakuSpikeMetrics.timeNs() - start0) / 1_000_000)
-                try HirakuBridge.close(handle)
+                await bridge.close()
             }
 
-            let handle = try HirakuBridge.open(path: dbPath)
+            try await bridge.open(path: dbPath)
             rssBefore = HirakuSpikeMetrics.rssKb()
             for _ in 0 ..< 1000 {
                 let call0 = HirakuSpikeMetrics.timeNs()
-                _ = try HirakuBridge.call(handle: handle, method: "ping")
+                _ = try await bridge.call(.ping)
                 perCalls.append(Double(HirakuSpikeMetrics.timeNs() - call0) / 1_000_000)
             }
             rssAfter = HirakuSpikeMetrics.rssKb()
-            try HirakuBridge.close(handle)
+            await bridge.close()
         } catch {
             failure = "\(error)"
         }

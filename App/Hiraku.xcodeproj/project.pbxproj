@@ -21,6 +21,7 @@
 		AA000000000000000000002D /* NotoSansJP-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000002C /* NotoSansJP-Regular.ttf */; };
 		AA000000000000000000002F /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000002E /* OFL.txt */; };
 		AA0000000000000000000041 /* HirakuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000040 /* HirakuTests.swift */; };
+		AA000000000000000000004D /* HirakuBridge in Frameworks */ = {isa = PBXBuildFile; productRef = AA0000000000000000000021 /* HirakuBridge */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA000000000000000000004D /* HirakuBridge in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +152,9 @@
 				AA000000000000000000004C /* PBXTargetDependency */,
 			);
 			name = HirakuTests;
+			packageProductDependencies = (
+				AA0000000000000000000021 /* HirakuBridge */,
+			);
 			productName = HirakuTests;
 			productReference = AA0000000000000000000043 /* HirakuTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
