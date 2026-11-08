@@ -14,7 +14,7 @@
 - Tiếng Việt không chia số ít/số nhiều nên **không cần biến thể plural**.
 - Định dạng số, ngày, giờ dùng formatter theo locale `vi_VN` (ví dụ 50.000 từ, "Thứ Tư, 28 tháng 10"), không viết tay trong chuỗi.
 - Cột **Ghi chú** nêu ngữ cảnh cho người dịch và tên biến. Chữ in hoa ở nhãn (`label-caps`) do kiểu chữ tạo ra; chuỗi lưu ở dạng chữ thường/hoa chữ cái đầu.
-- Trạng thái: toàn bộ là *đề xuất*. Câu đã có trong use case giữ nguyên nội dung.
+- Trạng thái: baseline v1.6 đã được PO duyệt 2026-11-08; chuỗi thêm hoặc sửa sau đó là đề xuất cho tới khi duyệt.
 
 ## 2. Giọng văn
 

@@ -283,7 +283,7 @@ Nguyên tắc: (1) mỗi hành động có ít nhất hai đường, trong đó 
 - **E1/E2**: như UC-06.
 
 **Hậu điều kiện**: Mỗi thẻ kết thúc có 1 `review_logs` (`mode='typing'`).
-**Quy tắc chuẩn hóa**: `docs/product/spec.md` §7.2 (trim, lowercase, romaji→kana, katakana→hiragana, bỏ `ー`, dung sai dakuten/handakuten, kana nhỏ=lớn, nguyên âm dài lặp, ký tự lặp). Mọi phản hồi dùng `HirakuCore/Kana`.
+**Quy tắc chuẩn hóa**: `docs/product/spec.md` §7.2 (trim, lowercase, romaji→kana, katakana→hiragana, bỏ `ー`, dakuten/handakuten và kana nhỏ nghiêm theo Q-21 B, nguyên âm dài và ký tự lặp dung sai). Mọi phản hồi dùng `HirakuCore/Kana`.
 **Phản hồi**: xúc giác kiểu thành công khi đúng, kiểu lỗi khi sai (P1, FR-081).
 **FR**: FR-011, FR-012, FR-016, FR-019; FR-025, FR-081 (P1).
 
@@ -563,7 +563,7 @@ Cài đặt hoặc ngay trong phiên: **Từ→Nghĩa** (mặc định) / **Ngh�
 |---|---|---|---|
 | **UC-15** Từ ngẫu nhiên | Thẻ trên Trang chủ, làm mới sau 15 phút, bền qua khởi động lại | Gợi lại từ, tăng tương tác nhẹ | `docs/product/DESIGN.md` muốn "một tâm điểm mỗi màn hình": đặt ở cột phụ **[iPad/Mac]**, hoặc bỏ trên **[iPhone]** |
 | **UC-22** Ôn tập tùy chỉnh | Học trước, cram theo deck/tag/trạng thái, "chỉ thẻ đang quên" | Ôn gấp trước kỳ thi JLPT | Cram có ghi `review_logs` không? Đề xuất: không cập nhật `card_states` |
-| **UC-23** Chi tiết từ, lịch sử & tạm ngưng | Xem lịch sử chấm, độ khó/ổn định, lịch kế; **tạm ngưng** thẻ; (tùy chọn) thùng rác khôi phục xóa mềm | Hiểu vì sao từ khó nhớ | Thùng rác giữ bao lâu (vd 30 ngày)? |
+| **UC-23** Chi tiết từ, lịch sử & tạm ngưng | Xem lịch sử chấm, độ khó/ổn định, lịch kế; **tạm ngưng** thẻ; (tùy chọn) thùng rác khôi phục xóa mềm | Hiểu vì sao từ khó nhớ | Thùng rác giữ 30 ngày rồi xóa hẳn (Q-19, PO 2026-11-08) |
 | **UC-24** Tags & lọc | Gắn nhãn (JLPT N5, động từ…), lọc/học theo nhãn | Cắt lát từ vựng xuyên deck | Cần bảng `tags`/`word_tags`; nhập/xuất cột `tags` |
 | **UC-25** Phát âm (TTS) | Nút nghe bằng `AVSpeechSynthesizer` (`ja-JP`) | Học cách đọc | Phụ thuộc voice đã cài trên thiết bị ⇒ thoái lui êm khi thiếu voice |
 | **UC-26** Mục tiêu ngày & streak | Đặt mục tiêu số thẻ/ngày, hiển thị chuỗi ngày | Động lực | Dễ gây áp lực; có tùy chọn tắt; tính theo "ngày học" |

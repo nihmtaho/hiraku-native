@@ -1,7 +1,7 @@
 # Tài liệu Đặc tả — hiraku (開く) · Native Swift
 
 **Ngày**: 2026-10-29
-**Phiên bản tài liệu**: 3.11
+**Phiên bản tài liệu**: 3.12
 **Trạng thái**: Đã chốt: logic và dữ liệu ở Go core (ADR-20…26), kiến trúc Swift (ADR-02), OS 26 (ADR-13), chrome Liquid Glass gốc (ADR-15); điểm còn mở ở §13
 **Tài liệu liên quan**: `docs/product/DESIGN.md` (hệ thống thiết kế Editorial Ember — nguồn sự thật cho giá trị token), `docs/product/use-cases.md` (mã UC; mã FR giữ nguyên theo bản web, xem `CHANGELOG.md`), `docs/architecture/ARCHITECTURE.md` v2.2 (luật kiến trúc có hiệu lực), `docs/architecture/DECISIONS.md`, `ROADMAP.md`
 **Lịch sử thay đổi**: `CHANGELOG.md`.
@@ -277,6 +277,8 @@ Chỉ mục: `(card_id)`, `(reviewed_at)`.
 
 Trạng thái giao diện tạm (cửa sổ, tab đang chọn) dùng `@SceneStorage`/`@AppStorage`, **không** vào bảng `settings`. `theme_mode` hoãn (Q-2).
 
+Q-24: `font_scale`, `reminder_enabled`, `reminder_time` là cài đặt cấp ứng dụng, lưu ở `AppStorage` của App Group, **không** nằm trong bảng `settings` theo profile; các khóa học (FSRS, hạn mức, số nút, hướng thẻ, giờ bắt đầu ngày, `last_backup_at`) ở DB theo profile.
+
 ### 4.9 Migration
 
 Migration nằm ở Go core (`core/store/migrations`), tên có tiền tố tăng dần, theo dõi bằng `PRAGMA user_version`, mỗi migration chạy trong transaction; không sửa migration đã phát hành (ADR-23). Dữ liệu từ bản web hoặc Flutter cũ nhập qua file sao lưu (FR-031, FR-040).
@@ -443,7 +445,7 @@ Ghi chú v3.7: các FR nghiệp vụ (FR-013 romaji khớp kana, FR-016 chấm �
 
 1. `trim()` + lowercase.
 2. Có ký tự `[a-z]` ⇒ romaji → kana (っ, `nn→ん`, `n` trước phụ âm → ん, yōon `kya…`, kana nhỏ).
-3. Chuẩn tắc (Q-21 = B): katakana → hiragana; bỏ `ー`; dakuten/handakuten **giữ nguyên** (か ≠ が); kana nhỏ **giữ nguyên** (っ ≠ つ); giữ nguyên âm dài lặp; nén ký tự lặp.
+3. Chuẩn tắc (Q-21 = B): katakana → hiragana; bỏ `ー`; dakuten/handakuten **giữ nguyên** (か ≠ が); kana nhỏ **giữ nguyên** (っ ≠ つ); nguyên âm dài lặp **được dung sai** (bỏ khi so khớp); nén ký tự lặp.
 4. Khớp khi hai vế chuẩn hóa bằng nhau; tiến trình khớp theo ký tự dùng cho phản hồi từng ô.
 5. **IME**: ô nhập bọc `UITextField`/`NSTextField` để biết `markedTextRange`/`hasMarkedText`. Khi đang compose chỉ hiển thị, **chỉ đánh giá sau khi chốt**; Enter dùng để chốt IME không được tính là nộp đáp án.
 6. Module thuần Go (`core/domain/kana`) → bộ test bảng (input → kỳ vọng) trong `core/testdata`; đây là logic dễ sai nhất. Swift chỉ gửi chuỗi thô và nhận kết quả từng ô.
