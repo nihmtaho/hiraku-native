@@ -303,7 +303,8 @@ Nguồn cập nhật bắt buộc cho mọi PR (`docs/process/GIT_WORKFLOW.md` �
 | S-2 | dn | 8 | Working-tree: Không đạt khớp vector (go-fsrs/v4 v4.0.0; 3/17 due lệch, dung sai 0); PO xác nhận tự cài trong `core/domain/fsrs` theo ADR-26 (2026-11-04), WP-03. |
 | S-1 | dn | 8 | Nửa Go Đạt trên MacBook; iOS/iPadOS và 60 fps chưa xác minh (S-1 bổ sung). |
 | S-7 | dn | — | Waiver PO 2026-11-08: App Group cần chứng chỉ development; WAL trong container app đã xác minh; App Group/widget/sao lưu là nợ thiết bị (ADR-17) |
-| WP-01 | ip | — | Kickoff M1a 2026-11-08; contract/buf, check scripts, CI, XCFramework, S-7 (issues #39–#43) |
+| WP-01 | dn | — | Contract, check scripts, CI + `swift` job, XCFramework; S-7 waiver nợ thiết bị (PR 73, 87048cb) |
+| WP-02a | ip | — | Store, migration, repo, xóa mềm, notetype (issues #44–#47) |
 | Báo cáo spike | rv | — | Đã có bảng tổng hợp M0; 4 quyết định PO chốt và waiver S-3 tại chat 2026-11-04 (Q-5=A, ADR-26 tự cài, 300 ms tạm, ADR-15 duyệt); còn nợ thiết bị: S-7, IME thật, SC-006 |
 | S-1 bổ sung | dn | 16 | Đã chạy lại trên schema ADR-27, nhiễu do máy tải; 60 fps và thiết bị chưa xác minh (bỏ qua thiết bị) |
 | S-8 | dn | 8 | Đạt trên macOS và simulator; thiết bị (SC-006) chưa xác minh; ngưỡng 300 ms tạm chấp nhận, đo lại trên thiết bị (PO 2026-11-04) |
