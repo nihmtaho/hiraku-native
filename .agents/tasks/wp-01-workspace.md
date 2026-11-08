@@ -2,11 +2,11 @@
 
 ## Contract
 
-- Status: coding
+- Status: merged
 - Owner: coordinator / senior (Q-29)
 - Milestone / WP: M1a / WP-01
-- Branch / PR: `feat/wp-01-workspace` from `develop`
-- Base / head SHA: dbb9b5b / f5210f2
+- Branch / PR: `feat/wp-01-workspace` / PR 73
+- Base / head SHA: dbb9b5b / d29a8d9 (merge 87048cb)
 - Dependencies: docs/architecture/ARCHITECTURE.md v2.2
 - Required reading: ARCHITECTURE §3, §6.1, §6.4; ADR-21, ADR-22; docs/process/TEST_PLAN.md
 - Blocking Q / gate: none; S-7 App Group waived to device debt by PO 2026-11-08
@@ -40,14 +40,14 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
-| buf lint | `buf lint` (repo root) | 0 | f5210f2 |
-| buf breaking | `buf breaking --against '.git#branch=develop'` | Not run — new module has no baseline on develop | f5210f2 |
-| Go tests | `cd core && go vet ./... && go test -race -count=1 ./...` | 0 | f5210f2 |
-| Core boundary script | `core/scripts/check-core.sh` | 0; planted `_ "net"` gives 1 and names the file | f5210f2 |
-| Swift import script | `Scripts/check-imports.sh` | 0 | f5210f2 |
-| Xcode tests | `xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=macOS'` | 0, 1 test passed (SQLite WAL reopen) | f5210f2 |
-| XCFramework build | `core/scripts/build-xcframework.sh` | 0, `Frameworks/HirakuCore.xcframework`, 24 MB, three slices | f5210f2 |
-| App Group (S-7) | add `com.apple.security.application-groups`, build for simulator | Blocked: `"Hiraku" has entitlements that require signing with a development certificate. Enable development signing in the Signing & Capabilities editor.` PO waiver 2026-11-08 — WAL verified in app container | f5210f2 |
+| buf lint | `buf lint` (repo root) | 0 | d29a8d9 |
+| buf breaking | `buf breaking --against '.git#branch=develop'` | Not run — new module has no baseline on develop | d29a8d9 |
+| Go tests | `cd core && go vet ./... && go test -race -count=1 ./...` | 0 | d29a8d9 |
+| Core boundary script | `core/scripts/check-core.sh` | 0; planted `_ "net"` gives 1 and names the file | d29a8d9 |
+| Swift import script | `Scripts/check-imports.sh` | 0 | d29a8d9 |
+| Xcode tests | `xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=macOS'` | 0, 1 test passed (SQLite WAL reopen) | d29a8d9 |
+| XCFramework build | `core/scripts/build-xcframework.sh` | 0, `Frameworks/HirakuCore.xcframework`, 24 MB, three slices | d29a8d9 |
+| App Group (S-7) | add `com.apple.security.application-groups`, build for simulator | Blocked: `"Hiraku" has entitlements that require signing with a development certificate. Enable development signing in the Signing & Capabilities editor.` PO waiver 2026-11-08 — WAL verified in app container | d29a8d9 |
 
 ## Coding
 
@@ -56,24 +56,24 @@ Record is authority for the contract; plan is authority for progress; issues tra
 - CI: buf setup + lint, skill tests, new `swift` job with `xcodebuild test`.
 - Added `HirakuTests` target with a WAL reopen test; scheme test action configured.
 - `build-xcframework.sh` now writes `Frameworks/HirakuCore.xcframework`; `Frameworks/` ignored.
-- S-7: adding the App Group entitlement fails with `"Hiraku" has entitlements that require signing with a development certificate. Enable development signing in the Signing & Capabilities editor.`; entitlement reverted so builds stay green; WAL in the app container verified instead. WAL reopen verified in the app container instead. Not verified: App Group container, widget, backup.
+- S-7: adding the App Group entitlement fails with `"Hiraku" has entitlements that require signing with a development certificate. Enable development signing in the Signing & Capabilities editor.`; entitlement reverted so builds stay green; WAL in the app container verified instead. Not verified: App Group container, widget, backup.
 
 ## Independent review
 
-- Reviewer / session:
-- Revision: f5210f2
-- Verdict: pending
-- Findings:
-- Checks the reviewer actually ran:
+- Reviewer / session: independent subagent
+- Revision: d29a8d9
+- Verdict: PASS @ d29a8d9
+- Findings: none after 3 rounds
+- Checks the reviewer actually ran: go tests, buf lint, check scripts, git diff --check, gh pr checks (ci + swift green)
 
 ## Delivery
 
-- CHANGELOG entry and ROADMAP/Kanban status updated in the PR: yes (WP-01 stays `ip` until merge)
-- Status: not requested
-- CI / integration revision:
-- Gate / PO approval:
-- Actions actually taken / evidence from the target system:
+- CHANGELOG entry and ROADMAP/Kanban status updated in the PR: yes
+- Status: merged
+- CI / integration revision: PR 73, merge 87048cb, ci + swift green
+- Gate / PO approval: S-7 waiver PO 2026-11-08
+- Actions actually taken / evidence from the target system: GitHub PR 73 merged to develop
 
 ## Next
 
-S-7 accepted as device debt (PO 2026-11-08). Next: open PR, independent review, merge. Then start WP-02a.
+S-7 accepted as device debt (PO 2026-11-08). Next: WP-02a.
