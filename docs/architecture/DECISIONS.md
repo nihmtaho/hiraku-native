@@ -53,11 +53,11 @@ Tài liệu này là **nơi duy nhất** ghi trạng thái các quyết định.
 | ADR-17 | Đăng ký Apple Developer Program sau cùng; việc liên quan đánh dấu [Cuối cùng] (mốc MR) | Đã chốt | 2026-10-28 | Q-14 |
 | ADR-18 | Quy ước tương tác: kéo-thả để sắp xếp, hoàn tác thay xác nhận, bảo vệ thay đổi, khôi phục vị trí | Đã chốt | 2026-10-28 | `docs/product/use-cases.md` §4.0.1 |
 | ADR-19 | Phạm vi bổ sung từ rà soát UX: hoàn tác chấm điểm vào M1b; xúc giác tối thiểu | Đã chốt | 2026-10-28 | Q-15, Q-D3 |
-| ADR-20 | Go core làm nguồn nghiệp vụ và dữ liệu; Swift giữ UI | **Đã chốt, chờ spike** (S-8, S-1) | 2026-10-28 | Thay ADR-03 |
-| ADR-21 | Tích hợp cgo qua c-archive và XCFramework; ABI bốn hàm, payload protobuf | **Đã chốt, chờ spike** (S-8) | 2026-10-28 | Q-A (bối cảnh) |
+| ADR-20 | Go core làm nguồn nghiệp vụ và dữ liệu; Swift giữ UI | Đã chốt — S-1 và S-8 đạt trên simulator (PO 2026-11-08) | 2026-10-28 | Thay ADR-03 |
+| ADR-21 | Tích hợp cgo qua c-archive và XCFramework; ABI bốn hàm, payload protobuf | Đã chốt — S-8 đạt trên simulator (PO 2026-11-08) | 2026-10-28 | Q-A (bối cảnh) |
 | ADR-22 | Contract protobuf `hiraku.v1` là nguồn duy nhất; buf lint và buf breaking | Đã chốt | 2026-10-28 | Q-B |
 | ADR-23 | SQLite qua `modernc.org/sqlite`; Go sở hữu DB; Swift không mở DB | **Đã thay thế bởi ADR-32** | 2026-10-28 | Q-A |
-| ADR-24 | Làm mới chủ động qua `ChangeSet` và `EventHub`; Go không gọi ngược | **Đã chốt, chờ spike** (S-1 đo reload) | 2026-10-28 | Q-C |
+| ADR-24 | Làm mới chủ động qua `ChangeSet` và `EventHub`; Go không gọi ngược | Đã chốt — S-1 đo reload đạt trên simulator (PO 2026-11-08) | 2026-10-28 | Q-C |
 | ADR-25 | Monorepo, thư mục `core/` ở gốc; chưa xây nền tảng thứ hai | Đã chốt | 2026-10-28 | Q-D, Q-E |
 | ADR-26 | FSRS: thư viện Go nếu đạt S-2; nếu không, tự cài trong `core/domain/fsrs` | Đã chốt — tự cài trong `core/domain/fsrs` (S-2 Không đạt) | 2026-10-28 | Q-4 |
 | ADR-30 | Kiến trúc đồng bộ iCloud: Go giữ SQLite, change log và merge; Swift chỉ giữ adapter CKSyncEngine; không đổi ADR-20 và ADR-23 | **Đã chốt (PO, 2026-10-29), chờ S-9** | 2026-10-29 | Q-6 |
@@ -80,16 +80,16 @@ Tài liệu này là **nơi duy nhất** ghi trạng thái các quyết định.
 | Q-D2 | Màu chấm trạng thái "Đang học" | Đã chốt — B: `state-learning-ink` #A67C00 (PO 2026-11-05) | Design | GATE-1 | M1a (WP-05) |
 | Q-7 | Nhập dữ liệu Flutter cũ (FR-040) | Mở | PO | GATE-2 | Phạm vi M2 |
 | Q-D5 | Cỡ body 15pt trên iPhone | Đề xuất | Design | GATE-2 | Không |
-| Q-19 | Vòng đời xóa mềm: purge, thùng rác, backup có chứa dữ liệu đã xóa | Mở | PO | GATE-1 | WP-02a |
-| Q-20 | Mã lỗi chi tiết trong contract (mã 3 cần mã phụ) | Đề xuất | Tech | GATE-1 | WP-02b |
-| Q-21 | Mức nghiêm ngặt chuẩn hóa Gõ từ | Mở | PO | GATE-1 | WP-04 |
-| Q-22 | Định nghĩa "Đã biết" trong thống kê | Mở | PO | GATE-1 | WP-06, WP-30 |
+| Q-19 | Vòng đời xóa mềm: purge, thùng rác, backup có chứa dữ liệu đã xóa | Đã chốt — thùng rác 30 ngày, backup bỏ bản quá hạn, trùng bỏ qua bản đã xóa (PO 2026-11-08) | PO | GATE-1 | WP-02a |
+| Q-20 | Mã lỗi chi tiết trong contract (mã 3 cần mã phụ) | Đã chốt — mã 3 kèm `sub_code` enum (PO 2026-11-08) | Tech | GATE-1 | WP-02b |
+| Q-21 | Mức nghiêm ngặt chuẩn hóa Gõ từ | Đã chốt — B: nghiêm dakuten và っ, giữ dung sai ー/nguyên âm dài (PO 2026-11-08) | PO | GATE-1 | WP-04 |
+| Q-22 | Định nghĩa "Đã biết" trong thống kê | Đã chốt — Review = Đã biết (PO 2026-11-08) | PO | GATE-1 | WP-06, WP-30 |
 | Q-23 | Hướng thẻ với kiểu ghi chú tùy biến và Gõ từ | Đề xuất | PO | GATE-2 | WP-34 |
-| Q-24 | Phạm vi settings: cấp ứng dụng hay theo profile | Đề xuất | Tech | GATE-1 | WP-02a, WP-09 |
+| Q-24 | Phạm vi settings: cấp ứng dụng hay theo profile | Đã chốt — app-level ở `AppStorage`, settings học theo profile (PO 2026-11-08) | Tech | GATE-1 | WP-02a, WP-09 |
 | Q-25 | Sở hữu danh sách profile giữa ADR-28 và ADR-29/30; nhân đôi dữ liệu mặc định khi bật đồng bộ | Mở | Tech | trước S-9 | UC-27 |
 | Q-26 | Nhập: ngữ nghĩa "Ghi đè"; CSV Shift-JIS | Mở | PO | GATE-2 | WP-22 |
-| Q-27 | Kéo WP-20 (sao lưu/khôi phục) lên ngay sau M1a | Đề xuất | PO | GATE-1 | Lịch M1b |
-| Q-28 | Thuật ngữ UI: "deck" hay "bộ thẻ", "profile" | Đề xuất | PO, Design | GATE-1 | COPY, String Catalog |
+| Q-27 | Kéo WP-20 (sao lưu/khôi phục) lên ngay sau M1a | Đã chốt — kéo WP-20 lên sau M1a (PO 2026-11-08) | PO | GATE-1 | Lịch M1b |
+| Q-28 | Thuật ngữ UI: "deck" hay "bộ thẻ", "profile" | Đã chốt — "bộ thẻ", "hồ sơ" (PO 2026-11-08) | PO, Design | GATE-1 | COPY, String Catalog |
 | Q-29 | Nhân lực: một AI coding (ADR-31); lịch phải dựng lại theo mô hình này; còn dự phòng và người thử SC-002 | Mở một phần | PO | GATE-0 | Lịch toàn bộ |
 | Q-14 (nhắc lại) | Xem ADR-17 | Đã chốt | — | — | — |
 
@@ -375,19 +375,19 @@ Q-4, Q-A, Q-B, Q-C, Q-D, Q-E đã được đóng bởi ADR-26, ADR-23, ADR-22, 
 
 ### Q-19 — Vòng đời xóa mềm · PO · GATE-1
 - **Vấn đề**: UI nói "xóa", MVP không khôi phục được (UC-01), thùng rác ở P2 (UC-23); chưa có chính sách xóa hẳn, kiểm tra trùng với bản đã xóa, hay backup có chứa dữ liệu đã xóa.
-- **Đề xuất**: thùng rác giữ 30 ngày rồi xóa hẳn (UC-23 đã nêu 30 ngày làm ví dụ); backup v3 không chứa bản ghi đã xóa quá hạn; kiểm tra trùng bỏ qua bản đã xóa.
+- **Đã chốt (PO, 2026-11-08)**: thùng rác giữ 30 ngày rồi xóa hẳn; backup v3 không chứa bản ghi đã xóa quá hạn; kiểm tra trùng bỏ qua bản đã xóa.
 
 ### Q-20 — Mã lỗi chi tiết · Tech · GATE-1
 - **Vấn đề**: ADR-21 có 6 mã; mã 3 "vi phạm nghiệp vụ" chung, trong khi UI cần thông điệp riêng (trùng tên, quá 10 trường, thiếu vai trò…) và Go không trả chuỗi.
-- **Đề xuất**: mã 3 kèm `sub_code` là enum trong contract; Swift ánh xạ sang String Catalog. Làm trước WP-02b.
+- **Đã chốt (PO, 2026-11-08)**: mã 3 kèm `sub_code` là enum trong contract; Swift ánh xạ sang String Catalog. Làm trước WP-02b.
 
 ### Q-21 — Chuẩn hóa Gõ từ · PO · GATE-1
 - **Vấn đề**: §7.2 chấp nhận か = が, っ = つ, bỏ ー, nén ký tự lặp; đáp án sai chính tả vẫn đúng. Phản hồi từng ô khi chuỗi chuẩn hóa khác số ô chưa định nghĩa. Kiểu tùy biến chưa có quy tắc "đáp án rỗng thì dùng Từ".
-- **Phương án**: (A) giữ dung sai hiện tại; (B) nghiêm với dakuten và っ, giữ dung sai ー và nguyên âm dài; (C) B kèm cài đặt chọn mức.
+- **Đã chốt (PO, 2026-11-08)**: phương án **B** — nghiêm với dakuten (か ≠ が) và っ (っ ≠ つ); giữ dung sai ー và nguyên âm dài; không thêm cài đặt mức.
 
 ### Q-22 — Định nghĩa "Đã biết" · PO · GATE-1
 - **Vấn đề**: "Đã biết" = state Review, nên thẻ vừa qua bước học đã tính là đã biết.
-- **Phương án**: giữ; hoặc thêm ngưỡng khoảng ôn (ví dụ từ 21 ngày).
+- **Đã chốt (PO, 2026-11-08)**: giữ định nghĩa "Đã biết" = state Review; không thêm ngưỡng khoảng ôn ở M1.
 
 ### Q-23 — Hướng thẻ và kiểu tùy biến · PO · GATE-2
 - **Vấn đề**: UC-19 chưa khớp mẫu thẻ tùy biến (ADR-27) và Gõ từ; một `card_states` cho mọi hướng.
@@ -395,7 +395,7 @@ Q-4, Q-A, Q-B, Q-C, Q-D, Q-E đã được đóng bởi ADR-26, ADR-23, ADR-22, 
 
 ### Q-24 — Phạm vi settings · Tech · GATE-1
 - **Vấn đề**: bảng `settings` nằm trong DB theo profile (ADR-28) nên `font_scale`, `reminder_*` cũng đổi theo profile, dù là cài đặt cấp ứng dụng.
-- **Đề xuất**: cài đặt cấp ứng dụng (`font_scale`, `reminder_*`) ở `AppStorage`; cài đặt học (FSRS, hạn mức, số nút, giờ bắt đầu ngày) ở DB theo profile.
+- **Đã chốt (PO, 2026-11-08)**: cài đặt cấp ứng dụng (`font_scale`, `reminder_*`) ở `AppStorage`; cài đặt học (FSRS, hạn mức, số nút, giờ bắt đầu ngày) ở DB theo profile.
 
 ### Q-25 — Danh sách profile và đồng bộ · Tech · trước S-9
 - **Vấn đề**: ADR-28 giao danh sách profile cho Swift (core không biết profile); ADR-29(e) và ADR-30 coi đó là record cloud do Go merge. Khi bật đồng bộ, profile mặc định và deck mẫu tạo riêng mỗi máy (UUID khác) sẽ bị nhân đôi; "xóa thắng" kèm "không xóa cloud" làm bản ghi xóa tăng mãi; ADR-29(c) bật/tắt theo profile nhưng DESIGN chỉ có một công tắc.
@@ -407,11 +407,11 @@ Q-4, Q-A, Q-B, Q-C, Q-D, Q-E đã được đóng bởi ADR-26, ADR-23, ADR-22, 
 
 ### Q-27 — Sao lưu sớm · PO · GATE-1
 - **Vấn đề**: dữ liệu thật nằm trên bản ký Personal Team đến khoảng 09/2027 (ADR-17), sao lưu ở M2 sau MVP.
-- **Đề xuất**: kéo WP-20 lên ngay sau M1a (+1,75 tuần trước M1b); thêm ca app bị treo/vào nền vào S-7 (WAL trong App Group).
+- **Đã chốt (PO, 2026-11-08)**: kéo WP-20 lên ngay sau M1a (+1,75 tuần trước M1b); thêm ca app bị treo/vào nền vào S-7 (WAL trong App Group).
 
 ### Q-28 — Thuật ngữ UI · PO, Design · GATE-1
 - **Đã thống nhất**: "trường" thay "field" ở giao diện; "Câu ví dụ" là tên trường, "Ví dụ" là tên vai trò.
-- **Còn mở**: "deck" hay "bộ thẻ"; giữ "profile" hay đổi. Ảnh hưởng toàn bộ String Catalog.
+- **Đã chốt (PO, 2026-11-08)**: dùng "bộ thẻ" thay "deck"; dùng "hồ sơ" thay "profile" trên UI. Áp dụng cho String Catalog và `COPY.md`.
 
 ### Q-29 — Nhân lực và dự phòng · PO · GATE-0
 - **Vấn đề**: lịch giả định một lập trình viên toàn thời gian thành thạo cả Go và Swift (ROADMAP §1); dự phòng M3 chỉ khoảng 2%; SC-002 cần người thử.
