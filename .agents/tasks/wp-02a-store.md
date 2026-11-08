@@ -39,11 +39,11 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
-| Store and notetype tests | `cd core && go test -race ./store/... ./domain/notetype/...` | 0 | NEW_SHA |
-| All core tests | `cd core && go test -race ./...` | 0 | NEW_SHA |
-| Migration version | `store_test.go`: user_version = 1 after open and reopen; system note type present | 0 | NEW_SHA |
-| Boundary scripts | `core/scripts/check-core.sh && Scripts/check-imports.sh` | 0 (caught `net/url` once and it was removed) | NEW_SHA |
-| Contract lint | `buf lint` | 0 | NEW_SHA |
+| Store and notetype tests | `cd core && go test -race ./store/... ./domain/notetype/...` | 0 | f355cbb |
+| All core tests | `cd core && go test -race ./...` | 0 | f355cbb |
+| Migration version | `store_test.go`: user_version = 1 after open and reopen; system note type present | 0 | f355cbb |
+| Boundary scripts | `core/scripts/check-core.sh && Scripts/check-imports.sh` | 0 (caught `net/url` once and it was removed) | f355cbb |
+| Contract lint | `buf lint` | 0 | f355cbb |
 
 ## Coding
 
