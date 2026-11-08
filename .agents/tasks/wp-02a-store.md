@@ -2,11 +2,11 @@
 
 ## Contract
 
-- Status: blocked
+- Status: review
 - Owner: coordinator / senior (Q-29)
 - Milestone / WP: M1a / WP-02a
-- Branch / PR: `feat/wp-02a-store` from `develop`
-- Base / head SHA: 2df7fd5 / —
+- Branch / PR: `feat/wp-02a-store` from `develop` (PR pending)
+- Base / head SHA: 87048cb / 46f79e2
 - Dependencies: WP-01
 - Required reading: ARCHITECTURE §3, §6; ADR-23, ADR-27, ADR-28, ADR-32; DECISIONS Q-19, Q-24
 - Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
@@ -39,10 +39,22 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
-| Store and notetype tests | `cd core && go test -race ./store/... ./domain/notetype/...` | Not run | — |
-| Migration version | `manual: PRAGMA user_version = 1 after open` | Not run | — |
+| Store and notetype tests | `cd core && go test -race ./store/... ./domain/notetype/...` | 0 | 46f79e2 |
+| All core tests | `cd core && go test -race ./...` | 0 | 46f79e2 |
+| Migration version | `store_test.go`: user_version = 1 after open and reopen; system note type present | 0 | 46f79e2 |
+| Boundary scripts | `core/scripts/check-core.sh && Scripts/check-imports.sh` | 0 (caught `net/url` once and it was removed) | 46f79e2 |
+| Contract lint | `buf lint` | 0 | 46f79e2 |
 
 ## Coding
+
+- `core/store`: Open with WAL/immediate/busy timeout/foreign keys, migration runner over embedded SQL, `Repo` with `Tx`.
+- Schema per spec §4 including `note_type_fields` and `card_templates`; system "Từ vựng Nhật" seeded with fixed ids.
+- Repositories: folders, decks, notes/cards (create/update/delete, paging, substring search), settings, notetype field reads.
+- Soft delete cascades folder → decks → notes → cards in one transaction; `PurgeDeleted`; duplicate check ignores deleted.
+- Settings accept only study keys (Q-24), reject app-level keys and out-of-range values.
+- Notetype validation: max 10 fields, unique names, exactly one term, one per role except text.
+- UUIDv7 in `core/domain/id`; no new dependency.
+- Card insert fails loudly when the note type has no template.
 
 ## Independent review
 
