@@ -1,6 +1,7 @@
 version: v2
 modules:
   - path: core/proto
+    name: buf.build/nihmtaho/hiraku
 lint:
   use:
     - STANDARD

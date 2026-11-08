@@ -17,6 +17,12 @@ import Testing
         }
         defer { sqlite3_close(db) }
         #expect(sqlite3_exec(db, "PRAGMA journal_mode=WAL", nil, nil, nil) == SQLITE_OK)
+        var modeStatement: OpaquePointer?
+        #expect(sqlite3_prepare_v2(db, "PRAGMA journal_mode", -1, &modeStatement, nil) == SQLITE_OK)
+        defer { sqlite3_finalize(modeStatement) }
+        #expect(sqlite3_step(modeStatement) == SQLITE_ROW)
+        let mode = String(cString: sqlite3_column_text(modeStatement, 0))
+        #expect(mode.lowercased() == "wal")
         #expect(sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS t (v INTEGER)", nil, nil, nil) == SQLITE_OK)
         #expect(sqlite3_exec(db, "INSERT INTO t VALUES (1)", nil, nil, nil) == SQLITE_OK)
         var statement: OpaquePointer?

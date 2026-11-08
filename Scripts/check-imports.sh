@@ -1,5 +1,5 @@
 #!/bin/sh
-# Fails when a Swift feature or package imports across a boundary AGENTS.md forbids.
+# Fails when a Swift feature imports outside the allowlist in ARCHITECTURE §4.1.
 set -eu
 
 cd "$(dirname "$0")/.."
@@ -10,12 +10,19 @@ fail() {
 	status=1
 }
 
-for file in $(find Packages/Features -name '*.swift' 2>/dev/null); do
-	for module in $(sed -n 's/^[[:space:]]*import[[:space:]]\{1,\}\([A-Za-z0-9_]*\).*/\1/p' "$file"); do
+for file in $(find Packages/Features -path '*/Sources/*' -name '*.swift' 2>/dev/null); do
+	feature=$(echo "$file" | sed -n 's|Packages/Features/\([^/]*\)/.*|\1|p')
+	for module in $(sed -nE 's/^[[:space:]]*(@testable[[:space:]]+)?import[[:space:]]+([A-Za-z0-9_]+).*/\1\2/p' "$file"); do
 		case "$module" in
-		SwiftUI|Foundation|Observation|HirakuModels|DesignSystem|StudyKit|HirakuTesting) ;;
-		Feature*) fail "feature imports another feature: $file ($module)" ;;
-		HirakuBridge) fail "feature imports HirakuBridge: $file" ;;
+		@testable*) fail "testable import in feature: $file ($module)" ;;
+		SwiftUI|Foundation|Observation|HirakuModels|DesignSystem) ;;
+		StudyKit)
+			case "$feature" in
+			FeatureStudy|FeatureFlashcard|FeatureTyping) ;;
+			*) fail "StudyKit outside study features: $file" ;;
+			esac
+			;;
+		*) fail "feature imports $module: $file" ;;
 		esac
 	done
 done

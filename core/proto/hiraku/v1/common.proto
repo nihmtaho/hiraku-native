@@ -20,6 +20,14 @@ enum ErrorSubCode {
   ERROR_SUB_CODE_MISSING_ROLE = 3;
 }
 
+enum EntityType {
+  ENTITY_TYPE_UNSPECIFIED = 0;
+  ENTITY_TYPE_FOLDER = 1;
+  ENTITY_TYPE_DECK = 2;
+  ENTITY_TYPE_NOTE = 3;
+  ENTITY_TYPE_CARD = 4;
+}
+
 enum ChangeKind {
   CHANGE_KIND_UNSPECIFIED = 0;
   CHANGE_KIND_UPSERT = 1;
@@ -29,8 +37,14 @@ enum ChangeKind {
 message Change {
   string entity_id = 1;
   ChangeKind kind = 2;
+  EntityType entity = 3;
 }
 
 message ChangeSet {
   repeated Change changes = 1;
+}
+
+message Error {
+  ErrorCode code = 1;
+  ErrorSubCode sub_code = 2;
 }

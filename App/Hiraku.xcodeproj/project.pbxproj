@@ -147,6 +147,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				AA000000000000000000004C /* PBXTargetDependency */,
 			);
 			name = HirakuTests;
 			productName = HirakuTests;
@@ -154,6 +155,14 @@
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
+
+/* Begin PBXTargetDependency section */
+		AA000000000000000000004C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA0000000000000000000009 /* Hiraku */;
+			targetProxy = AA000000000000000000004B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXProject section */
 		AA0000000000000000000001 /* Project object */ = {
@@ -189,6 +198,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXContainerItemProxy section */
+		AA000000000000000000004B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA0000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA0000000000000000000009;
+			remoteInfo = Hiraku;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		AA000000000000000000000B /* Resources */ = {

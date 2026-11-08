@@ -10,7 +10,7 @@ fail() {
 	status=1
 }
 
-for file in $(grep -rl --include='*.go' -E '^[[:space:]]*(import[[:space:]]+)?"C"$|^[[:space:]]*[._[:alnum:]]+[[:space:]]+"C"$' . | grep -v '^\./ffi/' || true); do
+for file in $(grep -rl --include='*.go' -E '^[[:space:]]*(import[[:space:]]+)?([._[:alnum:]]+[[:space:]]+)?"C"$' . | grep -v '^\./ffi/' || true); do
 	fail "import \"C\" outside ffi: $file"
 done
 

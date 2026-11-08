@@ -131,6 +131,61 @@ func (ErrorSubCode) EnumDescriptor() ([]byte, []int) {
 	return file_hiraku_v1_common_proto_rawDescGZIP(), []int{1}
 }
 
+type EntityType int32
+
+const (
+	EntityType_ENTITY_TYPE_UNSPECIFIED EntityType = 0
+	EntityType_ENTITY_TYPE_FOLDER      EntityType = 1
+	EntityType_ENTITY_TYPE_DECK        EntityType = 2
+	EntityType_ENTITY_TYPE_NOTE        EntityType = 3
+	EntityType_ENTITY_TYPE_CARD        EntityType = 4
+)
+
+// Enum value maps for EntityType.
+var (
+	EntityType_name = map[int32]string{
+		0: "ENTITY_TYPE_UNSPECIFIED",
+		1: "ENTITY_TYPE_FOLDER",
+		2: "ENTITY_TYPE_DECK",
+		3: "ENTITY_TYPE_NOTE",
+		4: "ENTITY_TYPE_CARD",
+	}
+	EntityType_value = map[string]int32{
+		"ENTITY_TYPE_UNSPECIFIED": 0,
+		"ENTITY_TYPE_FOLDER":      1,
+		"ENTITY_TYPE_DECK":        2,
+		"ENTITY_TYPE_NOTE":        3,
+		"ENTITY_TYPE_CARD":        4,
+	}
+)
+
+func (x EntityType) Enum() *EntityType {
+	p := new(EntityType)
+	*p = x
+	return p
+}
+
+func (x EntityType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (EntityType) Descriptor() protoreflect.EnumDescriptor {
+	return file_hiraku_v1_common_proto_enumTypes[2].Descriptor()
+}
+
+func (EntityType) Type() protoreflect.EnumType {
+	return &file_hiraku_v1_common_proto_enumTypes[2]
+}
+
+func (x EntityType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use EntityType.Descriptor instead.
+func (EntityType) EnumDescriptor() ([]byte, []int) {
+	return file_hiraku_v1_common_proto_rawDescGZIP(), []int{2}
+}
+
 type ChangeKind int32
 
 const (
@@ -164,11 +219,11 @@ func (x ChangeKind) String() string {
 }
 
 func (ChangeKind) Descriptor() protoreflect.EnumDescriptor {
-	return file_hiraku_v1_common_proto_enumTypes[2].Descriptor()
+	return file_hiraku_v1_common_proto_enumTypes[3].Descriptor()
 }
 
 func (ChangeKind) Type() protoreflect.EnumType {
-	return &file_hiraku_v1_common_proto_enumTypes[2]
+	return &file_hiraku_v1_common_proto_enumTypes[3]
 }
 
 func (x ChangeKind) Number() protoreflect.EnumNumber {
@@ -177,13 +232,14 @@ func (x ChangeKind) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use ChangeKind.Descriptor instead.
 func (ChangeKind) EnumDescriptor() ([]byte, []int) {
-	return file_hiraku_v1_common_proto_rawDescGZIP(), []int{2}
+	return file_hiraku_v1_common_proto_rawDescGZIP(), []int{3}
 }
 
 type Change struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	EntityId      string                 `protobuf:"bytes,1,opt,name=entity_id,json=entityId,proto3" json:"entity_id,omitempty"`
 	Kind          ChangeKind             `protobuf:"varint,2,opt,name=kind,proto3,enum=hiraku.v1.ChangeKind" json:"kind,omitempty"`
+	Entity        EntityType             `protobuf:"varint,3,opt,name=entity,proto3,enum=hiraku.v1.EntityType" json:"entity,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -232,6 +288,13 @@ func (x *Change) GetKind() ChangeKind {
 	return ChangeKind_CHANGE_KIND_UNSPECIFIED
 }
 
+func (x *Change) GetEntity() EntityType {
+	if x != nil {
+		return x.Entity
+	}
+	return EntityType_ENTITY_TYPE_UNSPECIFIED
+}
+
 type ChangeSet struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Changes       []*Change              `protobuf:"bytes,1,rep,name=changes,proto3" json:"changes,omitempty"`
@@ -276,16 +339,72 @@ func (x *ChangeSet) GetChanges() []*Change {
 	return nil
 }
 
+type Error struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Code          ErrorCode              `protobuf:"varint,1,opt,name=code,proto3,enum=hiraku.v1.ErrorCode" json:"code,omitempty"`
+	SubCode       ErrorSubCode           `protobuf:"varint,2,opt,name=sub_code,json=subCode,proto3,enum=hiraku.v1.ErrorSubCode" json:"sub_code,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Error) Reset() {
+	*x = Error{}
+	mi := &file_hiraku_v1_common_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Error) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Error) ProtoMessage() {}
+
+func (x *Error) ProtoReflect() protoreflect.Message {
+	mi := &file_hiraku_v1_common_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Error.ProtoReflect.Descriptor instead.
+func (*Error) Descriptor() ([]byte, []int) {
+	return file_hiraku_v1_common_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *Error) GetCode() ErrorCode {
+	if x != nil {
+		return x.Code
+	}
+	return ErrorCode_ERROR_CODE_UNSPECIFIED
+}
+
+func (x *Error) GetSubCode() ErrorSubCode {
+	if x != nil {
+		return x.SubCode
+	}
+	return ErrorSubCode_ERROR_SUB_CODE_UNSPECIFIED
+}
+
 var File_hiraku_v1_common_proto protoreflect.FileDescriptor
 
 const file_hiraku_v1_common_proto_rawDesc = "" +
 	"\n" +
-	"\x16hiraku/v1/common.proto\x12\thiraku.v1\"P\n" +
+	"\x16hiraku/v1/common.proto\x12\thiraku.v1\"\x7f\n" +
 	"\x06Change\x12\x1b\n" +
 	"\tentity_id\x18\x01 \x01(\tR\bentityId\x12)\n" +
-	"\x04kind\x18\x02 \x01(\x0e2\x15.hiraku.v1.ChangeKindR\x04kind\"8\n" +
+	"\x04kind\x18\x02 \x01(\x0e2\x15.hiraku.v1.ChangeKindR\x04kind\x12-\n" +
+	"\x06entity\x18\x03 \x01(\x0e2\x15.hiraku.v1.EntityTypeR\x06entity\"8\n" +
 	"\tChangeSet\x12+\n" +
-	"\achanges\x18\x01 \x03(\v2\x11.hiraku.v1.ChangeR\achanges*\xae\x01\n" +
+	"\achanges\x18\x01 \x03(\v2\x11.hiraku.v1.ChangeR\achanges\"e\n" +
+	"\x05Error\x12(\n" +
+	"\x04code\x18\x01 \x01(\x0e2\x14.hiraku.v1.ErrorCodeR\x04code\x122\n" +
+	"\bsub_code\x18\x02 \x01(\x0e2\x17.hiraku.v1.ErrorSubCodeR\asubCode*\xae\x01\n" +
 	"\tErrorCode\x12\x1a\n" +
 	"\x16ERROR_CODE_UNSPECIFIED\x10\x00\x12\x1f\n" +
 	"\x1bERROR_CODE_INVALID_ARGUMENT\x10\x01\x12\x18\n" +
@@ -297,7 +416,14 @@ const file_hiraku_v1_common_proto_rawDesc = "" +
 	"\x1aERROR_SUB_CODE_UNSPECIFIED\x10\x00\x12!\n" +
 	"\x1dERROR_SUB_CODE_DUPLICATE_NAME\x10\x01\x12\"\n" +
 	"\x1eERROR_SUB_CODE_TOO_MANY_FIELDS\x10\x02\x12\x1f\n" +
-	"\x1bERROR_SUB_CODE_MISSING_ROLE\x10\x03*Y\n" +
+	"\x1bERROR_SUB_CODE_MISSING_ROLE\x10\x03*\x83\x01\n" +
+	"\n" +
+	"EntityType\x12\x1b\n" +
+	"\x17ENTITY_TYPE_UNSPECIFIED\x10\x00\x12\x16\n" +
+	"\x12ENTITY_TYPE_FOLDER\x10\x01\x12\x14\n" +
+	"\x10ENTITY_TYPE_DECK\x10\x02\x12\x14\n" +
+	"\x10ENTITY_TYPE_NOTE\x10\x03\x12\x14\n" +
+	"\x10ENTITY_TYPE_CARD\x10\x04*Y\n" +
 	"\n" +
 	"ChangeKind\x12\x1b\n" +
 	"\x17CHANGE_KIND_UNSPECIFIED\x10\x00\x12\x16\n" +
@@ -316,23 +442,28 @@ func file_hiraku_v1_common_proto_rawDescGZIP() []byte {
 	return file_hiraku_v1_common_proto_rawDescData
 }
 
-var file_hiraku_v1_common_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_hiraku_v1_common_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_hiraku_v1_common_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
+var file_hiraku_v1_common_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_hiraku_v1_common_proto_goTypes = []any{
 	(ErrorCode)(0),    // 0: hiraku.v1.ErrorCode
 	(ErrorSubCode)(0), // 1: hiraku.v1.ErrorSubCode
-	(ChangeKind)(0),   // 2: hiraku.v1.ChangeKind
-	(*Change)(nil),    // 3: hiraku.v1.Change
-	(*ChangeSet)(nil), // 4: hiraku.v1.ChangeSet
+	(EntityType)(0),   // 2: hiraku.v1.EntityType
+	(ChangeKind)(0),   // 3: hiraku.v1.ChangeKind
+	(*Change)(nil),    // 4: hiraku.v1.Change
+	(*ChangeSet)(nil), // 5: hiraku.v1.ChangeSet
+	(*Error)(nil),     // 6: hiraku.v1.Error
 }
 var file_hiraku_v1_common_proto_depIdxs = []int32{
-	2, // 0: hiraku.v1.Change.kind:type_name -> hiraku.v1.ChangeKind
-	3, // 1: hiraku.v1.ChangeSet.changes:type_name -> hiraku.v1.Change
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	3, // 0: hiraku.v1.Change.kind:type_name -> hiraku.v1.ChangeKind
+	2, // 1: hiraku.v1.Change.entity:type_name -> hiraku.v1.EntityType
+	4, // 2: hiraku.v1.ChangeSet.changes:type_name -> hiraku.v1.Change
+	0, // 3: hiraku.v1.Error.code:type_name -> hiraku.v1.ErrorCode
+	1, // 4: hiraku.v1.Error.sub_code:type_name -> hiraku.v1.ErrorSubCode
+	5, // [5:5] is the sub-list for method output_type
+	5, // [5:5] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_hiraku_v1_common_proto_init() }
@@ -345,8 +476,8 @@ func file_hiraku_v1_common_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_hiraku_v1_common_proto_rawDesc), len(file_hiraku_v1_common_proto_rawDesc)),
-			NumEnums:      3,
-			NumMessages:   2,
+			NumEnums:      4,
+			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Builds the three c-archive slices (same discipline as spike-build.sh) and
-# packages them into core/.spike/Hiraku.xcframework with headers.
+# packages them into Frameworks/HirakuCore.xcframework with headers.
 set -eu
 
 root="$(cd "$(dirname "$0")/../.." && pwd)"
