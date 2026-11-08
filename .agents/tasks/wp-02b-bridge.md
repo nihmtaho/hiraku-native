@@ -5,8 +5,8 @@
 - Status: merged
 - Owner: coordinator / senior (Q-29)
 - Milestone / WP: M1a / WP-02b
-- Branch / PR: `feat/wp-02b-bridge` from `develop` (PR 75)
-- Base / head SHA: cf7f1b4 / 05e28d0
+- Branch / PR: `feat/wp-02b-bridge` / PR 75
+- Base / head SHA: cf7f1b4 / 05e28d0 (merge 65c3ecf)
 - Dependencies: WP-01, WP-02a
 - Required reading: ARCHITECTURE §6.4, §7; ADR-21, ADR-24; DECISIONS Q-20
 - Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
@@ -38,8 +38,8 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
-| FFI tests | `cd core && go test -race ./ffi/...` | Not run | — |
-| Swift bridge tests | `xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination "platform=macOS"` | Not run | — |
+| FFI tests | `cd core && go test -race ./ffi/...` | 0 | 05e28d0 |
+| Swift bridge tests | `xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination "platform=macOS"` | 0, 3 tests | 05e28d0 |
 
 ## Coding
 
@@ -57,4 +57,4 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 ## Next
 
-Read the plan section and the open issues above.
+EventHub has no producer until the first ChangeSet-returning RPC (WP-03 Grade). HirakuModels exposes contract types to Features by design; review enforces L4.

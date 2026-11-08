@@ -5,8 +5,8 @@
 - Status: merged
 - Owner: coordinator / senior (Q-29)
 - Milestone / WP: M1a / WP-02a
-- Branch / PR: `feat/wp-02a-store` from `develop` (PR 74)
-- Base / head SHA: 87048cb / c002516
+- Branch / PR: `feat/wp-02a-store` / PR 74
+- Base / head SHA: 87048cb / c002516 (merge cf7f1b4)
 - Dependencies: WP-01
 - Required reading: ARCHITECTURE §3, §6; ADR-23, ADR-27, ADR-28, ADR-32; DECISIONS Q-19, Q-24
 - Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
@@ -62,4 +62,4 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 ## Next
 
-Read the plan section and the open issues above.
+WP-02b builds on this store. Remaining device debt: S-7 App Group.
