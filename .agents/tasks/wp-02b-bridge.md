@@ -9,7 +9,7 @@
 - Base / head SHA: cf7f1b4 / 05e28d0 (merge 65c3ecf)
 - Dependencies: WP-01, WP-02a
 - Required reading: ARCHITECTURE §6.4, §7; ADR-21, ADR-24; DECISIONS Q-20
-- Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
+- Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 App Group waived to device debt by PO 2026-11-08 (slice #43 closed)
 - Goal: hk_call dispatch over the real contract, error codes with sub_code, HirakuBridge actor, EventHub, fake bridge.
 - Out of scope: Feature UI; FSRS logic.
 - Files / modules allowed to change: core/ffi, core/service, Packages/HirakuBridge, Packages/HirakuTesting, Packages/HirakuModels, App/Hiraku, App/HirakuTests, App/Hiraku.xcodeproj, Scripts/check-imports.sh, .github/workflows/ci.yml, buf.gen.yaml
@@ -28,9 +28,9 @@ Unknown method returns code 2; malformed protobuf returns code 1; panic returns 
 
 | # | Slice | Plan anchor | Status |
 |---|---|---|---|
-| 48 | dispatch | docs/plans/2026-11-08-m1a.md | open |
-| 49 | bridge | docs/plans/2026-11-08-m1a.md | open |
-| 50 | fake | docs/plans/2026-11-08-m1a.md | open |
+| 48 | dispatch | docs/plans/2026-11-08-m1a.md | done |
+| 49 | bridge | docs/plans/2026-11-08-m1a.md | done |
+| 50 | fake | docs/plans/2026-11-08-m1a.md | done |
 
 Record is authority for the contract; plan is authority for progress; issues track slice status.
 
@@ -53,7 +53,19 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 ## Independent review
 
+- Reviewer / session: independent subagent
+- Revision: 05e28d0
+- Verdict: PASS @ 05e28d0
+- Findings: none blocking after the fix commit; EventHub producer deferred to WP-03
+- Checks the reviewer actually ran: go vet, go test -race, buf lint/breaking, check scripts, xcodebuild test (3 tests), swift build all packages
+
 ## Delivery
+
+- CHANGELOG entry and ROADMAP/Kanban status updated in the PR: yes
+- Status: merged
+- CI / integration revision: PR 75, merge 65c3ecf, ci + swift green
+- Gate / PO approval: Q-20 sub_code applied
+- Actions actually taken / evidence from the target system: GitHub PR 75 merged to develop
 
 ## Next
 

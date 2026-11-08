@@ -9,7 +9,7 @@
 - Base / head SHA: 87048cb / c002516 (merge cf7f1b4)
 - Dependencies: WP-01
 - Required reading: ARCHITECTURE §3, §6; ADR-23, ADR-27, ADR-28, ADR-32; DECISIONS Q-19, Q-24
-- Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
+- Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 App Group waived to device debt by PO 2026-11-08 (slice #43 closed)
 - Goal: Store with WAL, user_version migrations, repositories, soft delete and duplicate rules, settings scope.
 - Out of scope: Bridge and FFI dispatch; UI.
 - Files / modules allowed to change: core/store, core/domain/notetype, core/domain/id
@@ -28,10 +28,10 @@ PRAGMA user_version 1 after open; CRUD, paging and substring search on search_te
 
 | # | Slice | Plan anchor | Status |
 |---|---|---|---|
-| 44 | schema | docs/plans/2026-11-08-m1a.md | open |
-| 45 | repos | docs/plans/2026-11-08-m1a.md | open |
-| 46 | soft-delete | docs/plans/2026-11-08-m1a.md | open |
-| 47 | notetype | docs/plans/2026-11-08-m1a.md | open |
+| 44 | schema | docs/plans/2026-11-08-m1a.md | done |
+| 45 | repos | docs/plans/2026-11-08-m1a.md | done |
+| 46 | soft-delete | docs/plans/2026-11-08-m1a.md | done |
+| 47 | notetype | docs/plans/2026-11-08-m1a.md | done |
 
 Record is authority for the contract; plan is authority for progress; issues track slice status.
 
@@ -39,11 +39,11 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
-| Store and notetype tests | `cd core && go test -race ./store/... ./domain/notetype/...` | 0 | f355cbb |
-| All core tests | `cd core && go test -race ./...` | 0 | f355cbb |
-| Migration version | `store_test.go`: user_version = 1 after open and reopen; system note type present | 0 | f355cbb |
-| Boundary scripts | `core/scripts/check-core.sh && Scripts/check-imports.sh` | 0 (caught `net/url` once and it was removed) | f355cbb |
-| Contract lint | `buf lint` | 0 | f355cbb |
+| Store and notetype tests | `cd core && go test -race ./store/... ./domain/notetype/...` | 0 | c002516 |
+| All core tests | `cd core && go test -race ./...` | 0 | c002516 |
+| Migration version | `store_test.go`: user_version = 1 after open and reopen; system note type present | 0 | c002516 |
+| Boundary scripts | `core/scripts/check-core.sh && Scripts/check-imports.sh` | 0 (caught `net/url` once and it was removed) | c002516 |
+| Contract lint | `buf lint` | 0 | c002516 |
 
 ## Coding
 
@@ -58,7 +58,19 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 ## Independent review
 
+- Reviewer / session: independent subagent
+- Revision: c002516
+- Verdict: PASS @ c002516
+- Findings: purge FK fixed, LIKE escaping fixed, writes made transactional; no blocking findings
+- Checks the reviewer actually ran: go vet, go test -race, check scripts, buf lint, git diff --check
+
 ## Delivery
+
+- CHANGELOG entry and ROADMAP/Kanban status updated in the PR: yes
+- Status: merged
+- CI / integration revision: PR 74, merge cf7f1b4, ci + swift green
+- Gate / PO approval: Q-19, Q-24 applied
+- Actions actually taken / evidence from the target system: GitHub PR 74 merged to develop
 
 ## Next
 
