@@ -1,5 +1,10 @@
 package store
 
+import "errors"
+
+// ErrNotFound means the requested live row does not exist.
+var ErrNotFound = errors.New("row not found")
+
 // Folder is a top-level grouping of decks.
 type Folder struct {
 	ID       string

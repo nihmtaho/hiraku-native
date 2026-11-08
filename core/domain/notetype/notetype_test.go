@@ -6,7 +6,8 @@ import (
 )
 
 func field(name string, role Role) Field {
-	return Field{Name: name, Role: role}
+	required := role == RoleTerm
+	return Field{Name: name, Role: role, InputKind: "text", Required: required}
 }
 
 func TestValidateAcceptsSystemShape(t *testing.T) {

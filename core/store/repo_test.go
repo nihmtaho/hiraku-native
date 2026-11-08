@@ -2,7 +2,6 @@ package store_test
 
 import (
 	"context"
-	"database/sql"
 	"errors"
 	"path/filepath"
 	"testing"
@@ -68,7 +67,7 @@ func TestFoldersAndCascade(t *testing.T) {
 	if err := r.DeleteFolder(ctx, 7, folderID); err != nil {
 		t.Fatal(err)
 	}
-	if _, err := r.Note(ctx, note.ID); !errors.Is(err, sql.ErrNoRows) {
+	if _, err := r.Note(ctx, note.ID); !errors.Is(err, store.ErrNotFound) {
 		t.Fatalf("note after folder delete: %v", err)
 	}
 	var cards int
@@ -202,5 +201,90 @@ func TestDecksDefaultTypeAndReorder(t *testing.T) {
 	decks, _ := r.Decks(ctx, folder.ID)
 	if decks[0].ID != second.ID {
 		t.Fatalf("order = %+v", decks)
+	}
+}
+
+func TestPurgeDeletesStatesAndLogsForStudiedCards(t *testing.T) {
+	ctx := context.Background()
+	s, r := openRepo(t)
+	_, deckID := seedDeck(t, r)
+	note, err := r.CreateNote(ctx, 40, deckID, map[string]string{"nf-term": "木", "nf-meaning": "cây"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := s.DB().Exec(`INSERT INTO card_states
+		(card_id, state, due, stability, difficulty, elapsed_days, scheduled_days, learning_steps, reps, lapses, created_at, updated_at)
+		VALUES (?, 2, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0)`, note.ID); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := s.DB().Exec(`INSERT INTO review_logs
+		(id, card_id, rating, reviewed_at, mode, elapsed_ms, prev_state, prev_due, prev_stability, prev_difficulty, prev_learning_steps, prev_reps, prev_lapses, created_at)
+		VALUES ('log1', ?, 3, 1, 'flashcard', 100, 0, 0, 0, 0, 0, 0, 0, 1)`, note.ID); err != nil {
+		t.Fatal(err)
+	}
+	if err := r.DeleteNote(ctx, 41, note.ID); err != nil {
+		t.Fatal(err)
+	}
+	if err := r.PurgeDeleted(ctx, 100); err != nil {
+		t.Fatalf("purge: %v", err)
+	}
+	for _, table := range []string{"cards", "notes", "card_states", "review_logs"} {
+		var count int
+		if err := s.DB().QueryRow("SELECT COUNT(*) FROM " + table).Scan(&count); err != nil {
+			t.Fatal(err)
+		}
+		if count != 0 {
+			t.Fatalf("%s rows = %d, want 0", table, count)
+		}
+	}
+}
+
+func TestSearchEscapesLikeMetacharacters(t *testing.T) {
+	ctx := context.Background()
+	_, r := openRepo(t)
+	_, deckID := seedDeck(t, r)
+	if _, err := r.CreateNote(ctx, 50, deckID, map[string]string{"nf-term": "100%", "nf-meaning": "phần trăm"}); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := r.CreateNote(ctx, 51, deckID, map[string]string{"nf-term": "abc", "nf-meaning": "chữ"}); err != nil {
+		t.Fatal(err)
+	}
+	found, err := r.Search(ctx, deckID, "%", 10, 0)
+	if err != nil || len(found) != 1 || found[0].SortField != "100%" {
+		t.Fatalf("search %% = %+v, err = %v", found, err)
+	}
+	if found, _ := r.Search(ctx, deckID, "_", 10, 0); len(found) != 0 {
+		t.Fatalf("search _ = %+v", found)
+	}
+}
+
+func TestEmptyTermIsRejected(t *testing.T) {
+	ctx := context.Background()
+	_, r := openRepo(t)
+	_, deckID := seedDeck(t, r)
+	if _, err := r.CreateNote(ctx, 60, deckID, map[string]string{"nf-meaning": "nghĩa"}); !errors.Is(err, store.ErrInvalidNote) {
+		t.Fatalf("err = %v, want ErrInvalidNote", err)
+	}
+}
+
+func TestUpdateKeepsDeletedFieldValues(t *testing.T) {
+	ctx := context.Background()
+	s, r := openRepo(t)
+	_, deckID := seedDeck(t, r)
+	note, err := r.CreateNote(ctx, 70, deckID, map[string]string{
+		"nf-term": "空", "nf-meaning": "trống", "nf-example": "空です",
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := s.DB().Exec(`UPDATE note_type_fields SET deleted_at = 1 WHERE id = 'nf-example'`); err != nil {
+		t.Fatal(err)
+	}
+	updated, err := r.UpdateNote(ctx, 71, note.ID, map[string]string{"nf-term": "空", "nf-meaning": "rỗng"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if updated.Fields["nf-example"] != "空です" {
+		t.Fatalf("deleted field value = %q", updated.Fields["nf-example"])
 	}
 }

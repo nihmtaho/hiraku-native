@@ -45,7 +45,9 @@ func (r *Repo) CreateNote(ctx context.Context, nowMs int64, deckID string, value
 	err := r.Tx(ctx, func(r *Repo) error {
 		var noteTypeID string
 		if err := r.q.QueryRowContext(ctx, `
-			SELECT note_type_id FROM decks WHERE id = ? AND deleted_at IS NULL`, deckID).Scan(&noteTypeID); err != nil {
+			SELECT note_type_id FROM decks WHERE id = ? AND deleted_at IS NULL`, deckID).Scan(&noteTypeID); errors.Is(err, sql.ErrNoRows) {
+			return ErrNotFound
+		} else if err != nil {
 			return err
 		}
 		fields, err := r.Fields(ctx, noteTypeID)
@@ -95,6 +97,9 @@ func composeNote(noteTypeID, deckID string, fields []notetype.Field, values map[
 	var search []string
 	for _, field := range fields {
 		value := strings.TrimSpace(values[field.ID])
+		if field.Role == notetype.RoleTerm && value == "" {
+			return Note{}, fmt.Errorf("%w: term is required", ErrInvalidNote)
+		}
 		if field.Required && value == "" {
 			return Note{}, fmt.Errorf("%w: %s is required", ErrInvalidNote, field.Name)
 		}
@@ -122,11 +127,11 @@ func (r *Repo) Notes(ctx context.Context, deckID string, limit, offset int) ([]N
 
 // Search finds live notes whose search text contains query, case-insensitive.
 func (r *Repo) Search(ctx context.Context, deckID, query string, limit, offset int) ([]Note, error) {
-	pattern := "%" + strings.ToLower(strings.TrimSpace(query)) + "%"
+	pattern := "%" + escapeLike(strings.ToLower(strings.TrimSpace(query))) + "%"
 	return r.queryNotes(ctx, `
 		SELECT id, deck_id, note_type_id, fields, sort_field, search_text
-		FROM notes WHERE deck_id = ? AND deleted_at IS NULL AND search_text LIKE ?
-		ORDER BY sort_field LIMIT ? OFFSET ?`, deckID, pattern, limit, offset)
+		FROM notes WHERE deck_id = ? AND deleted_at IS NULL AND search_text LIKE ? ESCAPE '\'
+		ORDER BY sort_field, created_at LIMIT ? OFFSET ?`, deckID, pattern, limit, offset)
 }
 
 func (r *Repo) queryNotes(ctx context.Context, query string, args ...any) ([]Note, error) {
@@ -159,7 +164,7 @@ func (r *Repo) Note(ctx context.Context, noteID string) (Note, error) {
 		return Note{}, err
 	}
 	if len(notes) == 0 {
-		return Note{}, sql.ErrNoRows
+		return Note{}, ErrNotFound
 	}
 	return notes[0], nil
 }
@@ -181,6 +186,15 @@ func (r *Repo) UpdateNote(ctx context.Context, nowMs int64, noteID string, value
 			return err
 		}
 		note.ID = current.ID
+		active := make(map[string]bool, len(fields))
+		for _, field := range fields {
+			active[field.ID] = true
+		}
+		for fieldID, value := range current.Fields {
+			if !active[fieldID] {
+				note.Fields[fieldID] = value
+			}
+		}
 		encoded, err := json.Marshal(note.Fields)
 		if err != nil {
 			return err
@@ -219,4 +233,9 @@ func (r *Repo) DuplicateExists(ctx context.Context, deckID, sortField string) (b
 		return false, err
 	}
 	return found == 1, nil
+}
+
+func escapeLike(value string) string {
+	replacer := strings.NewReplacer(`\`, `\\`, `%`, `\%`, `_`, `\_`)
+	return replacer.Replace(value)
 }

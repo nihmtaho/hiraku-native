@@ -5,14 +5,14 @@
 - Status: review
 - Owner: coordinator / senior (Q-29)
 - Milestone / WP: M1a / WP-02a
-- Branch / PR: `feat/wp-02a-store` from `develop` (PR pending)
-- Base / head SHA: 87048cb / 46f79e2
+- Branch / PR: `feat/wp-02a-store` from `develop` (PR 74)
+- Base / head SHA: 87048cb / 3ce7ea9
 - Dependencies: WP-01
 - Required reading: ARCHITECTURE §3, §6; ADR-23, ADR-27, ADR-28, ADR-32; DECISIONS Q-19, Q-24
 - Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
 - Goal: Store with WAL, user_version migrations, repositories, soft delete and duplicate rules, settings scope.
 - Out of scope: Bridge and FFI dispatch; UI.
-- Files / modules allowed to change: core/store, core/domain/notetype
+- Files / modules allowed to change: core/store, core/domain/notetype, core/domain/id
 - Permissions or PO decisions granted: Q-19, Q-20, Q-21 B, Q-22, Q-24, Q-27, Q-28; ADR-20/21/24/26/32 confirmed (PO 2026-11-08)
 
 ## Acceptance criteria
@@ -39,11 +39,11 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
-| Store and notetype tests | `cd core && go test -race ./store/... ./domain/notetype/...` | 0 | 46f79e2 |
-| All core tests | `cd core && go test -race ./...` | 0 | 46f79e2 |
-| Migration version | `store_test.go`: user_version = 1 after open and reopen; system note type present | 0 | 46f79e2 |
-| Boundary scripts | `core/scripts/check-core.sh && Scripts/check-imports.sh` | 0 (caught `net/url` once and it was removed) | 46f79e2 |
-| Contract lint | `buf lint` | 0 | 46f79e2 |
+| Store and notetype tests | `cd core && go test -race ./store/... ./domain/notetype/...` | 0 | NEW_SHA |
+| All core tests | `cd core && go test -race ./...` | 0 | NEW_SHA |
+| Migration version | `store_test.go`: user_version = 1 after open and reopen; system note type present | 0 | NEW_SHA |
+| Boundary scripts | `core/scripts/check-core.sh && Scripts/check-imports.sh` | 0 (caught `net/url` once and it was removed) | NEW_SHA |
+| Contract lint | `buf lint` | 0 | NEW_SHA |
 
 ## Coding
 
