@@ -83,7 +83,7 @@ hiraku/
 │  └─ Resources/                  # Assets, Fonts, Localizable.xcstrings, SampleData
 ├─ Extensions/                    # M4: HirakuWidget (chỉ đọc)
 ├─ Packages/
-│  ├─ HirakuModels/               # struct, protocol Repository, Route, AppClock
+│  ├─ HirakuModels/               # struct, protocol Repository/Route/AppClock, proto hiraku.v1 sinh
 │  ├─ HirakuBridge/               # actor, EventHub, ánh xạ proto ↔ model, adapter Repository
 │  ├─ HirakuTesting/              # fake Swift cho Controller (không chứa logic nghiệp vụ)
 │  ├─ DesignSystem/               # Tokens (HK*), Components, Icons (AppIcon)
@@ -162,8 +162,8 @@ App ──► Feature* ──► StudyKit ──► HirakuModels ◄── Hirak
 
 | Module | Được import | Cấm |
 |---|---|---|
-| `HirakuModels` | Foundation | SwiftUI, UIKit, AppKit, `HirakuBridge`, mọi module khác |
-| `HirakuBridge` | Foundation, `HirakuModels`, `HirakuCoreC` (module map), `SwiftProtobuf`, module proto sinh | SwiftUI, Feature*, `DesignSystem` |
+| `HirakuModels` | Foundation, `SwiftProtobuf`, module proto sinh (nằm trong package) | SwiftUI, UIKit, AppKit, `HirakuBridge`, mọi module khác |
+| `HirakuBridge` | Foundation, `HirakuModels`, `CHirakuBridge` (module map) | SwiftUI, Feature*, `DesignSystem`, `SwiftProtobuf` trực tiếp |
 | `HirakuTesting` | Foundation, `HirakuModels`, Swift Testing | `HirakuBridge`, UI |
 | `DesignSystem` | Foundation, SwiftUI | `HirakuModels` và mọi module khác |
 | `StudyKit` | Foundation, SwiftUI, `HirakuModels`, `DesignSystem` | `HirakuBridge`, feature |
