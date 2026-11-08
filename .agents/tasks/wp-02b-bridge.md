@@ -6,7 +6,7 @@
 - Owner: coordinator / senior (Q-29)
 - Milestone / WP: M1a / WP-02b
 - Branch / PR: `feat/wp-02b-bridge` from `develop` (PR pending)
-- Base / head SHA: cf7f1b4 / NEW_SHA
+- Base / head SHA: cf7f1b4 / 42ce728
 - Dependencies: WP-01, WP-02a
 - Required reading: ARCHITECTURE §6.4, §7; ADR-21, ADR-24; DECISIONS Q-20
 - Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
