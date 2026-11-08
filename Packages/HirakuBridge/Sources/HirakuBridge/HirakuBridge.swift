@@ -1,5 +1,6 @@
 import CHirakuBridge
 import Foundation
+import HirakuModels
 
 public struct HKHandle: Hashable, Sendable {
     let raw: Int64
@@ -15,11 +16,6 @@ public struct HirakuContractError: Error, Equatable, Sendable {
     }
 }
 
-/// Anything that can call the core contract, so tests can fake the transport.
-public protocol HirakuCalling: Sendable {
-    func call(_ method: Hiraku_V1_Method, request: Data) async throws -> Data
-}
-
 /// Actor that owns one hk_* handle; features never see the C ABI.
 public actor HirakuBridge: HirakuCalling {
     private var handle: HKHandle?
@@ -27,6 +23,12 @@ public actor HirakuBridge: HirakuCalling {
 
     public init(eventHub: EventHub = EventHub()) {
         self.eventHub = eventHub
+    }
+
+    deinit {
+        if let handle {
+            _ = hk_close(handle.raw)
+        }
     }
 
     public var changes: AsyncStream<Hiraku_V1_ChangeSet> {

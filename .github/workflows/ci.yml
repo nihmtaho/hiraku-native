@@ -56,5 +56,9 @@ jobs:
           cache-dependency-path: core/go.sum
       - name: Build cgo archives
         run: bash core/scripts/spike-build.sh
+      - name: Build Swift packages
+        run: |
+          swift build --package-path Packages/HirakuModels
+          swift build --package-path Packages/HirakuTesting
       - name: Xcode tests
         run: xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=macOS' CODE_SIGNING_ALLOWED=NO

@@ -305,7 +305,7 @@ Nguồn cập nhật bắt buộc cho mọi PR (`docs/process/GIT_WORKFLOW.md` �
 | S-7 | dn | — | Waiver PO 2026-11-08: App Group cần chứng chỉ development; WAL trong container app đã xác minh; App Group/widget/sao lưu là nợ thiết bị (ADR-17) |
 | WP-01 | dn | — | Contract, check scripts, CI + `swift` job, XCFramework; S-7 waiver nợ thiết bị (PR 73, 87048cb) |
 | WP-02a | dn | — | Store, migration, repo, xóa mềm, notetype (PR 74, cf7f1b4) |
-| WP-02b | ip | — | FFI dispatch, HirakuBridge actor, EventHub, fake bridge (issues #48–#50) |
+| WP-02b | rv | — | FFI dispatch, HirakuBridge actor, EventHub, fake bridge; PR 75 chờ review |
 | Báo cáo spike | rv | — | Đã có bảng tổng hợp M0; 4 quyết định PO chốt và waiver S-3 tại chat 2026-11-04 (Q-5=A, ADR-26 tự cài, 300 ms tạm, ADR-15 duyệt); còn nợ thiết bị: S-7, IME thật, SC-006 |
 | S-1 bổ sung | dn | 16 | Đã chạy lại trên schema ADR-27, nhiễu do máy tải; 60 fps và thiết bị chưa xác minh (bỏ qua thiết bị) |
 | S-8 | dn | 8 | Đạt trên macOS và simulator; thiết bị (SC-006) chưa xác minh; ngưỡng 300 ms tạm chấp nhận, đo lại trên thiết bị (PO 2026-11-04) |

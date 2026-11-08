@@ -8,12 +8,12 @@ let package = Package(
         .library(name: "HirakuTesting", targets: ["HirakuTesting"]),
     ],
     dependencies: [
-        .package(path: "../HirakuBridge"),
+        .package(path: "../HirakuModels"),
     ],
     targets: [
         .target(
             name: "HirakuTesting",
-            dependencies: ["HirakuBridge"]
+            dependencies: ["HirakuModels"]
         ),
     ]
 )

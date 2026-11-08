@@ -22,6 +22,7 @@
 		AA000000000000000000002F /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000002E /* OFL.txt */; };
 		AA0000000000000000000041 /* HirakuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000040 /* HirakuTests.swift */; };
 		AA000000000000000000004D /* HirakuBridge in Frameworks */ = {isa = PBXBuildFile; productRef = AA0000000000000000000021 /* HirakuBridge */; };
+		AA0000000000000000000050 /* HirakuModels in Frameworks */ = {isa = PBXBuildFile; productRef = AA000000000000000000004F /* HirakuModels */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA000000000000000000004D /* HirakuBridge in Frameworks */,
+				AA0000000000000000000050 /* HirakuModels in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +135,7 @@
 			name = Hiraku;
 			packageProductDependencies = (
 				AA0000000000000000000021 /* HirakuBridge */,
+				AA000000000000000000004F /* HirakuModels */,
 			);
 			productName = Hiraku;
 			productReference = AA0000000000000000000008 /* Hiraku.app */;
@@ -154,6 +157,7 @@
 			name = HirakuTests;
 			packageProductDependencies = (
 				AA0000000000000000000021 /* HirakuBridge */,
+				AA000000000000000000004F /* HirakuModels */,
 			);
 			productName = HirakuTests;
 			productReference = AA0000000000000000000043 /* HirakuTests.xctest */;
@@ -421,6 +425,10 @@
 			isa = XCLocalSwiftPackageReference;
 			"relativePath" = "../Packages/HirakuBridge";
 		};
+		AA000000000000000000004E /* XCLocalSwiftPackageReference "HirakuModels" */ = {
+			isa = XCLocalSwiftPackageReference;
+			"relativePath" = "../Packages/HirakuModels";
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -428,6 +436,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AA0000000000000000000022 /* XCLocalSwiftPackageReference "HirakuBridge" */;
 			productName = HirakuBridge;
+		};
+		AA000000000000000000004F /* HirakuModels */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA000000000000000000004E /* XCLocalSwiftPackageReference "HirakuModels" */;
+			productName = HirakuModels;
 		};
 /* End XCSwiftPackageProductDependency section */
 

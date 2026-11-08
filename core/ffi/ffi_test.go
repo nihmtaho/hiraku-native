@@ -67,3 +67,21 @@ func TestErrorBodyRoundTrips(t *testing.T) {
 		t.Fatalf("sub code = %v", decoded.SubCode)
 	}
 }
+
+func TestRepeatedPingsDoNotGrowHandles(t *testing.T) {
+	handle := openTestHandle(t)
+	boundaryMu.Lock()
+	before := len(boundary)
+	boundaryMu.Unlock()
+	for range 1000 {
+		if code, _, _ := dispatch(handle, uint32(hirakuv1.Method_METHOD_PING), nil); code != 0 {
+			t.Fatalf("ping code = %d", code)
+		}
+	}
+	boundaryMu.Lock()
+	after := len(boundary)
+	boundaryMu.Unlock()
+	if before != after {
+		t.Fatalf("handles grew from %d to %d", before, after)
+	}
+}

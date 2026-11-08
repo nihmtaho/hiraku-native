@@ -1,5 +1,5 @@
 import Foundation
-import HirakuBridge
+import HirakuModels
 
 /// Test double for the core transport: answers from a handler instead of C.
 public actor FakeBridge: HirakuCalling {

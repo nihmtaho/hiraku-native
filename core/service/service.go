@@ -25,7 +25,12 @@ type Error struct {
 	SubCode hirakuv1.ErrorSubCode
 }
 
-func (e *Error) Error() string { return e.Code.String() }
+func (e *Error) Error() string {
+	if e.SubCode != hirakuv1.ErrorSubCode_ERROR_SUB_CODE_UNSPECIFIED {
+		return e.Code.String() + ": " + e.SubCode.String()
+	}
+	return e.Code.String()
+}
 
 // Handle dispatches one contract method and returns the encoded response.
 func (s *Service) Handle(ctx context.Context, method hirakuv1.Method, req []byte) ([]byte, error) {

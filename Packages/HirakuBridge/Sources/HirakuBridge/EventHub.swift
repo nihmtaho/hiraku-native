@@ -1,5 +1,5 @@
-import CHirakuBridge
 import Foundation
+import HirakuModels
 
 /// Receives freshly generated changes so views can refresh without polling.
 public actor EventHub {

@@ -1,5 +1,6 @@
 import Foundation
 import HirakuBridge
+import HirakuModels
 import SQLite3
 import Testing
 
@@ -51,3 +52,11 @@ import Testing
 }
 
 private func methodRaw(_ raw: Int32) -> Hiraku_V1_Method { Hiraku_V1_Method(rawValue: Int(raw)) ?? .unspecified }
+
+@Test func eventHubYieldsChanges() async {
+    let hub = EventHub()
+    var iterator = await hub.stream().makeAsyncIterator()
+    await hub.send(Hiraku_V1_ChangeSet())
+    let change = await iterator.next()
+    #expect(change != nil)
+}

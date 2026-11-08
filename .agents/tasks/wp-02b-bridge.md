@@ -5,14 +5,14 @@
 - Status: review
 - Owner: coordinator / senior (Q-29)
 - Milestone / WP: M1a / WP-02b
-- Branch / PR: `feat/wp-02b-bridge` from `develop` (PR pending)
-- Base / head SHA: cf7f1b4 / 42ce728
+- Branch / PR: `feat/wp-02b-bridge` from `develop` (PR 75)
+- Base / head SHA: cf7f1b4 / 114943f
 - Dependencies: WP-01, WP-02a
 - Required reading: ARCHITECTURE §6.4, §7; ADR-21, ADR-24; DECISIONS Q-20
 - Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
 - Goal: hk_call dispatch over the real contract, error codes with sub_code, HirakuBridge actor, EventHub, fake bridge.
 - Out of scope: Feature UI; FSRS logic.
-- Files / modules allowed to change: core/ffi, core/service, Packages/HirakuBridge, Packages/HirakuTesting
+- Files / modules allowed to change: core/ffi, core/service, Packages/HirakuBridge, Packages/HirakuTesting, Packages/HirakuModels, App/Hiraku, App/HirakuTests, App/Hiraku.xcodeproj
 - Permissions or PO decisions granted: Q-19, Q-20, Q-21 B, Q-22, Q-24, Q-27, Q-28; ADR-20/21/24/26/32 confirmed (PO 2026-11-08)
 
 ## Acceptance criteria

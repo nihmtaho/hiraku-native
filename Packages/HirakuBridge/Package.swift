@@ -8,7 +8,7 @@ let package = Package(
         .library(name: "HirakuBridge", targets: ["HirakuBridge"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.28.0"),
+        .package(path: "../HirakuModels"),
     ],
     targets: [
         .target(
@@ -19,7 +19,7 @@ let package = Package(
             name: "HirakuBridge",
             dependencies: [
                 "CHirakuBridge",
-                .product(name: "SwiftProtobuf", package: "swift-protobuf"),
+                .product(name: "HirakuModels", package: "HirakuModels"),
             ],
             linkerSettings: [
                 // hk_* comes from the Go archive linked into the app.

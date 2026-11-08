@@ -62,6 +62,17 @@ func hk_open(path *C.char, outHandle *C.hk_handle, outErr *C.HKBytes) (code C.in
 
 //export hk_call
 func hk_call(handle C.hk_handle, method C.uint32_t, req C.HKBytes, outResp *C.HKBytes) (code C.int32_t) {
+	defer func() {
+		if recover() != nil {
+			code = 5
+			if outResp != nil {
+				*outResp = C.HKBytes{}
+			}
+		}
+	}()
+	if outResp == nil {
+		return 1
+	}
 	*outResp = C.HKBytes{}
 	result, response, err := dispatch(uint64(handle), uint32(method), goBytes(req))
 	if err != nil {
@@ -118,7 +129,6 @@ func hk_close(h C.hk_handle) (code C.int32_t) {
 	}()
 	boundaryMu.Lock()
 	opened, ok := boundary[h]
-	delete(boundary, h)
 	boundaryMu.Unlock()
 	if !ok {
 		return 1
@@ -126,6 +136,9 @@ func hk_close(h C.hk_handle) (code C.int32_t) {
 	if err := opened.Close(); err != nil {
 		return 4
 	}
+	boundaryMu.Lock()
+	delete(boundary, h)
+	boundaryMu.Unlock()
 	return 0
 }
 
