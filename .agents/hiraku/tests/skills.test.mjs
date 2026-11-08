@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { copyFileSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
+import { copyFileSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -61,13 +61,23 @@ test("task record template has execution plan and github issues", () => {
 });
 
 test("task-context surfaces a directly blocking open question", () => {
-  const result = context(root, "WP-04");
+  const result = context(root, "WP-22");
   assert.equal(result.work.length, 1);
-  assert.ok(result.questions.some((line) => line.startsWith("| Q-21 ") && line.endsWith("trực tiếp")));
+  assert.ok(result.questions.some((line) => line.startsWith("| Q-26 ") && line.endsWith("trực tiếp")));
 });
 
 test("task-context labels questions inherited through dependencies", () => {
-  const result = context(root, "WP-03");
-  assert.deepEqual(result.dependencies, ["WP-02a", "S-2"]);
-  assert.ok(result.questions.some((line) => line.startsWith("| Q-19 ") && line.endsWith("qua WP-02a")));
+  const dir = mkdtempSync(join(tmpdir(), "hiraku-ctx-"));
+  try {
+    writeFileSync(join(dir, "ROADMAP.md"),
+      "| WP-98 | child | WP-97 |\n\n## 4. Gates\n\n## 11. Trạng thái\n");
+    const decisions = "| Q-98 | question | Mở | PO | GATE-2 | WP-97 |\n";
+    mkdirSync(join(dir, "docs/architecture"), { recursive: true });
+    writeFileSync(join(dir, "docs/architecture/DECISIONS.md"), decisions);
+    const result = context(dir, "WP-98");
+    assert.deepEqual(result.dependencies, ["WP-97"]);
+    assert.ok(result.questions.some((line) => line.startsWith("| Q-98 ") && line.endsWith("qua WP-97")));
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
 });

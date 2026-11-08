@@ -83,7 +83,7 @@ Ghi chú: S-5 và Spike 0 chưa nằm trong ước lượng 3 tuần của M0 (k
 | `docs/architecture/ARCHITECTURE.md` | Tách từ spec v3.1 §2.2–2.3, §3, §5 (nay spec chỉ còn con trỏ): luật Swift (L1–L11) và Go (G1–G8), khuôn mẫu feature và domain Go, contract `hiraku.v1`, script kiểm tra core và `import`, cách thêm feature/`StudyMode` | 0,5 |
 | `AGENTS.md` + bộ OpenCode (ADR-31) | Bốn agents, hai skills `hiraku-contract`/`hiraku-feature`, permissions, guard và task packet; DESIGN/COPY đọc trực tiếp, không tạo skill thiết kế trùng tài liệu | 0,25 (ước lượng lịch sử) |
 | Wireframe/prototype (prompt: `docs/product/WIREFRAME_PROMPT.md`) | Home, Deck/Words, Flashcard, Gõ từ, Cài đặt cho iPhone (ưu tiên); iPad/Mac vẽ trước M1b | 1,25 |
-| `COPY.md` | Bảng chuỗi UI tiếng Việt cho các màn M1a, làm nền String Catalog (bản đề xuất đã có, chờ duyệt) | 0,25 |
+| `COPY.md` | Bảng chuỗi UI tiếng Việt cho các màn M1a, làm nền String Catalog (bản baseline v1.6 đã duyệt 2026-11-08) | 0,25 |
 | `docs/process/TEST_PLAN.md` | Đã có khung ma trận thiết bị/OS/IME, dữ liệu và tiêu chí; còn xác nhận Q-11, người thử SC-002 và kiểm thử sản phẩm thực tế | 0,25 |
 
 **Tiêu chí ra**: tài liệu được duyệt; quyết định GATE-1 đã chốt; lịch M1a hiệu chỉnh theo số đo M0.
@@ -128,7 +128,7 @@ Phạm vi: UC-01, 02, 03, 04, 06, 07, 08, 13, 14, phần lõi UC-21 (ghi nguyên
 
 | WP | Nội dung | UC | Ước lượng (tuần) |
 |---|---|---|---|
-| WP-20 | Sao lưu và khôi phục gộp, idempotent, nhận tệp backup bản web; định dạng v3, ánh xạ v2 → kiểu hệ thống (logic ở `core/domain/backup`, ADR-27) | UC-10, UC-11 | 1,75 |
+| WP-20 | Sao lưu và khôi phục gộp, idempotent, nhận tệp backup bản web; định dạng v3, ánh xạ v2 → kiểu hệ thống (logic ở `core/domain/backup`, ADR-27) — **Q-27: chạy ngay sau M1a, trước M1b** | UC-10, UC-11 | 1,75 |
 | WP-21 | Xuất CSV/JSON | UC-09 | 0,5 |
 | WP-22 | Nhập CSV/JSON/TSV/dán văn bản: ánh xạ cột, preview, chính sách trùng, transaction (parser ở `core/domain/importer`); ánh xạ cột theo field, xuất theo kiểu (ADR-27 Pha B) | UC-05 | 2,5 |
 | WP-23 | UI dữ liệu: dung lượng, thời điểm sao lưu, nhắc sao lưu | UC-21 (UI) | 0,5 |
@@ -181,7 +181,7 @@ Chỉ bắt đầu sau GATE-3 (PO xác nhận ứng dụng đạt mong muốn �
 | Cổng | Điều kiện vào bước kế tiếp | Quyết định phải chốt (`docs/architecture/DECISIONS.md`) |
 |---|---|---|
 | **GATE-0** (trước M0) | Thiết bị chuẩn: MacBook (Q-11 đã chốt một phần; thiếu iPhone/iPad thật); dùng Personal Team, đăng ký Apple Developer Program sau cùng (ADR-17); repo sẵn sàng | Q-11, Q-12, Q-13 (Q-1 đã chốt: ADR-13); Q-29 |
-| **GATE-1** (sau M0 + M0b; Go/No-go M1) | **Bắt buộc đạt**: S-1, S-3, S-8; S-7 xác minh phần khả dụng (ADR-17). S-2 phải có phương án (dùng hoặc tự cài). Tài liệu M0b được duyệt. Lịch M1a hiệu chỉnh theo năng suất đo được | Q-5, Q-D2; Q-19, Q-20, Q-21, Q-22, Q-24, Q-27, Q-28; xác nhận ADR-20, 21, 24, 26, 32; S-1 đo trên schema ADR-27 |
+| **GATE-1** (sau M0 + M0b; Go/No-go M1) | **Bắt buộc đạt**: S-1, S-3, S-8; S-7 xác minh phần khả dụng (ADR-17). S-2 phải có phương án (dùng hoặc tự cài). Tài liệu M0b được duyệt. Lịch M1a hiệu chỉnh theo năng suất đo được. **PO đóng phần quyết định 2026-11-08**; waiver ghi nợ thiết bị: S-1 iOS/60 fps, S-3 IME thật, S-7 App Group xác minh trong WP-01 | Q-5, Q-D2; Q-19, Q-20, Q-21, Q-22, Q-24, Q-27, Q-28; xác nhận ADR-20, 21, 24, 26, 32; S-1 đo trên schema ADR-27 |
 | **GATE-2** (MVP) | Tiêu chí ra M1b đạt; `buf breaking` xanh suốt M1; xem xét thời gian build của ADR-02 và chi phí bridge; chốt phạm vi M2–M3 | Q-7, Q-D5, Q-23, Q-26 |
 | **GATE-3** (PO nghiệm thu bản develop; mở MR) | SC-010 đạt; kiểm toán a11y xong; PO xác nhận ứng dụng đạt mong muốn; bắt đầu đăng ký Apple Developer Program | Q-8 (Q-6 đã đóng 2026-10-29) |
 | **GATE-4** (sẵn sàng phát hành, sau MR) | Checklist `docs/process/RELEASE.md` đầy đủ; phản hồi TestFlight đã xử lý; nộp App Review | — |
@@ -302,18 +302,30 @@ Nguồn cập nhật bắt buộc cho mọi PR (`docs/process/GIT_WORKFLOW.md` �
 | S-6 | dn | 10 | Spike Đạt trên simulator: 2,19 MB, 0 glyph thiếu (N3), OFL; Q-5 = A đã chốt (PO 2026-11-04) kèm sửa DESIGN §Font; macOS/thiết bị chưa xác minh (bỏ qua thiết bị) |
 | S-2 | dn | 8 | Working-tree: Không đạt khớp vector (go-fsrs/v4 v4.0.0; 3/17 due lệch, dung sai 0); PO xác nhận tự cài trong `core/domain/fsrs` theo ADR-26 (2026-11-04), WP-03. |
 | S-1 | dn | 8 | Nửa Go Đạt trên MacBook; iOS/iPadOS và 60 fps chưa xác minh (S-1 bổ sung). |
-| S-7 | bl | — | Q-11 chốt một phần (MacBook, chưa có iPhone/iPad thật); phần build của S-8 chạy được sau Spike 0 |
+| S-7 | ip | — | PO 2026-11-08: xác minh App Group + WAL trong App Group trên simulator trong WP-01; widget/sao lưu thiết bị thật giữ làm nợ M4 (ADR-17) |
+| WP-01 | ip | — | Kickoff M1a 2026-11-08; contract/buf, check scripts, CI, XCFramework, S-7 (issues #39–#43) |
 | Báo cáo spike | rv | — | Đã có bảng tổng hợp M0; 4 quyết định PO chốt và waiver S-3 tại chat 2026-11-04 (Q-5=A, ADR-26 tự cài, 300 ms tạm, ADR-15 duyệt); còn nợ thiết bị: S-7, IME thật, SC-006 |
 | S-1 bổ sung | dn | 16 | Đã chạy lại trên schema ADR-27, nhiễu do máy tải; 60 fps và thiết bị chưa xác minh (bỏ qua thiết bị) |
 | S-8 | dn | 8 | Đạt trên macOS và simulator; thiết bị (SC-006) chưa xác minh; ngưỡng 300 ms tạm chấp nhận, đo lại trên thiết bị (PO 2026-11-04) |
 | Q-13, Q-1, Q-6 | dn | — | Đã chốt |
 | Q-12 | dn | — | PO duyệt phương án B (2026-10-30) |
 | Q-5 | dn | — | PO chốt A: đóng gói Noto Sans JP (2026-11-04) |
+| Q-19 | dn | — | Thùng rác 30 ngày; backup bỏ bản quá hạn; trùng bỏ qua bản đã xóa (PO 2026-11-08) |
+| Q-20 | dn | — | Mã 3 kèm `sub_code` enum (PO 2026-11-08) |
+| Q-21 | dn | — | B: nghiêm dakuten/っ, giữ dung sai ー/nguyên âm dài (PO 2026-11-08) |
+| Q-22 | dn | — | Review = Đã biết (PO 2026-11-08) |
+| Q-24 | dn | — | App-level ở `AppStorage`, settings học theo profile (PO 2026-11-08) |
+| Q-27 | dn | — | Kéo WP-20 lên sau M1a (PO 2026-11-08) |
+| Q-28 | dn | — | "bộ thẻ", "hồ sơ" (PO 2026-11-08) |
 | Q-11 | rv | — | Chốt một phần (MacBook; thiếu iPhone/iPad thật); PO chốt thiết bị kiểm thử = simulator trên macOS 2026-11-05, phần thiết bị thật là nợ bổ sung |
 | Q-D2 | dn | — | PO chốt B: `state-learning-ink` #A67C00 cho chấm/chữ trạng thái, #D9A300 chỉ vùng tô lớn (2026-11-05) |
 | `docs/architecture/ARCHITECTURE.md`, `AGENTS.md` | dn | 23e2503 | PO duyệt thành chính thức 2026-11-05 sau đối chiếu m0b-01; duyệt ban đầu 2026-10-29 |
-| `COPY.md` | rv | — | Bản đề xuất đã có, chờ PO duyệt để mở WP-06 |
+| COPY.md | dn | — | PO duyệt v1.6 làm baseline 2026-11-08; áp thuật ngữ Q-28 (bộ thẻ/hồ sơ) khi mở WP-06 |
+| ADR 20–26 | dn | — | ADR-20, 21, 24, 26, 32 xác nhận theo kết quả spike (PO 2026-11-08) |
 | `docs/process/TEST_PLAN.md` | dn | 23e2503 | PO chốt thiết bị chuẩn = simulator trên macOS 2026-11-05; người thử SC-002 chờ duyệt riêng |
 | Wireframe | dn | — | PO giữ nguyên khung hiện có 2026-11-05; iPad/Mac vẽ trước M1b |
-| RV-01…RV-08 | rd | — | Việc từ review, chờ quyết định |
+| RV-01, RV-04, RV-06…RV-08 | rd | — | Việc từ review, chờ quyết định |
+| RV-02 | dn | — | Q-19 và Q-20 đã chốt (PO 2026-11-08) |
+| RV-03 | rd | — | Q-21, Q-22, Q-24 đã chốt; còn hướng thẻ Q-23 (GATE-2) |
+| RV-05 | dn | — | Q-27: kéo WP-20 lên sau M1a (PO 2026-11-08) |
 | App shell | rv | — | App/Hiraku.xcodeproj build va chay tren iPhone 18 Pro simulator lan macOS; bundle id com.nihmtaho.hiraku (PO 2026-11-04); cho review. |
