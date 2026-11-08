@@ -9,7 +9,7 @@
 - Base / head SHA: 2df7fd5 / —
 - Dependencies: WP-01
 - Required reading: DECISIONS Q-21; spec §7.2
-- Blocking Q / gate: none (GATE-1 closed 2026-11-08)
+- Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
 - Goal: Roma-ji to kana, Q-21 option B normalization, per-character match with golden table.
 - Out of scope: Typing UI.
 - Files / modules allowed to change: core/domain/kana, core/testdata/kana_golden.json
@@ -37,7 +37,7 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
-| Not run | | Not run | |
+| Kana golden tests | `cd core && go test ./domain/kana/...` | Not run | — |
 
 ## Coding
 

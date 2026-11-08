@@ -7,9 +7,9 @@
 - Milestone / WP: M1a / WP-10
 - Branch / PR: `feat/wp-10-polish` from `develop`
 - Base / head SHA: 2df7fd5 / —
-- Dependencies: WP-01; all above
+- Dependencies: WP-01…WP-09
 - Required reading: TEST_PLAN.md; SC-001…SC-004, SC-007…SC-009; DESIGN a11y
-- Blocking Q / gate: none (GATE-1 closed 2026-11-08)
+- Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
 - Goal: End-to-end scenarios, a11y, crash/relaunch, performance, fixes.
 - Out of scope: iPad/Mac layout; release.
 - Files / modules allowed to change: App/HirakuUITests, feature packages, App/Resources
@@ -39,7 +39,8 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
-| Not run | | Not run | |
+| UI tests | `xcodebuild test -scheme Hiraku -destination "platform=iOS Simulator,name=iPhone 18 Pro"` | Not run | — |
+| Performance | `manual: 50,000 notes against NFR-002` | Not run | — |
 
 ## Coding
 

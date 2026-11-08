@@ -7,9 +7,9 @@
 - Milestone / WP: M1a / WP-07
 - Branch / PR: `feat/wp-07-study` from `develop`
 - Base / head SHA: 2df7fd5 / —
-- Dependencies: WP-01; WP-03; WP-05
+- Dependencies: WP-03, WP-05
 - Required reading: UC-04, UC-06, UC-07; ADR-27; spec study flow
-- Blocking Q / gate: none (GATE-1 closed 2026-11-08)
+- Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
 - Goal: StudyKit session, 2/4-button flashcard, done screen, card face by note type.
 - Out of scope: Typing; stats.
 - Files / modules allowed to change: Packages/StudyKit, Packages/Features/FeatureStudy, FeatureFlashcard
@@ -37,7 +37,7 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
-| Not run | | Not run | |
+| Study controller tests | `xcodebuild test -scheme Hiraku -destination "platform=macOS"` | Not run | — |
 
 ## Coding
 

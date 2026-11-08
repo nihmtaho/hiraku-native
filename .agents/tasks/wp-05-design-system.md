@@ -7,9 +7,9 @@
 - Milestone / WP: M1a / WP-05
 - Branch / PR: `feat/wp-05-design-system` from `develop`
 - Base / head SHA: 2df7fd5 / —
-- Dependencies: WP-01
+- Dependencies: Q-5, Q-D2
 - Required reading: docs/product/DESIGN.md; ADR-15; DECISIONS Q-5, Q-D2
-- Blocking Q / gate: none (GATE-1 closed 2026-11-08)
+- Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
 - Goal: HK tokens, components, Noto Sans JP, Ember AccentColor and glass chrome rules.
 - Out of scope: Feature screens.
 - Files / modules allowed to change: Packages/DesignSystem
@@ -37,7 +37,7 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
-| Not run | | Not run | |
+| DesignSystem tests | `xcodebuild test -scheme Hiraku -destination "platform=macOS"` | Not run | — |
 
 ## Coding
 

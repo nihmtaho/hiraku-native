@@ -7,9 +7,9 @@
 - Milestone / WP: M1a / WP-09
 - Branch / PR: `feat/wp-09-settings-home` from `develop`
 - Base / head SHA: 2df7fd5 / —
-- Dependencies: WP-01; WP-05; WP-06
+- Dependencies: WP-05, WP-06
 - Required reading: DECISIONS Q-24, Q-28; DESIGN settings; COPY.md
-- Blocking Q / gate: none (GATE-1 closed 2026-11-08)
+- Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
 - Goal: Settings screen split app-level vs profile-level, home due banner.
 - Out of scope: Backup; sync.
 - Files / modules allowed to change: Packages/Features/FeatureSettings, FeatureHome, App/Composition
@@ -37,7 +37,7 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
-| Not run | | Not run | |
+| Settings tests | `xcodebuild test -scheme Hiraku -destination "platform=macOS"` | Not run | — |
 
 ## Coding
 

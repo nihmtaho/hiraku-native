@@ -7,9 +7,9 @@
 - Milestone / WP: M1a / WP-02b
 - Branch / PR: `feat/wp-02b-bridge` from `develop`
 - Base / head SHA: 2df7fd5 / —
-- Dependencies: WP-01; WP-02a
+- Dependencies: WP-01, WP-02a
 - Required reading: ARCHITECTURE §6.4, §7; ADR-21, ADR-24; DECISIONS Q-20
-- Blocking Q / gate: none (GATE-1 closed 2026-11-08)
+- Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
 - Goal: hk_call dispatch over the real contract, error codes with sub_code, HirakuBridge actor, EventHub, fake bridge.
 - Out of scope: Feature UI; FSRS logic.
 - Files / modules allowed to change: core/ffi, core/service, Packages/HirakuBridge, Packages/HirakuTesting
@@ -38,7 +38,8 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
-| Not run | | Not run | |
+| FFI tests | `cd core && go test -race ./ffi/...` | Not run | — |
+| Swift bridge tests | `xcodebuild test -scheme Hiraku -destination "platform=macOS"` | Not run | — |
 
 ## Coding
 

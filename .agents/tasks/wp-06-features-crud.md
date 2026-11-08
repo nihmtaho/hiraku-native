@@ -7,9 +7,9 @@
 - Milestone / WP: M1a / WP-06
 - Branch / PR: `feat/wp-06-features-crud` from `develop`
 - Base / head SHA: 2df7fd5 / —
-- Dependencies: WP-01; WP-02b; WP-05
+- Dependencies: WP-02b, WP-05
 - Required reading: use-cases §4.0.1, UC-01, UC-02, UC-03; ADR-18, ADR-27; COPY.md (Q-28 terms)
-- Blocking Q / gate: none (GATE-1 closed 2026-11-08)
+- Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
 - Goal: Folder/deck/word CRUD, search, drag reorder, unsaved-change protection, note-type-driven forms.
 - Out of scope: Study screens; import.
 - Files / modules allowed to change: Packages/Features/FeatureFolders, FeatureDecks, FeatureWords, App/Composition
@@ -39,7 +39,8 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
-| Not run | | Not run | |
+| Feature controller tests | `xcodebuild test -scheme Hiraku -destination "platform=macOS"` | Not run | — |
+| Search timing | `manual: 50,000 notes, search < 150 ms` | Not run | — |
 
 ## Coding
 

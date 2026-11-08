@@ -9,7 +9,7 @@
 - Base / head SHA: 2df7fd5 / —
 - Dependencies: WP-01
 - Required reading: ARCHITECTURE §3, §6; ADR-23, ADR-27, ADR-28, ADR-32; DECISIONS Q-19, Q-24
-- Blocking Q / gate: none (GATE-1 closed 2026-11-08)
+- Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
 - Goal: Store with WAL, user_version migrations, repositories, soft delete and duplicate rules, settings scope.
 - Out of scope: Bridge and FFI dispatch; UI.
 - Files / modules allowed to change: core/store, core/domain/notetype
@@ -39,7 +39,8 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
-| Not run | | Not run | |
+| Store and notetype tests | `cd core && go test -race ./store/... ./domain/notetype/...` | Not run | — |
+| Migration version | `manual: PRAGMA user_version = 1 after open` | Not run | — |
 
 ## Coding
 

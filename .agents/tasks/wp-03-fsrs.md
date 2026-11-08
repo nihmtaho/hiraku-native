@@ -7,9 +7,9 @@
 - Milestone / WP: M1a / WP-03
 - Branch / PR: `feat/wp-03-fsrs` from `develop`
 - Base / head SHA: 2df7fd5 / —
-- Dependencies: WP-01; WP-02a
+- Dependencies: WP-02a, S-2
 - Required reading: ARCHITECTURE §6.2, §6.3; ADR-26; docs/reports/M0_SPIKE.md S-2; spec §FSRS
-- Blocking Q / gate: none (GATE-1 closed 2026-11-08)
+- Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
 - Goal: FSRS domain matching the 17 golden vectors, transactional Grade, BuildQueue with calendar day and limits.
 - Out of scope: UI; optimizer; per-deck parameters.
 - Files / modules allowed to change: core/domain/fsrs, core/domain/queue, core/service/grade.go, core/service/queue.go, core/testdata
@@ -38,7 +38,7 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
-| Not run | | Not run | |
+| FSRS and service tests | `cd core && go test -race ./domain/fsrs/... ./domain/queue/... ./service/...` | Not run | — |
 
 ## Coding
 

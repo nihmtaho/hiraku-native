@@ -33,12 +33,12 @@
 | Khái niệm | Dùng | Ghi chú |
 |---|---|---|
 | Folder | thư mục | |
-| Deck | deck | Giữ như spec và use case; đổi sang "bộ thẻ" nếu muốn thuần Việt (quyết định ở GATE-1, ảnh hưởng toàn bộ chuỗi) |
+| Deck | bộ thẻ | Q-28 (PO 2026-11-08) chốt "bộ thẻ"; đổi chuỗi user-facing khi mở WP-06, khóa `decks.*` giữ nguyên |
 | Word | từ | |
 | Word / Reading / Meaning / Example | Từ / Cách đọc / Nghĩa / Câu ví dụ | Tên field của kiểu hệ thống |
 | Note type | kiểu ghi chú | ADR-27 |
-| Profile | profile | ADR-28; giữ nguyên tiếng Anh như "deck", chốt cùng ở GATE-1 |
-| Field | trường | Tài liệu kỹ thuật viết "field"; giao diện viết "trường" (PO duyệt 2026-10-28; chốt chung với "deck"/"bộ thẻ" ở GATE-1) |
+| Profile | hồ sơ | Q-28 (PO 2026-11-08) chốt "hồ sơ"; đổi chuỗi user-facing khi mở WP-06, khóa `profile.*` giữ nguyên |
+| Field | trường | Tài liệu kỹ thuật viết "field"; giao diện viết "trường" |
 | Card template / front / back | mẫu thẻ / mặt trước / mặt sau | |
 | Field role (term, reading, meaning, example, text) | vai trò: Từ, Cách đọc, Nghĩa, Ví dụ, Văn bản | |
 | New / Learning / Known | Mới / Đang học / Đã biết | |

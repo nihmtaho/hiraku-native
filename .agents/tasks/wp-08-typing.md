@@ -7,9 +7,9 @@
 - Milestone / WP: M1a / WP-08
 - Branch / PR: `feat/wp-08-typing` from `develop`
 - Base / head SHA: 2df7fd5 / —
-- Dependencies: WP-01; WP-04; WP-07
+- Dependencies: WP-04, WP-07, S-3
 - Required reading: UC-07, spec §7.2; DECISIONS Q-21; S-3 report
-- Blocking Q / gate: none (GATE-1 closed 2026-11-08)
+- Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
 - Goal: IME-safe kana field, per-character feedback, reveal answer.
 - Out of scope: Handwriting; drawing.
 - Files / modules allowed to change: Packages/Features/FeatureTyping, App/Hiraku/KanaInputField.swift
@@ -37,7 +37,8 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
-| Not run | | Not run | |
+| Typing tests | `xcodebuild test -scheme Hiraku -destination "platform=macOS"` | Not run | — |
+| IME manual | `manual: marked text on iPhone simulator` | Not run | — |
 
 ## Coding
 

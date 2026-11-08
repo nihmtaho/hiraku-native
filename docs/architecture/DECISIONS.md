@@ -53,11 +53,11 @@ Tài liệu này là **nơi duy nhất** ghi trạng thái các quyết định.
 | ADR-17 | Đăng ký Apple Developer Program sau cùng; việc liên quan đánh dấu [Cuối cùng] (mốc MR) | Đã chốt | 2026-10-28 | Q-14 |
 | ADR-18 | Quy ước tương tác: kéo-thả để sắp xếp, hoàn tác thay xác nhận, bảo vệ thay đổi, khôi phục vị trí | Đã chốt | 2026-10-28 | `docs/product/use-cases.md` §4.0.1 |
 | ADR-19 | Phạm vi bổ sung từ rà soát UX: hoàn tác chấm điểm vào M1b; xúc giác tối thiểu | Đã chốt | 2026-10-28 | Q-15, Q-D3 |
-| ADR-20 | Go core làm nguồn nghiệp vụ và dữ liệu; Swift giữ UI | Đã chốt — S-1 và S-8 đạt trên simulator (PO 2026-11-08) | 2026-10-28 | Thay ADR-03 |
+| ADR-20 | Go core làm nguồn nghiệp vụ và dữ liệu; Swift giữ UI | Đã chốt — S-1 đạt trên MacBook host, S-8 trên simulator; iOS/60 fps chưa xác minh (PO 2026-11-08) | 2026-10-28 | Thay ADR-03 |
 | ADR-21 | Tích hợp cgo qua c-archive và XCFramework; ABI bốn hàm, payload protobuf | Đã chốt — S-8 đạt trên simulator (PO 2026-11-08) | 2026-10-28 | Q-A (bối cảnh) |
 | ADR-22 | Contract protobuf `hiraku.v1` là nguồn duy nhất; buf lint và buf breaking | Đã chốt | 2026-10-28 | Q-B |
 | ADR-23 | SQLite qua `modernc.org/sqlite`; Go sở hữu DB; Swift không mở DB | **Đã thay thế bởi ADR-32** | 2026-10-28 | Q-A |
-| ADR-24 | Làm mới chủ động qua `ChangeSet` và `EventHub`; Go không gọi ngược | Đã chốt — S-1 đo reload đạt trên simulator (PO 2026-11-08) | 2026-10-28 | Q-C |
+| ADR-24 | Làm mới chủ động qua `ChangeSet` và `EventHub`; Go không gọi ngược | Đã chốt — S-1 đo reload trên MacBook host; thiết bị chưa xác minh (PO 2026-11-08) | 2026-10-28 | Q-C |
 | ADR-25 | Monorepo, thư mục `core/` ở gốc; chưa xây nền tảng thứ hai | Đã chốt | 2026-10-28 | Q-D, Q-E |
 | ADR-26 | FSRS: thư viện Go nếu đạt S-2; nếu không, tự cài trong `core/domain/fsrs` | Đã chốt — tự cài trong `core/domain/fsrs` (S-2 Không đạt) | 2026-10-28 | Q-4 |
 | ADR-30 | Kiến trúc đồng bộ iCloud: Go giữ SQLite, change log và merge; Swift chỉ giữ adapter CKSyncEngine; không đổi ADR-20 và ADR-23 | **Đã chốt (PO, 2026-10-29), chờ S-9** | 2026-10-29 | Q-6 |

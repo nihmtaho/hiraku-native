@@ -443,7 +443,7 @@ Ghi chú v3.7: các FR nghiệp vụ (FR-013 romaji khớp kana, FR-016 chấm �
 
 1. `trim()` + lowercase.
 2. Có ký tự `[a-z]` ⇒ romaji → kana (っ, `nn→ん`, `n` trước phụ âm → ん, yōon `kya…`, kana nhỏ).
-3. Chuẩn tắc: katakana → hiragana; bỏ `ー`; dakuten/handakuten → gốc; kana nhỏ → lớn; bỏ nguyên âm dài lặp; nén ký tự lặp.
+3. Chuẩn tắc (Q-21 = B): katakana → hiragana; bỏ `ー`; dakuten/handakuten **giữ nguyên** (か ≠ が); kana nhỏ **giữ nguyên** (っ ≠ つ); giữ nguyên âm dài lặp; nén ký tự lặp.
 4. Khớp khi hai vế chuẩn hóa bằng nhau; tiến trình khớp theo ký tự dùng cho phản hồi từng ô.
 5. **IME**: ô nhập bọc `UITextField`/`NSTextField` để biết `markedTextRange`/`hasMarkedText`. Khi đang compose chỉ hiển thị, **chỉ đánh giá sau khi chốt**; Enter dùng để chốt IME không được tính là nộp đáp án.
 6. Module thuần Go (`core/domain/kana`) → bộ test bảng (input → kỳ vọng) trong `core/testdata`; đây là logic dễ sai nhất. Swift chỉ gửi chuỗi thô và nhận kết quả từng ô.
