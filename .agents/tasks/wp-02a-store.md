@@ -17,7 +17,7 @@
 
 ## Acceptance criteria
 
-PRAGMA user_version 1 after open; CRUD, paging and FTS5 search tests pass; deleted rows hidden from lists and duplicate checks, purged after 30 days; no app-level settings rows in DB; race tests pass.
+PRAGMA user_version 1 after open; CRUD, paging and substring search on search_text tests pass (FTS5 only if S-1 fails); deleted rows hidden from lists and duplicate checks, purged after 30 days; no app-level settings rows in DB; race tests pass.
 
 ## Execution plan
 
