@@ -39,7 +39,7 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
-| UI tests | `xcodebuild test -scheme Hiraku -destination "platform=iOS Simulator,name=iPhone 18 Pro"` | Not run | — |
+| UI tests | `xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination "platform=iOS Simulator,name=iPhone 18 Pro"` | Not run | — |
 | Performance | `manual: 50,000 notes against NFR-002` | Not run | — |
 
 ## Coding

@@ -25,10 +25,36 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
+      - name: Install buf
+        run: |
+          go install github.com/bufbuild/buf/cmd/buf@v1.75.0
+          echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
       - name: Go vet and race tests
         working-directory: core
         run: |
           go vet ./...
           go test -race -count=1 ./...
+      - name: Core boundary checks
+        run: |
+          core/scripts/check-core.sh
+          Scripts/check-imports.sh
+      - name: Contract lint
+        run: buf lint
+      - name: Skill tests
+        run: node --test .agents/hiraku/tests/*.test.mjs
       - name: ROADMAP and Kanban agree
         run: node .agents/skills/hiraku-wp-status/scripts/wp-status.mjs --check
+
+  swift:
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: core/go.mod
+          cache-dependency-path: core/go.sum
+      - name: Build cgo archives
+        run: bash core/scripts/spike-build.sh
+      - name: Xcode tests
+        run: xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=macOS' CODE_SIGNING_ALLOWED=NO

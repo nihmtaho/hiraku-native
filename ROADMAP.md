@@ -302,7 +302,7 @@ Nguồn cập nhật bắt buộc cho mọi PR (`docs/process/GIT_WORKFLOW.md` �
 | S-6 | dn | 10 | Spike Đạt trên simulator: 2,19 MB, 0 glyph thiếu (N3), OFL; Q-5 = A đã chốt (PO 2026-11-04) kèm sửa DESIGN §Font; macOS/thiết bị chưa xác minh (bỏ qua thiết bị) |
 | S-2 | dn | 8 | Working-tree: Không đạt khớp vector (go-fsrs/v4 v4.0.0; 3/17 due lệch, dung sai 0); PO xác nhận tự cài trong `core/domain/fsrs` theo ADR-26 (2026-11-04), WP-03. |
 | S-1 | dn | 8 | Nửa Go Đạt trên MacBook; iOS/iPadOS và 60 fps chưa xác minh (S-1 bổ sung). |
-| S-7 | ip | — | PO 2026-11-08: xác minh App Group + WAL trong App Group trên simulator trong WP-01; widget/sao lưu thiết bị thật giữ làm nợ M4 (ADR-17) |
+| S-7 | dn | — | Waiver PO 2026-11-08: App Group cần chứng chỉ development; WAL trong container app đã xác minh; App Group/widget/sao lưu là nợ thiết bị (ADR-17) |
 | WP-01 | ip | — | Kickoff M1a 2026-11-08; contract/buf, check scripts, CI, XCFramework, S-7 (issues #39–#43) |
 | Báo cáo spike | rv | — | Đã có bảng tổng hợp M0; 4 quyết định PO chốt và waiver S-3 tại chat 2026-11-04 (Q-5=A, ADR-26 tự cài, 300 ms tạm, ADR-15 duyệt); còn nợ thiết bị: S-7, IME thật, SC-006 |
 | S-1 bổ sung | dn | 16 | Đã chạy lại trên schema ADR-27, nhiễu do máy tải; 60 fps và thiết bị chưa xác minh (bỏ qua thiết bị) |
