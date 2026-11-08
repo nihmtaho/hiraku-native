@@ -1,6 +1,9 @@
 ---
 name: hiraku-review
-description: Review độc lập một PR hoặc diff hiraku theo đúng head SHA: đối chiếu task và luật kiến trúc, chạy kiểm tra, rồi trả verdict PASS hoặc FAIL cho coordinator. Dùng khi coordinator giao review một PR, hoặc khi cần kiểm một SHA trước khi merge. Chạy trong phiên độc lập, không phải phiên đã viết mã.
+description: >-
+  Review độc lập một PR hoặc diff hiraku theo đúng head SHA: đối chiếu task và luật kiến trúc,
+  chạy kiểm tra, rồi trả verdict PASS hoặc FAIL cho coordinator. Dùng khi coordinator giao review
+  một PR, hoặc khi cần kiểm một SHA trước khi merge. Chạy trong phiên độc lập, không phải phiên đã viết mã.
 compatibility: gh đã đăng nhập; Node.js 24+; chạy từ root dự án.
 ---
 
