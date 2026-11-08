@@ -1,6 +1,9 @@
 ---
 name: hiraku-coordinator
-description: Điều phối một task hiraku từ WP đến PR đã review và merge: tạo task record, giao senior (hiraku-coding), mở PR, gọi review độc lập trong subagent built-in, rồi ship. Dùng khi PO giao mục tiêu hoặc task, khi resume một task đang dở, hoặc khi cần chạy cả chuỗi coding → review → merge.
+description: >-
+  Điều phối một task hiraku từ WP đến PR đã review và merge: tạo task record, giao senior
+  (hiraku-coding), mở PR, gọi review độc lập trong subagent built-in, rồi ship. Dùng khi PO giao
+  mục tiêu hoặc task, khi resume một task đang dở, hoặc khi cần chạy cả chuỗi coding → review → merge.
 compatibility: Node.js 24+; Git và gh đã đăng nhập; chạy từ root dự án.
 ---
 

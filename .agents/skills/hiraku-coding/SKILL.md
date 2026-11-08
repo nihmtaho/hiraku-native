@@ -1,6 +1,9 @@
 ---
 name: hiraku-coding
-description: Senior triển khai một task hiraku đã có task record: sửa Go, proto và Swift trong phạm vi, thêm test hành vi, cập nhật tài liệu, CHANGELOG và ROADMAP trên nhánh task, rồi commit và push. Dùng khi được giao code một task, khi sửa theo findings review, hoặc khi viết tiếp một task đang dở.
+description: >-
+  Senior triển khai một task hiraku đã có task record: sửa Go, proto và Swift trong phạm vi,
+  thêm test hành vi, cập nhật tài liệu, CHANGELOG và ROADMAP trên nhánh task, rồi commit và push.
+  Dùng khi được giao code một task, khi sửa theo findings review, hoặc khi viết tiếp một task đang dở.
 compatibility: Git; Go và Xcode theo core/go.mod và App; chạy từ root dự án.
 ---
 
