@@ -8,3 +8,7 @@ plugins:
     opt:
       - paths=import
       - module=hiraku/core/gen
+  - local: protoc-gen-swift
+    out: Packages/HirakuModels/Sources/HirakuModels/Generated
+    opt:
+      - Visibility=Public

@@ -3,8 +3,12 @@ import PackageDescription
 
 let package = Package(
     name: "HirakuBridge",
+    platforms: [.iOS("26.0"), .macOS("26.0")],
     products: [
         .library(name: "HirakuBridge", targets: ["HirakuBridge"]),
+    ],
+    dependencies: [
+        .package(path: "../HirakuModels"),
     ],
     targets: [
         .target(
@@ -13,7 +17,14 @@ let package = Package(
         ),
         .target(
             name: "HirakuBridge",
-            dependencies: ["CHirakuBridge"]
+            dependencies: [
+                "CHirakuBridge",
+                .product(name: "HirakuModels", package: "HirakuModels"),
+            ],
+            linkerSettings: [
+                // hk_* comes from the Go archive linked into the app.
+                .unsafeFlags(["-Xlinker", "-undefined", "-Xlinker", "dynamic_lookup"]),
+            ]
         ),
     ]
 )

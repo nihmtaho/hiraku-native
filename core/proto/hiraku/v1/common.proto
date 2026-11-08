@@ -4,6 +4,11 @@ package hiraku.v1;
 
 option go_package = "hiraku/core/gen/hirakuv1;hirakuv1";
 
+enum Method {
+  METHOD_UNSPECIFIED = 0;
+  METHOD_PING = 1;
+}
+
 enum ErrorCode {
   ERROR_CODE_UNSPECIFIED = 0;
   ERROR_CODE_INVALID_ARGUMENT = 1;
