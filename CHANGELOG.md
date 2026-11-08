@@ -7,6 +7,7 @@ Mục `[Unreleased]` là thay đổi sản phẩm, mỗi PR đã duyệt merge p
 Nhóm: Thêm · Đổi · Sửa · Xóa · Tài liệu · Bảo mật. Mỗi dòng kết thúc bằng `(WP-xx, PR n)`. Chưa có mã sản phẩm.
 
 ### Thêm
+- WP-01: contract `core/proto/hiraku/v1` (common + study, `buf lint`, Go sinh vào `core/gen/hirakuv1`), script `core/scripts/check-core.sh` và `Scripts/check-imports.sh` nối vào CI, job `swift` chạy `xcodebuild test` với target `HirakuTests` (test WAL mở lại), XCFramework `Frameworks/HirakuCore.xcframework` (24 MB, ba slice). App Group chưa xác minh: entitlement đòi ký development (ADR-17), xem task record.
 - Spike S-5: test hai cửa sổ cùng chấm 10 thẻ trên fixture 50.000 thẻ (`core/spike/storage/concurrent_grade_test.go`): một handle dùng chung và hai handle với `_txlock=immediate` đạt 400/400 không log mất/trùng, `deferred` lỗi `database is locked` ở khoảng 70% lần chấm nên WP-02a phải dùng `immediate` hoặc một writer; chưa chạy hai cửa sổ UI và hai tiến trình (S-5).
 - Spike S-1 bổ sung: chạy lại bộ đo S-1 trên schema ADR-27 (fixture đã dùng `notes`/`cards`/`search_text`), kết quả trong `docs/reports/M0_SPIKE.md`; lần chạy khi máy tải cho đuôi dài ở hàng đợi cap 1.000 (median 211–818 ms), nên kết luận S-1 giữ nguyên và 60 fps chưa xác minh (S-1 bổ sung).
 - Spike S-4: màn hình debug `AdaptiveCheckView` (`HK_SPIKE_S4=1`) dùng một controller cho `List` + `TabView` + phụ kiện đáy trên iPhone và `NavigationSplitView` + `Table` + inspector 230pt trên iPad/macOS; chụp trên iPhone và iPad simulator, macOS chỉ build/chạy, thiết bị thật chưa xác minh (S-4).

@@ -39,7 +39,7 @@ Record is authority for the contract; plan is authority for progress; issues tra
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
 | FFI tests | `cd core && go test -race ./ffi/...` | Not run | — |
-| Swift bridge tests | `xcodebuild test -scheme Hiraku -destination "platform=macOS"` | Not run | — |
+| Swift bridge tests | `xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination "platform=macOS"` | Not run | — |
 
 ## Coding
 

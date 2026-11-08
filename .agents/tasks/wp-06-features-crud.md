@@ -39,7 +39,7 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
-| Feature controller tests | `xcodebuild test -scheme Hiraku -destination "platform=macOS"` | Not run | — |
+| Feature controller tests | `xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination "platform=macOS"` | Not run | — |
 | Search timing | `manual: 50,000 notes, search < 150 ms` | Not run | — |
 
 ## Coding

@@ -45,7 +45,7 @@ Record is authority for the contract; plan is authority for progress; issues tra
 | Go tests | `cd core && go vet ./... && go test -race -count=1 ./...` | Not run | — |
 | Core boundary script | `core/scripts/check-core.sh` | Not run | — |
 | Swift import script | `Scripts/check-imports.sh` | Not run | — |
-| Xcode tests | `xcodebuild test -scheme Hiraku -destination "platform=macOS"` | Not run | — |
+| Xcode tests | `xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination "platform=macOS"` | Not run | — |
 | XCFramework build | `core/scripts/build-xcframework.sh` | Not run | — |
 
 ## Coding

@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package hiraku.v1;
+
+option go_package = "hiraku/core/gen/hirakuv1;hirakuv1";
+
+import "hiraku/v1/common.proto";
+
+enum Rating {
+  RATING_UNSPECIFIED = 0;
+  RATING_AGAIN = 1;
+  RATING_HARD = 2;
+  RATING_GOOD = 3;
+  RATING_EASY = 4;
+}
+
+enum StudyMode {
+  STUDY_MODE_UNSPECIFIED = 0;
+  STUDY_MODE_FLASHCARD = 1;
+  STUDY_MODE_TYPING = 2;
+}
+
+message GradeRequest {
+  string card_id = 1;
+  Rating rating = 2;
+  StudyMode mode = 3;
+  int64 elapsed_ms = 4;
+  int64 now_ms = 5;
+}
+
+message GradeResponse {
+  int64 next_due_ms = 1;
+  ChangeSet changes = 2;
+}
