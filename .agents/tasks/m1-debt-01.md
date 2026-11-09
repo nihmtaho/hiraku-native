@@ -59,7 +59,7 @@
 
 ## Delivery
 
-- CHANGELOG entry and ROADMAP/Kanban status updated in the PR: yes
+- CHANGELOG entry: yes; ROADMAP/Kanban: n/a (follow-up has no separate row)
 - Status: merged
 - CI / integration revision: PR 80, merge 69441a6, ci + swift green
 - Gate / PO approval: ADR-26
