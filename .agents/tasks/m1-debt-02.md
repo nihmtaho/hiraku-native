@@ -6,7 +6,7 @@
 - Owner: coordinator / senior (Q-29)
 - Milestone / WP: M1a / WP-03 follow-up
 - Branch / PR: `fix/m1-debt-2` from `develop`
-- Base / head SHA: 69441a6 / NEW_SHA
+- Base / head SHA: 69441a6 / 51aafac
 - Dependencies: m1-debt-01
 - Required reading: ADR-24, ADR-26
 - Blocking Q / gate: none
@@ -35,9 +35,9 @@
 
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
-| All core | `cd core && go vet ./... && go test -race ./...` | 0 | NEW_SHA |
-| Contract | `buf lint && buf breaking --against '.git#branch=develop'` | 0 | NEW_SHA |
-| Xcode tests | `xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=macOS'` | 0, 4 tests | NEW_SHA |
+| All core | `cd core && go vet ./... && go test -race ./...` | 0 | 51aafac |
+| Contract | `buf lint && buf breaking --against '.git#branch=develop'` | 0 | 51aafac |
+| Xcode tests | `xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=macOS'` | 0, 4 tests | 51aafac |
 
 ## Coding
 
