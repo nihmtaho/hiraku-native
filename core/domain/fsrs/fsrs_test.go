@@ -165,3 +165,24 @@ func TestChainedLearningSteps(t *testing.T) {
 		t.Fatalf("final = %+v", review)
 	}
 }
+
+func TestReviewCrossingStudyDayBoundaryUsesLongTermFormula(t *testing.T) {
+	settings := testSettings()
+	last := time.Date(2026, 11, 1, 3, 55, 0, 0, time.UTC).UnixMilli()
+	now := time.Date(2026, 11, 1, 4, 5, 0, 0, time.UTC).UnixMilli()
+	card := Card{State: StateReview, Stability: 10, Difficulty: 5, LastReviewMs: last, DueMs: last}
+	got := Next(card, RatingGood, now, settings)
+	decay := -defaultWeights[20]
+	factor := math.Pow(0.9, 1/decay) - 1
+	r := retrievability(last, now, 10, 1, factor, decay)
+	want := nextStability(5, 10, r, RatingGood, defaultWeights)
+	if math.Abs(got.Stability-want) > 1e-12 {
+		t.Fatalf("stability = %v, want long-term %v", got.Stability, want)
+	}
+	if got.Stability == shortTermStability(10, RatingGood, defaultWeights) {
+		t.Fatal("crossing 04:00 used the short-term formula")
+	}
+	if got.LastReviewMs != now || got.ElapsedDays != 1 {
+		t.Fatalf("last/elapsed = %d/%d", got.LastReviewMs, got.ElapsedDays)
+	}
+}

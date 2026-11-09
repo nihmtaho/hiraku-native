@@ -38,11 +38,11 @@ func TestQueueOrderAndLimits(t *testing.T) {
 	first, _ := r.CreateNote(ctx, 200, deckID, map[string]string{"nf-term": "一", "nf-meaning": "một"})
 	second, _ := r.CreateNote(ctx, 300, deckID, map[string]string{"nf-term": "二", "nf-meaning": "hai"})
 
-	due, err := r.DueCards(ctx, 10_000, 10)
+	due, err := r.DueCards(ctx, 10_000, 10, store.Scope{})
 	if err != nil || len(due) != 0 {
 		t.Fatalf("due = %+v %v", due, err)
 	}
-	fresh, err := r.NewCards(ctx, 1)
+	fresh, err := r.NewCards(ctx, 1, store.Scope{})
 	if err != nil || len(fresh) != 1 || fresh[0].NoteID != first.ID {
 		t.Fatalf("new = %+v %v", fresh, err)
 	}
@@ -53,7 +53,7 @@ func TestQueueOrderAndLimits(t *testing.T) {
 	if err := r.SaveCardState(ctx, 400, second.ID, fsrs.Card{State: fsrs.StateLearning, DueMs: 6000, Stability: 1, Difficulty: 5}); err != nil {
 		t.Fatal(err)
 	}
-	due, err = r.DueCards(ctx, 10_000, 10)
+	due, err = r.DueCards(ctx, 10_000, 10, store.Scope{})
 	if err != nil || len(due) != 2 || due[0].CardID != second.ID {
 		t.Fatalf("due order = %+v %v", due, err)
 	}
@@ -79,20 +79,46 @@ func TestDueQueueExcludesSuspendedAndStopsAtDayEnd(t *testing.T) {
 	if err := r.SaveCardState(ctx, now, note.ID, fsrs.Card{State: fsrs.StateReview, DueMs: end - 1, Stability: 1, Difficulty: 5}); err != nil {
 		t.Fatal(err)
 	}
-	due, _ := r.DueCards(ctx, end, 10)
+	due, _ := r.DueCards(ctx, end, 10, store.Scope{})
 	if len(due) != 1 {
 		t.Fatalf("due = %+v", due)
 	}
 	if _, err := s.DB().Exec(`UPDATE card_states SET suspended = 1`); err != nil {
 		t.Fatal(err)
 	}
-	if due, _ := r.DueCards(ctx, end, 10); len(due) != 0 {
+	if due, _ := r.DueCards(ctx, end, 10, store.Scope{}); len(due) != 0 {
 		t.Fatalf("suspended leaked = %+v", due)
 	}
 	if _, err := s.DB().Exec(`UPDATE card_states SET suspended = 0, due = ?`, end+1); err != nil {
 		t.Fatal(err)
 	}
-	if due, _ := r.DueCards(ctx, end, 10); len(due) != 0 {
+	if due, _ := r.DueCards(ctx, end, 10, store.Scope{}); len(due) != 0 {
 		t.Fatalf("due after end leaked = %+v", due)
+	}
+}
+
+func TestQueueScopes(t *testing.T) {
+	ctx := context.Background()
+	_, r := openRepo(t)
+	firstFolder, firstDeck := seedDeck(t, r)
+	secondFolder, _ := r.CreateFolder(ctx, 600, "F2")
+	secondDeck, err := r.CreateDeck(ctx, 601, store.Deck{FolderID: secondFolder.ID, Name: "D2"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	first, _ := r.CreateNote(ctx, 602, firstDeck, map[string]string{"nf-term": "一", "nf-meaning": "một"})
+	second, _ := r.CreateNote(ctx, 603, secondDeck.ID, map[string]string{"nf-term": "二", "nf-meaning": "hai"})
+
+	all, _ := r.NewCards(ctx, 10, store.Scope{})
+	if len(all) != 2 {
+		t.Fatalf("all = %+v", all)
+	}
+	byDeck, _ := r.NewCards(ctx, 10, store.Scope{DeckID: secondDeck.ID})
+	if len(byDeck) != 1 || byDeck[0].CardID != second.ID {
+		t.Fatalf("deck scope = %+v", byDeck)
+	}
+	byFolder, _ := r.NewCards(ctx, 10, store.Scope{FolderID: firstFolder})
+	if len(byFolder) != 1 || byFolder[0].CardID != first.ID {
+		t.Fatalf("folder scope = %+v", byFolder)
 	}
 }

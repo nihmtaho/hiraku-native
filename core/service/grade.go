@@ -12,7 +12,10 @@ import (
 	hirakuv1 "hiraku/core/gen/hirakuv1"
 )
 
-const defaultQueueLimit = 200
+const (
+	defaultQueueLimit = 200
+	maxQueueLimit     = 500
+)
 
 // Grade applies one review in a single transaction and returns the change set.
 func (s *Service) grade(ctx context.Context, req *hirakuv1.GradeRequest) (*hirakuv1.GradeResponse, error) {
@@ -92,6 +95,10 @@ func (s *Service) buildQueue(ctx context.Context, req *hirakuv1.BuildQueueReques
 	if limit <= 0 {
 		limit = defaultQueueLimit
 	}
+	if limit > maxQueueLimit {
+		limit = maxQueueLimit
+	}
+	scope := store.Scope{FolderID: req.GetFolderId(), DeckID: req.GetDeckId()}
 	settings, newPerDay, err := s.schedulingSettings(ctx)
 	if err != nil {
 		return nil, MapError(err)
@@ -106,7 +113,7 @@ func (s *Service) buildQueue(ctx context.Context, req *hirakuv1.BuildQueueReques
 		allowed = 0
 	}
 
-	due, err := s.repo.DueCards(ctx, dayboundary.End(req.GetNowMs(), settings.DayStartHour), limit)
+	due, err := s.repo.DueCards(ctx, dayboundary.End(req.GetNowMs(), settings.DayStartHour), limit, scope)
 	if err != nil {
 		return nil, MapError(err)
 	}
@@ -119,7 +126,7 @@ func (s *Service) buildQueue(ctx context.Context, req *hirakuv1.BuildQueueReques
 		remaining = allowed
 	}
 	if remaining > 0 {
-		fresh, err := s.repo.NewCards(ctx, remaining)
+		fresh, err := s.repo.NewCards(ctx, remaining, scope)
 		if err != nil {
 			return nil, MapError(err)
 		}

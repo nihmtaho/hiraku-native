@@ -37,6 +37,8 @@ message GradeResponse {
 message BuildQueueRequest {
   int64 now_ms = 1;
   int32 limit = 2;
+  string folder_id = 3;
+  string deck_id = 4;
 }
 
 message QueueItem {
