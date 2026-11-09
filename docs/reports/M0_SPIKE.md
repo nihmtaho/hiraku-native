@@ -159,8 +159,8 @@ uv run --with fsrs==6.3.2 python core/spike/gen_fsrs_vectors.py
 Thêm `--python 3.13.5` để tái lập đúng trường `reference.interpreter` đã ghi; 17 vector và mọi giá trị là **byte-identical** giữa CPython 3.13.5 và 3.14.7 (đã chạy cả hai và `diff`), chỉ trường `interpreter` đổi theo trình thông dịch đang chạy.
 
 - `request_retention = 0.9`; `maximum_interval = 36500` (chọn bằng mặc định của cả hai thư viện, cũng là trần `Validate` của ứng viên; giá trị thật là cài đặt người dùng ở M1); `enable_short_term = true`; `enable_fuzz = false`.
-  - `enable_short_term` là **tên trường của spec**, không phải tham số của py-fsrs: py-fsrs không có công tắc này — hành vi ngắn hạn là hệ quả của bước học khác rỗng (`1m`/`10m`). Ghi chú mapping nằm trong `mapping.enable_short_term` của `core/spike/fsrs_vectors.json`; phía ứng viên mới có `EnableShortTerm = true` → `basicScheduler`.
-- Trọng số FSRS-6 dùng chung, ghi trong `core/spike/fsrs_vectors.json` (`weights`): `0.212, 1.2931, 2.3065, 8.2956, 6.4133, 0.8334, 3.0194, 0.001, 1.8722, 0.1666, 0.796, 1.4835, 0.0614, 0.2629, 1.6483, 0.6014, 1.8729, 0.5425, 0.0912, 0.0658, 0.1542` — trùng `DefaultWeights()`/`DEFAULT_PARAMETERS` của hai bên, tức **cùng phiên bản thuật toán FSRS-6**; không có tình huống "ứng viên chạy bản FSRS cũ hơn py-fsrs", nên không phải chạy lại tham chiếu với `fsrs` cũ (mục 6 của packet).
+  - `enable_short_term` là **tên trường của spec**, không phải tham số của py-fsrs: py-fsrs không có công tắc này — hành vi ngắn hạn là hệ quả của bước học khác rỗng (`1m`/`10m`). Ghi chú mapping nằm trong `mapping.enable_short_term` của `core/testdata/fsrs_vectors.json`; phía ứng viên mới có `EnableShortTerm = true` → `basicScheduler`.
+- Trọng số FSRS-6 dùng chung, ghi trong `core/testdata/fsrs_vectors.json` (`weights`): `0.212, 1.2931, 2.3065, 8.2956, 6.4133, 0.8334, 3.0194, 0.001, 1.8722, 0.1666, 0.796, 1.4835, 0.0614, 0.2629, 1.6483, 0.6014, 1.8729, 0.5425, 0.0912, 0.0658, 0.1542` — trùng `DefaultWeights()`/`DEFAULT_PARAMETERS` của hai bên, tức **cùng phiên bản thuật toán FSRS-6**; không có tình huống "ứng viên chạy bản FSRS cũ hơn py-fsrs", nên không phải chạy lại tham chiếu với `fsrs` cũ (mục 6 của packet).
 - 17 vector, mỗi vector là một lần chấm độc lập (`input` thẻ đầy đủ, `now`, `rating` → `want`):
   - `new/r1…r4` — thẻ New chấm 1/2/3/4;
   - `good-good-again-good/r3, r3, r1, r3` — Good→Good→Again→Good;
@@ -201,7 +201,7 @@ Tiêu chí trượt: **"khớp bộ test vector sinh từ triển khai tham chi�
 
 Theo ADR-26, hướng đi là **tự cài FSRS trong `core/domain/fsrs`**. Phác thảo (không làm trong task này):
 
-1. API thuần: `Next(card, rating, now_ms, settings) (Card, error)` và `Preview(card, now_ms, settings) map[Rating]Card`, cùng bộ vector `core/spike/fsrs_vectors.json` làm golden (ADR-22).
+1. API thuần: `Next(card, rating, now_ms, settings) (Card, error)` và `Preview(card, now_ms, settings) map[Rating]Card`, cùng bộ vector `core/testdata/fsrs_vectors.json` làm golden (ADR-22).
 2. Model: `Card{state, due_ms, last_review_ms, stability, difficulty, reps, lapses, remaining_steps}`; `Settings{request_retention, maximum_interval, enable_short_term, enable_fuzz=false, learning_steps, relearning_steps}`; trọng số FSRS-6 đóng băng thành hằng 21 phần tử, chép đúng thứ tự phép tính của py-fsrs 6.3.2 để vector khớp bit.
 3. Số ngày đã trôi do hiraku tự quyết theo `day_start_hour` (spec §7.3) thay vì ngày lịch UTC — đây là chỗ cố ý khác py-fsrs, phải sinh lại golden và ghi trong ADR/SPEC trước khi chốt. Lưu ý cho WP-03: **không vector nào trong 17 vector vắt qua mốc `day_start_hour` 04:00** (`midnight-gap` 23:55Z → 00:05Z vẫn nằm trong cùng một ngày học hiraku), nên khi định nghĩa luật số ngày đã trôi WP-03 phải thêm vector vắt mốc 04:00 (ví dụ 03:55 → 04:05).
 4. Test bắt buộc: toàn bộ 17 vector ở trên (state/due/stability/difficulty/reps/lapses), Again trên thẻ New ra `due` phút, lapse +1 khi Again từ Review, `Preview` khớp `Next` cho cả 4 rating, và không đọc đồng hồ (truyền `now_ms`).
@@ -210,7 +210,7 @@ Theo ADR-26, hướng đi là **tự cài FSRS trong `core/domain/fsrs`**. Phác
 
 ### Dọn dẹp sau quyết định
 
-Harness so sánh (`core/spike/fsrs_vectors_test.go` chạy `go-fsrs/v4`) chỉ dùng một lần; bằng chứng sinh lại được là `core/spike/gen_fsrs_vectors.py` + `core/spike/fsrs_vectors.json` + bảng lệch ở trên. Đã xoá harness và gỡ `github.com/open-spaced-repetition/go-fsrs/v4` khỏi `core/go.mod`/`core/go.sum` (`go mod tidy`); từ root:
+Harness so sánh (`core/spike/fsrs_vectors_test.go` chạy `go-fsrs/v4`) chỉ dùng một lần; bằng chứng sinh lại được là `core/spike/gen_fsrs_vectors.py` + `core/testdata/fsrs_vectors.json` + bảng lệch ở trên. Đã xoá harness và gỡ `github.com/open-spaced-repetition/go-fsrs/v4` khỏi `core/go.mod`/`core/go.sum` (`go mod tidy`); từ root:
 
 ```sh
 cd core && go mod tidy && go test -race ./...
