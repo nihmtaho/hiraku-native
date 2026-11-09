@@ -26,6 +26,8 @@ type Method int32
 const (
 	Method_METHOD_UNSPECIFIED Method = 0
 	Method_METHOD_PING        Method = 1
+	Method_METHOD_GRADE       Method = 2
+	Method_METHOD_BUILD_QUEUE Method = 3
 )
 
 // Enum value maps for Method.
@@ -33,10 +35,14 @@ var (
 	Method_name = map[int32]string{
 		0: "METHOD_UNSPECIFIED",
 		1: "METHOD_PING",
+		2: "METHOD_GRADE",
+		3: "METHOD_BUILD_QUEUE",
 	}
 	Method_value = map[string]int32{
 		"METHOD_UNSPECIFIED": 0,
 		"METHOD_PING":        1,
+		"METHOD_GRADE":       2,
+		"METHOD_BUILD_QUEUE": 3,
 	}
 )
 
@@ -450,10 +456,12 @@ const file_hiraku_v1_common_proto_rawDesc = "" +
 	"\achanges\x18\x01 \x03(\v2\x11.hiraku.v1.ChangeR\achanges\"e\n" +
 	"\x05Error\x12(\n" +
 	"\x04code\x18\x01 \x01(\x0e2\x14.hiraku.v1.ErrorCodeR\x04code\x122\n" +
-	"\bsub_code\x18\x02 \x01(\x0e2\x17.hiraku.v1.ErrorSubCodeR\asubCode*1\n" +
+	"\bsub_code\x18\x02 \x01(\x0e2\x17.hiraku.v1.ErrorSubCodeR\asubCode*[\n" +
 	"\x06Method\x12\x16\n" +
 	"\x12METHOD_UNSPECIFIED\x10\x00\x12\x0f\n" +
-	"\vMETHOD_PING\x10\x01*\xae\x01\n" +
+	"\vMETHOD_PING\x10\x01\x12\x10\n" +
+	"\fMETHOD_GRADE\x10\x02\x12\x16\n" +
+	"\x12METHOD_BUILD_QUEUE\x10\x03*\xae\x01\n" +
 	"\tErrorCode\x12\x1a\n" +
 	"\x16ERROR_CODE_UNSPECIFIED\x10\x00\x12\x1f\n" +
 	"\x1bERROR_CODE_INVALID_ARGUMENT\x10\x01\x12\x18\n" +

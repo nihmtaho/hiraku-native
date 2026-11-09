@@ -205,6 +205,7 @@ type GradeResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	NextDueMs     int64                  `protobuf:"varint,1,opt,name=next_due_ms,json=nextDueMs,proto3" json:"next_due_ms,omitempty"`
 	Changes       *ChangeSet             `protobuf:"bytes,2,opt,name=changes,proto3" json:"changes,omitempty"`
+	Reinsert      bool                   `protobuf:"varint,3,opt,name=reinsert,proto3" json:"reinsert,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -253,6 +254,177 @@ func (x *GradeResponse) GetChanges() *ChangeSet {
 	return nil
 }
 
+func (x *GradeResponse) GetReinsert() bool {
+	if x != nil {
+		return x.Reinsert
+	}
+	return false
+}
+
+type BuildQueueRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	NowMs         int64                  `protobuf:"varint,1,opt,name=now_ms,json=nowMs,proto3" json:"now_ms,omitempty"`
+	Limit         int32                  `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BuildQueueRequest) Reset() {
+	*x = BuildQueueRequest{}
+	mi := &file_hiraku_v1_study_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BuildQueueRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BuildQueueRequest) ProtoMessage() {}
+
+func (x *BuildQueueRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_hiraku_v1_study_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BuildQueueRequest.ProtoReflect.Descriptor instead.
+func (*BuildQueueRequest) Descriptor() ([]byte, []int) {
+	return file_hiraku_v1_study_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *BuildQueueRequest) GetNowMs() int64 {
+	if x != nil {
+		return x.NowMs
+	}
+	return 0
+}
+
+func (x *BuildQueueRequest) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+type QueueItem struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CardId        string                 `protobuf:"bytes,1,opt,name=card_id,json=cardId,proto3" json:"card_id,omitempty"`
+	NoteId        string                 `protobuf:"bytes,2,opt,name=note_id,json=noteId,proto3" json:"note_id,omitempty"`
+	DeckId        string                 `protobuf:"bytes,3,opt,name=deck_id,json=deckId,proto3" json:"deck_id,omitempty"`
+	State         int32                  `protobuf:"varint,4,opt,name=state,proto3" json:"state,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *QueueItem) Reset() {
+	*x = QueueItem{}
+	mi := &file_hiraku_v1_study_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *QueueItem) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*QueueItem) ProtoMessage() {}
+
+func (x *QueueItem) ProtoReflect() protoreflect.Message {
+	mi := &file_hiraku_v1_study_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use QueueItem.ProtoReflect.Descriptor instead.
+func (*QueueItem) Descriptor() ([]byte, []int) {
+	return file_hiraku_v1_study_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *QueueItem) GetCardId() string {
+	if x != nil {
+		return x.CardId
+	}
+	return ""
+}
+
+func (x *QueueItem) GetNoteId() string {
+	if x != nil {
+		return x.NoteId
+	}
+	return ""
+}
+
+func (x *QueueItem) GetDeckId() string {
+	if x != nil {
+		return x.DeckId
+	}
+	return ""
+}
+
+func (x *QueueItem) GetState() int32 {
+	if x != nil {
+		return x.State
+	}
+	return 0
+}
+
+type BuildQueueResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Items         []*QueueItem           `protobuf:"bytes,1,rep,name=items,proto3" json:"items,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BuildQueueResponse) Reset() {
+	*x = BuildQueueResponse{}
+	mi := &file_hiraku_v1_study_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BuildQueueResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BuildQueueResponse) ProtoMessage() {}
+
+func (x *BuildQueueResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_hiraku_v1_study_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BuildQueueResponse.ProtoReflect.Descriptor instead.
+func (*BuildQueueResponse) Descriptor() ([]byte, []int) {
+	return file_hiraku_v1_study_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *BuildQueueResponse) GetItems() []*QueueItem {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
 var File_hiraku_v1_study_proto protoreflect.FileDescriptor
 
 const file_hiraku_v1_study_proto_rawDesc = "" +
@@ -264,10 +436,21 @@ const file_hiraku_v1_study_proto_rawDesc = "" +
 	"\x04mode\x18\x03 \x01(\x0e2\x14.hiraku.v1.StudyModeR\x04mode\x12\x1d\n" +
 	"\n" +
 	"elapsed_ms\x18\x04 \x01(\x03R\telapsedMs\x12\x15\n" +
-	"\x06now_ms\x18\x05 \x01(\x03R\x05nowMs\"_\n" +
+	"\x06now_ms\x18\x05 \x01(\x03R\x05nowMs\"{\n" +
 	"\rGradeResponse\x12\x1e\n" +
 	"\vnext_due_ms\x18\x01 \x01(\x03R\tnextDueMs\x12.\n" +
-	"\achanges\x18\x02 \x01(\v2\x14.hiraku.v1.ChangeSetR\achanges*e\n" +
+	"\achanges\x18\x02 \x01(\v2\x14.hiraku.v1.ChangeSetR\achanges\x12\x1a\n" +
+	"\breinsert\x18\x03 \x01(\bR\breinsert\"@\n" +
+	"\x11BuildQueueRequest\x12\x15\n" +
+	"\x06now_ms\x18\x01 \x01(\x03R\x05nowMs\x12\x14\n" +
+	"\x05limit\x18\x02 \x01(\x05R\x05limit\"l\n" +
+	"\tQueueItem\x12\x17\n" +
+	"\acard_id\x18\x01 \x01(\tR\x06cardId\x12\x17\n" +
+	"\anote_id\x18\x02 \x01(\tR\x06noteId\x12\x17\n" +
+	"\adeck_id\x18\x03 \x01(\tR\x06deckId\x12\x14\n" +
+	"\x05state\x18\x04 \x01(\x05R\x05state\"@\n" +
+	"\x12BuildQueueResponse\x12*\n" +
+	"\x05items\x18\x01 \x03(\v2\x14.hiraku.v1.QueueItemR\x05items*e\n" +
 	"\x06Rating\x12\x16\n" +
 	"\x12RATING_UNSPECIFIED\x10\x00\x12\x10\n" +
 	"\fRATING_AGAIN\x10\x01\x12\x0f\n" +
@@ -292,23 +475,27 @@ func file_hiraku_v1_study_proto_rawDescGZIP() []byte {
 }
 
 var file_hiraku_v1_study_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_hiraku_v1_study_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_hiraku_v1_study_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_hiraku_v1_study_proto_goTypes = []any{
-	(Rating)(0),           // 0: hiraku.v1.Rating
-	(StudyMode)(0),        // 1: hiraku.v1.StudyMode
-	(*GradeRequest)(nil),  // 2: hiraku.v1.GradeRequest
-	(*GradeResponse)(nil), // 3: hiraku.v1.GradeResponse
-	(*ChangeSet)(nil),     // 4: hiraku.v1.ChangeSet
+	(Rating)(0),                // 0: hiraku.v1.Rating
+	(StudyMode)(0),             // 1: hiraku.v1.StudyMode
+	(*GradeRequest)(nil),       // 2: hiraku.v1.GradeRequest
+	(*GradeResponse)(nil),      // 3: hiraku.v1.GradeResponse
+	(*BuildQueueRequest)(nil),  // 4: hiraku.v1.BuildQueueRequest
+	(*QueueItem)(nil),          // 5: hiraku.v1.QueueItem
+	(*BuildQueueResponse)(nil), // 6: hiraku.v1.BuildQueueResponse
+	(*ChangeSet)(nil),          // 7: hiraku.v1.ChangeSet
 }
 var file_hiraku_v1_study_proto_depIdxs = []int32{
 	0, // 0: hiraku.v1.GradeRequest.rating:type_name -> hiraku.v1.Rating
 	1, // 1: hiraku.v1.GradeRequest.mode:type_name -> hiraku.v1.StudyMode
-	4, // 2: hiraku.v1.GradeResponse.changes:type_name -> hiraku.v1.ChangeSet
-	3, // [3:3] is the sub-list for method output_type
-	3, // [3:3] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	7, // 2: hiraku.v1.GradeResponse.changes:type_name -> hiraku.v1.ChangeSet
+	5, // 3: hiraku.v1.BuildQueueResponse.items:type_name -> hiraku.v1.QueueItem
+	4, // [4:4] is the sub-list for method output_type
+	4, // [4:4] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_hiraku_v1_study_proto_init() }
@@ -323,7 +510,7 @@ func file_hiraku_v1_study_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_hiraku_v1_study_proto_rawDesc), len(file_hiraku_v1_study_proto_rawDesc)),
 			NumEnums:      2,
-			NumMessages:   2,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

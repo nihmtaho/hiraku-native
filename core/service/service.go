@@ -5,6 +5,8 @@ import (
 	"context"
 	"errors"
 
+	"google.golang.org/protobuf/proto"
+
 	"hiraku/core/domain/notetype"
 	"hiraku/core/store"
 
@@ -40,6 +42,26 @@ func (s *Service) Handle(ctx context.Context, method hirakuv1.Method, req []byte
 			return nil, &Error{Code: hirakuv1.ErrorCode_ERROR_CODE_INVALID_ARGUMENT}
 		}
 		return nil, nil
+	case hirakuv1.Method_METHOD_GRADE:
+		var request hirakuv1.GradeRequest
+		if err := proto.Unmarshal(req, &request); err != nil {
+			return nil, &Error{Code: hirakuv1.ErrorCode_ERROR_CODE_INVALID_ARGUMENT}
+		}
+		response, err := s.grade(ctx, &request)
+		if err != nil {
+			return nil, err
+		}
+		return proto.Marshal(response)
+	case hirakuv1.Method_METHOD_BUILD_QUEUE:
+		var request hirakuv1.BuildQueueRequest
+		if err := proto.Unmarshal(req, &request); err != nil {
+			return nil, &Error{Code: hirakuv1.ErrorCode_ERROR_CODE_INVALID_ARGUMENT}
+		}
+		response, err := s.buildQueue(ctx, &request)
+		if err != nil {
+			return nil, err
+		}
+		return proto.Marshal(response)
 	default:
 		return nil, &Error{Code: hirakuv1.ErrorCode_ERROR_CODE_NOT_FOUND}
 	}
