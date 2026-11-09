@@ -41,7 +41,7 @@ Record is authority for the contract; plan is authority for progress; issues tra
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
 | buf lint | `buf lint` (repo root) | 0 | d29a8d9 |
-| buf breaking | `buf breaking --against '.git#branch=develop'` | Not run at that revision — contract was new; baseline exists since PR 73 and WP-03 onwards re-run it (WP-02a did not) | d29a8d9 |
+| buf breaking | `buf breaking --against '.git#branch=develop'` | Not run at that revision — contract was new; baseline exists since PR 73; WP-02b and WP-03 onwards re-run it (WP-02a did not) | d29a8d9 |
 | Go tests | `cd core && go vet ./... && go test -race -count=1 ./...` | 0 | d29a8d9 |
 | Core boundary script | `core/scripts/check-core.sh` | 0; planted `_ "net"` gives 1 and names the file | d29a8d9 |
 | Swift import script | `Scripts/check-imports.sh` | 0 | d29a8d9 |

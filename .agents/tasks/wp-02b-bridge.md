@@ -56,7 +56,7 @@ Record is authority for the contract; plan is authority for progress; issues tra
 - Reviewer / session: independent subagent
 - Revision: 05e28d0
 - Verdict: PASS @ 05e28d0
-- Findings: none blocking after the fix commit; EventHub producer added in WP-03 (Grade ChangeSet)
+- Findings: none blocking after the fix commit; EventHub producer added in m1-debt-02 (Grade ChangeSet)
 - Checks the reviewer actually ran: go vet, go test -race, buf lint/breaking, check scripts, xcodebuild test (3 tests), swift build all packages
 
 ## Delivery
