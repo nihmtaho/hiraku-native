@@ -56,7 +56,19 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 ## Independent review
 
+- Reviewer / session: independent subagent
+- Revision: b831e36
+- Verdict: PASS @ b831e36
+- Findings: fsrs_short_term not honored (fixed), missing one-log/rollback/step tests (added); no blockers after fix
+- Checks the reviewer actually ran: go vet, go test -race, buf lint/breaking, check scripts, xcodebuild build + test
+
 ## Delivery
+
+- CHANGELOG entry and ROADMAP/Kanban status updated in the PR: yes
+- Status: merged
+- CI / integration revision: PR 78, merge 19c431a, ci + swift green
+- Gate / PO approval: ADR-26
+- Actions actually taken / evidence from the target system: GitHub PR 78 merged to develop
 
 ## Next
 
