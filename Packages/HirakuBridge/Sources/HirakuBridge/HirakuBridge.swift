@@ -57,6 +57,9 @@ public actor HirakuBridge: HirakuCalling {
         }
         let body = Self.take(response)
         guard code == 0 else { throw Self.map(code: code, body: body) }
+        if let changeSet = Self.changeSet(method: method, response: body) {
+            await eventHub.send(changeSet)
+        }
         return Data(body)
     }
 
@@ -64,6 +67,13 @@ public actor HirakuBridge: HirakuCalling {
         guard let handle else { return }
         self.handle = nil
         _ = hk_close(handle.raw)
+    }
+
+    static func changeSet(method: Hiraku_V1_Method, response: [UInt8]) -> Hiraku_V1_ChangeSet? {
+        guard method == .grade, let decoded = try? Hiraku_V1_GradeResponse(serializedBytes: response) else {
+            return nil
+        }
+        return decoded.changes
     }
 
     private static func take(_ bytes: HKBytes) -> [UInt8] {

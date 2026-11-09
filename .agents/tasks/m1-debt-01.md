@@ -2,11 +2,11 @@
 
 ## Contract
 
-- Status: review
+- Status: merged
 - Owner: coordinator / senior (Q-29)
 - Milestone / WP: M1a / WP-03 follow-up
-- Branch / PR: `fix/m1-debt` from `develop`
-- Base / head SHA: 17d2c37 / 553ffa2
+- Branch / PR: `fix/m1-debt` / PR 80
+- Base / head SHA: 17d2c37 / ebfd123 (merge 69441a6)
 - Dependencies: WP-03
 - Required reading: spec §7.3, ADR-26; .agents/tasks/wp-03-fsrs.md Next
 - Blocking Q / gate: none
@@ -51,8 +51,20 @@
 
 ## Independent review
 
+- Reviewer / session: independent subagent
+- Revision: ebfd123
+- Verdict: PASS @ ebfd123
+- Findings: test-strength notes only (second-grade snapshot, DueCards scope, CHANGELOG suffix)
+- Checks the reviewer actually ran: go vet, go test -race, buf lint/breaking, check scripts, xcodebuild build
+
 ## Delivery
+
+- CHANGELOG entry and ROADMAP/Kanban status updated in the PR: yes
+- Status: merged
+- CI / integration revision: PR 80, merge 69441a6, ci + swift green
+- Gate / PO approval: ADR-26
+- Actions actually taken / evidence from the target system: GitHub PR 80 merged to develop
 
 ## Next
 
-WP-04 after merge.
+Residual test-strength notes are handled in m1-debt-02.

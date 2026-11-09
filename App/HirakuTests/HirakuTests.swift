@@ -1,5 +1,5 @@
 import Foundation
-import HirakuBridge
+@testable import HirakuBridge
 import HirakuModels
 import SQLite3
 import Testing
@@ -59,4 +59,19 @@ private func methodRaw(_ raw: Int32) -> Hiraku_V1_Method { Hiraku_V1_Method(rawV
     await hub.send(Hiraku_V1_ChangeSet())
     let change = await iterator.next()
     #expect(change != nil)
+}
+
+@Test func gradeResponsePublishesChangeSet() throws {
+    let change = Hiraku_V1_Change.with {
+        $0.entityID = "card-1"
+        $0.kind = .upsert
+        $0.entity = .card
+    }
+    let response = Hiraku_V1_GradeResponse.with {
+        $0.nextDueMs = 1
+        $0.changes = Hiraku_V1_ChangeSet.with { $0.changes = [change] }
+    }
+    let decoded = HirakuBridge.changeSet(method: .grade, response: Array(try response.serializedData()))
+    #expect(decoded?.changes.count == 1)
+    #expect(HirakuBridge.changeSet(method: .ping, response: Array(try response.serializedData())) == nil)
 }
