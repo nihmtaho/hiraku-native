@@ -56,7 +56,7 @@ Record is authority for the contract; plan is authority for progress; issues tra
 - Reviewer / session: independent subagent
 - Revision: 05e28d0
 - Verdict: PASS @ 05e28d0
-- Findings: none blocking after the fix commit; EventHub producer deferred to WP-03
+- Findings: none blocking after the fix commit; EventHub producer added in m1-debt-02 (Grade ChangeSet)
 - Checks the reviewer actually ran: go vet, go test -race, buf lint/breaking, check scripts, xcodebuild test (3 tests), swift build all packages
 
 ## Delivery
@@ -69,4 +69,4 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 ## Next
 
-EventHub has no producer until the first ChangeSet-returning RPC (WP-03 Grade). HirakuModels exposes contract types to Features by design; review enforces L4.
+EventHub receives Grade ChangeSets since m1-debt-02. HirakuModels exposes contract types to Features by design; review enforces L4.

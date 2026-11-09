@@ -38,9 +38,9 @@
 
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
-| All core | `cd core && go vet ./... && go test -race ./...` | 0 | 553ffa2 |
-| Contract | `buf lint && buf breaking --against '.git#branch=develop'` | 0 | 553ffa2 |
-| Xcode build | `xcodebuild build -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=macOS'` | 0 | 553ffa2 |
+| All core | `cd core && go vet ./... && go test -race ./...` | 0 | ebfd123 |
+| Contract | `buf lint && buf breaking --against '.git#branch=develop'` | 0 | ebfd123 |
+| Xcode build | `xcodebuild build -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=macOS'` | 0 | ebfd123 |
 
 ## Coding
 
@@ -59,7 +59,7 @@
 
 ## Delivery
 
-- CHANGELOG entry and ROADMAP/Kanban status updated in the PR: yes
+- CHANGELOG entry: yes; ROADMAP/Kanban: n/a (follow-up has no separate row)
 - Status: merged
 - CI / integration revision: PR 80, merge 69441a6, ci + swift green
 - Gate / PO approval: ADR-26
