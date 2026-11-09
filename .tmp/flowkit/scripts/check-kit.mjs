@@ -25,6 +25,29 @@ const forbidden = [
   { token: "task-context", ci: false },
   { token: "wp-status", ci: false },
 ];
+// The kit is these 20 skills; an absent one is a violation, not a pass.
+const expectedSkills = [
+  "flow-coordinator",
+  "flow-task",
+  "flow-implement",
+  "flow-pr",
+  "flow-review",
+  "flow-ship",
+  "flow-status",
+  "flow-interface",
+  "flow-feature",
+  "flow-spike",
+  "flow-debug",
+  "product-review",
+  "write-spec",
+  "roadmap-update",
+  "sprint-planning",
+  "stakeholder-update",
+  "synthesize-research",
+  "competitive-brief",
+  "metrics-review",
+  "product-brainstorming",
+];
 
 const violations = [];
 
@@ -72,10 +95,11 @@ function frontmatter(text) {
   return lines.slice(start + 1, end).join("\n");
 }
 
-// 1. missing skill
+// 1. missing skill — every expected name must exist and pass the frontmatter rule
 const skillBodies = new Map();
 const nameValues = [];
-for (const dir of listSkillDirs()) {
+const extraDirs = listSkillDirs().filter((dir) => !expectedSkills.includes(dir));
+for (const dir of [...expectedSkills, ...extraDirs]) {
   const body = readOrNull(join(skillsDir, dir, "SKILL.md"));
   const fm = body === null ? null : frontmatter(body);
   const valid =
