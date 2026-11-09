@@ -2,11 +2,11 @@
 
 ## Contract
 
-- Status: review
+- Status: merged
 - Owner: coordinator / senior (Q-29)
 - Milestone / WP: M1a / WP-03 follow-up
-- Branch / PR: `fix/m1-debt-2` from `develop`
-- Base / head SHA: 69441a6 / c1e4666 (checks at c1e4666)
+- Branch / PR: `fix/m1-debt-2` / PR 81
+- Base / head SHA: 69441a6 / b00bfbf (checks at c1e4666, merge 47c17a7)
 - Dependencies: m1-debt-01
 - Required reading: ADR-24, ADR-26
 - Blocking Q / gate: none
@@ -35,9 +35,9 @@
 
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
-| All core | `cd core && go vet ./... && go test -race ./...` | 0 | 51aafac |
-| Contract | `buf lint && buf breaking --against '.git#branch=develop'` | 0 | 51aafac |
-| Xcode tests | `xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=macOS'` | 0, 4 tests | 51aafac |
+| All core | `cd core && go vet ./... && go test -race ./...` | 0 | c1e4666 |
+| Contract | `buf lint && buf breaking --against '.git#branch=develop'` | 0 | c1e4666 |
+| Xcode tests | `xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=macOS'` | 0, 5 tests | c1e4666 |
 
 ## Coding
 
@@ -46,8 +46,20 @@
 
 ## Independent review
 
+- Reviewer / session: independent subagent
+- Revision: b00bfbf
+- Verdict: PASS @ b00bfbf
+- Findings: folder-scope test, publish-through-call test, empty ChangeSet guard, CHANGELOG suffix, record head (all fixed)
+- Checks the reviewer actually ran: go vet, go test -race, buf lint/breaking, check scripts, xcodebuild test (5 tests)
+
 ## Delivery
+
+- CHANGELOG entry and ROADMAP/Kanban status updated in the PR: yes
+- Status: merged
+- CI / integration revision: PR 81, merge 47c17a7, ci + swift green
+- Gate / PO approval: ADR-24, ADR-26
+- Actions actually taken / evidence from the target system: GitHub PR 81 merged to develop
 
 ## Next
 
-After this merge the recorded M1a debt list is empty.
+Recorded M1a debt list is empty. Next: WP-04.
