@@ -6,7 +6,7 @@
 - Owner: coordinator / senior (Q-29)
 - Milestone / WP: M1a / WP-03
 - Branch / PR: `feat/wp-03-fsrs` from `develop` (PR pending)
-- Base / head SHA: 70dee4b / NEW_SHA
+- Base / head SHA: 70dee4b / f3b7acb
 - Dependencies: WP-02a, S-2
 - Required reading: ARCHITECTURE §6.2, §6.3; ADR-26; docs/reports/M0_SPIKE.md S-2; spec §FSRS
 - Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
@@ -38,12 +38,12 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
-| FSRS golden vectors | `cd core && go test ./domain/fsrs/` (17/17) | 0 | NEW_SHA |
-| Day boundary | `cd core && go test ./domain/dayboundary/` | 0 | NEW_SHA |
-| Service and store | `cd core && go test -race ./service/... ./store/...` | 0 | NEW_SHA |
-| All core | `cd core && go vet ./... && go test -race ./...` | 0 | NEW_SHA |
-| Contract | `buf lint && buf breaking --against '.git#branch=develop'` | 0 | NEW_SHA |
-| Xcode build | `xcodebuild build -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=macOS'` | 0 | NEW_SHA |
+| FSRS golden vectors | `cd core && go test ./domain/fsrs/` (17/17) | 0 | f3b7acb |
+| Day boundary | `cd core && go test ./domain/dayboundary/` | 0 | f3b7acb |
+| Service and store | `cd core && go test -race ./service/... ./store/...` | 0 | f3b7acb |
+| All core | `cd core && go vet ./... && go test -race ./...` | 0 | f3b7acb |
+| Contract | `buf lint && buf breaking --against '.git#branch=develop'` | 0 | f3b7acb |
+| Xcode build | `xcodebuild build -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=macOS'` | 0 | f3b7acb |
 
 ## Coding
 
