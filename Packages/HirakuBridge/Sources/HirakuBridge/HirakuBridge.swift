@@ -70,7 +70,11 @@ public actor HirakuBridge: HirakuCalling {
     }
 
     static func changeSet(method: Hiraku_V1_Method, response: [UInt8]) -> Hiraku_V1_ChangeSet? {
-        guard method == .grade, let decoded = try? Hiraku_V1_GradeResponse(serializedBytes: response) else {
+        guard method == .grade,
+              let decoded = try? Hiraku_V1_GradeResponse(serializedBytes: response),
+              decoded.hasChanges,
+              !decoded.changes.changes.isEmpty
+        else {
             return nil
         }
         return decoded.changes

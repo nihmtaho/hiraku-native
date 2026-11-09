@@ -142,6 +142,10 @@ func TestDueCardsScopes(t *testing.T) {
 	if err != nil || len(byDeck) != 1 || byDeck[0].CardID != second.ID {
 		t.Fatalf("deck scope = %+v %v", byDeck, err)
 	}
+	byFolder, err := r.DueCards(ctx, 2000, 10, store.Scope{FolderID: secondFolder.ID})
+	if err != nil || len(byFolder) != 1 || byFolder[0].CardID != second.ID {
+		t.Fatalf("folder scope = %+v %v", byFolder, err)
+	}
 	all, err := r.DueCards(ctx, 2000, 10, store.Scope{})
 	if err != nil || len(all) != 2 {
 		t.Fatalf("all = %+v %v", all, err)
