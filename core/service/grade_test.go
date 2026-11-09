@@ -191,17 +191,18 @@ func TestGradeWritesOneFullLog(t *testing.T) {
 	}); contractErr != nil {
 		t.Fatal(contractErr)
 	}
-	var count, prevState, prevDue, prevReps, prevLapses, elapsed int
+	var count, prevState, prevDue, prevReps, prevLapses, elapsed, prevSteps, lastReviews int
 	var prevStability, prevDifficulty float64
 	err := f.store.DB().QueryRow(`
 		SELECT COUNT(*), MAX(prev_state), MAX(prev_due), MAX(prev_stability), MAX(prev_difficulty),
-		       MAX(prev_reps), MAX(prev_lapses), MAX(elapsed_ms)
-		FROM review_logs`).Scan(&count, &prevState, &prevDue, &prevStability, &prevDifficulty, &prevReps, &prevLapses, &elapsed)
+		       MAX(prev_reps), MAX(prev_lapses), MAX(elapsed_ms), MAX(prev_learning_steps),
+		       COUNT(prev_last_review)
+		FROM review_logs`).Scan(&count, &prevState, &prevDue, &prevStability, &prevDifficulty, &prevReps, &prevLapses, &elapsed, &prevSteps, &lastReviews)
 	if err != nil {
 		t.Fatal(err)
 	}
-	if count != 1 || prevState != 0 || prevDue != 0 || prevStability != 0 || prevDifficulty != 0 || prevReps != 0 || prevLapses != 0 {
-		t.Fatalf("log = %d %d %d %v %v %d %d", count, prevState, prevDue, prevStability, prevDifficulty, prevReps, prevLapses)
+	if count != 1 || prevState != 0 || prevDue != 0 || prevStability != 0 || prevDifficulty != 0 || prevReps != 0 || prevLapses != 0 || prevSteps != 0 || lastReviews != 0 {
+		t.Fatalf("log = %d %d %d %v %v %d %d steps=%d last=%d", count, prevState, prevDue, prevStability, prevDifficulty, prevReps, prevLapses, prevSteps, lastReviews)
 	}
 	if elapsed != 60_000 {
 		t.Fatalf("elapsed = %d", elapsed)
@@ -253,5 +254,68 @@ func TestGradeRejectsZeroNowAndSkipsReinsertWhenFar(t *testing.T) {
 	}
 	if response.Reinsert {
 		t.Fatalf("reinsert = true for due gap %d", response.NextDueMs-now)
+	}
+}
+
+func TestQueueCapAndScope(t *testing.T) {
+	f := newFixture(t)
+	if err := f.store.Repo().SetSetting(f.ctx, 1, "new_cards_per_day", "999"); err != nil {
+		t.Fatal(err)
+	}
+	for i := 0; i < 505; i++ {
+		if _, err := f.store.Repo().CreateNote(f.ctx, int64(1000+i), f.deck, map[string]string{
+			"nf-term": "語" + string(rune('あ'+i%40)), "nf-meaning": "nghĩa",
+		}); err != nil {
+			t.Fatal(err)
+		}
+	}
+	body, contractErr := f.call(t, hirakuv1.Method_METHOD_BUILD_QUEUE, &hirakuv1.BuildQueueRequest{
+		NowMs: 1_000_000, Limit: 10_000,
+	})
+	if contractErr != nil {
+		t.Fatal(contractErr)
+	}
+	var queue hirakuv1.BuildQueueResponse
+	if err := proto.Unmarshal(body, &queue); err != nil {
+		t.Fatal(err)
+	}
+	if len(queue.Items) != 500 {
+		t.Fatalf("items = %d, want cap 500", len(queue.Items))
+	}
+	body, _ = f.call(t, hirakuv1.Method_METHOD_BUILD_QUEUE, &hirakuv1.BuildQueueRequest{
+		NowMs: 1_000_000, Limit: 10, DeckId: "missing",
+	})
+	queue.Reset()
+	if err := proto.Unmarshal(body, &queue); err != nil {
+		t.Fatal(err)
+	}
+	if len(queue.Items) != 0 {
+		t.Fatalf("unknown deck scope returned %d", len(queue.Items))
+	}
+}
+
+func TestScheduleDaysPersisted(t *testing.T) {
+	f := newFixture(t)
+	now := int64(1_000_000_000)
+	if err := f.store.Repo().SaveCardState(f.ctx, now, f.card, fsrs.Card{
+		State: fsrs.StateReview, DueMs: now - 86_400_000, Stability: 5, Difficulty: 5,
+		LastReviewMs: now - 3*86_400_000,
+	}); err != nil {
+		t.Fatal(err)
+	}
+	if _, contractErr := f.call(t, hirakuv1.Method_METHOD_GRADE, &hirakuv1.GradeRequest{
+		CardId: f.card, Rating: hirakuv1.Rating_RATING_GOOD, NowMs: now,
+	}); contractErr != nil {
+		t.Fatal(contractErr)
+	}
+	card, _, err := f.store.Repo().CardState(f.ctx, f.card)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if card.ElapsedDays != 3 {
+		t.Fatalf("elapsed days = %d", card.ElapsedDays)
+	}
+	if card.ScheduledDays != int((card.DueMs-now)/86_400_000) || card.ScheduledDays < 1 {
+		t.Fatalf("scheduled days = %d, due gap = %d", card.ScheduledDays, card.DueMs-now)
 	}
 }

@@ -72,4 +72,4 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 ## Next
 
-Deferred: queue has no deck/folder scope (spec §7.3.1 "trong phạm vi"); WP-07/09 adds the route filter. FSRS cross-04:00 vector still missing; dayboundary test covers the rule.
+Resolved in m1-debt-01: queue folder/deck scope, request cap, cross-04:00 formula test, snapshot columns, elapsed/scheduled days.

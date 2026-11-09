@@ -38,6 +38,8 @@ type Card struct {
 	Lapses         int
 	RemainingSteps int
 	LastReviewMs   int64
+	ElapsedDays    int
+	ScheduledDays  int
 }
 
 // Settings holds the profile study settings that affect scheduling.
@@ -110,6 +112,8 @@ func next(card Card, rating Rating, nowMs int64, s Settings, w [21]float64) Card
 	if rating == RatingAgain && wasReview {
 		card.Lapses++
 	}
+	card.ElapsedDays = elapsed
+	card.ScheduledDays = int((card.DueMs - nowMs) / dayMs)
 	card.LastReviewMs = nowMs
 	return card
 }

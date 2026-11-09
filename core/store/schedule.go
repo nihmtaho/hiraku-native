@@ -28,7 +28,7 @@ func (r *Repo) CardState(ctx context.Context, cardID string) (fsrs.Card, bool, e
 		       learning_steps, reps, lapses, last_review, suspended
 		FROM card_states WHERE card_id = ?`, cardID).Scan(
 		&card.State, &card.DueMs, &card.Stability, &card.Difficulty,
-		new(int), new(int), &card.RemainingSteps, &card.Reps, &card.Lapses,
+		&card.ElapsedDays, &card.ScheduledDays, &card.RemainingSteps, &card.Reps, &card.Lapses,
 		&lastReview, new(int))
 	if errors.Is(err, sql.ErrNoRows) {
 		return fsrs.Card{State: fsrs.StateNew}, false, nil
@@ -52,13 +52,15 @@ func (r *Repo) SaveCardState(ctx context.Context, nowMs int64, cardID string, ca
 		INSERT INTO card_states
 		  (card_id, state, due, stability, difficulty, elapsed_days, scheduled_days,
 		   learning_steps, reps, lapses, last_review, suspended, created_at, updated_at)
-		VALUES (?, ?, ?, ?, ?, 0, 0, ?, ?, ?, ?, 0, ?, ?)
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?, ?)
 		ON CONFLICT(card_id) DO UPDATE SET
 		  state = excluded.state, due = excluded.due, stability = excluded.stability,
-		  difficulty = excluded.difficulty, learning_steps = excluded.learning_steps,
+		  difficulty = excluded.difficulty, elapsed_days = excluded.elapsed_days,
+		  scheduled_days = excluded.scheduled_days, learning_steps = excluded.learning_steps,
 		  reps = excluded.reps, lapses = excluded.lapses,
 		  last_review = excluded.last_review, updated_at = excluded.updated_at`,
 		cardID, card.State, card.DueMs, card.Stability, card.Difficulty,
+		card.ElapsedDays, card.ScheduledDays,
 		card.RemainingSteps, card.Reps, card.Lapses, lastReview, nowMs, nowMs)
 	return err
 }
@@ -86,6 +88,12 @@ func (r *Repo) InsertReviewLog(ctx context.Context, log ReviewLog) error {
 	return err
 }
 
+// Scope narrows a queue to one folder or one deck; empty fields mean all.
+type Scope struct {
+	FolderID string
+	DeckID   string
+}
+
 // QueueCard is one entry of a built session queue.
 type QueueCard struct {
 	CardID string
@@ -95,7 +103,7 @@ type QueueCard struct {
 }
 
 // DueCards lists unsuspended cards due before dueBefore, learning first.
-func (r *Repo) DueCards(ctx context.Context, dueBefore int64, limit int) ([]QueueCard, error) {
+func (r *Repo) DueCards(ctx context.Context, dueBefore int64, limit int, scope Scope) ([]QueueCard, error) {
 	return r.queryQueue(ctx, `
 		SELECT c.id, c.note_id, n.deck_id, s.state
 		FROM cards c
@@ -103,12 +111,14 @@ func (r *Repo) DueCards(ctx context.Context, dueBefore int64, limit int) ([]Queu
 		JOIN decks d ON d.id = n.deck_id AND d.deleted_at IS NULL
 		JOIN card_states s ON s.card_id = c.id
 		WHERE c.deleted_at IS NULL AND s.suspended = 0 AND s.due <= ?
+		  AND (? = '' OR d.folder_id = ?)
+		  AND (? = '' OR n.deck_id = ?)
 		ORDER BY CASE s.state WHEN 1 THEN 0 WHEN 3 THEN 0 ELSE 1 END, s.due, c.id
-		LIMIT ?`, dueBefore, limitArg(limit))
+		LIMIT ?`, dueBefore, scope.FolderID, scope.FolderID, scope.DeckID, scope.DeckID, limitArg(limit))
 }
 
 // NewCards lists cards without state, oldest note first.
-func (r *Repo) NewCards(ctx context.Context, limit int) ([]QueueCard, error) {
+func (r *Repo) NewCards(ctx context.Context, limit int, scope Scope) ([]QueueCard, error) {
 	return r.queryQueue(ctx, `
 		SELECT c.id, c.note_id, n.deck_id, 0
 		FROM cards c
@@ -116,8 +126,10 @@ func (r *Repo) NewCards(ctx context.Context, limit int) ([]QueueCard, error) {
 		JOIN decks d ON d.id = n.deck_id AND d.deleted_at IS NULL
 		LEFT JOIN card_states s ON s.card_id = c.id
 		WHERE c.deleted_at IS NULL AND s.card_id IS NULL
+		  AND (? = '' OR d.folder_id = ?)
+		  AND (? = '' OR n.deck_id = ?)
 		ORDER BY n.created_at, c.id
-		LIMIT ?`, limitArg(limit))
+		LIMIT ?`, scope.FolderID, scope.FolderID, scope.DeckID, scope.DeckID, limitArg(limit))
 }
 
 func (r *Repo) queryQueue(ctx context.Context, query string, args ...any) ([]QueueCard, error) {

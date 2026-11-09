@@ -158,6 +158,10 @@ public nonisolated struct Hiraku_V1_BuildQueueRequest: Sendable {
 
   public var limit: Int32 = 0
 
+  public var folderID: String = String()
+
+  public var deckID: String = String()
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
@@ -301,7 +305,7 @@ nonisolated extension Hiraku_V1_GradeResponse: SwiftProtobuf.Message, SwiftProto
 
 nonisolated extension Hiraku_V1_BuildQueueRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".BuildQueueRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}now_ms\0\u{1}limit\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}now_ms\0\u{1}limit\0\u{3}folder_id\0\u{3}deck_id\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -311,6 +315,8 @@ nonisolated extension Hiraku_V1_BuildQueueRequest: SwiftProtobuf.Message, SwiftP
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularInt64Field(value: &self.nowMs) }()
       case 2: try { try decoder.decodeSingularInt32Field(value: &self.limit) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.folderID) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self.deckID) }()
       default: break
       }
     }
@@ -323,12 +329,20 @@ nonisolated extension Hiraku_V1_BuildQueueRequest: SwiftProtobuf.Message, SwiftP
     if self.limit != 0 {
       try visitor.visitSingularInt32Field(value: self.limit, fieldNumber: 2)
     }
+    if !self.folderID.isEmpty {
+      try visitor.visitSingularStringField(value: self.folderID, fieldNumber: 3)
+    }
+    if !self.deckID.isEmpty {
+      try visitor.visitSingularStringField(value: self.deckID, fieldNumber: 4)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Hiraku_V1_BuildQueueRequest, rhs: Hiraku_V1_BuildQueueRequest) -> Bool {
     if lhs.nowMs != rhs.nowMs {return false}
     if lhs.limit != rhs.limit {return false}
+    if lhs.folderID != rhs.folderID {return false}
+    if lhs.deckID != rhs.deckID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
