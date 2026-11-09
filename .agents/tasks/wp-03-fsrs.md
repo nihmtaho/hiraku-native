@@ -6,7 +6,7 @@
 - Owner: coordinator / senior (Q-29)
 - Milestone / WP: M1a / WP-03
 - Branch / PR: `feat/wp-03-fsrs` from `develop` (PR pending)
-- Base / head SHA: 70dee4b / f3b7acb
+- Base / head SHA: 70dee4b / 20d007d
 - Dependencies: WP-02a, S-2
 - Required reading: ARCHITECTURE §6.2, §6.3; ADR-26; docs/reports/M0_SPIKE.md S-2; spec §FSRS
 - Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
