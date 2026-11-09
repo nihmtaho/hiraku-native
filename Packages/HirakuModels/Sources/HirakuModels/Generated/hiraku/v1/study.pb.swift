@@ -140,11 +140,57 @@ public nonisolated struct Hiraku_V1_GradeResponse: Sendable {
   /// Clears the value of `changes`. Subsequent reads from it will return its default value.
   public mutating func clearChanges() {self._changes = nil}
 
+  public var reinsert: Bool = false
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 
   fileprivate var _changes: Hiraku_V1_ChangeSet? = nil
+}
+
+public nonisolated struct Hiraku_V1_BuildQueueRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var nowMs: Int64 = 0
+
+  public var limit: Int32 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Hiraku_V1_QueueItem: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var cardID: String = String()
+
+  public var noteID: String = String()
+
+  public var deckID: String = String()
+
+  public var state: Int32 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Hiraku_V1_BuildQueueResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var items: [Hiraku_V1_QueueItem] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -211,7 +257,7 @@ nonisolated extension Hiraku_V1_GradeRequest: SwiftProtobuf.Message, SwiftProtob
 
 nonisolated extension Hiraku_V1_GradeResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".GradeResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}next_due_ms\0\u{1}changes\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}next_due_ms\0\u{1}changes\0\u{1}reinsert\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -221,6 +267,7 @@ nonisolated extension Hiraku_V1_GradeResponse: SwiftProtobuf.Message, SwiftProto
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularInt64Field(value: &self.nextDueMs) }()
       case 2: try { try decoder.decodeSingularMessageField(value: &self._changes) }()
+      case 3: try { try decoder.decodeSingularBoolField(value: &self.reinsert) }()
       default: break
       }
     }
@@ -237,12 +284,126 @@ nonisolated extension Hiraku_V1_GradeResponse: SwiftProtobuf.Message, SwiftProto
     try { if let v = self._changes {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
     } }()
+    if self.reinsert != false {
+      try visitor.visitSingularBoolField(value: self.reinsert, fieldNumber: 3)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Hiraku_V1_GradeResponse, rhs: Hiraku_V1_GradeResponse) -> Bool {
     if lhs.nextDueMs != rhs.nextDueMs {return false}
     if lhs._changes != rhs._changes {return false}
+    if lhs.reinsert != rhs.reinsert {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Hiraku_V1_BuildQueueRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".BuildQueueRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}now_ms\0\u{1}limit\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularInt64Field(value: &self.nowMs) }()
+      case 2: try { try decoder.decodeSingularInt32Field(value: &self.limit) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.nowMs != 0 {
+      try visitor.visitSingularInt64Field(value: self.nowMs, fieldNumber: 1)
+    }
+    if self.limit != 0 {
+      try visitor.visitSingularInt32Field(value: self.limit, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Hiraku_V1_BuildQueueRequest, rhs: Hiraku_V1_BuildQueueRequest) -> Bool {
+    if lhs.nowMs != rhs.nowMs {return false}
+    if lhs.limit != rhs.limit {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Hiraku_V1_QueueItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".QueueItem"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}card_id\0\u{3}note_id\0\u{3}deck_id\0\u{1}state\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.cardID) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.noteID) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.deckID) }()
+      case 4: try { try decoder.decodeSingularInt32Field(value: &self.state) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.cardID.isEmpty {
+      try visitor.visitSingularStringField(value: self.cardID, fieldNumber: 1)
+    }
+    if !self.noteID.isEmpty {
+      try visitor.visitSingularStringField(value: self.noteID, fieldNumber: 2)
+    }
+    if !self.deckID.isEmpty {
+      try visitor.visitSingularStringField(value: self.deckID, fieldNumber: 3)
+    }
+    if self.state != 0 {
+      try visitor.visitSingularInt32Field(value: self.state, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Hiraku_V1_QueueItem, rhs: Hiraku_V1_QueueItem) -> Bool {
+    if lhs.cardID != rhs.cardID {return false}
+    if lhs.noteID != rhs.noteID {return false}
+    if lhs.deckID != rhs.deckID {return false}
+    if lhs.state != rhs.state {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Hiraku_V1_BuildQueueResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".BuildQueueResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}items\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.items) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.items.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.items, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Hiraku_V1_BuildQueueResponse, rhs: Hiraku_V1_BuildQueueResponse) -> Bool {
+    if lhs.items != rhs.items {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

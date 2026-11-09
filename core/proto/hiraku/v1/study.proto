@@ -31,4 +31,21 @@ message GradeRequest {
 message GradeResponse {
   int64 next_due_ms = 1;
   ChangeSet changes = 2;
+  bool reinsert = 3;
+}
+
+message BuildQueueRequest {
+  int64 now_ms = 1;
+  int32 limit = 2;
+}
+
+message QueueItem {
+  string card_id = 1;
+  string note_id = 2;
+  string deck_id = 3;
+  int32 state = 4;
+}
+
+message BuildQueueResponse {
+  repeated QueueItem items = 1;
 }

@@ -24,6 +24,8 @@ public nonisolated enum Hiraku_V1_Method: SwiftProtobuf.Enum, Swift.CaseIterable
   public typealias RawValue = Int
   case unspecified // = 0
   case ping // = 1
+  case grade // = 2
+  case buildQueue // = 3
   case UNRECOGNIZED(Int)
 
   public init() {
@@ -34,6 +36,8 @@ public nonisolated enum Hiraku_V1_Method: SwiftProtobuf.Enum, Swift.CaseIterable
     switch rawValue {
     case 0: self = .unspecified
     case 1: self = .ping
+    case 2: self = .grade
+    case 3: self = .buildQueue
     default: self = .UNRECOGNIZED(rawValue)
     }
   }
@@ -42,6 +46,8 @@ public nonisolated enum Hiraku_V1_Method: SwiftProtobuf.Enum, Swift.CaseIterable
     switch self {
     case .unspecified: return 0
     case .ping: return 1
+    case .grade: return 2
+    case .buildQueue: return 3
     case .UNRECOGNIZED(let i): return i
     }
   }
@@ -50,6 +56,8 @@ public nonisolated enum Hiraku_V1_Method: SwiftProtobuf.Enum, Swift.CaseIterable
   public static let allCases: [Hiraku_V1_Method] = [
     .unspecified,
     .ping,
+    .grade,
+    .buildQueue,
   ]
 
 }
@@ -277,7 +285,7 @@ public nonisolated struct Hiraku_V1_Error: Sendable {
 fileprivate nonisolated let _protobuf_package = "hiraku.v1"
 
 nonisolated extension Hiraku_V1_Method: SwiftProtobuf._ProtoNameProviding {
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0METHOD_UNSPECIFIED\0\u{1}METHOD_PING\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0METHOD_UNSPECIFIED\0\u{1}METHOD_PING\0\u{1}METHOD_GRADE\0\u{1}METHOD_BUILD_QUEUE\0")
 }
 
 nonisolated extension Hiraku_V1_ErrorCode: SwiftProtobuf._ProtoNameProviding {

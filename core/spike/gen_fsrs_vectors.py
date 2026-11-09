@@ -150,7 +150,7 @@ doc = {
     "vectors": vectors,
 }
 
-out = Path(__file__).with_name("fsrs_vectors.json")
+out = Path(__file__).resolve().parents[1] / "testdata" / "fsrs_vectors.json"
 with open(out, "w") as f:
     json.dump(doc, f, indent=2, ensure_ascii=False)
     f.write("\n")

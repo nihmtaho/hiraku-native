@@ -7,6 +7,8 @@ option go_package = "hiraku/core/gen/hirakuv1;hirakuv1";
 enum Method {
   METHOD_UNSPECIFIED = 0;
   METHOD_PING = 1;
+  METHOD_GRADE = 2;
+  METHOD_BUILD_QUEUE = 3;
 }
 
 enum ErrorCode {
