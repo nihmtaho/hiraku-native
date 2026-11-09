@@ -6,7 +6,7 @@
 - Owner: coordinator / senior (Q-29)
 - Milestone / WP: M1a / WP-03 follow-up
 - Branch / PR: `fix/m1-debt-2` from `develop`
-- Base / head SHA: 69441a6 / 67410af (checks at 51aafac)
+- Base / head SHA: 69441a6 / c1e4666 (checks at c1e4666)
 - Dependencies: m1-debt-01
 - Required reading: ADR-24, ADR-26
 - Blocking Q / gate: none
