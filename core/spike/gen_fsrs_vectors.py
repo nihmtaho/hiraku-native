@@ -1,4 +1,4 @@
-"""Regenerate core/spike/fsrs_vectors.json from the reference FSRS implementation.
+"""Regenerate core/testdata/fsrs_vectors.json from the reference FSRS implementation.
 
 Pinned reference: `fsrs == 6.3.2` (PyPI, FSRS-6). `uv` materialises it in a throwaway
 environment, so no virtualenv is needed in the tree. From the repo root:

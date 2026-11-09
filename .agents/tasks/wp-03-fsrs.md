@@ -2,11 +2,11 @@
 
 ## Contract
 
-- Status: review
+- Status: merged
 - Owner: coordinator / senior (Q-29)
 - Milestone / WP: M1a / WP-03
-- Branch / PR: `feat/wp-03-fsrs` from `develop` (PR pending)
-- Base / head SHA: 70dee4b / 20d007d
+- Branch / PR: `feat/wp-03-fsrs` / PR 78
+- Base / head SHA: 70dee4b / b831e36 (merge 19c431a)
 - Dependencies: WP-02a, S-2
 - Required reading: ARCHITECTURE §6.2, §6.3; ADR-26; docs/reports/M0_SPIKE.md S-2; spec §FSRS
 - Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
@@ -28,9 +28,9 @@
 
 | # | Slice | Plan anchor | Status |
 |---|---|---|---|
-| 51 | fsrs | docs/plans/2026-11-08-m1a.md | open |
-| 52 | grade | docs/plans/2026-11-08-m1a.md | open |
-| 53 | queue | docs/plans/2026-11-08-m1a.md | open |
+| 51 | fsrs | docs/plans/2026-11-08-m1a.md | done |
+| 52 | grade | docs/plans/2026-11-08-m1a.md | done |
+| 53 | queue | docs/plans/2026-11-08-m1a.md | done |
 
 Record is authority for the contract; plan is authority for progress; issues track slice status.
 

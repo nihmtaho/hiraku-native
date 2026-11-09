@@ -253,7 +253,7 @@ Q-4, Q-A, Q-B, Q-C, Q-D, Q-E đã được đóng bởi ADR-26, ADR-23, ADR-22, 
 - **Thay thế cho**: Q-4.
 - **Chưa xác minh**: tình trạng và giấy phép các thư viện FSRS Go hiện có. Việc này thuộc S-2.
 - **Kết luận S-2 (2026-10-30)**: `go-fsrs/v4` trượt tiêu chí vector (3/17 `due` lệch) → tự cài trong `core/domain/fsrs` theo đúng quyết định này; **PO xác nhận (2026-11-04)**.
-- **Trạng thái**: *Đã chốt — tự cài trong `core/domain/fsrs` (WP-03), dùng 17 vector `core/spike/fsrs_vectors.json` làm golden.*
+- **Trạng thái**: *Đã chốt — tự cài trong `core/domain/fsrs` (WP-03), dùng 17 vector `core/testdata/fsrs_vectors.json` làm golden.*
 
 ### ADR-27 — Kiểu ghi chú và field tùy biến theo deck
 - **Bối cảnh**: khách hàng yêu cầu người dùng tự định nghĩa field cho deck, tương tự Anki (2026-10-28). Schema hiện tại cố định bốn cột trong `words`.

@@ -306,7 +306,7 @@ Nguồn cập nhật bắt buộc cho mọi PR (`docs/process/GIT_WORKFLOW.md` �
 | WP-01 | dn | — | Contract, check scripts, CI + `swift` job, XCFramework; S-7 waiver nợ thiết bị (PR 73, 87048cb) |
 | WP-02a | dn | — | Store, migration, repo, xóa mềm, notetype (PR 74, cf7f1b4) |
 | WP-02b | dn | — | FFI dispatch, HirakuBridge actor, EventHub, fake bridge (PR 75, 65c3ecf) |
-| WP-03 | ip | — | FSRS-6, Grade transaction, BuildQueue (issues #51–#53) |
+| WP-03 | dn | — | FSRS-6 17/17 vector, Grade transaction, BuildQueue (PR 78, 19c431a) |
 | Báo cáo spike | rv | — | Đã có bảng tổng hợp M0; 4 quyết định PO chốt và waiver S-3 tại chat 2026-11-04 (Q-5=A, ADR-26 tự cài, 300 ms tạm, ADR-15 duyệt); còn nợ thiết bị: S-7, IME thật, SC-006 |
 | S-1 bổ sung | dn | 16 | Đã chạy lại trên schema ADR-27, nhiễu do máy tải; 60 fps và thiết bị chưa xác minh (bỏ qua thiết bị) |
 | S-8 | dn | 8 | Đạt trên macOS và simulator; thiết bị (SC-006) chưa xác minh; ngưỡng 300 ms tạm chấp nhận, đo lại trên thiết bị (PO 2026-11-04) |
