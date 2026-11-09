@@ -4,6 +4,7 @@ import (
 	"context"
 	"testing"
 
+	"hiraku/core/domain/dayboundary"
 	"hiraku/core/domain/fsrs"
 	"hiraku/core/store"
 )
@@ -66,4 +67,32 @@ func TestQueueOrderAndLimits(t *testing.T) {
 
 func storeLog(cardID string, prev fsrs.State, at int64) store.ReviewLog {
 	return store.ReviewLog{CardID: cardID, Rating: 3, ReviewedAtMs: at, Mode: "flashcard", Prev: fsrs.Card{State: prev}}
+}
+
+func TestDueQueueExcludesSuspendedAndStopsAtDayEnd(t *testing.T) {
+	ctx := context.Background()
+	s, r := openRepo(t)
+	_, deckID := seedDeck(t, r)
+	note, _ := r.CreateNote(ctx, 500, deckID, map[string]string{"nf-term": "水", "nf-meaning": "nước"})
+	now := int64(10_000_000_000)
+	end := dayboundary.End(now, 4)
+	if err := r.SaveCardState(ctx, now, note.ID, fsrs.Card{State: fsrs.StateReview, DueMs: end - 1, Stability: 1, Difficulty: 5}); err != nil {
+		t.Fatal(err)
+	}
+	due, _ := r.DueCards(ctx, end, 10)
+	if len(due) != 1 {
+		t.Fatalf("due = %+v", due)
+	}
+	if _, err := s.DB().Exec(`UPDATE card_states SET suspended = 1`); err != nil {
+		t.Fatal(err)
+	}
+	if due, _ := r.DueCards(ctx, end, 10); len(due) != 0 {
+		t.Fatalf("suspended leaked = %+v", due)
+	}
+	if _, err := s.DB().Exec(`UPDATE card_states SET suspended = 0, due = ?`, end+1); err != nil {
+		t.Fatal(err)
+	}
+	if due, _ := r.DueCards(ctx, end, 10); len(due) != 0 {
+		t.Fatalf("due after end leaked = %+v", due)
+	}
 }

@@ -41,7 +41,7 @@ type vectorFile struct {
 }
 
 func TestGoldenVectors(t *testing.T) {
-	raw, err := os.ReadFile("../../spike/fsrs_vectors.json")
+	raw, err := os.ReadFile("../../testdata/fsrs_vectors.json")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -147,4 +147,21 @@ func parseMs(t *testing.T, value string) int64 {
 
 func formatMs(ms int64) string {
 	return time.UnixMilli(ms).UTC().Format(time.RFC3339)
+}
+
+func TestChainedLearningSteps(t *testing.T) {
+	settings := testSettings()
+	now := int64(1_000_000)
+	hard := Next(Card{}, RatingHard, now, settings)
+	if hard.RemainingSteps != 2 || hard.DueMs-now != 330_000 {
+		t.Fatalf("hard = steps %d, gap %d", hard.RemainingSteps, hard.DueMs-now)
+	}
+	good := Next(hard, RatingGood, hard.DueMs, settings)
+	if good.RemainingSteps != 1 || good.DueMs-hard.DueMs != 600_000 {
+		t.Fatalf("good = steps %d, gap %d", good.RemainingSteps, good.DueMs-hard.DueMs)
+	}
+	review := Next(good, RatingGood, good.DueMs, settings)
+	if review.State != StateReview || review.RemainingSteps != 0 {
+		t.Fatalf("final = %+v", review)
+	}
 }

@@ -179,12 +179,20 @@ func (s *Service) schedulingSettings(ctx context.Context) (fsrs.Settings, int, e
 	if err != nil {
 		return fsrs.Settings{}, 0, err
 	}
+	shortTerm, err := s.repo.Setting(ctx, "fsrs_short_term")
+	if err != nil {
+		return fsrs.Settings{}, 0, err
+	}
 	settings := fsrs.Settings{
-		RequestRetention:       retentionValue,
-		MaximumIntervalDays:    int(intervalValue),
-		LearningStepsMinutes:   []float64{1, 10},
-		RelearningStepsMinutes: []float64{10},
-		DayStartHour:           int(dayStartValue),
+		RequestRetention:     retentionValue,
+		MaximumIntervalDays:  int(intervalValue),
+		LearningStepsMinutes: []float64{1, 10},
+		DayStartHour:         int(dayStartValue),
+	}
+	if shortTerm == "true" {
+		settings.RelearningStepsMinutes = []float64{10}
+	} else {
+		settings.LearningStepsMinutes = nil
 	}
 	return settings, int(newPerDayValue), nil
 }

@@ -12,7 +12,7 @@
 - Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
 - Goal: FSRS domain matching the 17 golden vectors, transactional Grade, BuildQueue with calendar day and limits.
 - Out of scope: UI; optimizer; per-deck parameters.
-- Files / modules allowed to change: core/domain/fsrs, core/domain/dayboundary, core/domain/queue, core/service, core/store, core/proto, core/gen, core/ffi, core/testdata
+- Files / modules allowed to change: core/domain/fsrs, core/domain/dayboundary, core/domain/queue, core/service, core/store, core/proto, core/gen, core/ffi, core/testdata, core/spike
 - Permissions or PO decisions granted: Q-19, Q-20, Q-21 B, Q-22, Q-24, Q-27, Q-28; ADR-20/21/24/26/32 confirmed (PO 2026-11-08)
 
 ## Acceptance criteria
@@ -60,4 +60,4 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 ## Next
 
-Read the plan section and the open issues above.
+Deferred: queue has no deck/folder scope (spec §7.3.1 "trong phạm vi"); WP-07/09 adds the route filter. FSRS cross-04:00 vector still missing; dayboundary test covers the rule.

@@ -51,8 +51,8 @@ type Settings struct {
 
 const stabilityMin = 0.001
 
-// DefaultWeights are the FSRS-6 default parameters frozen for hiraku.
-var DefaultWeights = [21]float64{
+// defaultWeights are the FSRS-6 default parameters frozen for hiraku.
+var defaultWeights = [21]float64{
 	0.212, 1.2931, 2.3065, 8.2956, 6.4133, 0.8334, 3.0194, 0.001, 1.8722, 0.1666,
 	0.796, 1.4835, 0.0614, 0.2629, 1.6483, 0.6014, 1.8729, 0.5425, 0.0912, 0.0658,
 	0.1542,
@@ -63,7 +63,7 @@ const dayMs int64 = 86_400_000
 
 // Next returns the card after the review, matching py-fsrs review_card.
 func Next(card Card, rating Rating, nowMs int64, settings Settings) Card {
-	return next(card, rating, nowMs, settings, DefaultWeights)
+	return next(card, rating, nowMs, settings, defaultWeights)
 }
 
 // Preview returns the card for each rating without mutating state.
