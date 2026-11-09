@@ -2,6 +2,7 @@ package service_test
 
 import (
 	"context"
+	"database/sql"
 	"path/filepath"
 	"testing"
 
@@ -317,5 +318,31 @@ func TestScheduleDaysPersisted(t *testing.T) {
 	}
 	if card.ScheduledDays != int((card.DueMs-now)/86_400_000) || card.ScheduledDays < 1 {
 		t.Fatalf("scheduled days = %d, due gap = %d", card.ScheduledDays, card.DueMs-now)
+	}
+}
+
+func TestSecondGradeSnapshotHasStepsAndLastReview(t *testing.T) {
+	f := newFixture(t)
+	now := int64(1_000_000)
+	if _, contractErr := f.call(t, hirakuv1.Method_METHOD_GRADE, &hirakuv1.GradeRequest{
+		CardId: f.card, Rating: hirakuv1.Rating_RATING_GOOD, NowMs: now,
+	}); contractErr != nil {
+		t.Fatal(contractErr)
+	}
+	if _, contractErr := f.call(t, hirakuv1.Method_METHOD_GRADE, &hirakuv1.GradeRequest{
+		CardId: f.card, Rating: hirakuv1.Rating_RATING_GOOD, NowMs: now + 600_000,
+	}); contractErr != nil {
+		t.Fatal(contractErr)
+	}
+	var prevState, prevSteps int
+	var prevLast sql.NullInt64
+	err := f.store.DB().QueryRow(`
+		SELECT prev_state, prev_learning_steps, prev_last_review
+		FROM review_logs ORDER BY reviewed_at DESC LIMIT 1`).Scan(&prevState, &prevSteps, &prevLast)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if prevState != int(fsrs.StateLearning) || prevSteps == 0 || !prevLast.Valid || prevLast.Int64 != now {
+		t.Fatalf("snapshot = state %d steps %d last %v", prevState, prevSteps, prevLast)
 	}
 }

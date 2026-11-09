@@ -122,3 +122,32 @@ func TestQueueScopes(t *testing.T) {
 		t.Fatalf("folder scope = %+v", byFolder)
 	}
 }
+
+func TestDueCardsScopes(t *testing.T) {
+	ctx := context.Background()
+	_, r := openRepo(t)
+	_, firstDeck := seedDeck(t, r)
+	secondFolder, _ := r.CreateFolder(ctx, 700, "F2")
+	secondDeck, _ := r.CreateDeck(ctx, 701, store.Deck{FolderID: secondFolder.ID, Name: "D2"})
+	first, _ := r.CreateNote(ctx, 702, firstDeck, map[string]string{"nf-term": "一", "nf-meaning": "một"})
+	second, _ := r.CreateNote(ctx, 703, secondDeck.ID, map[string]string{"nf-term": "二", "nf-meaning": "hai"})
+	due := fsrs.Card{State: fsrs.StateReview, DueMs: 1000, Stability: 1, Difficulty: 5}
+	if err := r.SaveCardState(ctx, 900, first.ID, due); err != nil {
+		t.Fatal(err)
+	}
+	if err := r.SaveCardState(ctx, 900, second.ID, due); err != nil {
+		t.Fatal(err)
+	}
+	byDeck, err := r.DueCards(ctx, 2000, 10, store.Scope{DeckID: secondDeck.ID})
+	if err != nil || len(byDeck) != 1 || byDeck[0].CardID != second.ID {
+		t.Fatalf("deck scope = %+v %v", byDeck, err)
+	}
+	byFolder, err := r.DueCards(ctx, 2000, 10, store.Scope{FolderID: secondFolder.ID})
+	if err != nil || len(byFolder) != 1 || byFolder[0].CardID != second.ID {
+		t.Fatalf("folder scope = %+v %v", byFolder, err)
+	}
+	all, err := r.DueCards(ctx, 2000, 10, store.Scope{})
+	if err != nil || len(all) != 2 {
+		t.Fatalf("all = %+v %v", all, err)
+	}
+}
