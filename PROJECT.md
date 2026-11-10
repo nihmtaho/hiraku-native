@@ -21,8 +21,8 @@ docs/           plans/, reports/, architecture/, product/, process/
 `Packages/` and `App/` show the target layout in `ARCHITECTURE.md` §3 "Cấu trúc
 workspace", not every package that exists yet.
 
-The kit's neutral template this profile was adapted from lives at
-`.agents/PROJECT.md.example`.
+The neutral profile template lives at `.agents/PROJECT.md.example`; this file was built
+from the repository's own adoption profile.
 
 ## Status tracking
 
@@ -125,7 +125,7 @@ CI (`.github/workflows/ci.yml`) has two jobs. `ci` runs `go vet`, `go test -race
 | Process (agents, git, release) | `docs/process/AGENT_WORKFLOW.md`, `docs/process/GIT_WORKFLOW.md`, `docs/process/RELEASE.md` |
 | UI strings | `COPY.md` and the String Catalog |
 | Milestones and the changelog | `ROADMAP.md`, `ROADMAP hiraku — Kanban.html`, `CHANGELOG.md` |
-| Kit profile example | `.agents/PROJECT.md.example` |
+| PROJECT.md template | `.agents/PROJECT.md.example` |
 | Real verification environment | physical iPhone, oldest supported model (simulator and macOS are lower levels) |
 | Document index | `docs/README.md` |
 

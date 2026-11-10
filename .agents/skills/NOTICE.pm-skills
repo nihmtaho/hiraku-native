@@ -1,0 +1,19 @@
+# Third-party notice: product-management skills
+
+The 8 product-management skills in this directory are adapted from the Anthropic
+`knowledge-work-plugins` Product Management plugin, version 1.2.0, licensed under the
+Apache License, Version 2.0.
+
+- `write-spec`
+- `roadmap-update`
+- `sprint-planning`
+- `stakeholder-update`
+- `synthesize-research`
+- `competitive-brief`
+- `metrics-review`
+- `product-brainstorming`
+
+The full license text is in `LICENSE.pm-skills`, next to this file.
+
+Modifications: frontmatter rewritten (the `argument-hint` field was dropped), command usage
+blocks were removed, and connector references were replaced for use in this repository.

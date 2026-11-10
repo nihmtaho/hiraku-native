@@ -11,9 +11,10 @@ stated in the prompt, then graded each assertion strictly. No files were edited,
 executed. 8 skills (one prompt each) ran two per subagent; 12 skills (two prompts each) ran one per
 subagent.
 
-Gate: `node .tmp/flowkit/scripts/check-kit.mjs` → `flowkit check: OK` (exit 0). The gate was run
-while the kit lived in `.tmp/flowkit/`; that copy was removed after adoption, so the repo checks are
-now `node --test .agents/hiraku/tests/*.test.mjs` and `node .agents/scripts/wp-status.mjs --check`.
+Gate: `node .tmp/flowkit/scripts/check-kit.mjs` → `flowkit check: OK` (exit 0), run while the kit
+lived in `.tmp/flowkit/`. That copy was removed after adoption, so the gate is no longer
+reproducible; the current repo checks are `node --test .agents/hiraku/tests/*.test.mjs` and
+`node .agents/scripts/wp-status.mjs --check`, and neither tests portability or neutrality.
 
 Result: **101/101 assertions pass** across 20 skills (32 eval prompts: 12 skills × 2 + 8 skills × 1).
 
