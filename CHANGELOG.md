@@ -25,7 +25,7 @@ Nhóm: Thêm · Đổi · Sửa · Xóa · Tài liệu · Bảo mật. Mỗi dò
 - Spike S-2: đánh giá `github.com/open-spaced-repetition/go-fsrs/v4 v4.0.0` (MIT, FSRS-6) bằng 17 vector sinh từ `fsrs 6.3.2` trong `core/spike/fsrs_vectors.json`; `state`/`reps`/`lapses` khớp 17/17 nhưng 3/17 `due` lệch với dung sai 0 (làm tròn bước Hard, ép thứ tự hard/good/easy, ngày đã trôi theo ngày lịch UTC) nên kết luận **Không đạt** → tự cài trong `core/domain/fsrs` theo ADR-26; gỡ thư viện khỏi `core/go.mod`/`go.sum`, giữ 17 vector làm golden và script sinh lại `core/spike/gen_fsrs_vectors.py` (S-2, PR 6)
 
 ### Tài liệu
-- Đổi tên 10 skill `hiraku-*` sang `flow-*` 1:1 trong `AGENTS.md`, `docs/process/`, `.claude/README.md`, `ROADMAP.md` và các skill liên quan; script chuyển sang `.agents/scripts/`; ghi bổ sung ADR-31 (PR 83).
+- Đổi tên 10 skill `hiraku-*` sang `flow-*` 1:1 trong `AGENTS.md`, `docs/process/`, `.claude/README.md` và các skill liên quan; hai script chuyển sang `.agents/scripts/`; ghi vào ADR-31 (PR 83).
 - Thêm bộ kỹ năng portable Flowkit trong `.tmp/flowkit/`: 10 skill `flow-*` port 1:1 từ `hiraku-*`, 8 skill quản lý sản phẩm theo Apache-2.0, 2 skill mới (`flow-debug`, `product-review`), cơ chế profile `PROJECT.md`, profile hiraku full fidelity, template `AGENTS.md` portable, README kèm bảng mapping và checker `check-kit.mjs`; `.agents/skills/` không đổi (PR 83).
 - Đóng WP-03: record `merged` kèm PR 78/SHA/verdict, issue #51–#53 closed, vector golden chuyển `core/testdata`, ghi nợ queue scope và vector vắt 04:00.
 - Dọn record M1a sau WP-02b: WP-01/02a/02b chuyển `merged` kèm PR, SHA, verdict, delivery và issue đã đóng; checkbox plan WP-02a hoàn tất; close issue #39–#50; ghi nợ EventHub producer sang WP-03.
