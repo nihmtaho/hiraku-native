@@ -1,0 +1,27 @@
+{
+  "skill_name": "flow-implement",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Fixture: a TypeScript service repository whose PROJECT.md names docs/board.md as the status board; tasks/<task-id>.md as task records; develop as the base branch with `<type>/<task-id>` branch names; npm test and npm run lint as the checks; a Docs map listing docs/spec.md, docs/use-cases.md, docs/design.md, CHANGELOG.md with an [Unreleased] section, and .tmp/ as the scratch directory; and docs/architecture.md §2 module boundaries as the architecture rules. Work read-only: do not edit files. Task tasks/billing-12-rounding.md asks for invoice totals rounded half-up to two decimals in src/money.ts, with a behavioral test and the changelog line on the task branch. Halfway through, the coordinator adds: also refactor the pricing module into a plugin registry and bump the currency library while you are in there. What do you change and what do you tell the coordinator?",
+      "expected_output": "Implement only the rounding in src/money.ts with a behavioral test for half-up rounding in tests/money.test.ts; run the smallest relevant check(s) — npm test, plus npm run lint where it covers the touched file — and record each command with its exit code; add one [Unreleased] changelog line; refuse the plugin registry and the currency library bump as outside the task record, and propose a separate task for them, since a new dependency needs approval.",
+      "files": [],
+      "assertions": [
+        "Refuses the plugin registry refactor and the currency library bump as outside tasks/billing-12-rounding.md and proposes a separate task record instead of doing them.",
+        "Keeps the change to src/money.ts plus a behavioral test for half-up rounding, without the plugin abstraction or a new dependency.",
+        "Runs the smallest relevant check(s) covering the change, records each command and exit code, and adds the [Unreleased] changelog line rather than claiming a pass for a check it skipped."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Fixture: a TypeScript service repository whose root holds README.md, package.json, src/, tests/, tasks/billing-07-csv.md, and no PROJECT.md. The team says the file would name docs/board.md as the status board, develop as the base branch with `<type>/<task-id>` branches, npm test and npm run lint as the checks, a Docs map of docs/spec.md plus .tmp/ as scratch, and docs/architecture.md as the architecture rules. Work read-only: do not edit files. The coordinator hands you tasks/billing-07-csv.md and says to start coding. What do you do?",
+      "expected_output": "Stop before editing or deciding anything: ask the user and the coordinator to create PROJECT.md at the repository root from the kit's PROJECT.md.example, because the base branch, branch naming, checks, docs map, and architecture rules must come from that file. Do not treat the stated facts, README.md, package.json, or tasks/billing-07-csv.md as a substitute for it, and return BLOCKED rather than IMPLEMENTED.",
+      "files": [],
+      "assertions": [
+        "Stops and asks for PROJECT.md at the repository root created from the kit's PROJECT.md.example before starting the task.",
+        "Does not treat the stated facts, README.md, package.json, or the task record as a substitute for PROJECT.md when choosing the branch, checks, or docs paths.",
+        "Returns BLOCKED instead of claiming IMPLEMENTED or PARTIAL work."
+      ]
+    }
+  ]
+}

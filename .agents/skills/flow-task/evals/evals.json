@@ -1,0 +1,27 @@
+{
+  "skill_name": "flow-task",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Fixture: a TypeScript service repository whose PROJECT.md names docs/board.md as the status board, tasks/<task-id>.md as the task-record location with the template tasks/TEMPLATE.md, CHANGELOG.md, develop as the base branch, node scripts/project.mjs as the status/context/check command, and npm test plus npm run lint as the checks. Work read-only: do not edit files. The PO says to start work item billing-04 (currency formatting); the context command reports D-21 (input normalization) as directly blocking billing-04. Explain how to create the task record and what must be checked before assigning the senior.",
+      "expected_output": "Run the context command from PROJECT.md §Status tracking for billing-04; it shows open decision D-21 (input normalization) still unresolved and directly blocking the item, so ask the PO that exact question or split off the independent part. Create tasks/billing-04-currency-format.md from tasks/TEMPLATE.md, with observable acceptance criteria, the base revision from develop, and the work-item state changed through flow-status.",
+      "files": [],
+      "assertions": [
+        "Runs the context command from PROJECT.md §Status tracking for billing-04 instead of reading the board and decision documents end to end.",
+        "Identifies open decision D-21 as unresolved and directly blocking billing-04, and does not resolve it alone.",
+        "Creates the record at tasks/<task-id>.md from tasks/TEMPLATE.md with acceptance criteria that describe observable behavior, not just 'tests pass'."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Fixture: a TypeScript service repository whose PROJECT.md names tasks/<task-id>.md for task records, docs/board.md as the status board, and develop as the base branch. Work read-only: do not edit files. Resume task billing-03-totals: its record says review PASS at commit abc123, but the branch HEAD is now def456. The coordinator wants to run ship immediately. What do you do?",
+      "expected_output": "Compare the recorded revision with the actual revision; the old PASS is void because the revision changed, so record that under Next and request a new review of def456 before shipping.",
+      "files": [],
+      "assertions": [
+        "Compares the actual revision with the revision in the record instead of trusting the recorded PASS.",
+        "Treats the review PASS at abc123 as void for def456.",
+        "Does not ship before a new review covers def456."
+      ]
+    }
+  ]
+}
