@@ -1,6 +1,9 @@
 # Flowkit eval report
 
-Date: 2026-11-11 · Branch: `feat/portable-skills-kit` · Revision: evals at `69e2a9d`
+Date: 2026-11-11 · Branch: `feat/portable-skills-kit` · Revision: evals as edited at `9c042c0`;
+the first full run was at `69e2a9d`. Four skills whose evals changed after the first run
+(`flow-feature`, `flow-status`, `sprint-planning`, `synthesize-research`) were re-run at `9c042c0`
+and passed 18/18; the other 16 skills' eval files are unchanged since their run.
 
 Method: repo convention (`<skill>/evals/evals.json`, read-only per prompt). Each skill was run by
 one fresh read-only subagent: it read `SKILL.md`, answered every eval prompt against the fixture
