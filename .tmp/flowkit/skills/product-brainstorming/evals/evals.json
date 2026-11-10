@@ -1,0 +1,16 @@
+{
+  "skill_name": "product-brainstorming",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Fixture: a B2B SaaS product for invoice reconciliation; docs/spec.md and docs/design.md are its product documents. Work read-only: do not edit or create files, and no tools are connected. A product manager says: \"I think we should build a Slack integration so people get invoice alerts in Slack. I have not talked to customers about it, and I do not know how many use Slack.\" Respond as the thinking partner: this is a brainstorm, not a spec.",
+      "expected_output": "A conversational brainstorm that frames the problem first (who has it and what they do today), notes that the PM has no customer evidence, pushes back on the Slack integration as a solution chosen before the problem is defined, generates 5-7 distinct alternatives including one that removes something, then converges on 2-3 directions each with its biggest unknown and cheapest test, naming the riskiest assumption. No /product-brainstorming usage line, no connector placeholder, and no full spec document.",
+      "files": [],
+      "assertions": [
+        "Frames the problem before evaluating the Slack integration, asking or noting who has it and what those users do today, and flags that the PM has no customer evidence and does not know Slack usage.",
+        "Generates 5-7 distinct alternatives rather than only the Slack integration, includes one option that removes something, and converges on 2-3 directions with the biggest unknown and a cheap test for each.",
+        "Contains no `/product-brainstorming` line, no `~~` connector placeholder, and does not produce a full spec document with PRD sections."
+      ]
+    }
+  ]
+}

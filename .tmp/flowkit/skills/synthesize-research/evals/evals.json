@@ -1,0 +1,16 @@
+{
+  "skill_name": "synthesize-research",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Fixture: a B2B support tool; docs/spec.md and docs/design.md are its product documents. Work read-only: do not edit or create files; no knowledge base, feedback tool, analytics, or transcription tool is connected, so work only from this prompt. Research question: what slows ticket triage for support agents? Six interview notes, all with support agents at 50-500-person customers. Five of six describe copying the customer email and order ID by hand between two browser windows; one quote from that group: \"I keep two windows open just to copy the customer email.\" Four of six say search returns closed tickets before open ones. One participant praised saved replies as fast. Nobody mentioned the mobile app. Return the synthesis.",
+      "expected_output": "A synthesis with Research Overview (six support-agent interviews and the research question), 5-8 Key Findings each carrying a quote, a frequency count (5 of 6 or 4 of 6), impact, and a confidence level, ordered by priority, plus Opportunity Areas, Recommendations tied to findings, and Open Questions. The saved-replies mention is one low-confidence positive signal, the quote is attributed to a support agent rather than a name, and the untouched mobile app is not presented as a finding. No /synthesize-research usage line and no connector placeholder.",
+      "files": [],
+      "assertions": [
+        "Reports Key Findings with supporting quotes, frequency counts of 5 of 6 and 4 of 6, impact, and a confidence level, and includes Recommendations and Open Questions sections.",
+        "Attributes the quote to a support agent rather than a personal name, reports saved replies as a single low-confidence positive signal, and does not claim anything about the mobile app because nobody mentioned it.",
+        "Contains no `/synthesize-research` line and no `~~user feedback`, `~~product analytics`, or `~~knowledge base` placeholder, and does not ask the user to connect a tool."
+      ]
+    }
+  ]
+}

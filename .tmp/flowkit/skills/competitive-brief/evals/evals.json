@@ -1,0 +1,16 @@
+{
+  "skill_name": "competitive-brief",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Fixture: an expense-report SaaS for small businesses; its product documents are docs/spec.md and docs/design.md. Work read-only: do not edit or create files, and you have no web access or connected knowledge base, so use only the facts below and state that the brief is limited to them. The decision this informs: whether to build an approval workflow next quarter. Facts: Ledgerly positions itself as \"expense reports in 90 seconds\", is strong on mobile receipt capture, weak on approval workflows, and charges $12 per user per month. BookKeeper bundles accounting software, is adequate on receipt capture, strong on approval workflows, prices by custom quote, and has no mobile app. Our product is adequate on receipt capture and absent on approval workflows. No customer reviews were provided. Return the competitive brief.",
+      "expected_output": "A brief with a Competitor Overview for Ledgerly and BookKeeper, a Feature Comparison table rated on one consistent scale, Positioning Analysis, Strengths and Weaknesses per competitor, Opportunities, Threats, and Strategic Implications that answer whether to build an approval workflow next quarter. It states as a limitation that the brief uses only the supplied facts, with no reviews and no live research. No /competitive-brief usage line and no connector placeholder.",
+      "files": [],
+      "assertions": [
+        "Includes Competitor Overview, a feature comparison table rated on one consistent scale, Positioning, Strengths and Weaknesses, Opportunities, Threats, and Strategic Implications that address the approval-workflow decision.",
+        "States that the brief is limited to the supplied facts, with no customer reviews and no live research, and adds no competitor facts beyond the prompt.",
+        "Contains no `/competitive-brief` line and no `~~knowledge base` or `~~chat` placeholder."
+      ]
+    }
+  ]
+}
