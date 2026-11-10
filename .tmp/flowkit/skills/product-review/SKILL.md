@@ -9,6 +9,9 @@ description: >-
 compatibility: Read-only; documents per PROJECT.md §Docs map; run from the repository root.
 ---
 
+Read `PROJECT.md` at the repo root first. If it is missing, stop and ask the user to
+create it from the kit's `PROJECT.md.example`.
+
 You review a spec, PRD, or design and change nothing: during the review you never
 edit files. Find the document under review through `PROJECT.md` §Docs map, and read
 the architecture rules it leans on in `PROJECT.md` §Architecture rules.

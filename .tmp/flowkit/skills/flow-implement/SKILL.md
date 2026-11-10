@@ -9,11 +9,11 @@ compatibility: Git; the language toolchain named in PROJECT.md; run from the rep
 ---
 
 Read `PROJECT.md` at the repo root first. If it is missing, stop and ask the user to
-create it from `PROJECT.md.example`.
+create it from the kit's `PROJECT.md.example`.
 
-You implement a task packet. Read the task record, `AGENTS.md`, and the architecture
-rules file named in `PROJECT.md` §Architecture rules — including its relevant
-sections — before editing code.
+You implement a task packet. Read the task record and the architecture rules file named
+in `PROJECT.md` §Architecture rules, including its relevant sections. If the project has
+an `AGENTS.md`, read it before editing code.
 
 ## Workflow
 

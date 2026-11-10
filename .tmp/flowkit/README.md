@@ -9,6 +9,18 @@ facts, status commands, git and PR rules, checks, docs map, architecture rules, 
 rules, and PM hooks. Every `flow-*` skill reads it first and stops if it is missing.
 Universal quality rules stay in the skills; the profile only adds project specifics.
 
+Scope note: `flow-feature` and `flow-interface` assume an app with an MVC/contract
+architecture (a controller/view layer over a logic core); their vocabulary is adapted per
+project through `PROJECT.md`.
+
+## Prerequisites
+
+- The delivery skills (`flow-*`) need a GitHub remote, Git, and the `gh` CLI signed in.
+- Commits follow the `git-commit` skill, or an equivalent Conventional Commit rule in
+  `PROJECT.md` §Git & PR.
+- Plan execution uses the `executing-plans` skill, or inline execution of the plan file.
+- `AGENTS.md` is optional; the skills read it only if the project has one.
+
 ## Install
 
 1. Copy `skills/` into the skills directory your harness reads (for example
@@ -48,9 +60,11 @@ and `product-review`. The product-management ids keep their names from the sourc
 
 ## Licenses
 
-The 12 skills outside product management are this repository's own work. The 8
-product-management skills are ported from the Product Management plugin, version 1.2.0,
-and carry Apache-2.0; the full text is in `LICENSE.pm-skills`.
+The 12 skills outside product management are this repository's own work, except the
+SwiftUI tips in `flow-feature`, which are adapted from `swiftui-patterns` by
+affaan-m/ecc (MIT, commit `b38be6a`) and keep that notice. The 8 product-management
+skills are ported from the Product Management plugin, version 1.2.0, and carry
+Apache-2.0; the full text is in `LICENSE.pm-skills`.
 
 ## Note on `.tmp/` placement
 
@@ -66,6 +80,7 @@ node .tmp/flowkit/scripts/check-kit.mjs
 ```
 
 Exit 0 prints `flowkit check: OK`. Any other result prints one violation per line and
-exits 1: a missing skill or frontmatter field, a banned project token inside
-`skills/`, a duplicate skill name, a missing `PROJECT.md.example` section, or a `flow-*`
-skill that does not point at `PROJECT.md`. Run it after every edit to the kit.
+exits 1: a missing skill or frontmatter field, a name that does not match its directory,
+a banned project token inside `skills/`, a duplicate skill name, a missing
+`PROJECT.md.example` section or anchor word, or a `flow-*` skill that does not point at
+`PROJECT.md`. Run it after every edit to the kit.

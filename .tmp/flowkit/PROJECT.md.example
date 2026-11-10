@@ -5,43 +5,76 @@ line with facts about the project before using the flowkit skills.
 
 ## Project
 
-Project name, one-sentence purpose, primary language and stack.
-Top-level directory layout: where code, tests, docs, and scripts live.
+- Name: [project name].
+- Purpose: [one sentence: what the product does and who uses it].
+- Stack: [primary language, frameworks, and toolchains].
+- Layout: [where code, tests, docs, and scripts live].
 
 ## Status tracking
 
-Where task and milestone state lives (file, board, or document) and the exact commands
-that show and verify it. Skills that track status run only the commands listed here;
-if this section has no commands, those skills skip the step.
+- Task states: [the exact state values, for example backlog / ready / in progress /
+  in review / done]. A blocked task keeps [which state] and records [where the blocker goes].
+- Status places: [the files that must always agree — the board, the roadmap, the changelog].
+- Task-record template: [path], and where task records are created: [path pattern].
+- Issue template: [path]; labels: [the exact label names issues use].
+- Changelog: [path], the `[Unreleased]` section, and the exact changelog groups it uses.
+- Status commands: [the copy-pasteable command that changes a state, the consistency check,
+  and the context command that prints one item's dependencies and open decisions].
 
 ## Git & PR
 
-Base branch, branch naming convention, and commit message convention.
-PR title/body template path, and any policy files that require a human operator
-to review a change before merge.
+- Base branch: [name]; branch naming: [convention].
+- Commit convention: [for example Conventional Commits `<type>(<scope>): <subject>`].
+- PR template: [path]; body rules: [what the body must contain].
+- Merge command: [the exact command, including how it is pinned to the reviewed head SHA].
+- Policy files a human operator reviews before merge: [paths].
+- Release and tagging: [who does it, and where the release flow is documented].
 
 ## Checks
 
-Every required check (test, lint, build) as a copy-pasteable command.
+Every required check as a copy-pasteable command, one line each:
+- [test command] — [what it proves].
+- [lint / type-check / build].
+- [contract lint, generation, and breaking-change check].
+- [boundary or import check].
+- [status consistency check].
+
+Real environment for verification: [simulator/emulator, workstation, or real device].
 Exit-code discipline: a check that was not run is reported as `Not run`, never as passed.
 
 ## Docs map
 
-Where plans, reports, decisions, specs, and design documents live in this repository.
-Add one line per document type the skills should look up or update.
+Add one line per document type the skills look up or update:
+- Plans: [path].
+- Reports and spike evidence: [path]; spike report template: [path].
+- Spec, use cases, and design: [paths].
+- Copy and UI strings: [path].
+- Workflow and process documents: [paths].
+- Changelog, roadmap, and board: [paths].
+- Scratch and temporary files (agent logs, PR drafts, raw logs): [path].
+- Document index: [path].
 
 ## Architecture rules
 
-Path to this project's architecture law file, plus any hard module or layer boundaries.
-State which files or directories must not be changed without special review.
+- Architecture law file: [path], including [the rule ids or sections that bind a change].
+- Decision records and open questions: [path].
+- Hard module and layer boundaries: [who owns logic, which module may import which].
+- Single contract source and generated directories: [paths]; never hand-edit generated
+  files, never reuse a field, method, or enum number.
+- Files or directories that must not change without special review: [paths].
 
 ## Quality rules
 
-Code style, comment language, and formatting rules specific to this project.
-Module boundaries and any project-specific constraints beyond the universal skill rules.
+- Code style: [formatter/linter and the rules that apply].
+- Comment language and what a comment may say: [rule].
+- Documentation, UI-string, and commit languages: [rule].
+- Module boundaries and project-specific constraints beyond the universal skill rules: [rule].
+- New dependencies: [the decision record and approval they need].
 
 ## PM hooks
 
-Which planning skills apply here: write a spec before large or vague tasks, update
-stakeholder-facing docs at milestones, run roadmap or sprint planning when asked.
+Which planning skills apply here, one line each:
+- Spec before large or vague work: [when, and where the spec lives].
+- Stakeholder updates at milestones: [when, and where they go].
+- Roadmap or sprint planning: [when, and where they go].
 Delete any line that does not apply to this project.

@@ -8,7 +8,7 @@ compatibility: gh signed in; run from the repository root.
 ---
 
 Read `PROJECT.md` at the repo root first. If it is missing, stop and ask the user to
-create it from `PROJECT.md.example`.
+create it from the kit's `PROJECT.md.example`.
 
 ## Workflow
 
@@ -17,8 +17,9 @@ create it from `PROJECT.md.example`.
      coordinator to review the new SHA.
    - A required check is pending: wait, then re-check. A check failed: tell the senior
      to fix it.
-2. Verify the `[Unreleased]` changelog line and run the status check command listed in
-   `PROJECT.md` §Status tracking. Divergent → tell the coordinator before merging.
+2. Verify the `[Unreleased]` line in the changelog named in `PROJECT.md` §Docs map, and
+   run the status check command listed in `PROJECT.md` §Status tracking. Divergent →
+   tell the coordinator before merging.
 3. Merge exactly the reviewed SHA with the command in `PROJECT.md` §Git & PR, matching
    the head SHA.
 4. If GitHub refuses (for example a required check from a ruleset), report the error

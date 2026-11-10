@@ -1,6 +1,6 @@
 // Gate for the flowkit kit: prints one violation per line, exit 1 if any.
-import { readdirSync, readFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { readdirSync, readFileSync, realpathSync, statSync } from "node:fs";
+import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const kitRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -70,7 +70,15 @@ function listSkillDirs() {
   }
 }
 
-function filesUnder(dir) {
+function filesUnder(dir, seen = new Set()) {
+  let real;
+  try {
+    real = realpathSync(dir);
+  } catch {
+    return [];
+  }
+  if (seen.has(real)) return [];
+  seen.add(real);
   let entries;
   try {
     entries = readdirSync(dir, { withFileTypes: true });
@@ -80,8 +88,14 @@ function filesUnder(dir) {
   const files = [];
   for (const entry of entries) {
     const path = join(dir, entry.name);
-    if (entry.isDirectory()) files.push(...filesUnder(path));
-    else if (entry.isFile()) files.push(path);
+    let stat;
+    try {
+      stat = statSync(path);
+    } catch {
+      continue;
+    }
+    if (stat.isDirectory()) files.push(...filesUnder(path, seen));
+    else if (stat.isFile()) files.push(realpathSync(path));
   }
   return files;
 }
@@ -95,6 +109,20 @@ function frontmatter(text) {
   return lines.slice(start + 1, end).join("\n");
 }
 
+function scalar(fm, key) {
+  const lines = fm.split(/\r?\n/);
+  const index = lines.findIndex((line) => line.startsWith(`${key}:`));
+  if (index === -1) return "";
+  const inline = lines[index].slice(key.length + 1).trim();
+  if (inline && !/^[>|][+-]?$/.test(inline)) return inline;
+  const block = [];
+  for (let i = index + 1; i < lines.length; i++) {
+    if (!/^\s+\S/.test(lines[i])) break;
+    block.push(lines[i].trim());
+  }
+  return block.join(" ").trim();
+}
+
 // 1. missing skill — every expected name must exist and pass the frontmatter rule
 const skillBodies = new Map();
 const nameValues = [];
@@ -102,25 +130,27 @@ const extraDirs = listSkillDirs().filter((dir) => !expectedSkills.includes(dir))
 for (const dir of [...expectedSkills, ...extraDirs]) {
   const body = readOrNull(join(skillsDir, dir, "SKILL.md"));
   const fm = body === null ? null : frontmatter(body);
-  const valid =
-    body !== null &&
-    fm !== null &&
-    /^name:/m.test(fm) &&
-    /^description:/m.test(fm);
-  if (!valid) {
+  if (body === null || fm === null) {
     violations.push(`missing skill: ${dir}`);
     continue;
   }
+  const name = scalar(fm, "name");
+  const description = scalar(fm, "description");
+  if (!name || !description) {
+    violations.push(`invalid frontmatter: ${dir}`);
+    continue;
+  }
+  if (name !== dir) violations.push(`name mismatch: ${dir}:${name}`);
   skillBodies.set(dir, body);
-  const value = fm.match(/^name:[ \t]*(.*)$/m)?.[1]?.trim();
-  if (value) nameValues.push({ dir, value });
+  nameValues.push({ dir, value: name });
 }
 
 // 2. forbidden token — one line per file and token regardless of hit count
+const kitReal = realpathSync(kitRoot);
 for (const file of filesUnder(skillsDir)) {
   const text = readOrNull(file);
   if (text === null) continue;
-  const rel = file.slice(kitRoot.length + 1);
+  const rel = relative(kitReal, file);
   for (const { token, ci } of forbidden) {
     const hit = ci
       ? text.toLowerCase().includes(token.toLowerCase())
@@ -129,15 +159,16 @@ for (const file of filesUnder(skillsDir)) {
   }
 }
 
-// 3. duplicate name — same value claimed by two different skills
+// 3. duplicate name — same value claimed by two different skills, case-insensitive
 const seen = new Map();
 for (const { dir, value } of nameValues) {
-  if (seen.has(value) && seen.get(value) !== dir) {
+  const key = value.toLowerCase();
+  if (seen.has(key) && seen.get(key) !== dir) {
     if (!violations.includes(`duplicate name: ${value}`)) {
       violations.push(`duplicate name: ${value}`);
     }
   } else {
-    seen.set(value, dir);
+    seen.set(key, dir);
   }
 }
 
@@ -149,7 +180,14 @@ for (const heading of sections) {
   }
 }
 
-// 5. missing profile ref — flow-* skills must point at PROJECT.md
+// 5. missing anchor — the template must keep naming the artifacts the skills read
+const anchors = ["states", "task record", "merge", "changelog", "scratch"];
+const exampleLower = example.toLowerCase();
+for (const word of anchors) {
+  if (!exampleLower.includes(word)) violations.push(`missing anchor: ${word}`);
+}
+
+// 6. missing profile ref — flow-* skills must point at PROJECT.md
 for (const [dir, body] of skillBodies) {
   if (dir.startsWith("flow-") && !body.includes("PROJECT.md")) {
     violations.push(`missing profile ref: ${dir}`);

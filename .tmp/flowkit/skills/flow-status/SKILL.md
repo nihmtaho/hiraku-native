@@ -9,7 +9,7 @@ compatibility: Node.js 24+; run from the repository root.
 ---
 
 Read `PROJECT.md` at the repo root first. If it is missing, stop and ask the user to
-create it from `PROJECT.md.example`.
+create it from the kit's `PROJECT.md.example`.
 
 This skill is a protocol: it names no scripts of its own. Every command it needs is
 listed in `PROJECT.md` §Status tracking.
@@ -19,8 +19,8 @@ listed in `PROJECT.md` §Status tracking.
 Every time a state changes per `PROJECT.md` §Git & PR: assigning a task (to the
 in-progress state), opening a PR (to in review), merging with every exit criterion met
 (to done), or being blocked (keep the state and record the blocker). The state values
-are the ones defined in `PROJECT.md`; never invent one. A task that appears on no
-board is `blocked`.
+are the ones defined in `PROJECT.md`; never invent one. If a task appears on no board,
+report it; do not invent a state.
 
 ## Workflow
 
@@ -31,9 +31,9 @@ board is `blocked`.
    §Status tracking. A state change always carries a fresh note; the old note is
    usually stale now. If a command reports a missing card or a note it cannot write:
    fix that place by hand; do not skip it.
-3. For a PR with changes: add one line under the right group (`Added`, `Changed`,
-   `Fixed`, `Removed`, `Docs`, `Security`) in the `[Unreleased]` section of the
-   changelog named in `PROJECT.md`, in English (or the language named in `PROJECT.md`
+3. For a PR with changes: add one line under the right one of the changelog groups
+   named in `PROJECT.md` §Status tracking, in the `[Unreleased]` section of the
+   changelog named there, in English (or the language named in `PROJECT.md`
    §Quality rules), ending with `(<task-id>, PR <n>)`. No PR number yet → write
    `PR —`; the coordinator fills it in. Never edit the history below `[Unreleased]`.
 4. Check consistency and put the result in the handoff: run the status check command

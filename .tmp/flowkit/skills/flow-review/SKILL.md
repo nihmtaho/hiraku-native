@@ -6,11 +6,11 @@ description: >-
   BLOCKED verdict to the coordinator. Use when the coordinator assigns a PR review, or
   a SHA must be checked before merge. Runs in a fresh session, never the session that
   wrote the code.
-compatibility: gh signed in; Node.js 24+; run from the repository root.
+compatibility: gh signed in; run from the repository root.
 ---
 
 Read `PROJECT.md` at the repo root first. If it is missing, stop and ask the user to
-create it from `PROJECT.md.example`.
+create it from the kit's `PROJECT.md.example`.
 
 You review independently and change nothing. The senior's report is only a lead, not a
 substitute for reading the diff and its call flow.
@@ -33,9 +33,10 @@ substitute for reading the diff and its call flow.
      generated files, contract compatibility).
 5. Contract or feature change: load `flow-interface` or `flow-feature` to run their
    checklist. Do not perform their write or code-generation steps.
-6. Required checks: the diff adds a `[Unreleased]` changelog line, and the status
-   places named in `PROJECT.md` §Status tracking agree (run the status check command
-   listed there). Missing or divergent is a blocking finding.
+6. Required checks: the diff adds a `[Unreleased]` line to the changelog named in
+   `PROJECT.md` §Docs map, and the status places named in `PROJECT.md` §Status tracking
+   agree (run the status check command listed there). Missing or divergent is a blocking
+   finding.
 7. Run the relevant checks: the commands in `PROJECT.md` §Checks. Record each command
    and exit code. A check that was not run is written `Not run`.
 8. Choose the verdict:

@@ -9,11 +9,11 @@ compatibility: Git; the language toolchain named in PROJECT.md; run from the rep
 ---
 
 Read `PROJECT.md` at the repo root first. If it is missing, stop and ask the user to
-create it from `PROJECT.md.example`.
+create it from the kit's `PROJECT.md.example`.
 
-You debug a defect inside a task. Read `AGENTS.md` and the architecture rules named
-in `PROJECT.md` §Architecture rules — including the sections the suspect code lives
-in — before editing.
+You debug a defect inside a task. Read the architecture rules named in `PROJECT.md`
+§Architecture rules, including the sections the suspect code lives in. If the project
+has an `AGENTS.md`, read it before editing.
 
 ## Workflow
 

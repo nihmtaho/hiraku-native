@@ -86,12 +86,12 @@ buf breaking --against '.git#branch=develop'      # required when the contract c
 buf generate                                      # regenerate core/gen from core/proto/hiraku/v1
 ./Scripts/check-imports.sh                        # Swift import allowlists, ARCHITECTURE §4.1
 xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=macOS'
-xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=iOS Simulator,name=iPhone 17'
+xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=iOS Simulator,name=iPhone 18 Pro'
 ```
 
-CI (`.github/workflows/ci.yml`, job `ci`) runs `go vet`, `go test -race`, and the status
-check. There is no Xcode job, so a PR with Swift changes pastes its build/test evidence
-into the PR body.
+CI (`.github/workflows/ci.yml`) has two jobs. `ci` runs `go vet`, `go test -race`,
+`check-core.sh`, `check-imports.sh`, `buf lint`, the skill tests, and the status check.
+`swift` builds the cgo archives and Swift packages, then runs `xcodebuild test` on macOS.
 
 ## Docs map
 

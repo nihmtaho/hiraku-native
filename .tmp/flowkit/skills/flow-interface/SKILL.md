@@ -9,7 +9,7 @@ compatibility: Git; the contract toolchain and generators named in PROJECT.md; r
 ---
 
 Read `PROJECT.md` at the repo root first. If it is missing, stop and ask the user to
-create it from `PROJECT.md.example`.
+create it from the kit's `PROJECT.md.example`.
 
 You change a contract. The contract source named in `PROJECT.md` §Architecture rules
 is the single source of truth; generated code is derived from it and is never edited
@@ -31,18 +31,18 @@ task: report BLOCKED before choosing a schema.
    compatibility, error mapping, time handling, transactions, and change sets. Keep
    every fact on the side of the boundary `PROJECT.md` §Architecture rules defines;
    the contract layer must not learn about UI-only infrastructure.
-2. Edit the contract source named in `PROJECT.md` §Architecture rules. Add new
-   numbers; never reuse a field, method, or enum number already used. When dropping a
-   field, reserve it per the project's contract convention.
+2. Edit the contract source named in `PROJECT.md` §Architecture rules. Add new field,
+   method, and enum numbers; never reuse one already used. When dropping a field,
+   reserve it per the project's contract convention.
 3. Run the lint, generator, and breaking-change commands in `PROJECT.md` §Checks.
    Read the tool configuration to run the right directory; do not guess the main file
    or an empty baseline. The first contract must state that no baseline exists — never
    report a fake breaking-change pass.
-4. Put pure logic in the domain layer and coordination and transactions in the service
-   layer; wire dispatch through the boundary the architecture rules define. Keep panic
-   protection and handle ownership at the FFI entry points named there; never invert
-   the dependency direction (the core calling the UI, or the UI opening the database
-   itself).
+4. Put pure logic in the layer your architecture names for it and coordination and
+   transactions in the layer above it; wire dispatch through the boundary the
+   architecture rules define. Keep panic protection and handle ownership at your
+   FFI/bridge entry points (if any); never invert the dependency direction (the logic
+   core calling the UI, or the UI opening the database itself).
 5. Connect the contract to the model and error types, protocols, and test fakes named
    in `PROJECT.md` §Architecture rules, and move the callers onto the new interface.
    Emit change events with the scope the architecture defines.

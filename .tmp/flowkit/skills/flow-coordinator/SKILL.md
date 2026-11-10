@@ -9,11 +9,11 @@ compatibility: Node.js 24+; Git and gh signed in; run from the repository root.
 ---
 
 Read `PROJECT.md` at the repo root first. If it is missing, stop and ask the user to
-create it from `PROJECT.md.example`.
+create it from the kit's `PROJECT.md.example`.
 
-You coordinate; you do not write product code. Read `AGENTS.md` and the workflow
-document listed in `PROJECT.md` §Docs map, then open only the document sections the
-task mentions.
+You coordinate; you do not write product code. If the project has an `AGENTS.md`, read
+it, then read the workflow document listed in `PROJECT.md` §Docs map. Open only the
+document sections the task mentions.
 
 ## Workflow
 

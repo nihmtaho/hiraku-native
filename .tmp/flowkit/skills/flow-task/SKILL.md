@@ -5,11 +5,11 @@ description: >-
   items, spikes, dependencies, unresolved open decisions and checkpoints before
   assigning the senior (flow-implement); use when assigning a new task, resuming, or
   changing task state.
-compatibility: Node.js 24+; run from the repository root.
+compatibility: Git and gh signed in; Node.js 24+; run from the repository root.
 ---
 
 Read `PROJECT.md` at the repo root first. If it is missing, stop and ask the user to
-create it from `PROJECT.md.example`.
+create it from the kit's `PROJECT.md.example`.
 
 ## Workflow
 

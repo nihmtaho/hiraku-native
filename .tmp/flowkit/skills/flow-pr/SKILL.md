@@ -9,13 +9,14 @@ compatibility: gh signed in; task branch pushed; run from the repository root.
 ---
 
 Read `PROJECT.md` at the repo root first. If it is missing, stop and ask the user to
-create it from `PROJECT.md.example`.
+create it from the kit's `PROJECT.md.example`.
 
 ## Workflow
 
 1. Confirm the current branch is `<type>/<task-id>`, pushed, and `git rev-parse HEAD`
-   matches the SHA on the remote. Working tree clean. If not, stop and tell the senior
-   to push first.
+   matches the SHA on the remote. Working tree clean, and the `[Unreleased]` line exists
+   in the changelog named in `PROJECT.md` §Docs map. If not, stop and tell the senior to
+   push or add the changelog line first.
 2. Check whether a PR already exists: `gh pr list --head <branch> --state all`.
 3. No PR yet, create one:
    - base must be the branch named in `PROJECT.md` §Git & PR; any other base → stop;
