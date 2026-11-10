@@ -8,7 +8,7 @@
       "files": [],
       "assertions": [
         "Takes the breaking-change baseline from the repository (the develop base revision or the named baseline file) instead of guessing main or running with an empty baseline.",
-        "Covers the bridge entry point, the model and error types, the test fakes, and golden fixtures on both sides.",
+        "Covers the bridge entry point, the model and error types, the test fakes, and golden fixtures on both sides, and regenerates from contract/api.proto instead of hand-editing gen/.",
         "Filters by the role field and does not assume field names such as title, body, or summary."
       ]
     },

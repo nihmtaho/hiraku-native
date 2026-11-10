@@ -4,17 +4,17 @@
     {
       "id": 1,
       "prompt": "Fixture: a TypeScript service repository whose PROJECT.md names docs/board.md as the status board, tasks/<task-id>.md as the task records, CHANGELOG.md with an [Unreleased] section and named groups, the states backlog / ready / in progress / in review / done, and node scripts/project.mjs as the command that changes a state and checks consistency. Work read-only: do not edit files. The senior just finished spike perf-2 (cache library meets the test vectors) and is about to open a PR. State the exact commands and status edits to make.",
-      "expected_output": "Run the status command from PROJECT.md §Status tracking for perf-2 with the new state in review and a fresh note, add exactly one line under the right [Unreleased] group ending with (perf-2, PR <n>) — or (perf-2, PR —) while the number is missing — then run the status consistency check and report its result.",
+      "expected_output": "Run the status command from PROJECT.md §Status tracking for perf-2 with the new state in review and a fresh note, add exactly one line under the right [Unreleased] group ending with the placeholder (perf-2, PR —) because no PR number exists yet, then run the status consistency check and report its result.",
       "files": [],
       "assertions": [
         "Changes the state with the status command named in PROJECT.md §Status tracking so the board and the task record change together, not by editing one place by hand.",
         "Uses the state in review for an open PR, not done.",
-        "Adds exactly one changelog line under the right [Unreleased] group ending with (perf-2, PR <n>) or (perf-2, PR —), and runs the status check."
+        "Adds exactly one changelog line under the right [Unreleased] group ending with (perf-2, PR —), the placeholder required while no PR number exists, and runs the status check."
       ]
     },
     {
       "id": 2,
-      "prompt": "Fixture: a TypeScript service repository whose PROJECT.md names docs/board.md as the status board, tasks/<task-id>.md as the task records, CHANGELOG.md, and the states backlog / ready / in progress / in review / done. Work read-only: do not edit files. Work item billing-06 has the deck list finished but drag-and-drop not done; its PR is merged. The coordinator says switch billing-06 to done to keep the board tidy. How do you handle it?",
+      "prompt": "Fixture: a TypeScript service repository whose PROJECT.md names docs/board.md as the status board, tasks/<task-id>.md as the task records, CHANGELOG.md, node scripts/project.mjs as the status command, and the states backlog / ready / in progress / in review / done. Work read-only: do not edit files. Work item billing-06 has the deck list finished but drag-and-drop not done; its PR is merged. The coordinator says switch billing-06 to done to keep the board tidy. How do you handle it?",
       "expected_output": "Keep the item in progress because its exit criteria are not met, write the remainder into the note with the status command, do not move it to done to get past the gap, and report back to the coordinator.",
       "files": [],
       "assertions": [

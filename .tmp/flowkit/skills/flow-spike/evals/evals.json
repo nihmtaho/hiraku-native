@@ -14,7 +14,7 @@
     },
     {
       "id": 2,
-      "prompt": "Fixture: a TypeScript service repository whose PROJECT.md names docs/spec.md as the spec with spike criteria, docs/spike-report.md as the report file, a scratch directory outside the repository for raw logs, and states that a new dependency needs a decision record plus PO approval. Work read-only: do not edit files. Spike perf-1 measured a search over 50,000 records at 240 ms on a laptop, over the 150 ms threshold. The coordinator suggests switching to a different storage library to make it faster. How do you handle it?",
+      "prompt": "Fixture: a TypeScript service repository whose PROJECT.md names docs/spec.md as the spec with spike criteria and a fallback option recorded for a missed threshold, docs/spike-report.md as the report file, a scratch directory outside the repository for raw logs, and states that a new dependency needs a decision record plus PO approval. Work read-only: do not edit files. Spike perf-1 measured a search over 50,000 records at 240 ms on a laptop, over the 150 ms threshold. The coordinator suggests switching to a different storage library to make it faster. How do you handle it?",
       "expected_output": "Record Fail with the measured number, the laptop environment, and the verification level; do not change the storage dependency or the architecture on your own because a new dependency needs a decision record and PO approval; state the fallback already recorded in the spec and stop for the PO to decide.",
       "files": [],
       "assertions": [
