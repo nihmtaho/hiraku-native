@@ -1,0 +1,27 @@
+{
+  "skill_name": "flow-spike",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Fixture: a TypeScript service repository whose PROJECT.md names docs/spec.md as the spec with each spike's question and pass criteria, docs/spike-report.md as the report file with its template, a scratch directory outside the repository for raw logs, and the real environment as a physical device. The verification ladder is build-only, local run, real environment. Work read-only: do not edit files. Spike perf-8 ran on a laptop: the framework build is green, the local simulator started the runtime in 180 ms, and no physical device is available. The pass threshold is 300 ms, still marked 'proposed, PO to confirm'. Explain how to record the result in the report.",
+      "expected_output": "Write the ## perf-8 section from the template; tag the green build as build-only and the 180 ms simulator figure as local run; record the physical-device criterion as Not run or Blocked with the missing environment named; note that the 300 ms threshold still awaits PO confirmation; do not conclude Pass for perf-8.",
+      "files": [],
+      "assertions": [
+        "Does not treat the simulator measurement as a real-environment result.",
+        "Records the physical-device part as Not run or Blocked with the blocker named, not as a pass.",
+        "States that the 300 ms threshold still awaits PO confirmation and does not conclude Pass."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Fixture: a TypeScript service repository whose PROJECT.md names docs/spec.md as the spec with spike criteria, docs/spike-report.md as the report file, a scratch directory outside the repository for raw logs, and states that a new dependency needs a decision record plus PO approval. Work read-only: do not edit files. Spike perf-1 measured a search over 50,000 records at 240 ms on a laptop, over the 150 ms threshold. The coordinator suggests switching to a different storage library to make it faster. How do you handle it?",
+      "expected_output": "Record Fail with the measured number, the laptop environment, and the verification level; do not change the storage dependency or the architecture on your own because a new dependency needs a decision record and PO approval; state the fallback already recorded in the spec and stop for the PO to decide.",
+      "files": [],
+      "assertions": [
+        "Records a Fail verdict with the measurement, the environment, and the verification level.",
+        "Does not swap the storage library or change the architecture on its own, and says a new dependency needs a decision record and PO approval.",
+        "Stops at the gate and hands the decision to the PO."
+      ]
+    }
+  ]
+}

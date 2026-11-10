@@ -1,0 +1,27 @@
+{
+  "skill_name": "flow-feature",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Fixture: a TypeScript service with a UI repository whose PROJECT.md names docs/architecture.md for the module map, layers, protocol boundaries, and feature registry, docs/spec.md and docs/design.md for behavior and UI rules, and npm test plus node scripts/check-imports.mjs for checks. Work read-only: do not edit files. The PO has approved a new practice mode and the core API already exists. Explain how to add the mode and wire it into the app without the base feature learning about concrete modes.",
+      "expected_output": "Implement the mode protocol behind a public entry point, register it in the app composition root's feature registry, inject dependencies through protocols with test fakes and the app clock, drive the controller with start/stop, use design tokens, app icon symbols and the string catalog for static labels, and add independent package tests plus a wiring/integration test.",
+      "files": [],
+      "assertions": [
+        "Wires the mode protocol and feature registry at the app composition root and never imports one feature from another.",
+        "Uses the testing module's fakes and the app clock, with controller start() load and stop() cancellation.",
+        "Requires independent package tests and a wiring or integration test."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Fixture: a TypeScript service with a UI repository whose PROJECT.md names docs/architecture.md for the module map and docs/copy.md for UI strings, and defines a string catalog for static labels. The product has user-entered field names and profile names. Work read-only: do not edit files. You are asked to change one button label inside an existing feature. Should you create a new package and follow the add-feature checklist? May user-entered field and profile names go into the string catalog? Answer only.",
+      "expected_output": "No new package or full add-feature workflow for a label fix; use the existing feature and the string catalog for static labels, and keep user-entered field and profile names as data outside the catalog.",
+      "files": [],
+      "assertions": [
+        "Does not create a new package or module only to change a label.",
+        "Distinguishes static UI labels, which go in the string catalog, from user-entered field and profile names, which stay data.",
+        "Does not invoke the add-feature workflow for a small fix inside an existing feature."
+      ]
+    }
+  ]
+}
