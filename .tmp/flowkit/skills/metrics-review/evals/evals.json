@@ -8,7 +8,7 @@
       "files": [],
       "assertions": [
         "Includes a Summary, a Metric Scorecard table with Current, Previous, Change, Target, and Status columns, Trend Analysis, Bright Spots, Areas of Concern, Recommended Actions, and Context and Caveats.",
-        "Marks signups on track at 1,200 against the 1,100 target and activation and retention as missing or at risk against 50% and 65%, and presents the onboarding redesign as a possible cause of the activation drop rather than a proven one.",
+        "Marks signups on track at 1,200 against the 1,100 target and activation and retention as miss or at risk against 50% and 65%, and presents the onboarding redesign as a possible cause of the activation drop rather than a proven one.",
         "Contains no `/metrics-review` line and no `~~product analytics` placeholder, and does not ask the user to connect a tool."
       ]
     }

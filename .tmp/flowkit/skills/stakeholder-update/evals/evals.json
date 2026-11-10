@@ -8,7 +8,7 @@
       "files": [],
       "assertions": [
         "Uses the executive format: a status color, a one-sentence TL;DR, Progress, Risks with mitigation, Decisions needed, and Next milestones, under 300 words.",
-        "Sets Status to Yellow and leads with the CSV export slip to 14 December, naming the IP-address cause and the platform team as owner, and asks for a decision by 21 November on launching before the fix instead of a vague request for support.",
+        "Sets Status to Yellow, reports the CSV export slip to 14 December with the IP-address cause and the platform team as owner, and makes the TL;DR surface both the 21 November decision date and the activation miss against the 50% target.",
         "Contains no `/stakeholder-update` line and no `~~project tracker`, `~~chat`, or `~~meeting transcription` placeholder."
       ]
     }
