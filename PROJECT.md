@@ -12,11 +12,14 @@ are English.
 App/            Xcode project: App/Hiraku (targets), App/HirakuTests
 Packages/       Swift packages: HirakuModels, HirakuBridge, HirakuTesting, DesignSystem,
                 StudyKit, Features/Feature*
-core/           Go: domain/, service/, store/, ffi/, gen/, proto/hiraku/v1, scripts/
+core/           Go: domain/, service/, store/, ffi/, gen/, proto/hiraku/v1, spike/, scripts/
 Scripts/        Repository-level shell scripts (check-imports.sh)
 docs/           plans/, reports/, architecture/, product/, process/
 .agents/        scripts/, skills/, templates/, tasks/, tmp/
 ```
+
+`Packages/` and `App/` show the target layout of ARCHITECTURE §4.1, not every package
+that exists yet. Experiment code for spikes lives in `core/spike/`.
 
 The kit's neutral template this profile was adapted from lives at
 `.tmp/flowkit/PROJECT.md.example`.
@@ -26,16 +29,22 @@ The kit's neutral template this profile was adapted from lives at
 Work-item state lives in three places that must always agree, plus one task record per
 task. States (same five values in the Kanban): `bl` Backlog · `rd` Ready · `ip` In
 progress · `rv` In review · `dn` Done. A blocked item keeps its state, gets `blk` in the
-Kanban, and names the blocking `Q-xx` in the note.
+Kanban, and names the blocking `Q-xx` in the note. The task record uses longer names:
+`bl` → `backlog`, `rd` → `ready`, `ip` → `coding`, `rv` → `review` or
+`ready-to-merge`, `dn` → `merged`, and `blocked` for a blocked item.
 
 - Work items: the table in `ROADMAP.md` §11.
 - Board: the `raw` array in `ROADMAP hiraku — Kanban.html` (fifth field of each card).
 - Changelog: `## [Unreleased]` in `CHANGELOG.md`, one Vietnamese line under `Thêm`,
   `Đổi`, `Sửa`, `Xóa`, `Tài liệu`, or `Bảo mật`, ending with `(WP-xx, PR n)`.
 - Task record: `.agents/tasks/<task-id>.md`, created from `.agents/templates/task.md`.
+- Slice issues: one GitHub issue per execution slice, from
+  `.github/ISSUE_TEMPLATE/task-slice.md` under label `type:impl`; the slice's PR closes
+  it with `Closes #<n>`. The slice state lives in the task record, not in the issue.
 
 Write state and check consistency with `wp-status.mjs`; read one item's context with
-`task-context.mjs`; never edit either status place by hand when the script can do it:
+`task-context.mjs`; never edit either of the two places the status script writes by hand
+when the script can do it:
 
 ```sh
 node .agents/scripts/wp-status.mjs <id> <bl|rd|ip|rv|dn> [--pr <ref>] [--note "<text>"]
@@ -89,9 +98,13 @@ buf breaking --against '.git#branch=develop'      # required when the contract c
 buf generate                                      # regenerate core/gen from core/proto/hiraku/v1
 ./Scripts/check-imports.sh                        # Swift import allowlists, ARCHITECTURE §4.1
 node .agents/scripts/wp-status.mjs --check        # ROADMAP §11 and the Kanban agree
+node --test .agents/hiraku/tests/*.test.mjs       # skills and process docs
 xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=macOS'
 xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=iOS Simulator,name=iPhone 18 Pro'
 ```
+
+Real environment: a physical iPhone (the oldest supported model) is the verification
+target; simulator and macOS builds count only as lower verification levels.
 
 CI (`.github/workflows/ci.yml`) has two jobs. `ci` runs `go vet`, `go test -race`,
 `check-core.sh`, `check-imports.sh`, `buf lint`, the skill tests, and the status check.
