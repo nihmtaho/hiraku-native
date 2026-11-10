@@ -727,7 +727,7 @@ Mục này ưu tiên hơn nội dung phía trên khi mâu thuẫn. Luật gốc:
 
 - Không `time.Now()` trong `domain`/`service`: test truyền `now_ms` cố định.
 - Golden test cho RPC và bảng kana ở `core/testdata`; đổi golden phải giải thích hành vi.
-- Benchmark cho spike ghi kết quả bằng skill `hiraku-spike-report` (môi trường, mức xác minh).
+- Benchmark cho spike ghi kết quả bằng skill `flow-spike` (môi trường, mức xác minh).
 - Lệnh chuẩn: `cd core && go test -race ./...`; không thêm thư viện test mới khi chưa có ADR.
 
 Nếu đang review: dùng như checklist read-only; vi phạm mục này là finding. Mâu

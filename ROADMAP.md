@@ -81,7 +81,7 @@ Ghi chú: S-5 và Spike 0 chưa nằm trong ước lượng 3 tuần của M0 (k
 | Sản phẩm | Nội dung | Ước lượng (tuần) |
 |---|---|---|
 | `docs/architecture/ARCHITECTURE.md` | Tách từ spec v3.1 §2.2–2.3, §3, §5 (nay spec chỉ còn con trỏ): luật Swift (L1–L11) và Go (G1–G8), khuôn mẫu feature và domain Go, contract `hiraku.v1`, script kiểm tra core và `import`, cách thêm feature/`StudyMode` | 0,5 |
-| `AGENTS.md` + bộ OpenCode (ADR-31) | Bốn agents, hai skills `hiraku-contract`/`hiraku-feature`, permissions, guard và task packet; DESIGN/COPY đọc trực tiếp, không tạo skill thiết kế trùng tài liệu | 0,25 (ước lượng lịch sử) |
+| `AGENTS.md` + bộ OpenCode (ADR-31) | Bốn agents, hai skills `flow-interface`/`flow-feature`, permissions, guard và task packet; DESIGN/COPY đọc trực tiếp, không tạo skill thiết kế trùng tài liệu | 0,25 (ước lượng lịch sử) |
 | Wireframe/prototype (prompt: `docs/product/WIREFRAME_PROMPT.md`) | Home, Deck/Words, Flashcard, Gõ từ, Cài đặt cho iPhone (ưu tiên); iPad/Mac vẽ trước M1b | 1,25 |
 | `COPY.md` | Bảng chuỗi UI tiếng Việt cho các màn M1a, làm nền String Catalog (bản baseline v1.6 đã duyệt 2026-11-08) | 0,25 |
 | `docs/process/TEST_PLAN.md` | Đã có khung ma trận thiết bị/OS/IME, dữ liệu và tiêu chí; còn xác nhận Q-11, người thử SC-002 và kiểm thử sản phẩm thực tế | 0,25 |

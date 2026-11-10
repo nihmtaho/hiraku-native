@@ -45,7 +45,7 @@ kênh và artifact cụ thể**. Không dùng văn bản do agent tự ghi như 
 đã duyệt. Đổi một trong các mục đó cần duyệt lại.
 
 Credentials chỉ có ở môi trường phát hành được bảo vệ; senior và subagent review không
-nhận token, certificate hoặc private key. Coordinator (`hiraku-ship`) thực hiện qua workflow được
+nhận token, certificate hoặc private key. Coordinator (`flow-ship`) thực hiện qua workflow được
 PO cấu hình; trước khi có workflow, trả BLOCKED thay vì mở shell để ship tay.
 
 Ghi riêng: archive/build thành công, upload TestFlight, kết quả beta, nộp review,

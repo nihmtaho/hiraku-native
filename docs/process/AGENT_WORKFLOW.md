@@ -9,7 +9,7 @@ công cụ và không còn script delivery. Điều phối và các bước lặ
 
 | Thành phần | Đường dẫn | Mục đích |
 |---|---|---|
-| Skills | `.agents/skills/` | Điều phối và quy trình: `hiraku-coordinator`, `hiraku-task`, `hiraku-coding`, `hiraku-review`, `hiraku-create-pr`, `hiraku-ship`; kỹ thuật (`hiraku-contract`, `hiraku-feature`, `hiraku-spike-report`); Git; Swift/Go. Mọi công cụ tự discovery |
+| Skills | `.agents/skills/` | Điều phối và quy trình: `flow-coordinator`, `flow-task`, `flow-implement`, `flow-review`, `flow-pr`, `flow-ship`; kỹ thuật (`flow-interface`, `flow-feature`, `flow-spike`); Git; Swift/Go. Mọi công cụ tự discovery |
 | Task | `.agents/templates/task.md`, `.agents/tasks/` | Hợp đồng và record bàn giao |
 | Tests | `.agents/hiraku/tests/` | Skills (ROADMAP/Kanban, task-context) |
 | Cấu hình công cụ | `.claude/`, `.opencode/`, `.pi/`, `.commandcode/`, `opencode.json` | Chỉ phần chung; xem README từng thư mục |
@@ -20,10 +20,10 @@ Quy trình lặp lại mới: viết skill trong `.agents/skills/`, không thêm
 
 | Vai | Thực hiện bởi | Làm | Không làm |
 |---|---|---|---|
-| Coordinator | skill `hiraku-coordinator` trong phiên chính | Tạo task record, giao senior, gọi review, merge | Sửa source; tự review PR do phiên mình viết |
-| Senior | skill `hiraku-coding` (và `hiraku-create-pr`) | Code, test, commit/push nhánh task, mở PR | Merge, tag, tự duyệt |
-| Review | skill `hiraku-review` trong subagent dựng sẵn (ngữ cảnh mới) | Đọc diff theo SHA, trả verdict PASS/FAIL | Sửa file; PASS cho PR của phiên đã viết |
-| Ship | skill `hiraku-ship` trong phiên coordinator | Merge bằng `gh pr merge` đúng SHA đã review | Tag, release |
+| Coordinator | skill `flow-coordinator` trong phiên chính | Tạo task record, giao senior, gọi review, merge | Sửa source; tự review PR do phiên mình viết |
+| Senior | skill `flow-implement` (và `flow-pr`) | Code, test, commit/push nhánh task, mở PR | Merge, tag, tự duyệt |
+| Review | skill `flow-review` trong subagent dựng sẵn (ngữ cảnh mới) | Đọc diff theo SHA, trả verdict PASS/FAIL | Sửa file; PASS cho PR của phiên đã viết |
+| Ship | skill `flow-ship` trong phiên coordinator | Merge bằng `gh pr merge` đúng SHA đã review | Tag, release |
 | Đọc và lập kế hoạch | built-in `Explore`, `Plan` | Tìm, tóm tắt, lập kế hoạch | Sửa file |
 
 Các mục "Không làm" là quy ước, không có cơ chế kỹ thuật chặn (§6).
@@ -52,19 +52,19 @@ vẫn áp dụng đầy đủ.
 
 ```
 kickoff mỗi mốc M     → record mỏng + plan skeleton + GitHub issues (PO duyệt)
-hiraku-coordinator → hiraku-task            task record; blocked nếu còn Q chặn
-hiraku-coding      → commit, push nhánh task
-hiraku-create-pr   → PR vào develop (hoặc cập nhật PR)
-subagent dựng sẵn + hiraku-review → PASS | FAIL trên đúng head SHA
-FAIL               → hiraku-coding sửa, push SHA mới, review lại (tối đa hai vòng)
-PASS               → hiraku-ship → gh pr merge --squash --match-head-commit <sha>
+flow-coordinator → flow-task            task record; blocked nếu còn Q chặn
+flow-implement   → commit, push nhánh task
+flow-pr          → PR vào develop (hoặc cập nhật PR)
+subagent dựng sẵn + flow-review → PASS | FAIL trên đúng head SHA
+FAIL             → flow-implement sửa, push SHA mới, review lại (tối đa hai vòng)
+PASS             → flow-ship → gh pr merge --squash --match-head-commit <sha>
 ```
 
 Dừng và hỏi PO khi: Q Mở chặn task; sau hai vòng không đạt; mọi việc
 tag hoặc release. CI đang pending thì chờ; CI fail thì senior sửa. PR chạm policy/checker không bị chặn tự động; theo quy ước người vận hành review trước khi merge (§3).
 
 Trạng thái task và WP theo `docs/process/GIT_WORKFLOW.md` §2. Trước khi đóng task, chạy
-`hiraku-wp-status --check`.
+`flow-status --check`.
 
 ## 5. Chi phí và kiểm tra
 
@@ -74,7 +74,7 @@ Trạng thái task và WP theo `docs/process/GIT_WORKFLOW.md` §2. Trước khi 
 
 ```sh
 node --test .agents/hiraku/tests/*.test.mjs
-node .agents/skills/hiraku-wp-status/scripts/wp-status.mjs --check
+node .agents/scripts/wp-status.mjs --check
 ```
 
 - Evals của skill (`evals/evals.json`) chạy read-only theo prompt, so với assertions. Lint đạt
