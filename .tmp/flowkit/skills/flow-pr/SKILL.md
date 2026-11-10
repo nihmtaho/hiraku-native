@@ -13,7 +13,7 @@ create it from the kit's `PROJECT.md.example`.
 
 ## Workflow
 
-1. Confirm the current branch is `<type>/<task-id>`, pushed, and `git rev-parse HEAD`
+1. Confirm the current branch is `<type>/<task-id>-<short-summary>`, pushed, and `git rev-parse HEAD`
    matches the SHA on the remote. Working tree clean, and the `[Unreleased]` line exists
    in the changelog named in `PROJECT.md` §Docs map. If not, stop and tell the senior to
    push or add the changelog line first.

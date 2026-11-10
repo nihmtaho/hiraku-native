@@ -26,7 +26,7 @@ Nhóm: Thêm · Đổi · Sửa · Xóa · Tài liệu · Bảo mật. Mỗi dò
 
 ### Tài liệu
 - Đổi tên 10 skill `hiraku-*` sang `flow-*` 1:1 trong `AGENTS.md`, `docs/process/`, `.claude/README.md` và các skill liên quan; hai script chuyển sang `.agents/scripts/`; ghi vào ADR-31 (PR 83).
-- Thêm bộ kỹ năng portable Flowkit trong `.tmp/flowkit/`: 10 skill `flow-*` port 1:1 từ `hiraku-*`, 8 skill quản lý sản phẩm theo Apache-2.0, 2 skill mới (`flow-debug`, `product-review`), cơ chế profile `PROJECT.md`, profile hiraku full fidelity, template `AGENTS.md` portable, README kèm bảng mapping và checker `check-kit.mjs`; `.agents/skills/` không đổi (PR 83).
+- Thêm bộ kỹ năng portable Flowkit trong `.tmp/flowkit/`: 10 skill `flow-*` port 1:1 từ `hiraku-*`, 8 skill quản lý sản phẩm theo Apache-2.0, 2 skill mới (`flow-debug`, `product-review`), cơ chế profile `PROJECT.md`, profile hiraku full fidelity, template `AGENTS.md` portable, README kèm bảng mapping và checker `check-kit.mjs`; `PROJECT.md` thêm ở root và 8 skill quản lý sản phẩm vào `.agents/skills/` (PR 83).
 - Đóng WP-03: record `merged` kèm PR 78/SHA/verdict, issue #51–#53 closed, vector golden chuyển `core/testdata`, ghi nợ queue scope và vector vắt 04:00.
 - Dọn record M1a sau WP-02b: WP-01/02a/02b chuyển `merged` kèm PR, SHA, verdict, delivery và issue đã đóng; checkbox plan WP-02a hoàn tất; close issue #39–#50; ghi nợ EventHub producer sang WP-03.
 - M1 bridge amendment: `HirakuModels` sở hữu proto `hiraku.v1` sinh và được import `SwiftProtobuf`; `HirakuBridge` chỉ import `HirakuModels` và `CHirakuBridge`; `Scripts/check-imports.sh` kiểm allowlist cho `HirakuModels`/`HirakuBridge`/`HirakuTesting`; CI build hai package; ghi nhận WP-02a/WP-02b hoàn thành (PR 74, PR 75).

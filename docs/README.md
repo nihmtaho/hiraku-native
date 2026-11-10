@@ -1,6 +1,6 @@
 # Tài liệu hiraku
 
-Root chỉ giữ `AGENTS.md`, `CHANGELOG.md`, `COPY.md`, `ROADMAP.md` và
+Root chỉ giữ `AGENTS.md`, `PROJECT.md`, `CHANGELOG.md`, `COPY.md`, `ROADMAP.md` và
 `ROADMAP hiraku — Kanban.html`. Mọi tài liệu khác nằm ở đây.
 
 | Thư mục | Nội dung |
@@ -11,6 +11,8 @@ Root chỉ giữ `AGENTS.md`, `CHANGELOG.md`, `COPY.md`, `ROADMAP.md` và
 | `plans/` | Kế hoạch kỹ thuật, thiết kế giải pháp, đề xuất trước khi làm (`<chủ-đề>.md`) |
 | `reports/` | Kết quả spike, đo hiệu năng, kiểm thử thủ công, audit (`<mốc>-<chủ-đề>.md`, ví dụ `M0_SPIKE.md`) |
 | `mimikara-n3/` | Dữ liệu từ vựng nguồn |
+
+`PROJECT.md` ở root là điểm vào cho các skill Flowkit; skill đọc file này trước.
 
 Ngoài `docs/`:
 

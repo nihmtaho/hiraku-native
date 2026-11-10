@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { copyFileSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { copyFileSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -64,6 +64,34 @@ test("task-context surfaces a directly blocking open question", () => {
   const result = context(root, "WP-22");
   assert.equal(result.work.length, 1);
   assert.ok(result.questions.some((line) => line.startsWith("| Q-26 ") && line.endsWith("trực tiếp")));
+});
+
+test("skills match their directories, AGENTS.md and PROJECT.md sections", () => {
+  const skillsDir = join(root, ".agents/skills");
+  const dirs = readdirSync(skillsDir, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name);
+  const texts = new Map();
+  for (const dir of dirs) {
+    const text = readFileSync(join(skillsDir, dir, "SKILL.md"), "utf8");
+    assert.equal(text.match(/^---\n(?:.*\n)*?name: ([^\n]+)\n/)?.[1], dir, `${dir}: name`);
+    texts.set(dir, text.replace(/\s+/g, " "));
+  }
+
+  const skillsLine = readFileSync(join(root, "AGENTS.md"), "utf8").match(/^- Skills: (.*)$/m)?.[1] ?? "";
+  for (const [, skill] of skillsLine.matchAll(/`([a-z][a-z0-9-]*)`/g)) {
+    assert.ok(dirs.includes(skill), `AGENTS.md names missing skill ${skill}`);
+  }
+
+  const headings = [...readFileSync(join(root, "PROJECT.md"), "utf8").matchAll(/^## (.+)$/gm)]
+    .map((match) => match[1].trim());
+  for (const [dir, text] of texts) {
+    if (!dir.startsWith("flow-")) continue;
+    for (const match of text.matchAll(/PROJECT\.md`? §/g)) {
+      const rest = text.slice(match.index + match[0].length);
+      assert.ok(headings.some((heading) => rest.startsWith(heading)), `${dir}: PROJECT.md §section`);
+    }
+  }
 });
 
 test("task-context labels questions inherited through dependencies", () => {

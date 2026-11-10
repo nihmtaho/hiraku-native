@@ -27,7 +27,7 @@ create it from the kit's `PROJECT.md.example`.
      decision / checkpoint" so the senior knows; do not resolve them yourself.
 3. Name the `task-id` in kebab-case per `PROJECT.md` §Git & PR (for example
    `<milestone>-<number>-<summary>` for a spike, `<area>-<number>-<summary>` for a work
-   item). Branch: `<type>/<task-id>` per `PROJECT.md` §Git & PR.
+   item). Branch: `<type>/<task-id>-<short-summary>` per `PROJECT.md` §Git & PR.
 4. Create the task record where `PROJECT.md` §Status tracking says, from the template
    it names, written in English. Fill the Contract section completely: goal, out of
    scope, files/modules to change, required documents (path + section), blocking open

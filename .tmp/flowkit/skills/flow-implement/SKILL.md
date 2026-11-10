@@ -21,7 +21,7 @@ an `AGENTS.md`, read it before editing code.
    `BLOCKED`; do not guess.
 2. Check Git state: branch, working tree, pre-existing changes. Do not overwrite work
    that is not yours. If the task branch already exists, continue on it.
-3. If there is no branch yet: create `<type>/<task-id>` from the base branch named in
+3. If there is no branch yet: create `<type>/<task-id>-<short-summary>` from the base branch named in
    `PROJECT.md` §Git & PR. Mark the work item in progress with `flow-status` (states
    per `PROJECT.md`).
 4. Interface/contract change: load `flow-interface`. New feature: load `flow-feature`.
@@ -39,7 +39,7 @@ an `AGENTS.md`, read it before editing code.
    to the changelog named in `PROJECT.md`, and update the work-item state with
    `flow-status` per `PROJECT.md` §Status tracking.
 8. Small commits, per the `git-commit` skill. No `--amend`, no `--no-verify`.
-   Push: `git push -u origin <type>/<task-id>` (branch naming per `PROJECT.md` §Git & PR).
+   Push: `git push -u origin <type>/<task-id>-<short-summary>` (branch naming per `PROJECT.md` §Git & PR).
 9. Fixing review findings: fix within scope, commit anew, push. If a rebase is needed:
    `git rebase <base-branch>`, then `git push --force-with-lease origin <task-branch>`
    (both per `PROJECT.md` §Git & PR). Only on the task branch; never force-push to the

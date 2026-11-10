@@ -472,6 +472,7 @@ Q-4, Q-A, Q-B, Q-C, Q-D, Q-E đã được đóng bởi ADR-26, ADR-23, ADR-22, 
   2. Chưa thêm dependency `pi-subagents` hay package tương đương (khi thêm cần ADR riêng theo luật phụ thuộc của AGENTS). Fallback hiện tại: người vận hành review tay trên GitHub, hoặc một session agent thứ hai hoàn toàn riêng làm reviewer với skill `hiraku-review`.
   3. PR chạm policy/checker luôn cần người vận hành review trước khi merge, kể cả khi đã có PASS.
 - **Hệ quả**: PR #35 là trường hợp đầu tiên áp dụng: merge theo lệnh trực tiếp của người vận hành, không có verdict độc lập.
+- **Sửa đổi 2026-11-11**: tên skill `hiraku-*` trong ADR này và các ADR trước ánh xạ theo bản sửa đổi ADR-31 ngày 2026-11-11 (`hiraku-review` → `flow-review`).
 - **Trạng thái**: Đã chốt (PO, 2026-11-04).
 
 ---

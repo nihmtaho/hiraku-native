@@ -15,7 +15,7 @@ Packages/       Swift packages: HirakuModels, HirakuBridge, HirakuTesting, Desig
 core/           Go: domain/, service/, store/, ffi/, gen/, proto/hiraku/v1, spike/, scripts/
 Scripts/        Repository-level shell scripts (check-imports.sh)
 docs/           plans/, reports/, architecture/, product/, process/
-.agents/        scripts/, skills/, templates/, tasks/, tmp/
+.agents/        scripts/, skills/, templates/, tasks/, hiraku/tests/, tmp/
 ```
 
 `Packages/` and `App/` show the target layout in `ARCHITECTURE.md` §3 "Cấu trúc
@@ -187,7 +187,8 @@ Hard boundaries:
   `swift-protobuf`, `google.golang.org/protobuf`, buf (ADR-22).
 - Every task's PR adds a `CHANGELOG.md` `[Unreleased]` line and updates `ROADMAP.md` §11
   and the Kanban in the same branch. A behavior change also updates spec, use cases, and
-  design.
+  design. A change with no work item, such as a tooling adoption, documents the exception
+  in the PR body instead of inventing a `ROADMAP.md` §11 row.
 
 ## PM hooks
 

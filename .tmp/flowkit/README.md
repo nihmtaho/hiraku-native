@@ -34,7 +34,8 @@ project through `PROJECT.md`.
 Before copying, run the check below in the kit; it reads the kit, not the installed copy.
 
 `profiles/hiraku-native.md` is a worked example: a fully filled `PROJECT.md` for a real
-project, useful as a shape to copy. It is evidence, not an install step.
+project, useful as a shape to copy. It is evidence, not an install step. It is a
+pre-adoption snapshot; the live values are in that repo's root `PROJECT.md`.
 
 ## Skill map from the original kit
 

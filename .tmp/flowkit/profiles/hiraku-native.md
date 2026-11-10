@@ -1,5 +1,7 @@
 # PROJECT.md — hiraku
 
+> Pre-adoption snapshot kept as a worked example; the live values are in this repo's root `PROJECT.md`.
+
 ## Project
 
 hiraku — a Japanese vocabulary app built on FSRS. Business logic and data live in a Go
