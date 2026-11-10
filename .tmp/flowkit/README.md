@@ -13,20 +13,22 @@ Universal quality rules stay in the skills; the profile only adds project specif
 
 1. Copy `skills/` into the skills directory your harness reads (for example
    `.agents/skills/`). Keep the directory names; skill ids and cross-references use them.
+   Carry `LICENSE.pm-skills` along with it: Apache-2.0 §4(a) requires the license text to
+   travel with the product-management skills.
 2. Copy `PROJECT.md.example` to `PROJECT.md` at the repo root and fill every section.
 3. Optional: start `AGENTS.md` from `AGENTS.template.md` and replace every bracketed
    placeholder with facts about the repository before committing it.
-4. Run the check below in the kit before copying; it reads the kit, not the installed
-   copy.
+
+Before copying, run the check below in the kit; it reads the kit, not the installed copy.
 
 `profiles/hiraku-native.md` is a worked example: a fully filled `PROJECT.md` for a real
 project, useful as a shape to copy. It is evidence, not an install step.
 
 ## Skill map from the original kit
 
-The 10 process skills were ported 1:1 from the `hiraku-*` set. Same steps, same
-guardrails, same verdict model; only repository-specific facts were replaced by
-`PROJECT.md` sections.
+The 10 process skills were ported 1:1 from the `hiraku-*` set: same steps, same
+guardrails, same verdict model, with repository-specific facts replaced and review
+hardening added.
 
 | Original skill | Flowkit skill | What it does |
 |---|---|---|
@@ -64,6 +66,6 @@ node .tmp/flowkit/scripts/check-kit.mjs
 ```
 
 Exit 0 prints `flowkit check: OK`. Any other result prints one violation per line and
-exits 1: a missing skill or frontmatter field, a project-specific token inside
+exits 1: a missing skill or frontmatter field, a banned project token inside
 `skills/`, a duplicate skill name, a missing `PROJECT.md.example` section, or a `flow-*`
 skill that does not point at `PROJECT.md`. Run it after every edit to the kit.
