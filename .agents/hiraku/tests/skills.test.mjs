@@ -4,8 +4,8 @@ import { copyFileSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSy
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { main, mismatches } from "../../skills/hiraku-wp-status/scripts/wp-status.mjs";
-import { context } from "../../skills/hiraku-task/scripts/task-context.mjs";
+import { main, mismatches } from "../../scripts/wp-status.mjs";
+import { context } from "../../scripts/task-context.mjs";
 
 const root = fileURLToPath(new URL("../../../", import.meta.url));
 const kanban = "ROADMAP hiraku — Kanban.html";

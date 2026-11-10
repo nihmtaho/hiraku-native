@@ -43,7 +43,7 @@ jobs:
       - name: Skill tests
         run: node --test .agents/hiraku/tests/*.test.mjs
       - name: ROADMAP and Kanban agree
-        run: node .agents/skills/hiraku-wp-status/scripts/wp-status.mjs --check
+        run: node .agents/scripts/wp-status.mjs --check
 
   swift:
     runs-on: macos-latest
