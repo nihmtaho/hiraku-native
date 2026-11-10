@@ -9,7 +9,7 @@ compatibility: Git; the UI toolchain named in PROJECT.md; run from the repositor
 ---
 
 Read `PROJECT.md` at the repo root first. If it is missing, stop and ask the user to
-create it from the kit's `PROJECT.md.example`.
+create it from `.agents/PROJECT.md.example`.
 
 You add a feature as one vertical slice. Paths are relative to the repository root.
 

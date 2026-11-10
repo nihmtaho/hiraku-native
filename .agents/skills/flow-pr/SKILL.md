@@ -9,7 +9,7 @@ compatibility: gh signed in; task branch pushed; run from the repository root.
 ---
 
 Read `PROJECT.md` at the repo root first. If it is missing, stop and ask the user to
-create it from the kit's `PROJECT.md.example`.
+create it from `.agents/PROJECT.md.example`.
 
 ## Workflow
 

@@ -15,10 +15,10 @@
     {
       "id": 2,
       "prompt": "Fixture: a TypeScript service repository whose root holds README.md, package.json, src/, tests/, tasks/billing-07-csv.md, and no PROJECT.md. The team says the file would name docs/board.md as the status board, develop as the base branch with `<type>/<task-id>` branches, npm test and npm run lint as the checks, a Docs map of docs/spec.md plus .tmp/ as scratch, and docs/architecture.md as the architecture rules. Work read-only: do not edit files. The coordinator hands you tasks/billing-07-csv.md and says to start coding. What do you do?",
-      "expected_output": "Stop before editing or deciding anything: ask the user and the coordinator to create PROJECT.md at the repository root from the kit's PROJECT.md.example, because the base branch, branch naming, checks, docs map, and architecture rules must come from that file. Do not treat the stated facts, README.md, package.json, or tasks/billing-07-csv.md as a substitute for it, and return BLOCKED rather than IMPLEMENTED.",
+      "expected_output": "Stop before editing or deciding anything: ask the user and the coordinator to create PROJECT.md at the repository root from `.agents/PROJECT.md.example`, because the base branch, branch naming, checks, docs map, and architecture rules must come from that file. Do not treat the stated facts, README.md, package.json, or tasks/billing-07-csv.md as a substitute for it, and return BLOCKED rather than IMPLEMENTED.",
       "files": [],
       "assertions": [
-        "Stops and asks for PROJECT.md at the repository root created from the kit's PROJECT.md.example before starting the task.",
+        "Stops and asks for PROJECT.md at the repository root created from `.agents/PROJECT.md.example` before starting the task.",
         "Does not treat the stated facts, README.md, package.json, or the task record as a substitute for PROJECT.md when choosing the branch, checks, or docs paths.",
         "Returns BLOCKED instead of claiming IMPLEMENTED or PARTIAL work."
       ]

@@ -9,7 +9,7 @@ compatibility: Git; the contract toolchain and generators named in PROJECT.md; r
 ---
 
 Read `PROJECT.md` at the repo root first. If it is missing, stop and ask the user to
-create it from the kit's `PROJECT.md.example`.
+create it from `.agents/PROJECT.md.example`.
 
 You change a contract. The contract source named in `PROJECT.md` §Architecture rules
 is the single source of truth; generated code is derived from it and is never edited

@@ -10,7 +10,7 @@ compatibility: Read-only; documents per PROJECT.md §Docs map; run from the repo
 ---
 
 Read `PROJECT.md` at the repo root first. If it is missing, stop and ask the user to
-create it from the kit's `PROJECT.md.example`.
+create it from `.agents/PROJECT.md.example`.
 
 You review a spec, PRD, or design and change nothing: during the review you never
 edit files. Find the document under review through `PROJECT.md` §Docs map, and read

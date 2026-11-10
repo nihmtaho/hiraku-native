@@ -9,7 +9,7 @@ compatibility: Node.js 24+; run from the repository root.
 ---
 
 Read `PROJECT.md` at the repo root first. If it is missing, stop and ask the user to
-create it from the kit's `PROJECT.md.example`.
+create it from `.agents/PROJECT.md.example`.
 
 This skill is a protocol: it names no scripts of its own. Every command it needs is
 listed in `PROJECT.md` §Status tracking.

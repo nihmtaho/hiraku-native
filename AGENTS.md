@@ -7,7 +7,7 @@ App học từ vựng tiếng Nhật (FSRS). Logic và dữ liệu ở Go core (
 - `docs/architecture/DECISIONS.md`: ADR-20…30 đã chốt (ADR-27 field tùy biến, ADR-28 profile, ADR-29/30 đồng bộ iCloud); Q mở và đã đóng.
 - `docs/product/spec.md`, `docs/product/use-cases.md`, `docs/product/DESIGN.md`, `ROADMAP.md`: đọc theo mục liên quan.
 - `COPY.md`: chuỗi UI, đọc khi thêm hoặc sửa chuỗi. `docs/product/WIREFRAME_PROMPT.md`, `CHANGELOG.md`: không cần khi viết mã.
-- `PROJECT.md`: điểm vào cho skill Flowkit (trạng thái, Git & PR, checks, docs map); kit phân phối ở `.tmp/flowkit/`.
+- `PROJECT.md`: điểm vào cho skill Flowkit (trạng thái, Git & PR, checks, docs map); mẫu `.agents/PROJECT.md.example`, còn `docs/AGENTS.template.md` là template `AGENTS.md` portable.
 
 ## Nơi đặt file
 - Root chỉ có `AGENTS.md`, `PROJECT.md`, `CHANGELOG.md`, `COPY.md`, `ROADMAP.md`, Kanban. Tài liệu ở `docs/` (kế hoạch `docs/plans/`, kết quả `docs/reports/`; xem `docs/README.md`). File tạm, log của AI: `.agents/tmp/`.

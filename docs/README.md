@@ -9,8 +9,9 @@ Root chỉ giữ `AGENTS.md`, `PROJECT.md`, `CHANGELOG.md`, `COPY.md`, `ROADMAP.
 | `architecture/` | `ARCHITECTURE.md`, `DECISIONS.md` (ADR, Q) |
 | `process/` | `GIT_WORKFLOW.md`, `AGENT_WORKFLOW.md`, `RELEASE.md`, `TEST_PLAN.md` |
 | `plans/` | Kế hoạch kỹ thuật, thiết kế giải pháp, đề xuất trước khi làm (`<chủ-đề>.md`) |
-| `reports/` | Kết quả spike, đo hiệu năng, kiểm thử thủ công, audit (`<mốc>-<chủ-đề>.md`, ví dụ `M0_SPIKE.md`) |
+| `reports/` | Kết quả spike, đo hiệu năng, kiểm thử thủ công, audit (`<mốc>-<chủ-đề>.md`, ví dụ `M0_SPIKE.md`, `FLOWKIT_EVALS.md`) |
 | `mimikara-n3/` | Dữ liệu từ vựng nguồn |
+| `AGENTS.template.md` | Template `AGENTS.md` portable cho dự án khác dùng Flowkit |
 
 `PROJECT.md` ở root là điểm vào cho các skill Flowkit; skill đọc file này trước.
 
