@@ -15,7 +15,7 @@
     {
       "id": 2,
       "prompt": "Fixture: a TypeScript service repository whose PROJECT.md names docs/board.md as the status board; tasks/<task-id>.md as task records; develop as the base branch; node scripts/project.mjs as the state, consistency and context command; npm test and npm run lint as the checks; a Docs map listing docs/spec.md and .tmp/ as the scratch directory; and docs/architecture.md as the architecture rules. Work read-only: do not edit files. Resume task billing-03-totals: its record says `review PASS at 9f2c1aa`, but `gh pr view 87 --json headRefOid` reports head 4b7d0e2, because the senior pushed one more commit after that review. The coordinator wants to run ship now. What do you do?",
-      "expected_output": "Compare the record's revision with the PR head: 9f2c1aa is not the current head, so the PASS is void. Do not ship. Send 4b7d0e2 for a fresh independent review in a built-in subagent with the PR number 87, the head SHA 4b7d0e2, the task record path, and the line `load skill flow-review; do not edit files`; record the pending re-review under Next in the task record; ship only after a PASS on 4b7d0e2.",
+      "expected_output": "Compare the record's revision with the PR head: 9f2c1aa is not the current head, so the PASS is void. Do not ship. Send 4b7d0e2 for a fresh independent review in a built-in subagent with the PR number 87, the head SHA 4b7d0e2, the task record path, and the line \"load skill `flow-review`; do not edit files\"; record the pending re-review under Next in the task record; ship only after a PASS on 4b7d0e2.",
       "files": [],
       "assertions": [
         "Compares the actual PR head 4b7d0e2 with the revision 9f2c1aa in the record instead of trusting the recorded PASS.",
