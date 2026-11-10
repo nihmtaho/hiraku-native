@@ -4,11 +4,11 @@
     {
       "id": 1,
       "prompt": "Fixture: a three-engineer team planning a two-week sprint from Monday 16 November to Friday 27 November, with 10 working days each. Ana is on PTO for two days, Ben is available all 10 days, and Chen is on call for four days, leaving six available days. Work read-only: do not edit or create files; no project tracker or calendar is connected, so work only from this prompt. Backlog: P0 checkout retry (5 points), P0 receipt upload fix (3 points), P1 search filters (3 points), P1 empty-state copy (1 point), P2 dark mode (8 points). Last sprint's P0 tax rounding item did not ship and carries over at 3 points. Return the sprint plan.",
-      "expected_output": "A Sprint Plan with the dates 16-27 November, a one-sentence sprint goal, a capacity table showing Ana 8, Ben 10, and Chen 6 available days for a total of 24, a backlog table with P0/P1/P2, estimates, owners, and dependencies, a planned-load line giving the load in points and as a percentage of capacity with the remaining capacity stated, a Risks table, Definition of Done, and Key Dates. The carryover is named. No /sprint-planning usage line and no connector placeholder.",
+      "expected_output": "A Sprint Plan with the dates 16-27 November, a one-sentence sprint goal, a capacity table showing Ana 8, Ben 10, and Chen 6 available days for a total of 24, a backlog table with P0/P1/P2, estimates, owners, and dependencies, a planned-load line giving the load in points and as a percentage of capacity, a Risks table, Definition of Done, and Key Dates. The carryover is named. No /sprint-planning usage line and no connector placeholder.",
       "files": [],
       "assertions": [
         "Uses the skill's plan structure: a Sprint Plan header with the 16-27 November dates, a one-sentence sprint goal, Capacity, Sprint Backlog with P0/P1/P2, Risks, Definition of Done, and Key Dates.",
-        "Shows Ana 8, Ben 10, and Chen 6 available days for a total of 24, names the 3-point carryover, and states the planned load as a percentage of capacity along with the remaining capacity.",
+        "Shows Ana 8, Ben 10, and Chen 6 available days for a total of 24, names the 3-point carryover, and states the planned load as a percentage of capacity.",
         "Contains no `/sprint-planning` line and no `~~project tracker` or `~~calendar` placeholder, and does not ask the user to connect a tool."
       ]
     }

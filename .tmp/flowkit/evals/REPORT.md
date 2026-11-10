@@ -5,9 +5,12 @@ Date: 2026-11-11 · Branch: `feat/portable-skills-kit` · Revision: evals at `69
 Method: repo convention (`<skill>/evals/evals.json`, read-only per prompt). Each skill was run by
 one fresh read-only subagent: it read `SKILL.md`, answered every eval prompt against the fixture
 stated in the prompt, then graded each assertion strictly. No files were edited, no commands
-executed. 8 PM skills ran 2 per subagent; 12 kit skills one each.
+executed. 8 skills (one prompt each) ran two per subagent; 12 skills (two prompts each) ran one per
+subagent.
 
-Result: **101/101 assertions pass** across 20 skills (36 eval prompts).
+Gate: `node .tmp/flowkit/scripts/check-kit.mjs` → `flowkit check: OK` (exit 0).
+
+Result: **101/101 assertions pass** across 20 skills (32 eval prompts: 12 skills × 2 + 8 skills × 1).
 
 ## Per-skill results
 
@@ -45,24 +48,30 @@ Result: **101/101 assertions pass** across 20 skills (36 eval prompts).
 
 ## No failures to fix
 
-No assertion failed, so no `SKILL.md` change was needed. Two eval-side false-fail/false-pass
-classes were removed during authoring (see review notes): the debug floating-point premise, the
-roadmap "what comes off" demand, the brainstorming conversation rule, and the research quote count.
+No assertion failed, so no `SKILL.md` change was needed. Four eval-side false-fail/false-pass
+classes were removed during authoring: the debug floating-point premise, the roadmap "what comes
+off" demand, the brainstorming conversation rule, and the research quote count.
 
 ## Known limits of this evidence
 
 1. **Self-graded.** The same agent that answered also graded. Strictness was instructed, but an
    independent grader would be stronger evidence.
-2. **Response-only.** Skills whose contract includes running commands or editing files were graded
+2. **Not blind.** The answering subagent had the eval file open, so `expected_output` and the
+   assertions were visible while it wrote each answer; part of 101/101 is therefore self-fulfilling.
+   The recommended independent pass should answer from the prompt alone, with the eval file withheld.
+3. **Response-only.** Skills whose contract includes running commands or editing files were graded
    on the plan they state, not on real tool output. Command syntax is asserted for form, not for
    execution.
-3. **Uniform fixture.** All evals use one neutral TypeScript SaaS fixture, which fits the delivery
+4. **Uniform fixture.** All evals use one neutral TypeScript SaaS fixture, which fits the delivery
    skills well but is less natural for `flow-feature` (SwiftUI-oriented) and the PM skills; the
    skills' own project-specific assumptions are therefore under-tested.
-4. **No discriminating baseline.** A 100% pass rate can also mean lenient assertions. If this suite
+5. **No discriminating baseline.** A 100% pass rate can also mean lenient assertions. If this suite
    is used to compare future skill revisions, run a baseline (skill removed) set to confirm the
    assertions separate good from bad answers.
-5. PM skill bodies are verbatim upstream copies; only the smoke-level adaptation risks are covered.
+6. **Structural assertions pass on headings.** Several PM A1s check that the named sections exist,
+   so a response that lists headings with thin content still passes; the per-assertion total hides
+   this because one structural assertion stands in for the whole structure.
+7. PM skill bodies are verbatim upstream copies; only the smoke-level adaptation risks are covered.
 
 ## Decision queue
 
