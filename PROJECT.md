@@ -18,8 +18,8 @@ docs/           plans/, reports/, architecture/, product/, process/
 .agents/        scripts/, skills/, templates/, tasks/, tmp/
 ```
 
-`Packages/` and `App/` show the target layout of ARCHITECTURE §4.1, not every package
-that exists yet. Experiment code for spikes lives in `core/spike/`.
+`Packages/` and `App/` show the target layout in `ARCHITECTURE.md` §3 "Cấu trúc
+workspace", not every package that exists yet.
 
 The kit's neutral template this profile was adapted from lives at
 `.tmp/flowkit/PROJECT.md.example`.
@@ -39,8 +39,9 @@ Kanban, and names the blocking `Q-xx` in the note. The task record uses longer n
   `Đổi`, `Sửa`, `Xóa`, `Tài liệu`, or `Bảo mật`, ending with `(WP-xx, PR n)`.
 - Task record: `.agents/tasks/<task-id>.md`, created from `.agents/templates/task.md`.
 - Slice issues: one GitHub issue per execution slice, from
-  `.github/ISSUE_TEMPLATE/task-slice.md` under label `type:impl`; the slice's PR closes
-  it with `Closes #<n>`. The slice state lives in the task record, not in the issue.
+  `.github/ISSUE_TEMPLATE/task-slice.md` under label `type:impl`; the task's PR closes
+  each slice with `Closes #<n>`. Slice status is tracked on the slice issues; the task
+  record links them.
 
 Write state and check consistency with `wp-status.mjs`; read one item's context with
 `task-context.mjs`; never edit either of the two places the status script writes by hand
@@ -125,6 +126,7 @@ CI (`.github/workflows/ci.yml`) has two jobs. `ci` runs `go vet`, `go test -race
 | UI strings | `COPY.md` and the String Catalog |
 | Milestones and the changelog | `ROADMAP.md`, `ROADMAP hiraku — Kanban.html`, `CHANGELOG.md` |
 | Kit profile example | `.tmp/flowkit/PROJECT.md.example` |
+| Real verification environment | physical iPhone, oldest supported model (simulator and macOS are lower levels) |
 | Document index | `docs/README.md` |
 
 Spike evidence is recorded in `docs/reports/M0_SPIKE.md` in a fixed shape. Root keeps
@@ -142,6 +144,7 @@ Hard boundaries:
 
 - If the logic does not need to know it is running on Apple hardware, it belongs in the
   Go core (`core/`).
+- Experiment code lives in `core/spike/` only; product code never imports it.
 - Only `core/ffi` imports `"C"`; only `HirakuBridge` calls `hk_*`. Swift never touches
   `core/gen/`.
 - No `net*` imports and no global mutable state in Go. No `time.Now()` in `domain` or
