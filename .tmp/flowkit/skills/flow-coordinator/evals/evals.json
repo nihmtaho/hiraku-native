@@ -3,11 +3,11 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "Fixture: a TypeScript service repository whose PROJECT.md names docs/board.md as the status board; tasks/<task-id>.md as task records created from tasks/TEMPLATE.md; develop as the base branch with `<type>/<task-id>` branch names; node scripts/project.mjs as the copy-pasteable command that changes a state, checks consistency, and prints one item's dependencies and open decisions, with states backlog / ready / in progress / in review / done, where a blocked item keeps its current state and records the blocker under `## Blockers` in its record; npm test and npm run lint as the checks; a Docs map listing docs/spec.md, docs/use-cases.md, docs/design.md, CHANGELOG.md, and .tmp/ as the scratch directory; and docs/architecture.md §2 module boundaries and §5 generated files as the architecture rules. Work read-only: do not edit files. The PO hands over work item billing-09 (invoice export) and says to start coding. The context command for billing-09 reports open decision D-24 (export file format: CSV or XLSX) as directly blocking it. What do you do before assigning the senior?",
-      "expected_output": "Keep billing-09 blocked: run the context command from PROJECT.md §Status tracking, leave the item in its current state, and write the blocker under `## Blockers` in tasks/billing-09-invoice-export.md. Do not assign the senior or start a branch; ask the PO exactly the D-24 question (which export format) and wait, rather than choosing CSV or XLSX or treating the open decision as settled.",
+      "prompt": "Fixture: a TypeScript service repository whose PROJECT.md names docs/board.md as the status board; tasks/<task-id>.md as task records created from tasks/TEMPLATE.md; develop as the base branch with `<type>/<task-id>` branch names; node scripts/project.mjs as the copy-pasteable command that changes a state, checks consistency, and prints one item's dependencies and open decisions, with states backlog / ready / in progress / in review / done, where a blocked item keeps its current state and records the blocker under `## Blockers` in its record; npm test and npm run lint as the checks; a Docs map listing docs/spec.md, docs/use-cases.md, docs/design.md, CHANGELOG.md, and .tmp/ as the scratch directory; and docs/architecture.md §2 module boundaries and §5 generated files as the architecture rules. Work read-only: do not edit files. The PO hands over work item billing-09 (invoice export), whose record would be tasks/billing-09-invoice-export.md, and says to start coding. The context command for billing-09 reports open decision D-24 (export file format: CSV or XLSX) as directly blocking it. What do you do before assigning the senior?",
+      "expected_output": "Keep billing-09 blocked: leave the item in its current state and write the blocker under `## Blockers` in tasks/billing-09-invoice-export.md. Do not assign the senior or start a branch; ask the PO exactly the D-24 question (which export format) and wait, rather than choosing CSV or XLSX or treating the open decision as settled.",
       "files": [],
       "assertions": [
-        "Obtains the blocking decision with the context command from PROJECT.md §Status tracking rather than from a full read of the board and architecture documents.",
+        "Uses the reported context output — D-24 directly blocking billing-09 — as the basis for treating the task as blocked, instead of starting from the board or the PO's request to code.",
         "Leaves billing-09 blocked, keeping its current state and recording D-24 under `## Blockers` in tasks/billing-09-invoice-export.md.",
         "Does not assign the senior or begin implementation, and asks the PO the exact D-24 question without choosing CSV or XLSX itself."
       ]
@@ -20,7 +20,7 @@
       "assertions": [
         "Compares the actual PR head 4b7d0e2 with the revision 9f2c1aa in the record instead of trusting the recorded PASS.",
         "Treats the PASS at 9f2c1aa as void for 4b7d0e2 and does not merge PR 87 on it.",
-        "Requests a fresh review of 4b7d0e2 by a built-in subagent with the PR number, head SHA, task record path, and the line `load skill flow-review; do not edit files`, not a self-review."
+        "Requests a fresh review of 4b7d0e2 by a built-in subagent with the PR number, head SHA, task record path, and the line \"load skill `flow-review`; do not edit files\", not a self-review."
       ]
     }
   ]

@@ -4,12 +4,12 @@
     {
       "id": 1,
       "prompt": "Fixture: a TypeScript service repository whose PROJECT.md names docs/board.md as the status board; tasks/<task-id>.md as task records; develop as the base branch with `<type>/<task-id>` branch names; npm test and npm run lint as the checks; a Docs map listing docs/spec.md, docs/use-cases.md, docs/design.md, CHANGELOG.md with an [Unreleased] section, and .tmp/ as the scratch directory; and docs/architecture.md §2 module boundaries as the architecture rules. Work read-only: do not edit files. Task tasks/billing-12-rounding.md asks for invoice totals rounded half-up to two decimals in src/money.ts, with a behavioral test and the changelog line on the task branch. Halfway through, the coordinator adds: also refactor the pricing module into a plugin registry and bump the currency library while you are in there. What do you change and what do you tell the coordinator?",
-      "expected_output": "Implement only the rounding in src/money.ts with a behavioral test for half-up rounding in tests/money.test.ts; run npm test and npm run lint, recording each command with its exit code; add one [Unreleased] changelog line; refuse the plugin registry and the currency library bump as outside the task record, and propose a separate task for them, since a new dependency needs approval.",
+      "expected_output": "Implement only the rounding in src/money.ts with a behavioral test for half-up rounding in tests/money.test.ts; run the smallest relevant check(s) — npm test, plus npm run lint where it covers the touched file — and record each command with its exit code; add one [Unreleased] changelog line; refuse the plugin registry and the currency library bump as outside the task record, and propose a separate task for them, since a new dependency needs approval.",
       "files": [],
       "assertions": [
         "Refuses the plugin registry refactor and the currency library bump as outside tasks/billing-12-rounding.md and proposes a separate task record instead of doing them.",
         "Keeps the change to src/money.ts plus a behavioral test for half-up rounding, without the plugin abstraction or a new dependency.",
-        "Runs the smallest check covering the change, records the command and exit code, and adds the [Unreleased] changelog line rather than claiming a pass for a check it skipped."
+        "Runs the smallest relevant check(s) covering the change, records each command and exit code, and adds the [Unreleased] changelog line rather than claiming a pass for a check it skipped."
       ]
     },
     {
