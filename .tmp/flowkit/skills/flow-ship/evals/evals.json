@@ -1,0 +1,28 @@
+{
+  "skill_name": "flow-ship",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Fixture: a TypeScript service repository whose PROJECT.md names docs/board.md as the status board; develop as the base branch; `gh pr merge <pr> --squash --match-head-commit <sha>` as the merge command; npm test and npm run lint as the checks; a Docs map listing CHANGELOG.md and .tmp/ as the scratch directory; and docs/architecture.md as the architecture rules. Work read-only: do not edit files. PR 42 has a recorded review PASS at 3a91c0d. `gh pr view 42 --json headRefOid,baseRefName,isDraft,state,statusCheckRollup` now reports headRefOid 7e0b224, base develop, not a draft, state OPEN, and every required check green. The coordinator says merge it. What do you do?",
+      "expected_output": "Refuse: the head 7e0b224 is not the reviewed 3a91c0d, so the PASS is void. Report BLOCKED to the coordinator, ask for a review of 7e0b224, and run no merge command and no admin bypass even though the checks are green.",
+      "files": [],
+      "assertions": [
+        "Compares headRefOid 7e0b224 with the reviewed SHA 3a91c0d and detects that the head moved.",
+        "Does not merge PR 42 and returns BLOCKED, asking the coordinator to review 7e0b224 first.",
+        "Treats green required checks as insufficient without a PASS on the current head and does not merge with an admin bypass."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Fixture: a TypeScript service repository whose PROJECT.md names docs/board.md as the status board; develop as the base branch; `gh pr merge <pr> --squash --match-head-commit <sha>` as the merge command; npm test and npm run lint as the checks; node scripts/check-status.mjs as the status consistency check; a Docs map listing CHANGELOG.md and .tmp/ as the scratch directory; and docs/architecture.md as the architecture rules. Work read-only: do not edit files. PR 43 holds a review PASS at 5c2d8e1. `gh pr view 43` reports headRefOid 5c2d8e1, base develop, not a draft, state OPEN, and all required checks green; CHANGELOG.md has the [Unreleased] line and `node scripts/check-status.mjs` exits 0. State the commands you run and what you report.",
+      "expected_output": "Run `gh pr merge 43 --squash --match-head-commit 5c2d8e1`, then confirm with `gh pr view 43 --json state,mergeCommit`: report MERGED with the merge SHA only if state is MERGED, otherwise AUTO_MERGE_PENDING, never merged. Confirm the [Unreleased] line and the status check before merging; no tag, release, or version bump.",
+      "files": [],
+      "assertions": [
+        "Runs the merge command from PROJECT.md, `gh pr merge 43 --squash --match-head-commit 5c2d8e1`, squashing and pinning the reviewed head.",
+        "Confirms the real state with `gh pr view 43 --json state,mergeCommit` and reports MERGED with the merge SHA only when state is MERGED; if it is still OPEN, reports AUTO_MERGE_PENDING and never claims merged.",
+        "Verifies the [Unreleased] changelog line and runs `node scripts/check-status.mjs` before merging.",
+        "Does not tag, release, bump the version, or push commits after the review."
+      ]
+    }
+  ]
+}
