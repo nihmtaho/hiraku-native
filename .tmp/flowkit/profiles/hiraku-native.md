@@ -31,13 +31,14 @@ Kanban, and names the blocking `Q-xx` in the note.
   `Đổi`, `Sửa`, `Xóa`, `Tài liệu`, or `Bảo mật`, ending with `(WP-xx, PR n)`.
 - Task record: `.agents/tasks/<task-id>.md`, created from `.agents/templates/task.md`.
 
-Update and read state with the `hiraku-wp-status` script; never edit either status place
-by hand when the script can do it:
+Write state and check consistency with `wp-status.mjs`; read one item's context with
+`task-context.mjs`; never edit either status place by hand when the script can do it:
 
 ```sh
 node .agents/skills/hiraku-wp-status/scripts/wp-status.mjs <id> <bl|rd|ip|rv|dn> [--pr <ref>] [--note "<text>"]
 node .agents/skills/hiraku-wp-status/scripts/wp-status.mjs <id> <state> [--blk Q-xx | --clear-blk]
 node .agents/skills/hiraku-wp-status/scripts/wp-status.mjs --check
+node .agents/skills/hiraku-task/scripts/task-context.mjs <WP-xx|S-x|Q-xx>
 node --test .agents/hiraku/tests/*.test.mjs
 ```
 
@@ -82,6 +83,7 @@ Run from the repository root unless noted. A check that was not run is reported 
 cd core && go vet ./... && go test -race ./...
 buf lint                                          # contract style, core/proto/hiraku/v1
 buf breaking --against '.git#branch=develop'      # required when the contract changes
+buf generate                                      # regenerate core/gen from core/proto/hiraku/v1
 ./Scripts/check-imports.sh                        # Swift import allowlists, ARCHITECTURE §4.1
 xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=macOS'
 xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=iOS Simulator,name=iPhone 17'
@@ -115,7 +117,7 @@ document goes under `docs/`.
 Law: `docs/architecture/ARCHITECTURE.md` v2.2 — Swift laws L1–L11, Go laws G1–G8,
 style rules C1–C8, module map §3–§4, extensions checklist §13. Decisions and open
 questions: `docs/architecture/DECISIONS.md` (every ADR, plus `Q-xx` entries).
-An open decision with `Quyết định: Mở` is answered by the PO, never by an agent.
+An open decision with `Trạng thái: *Mở*` is answered by the PO, never by an agent.
 
 Hard boundaries:
 
@@ -124,7 +126,9 @@ Hard boundaries:
 - Only `core/ffi` imports `"C"`; only `HirakuBridge` calls `hk_*`. Swift never touches
   `core/gen/`.
 - No `net*` imports and no global mutable state in Go. No `time.Now()` in `domain` or
-  `service`; time enters through `now_ms`.
+  `service`; time enters through `now_ms`. `unsafe` only inside `ffi`.
+- Swift time comes from `AppClock` as `now_ms`; no `Date()` or `Task.sleep` in
+  Controllers.
 - A feature package imports only Foundation, SwiftUI, `HirakuModels`, and `DesignSystem`;
   `FeatureStudy`, `FeatureFlashcard`, and `FeatureTyping` may also import `StudyKit`.
   Never `HirakuBridge`, never another feature. UI talks to the core through Controller →
