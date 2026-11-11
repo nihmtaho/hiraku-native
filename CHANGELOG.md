@@ -25,6 +25,8 @@ Nhóm: Thêm · Đổi · Sửa · Xóa · Tài liệu · Bảo mật. Mỗi dò
 - Spike S-2: đánh giá `github.com/open-spaced-repetition/go-fsrs/v4 v4.0.0` (MIT, FSRS-6) bằng 17 vector sinh từ `fsrs 6.3.2` trong `core/spike/fsrs_vectors.json`; `state`/`reps`/`lapses` khớp 17/17 nhưng 3/17 `due` lệch với dung sai 0 (làm tròn bước Hard, ép thứ tự hard/good/easy, ngày đã trôi theo ngày lịch UTC) nên kết luận **Không đạt** → tự cài trong `core/domain/fsrs` theo ADR-26; gỡ thư viện khỏi `core/go.mod`/`go.sum`, giữ 17 vector làm golden và script sinh lại `core/spike/gen_fsrs_vectors.py` (S-2, PR 6)
 
 ### Tài liệu
+- Đổi tên 10 skill `hiraku-*` sang `flow-*` 1:1 trong `AGENTS.md`, `docs/process/`, `.claude/README.md` và các skill liên quan; hai script chuyển sang `.agents/scripts/`; ghi vào ADR-31 (PR 83).
+- Nhận nuôi 20 skill Flowkit vào `.agents/skills/` (11 `flow-*`, `product-review`, 8 skill quản lý sản phẩm) với `PROJECT.md` ở root; bằng chứng đánh giá ở `docs/reports/FLOWKIT_EVALS.md` (PR 83).
 - Đóng WP-03: record `merged` kèm PR 78/SHA/verdict, issue #51–#53 closed, vector golden chuyển `core/testdata`, ghi nợ queue scope và vector vắt 04:00.
 - Dọn record M1a sau WP-02b: WP-01/02a/02b chuyển `merged` kèm PR, SHA, verdict, delivery và issue đã đóng; checkbox plan WP-02a hoàn tất; close issue #39–#50; ghi nợ EventHub producer sang WP-03.
 - M1 bridge amendment: `HirakuModels` sở hữu proto `hiraku.v1` sinh và được import `SwiftProtobuf`; `HirakuBridge` chỉ import `HirakuModels` và `CHirakuBridge`; `Scripts/check-imports.sh` kiểm allowlist cho `HirakuModels`/`HirakuBridge`/`HirakuTesting`; CI build hai package; ghi nhận WP-02a/WP-02b hoàn thành (PR 74, PR 75).

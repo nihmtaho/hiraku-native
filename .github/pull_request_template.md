@@ -13,6 +13,8 @@
 - [ ] `ROADMAP.md` section 11 and `ROADMAP hiraku — Kanban.html` status updated to the same value
 - [ ] Base branch is `develop` (`main` only for release/hotfix)
 
+Nếu thay đổi không có work item: giữ ô ROADMAP/Kanban và ghi lý do ngay dưới danh sách.
+
 ## Acceptance criteria
 
 - [ ] Observable behavior matches the task record

@@ -143,7 +143,7 @@ Switch(
 - `frontend-patterns`
 - `design-system`
 - `liquid-glass-design`
-- `hiraku-feature` (SwiftUI trong khuôn MVC)
+- `flow-feature` (SwiftUI trong khuôn MVC)
 
 ## Áp dụng cho hiraku
 

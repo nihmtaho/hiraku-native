@@ -27,9 +27,9 @@ Tạo nhánh **luôn** chỉ rõ base, vì script tự dò sẽ chọn `main`:
 |---|---|---|---|
 | 1 | `ready` | Coordinator tạo task record; ghi WP/gate/Q, base = `develop` | Coordinator |
 | 2 | `coding` | Tạo nhánh; commit nhỏ; cập nhật **trong cùng nhánh**: tài liệu liên quan, `CHANGELOG.md` (`[Unreleased]`), trạng thái WP ở `ROADMAP.md` và Kanban | Senior |
-| 3 | `review` | Senior push nhánh và mở PR vào `develop` theo `.github/pull_request_template.md` (`hiraku-create-pr`); review độc lập kiểm diff **và** mục §3 | Senior, review |
+| 3 | `review` | Senior push nhánh và mở PR vào `develop` theo `.github/pull_request_template.md` (`flow-pr`); review độc lập kiểm diff **và** mục §3 | Senior, review |
 | 4 | `ready-to-merge` | Review PASS đúng head SHA + CI bắt buộc xanh + §3 đủ | Coordinator |
-| 5 | `merged` | Squash merge vào `develop` (`hiraku-ship`); xóa nhánh task; ghi SHA merge vào task record | Coordinator |
+| 5 | `merged` | Squash merge vào `develop` (`flow-ship`); xóa nhánh task; ghi SHA merge vào task record | Coordinator |
 | 6 | — | Coordinator đối chiếu: `[Unreleased]` và trạng thái ROADMAP/Kanban trên `develop` khớp task đã merge; lệch thì mở task `docs` sửa ngay | Coordinator |
 
 Đẩy thêm commit sau Review PASS thì PASS cũ vô hiệu; review lại đúng SHA mới. Sau hai vòng sửa không đạt: quay coordinator (AGENT_WORKFLOW §4).
@@ -76,7 +76,7 @@ Trạng thái dùng đúng năm giá trị của Kanban: `bl` Backlog · `rd` S�
 | Merge xong và WP đủ tiêu chí | `rv` → `dn` | Đã nằm sẵn trong PR (§3.3) |
 | Bị chặn | giữ nguyên | Ghi `blk` ở Kanban, cột ghi chú ở §11 |
 
-Cập nhật bằng skill `hiraku-wp-status` (`node .agents/skills/hiraku-wp-status/scripts/wp-status.mjs <mã> <trạng thái> --note …`; kiểm bằng `--check`). Hai nơi phải khớp: bảng `ROADMAP.md` §11 và mảng `raw` trong `ROADMAP hiraku — Kanban.html` (trường thứ 5 của thẻ, thêm `blk` hoặc `note` nếu cần). Đổi lịch, phạm vi hoặc phiên bản tài liệu ở các mục khác vẫn theo `ROADMAP.md` §8 (kiểm soát thay đổi).
+Cập nhật bằng skill `flow-status` (`node .agents/scripts/wp-status.mjs <mã> <trạng thái> --note …`; kiểm bằng `--check`). Hai nơi phải khớp: bảng `ROADMAP.md` §11 và mảng `raw` trong `ROADMAP hiraku — Kanban.html` (trường thứ 5 của thẻ, thêm `blk` hoặc `note` nếu cần). Đổi lịch, phạm vi hoặc phiên bản tài liệu ở các mục khác vẫn theo `ROADMAP.md` §8 (kiểm soát thay đổi).
 
 ## 7. Release và hotfix
 
