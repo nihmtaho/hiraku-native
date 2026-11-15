@@ -1,12 +1,6 @@
 import Foundation
 import HirakuModels
 
-/// What the folder name may fail on; the view maps it to the catalogue strings.
-public enum FolderNameError: Equatable, Sendable {
-    case empty
-    case tooLong
-}
-
 /// Drives the folder list: load, create, rename, delete and the accessible reorder.
 @MainActor @Observable
 public final class FoldersController {
@@ -52,7 +46,7 @@ public final class FoldersController {
         }
     }
 
-    public static func validate(name: String) -> FolderNameError? {
+    public static func validate(name: String) -> NameError? {
         let trimmed = name.trimmingCharacters(in: .whitespacesAndNewlines)
         if trimmed.isEmpty { return .empty }
         if trimmed.count > 100 { return .tooLong }
