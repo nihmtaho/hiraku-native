@@ -70,14 +70,24 @@ public actor HirakuBridge: HirakuCalling {
     }
 
     static func changeSet(method: Hiraku_V1_Method, response: [UInt8]) -> Hiraku_V1_ChangeSet? {
-        guard method == .grade,
-              let decoded = try? Hiraku_V1_GradeResponse(serializedBytes: response),
-              decoded.hasChanges,
-              !decoded.changes.changes.isEmpty
-        else {
-            return nil
+        let changes: Hiraku_V1_ChangeSet? = switch method {
+        case .grade: (try? Hiraku_V1_GradeResponse(serializedBytes: response))?.changes
+        case .createFolder: (try? Hiraku_V1_CreateFolderResponse(serializedBytes: response))?.changes
+        case .updateFolder: (try? Hiraku_V1_UpdateFolderResponse(serializedBytes: response))?.changes
+        case .deleteFolder: (try? Hiraku_V1_DeleteFolderResponse(serializedBytes: response))?.changes
+        case .reorderFolders: (try? Hiraku_V1_ReorderFoldersResponse(serializedBytes: response))?.changes
+        case .createDeck: (try? Hiraku_V1_CreateDeckResponse(serializedBytes: response))?.changes
+        case .updateDeck: (try? Hiraku_V1_UpdateDeckResponse(serializedBytes: response))?.changes
+        case .deleteDeck: (try? Hiraku_V1_DeleteDeckResponse(serializedBytes: response))?.changes
+        case .reorderDecks: (try? Hiraku_V1_ReorderDecksResponse(serializedBytes: response))?.changes
+        case .moveDeck: (try? Hiraku_V1_MoveDeckResponse(serializedBytes: response))?.changes
+        case .createNote: (try? Hiraku_V1_CreateNoteResponse(serializedBytes: response))?.changes
+        case .updateNote: (try? Hiraku_V1_UpdateNoteResponse(serializedBytes: response))?.changes
+        case .deleteNote: (try? Hiraku_V1_DeleteNoteResponse(serializedBytes: response))?.changes
+        default: nil
         }
-        return decoded.changes
+        guard let changes, !changes.changes.isEmpty else { return nil }
+        return changes
     }
 
     private static func take(_ bytes: HKBytes) -> [UInt8] {

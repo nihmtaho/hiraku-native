@@ -129,3 +129,75 @@ private func seedCard(path: String, cardID: String) throws {
     #expect(sqlite3_step(statement) == SQLITE_ROW)
     #expect(sqlite3_column_int(statement, 0) == 1, "seed count = \(sqlite3_column_int(statement, 0))")
 }
+
+@Test func catalogRoundTripThroughTheCore() async throws {
+    let path = FileManager.default.temporaryDirectory
+        .appendingPathComponent("hiraku-catalog-\(UUID().uuidString).sqlite").path
+    defer { try? FileManager.default.removeItem(atPath: path) }
+    let bridge = HirakuBridge()
+    try await bridge.open(path: path)
+    let client = CatalogClient(call: bridge, clock: FixedClock(nowMs: 1_700_000_000_000))
+
+    let folder = try await client.createFolder(name: "  N5  ")
+    let folders = try await client.folders()
+    #expect(folders.count == 1)
+    #expect(folders.first?.id == folder)
+    #expect(folders.first?.name == "N5")
+
+    let deck = try await client.createDeck(in: folder, name: "Động từ", description: "", noteType: nil)
+    let decks = try await client.decks(in: folder)
+    #expect(decks.map(\.id) == [deck])
+    #expect(decks.first?.noteTypeID.rawValue == "nt-system-ja")
+
+    let types = try await client.noteTypes()
+    let system = try #require(types.first)
+    #expect(system.isSystem)
+    #expect(system.fields.map(\.role) == [FieldRole.term, .reading, .meaning, .example])
+    #expect(system.typingAnswerFieldID == "nf-reading")
+
+    let noteID = try await client.createNote(in: deck, values: [
+        NoteFieldValue(fieldID: "nf-term", value: "食べる"),
+        NoteFieldValue(fieldID: "nf-meaning", value: "ăn"),
+    ])
+    let page = try await client.notes(in: deck, query: NoteQuery())
+    #expect(page.total == 1)
+    #expect(page.notes.first?.id == noteID)
+    #expect(page.notes.first?.state == NoteState.new)
+    #expect(page.notes.first?.value(of: "nf-term") == "食べる")
+
+    let duplicate = try await client.duplicate(in: deck, term: "食べる")
+    #expect(duplicate.exists)
+    #expect(duplicate.meaning == "ăn")
+
+    try await client.updateNote(noteID, values: [
+        NoteFieldValue(fieldID: "nf-term", value: "食べる"),
+        NoteFieldValue(fieldID: "nf-meaning", value: "dùng bữa"),
+    ])
+    let updated = try await client.notes(in: deck, query: NoteQuery(text: "dùng"))
+    #expect(updated.total == 1)
+
+    try await client.deleteNote(noteID)
+    let emptied = try await client.notes(in: deck, query: NoteQuery())
+    #expect(emptied.total == 0)
+    await bridge.close()
+}
+
+@Test func catalogRejectsAnEmptyFolderName() async throws {
+    let path = FileManager.default.temporaryDirectory
+        .appendingPathComponent("hiraku-catalog-\(UUID().uuidString).sqlite").path
+    defer { try? FileManager.default.removeItem(atPath: path) }
+    let bridge = HirakuBridge()
+    try await bridge.open(path: path)
+    let client = CatalogClient(call: bridge, clock: FixedClock(nowMs: 1_700_000_000_000))
+
+    await #expect(throws: HirakuContractError.self) {
+        _ = try await client.createFolder(name: "   ")
+    }
+    await bridge.close()
+}
+
+private struct FixedClock: AppClock {
+    let nowMs: Int64
+
+    func sleep(for duration: Duration) async {}
+}

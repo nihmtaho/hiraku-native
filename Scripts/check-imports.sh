@@ -13,7 +13,7 @@ fail() {
 check_package() {
 	dir=$1
 	pattern=$2
-	for file in $(find "$dir" -path '*/Sources/*' -name '*.swift' 2>/dev/null); do
+	for file in $(find "$dir" -path '*/.build' -prune -o -path '*/Sources/*' -name '*.swift' -print 2>/dev/null); do
 		case "$file" in
 		*/Generated/*) continue ;;
 		esac
@@ -30,7 +30,7 @@ check_package() {
 	done
 }
 
-for file in $(find Packages/Features -path '*/Sources/*' -name '*.swift' 2>/dev/null); do
+for file in $(find Packages/Features -path '*/.build' -prune -o -path '*/Sources/*' -name '*.swift' -print 2>/dev/null); do
 	feature=$(echo "$file" | sed -n 's|Packages/Features/\([^/]*\)/.*|\1|p')
 	for module in $(sed -nE 's/^[[:space:]]*(@testable[[:space:]]+)?import[[:space:]]+([A-Za-z0-9_]+).*/\1\2/p' "$file"); do
 		case "$module" in
