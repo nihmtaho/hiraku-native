@@ -332,4 +332,4 @@ Nguồn cập nhật bắt buộc cho mọi PR (`docs/process/GIT_WORKFLOW.md` �
 | RV-03 | rd | — | Q-21, Q-22, Q-24 đã chốt; còn hướng thẻ Q-23 (GATE-2) |
 | RV-05 | dn | — | Q-27: kéo WP-20 lên sau M1a (PO 2026-11-08) |
 | App shell | rv | — | App/Hiraku.xcodeproj build va chay tren iPhone 18 Pro simulator lan macOS; bundle id com.nihmtaho.hiraku (PO 2026-11-04); cho review. |
-| WP-04 | ip | — | Kana normalize and match; slices #54, #55 |
+| WP-04 | rv | 84 | Kana normalize and match; slices #54, #55 in PR 84 |

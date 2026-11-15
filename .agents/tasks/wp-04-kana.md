@@ -2,10 +2,10 @@
 
 ## Contract
 
-- Status: coding
+- Status: review
 - Owner: coordinator / senior (Q-29)
 - Milestone / WP: M1a / WP-04
-- Branch / PR: `feat/wp-04-kana` from `develop`
+- Branch / PR: `feat/wp-04-kana` / PR 84
 - Base / head SHA: 4b97db3 / —
 - Dependencies: WP-01
 - Required reading: DECISIONS Q-21; spec §7.2
