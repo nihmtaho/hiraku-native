@@ -1,6 +1,7 @@
 import DesignSystem
 import FeatureDecks
 import FeatureFolders
+import FeatureWords
 import HirakuModels
 import SwiftUI
 
@@ -9,16 +10,46 @@ struct RootView: View {
     @State private var container = AppContainer()
     @State private var controller: FoldersController?
     @State private var decks: DecksController?
+    @State private var words: WordListController?
+    @State private var form: WordFormController?
     @State private var failure: String?
 
     var body: some View {
         Group {
-            if let decks {
+            if let words {
+                FeatureWords.list(
+                    controller: words,
+                    onBack: { self.words = nil },
+                    onAdd: { openForm(nil) },
+                    onEdit: { note in openForm(note) }
+                )
+                .sheet(
+                    isPresented: Binding(
+                        get: { form != nil },
+                        set: { if !$0 { form = nil } }
+                    )
+                ) {
+                    if let form {
+                        FeatureWords.form(
+                            controller: form,
+                            onFinished: {},
+                            onViewExisting: { _ in }
+                        )
+                    }
+                }
+            } else if let decks {
                 FeatureDecks.screen(
                     controller: decks,
-                    onBack: { self.decks = nil },
-                    openDeck: { _ in
-                        // The word list arrives with FeatureWords.
+                    onBack: { self.decks = nil; self.words = nil },
+                    openDeck: { deck in
+                        guard let catalog = container.catalog else { return }
+                        words = FeatureWords.makeListController(
+                            deck: deck,
+                            notes: catalog,
+                            noteTypes: catalog,
+                            events: container.events,
+                            clock: container.clock
+                        )
                     }
                 )
             } else if let controller {
@@ -46,6 +77,11 @@ struct RootView: View {
         .tint(HKColor.tertiary)
         .frame(minWidth: 720, minHeight: 520)
         .task { await open() }
+    }
+
+    private func openForm(_ note: Note?) {
+        guard let catalog = container.catalog, let deck = words?.deck, let noteType = words?.noteType else { return }
+        form = FeatureWords.makeFormController(deck: deck, noteType: noteType, note: note, notes: catalog)
     }
 
     private func open() async {

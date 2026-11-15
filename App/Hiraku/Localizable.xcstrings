@@ -420,6 +420,276 @@
           }
         }
       }
+    },
+    "words.add": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thêm từ"
+          }
+        }
+      }
+    },
+    "words.create.title": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Từ mới"
+          }
+        }
+      }
+    },
+    "words.edit.title": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sửa từ"
+          }
+        }
+      }
+    },
+    "words.error.word.empty": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nhập từ."
+          }
+        }
+      }
+    },
+    "words.error.meaning.empty": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nhập nghĩa."
+          }
+        }
+      }
+    },
+    "words.field.word.placeholder": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "食べる"
+          }
+        }
+      }
+    },
+    "words.field.reading.placeholder": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "たべる"
+          }
+        }
+      }
+    },
+    "words.field.meaning.placeholder": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ăn"
+          }
+        }
+      }
+    },
+    "words.field.example.placeholder": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "毎日ご飯を食べる。"
+          }
+        }
+      }
+    },
+    "words.field.reading.hint": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Để trống nếu từ không có kanji."
+          }
+        }
+      }
+    },
+    "words.field.noteType.label": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kiểu ghi chú"
+          }
+        }
+      }
+    },
+    "words.duplicate.title %@": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Từ này đã có (nghĩa: %@)"
+          }
+        }
+      }
+    },
+    "words.duplicate.addAnyway": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vẫn thêm"
+          }
+        }
+      }
+    },
+    "words.duplicate.viewExisting": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xem từ đã có"
+          }
+        }
+      }
+    },
+    "words.delete.title %@": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xóa “%@”?"
+          }
+        }
+      }
+    },
+    "words.delete.message": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tiến độ học của từ này cũng bị xóa."
+          }
+        }
+      }
+    },
+    "words.empty.title": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chưa có từ"
+          }
+        }
+      }
+    },
+    "words.empty.message": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thêm từ đầu tiên để bắt đầu học."
+          }
+        }
+      }
+    },
+    "words.empty.cta": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thêm từ"
+          }
+        }
+      }
+    },
+    "words.search.prompt": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tìm theo từ hoặc nghĩa"
+          }
+        }
+      }
+    },
+    "words.search.empty.title": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Không tìm thấy từ"
+          }
+        }
+      }
+    },
+    "words.search.empty.clear": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xóa bộ lọc"
+          }
+        }
+      }
+    },
+    "discard.title": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bỏ thay đổi?"
+          }
+        }
+      }
+    },
+    "discard.message": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nội dung vừa nhập sẽ không được lưu."
+          }
+        }
+      }
+    },
+    "discard.confirm": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bỏ thay đổi"
+          }
+        }
+      }
+    },
+    "discard.cancel": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tiếp tục chỉnh sửa"
+          }
+        }
+      }
+    },
+    "required": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bắt buộc"
+          }
+        }
+      }
     }
   },
   "version": "1.0"
