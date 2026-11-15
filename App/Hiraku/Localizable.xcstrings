@@ -1,17 +1,6 @@
 {
   "sourceLanguage": "vi",
   "strings": {
-    "%lld deck · %lld từ": {
-      "extractionState": "stale",
-      "localizations": {
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld bộ thẻ · %lld từ"
-          }
-        }
-      }
-    },
     "cancel": {
       "extractionState": "stale",
       "localizations": {
@@ -548,50 +537,6 @@
         }
       }
     },
-    "words.column.meaning": {
-      "extractionState": "stale",
-      "localizations": {
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nghĩa"
-          }
-        }
-      }
-    },
-    "words.column.reading": {
-      "extractionState": "stale",
-      "localizations": {
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cách đọc"
-          }
-        }
-      }
-    },
-    "words.column.state": {
-      "extractionState": "stale",
-      "localizations": {
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Trạng thái"
-          }
-        }
-      }
-    },
-    "words.column.word": {
-      "extractionState": "stale",
-      "localizations": {
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Từ"
-          }
-        }
-      }
-    },
     "words.create.title": {
       "extractionState": "stale",
       "localizations": {
@@ -742,17 +687,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "ăn"
-          }
-        }
-      }
-    },
-    "words.field.noteType.label": {
-      "extractionState": "stale",
-      "localizations": {
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kiểu ghi chú"
           }
         }
       }
