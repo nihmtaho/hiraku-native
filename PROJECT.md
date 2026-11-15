@@ -82,9 +82,9 @@ receives `release/vX.Y.Z` and `hotfix/*`.
 - Merge: `gh pr merge <pr> --squash --match-head-commit <sha>`, only after an independent
   review returned PASS on exactly that SHA and required CI is green. A new push voids the
   verdict. `main` uses a merge commit.
-- The generic `git-pr` skill's `Closes #id` auto-close advice does not apply here: PRs
-  target `develop`, so `Closes #<n>` is traceability only and slices close by hand
-  (§Status tracking).
+- The 20 Flowkit skills in `.agents/skills/` are the evaluated copies; the only local edit
+  is `git-pr` §Rules, which now matches §Status tracking on a `develop` base. Record any
+  further edit to a skill in this bullet.
 - Human operator reviews these before merge (no automated gate): `AGENTS.md`,
   `PROJECT.md`, `docs/process/`, `docs/architecture/DECISIONS.md`, `.github/`,
   `.agents/` except `.agents/tasks/`, agent tool config and `opencode.json`, any

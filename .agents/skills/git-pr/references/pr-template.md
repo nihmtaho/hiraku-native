@@ -30,7 +30,9 @@ Closes #<id>
 
 ## Rules
 - "Summary" answers *why*; "Changes" answers *what*. Don't just paste the diff.
-- Use `Closes #id` / `Fixes #id` so the issue auto-closes on merge.
+- List `Closes #id` / `Fixes #id` for traceability. GitHub auto-closes only when the PR
+  merges into the default branch; on any other base, such as `develop`, close the issue
+  by hand after merge.
 - Call out breaking changes and required follow-up explicitly.
 - Never include AI attribution lines (the guard script enforces this).
 - For a work-in-progress PR, pass `--draft` to `scripts/create-pr.sh`.

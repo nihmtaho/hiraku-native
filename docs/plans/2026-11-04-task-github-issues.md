@@ -4,7 +4,7 @@
 
 **Goal:** Giữ hybrid: 1 task record mỏng làm bìa hợp đồng, 1 superpowers plan làm tiến độ chi tiết, N GitHub issues con để theo dõi. Trước mỗi mốc M, coordinator chẻ record thành issues theo plan, link 3 chiều record ↔ plan ↔ issues.
 
-**Architecture:** Giữ 1 task = 1 nhánh + 1 PR như hiện tại; issues là lát thực thi trong cùng PR (code/test/docs), PR đóng hết bằng `Closes #..`. Phân lớp hybrid: record (`.agents/tasks/<task-id>.md`) là chuẩn cho hợp đồng + trạng thái ngoài (status, base/head SHA, PR, bảng issues, link plan); plan (`docs/plans/<date>-<topic>.md`) là chuẩn cho tiến độ trong (checkbox từng bước, ledger rulings); issue là chuẩn cho trạng thái theo dõi từng lát. Khi giao việc chỉ mention 2 đường dẫn record + plan; resume đọc cả hai; lệch hợp đồng theo record, lệch tiến độ theo plan.
+**Architecture:** Giữ 1 task = 1 nhánh + 1 PR như hiện tại; issues là lát thực thi trong cùng PR (code/test/docs), PR đóng hết bằng `Closes #..` *(đã thay thế 2026-11-15: base `develop` không phải nhánh mặc định nên slice đóng tay sau merge — `PROJECT.md` §Status tracking).* Phân lớp hybrid: record (`.agents/tasks/<task-id>.md`) là chuẩn cho hợp đồng + trạng thái ngoài (status, base/head SHA, PR, bảng issues, link plan); plan (`docs/plans/<date>-<topic>.md`) là chuẩn cho tiến độ trong (checkbox từng bước, ledger rulings); issue là chuẩn cho trạng thái theo dõi từng lát. Khi giao việc chỉ mention 2 đường dẫn record + plan; resume đọc cả hai; lệch hợp đồng theo record, lệch tiến độ theo plan.
 
 **Tech Stack:** Markdown skills trong `.agents/skills/`, GitHub Issue templates (`.github/ISSUE_TEMPLATE/`), `gh` CLI, Node 24 tests (`node --test`).
 
