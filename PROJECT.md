@@ -42,7 +42,7 @@ Kanban, and names the blocking `Q-xx` in the note. The task record uses longer n
   `.github/ISSUE_TEMPLATE/task-slice.md` under label `type:impl`; the task's PR body
   lists `Closes #<n>` for traceability. PRs target `develop`, not the default branch,
   so GitHub never auto-closes a slice: after merge, close each slice by hand with
-  `gh issue close <n> --comment "<merge commit>"` in the same step that sets the task
+  `gh issue close <n> --comment "<squash commit on develop>"` in the same step that sets the task
   record's slice table to `closed`. Slice status is tracked on the slice issues; the
   task record links them.
 

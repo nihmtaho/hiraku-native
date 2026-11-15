@@ -32,4 +32,4 @@ labels: ["type:impl"]
 - Parent task record: `.agents/tasks/<task-id>.md`
 - Execution plan: `docs/plans/<date>-<topic>.md#task-n`
 - WP / Q / ADR:
-- Closed by PR: `Closes #<n>` (1 PR đóng hết các slices của task)
+- Delivered by PR: `<PR number>`; the PR body lists `Closes #<n>` for traceability, and the merge step closes this issue by hand because the base is `develop`
