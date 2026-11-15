@@ -25,7 +25,7 @@ DesignSystem debts to close when these screens wire it:
 - [ ] A regular-width iPad passes `.pad` to `HKTextStyle.font(_:)`.
 - [ ] The secondary button stroke widens to `HKBorder.increased` under Increase Contrast, like `HKCard` and `HKField`.
 - [ ] The app sets `.tint(HKColor.tertiary)` at the scene root and collapses the duplicate font registration: `App/Hiraku/NotoFont.swift` registers the app's own copy from `Bundle.main`, so it either calls `HKFont.registerBundledFonts()` or drops the local copy.
-- [ ] A DesignSystem test pins that `jp-hero` is the only style without a Dynamic Type anchor.
+- [ ] A DesignSystem test pins that `jp-hero` is the only style without a Dynamic Type anchor (moved to the plan's WP-06 follow-up list).
 
 ## Execution plan
 
@@ -64,7 +64,7 @@ Record is authority for the contract; plan is authority for progress; issues tra
 - Branch `feat/wp-06-crud` from `develop` at `38733ce`.
 - Core: `catalog.proto` + `common.proto` method enum, `store/catalog.go` (note types, counts, move, duplicate meaning, exists), counts added to folder/deck queries, `service/catalog.go` (17 handlers, hand-built `ChangeSet` per mutation like `Grade`), dispatch arm, 8 service tests.
 - Swift: `HirakuModels` (IDs, `Folder`/`Deck`/`NoteType`/`Note`, repositories, `AppClock`, `ChangeEvents`, `Route`, `LoadPhase`, `NameError`), `CatalogClient`, `HirakuBridge.changeSet` covers 13 methods (grade included), `ManualClock`/`FakeChangeEvents`/`FakeCatalog`, folder/deck/word controllers + views + entry points, App container/root with folder → deck → word navigation.
-- Strings: 78 keys added to `App/Hiraku/Localizable.xcstrings` from COPY.md.
+- Strings: 79 keys added to `App/Hiraku/Localizable.xcstrings` from COPY.md (80 total at merge; the six unused ones were removed at closure, leaving 74).
 - `Scripts/check-imports.sh` now skips `.build` checkouts (dependency sources produced false positives).
 - Review round 3 fixes: the `docs/archive/` bundle is removed from the branch for real (`git rm --cached`, files stay untracked on disk), the folder meta line uses the catalogue key, a store test proves a foreign deck cannot be reordered, and the record rows carry the evidence.
 - Review round 2 fixes: COPY.md applies Q-28 "bộ thẻ"/"hồ sơ" at the source, custom field placeholders render verbatim, `reorderDecks` is scoped to its folder, and the unused `AppClock` left the folder/deck controllers.
@@ -81,7 +81,7 @@ Record is authority for the contract; plan is authority for progress; issues tra
 ## Delivery
 
 - `gh pr merge 91 --squash --match-head-commit 2218a9b` gave merge `448bc8b`; CI `ci` and `swift` passed on `2218a9b` (the `swift` job now runs the three feature suites); slices #58–#61 were closed by hand after the merge.
-- Deferred with reasons: paging beyond 100 words (`limit/offset` for M1a), contract golden bytes, `.pad` for iPad, UI tests, first-field autofocus and Return/⌘N/⌘F shortcuts, `buf breaking` in CI, `MoveDeck` leaving gaps in source-folder positions (ordering still correct).
+- Deferred with reasons: paging beyond 100 words (`limit/offset` for M1a), contract golden bytes, `.pad` for iPad, UI tests, first-field autofocus and Return/⌘N/⌘F shortcuts, `buf breaking` in CI, `MoveDeck` leaving gaps in source-folder positions (ordering still correct), "Xem từ đã có" real navigation, and the `jp-hero` anchor test.
 
 ## Next
 
