@@ -28,8 +28,8 @@ Dakuten and っ are strict; ー and long vowels tolerated; repeated-character fo
 
 | # | Slice | Plan anchor | Status |
 |---|---|---|---|
-| 54 | normalize | docs/plans/2026-11-08-m1a.md | open |
-| 55 | match | docs/plans/2026-11-08-m1a.md | open |
+| 54 | normalize | docs/plans/2026-11-08-m1a.md | closed |
+| 55 | match | docs/plans/2026-11-08-m1a.md | closed |
 
 Record is authority for the contract; plan is authority for progress; issues track slice status.
 
@@ -58,8 +58,8 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 ## Delivery
 
-- `gh pr merge 84 --squash --match-head-commit bd61401` gave merge `31ca018`; CI `ci` and `swift` passed on `bd61401`; slices #54 and #55 closed by the PR.
+- `gh pr merge 84 --squash --match-head-commit bd61401` gave merge `31ca018`; CI `ci` and `swift` passed on `bd61401`; slices #54 and #55 were closed by hand after the merge because the base `develop` is not the default branch `main`.
 
 ## Next
 
-Read the plan section and the open issues above.
+None; closed. Slice issues #54 and #55 are closed.
