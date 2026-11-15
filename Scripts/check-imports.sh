@@ -47,6 +47,7 @@ for file in $(find Packages/Features -path '*/Sources/*' -name '*.swift' 2>/dev/
 	done
 done
 
+check_package Packages/DesignSystem '^(CoreText|Foundation|SwiftUI|DesignSystem)$'
 check_package Packages/HirakuTesting '^(Foundation|Testing|HirakuModels)$'
 check_package Packages/HirakuModels '^(Foundation|SwiftProtobuf|HirakuModels)$'
 check_package Packages/HirakuBridge '^(Foundation|CHirakuBridge|HirakuModels)$'

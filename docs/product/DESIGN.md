@@ -87,7 +87,7 @@ typography:
     dynamicType: caption
   button:
     fontFamily: Helvetica Neue
-    fontSize: { phone: 15pt, pad: 15pt, mac: 13pt }
+    fontSize: { phone: 15pt, pad: 15pt, mac: 15pt }
     fontWeight: 700
     letterSpacing: 0.01em
     dynamicType: headline
@@ -198,7 +198,7 @@ Bảng so sánh với `docs/product/DESIGN.md` web: `CHANGELOG.md`.
 
 ## Colors
 
-Bảng màu xây trên tương phản cao giữa mực và giấy, cộng một màu nhấn. Màu lưu trong Asset Catalog (một appearance "Any"); mã truy cập qua `HKColor` (§Triển khai).
+Bảng màu xây trên tương phản cao giữa mực và giấy, cộng một màu nhấn. Màu là hằng sRGB trong `HKColor`, một appearance sáng (§Triển khai).
 
 - **Primary (#16130F):** mực — tiêu đề, chữ chính, viền, nền thẻ mặt sau, banner, header bảng.
 - **Secondary (#6B655C):** chú thích, metadata, nhãn phụ (trên nền giấy/thẻ).
@@ -433,18 +433,17 @@ Khớp `docs/product/spec.md` §8.3.
 
 ```
 DesignSystem/Sources/DesignSystem/
-├─ Tokens/        HKColor, HKFont, HKRadius, HKSpacing, HKBorder
-├─ Components/    PillButton, CardSurface, StateDot, ProgressBar, EmptyState,
-│                 GradeButton, KanaCell, SectionEyebrow
-└─ Icons/         AppIcon (→ SF Symbols)
+├─ Tokens.swift      HKColor, HKFont, HKSpacing, HKRadius, HKBorder, HKHitTarget
+├─ Components.swift  HKButton, HKCard, HKField; component còn lại thêm cùng WP dùng chúng
+└─ Icons.swift       AppIcon (→ SF Symbols)
 ```
 
 - **Đặt tên:** spec dự kiến `Color.primary/secondary/tertiary…`, nhưng `Color.primary` và `Color.secondary` đã tồn tại trong SwiftUI nên không khai báo lại được. Dùng namespace `HKColor.primary`, `HKColor.tertiary`… (cùng quy ước cho `HKFont`, `HKRadius`, `HKSpacing`).
-- **Màu:** khai báo trong Asset Catalog (đặt tên khớp token); không hard-code hex ngoài `Tokens/`.
-- **Font:** `HKFont.display(for:)` nhận nền tảng/size class và áp `relativeTo`; Noto Sans JP đăng ký trong `Info.plist`, fallback Hiragino Sans.
+- **Màu:** hằng sRGB trong `Tokens.swift`, một appearance sáng; hex chỉ nằm trong tệp đó.
+- **Font:** `HKTextStyle` giữ ba cột cỡ (phone/pad/mac), weight, tracking và lineHeight; `font(_:)` nhận `HKSizeClass` (mặc định theo nền tảng) và áp `relativeTo`. Noto Sans JP đăng ký lúc chạy bằng `CTFontManagerRegisterFontsForURL` từ resource của gói; app gọi `HKFont.registerBundledFonts()` khi khởi động, nối ở WP-06 khi màn đầu tiên dùng font. Fallback Hiragino Sans.
 - **Giao diện sáng:** `preferredColorScheme(.light)` ở gốc scene.
-- **Tint:** `AccentColor` (Asset Catalog) = Ember và `.tint(HKColor.tertiary)` ở gốc; chrome gốc theo kiểu hệ thống (ADR-15).
-- **Kiểm thử:** snapshot các component ở 3 cỡ Dynamic Type; kiểm tra tỷ lệ tương phản của mọi cặp màu trong bảng §Colors bằng test đơn vị đọc cùng giá trị token.
+- **Tint:** `.tint(HKColor.tertiary)` ở gốc scene; asset `AccentColor` của app đặt cùng Ember khi dựng shell; chrome gốc theo kiểu hệ thống (ADR-15).
+- **Kiểm thử:** test đơn vị kiểm tỷ lệ tương phản của **cả 20** cặp màu trong bảng §Colors từ cùng giá trị token, cùng test font resolve và cột cỡ chữ của cả ba nền tảng. Snapshot 3 cỡ Dynamic Type là nợ: cần thư viện snapshot, phải qua ADR trước.
 
 ## Quyết định thiết kế (ngoại lệ có chủ đích)
 

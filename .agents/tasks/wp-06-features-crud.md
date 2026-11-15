@@ -19,6 +19,8 @@
 
 CRUD flows persist through the bridge; search returns paged results under 150 ms on the 50,000-note fixture; drag reorder survives restart; leaving an edited form asks before discarding; empty states render.
 
+DesignSystem debts to close when these screens wire it: give `HKButton` and `HKField` a visible focus state (DESIGN §Components makes focus mandatory and the custom styles draw none), pass `.pad` from a regular-width iPad, widen the secondary button stroke under Increase Contrast, and check that the app calls `HKFont.registerBundledFonts()` at launch.
+
 ## Execution plan
 
 - Plan: `docs/plans/2026-11-08-m1a.md` (wp-06 section)
