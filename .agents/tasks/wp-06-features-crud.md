@@ -24,7 +24,7 @@ DesignSystem debts to close when these screens wire it:
 - [ ] `HKButton` and `HKField` show a visible focus state; the custom styles draw none today (DESIGN §Components makes focus mandatory).
 - [ ] A regular-width iPad passes `.pad` to `HKTextStyle.font(_:)`.
 - [ ] The secondary button stroke widens to `HKBorder.increased` under Increase Contrast, like `HKCard` and `HKField`.
-- [ ] The app calls `HKFont.registerBundledFonts()` at launch and sets `.tint(HKColor.tertiary)` at the scene root.
+- [ ] The app sets `.tint(HKColor.tertiary)` at the scene root and collapses the duplicate font registration: `App/Hiraku/NotoFont.swift` registers the app's own copy from `Bundle.main`, so it either calls `HKFont.registerBundledFonts()` or drops the local copy.
 - [ ] A DesignSystem test pins that `jp-hero` is the only style without a Dynamic Type anchor.
 
 ## Execution plan

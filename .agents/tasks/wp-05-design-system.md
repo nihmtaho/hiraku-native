@@ -28,8 +28,8 @@ Every DESIGN token exists with the documented value; state-learning-ink is #A67C
 
 | # | Slice | Plan anchor | Status |
 |---|---|---|---|
-| 56 | tokens | docs/plans/2026-11-08-m1a.md | open |
-| 57 | components | docs/plans/2026-11-08-m1a.md | open |
+| 56 | tokens | docs/plans/2026-11-08-m1a.md | closed |
+| 57 | components | docs/plans/2026-11-08-m1a.md | closed |
 
 Record is authority for the contract; plan is authority for progress; issues track slice status.
 
@@ -38,7 +38,7 @@ Record is authority for the contract; plan is authority for progress; issues tra
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
 | DesignSystem tests | `swift test --package-path Packages/DesignSystem` | exit 0, 13 tests | `Packages/DesignSystem` |
-| App build gate | `xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=macOS' CODE_SIGNING_ALLOWED=NO` | exit 0, TEST SUCCEEDED (0 behavioural tests; `App` has no test target yet) | `App` |
+| App tests | `xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=macOS' CODE_SIGNING_ALLOWED=NO` | exit 0, TEST SUCCEEDED, 5 tests in `App/HirakuTests` | `App` |
 | Swift import law | `./Scripts/check-imports.sh` | exit 0 | DesignSystem allowlist added |
 | Go boundary law | `./core/scripts/check-core.sh` | exit 0 | — |
 
