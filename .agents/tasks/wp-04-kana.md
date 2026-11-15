@@ -5,8 +5,8 @@
 - Status: review
 - Owner: coordinator / senior (Q-29)
 - Milestone / WP: M1a / WP-04
-- Branch / PR: `feat/wp-04-kana` / PR 84
-- Base / head SHA: 4b97db3 / —
+- Branch / PR: `feat/wp-04-kana` / PR 84 (https://github.com/nihmtaho/hiraku-native/pull/84)
+- Base / head SHA: 4b97db3 / bbec0b2 (first review round)
 - Dependencies: WP-01
 - Required reading: DECISIONS Q-21; spec §7.2
 - Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
@@ -41,6 +41,7 @@ Record is authority for the contract; plan is authority for progress; issues tra
 | Core vet and race tests | `cd core && go vet ./... && go test -race ./...` | exit 0 | all packages |
 | Go boundary law | `./core/scripts/check-core.sh` | exit 0 | — |
 | Swift import law | `./Scripts/check-imports.sh` | exit 0 | — |
+| Status consistency | `node .agents/scripts/wp-status.mjs --check` | exit 0 | ROADMAP §11 and Kanban agree |
 
 ## Coding
 
@@ -51,6 +52,8 @@ Record is authority for the contract; plan is authority for progress; issues tra
 - Plan `docs/plans/2026-11-08-m1a.md` §WP-04: all four steps checked.
 
 ## Independent review
+
+- Round 1 on `bbec0b2`: FAIL — `Match` used an in-order pointer, so every character after a middle mismatch was reported wrong; missing middle-mismatch test. Fixed by comparing positionally and adding `TestMatchKeepsLaterCharactersAfterAMismatch`.
 
 ## Delivery
 

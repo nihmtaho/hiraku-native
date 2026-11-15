@@ -3,6 +3,7 @@ package kana
 import (
 	"encoding/json"
 	"os"
+	"slices"
 	"testing"
 )
 
@@ -74,8 +75,25 @@ func TestMatchFlagsEachAnswerCharacter(t *testing.T) {
 }
 
 func TestMatchRomajiAndKatakana(t *testing.T) {
-	if got := Match("カタカナ", "katakana"); len(got) != 4 || !got[0] || !got[3] {
+	if got := Match("カタカナ", "katakana"); !slices.Equal(got, []bool{true, true, true, true}) {
 		t.Fatalf("Match(カタカナ, katakana) = %v", got)
+	}
+}
+
+func TestMatchKeepsLaterCharactersAfterAMismatch(t *testing.T) {
+	cases := []struct {
+		answer string
+		input  string
+		want   []bool
+	}{
+		{"しんぶん", "しんふん", []bool{true, true, false, true}},
+		{"たべる", "たへる", []bool{true, false, true}},
+		{"かたかな", "かたがな", []bool{true, true, false, true}},
+	}
+	for _, c := range cases {
+		if got := Match(c.answer, c.input); !slices.Equal(got, c.want) {
+			t.Errorf("Match(%q, %q) = %v, want %v", c.answer, c.input, got, c.want)
+		}
 	}
 }
 

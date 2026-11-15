@@ -13,6 +13,7 @@ func Normalize(s string) string {
 }
 
 // Match reports one flag per answer character, false where input diverged.
+// Answers are kana; a romaji answer is not a product case.
 func Match(answer, input string) []bool {
 	answerRunes, origin := normalize(answer)
 	inputRunes, _ := normalize(input)
@@ -20,10 +21,8 @@ func Match(answer, input string) []bool {
 	for i := range matched {
 		matched[i] = true
 	}
-	next := 0
 	for i, r := range answerRunes {
-		if next < len(inputRunes) && r == inputRunes[next] {
-			next++
+		if i < len(inputRunes) && r == inputRunes[i] {
 			continue
 		}
 		matched[origin[i]] = false
@@ -63,7 +62,7 @@ func fold(runes []rune, origin []int) ([]rune, []int) {
 	return out, outOrigin
 }
 
-// foldsInto drops a long vowel or a repeat, which Q-21 tolerates when comparing.
+// foldsInto drops a long vowel or a repeat that comparison tolerates.
 func foldsInto(out []rune, r rune) bool {
 	if len(out) == 0 {
 		return false
