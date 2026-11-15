@@ -26,6 +26,7 @@ Nhóm: Thêm · Đổi · Sửa · Xóa · Tài liệu · Bảo mật. Mỗi dò
 - Spike S-2: đánh giá `github.com/open-spaced-repetition/go-fsrs/v4 v4.0.0` (MIT, FSRS-6) bằng 17 vector sinh từ `fsrs 6.3.2` trong `core/spike/fsrs_vectors.json`; `state`/`reps`/`lapses` khớp 17/17 nhưng 3/17 `due` lệch với dung sai 0 (làm tròn bước Hard, ép thứ tự hard/good/easy, ngày đã trôi theo ngày lịch UTC) nên kết luận **Không đạt** → tự cài trong `core/domain/fsrs` theo ADR-26; gỡ thư viện khỏi `core/go.mod`/`go.sum`, giữ 17 vector làm golden và script sinh lại `core/spike/gen_fsrs_vectors.py` (S-2, PR 6)
 
 ### Tài liệu
+- Đóng WP-04: record `merged` kèm PR 84/SHA/verdict, slice #54 và #55 đóng sau khi xác nhận PR 84 không tự đóng vì base là `develop` (WP-04, PR 85).
 - Đổi tên 10 skill `hiraku-*` sang `flow-*` 1:1 trong `AGENTS.md`, `docs/process/`, `.claude/README.md` và các skill liên quan; hai script chuyển sang `.agents/scripts/`; ghi vào ADR-31 (PR 83).
 - Nhận nuôi 20 skill Flowkit vào `.agents/skills/` (11 `flow-*`, `product-review`, 8 skill quản lý sản phẩm) với `PROJECT.md` ở root; bằng chứng đánh giá ở `docs/reports/FLOWKIT_EVALS.md` (PR 83).
 - Đóng WP-03: record `merged` kèm PR 78/SHA/verdict, issue #51–#53 closed, vector golden chuyển `core/testdata`, ghi nợ queue scope và vector vắt 04:00.
