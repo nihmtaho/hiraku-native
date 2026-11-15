@@ -1,6 +1,6 @@
 ---
 name: Task slice
-description: Một lát thực thi của task record hiraku (cùng PR, đóng bằng Closes)
+description: Một lát thực thi của task record hiraku (cùng PR; đóng tay sau merge vì base là develop)
 title: "[<task-id>] <slice>: <goal>"
 labels: ["type:impl"]
 ---

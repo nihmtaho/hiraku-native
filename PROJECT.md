@@ -39,9 +39,12 @@ Kanban, and names the blocking `Q-xx` in the note. The task record uses longer n
   `Đổi`, `Sửa`, `Xóa`, `Tài liệu`, or `Bảo mật`, ending with `(WP-xx, PR n)`.
 - Task record: `.agents/tasks/<task-id>.md`, created from `.agents/templates/task.md`.
 - Slice issues: one GitHub issue per execution slice, from
-  `.github/ISSUE_TEMPLATE/task-slice.md` under label `type:impl`; the task's PR closes
-  each slice with `Closes #<n>`. Slice status is tracked on the slice issues; the task
-  record links them.
+  `.github/ISSUE_TEMPLATE/task-slice.md` under label `type:impl`; the task's PR body
+  lists `Closes #<n>` for traceability. PRs target `develop`, not the default branch,
+  so GitHub never auto-closes a slice: after merge, close each slice by hand with
+  `gh issue close <n> --comment "<merge commit>"` in the same step that sets the task
+  record's slice table to `closed`. Slice status is tracked on the slice issues; the
+  task record links them.
 
 Write state and check consistency with `wp-status.mjs`; read one item's context with
 `task-context.mjs`; never edit either of the two places the status script writes by hand
