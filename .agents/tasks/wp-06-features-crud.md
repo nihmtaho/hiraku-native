@@ -6,7 +6,7 @@
 - Owner: coordinator / senior (Q-29)
 - Milestone / WP: M1a / WP-06
 - Branch / PR: `feat/wp-06-crud` / PR 91
-- Base / head SHA: 38733ce / 4262d56
+- Base / head SHA: 38733ce / f205a0b (code reviewed in round 4; this metadata commit is the head)
 - Dependencies: WP-02b, WP-05
 - Required reading: use-cases §4.0.1, UC-01, UC-02, UC-03; ADR-18, ADR-27; COPY.md (Q-28 terms)
 - Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
