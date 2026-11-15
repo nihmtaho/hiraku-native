@@ -82,10 +82,14 @@ receives `release/vX.Y.Z` and `hotfix/*`.
 - Merge: `gh pr merge <pr> --squash --match-head-commit <sha>`, only after an independent
   review returned PASS on exactly that SHA and required CI is green. A new push voids the
   verdict. `main` uses a merge commit.
+- The generic `git-pr` skill's `Closes #id` auto-close advice does not apply here: PRs
+  target `develop`, so `Closes #<n>` is traceability only and slices close by hand
+  (§Status tracking).
 - Human operator reviews these before merge (no automated gate): `AGENTS.md`,
-  `docs/process/`, `docs/architecture/DECISIONS.md`, `.github/`, `.agents/` except
-  `.agents/tasks/`, agent tool config and `opencode.json`, any `check-*` script,
-  `core/scripts/build-xcframework.sh`, `core/gen/` and Swift `Generated/` directories.
+  `PROJECT.md`, `docs/process/`, `docs/architecture/DECISIONS.md`, `.github/`,
+  `.agents/` except `.agents/tasks/`, agent tool config and `opencode.json`, any
+  `check-*` script, `core/scripts/build-xcframework.sh`, `core/gen/` and Swift
+  `Generated/` directories.
 - Tagging and releasing belong to the PO and operator, not to agents (ADR-33).
   `docs/process/RELEASE.md` describes the release flow.
 
