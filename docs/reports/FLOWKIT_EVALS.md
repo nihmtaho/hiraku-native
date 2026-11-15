@@ -18,7 +18,7 @@ reproducible; the current repo checks are `node --test .agents/hiraku/tests/*.te
 
 Result: **101/101 assertions pass** across 20 skills (32 eval prompts: 12 skills × 2 + 8 skills × 1).
 
-Sau khi cài, đúng một skill lệch khỏi bản eval: `git-pr` §Rules được sửa để khớp cách đóng issue khi base là `develop`; delta ghi ở `PROJECT.md` §Git & PR.
+After installation exactly one skill differs from the evaluated copy: `git-pr` §Rules now states how issues close on a `develop` base. The delta is recorded in `PROJECT.md` §Git & PR.
 
 ## Per-skill results
 

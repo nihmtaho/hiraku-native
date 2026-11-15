@@ -4,7 +4,7 @@
 
 **Goal:** Make the already-evaluated Flowkit the live skill set of this repo: 20 skills installed in `.agents/skills/`, the 10 `hiraku-*` skill dirs removed, project scripts moved out of skills, `PROJECT.md` at root, and all policy docs pointing at the new names.
 
-**Architecture:** Copy-in adoption (not move): `.tmp/flowkit/` stays the distributable kit; `.agents/skills/` gets an installed copy. Project-specific scripts move to `.agents/scripts/`. No skill body changes — the installed files must be byte-identical to the evaluated kit.
+**Architecture:** Copy-in adoption (not move): `.tmp/flowkit/` stays the distributable kit; `.agents/skills/` gets an installed copy. Project-specific scripts move to `.agents/scripts/`. No skill body changes — the installed files must be byte-identical to the evaluated kit. *(nới 2026-11-15: `git-pr` §Rules sửa một dòng; delta ghi trong `PROJECT.md` §Git & PR.)*
 
 **Tech Stack:** Git, Markdown, Node 24 (repo skill tests + status script), GitHub Actions config.
 
@@ -25,7 +25,7 @@
 1. **Lost script callers** — grep every use of the old `hiraku-*/scripts/*.mjs` path (tests, CI, docs, PROJECT.md) after the move; any stale path breaks CI silently.
 2. **Silent skill deletion damage** — the spike report template and skill evals must survive the `hiraku-*` deletion (`flow-spike/references/`, per-skill `evals/`).
 3. **Doc name drift** — a policy doc still naming a deleted skill makes the workflow un-followable; the final grep is the check.
-4. **Installed ≠ evaluated** — `diff -r` between kit skills and installed skills must be empty (excluding the references copy).
+4. **Installed ≠ evaluated** — `diff -r` between kit skills and installed skills must be empty (excluding the references copy). *(nới 2026-11-15: một dòng `git-pr` §Rules là ngoại lệ đã ghi.)*
 
 ---
 

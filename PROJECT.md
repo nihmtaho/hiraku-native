@@ -82,7 +82,7 @@ receives `release/vX.Y.Z` and `hotfix/*`.
 - Merge: `gh pr merge <pr> --squash --match-head-commit <sha>`, only after an independent
   review returned PASS on exactly that SHA and required CI is green. A new push voids the
   verdict. `main` uses a merge commit.
-- The skills in `.agents/skills/` are the evaluated Flowkit copies; the only local edit
+- The 20 Flowkit skills in `.agents/skills/` are the evaluated copies; the only local edit
   is `git-pr` §Rules, which now matches §Status tracking on a `develop` base. Record any
   further edit to a skill in this bullet.
 - Human operator reviews these before merge (no automated gate): `AGENTS.md`,
