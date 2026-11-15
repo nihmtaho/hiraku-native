@@ -7,6 +7,7 @@ Mục `[Unreleased]` là thay đổi sản phẩm, mỗi PR đã duyệt merge p
 Nhóm: Thêm · Đổi · Sửa · Xóa · Tài liệu · Bảo mật. Mỗi dòng kết thúc bằng `(WP-xx, PR n)`. Chưa có mã sản phẩm.
 
 ### Thêm
+- WP-05: gói `DesignSystem` — token `HKColor` (18 màu DESIGN §Colors, `state-learning-ink` #A67C00), `HKFont` 10 style theo cột nền tảng kèm tracking, `HKSpacing`/`HKRadius`/`HKBorder`/`HKHitTarget`; `HKButton` (primary/secondary/dark, pressed/hover/disabled), `HKCard`, `HKField` với lỗi inline màu mực; `AppIcon` ánh xạ SF Symbols; Noto Sans JP đóng gói trong gói và đăng ký lúc chạy; test đơn vị kiểm giá trị token, tỷ lệ tương phản theo bảng DESIGN và font resolve; CI build + test gói, `check-imports.sh` thêm allowlist (WP-05, PR —).
 - WP-04: `core/domain/kana` chuẩn hóa đáp án Gõ từ — romaji → kana (っ, ん, yōon, kana nhỏ), katakana → hiragana, bỏ ー, dung sai nguyên âm dài và nén ký tự lặp, dakuten/っ nghiêm theo Q-21 B; `Match` trả một cờ cho mỗi ký tự đáp án; bảng golden `core/testdata/kana_golden.json` (WP-04, PR 84).
 - Nợ WP-03: `BuildQueue` lọc theo `folder_id`/`deck_id`, giới hạn request tối đa 500; FSRS lưu `elapsed_days`/`scheduled_days` thay vì 0; test cho review vắt mốc 04:00, snapshot `prev_learning_steps`/`prev_last_review` và trần queue (WP-03, PR 80).
 - Nợ WP-03 (tiếp): `HirakuBridge` phát `ChangeSet` của `Grade` qua `EventHub`; test lượt chấm thứ hai có bước học và `last_review`, test scope `DueCards` theo deck/thư mục (WP-03, PR 81).

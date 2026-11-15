@@ -6,6 +6,8 @@ core/.spike/
 .commandcode/settings.local.json
 .serena/
 DerivedData/
+.build/
+.swiftpm/
 build/
 xcuserdata/
 *.xcuserstate
