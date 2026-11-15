@@ -26,6 +26,23 @@ public nonisolated enum Hiraku_V1_Method: SwiftProtobuf.Enum, Swift.CaseIterable
   case ping // = 1
   case grade // = 2
   case buildQueue // = 3
+  case listFolders // = 4
+  case createFolder // = 5
+  case updateFolder // = 6
+  case deleteFolder // = 7
+  case reorderFolders // = 8
+  case listDecks // = 9
+  case createDeck // = 10
+  case updateDeck // = 11
+  case deleteDeck // = 12
+  case reorderDecks // = 13
+  case moveDeck // = 14
+  case listNoteTypes // = 15
+  case listNotes // = 16
+  case createNote // = 17
+  case updateNote // = 18
+  case deleteNote // = 19
+  case checkDuplicate // = 20
   case UNRECOGNIZED(Int)
 
   public init() {
@@ -38,6 +55,23 @@ public nonisolated enum Hiraku_V1_Method: SwiftProtobuf.Enum, Swift.CaseIterable
     case 1: self = .ping
     case 2: self = .grade
     case 3: self = .buildQueue
+    case 4: self = .listFolders
+    case 5: self = .createFolder
+    case 6: self = .updateFolder
+    case 7: self = .deleteFolder
+    case 8: self = .reorderFolders
+    case 9: self = .listDecks
+    case 10: self = .createDeck
+    case 11: self = .updateDeck
+    case 12: self = .deleteDeck
+    case 13: self = .reorderDecks
+    case 14: self = .moveDeck
+    case 15: self = .listNoteTypes
+    case 16: self = .listNotes
+    case 17: self = .createNote
+    case 18: self = .updateNote
+    case 19: self = .deleteNote
+    case 20: self = .checkDuplicate
     default: self = .UNRECOGNIZED(rawValue)
     }
   }
@@ -48,6 +82,23 @@ public nonisolated enum Hiraku_V1_Method: SwiftProtobuf.Enum, Swift.CaseIterable
     case .ping: return 1
     case .grade: return 2
     case .buildQueue: return 3
+    case .listFolders: return 4
+    case .createFolder: return 5
+    case .updateFolder: return 6
+    case .deleteFolder: return 7
+    case .reorderFolders: return 8
+    case .listDecks: return 9
+    case .createDeck: return 10
+    case .updateDeck: return 11
+    case .deleteDeck: return 12
+    case .reorderDecks: return 13
+    case .moveDeck: return 14
+    case .listNoteTypes: return 15
+    case .listNotes: return 16
+    case .createNote: return 17
+    case .updateNote: return 18
+    case .deleteNote: return 19
+    case .checkDuplicate: return 20
     case .UNRECOGNIZED(let i): return i
     }
   }
@@ -58,6 +109,23 @@ public nonisolated enum Hiraku_V1_Method: SwiftProtobuf.Enum, Swift.CaseIterable
     .ping,
     .grade,
     .buildQueue,
+    .listFolders,
+    .createFolder,
+    .updateFolder,
+    .deleteFolder,
+    .reorderFolders,
+    .listDecks,
+    .createDeck,
+    .updateDeck,
+    .deleteDeck,
+    .reorderDecks,
+    .moveDeck,
+    .listNoteTypes,
+    .listNotes,
+    .createNote,
+    .updateNote,
+    .deleteNote,
+    .checkDuplicate,
   ]
 
 }
@@ -285,7 +353,7 @@ public nonisolated struct Hiraku_V1_Error: Sendable {
 fileprivate nonisolated let _protobuf_package = "hiraku.v1"
 
 nonisolated extension Hiraku_V1_Method: SwiftProtobuf._ProtoNameProviding {
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0METHOD_UNSPECIFIED\0\u{1}METHOD_PING\0\u{1}METHOD_GRADE\0\u{1}METHOD_BUILD_QUEUE\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0METHOD_UNSPECIFIED\0\u{1}METHOD_PING\0\u{1}METHOD_GRADE\0\u{1}METHOD_BUILD_QUEUE\0\u{1}METHOD_LIST_FOLDERS\0\u{1}METHOD_CREATE_FOLDER\0\u{1}METHOD_UPDATE_FOLDER\0\u{1}METHOD_DELETE_FOLDER\0\u{1}METHOD_REORDER_FOLDERS\0\u{1}METHOD_LIST_DECKS\0\u{1}METHOD_CREATE_DECK\0\u{1}METHOD_UPDATE_DECK\0\u{1}METHOD_DELETE_DECK\0\u{1}METHOD_REORDER_DECKS\0\u{1}METHOD_MOVE_DECK\0\u{1}METHOD_LIST_NOTE_TYPES\0\u{1}METHOD_LIST_NOTES\0\u{1}METHOD_CREATE_NOTE\0\u{1}METHOD_UPDATE_NOTE\0\u{1}METHOD_DELETE_NOTE\0\u{1}METHOD_CHECK_DUPLICATE\0")
 }
 
 nonisolated extension Hiraku_V1_ErrorCode: SwiftProtobuf._ProtoNameProviding {

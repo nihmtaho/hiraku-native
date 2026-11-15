@@ -63,7 +63,14 @@ func (s *Service) Handle(ctx context.Context, method hirakuv1.Method, req []byte
 		}
 		return proto.Marshal(response)
 	default:
-		return nil, &Error{Code: hirakuv1.ErrorCode_ERROR_CODE_NOT_FOUND}
+		response, handled, err := s.catalog(ctx, method, req)
+		if !handled {
+			return nil, &Error{Code: hirakuv1.ErrorCode_ERROR_CODE_NOT_FOUND}
+		}
+		if err != nil {
+			return nil, err
+		}
+		return proto.Marshal(response)
 	}
 }
 

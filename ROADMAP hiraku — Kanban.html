@@ -246,7 +246,7 @@ var raw=[
  ["WP-03","FSRS trong core/domain, RPC Grade, BuildQueue","M1a","wp","dn",{w:1.5},{ref:"ADR-26, UC-08, FR-014…018",dep:["WP-02a","S-2"],note:"PR 78 merge 19c431a."}],
  ["WP-04","core/domain/kana: romaji sang kana, chuẩn hóa, so khớp từng ký tự","M1a","wp","dn",{w:1},{note:"Romaji/kana normalize + per-character Match, golden table; merged 31ca018; slice #54/#55 closed; WP-08 kana-only precondition recorded",ref:"UC-07, FR-012",dep:["WP-01"],f:"F-11"}],
  ["WP-05","DesignSystem: token HK*, component, font, AccentColor Ember","M1a","wp","dn",{w:1.5},{note:"DesignSystem tokens/components/icons/bundled font; merged 58fddc8; slices #56/#57 closed; focus, pad and Dynamic Type debts handed to WP-06/WP-07",ref:"ADR-15, docs/product/DESIGN.md",dep:["Q-5","Q-D2"]}],
- ["WP-06","Folders, Decks, Words: CRUD, trùng từ, tìm kiếm, kéo-thả, bảo vệ thay đổi, khôi phục vị trí","M1a","wp","bl",{w:3.5},{ref:"UC-01…UC-04, ADR-18",dep:["WP-02b","WP-05"]}],
+ ["WP-06","Folders, Decks, Words: CRUD, trùng từ, tìm kiếm, kéo-thả, bảo vệ thay đổi, khôi phục vị trí","M1a","wp","ip",{w:3.5},{note:"Core catalog contract, transport adapters and three feature UIs; slices #58-#61",ref:"UC-01…UC-04, ADR-18",dep:["WP-02b","WP-05"]}],
  ["WP-07","StudyKit, FeatureStudy, FeatureFlashcard (2 hoặc 4 nút, màn Xong!)","M1a","wp","bl",{w:1.75},{ref:"UC-06, UC-08",dep:["WP-03","WP-05"]}],
  ["WP-08","FeatureTyping: IME, ô kana, phản hồi, hiện đáp án đúng","M1a","wp","bl",{w:1.5},{ref:"UC-07, ADR-09",dep:["WP-04","WP-07","S-3"],f:"F-08"}],
  ["WP-09","FeatureSettings, FeatureHome (banner Ôn hôm nay)","M1a","wp","bl",{w:0.5},{ref:"UC-13, UC-14, FR-050",dep:["WP-05","WP-06"]}],

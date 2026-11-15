@@ -120,18 +120,24 @@ func composeNote(noteTypeID, deckID string, fields []notetype.Field, values map[
 // Notes lists live notes in a deck ordered by sort field.
 func (r *Repo) Notes(ctx context.Context, deckID string, limit, offset int) ([]Note, error) {
 	return r.queryNotes(ctx, `
-		SELECT id, deck_id, note_type_id, fields, sort_field, search_text
-		FROM notes WHERE deck_id = ? AND deleted_at IS NULL
-		ORDER BY sort_field, created_at LIMIT ? OFFSET ?`, deckID, limit, offset)
+		SELECT n.id, n.deck_id, n.note_type_id, n.fields, n.sort_field, n.search_text,
+			COALESCE(cs.state, 0)
+		FROM notes n LEFT JOIN cards c ON c.note_id = n.id AND c.deleted_at IS NULL
+		LEFT JOIN card_states cs ON cs.card_id = c.id
+		WHERE n.deck_id = ? AND n.deleted_at IS NULL
+		ORDER BY n.sort_field, n.created_at LIMIT ? OFFSET ?`, deckID, limit, offset)
 }
 
 // Search finds live notes whose search text contains query, case-insensitive.
 func (r *Repo) Search(ctx context.Context, deckID, query string, limit, offset int) ([]Note, error) {
 	pattern := "%" + escapeLike(strings.ToLower(strings.TrimSpace(query))) + "%"
 	return r.queryNotes(ctx, `
-		SELECT id, deck_id, note_type_id, fields, sort_field, search_text
-		FROM notes WHERE deck_id = ? AND deleted_at IS NULL AND search_text LIKE ? ESCAPE '\'
-		ORDER BY sort_field, created_at LIMIT ? OFFSET ?`, deckID, pattern, limit, offset)
+		SELECT n.id, n.deck_id, n.note_type_id, n.fields, n.sort_field, n.search_text,
+			COALESCE(cs.state, 0)
+		FROM notes n LEFT JOIN cards c ON c.note_id = n.id AND c.deleted_at IS NULL
+		LEFT JOIN card_states cs ON cs.card_id = c.id
+		WHERE n.deck_id = ? AND n.deleted_at IS NULL AND n.search_text LIKE ? ESCAPE '\'
+		ORDER BY n.sort_field, n.created_at LIMIT ? OFFSET ?`, deckID, pattern, limit, offset)
 }
 
 func (r *Repo) queryNotes(ctx context.Context, query string, args ...any) ([]Note, error) {
@@ -144,7 +150,7 @@ func (r *Repo) queryNotes(ctx context.Context, query string, args ...any) ([]Not
 	for rows.Next() {
 		var n Note
 		var fields string
-		if err := rows.Scan(&n.ID, &n.DeckID, &n.NoteTypeID, &fields, &n.SortField, &n.SearchText); err != nil {
+		if err := rows.Scan(&n.ID, &n.DeckID, &n.NoteTypeID, &fields, &n.SortField, &n.SearchText, &n.State); err != nil {
 			return nil, err
 		}
 		if err := json.Unmarshal([]byte(fields), &n.Fields); err != nil {
@@ -158,8 +164,11 @@ func (r *Repo) queryNotes(ctx context.Context, query string, args ...any) ([]Not
 // Note reads one live note.
 func (r *Repo) Note(ctx context.Context, noteID string) (Note, error) {
 	notes, err := r.queryNotes(ctx, `
-		SELECT id, deck_id, note_type_id, fields, sort_field, search_text
-		FROM notes WHERE id = ? AND deleted_at IS NULL`, noteID)
+		SELECT n.id, n.deck_id, n.note_type_id, n.fields, n.sort_field, n.search_text,
+			COALESCE(cs.state, 0)
+		FROM notes n LEFT JOIN cards c ON c.note_id = n.id AND c.deleted_at IS NULL
+		LEFT JOIN card_states cs ON cs.card_id = c.id
+		WHERE n.id = ? AND n.deleted_at IS NULL`, noteID)
 	if err != nil {
 		return Note{}, err
 	}

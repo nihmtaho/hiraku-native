@@ -1,0 +1,230 @@
+syntax = "proto3";
+
+package hiraku.v1;
+
+option go_package = "hiraku/core/gen/hirakuv1;hirakuv1";
+
+import "hiraku/v1/common.proto";
+
+message Folder {
+  string id = 1;
+  string name = 2;
+  int32 position = 3;
+  int32 deck_count = 4;
+  int32 note_count = 5;
+}
+
+message ListFoldersRequest {}
+
+message ListFoldersResponse {
+  repeated Folder folders = 1;
+}
+
+message CreateFolderRequest {
+  string name = 1;
+  int64 now_ms = 2;
+}
+
+message CreateFolderResponse {
+  string folder_id = 1;
+  ChangeSet changes = 2;
+}
+
+message UpdateFolderRequest {
+  string folder_id = 1;
+  string name = 2;
+  int64 now_ms = 3;
+}
+
+message UpdateFolderResponse {
+  ChangeSet changes = 1;
+}
+
+message DeleteFolderRequest {
+  string folder_id = 1;
+  int64 now_ms = 2;
+}
+
+message DeleteFolderResponse {
+  ChangeSet changes = 1;
+}
+
+message ReorderFoldersRequest {
+  repeated string folder_ids = 1;
+  int64 now_ms = 2;
+}
+
+message ReorderFoldersResponse {
+  ChangeSet changes = 1;
+}
+
+message Deck {
+  string id = 1;
+  string folder_id = 2;
+  string name = 3;
+  string description = 4;
+  int32 position = 5;
+  string note_type_id = 6;
+  int32 note_count = 7;
+  int32 state_new_count = 8;
+  int32 state_learning_count = 9;
+  int32 state_known_count = 10;
+}
+
+message ListDecksRequest {
+  string folder_id = 1;
+}
+
+message ListDecksResponse {
+  repeated Deck decks = 1;
+}
+
+message CreateDeckRequest {
+  string folder_id = 1;
+  string name = 2;
+  string description = 3;
+  string note_type_id = 4;
+  int64 now_ms = 5;
+}
+
+message CreateDeckResponse {
+  string deck_id = 1;
+  ChangeSet changes = 2;
+}
+
+message UpdateDeckRequest {
+  string deck_id = 1;
+  string name = 2;
+  string description = 3;
+  int64 now_ms = 4;
+}
+
+message UpdateDeckResponse {
+  ChangeSet changes = 1;
+}
+
+message DeleteDeckRequest {
+  string deck_id = 1;
+  int64 now_ms = 2;
+}
+
+message DeleteDeckResponse {
+  ChangeSet changes = 1;
+}
+
+message ReorderDecksRequest {
+  string folder_id = 1;
+  repeated string deck_ids = 2;
+  int64 now_ms = 3;
+}
+
+message ReorderDecksResponse {
+  ChangeSet changes = 1;
+}
+
+message MoveDeckRequest {
+  string deck_id = 1;
+  string target_folder_id = 2;
+  int64 now_ms = 3;
+}
+
+message MoveDeckResponse {
+  ChangeSet changes = 1;
+}
+
+message NoteTypeField {
+  string id = 1;
+  string role = 2;
+  string name = 3;
+  int32 ord = 4;
+  string input_kind = 5;
+  bool required = 6;
+  bool searchable = 7;
+}
+
+message NoteType {
+  string id = 1;
+  string name = 2;
+  bool is_system = 3;
+  repeated NoteTypeField fields = 4;
+  repeated string front_field_ids = 5;
+  repeated string back_field_ids = 6;
+  string typing_answer_field_id = 7;
+}
+
+message ListNoteTypesRequest {}
+
+message ListNoteTypesResponse {
+  repeated NoteType note_types = 1;
+}
+
+message FieldValue {
+  string field_id = 1;
+  string value = 2;
+}
+
+enum NoteState {
+  NOTE_STATE_UNSPECIFIED = 0;
+  NOTE_STATE_NEW = 1;
+  NOTE_STATE_LEARNING = 2;
+  NOTE_STATE_KNOWN = 3;
+}
+
+message Note {
+  string id = 1;
+  string deck_id = 2;
+  repeated FieldValue fields = 3;
+  NoteState state = 4;
+}
+
+message ListNotesRequest {
+  string deck_id = 1;
+  string query = 2;
+  int32 limit = 3;
+  int32 offset = 4;
+}
+
+message ListNotesResponse {
+  repeated Note notes = 1;
+  int32 total = 2;
+}
+
+message CreateNoteRequest {
+  string deck_id = 1;
+  repeated FieldValue fields = 2;
+  int64 now_ms = 3;
+}
+
+message CreateNoteResponse {
+  string note_id = 1;
+  ChangeSet changes = 2;
+}
+
+message UpdateNoteRequest {
+  string note_id = 1;
+  repeated FieldValue fields = 2;
+  int64 now_ms = 3;
+}
+
+message UpdateNoteResponse {
+  ChangeSet changes = 1;
+}
+
+message DeleteNoteRequest {
+  string note_id = 1;
+  int64 now_ms = 2;
+}
+
+message DeleteNoteResponse {
+  ChangeSet changes = 1;
+}
+
+message CheckDuplicateRequest {
+  string deck_id = 1;
+  string term = 2;
+}
+
+message CheckDuplicateResponse {
+  bool exists = 1;
+  string meaning = 2;
+}

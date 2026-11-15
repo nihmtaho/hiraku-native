@@ -2,17 +2,17 @@
 
 ## Contract
 
-- Status: blocked
+- Status: coding
 - Owner: coordinator / senior (Q-29)
 - Milestone / WP: M1a / WP-06
 - Branch / PR: `feat/wp-06-features-crud` from `develop`
-- Base / head SHA: 2df7fd5 / —
+- Base / head SHA: 38733ce / —
 - Dependencies: WP-02b, WP-05
 - Required reading: use-cases §4.0.1, UC-01, UC-02, UC-03; ADR-18, ADR-27; COPY.md (Q-28 terms)
 - Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
 - Goal: Folder/deck/word CRUD, search, drag reorder, unsaved-change protection, note-type-driven forms.
 - Out of scope: Study screens; import.
-- Files / modules allowed to change: Packages/Features/FeatureFolders, FeatureDecks, FeatureWords, App/Composition
+- Files / modules allowed to change: core/proto/hiraku/v1, core/gen, core/store, core/service, core/ffi (dispatch only), core/testdata, Packages/HirakuModels, Packages/HirakuBridge, Packages/HirakuTesting, Packages/Features/FeatureFolders, FeatureDecks, FeatureWords, Packages/DesignSystem (only the recorded debt items), App/Composition, App/Shell, App/Hiraku (adopt DesignSystem + catalog), App/Hiraku.xcodeproj (package references), App/HirakuTests, Scripts/check-imports.sh (feature allowlist), .github/workflows/ci.yml (feature package tests), docs/plans, docs/product/COPY.md wiring notes, CHANGELOG.md, ROADMAP.md, Kanban
 - Permissions or PO decisions granted: Q-19, Q-20, Q-21 B, Q-22, Q-24, Q-27, Q-28; ADR-20/21/24/26/32 confirmed (PO 2026-11-08)
 
 ## Acceptance criteria
