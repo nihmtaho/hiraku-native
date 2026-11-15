@@ -7,7 +7,7 @@ Mục `[Unreleased]` là thay đổi sản phẩm, mỗi PR đã duyệt merge p
 Nhóm: Thêm · Đổi · Sửa · Xóa · Tài liệu · Bảo mật. Mỗi dòng kết thúc bằng `(WP-xx, PR n)`. Chưa có mã sản phẩm.
 
 ### Thêm
-- WP-04: `core/domain/kana` chuẩn hóa đáp án Gõ từ — romaji → kana (っ, ん, yōon, kana nhỏ), katakana → hiragana, bỏ ー, dung sai nguyên âm dài và nén ký tự lặp, dakuten/っ nghiêm theo Q-21 B; `Match` trả một cờ cho mỗi ký tự đáp án; bảng golden `core/testdata/kana_golden.json` (WP-04, PR —).
+- WP-04: `core/domain/kana` chuẩn hóa đáp án Gõ từ — romaji → kana (っ, ん, yōon, kana nhỏ), katakana → hiragana, bỏ ー, dung sai nguyên âm dài và nén ký tự lặp, dakuten/っ nghiêm theo Q-21 B; `Match` trả một cờ cho mỗi ký tự đáp án; bảng golden `core/testdata/kana_golden.json` (WP-04, PR 84).
 - Nợ WP-03: `BuildQueue` lọc theo `folder_id`/`deck_id`, giới hạn request tối đa 500; FSRS lưu `elapsed_days`/`scheduled_days` thay vì 0; test cho review vắt mốc 04:00, snapshot `prev_learning_steps`/`prev_last_review` và trần queue (WP-03, PR 80).
 - Nợ WP-03 (tiếp): `HirakuBridge` phát `ChangeSet` của `Grade` qua `EventHub`; test lượt chấm thứ hai có bước học và `last_review`, test scope `DueCards` theo deck/thư mục (WP-03, PR 81).
 - WP-03: FSRS-6 trong `core/domain/fsrs` khớp 17/17 vector golden py-fsrs 6.3.2 (ngày học theo `day_start_hour`), `core/domain/dayboundary`; RPC `Grade` một transaction (đọc lại state, một `review_logs`, `ChangeSet`, `reinsert` 20 phút); RPC `BuildQueue` (đến hạn Learning/Relearning trước, từ mới theo hạn mức ngày); store thêm state/log/queue (WP-03, PR 78).
@@ -26,6 +26,7 @@ Nhóm: Thêm · Đổi · Sửa · Xóa · Tài liệu · Bảo mật. Mỗi dò
 - Spike S-2: đánh giá `github.com/open-spaced-repetition/go-fsrs/v4 v4.0.0` (MIT, FSRS-6) bằng 17 vector sinh từ `fsrs 6.3.2` trong `core/spike/fsrs_vectors.json`; `state`/`reps`/`lapses` khớp 17/17 nhưng 3/17 `due` lệch với dung sai 0 (làm tròn bước Hard, ép thứ tự hard/good/easy, ngày đã trôi theo ngày lịch UTC) nên kết luận **Không đạt** → tự cài trong `core/domain/fsrs` theo ADR-26; gỡ thư viện khỏi `core/go.mod`/`go.sum`, giữ 17 vector làm golden và script sinh lại `core/spike/gen_fsrs_vectors.py` (S-2, PR 6)
 
 ### Tài liệu
+- Đóng WP-04: record `merged` kèm PR 84/SHA/verdict, slice #54 và #55 đóng sau khi xác nhận PR 84 không tự đóng vì base là `develop` (WP-04, PR 85).
 - Đổi tên 10 skill `hiraku-*` sang `flow-*` 1:1 trong `AGENTS.md`, `docs/process/`, `.claude/README.md` và các skill liên quan; hai script chuyển sang `.agents/scripts/`; ghi vào ADR-31 (PR 83).
 - Nhận nuôi 20 skill Flowkit vào `.agents/skills/` (11 `flow-*`, `product-review`, 8 skill quản lý sản phẩm) với `PROJECT.md` ở root; bằng chứng đánh giá ở `docs/reports/FLOWKIT_EVALS.md` (PR 83).
 - Đóng WP-03: record `merged` kèm PR 78/SHA/verdict, issue #51–#53 closed, vector golden chuyển `core/testdata`, ghi nợ queue scope và vector vắt 04:00.
