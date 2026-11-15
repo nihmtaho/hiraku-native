@@ -2,11 +2,11 @@
 
 ## Contract
 
-- Status: review
+- Status: merged
 - Owner: coordinator / senior (Q-29)
 - Milestone / WP: M1a / WP-05
-- Branch / PR: `feat/wp-05-design-system` / PR 88
-- Base / head SHA: 3a749ca / 22ed10e (review rounds 1-2)
+- Branch / PR: `feat/wp-05-design-system` / PR 88 (merged `58fddc8`)
+- Base / head SHA: 5c9629c / 23d5c2d (merge `58fddc8`)
 - Dependencies: Q-5, Q-D2
 - Required reading: docs/product/DESIGN.md; ADR-15; DECISIONS Q-5, Q-D2
 - Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
@@ -38,7 +38,7 @@ Record is authority for the contract; plan is authority for progress; issues tra
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
 | DesignSystem tests | `swift test --package-path Packages/DesignSystem` | exit 0, 13 tests | `Packages/DesignSystem` |
-| App tests | `xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=macOS' CODE_SIGNING_ALLOWED=NO` | exit 0, TEST SUCCEEDED | `App` |
+| App build gate | `xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=macOS' CODE_SIGNING_ALLOWED=NO` | exit 0, TEST SUCCEEDED (0 behavioural tests; `App` has no test target yet) | `App` |
 | Swift import law | `./Scripts/check-imports.sh` | exit 0 | DesignSystem allowlist added |
 | Go boundary law | `./core/scripts/check-core.sh` | exit 0 | — |
 
@@ -56,8 +56,15 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 ## Independent review
 
+- Round 1 on `a7e33a3`: FAIL — typography weight missing, `pad` column missing while the DESIGN edit removed the size-class API, `lineHeight` absent.
+- Round 2 on `22ed10e`: PASS with three medium carry-forwards (mac CTA under AA, `jp-hero` scaling, no focus state).
+- Round 3 on `8dc6fe1`: PASS after the PO lifted the mac button column to 15pt, `jp-hero` moved to a fixed size, focus debt recorded in WP-06.
+- Round 4 on `23d5c2d`: PASS after rebasing onto `develop`; the tree is patch-identical to round 3.
+
 ## Delivery
+
+- `gh pr merge 88 --squash --match-head-commit 23d5c2d` gave merge `58fddc8`; CI `ci` and `swift` passed on `23d5c2d`; slices #56 and #57 were closed by hand after the merge.
 
 ## Next
 
-Read the plan section and the open issues above.
+None; closed. Slices #56 and #57 are closed. Platform debts live in the `wp-06-features-crud` record (focus, `.pad`, Increase Contrast stroke, font registration) and in `wp-07-study` (Dynamic Type cap and the jp-hero shrink).
