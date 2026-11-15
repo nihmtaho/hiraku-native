@@ -19,7 +19,13 @@
 
 CRUD flows persist through the bridge; search returns paged results under 150 ms on the 50,000-note fixture; drag reorder survives restart; leaving an edited form asks before discarding; empty states render.
 
-DesignSystem debts to close when these screens wire it: give `HKButton` and `HKField` a visible focus state (DESIGN §Components makes focus mandatory and the custom styles draw none), pass `.pad` from a regular-width iPad, widen the secondary button stroke under Increase Contrast, and check that the app calls `HKFont.registerBundledFonts()` at launch.
+DesignSystem debts to close when these screens wire it:
+
+- [ ] `HKButton` and `HKField` show a visible focus state; the custom styles draw none today (DESIGN §Components makes focus mandatory).
+- [ ] A regular-width iPad passes `.pad` to `HKTextStyle.font(_:)`.
+- [ ] The secondary button stroke widens to `HKBorder.increased` under Increase Contrast, like `HKCard` and `HKField`.
+- [ ] The app sets `.tint(HKColor.tertiary)` at the scene root and collapses the duplicate font registration: `App/Hiraku/NotoFont.swift` registers the app's own copy from `Bundle.main`, so it either calls `HKFont.registerBundledFonts()` or drops the local copy.
+- [ ] A DesignSystem test pins that `jp-hero` is the only style without a Dynamic Type anchor.
 
 ## Execution plan
 

@@ -19,6 +19,11 @@
 
 Session builds from the queue, grades through the bridge, shows done screen at zero, handles empty queue and last card; card face follows the note-type template.
 
+Typography debts the study screens own:
+
+- [ ] `display` stops growing at `xxxLarge`.
+- [ ] `jp-hero` shrinks to 40pt before wrapping, and never scales with Dynamic Type.
+
 ## Execution plan
 
 - Plan: `docs/plans/2026-11-08-m1a.md` (wp-07 section)

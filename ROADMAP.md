@@ -333,4 +333,4 @@ Nguồn cập nhật bắt buộc cho mọi PR (`docs/process/GIT_WORKFLOW.md` �
 | RV-05 | dn | — | Q-27: kéo WP-20 lên sau M1a (PO 2026-11-08) |
 | App shell | rv | — | App/Hiraku.xcodeproj build va chay tren iPhone 18 Pro simulator lan macOS; bundle id com.nihmtaho.hiraku (PO 2026-11-04); cho review. |
 | WP-04 | dn | 84 | Romaji/kana normalize + per-character Match, golden table; merged 31ca018; slice #54/#55 closed; WP-08 kana-only precondition recorded |
-| WP-05 | rv | 88 | DesignSystem tokens, components, icons, bundled font; slices #56, #57 in PR 88 |
+| WP-05 | dn | 88 | DesignSystem tokens/components/icons/bundled font; merged 58fddc8; slices #56/#57 closed; focus, pad and Dynamic Type debts handed to WP-06/WP-07 |
