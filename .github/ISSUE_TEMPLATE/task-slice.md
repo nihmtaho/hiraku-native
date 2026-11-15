@@ -1,6 +1,6 @@
 ---
 name: Task slice
-description: Một lát thực thi của task record hiraku (cùng PR, đóng bằng Closes)
+description: Một lát thực thi của task record hiraku (cùng PR; đóng tay sau merge vì base là develop)
 title: "[<task-id>] <slice>: <goal>"
 labels: ["type:impl"]
 ---
@@ -32,4 +32,4 @@ labels: ["type:impl"]
 - Parent task record: `.agents/tasks/<task-id>.md`
 - Execution plan: `docs/plans/<date>-<topic>.md#task-n`
 - WP / Q / ADR:
-- Closed by PR: `Closes #<n>` (1 PR đóng hết các slices của task)
+- Delivered by PR: `<PR number>`; the PR body lists `Closes #<n>` for traceability, and the merge step closes this issue by hand because the base is `develop`
