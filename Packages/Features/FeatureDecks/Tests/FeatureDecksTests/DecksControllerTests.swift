@@ -98,6 +98,16 @@ private func makeController(catalog: FakeCatalog, folder: Folder = folder) async
 }
 
 @MainActor
+@Test func listOnMovePersistsTheNewOrder() async throws {
+    let catalog = FakeCatalog(folders: [folder], noteTypes: [systemType])
+    let controller = await makeController(catalog: catalog)
+    _ = await controller.create(name: "A", description: "")
+    _ = await controller.create(name: "B", description: "")
+    await controller.moveRows(from: IndexSet(integer: 1), to: 0)
+    #expect(controller.rows.map(\.name) == ["B", "A"])
+}
+
+@MainActor
 @Test func deleteRemovesTheDeckAndItsNotes() async throws {
     let catalog = FakeCatalog(folders: [folder], noteTypes: [systemType])
     let controller = await makeController(catalog: catalog)

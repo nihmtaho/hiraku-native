@@ -126,7 +126,8 @@ public struct DecksView: View {
     }
 
     private var list: some View {
-        List(controller.rows) { deck in
+        List {
+            ForEach(controller.rows) { deck in
             Button {
                 openDeck(deck)
             } label: {
@@ -134,9 +135,17 @@ public struct DecksView: View {
                     Text(deck.name)
                         .font(HKFont.bodyMD.font())
                         .foregroundStyle(HKColor.primary)
-                    Text("common.wordCount \(deck.noteCount)")
-                        .font(HKFont.bodySM.font())
-                        .foregroundStyle(HKColor.secondary)
+                    HStack(spacing: HKSpacing.xs) {
+                        Text("common.wordCount \(deck.noteCount)")
+                        Text(verbatim: "· \(deck.stateCounts.new)")
+                        Text("words.state.new")
+                        Text(verbatim: "· \(deck.stateCounts.learning)")
+                        Text("words.state.learning")
+                        Text(verbatim: "· \(deck.stateCounts.known)")
+                        Text("words.state.known")
+                    }
+                    .font(HKFont.bodySM.font())
+                    .foregroundStyle(HKColor.secondary)
                 }
             }
             .buttonStyle(.plain)
@@ -165,6 +174,10 @@ public struct DecksView: View {
                 Divider()
                 Button("delete", role: .destructive) { pendingDeletion = deck }
             }
+            }
+            .onMove { source, destination in
+                Task { await controller.moveRows(from: source, to: destination) }
+            }
         }
     }
 }
@@ -178,7 +191,6 @@ private struct DeckFormSheet: View {
 
     @State private var name: String
     @State private var details: String
-    @FocusState private var focused: Bool
     @Environment(\.dismiss) private var dismiss
 
     init(mode: DeckSheetMode, noteTypeName: String?, isSaving: Bool, onSave: @escaping (String, String) async -> Bool) {
@@ -206,7 +218,6 @@ private struct DeckFormSheet: View {
                 text: $name,
                 error: errorText
             )
-            .focused($focused)
             HKField("decks.description.label", placeholder: "decks.description.label", text: $details)
             if let noteTypeName {
                 VStack(alignment: .leading, spacing: HKSpacing.xs) {
@@ -238,7 +249,6 @@ private struct DeckFormSheet: View {
         }
         .padding(HKSpacing.xl)
         .frame(minWidth: 320, maxWidth: 420)
-        .onAppear { focused = true }
     }
 
     private var title: LocalizedStringKey {

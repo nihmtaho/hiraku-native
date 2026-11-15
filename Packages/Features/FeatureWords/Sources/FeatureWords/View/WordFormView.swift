@@ -44,10 +44,18 @@ public struct WordFormView: View {
                     }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("common.save") {
-                        Task { await save(andNext: false) }
+                    HStack(spacing: HKSpacing.sm) {
+                        if !controller.isEditing {
+                            Button("words.saveAndNext") {
+                                Task { await save(andNext: true) }
+                            }
+                            .disabled(controller.isSaving)
+                        }
+                        Button("common.save") {
+                            Task { await save(andNext: false) }
+                        }
+                        .disabled(controller.isSaving)
                     }
-                    .disabled(controller.isSaving)
                 }
             }
             .confirmationDialog(

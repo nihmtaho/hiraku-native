@@ -75,6 +75,17 @@ private func makeController(
 }
 
 @MainActor
+@Test func dragToIndexMovesTheFolderAndPersists() async throws {
+    let controller = makeController()
+    _ = await controller.create(name: "A")
+    _ = await controller.create(name: "B")
+    _ = await controller.create(name: "C")
+    let last = try #require(controller.rows.last)
+    await controller.move(last, toIndex: 0)
+    #expect(controller.rows.map(\.name) == ["C", "A", "B"])
+}
+
+@MainActor
 @Test func repositoryFailureShowsTheErrorAndKeepsThePhase() async {
     let failing = FailingFolders()
     let controller = FoldersController(folders: failing, events: FakeChangeEvents(), clock: ManualClock())

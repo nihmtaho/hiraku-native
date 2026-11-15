@@ -690,6 +690,46 @@
           }
         }
       }
+    },
+    "words.state.new": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mới"
+          }
+        }
+      }
+    },
+    "words.state.learning": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Đang học"
+          }
+        }
+      }
+    },
+    "words.state.known": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Đã biết"
+          }
+        }
+      }
+    },
+    "words.saveAndNext": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lưu và thêm tiếp"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

@@ -107,6 +107,20 @@ public final class FoldersController {
         }
     }
 
+    /// Drag and drop lands here: the dragged folder takes the target slot.
+    public func move(_ folder: Folder, toIndex index: Int) async {
+        guard let from = rows.firstIndex(where: { $0.id == folder.id }), rows.indices.contains(index), from != index else { return }
+        var reordered = rows
+        let moved = reordered.remove(at: from)
+        reordered.insert(moved, at: index)
+        do {
+            try await folders.reorderFolders(reordered.map(\.id))
+            rows = reordered
+        } catch {
+            lastError = "error.generic.message"
+        }
+    }
+
     public func clearError() {
         lastError = nil
     }

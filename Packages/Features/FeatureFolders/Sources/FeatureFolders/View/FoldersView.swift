@@ -119,7 +119,7 @@ public struct FoldersView: View {
     private var grid: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 220), spacing: HKSpacing.md)], spacing: HKSpacing.md) {
-                ForEach(controller.rows) { folder in
+                ForEach(Array(controller.rows.enumerated()), id: \.element.id) { index, folder in
                     Button {
                         openFolder(folder)
                     } label: {
@@ -135,6 +135,14 @@ public struct FoldersView: View {
                         }
                     }
                     .buttonStyle(.plain)
+                    .draggable(folder.id.rawValue)
+                    .dropDestination(for: String.self) { items, _ in
+                        guard let dragged = items.first, let source = controller.rows.first(where: { $0.id.rawValue == dragged }) else {
+                            return false
+                        }
+                        Task { await controller.move(source, toIndex: index) }
+                        return true
+                    }
                     .contextMenu {
                         Button("rename") { sheet = .rename(folder) }
                         Button("folders.menu.moveUp") {
@@ -174,7 +182,6 @@ private struct FolderNameSheet: View {
     let onSave: (String) async -> Bool
 
     @State private var name: String
-    @FocusState private var focused: Bool
     @Environment(\.dismiss) private var dismiss
 
     init(mode: FolderSheetMode, isSaving: Bool, onSave: @escaping (String) async -> Bool) {
@@ -197,7 +204,6 @@ private struct FolderNameSheet: View {
                 text: $name,
                 error: errorText
             )
-            .focused($focused)
             HStack {
                 Button("cancel") { dismiss() }
                 Spacer()
@@ -211,7 +217,6 @@ private struct FolderNameSheet: View {
         }
         .padding(HKSpacing.xl)
         .frame(minWidth: 320, maxWidth: 420)
-        .onAppear { focused = true }
     }
 
     private var title: LocalizedStringKey {

@@ -10,6 +10,7 @@ public enum HKButtonVariant: Sendable {
 public struct HKButton: View {
     @Environment(\.isEnabled) private var isEnabled
     @State private var hovering = false
+    @FocusState private var focused: Bool
 
     private let title: LocalizedStringKey
     private let variant: HKButtonVariant
@@ -28,6 +29,12 @@ public struct HKButton: View {
                 .tracking(HKFont.button.tracking())
         }
         .buttonStyle(HKButtonBody(variant: variant, hovering: hovering))
+        .focused($focused)
+        .overlay {
+            if focused {
+                Capsule().strokeBorder(HKColor.tertiary, lineWidth: HKBorder.increased)
+            }
+        }
         .onHover { hovering = $0 }
         .opacity(isEnabled ? 1 : 0.4)
     }
@@ -107,6 +114,7 @@ public struct HKCard<Content: View>: View {
 /// Labelled text field with the inline error row of DESIGN §Components; the error uses ink, never Ember.
 public struct HKField: View {
     @Environment(\.colorSchemeContrast) private var contrast
+    @FocusState private var focused: Bool
 
     private let label: LocalizedStringKey
     private let placeholder: LocalizedStringKey
@@ -137,7 +145,8 @@ public struct HKField: View {
                 .font(HKFont.bodyMD.font())
                 .padding(HKSpacing.md)
                 .background(HKColor.surface, in: shape)
-                .overlay { shape.strokeBorder(HKColor.border, lineWidth: borderWidth) }
+                .overlay { shape.strokeBorder(focused ? HKColor.tertiary : HKColor.border, lineWidth: focused ? HKBorder.increased : borderWidth) }
+                .focused($focused)
                 .accessibilityLabel(Text(label))
             if let error {
                 Label {

@@ -153,6 +153,18 @@ public final class DecksController {
         }
     }
 
+    /// `List.onMove` lands here; the whole order is persisted in one call.
+    public func moveRows(from source: IndexSet, to destination: Int) async {
+        var reordered = rows
+        reordered.move(fromOffsets: source, toOffset: destination)
+        do {
+            try await decks.reorderDecks(in: folder.id, ids: reordered.map(\.id))
+            rows = reordered
+        } catch {
+            lastError = "error.generic.message"
+        }
+    }
+
     public func clearError() {
         lastError = nil
     }

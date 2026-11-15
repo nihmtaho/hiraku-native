@@ -52,6 +52,13 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 ## Coding
 
+- Branch `feat/wp-06-crud` from `develop` at `38733ce`.
+- Core: `catalog.proto` + `common.proto` method enum, `store/catalog.go` (note types, counts, move, duplicate meaning, exists), counts added to folder/deck queries, `service/catalog.go` (17 handlers, hand-built `ChangeSet` per mutation like `Grade`), dispatch arm, 7 service tests.
+- Swift: `HirakuModels` (IDs, `Folder`/`Deck`/`NoteType`/`Note`, repositories, `AppClock`, `ChangeEvents`, `Route`, `LoadPhase`, `NameError`), `CatalogClient`, `HirakuBridge.changeSet` covers 12 methods, `ManualClock`/`FakeChangeEvents`/`FakeCatalog`, folder/deck/word controllers + views + entry points, App container/root with folder → deck → word navigation.
+- Strings: 44 keys added to `App/Hiraku/Localizable.xcstrings` from COPY.md.
+- `Scripts/check-imports.sh` now skips `.build` checkouts (dependency sources produced false positives).
+- Debts recorded in the plan: contract golden bytes, `.pad` wiring for iPad, UI tests, "view existing word" navigation.
+
 ## Independent review
 
 ## Delivery
