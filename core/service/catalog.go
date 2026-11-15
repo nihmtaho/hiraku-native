@@ -167,6 +167,9 @@ func (s *Service) createFolder(ctx context.Context, req *hirakuv1.CreateFolderRe
 	if err != nil {
 		return nil, err
 	}
+	if req.GetNowMs() <= 0 {
+		return nil, invalidArgument()
+	}
 	folder, err := s.repo.CreateFolder(ctx, req.GetNowMs(), name)
 	if err != nil {
 		return nil, MapError(err)
@@ -182,7 +185,7 @@ func (s *Service) updateFolder(ctx context.Context, req *hirakuv1.UpdateFolderRe
 	if err != nil {
 		return nil, err
 	}
-	if req.GetFolderId() == "" {
+	if req.GetFolderId() == "" || req.GetNowMs() <= 0 {
 		return nil, invalidArgument()
 	}
 	err = s.repo.UpdateFolder(ctx, req.GetNowMs(), store.Folder{ID: req.GetFolderId(), Name: name})
@@ -195,8 +198,15 @@ func (s *Service) updateFolder(ctx context.Context, req *hirakuv1.UpdateFolderRe
 }
 
 func (s *Service) deleteFolder(ctx context.Context, req *hirakuv1.DeleteFolderRequest) (*hirakuv1.DeleteFolderResponse, error) {
-	if req.GetFolderId() == "" {
+	if req.GetFolderId() == "" || req.GetNowMs() <= 0 {
 		return nil, invalidArgument()
+	}
+	exists, err := s.repo.FolderExists(ctx, req.GetFolderId())
+	if err != nil {
+		return nil, MapError(err)
+	}
+	if !exists {
+		return nil, MapError(store.ErrNotFound)
 	}
 	decks, err := s.repo.Decks(ctx, req.GetFolderId())
 	if err != nil {
@@ -214,7 +224,7 @@ func (s *Service) deleteFolder(ctx context.Context, req *hirakuv1.DeleteFolderRe
 }
 
 func (s *Service) reorderFolders(ctx context.Context, req *hirakuv1.ReorderFoldersRequest) (*hirakuv1.ReorderFoldersResponse, error) {
-	if len(req.GetFolderIds()) == 0 {
+	if len(req.GetFolderIds()) == 0 || req.GetNowMs() <= 0 {
 		return nil, invalidArgument()
 	}
 	if err := s.repo.ReorderFolders(ctx, req.GetNowMs(), req.GetFolderIds()); err != nil {
@@ -255,7 +265,7 @@ func (s *Service) createDeck(ctx context.Context, req *hirakuv1.CreateDeckReques
 	if err != nil {
 		return nil, err
 	}
-	if req.GetFolderId() == "" {
+	if req.GetFolderId() == "" || req.GetNowMs() <= 0 {
 		return nil, invalidArgument()
 	}
 	exists, err := s.repo.FolderExists(ctx, req.GetFolderId())
@@ -285,7 +295,7 @@ func (s *Service) updateDeck(ctx context.Context, req *hirakuv1.UpdateDeckReques
 	if err != nil {
 		return nil, err
 	}
-	if req.GetDeckId() == "" {
+	if req.GetDeckId() == "" || req.GetNowMs() <= 0 {
 		return nil, invalidArgument()
 	}
 	err = s.repo.UpdateDeck(ctx, req.GetNowMs(), store.Deck{
@@ -302,8 +312,15 @@ func (s *Service) updateDeck(ctx context.Context, req *hirakuv1.UpdateDeckReques
 }
 
 func (s *Service) deleteDeck(ctx context.Context, req *hirakuv1.DeleteDeckRequest) (*hirakuv1.DeleteDeckResponse, error) {
-	if req.GetDeckId() == "" {
+	if req.GetDeckId() == "" || req.GetNowMs() <= 0 {
 		return nil, invalidArgument()
+	}
+	exists, err := s.repo.DeckExists(ctx, req.GetDeckId())
+	if err != nil {
+		return nil, MapError(err)
+	}
+	if !exists {
+		return nil, MapError(store.ErrNotFound)
 	}
 	if err := s.repo.DeleteDeck(ctx, req.GetNowMs(), req.GetDeckId()); err != nil {
 		return nil, MapError(err)
@@ -314,7 +331,7 @@ func (s *Service) deleteDeck(ctx context.Context, req *hirakuv1.DeleteDeckReques
 }
 
 func (s *Service) reorderDecks(ctx context.Context, req *hirakuv1.ReorderDecksRequest) (*hirakuv1.ReorderDecksResponse, error) {
-	if len(req.GetDeckIds()) == 0 {
+	if req.GetFolderId() == "" || len(req.GetDeckIds()) == 0 || req.GetNowMs() <= 0 {
 		return nil, invalidArgument()
 	}
 	if err := s.repo.ReorderDecks(ctx, req.GetNowMs(), req.GetDeckIds()); err != nil {
@@ -328,7 +345,7 @@ func (s *Service) reorderDecks(ctx context.Context, req *hirakuv1.ReorderDecksRe
 }
 
 func (s *Service) moveDeck(ctx context.Context, req *hirakuv1.MoveDeckRequest) (*hirakuv1.MoveDeckResponse, error) {
-	if req.GetDeckId() == "" || req.GetTargetFolderId() == "" {
+	if req.GetDeckId() == "" || req.GetTargetFolderId() == "" || req.GetNowMs() <= 0 {
 		return nil, invalidArgument()
 	}
 	exists, err := s.repo.FolderExists(ctx, req.GetTargetFolderId())
@@ -420,6 +437,13 @@ func (s *Service) listNotes(ctx context.Context, req *hirakuv1.ListNotesRequest)
 func (s *Service) createNote(ctx context.Context, req *hirakuv1.CreateNoteRequest) (*hirakuv1.CreateNoteResponse, error) {
 	if req.GetDeckId() == "" || req.GetNowMs() <= 0 {
 		return nil, invalidArgument()
+	}
+	exists, err := s.repo.DeckExists(ctx, req.GetDeckId())
+	if err != nil {
+		return nil, MapError(err)
+	}
+	if !exists {
+		return nil, MapError(store.ErrNotFound)
 	}
 	note, err := s.repo.CreateNote(ctx, req.GetNowMs(), req.GetDeckId(), fieldValues(req.GetFields()))
 	if err != nil {

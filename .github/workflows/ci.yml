@@ -63,5 +63,10 @@ jobs:
           swift build --package-path Packages/DesignSystem
       - name: DesignSystem tests
         run: swift test --package-path Packages/DesignSystem
+      - name: Feature tests
+        run: |
+          swift test --package-path Packages/Features/FeatureFolders
+          swift test --package-path Packages/Features/FeatureDecks
+          swift test --package-path Packages/Features/FeatureWords
       - name: Xcode tests
         run: xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=macOS' CODE_SIGNING_ALLOWED=NO

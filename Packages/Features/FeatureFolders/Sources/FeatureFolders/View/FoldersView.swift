@@ -32,7 +32,7 @@ public struct FoldersView: View {
                 .sheet(item: $sheet) { mode in
                     FolderNameSheet(
                         mode: mode,
-                        isSaving: controller.isSaving,
+                        controller: controller,
                         onSave: { name in
                             switch mode {
                             case .create:
@@ -178,20 +178,32 @@ internal enum FolderSheetMode: Identifiable {
 
 private struct FolderNameSheet: View {
     let mode: FolderSheetMode
-    let isSaving: Bool
+    let controller: FoldersController
     let onSave: (String) async -> Bool
 
     @State private var name: String
+    @State private var showDiscard = false
     @Environment(\.dismiss) private var dismiss
 
-    init(mode: FolderSheetMode, isSaving: Bool, onSave: @escaping (String) async -> Bool) {
+    init(mode: FolderSheetMode, controller: FoldersController, onSave: @escaping (String) async -> Bool) {
         self.mode = mode
-        self.isSaving = isSaving
+        self.controller = controller
         self.onSave = onSave
         switch mode {
         case .create: _name = State(initialValue: "")
         case .rename(let folder): _name = State(initialValue: folder.name)
         }
+    }
+
+    private var initialName: String {
+        switch mode {
+        case .create: ""
+        case .rename(let folder): folder.name
+        }
+    }
+
+    private var hasChanges: Bool {
+        name != initialName
     }
 
     var body: some View {
@@ -205,18 +217,27 @@ private struct FolderNameSheet: View {
                 error: errorText
             )
             HStack {
-                Button("cancel") { dismiss() }
+                Button("cancel") {
+                    if hasChanges { showDiscard = true } else { dismiss() }
+                }
                 Spacer()
                 HKButton("common.save") {
                     Task {
                         if await onSave(name) { dismiss() }
                     }
                 }
-                .disabled(isSaving || FoldersController.validate(name: name) != nil)
+                .disabled(controller.isSaving || FoldersController.validate(name: name) != nil)
             }
         }
         .padding(HKSpacing.xl)
         .frame(minWidth: 320, maxWidth: 420)
+        .interactiveDismissDisabled(hasChanges)
+        .confirmationDialog(Text("discard.title"), isPresented: $showDiscard) {
+            Button("discard.confirm", role: .destructive) { dismiss() }
+            Button("discard.cancel", role: .cancel) {}
+        } message: {
+            Text("discard.message")
+        }
     }
 
     private var title: LocalizedStringKey {

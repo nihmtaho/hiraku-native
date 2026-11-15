@@ -171,3 +171,32 @@ public struct HKField: View {
         RoundedRectangle(cornerRadius: HKRadius.md, style: .continuous)
     }
 }
+
+/// The 8pt study-state dot of DESIGN §Components; a label always travels with it.
+public struct StateDot: View {
+    public enum Kind: Sendable {
+        case new
+        case learning
+        case known
+    }
+
+    private let kind: Kind
+
+    public init(_ kind: Kind) {
+        self.kind = kind
+    }
+
+    public var body: some View {
+        Circle()
+            .fill(color)
+            .frame(width: 8, height: 8)
+    }
+
+    private var color: Color {
+        switch kind {
+        case .new: HKColor.stateNew
+        case .learning: HKColor.stateLearningInk
+        case .known: HKColor.stateKnown
+        }
+    }
+}

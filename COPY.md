@@ -144,10 +144,10 @@ Khung giờ lời chào theo đồng hồ máy: 04:00–10:59 sáng · 11:00–1
 
 | Key | Tiếng Việt | Ghi chú |
 |---|---|---|
-| decks.add | Tạo deck | |
-| decks.create.title | Deck mới | |
-| decks.edit.title | Sửa deck | |
-| decks.name.label | Tên deck | |
+| decks.add | Tạo bộ thẻ | |
+| decks.create.title | Bộ thẻ mới | |
+| decks.edit.title | Sửa bộ thẻ | |
+| decks.name.label | Tên bộ thẻ | |
 | decks.description.label | Mô tả | Kèm nhãn "Tùy chọn" |
 | decks.noteType.label | Kiểu ghi chú | UC-02 bước 2; M1a chỉ hiện "Từ vựng Nhật", chọn kiểu khác từ M3 |
 | decks.noteType.locked | Không đổi được kiểu khi deck đã có từ. | Ghi chú dưới ô khi sửa deck |
@@ -159,7 +159,7 @@ Khung giờ lời chào theo đồng hồ máy: 04:00–10:59 sáng · 11:00–1
 | decks.move.disabledHint | Cần ít nhất 2 thư mục | UC-02 A2 |
 | decks.delete.title | Xóa deck “%@”? | |
 | decks.delete.message | Sẽ xóa %lld từ và tiến độ học. | UC-02 A3 |
-| decks.empty.title | Chưa có deck | |
+| decks.empty.title | Chưa có bộ thẻ | |
 | decks.empty.message | Tạo deck để gom các từ cùng chủ đề. | |
 | decks.empty.cta | Tạo deck | |
 

@@ -40,8 +40,8 @@ public struct DecksView: View {
                 .sheet(item: $sheet) { mode in
                     DeckFormSheet(
                         mode: mode,
+                        controller: controller,
                         noteTypeName: controller.defaultNoteType?.name,
-                        isSaving: controller.isSaving,
                         onSave: { name, description in
                             switch mode {
                             case .create:
@@ -185,18 +185,19 @@ public struct DecksView: View {
 /// Create and edit share one sheet; the note type is fixed once the deck exists.
 private struct DeckFormSheet: View {
     let mode: DeckSheetMode
+    let controller: DecksController
     let noteTypeName: String?
-    let isSaving: Bool
     let onSave: (String, String) async -> Bool
 
     @State private var name: String
     @State private var details: String
+    @State private var showDiscard = false
     @Environment(\.dismiss) private var dismiss
 
-    init(mode: DeckSheetMode, noteTypeName: String?, isSaving: Bool, onSave: @escaping (String, String) async -> Bool) {
+    init(mode: DeckSheetMode, controller: DecksController, noteTypeName: String?, onSave: @escaping (String, String) async -> Bool) {
         self.mode = mode
+        self.controller = controller
         self.noteTypeName = noteTypeName
-        self.isSaving = isSaving
         self.onSave = onSave
         switch mode {
         case .create:
@@ -237,18 +238,38 @@ private struct DeckFormSheet: View {
                 }
             }
             HStack {
-                Button("cancel") { dismiss() }
+                Button("cancel") {
+                    if hasChanges { showDiscard = true } else { dismiss() }
+                }
                 Spacer()
                 HKButton("common.save") {
                     Task {
                         if await onSave(name, details) { dismiss() }
                     }
                 }
-                .disabled(isSaving || DecksController.validate(name: name) != nil)
+                .disabled(controller.isSaving || DecksController.validate(name: name) != nil)
             }
         }
         .padding(HKSpacing.xl)
         .frame(minWidth: 320, maxWidth: 420)
+        .interactiveDismissDisabled(hasChanges)
+        .confirmationDialog(Text("discard.title"), isPresented: $showDiscard) {
+            Button("discard.confirm", role: .destructive) { dismiss() }
+            Button("discard.cancel", role: .cancel) {}
+        } message: {
+            Text("discard.message")
+        }
+    }
+
+    private var initialValues: (name: String, details: String) {
+        switch mode {
+        case .create: ("", "")
+        case .edit(let deck): (deck.name, deck.description)
+        }
+    }
+
+    private var hasChanges: Bool {
+        name != initialValues.name || details != initialValues.details
     }
 
     private var title: LocalizedStringKey {
@@ -260,8 +281,8 @@ private struct DeckFormSheet: View {
 
     private var errorText: LocalizedStringKey? {
         switch DecksController.validate(name: name) {
-        case .empty: "folders.name.error.empty"
-        case .tooLong: "folders.name.error.tooLong"
+        case .empty: "decks.name.error.empty"
+        case .tooLong: "decks.name.error.tooLong"
         case nil: nil
         }
     }

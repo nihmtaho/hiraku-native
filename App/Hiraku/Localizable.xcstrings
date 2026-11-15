@@ -116,7 +116,7 @@
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sẽ xóa %lld deck và %lld từ cùng toàn bộ tiến độ học."
+            "value": "Sẽ xóa %lld bộ thẻ và %lld từ cùng toàn bộ tiến độ học."
           }
         }
       }
@@ -246,7 +246,7 @@
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld deck · %lld từ"
+            "value": "%lld bộ thẻ · %lld từ"
           }
         }
       }
@@ -256,7 +256,7 @@
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tạo deck"
+            "value": "Tạo bộ thẻ"
           }
         }
       }
@@ -266,7 +266,7 @@
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Deck mới"
+            "value": "Bộ thẻ mới"
           }
         }
       }
@@ -276,7 +276,7 @@
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sửa deck"
+            "value": "Sửa bộ thẻ"
           }
         }
       }
@@ -286,7 +286,7 @@
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tên deck"
+            "value": "Tên bộ thẻ"
           }
         }
       }
@@ -316,7 +316,7 @@
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Không đổi được kiểu khi deck đã có từ."
+            "value": "Không đổi được kiểu khi bộ thẻ đã có từ."
           }
         }
       }
@@ -326,7 +326,7 @@
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Xóa deck “%@”?"
+            "value": "Xóa bộ thẻ “%@”?"
           }
         }
       }
@@ -346,7 +346,7 @@
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Chưa có deck"
+            "value": "Chưa có bộ thẻ"
           }
         }
       }
@@ -356,7 +356,7 @@
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tạo deck để gom các từ cùng chủ đề."
+            "value": "Tạo bộ thẻ để gom các từ cùng chủ đề."
           }
         }
       }
@@ -366,7 +366,7 @@
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tạo deck"
+            "value": "Tạo bộ thẻ"
           }
         }
       }
@@ -727,6 +727,66 @@
           "stringUnit": {
             "state": "translated",
             "value": "Lưu và thêm tiếp"
+          }
+        }
+      }
+    },
+    "decks.name.error.empty": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nhập tên bộ thẻ."
+          }
+        }
+      }
+    },
+    "decks.name.error.tooLong": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tên tối đa 100 ký tự."
+          }
+        }
+      }
+    },
+    "words.column.word": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Từ"
+          }
+        }
+      }
+    },
+    "words.column.reading": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cách đọc"
+          }
+        }
+      }
+    },
+    "words.column.meaning": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nghĩa"
+          }
+        }
+      }
+    },
+    "words.column.state": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trạng thái"
           }
         }
       }

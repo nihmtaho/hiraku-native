@@ -131,6 +131,37 @@ func TestDeckCreateMoveAndCounts(t *testing.T) {
 	}
 }
 
+func TestDeletesReportMissingIdsAndRequireTime(t *testing.T) {
+	svc, ctx := newCatalog(t)
+	for _, call := range []struct {
+		method  hirakuv1.Method
+		request proto.Message
+	}{
+		{hirakuv1.Method_METHOD_DELETE_FOLDER, &hirakuv1.DeleteFolderRequest{FolderId: "missing", NowMs: 10}},
+		{hirakuv1.Method_METHOD_DELETE_DECK, &hirakuv1.DeleteDeckRequest{DeckId: "missing", NowMs: 10}},
+		{hirakuv1.Method_METHOD_CREATE_FOLDER, &hirakuv1.CreateFolderRequest{Name: "F", NowMs: 0}},
+	} {
+		body, err := proto.Marshal(call.request)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if _, err := svc.Handle(ctx, call.method, body); err == nil {
+			t.Fatalf("%v accepted %v", call.method, call.request)
+		}
+	}
+}
+
+func TestReorderDecksNeedsTheFolder(t *testing.T) {
+	svc, ctx := newCatalog(t)
+	body, err := proto.Marshal(&hirakuv1.ReorderDecksRequest{DeckIds: []string{"d1"}, NowMs: 10})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := svc.Handle(ctx, hirakuv1.Method_METHOD_REORDER_DECKS, body); err == nil {
+		t.Fatal("reorder without a folder accepted")
+	}
+}
+
 func TestNoteTypesExposeTheSystemType(t *testing.T) {
 	svc, ctx := newCatalog(t)
 	types := call(t, svc, ctx, hirakuv1.Method_METHOD_LIST_NOTE_TYPES,

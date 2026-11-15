@@ -127,15 +127,27 @@ public struct WordListView: View {
             Button {
                 onEdit(note)
             } label: {
-                VStack(alignment: .leading, spacing: HKSpacing.xs) {
-                    Text(verbatim: term(of: note))
-                        .font(HKFont.jpTerm.font())
-                        .foregroundStyle(HKColor.primary)
-                    let meaning = meaningValue(of: note)
-                    if !meaning.isEmpty {
-                        Text(verbatim: meaning)
-                            .font(HKFont.bodySM.font())
-                            .foregroundStyle(HKColor.secondary)
+                HStack(alignment: .firstTextBaseline, spacing: HKSpacing.sm) {
+                    StateDot(stateKind(of: note))
+                        .accessibilityLabel(Text(stateLabel(of: note)))
+                    VStack(alignment: .leading, spacing: HKSpacing.xs) {
+                        HStack(alignment: .firstTextBaseline, spacing: HKSpacing.xs) {
+                            Text(verbatim: term(of: note))
+                                .font(HKFont.jpTerm.font())
+                                .foregroundStyle(HKColor.primary)
+                            let reading = readingValue(of: note)
+                            if !reading.isEmpty && reading != term(of: note) {
+                                Text(verbatim: reading)
+                                    .font(HKFont.bodySM.font())
+                                    .foregroundStyle(HKColor.secondary)
+                            }
+                        }
+                        let meaning = meaningValue(of: note)
+                        if !meaning.isEmpty {
+                            Text(verbatim: meaning)
+                                .font(HKFont.bodySM.font())
+                                .foregroundStyle(HKColor.secondary)
+                        }
                     }
                 }
             }
@@ -156,5 +168,26 @@ public struct WordListView: View {
     private func meaningValue(of note: Note) -> String {
         guard let field = controller.noteType?.fields.first(where: { $0.role == .meaning }) else { return "" }
         return note.value(of: field.id)
+    }
+
+    private func readingValue(of note: Note) -> String {
+        guard let field = controller.noteType?.fields.first(where: { $0.role == .reading }) else { return "" }
+        return note.value(of: field.id)
+    }
+
+    private func stateKind(of note: Note) -> StateDot.Kind {
+        switch note.state {
+        case .new: .new
+        case .learning: .learning
+        case .known: .known
+        }
+    }
+
+    private func stateLabel(of note: Note) -> LocalizedStringKey {
+        switch note.state {
+        case .new: "words.state.new"
+        case .learning: "words.state.learning"
+        case .known: "words.state.known"
+        }
     }
 }

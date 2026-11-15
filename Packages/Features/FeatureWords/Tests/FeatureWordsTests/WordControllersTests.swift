@@ -123,7 +123,6 @@ private func makeForm(note: Note? = nil, catalog: FakeCatalog) -> WordFormContro
     #expect(list.total == 1)
 
     list.searchText = "nướ"
-    try await Task.sleep(for: .milliseconds(20))
     await list.load()
     #expect(list.rows.count == 1)
 

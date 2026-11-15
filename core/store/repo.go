@@ -83,12 +83,16 @@ func (r *Repo) UpdateFolder(ctx context.Context, nowMs int64, f Folder) error {
 // DeleteFolder soft deletes the folder and its decks, notes and cards in one transaction.
 func (r *Repo) DeleteFolder(ctx context.Context, nowMs int64, folderID string) error {
 	return r.Tx(ctx, func(r *Repo) error {
+		result, err := r.q.ExecContext(ctx, `
+			UPDATE folders SET deleted_at = ? WHERE id = ? AND deleted_at IS NULL`, nowMs, folderID)
+		if err := requireOneRow(result, err); err != nil {
+			return err
+		}
 		for _, step := range []string{
 			`UPDATE cards SET deleted_at = ? WHERE note_id IN (
 				SELECT n.id FROM notes n JOIN decks d ON d.id = n.deck_id WHERE d.folder_id = ?)`,
 			`UPDATE notes SET deleted_at = ? WHERE deck_id IN (SELECT id FROM decks WHERE folder_id = ?)`,
 			`UPDATE decks SET deleted_at = ? WHERE folder_id = ?`,
-			`UPDATE folders SET deleted_at = ? WHERE id = ?`,
 		} {
 			if _, err := r.q.ExecContext(ctx, step, nowMs, folderID); err != nil {
 				return err
@@ -201,10 +205,14 @@ func (r *Repo) UpdateDeck(ctx context.Context, nowMs int64, d Deck) error {
 // DeleteDeck soft deletes the deck with its notes and cards in one transaction.
 func (r *Repo) DeleteDeck(ctx context.Context, nowMs int64, deckID string) error {
 	return r.Tx(ctx, func(r *Repo) error {
+		result, err := r.q.ExecContext(ctx, `
+			UPDATE decks SET deleted_at = ? WHERE id = ? AND deleted_at IS NULL`, nowMs, deckID)
+		if err := requireOneRow(result, err); err != nil {
+			return err
+		}
 		for _, step := range []string{
 			`UPDATE cards SET deleted_at = ? WHERE note_id IN (SELECT id FROM notes WHERE deck_id = ?)`,
 			`UPDATE notes SET deleted_at = ? WHERE deck_id = ?`,
-			`UPDATE decks SET deleted_at = ? WHERE id = ?`,
 		} {
 			if _, err := r.q.ExecContext(ctx, step, nowMs, deckID); err != nil {
 				return err
