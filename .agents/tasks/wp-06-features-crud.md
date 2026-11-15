@@ -2,10 +2,10 @@
 
 ## Contract
 
-- Status: coding
+- Status: review
 - Owner: coordinator / senior (Q-29)
 - Milestone / WP: M1a / WP-06
-- Branch / PR: `feat/wp-06-features-crud` from `develop`
+- Branch / PR: `feat/wp-06-crud` / PR 91
 - Base / head SHA: 38733ce / —
 - Dependencies: WP-02b, WP-05
 - Required reading: use-cases §4.0.1, UC-01, UC-02, UC-03; ADR-18, ADR-27; COPY.md (Q-28 terms)
