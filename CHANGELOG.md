@@ -7,7 +7,7 @@ Mục `[Unreleased]` là thay đổi sản phẩm, mỗi PR đã duyệt merge p
 Nhóm: Thêm · Đổi · Sửa · Xóa · Tài liệu · Bảo mật. Mỗi dòng kết thúc bằng `(WP-xx, PR n)`. Chưa có mã sản phẩm.
 
 ### Thêm
-- WP-04: `core/domain/kana` chuẩn hóa đáp án Gõ từ — romaji → kana (っ, ん, yōon, kana nhỏ), katakana → hiragana, bỏ ー, dung sai nguyên âm dài và nén ký tự lặp, dakuten/っ nghiêm theo Q-21 B; `Match` trả một cờ cho mỗi ký tự đáp án; bảng golden `core/testdata/kana_golden.json` (WP-04, PR —).
+- WP-04: `core/domain/kana` chuẩn hóa đáp án Gõ từ — romaji → kana (っ, ん, yōon, kana nhỏ), katakana → hiragana, bỏ ー, dung sai nguyên âm dài và nén ký tự lặp, dakuten/っ nghiêm theo Q-21 B; `Match` trả một cờ cho mỗi ký tự đáp án; bảng golden `core/testdata/kana_golden.json` (WP-04, PR 84).
 - Nợ WP-03: `BuildQueue` lọc theo `folder_id`/`deck_id`, giới hạn request tối đa 500; FSRS lưu `elapsed_days`/`scheduled_days` thay vì 0; test cho review vắt mốc 04:00, snapshot `prev_learning_steps`/`prev_last_review` và trần queue (WP-03, PR 80).
 - Nợ WP-03 (tiếp): `HirakuBridge` phát `ChangeSet` của `Grade` qua `EventHub`; test lượt chấm thứ hai có bước học và `last_review`, test scope `DueCards` theo deck/thư mục (WP-03, PR 81).
 - WP-03: FSRS-6 trong `core/domain/fsrs` khớp 17/17 vector golden py-fsrs 6.3.2 (ngày học theo `day_start_hour`), `core/domain/dayboundary`; RPC `Grade` một transaction (đọc lại state, một `review_logs`, `ChangeSet`, `reinsert` 20 phút); RPC `BuildQueue` (đến hạn Learning/Relearning trước, từ mới theo hạn mức ngày); store thêm state/log/queue (WP-03, PR 78).

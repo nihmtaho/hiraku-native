@@ -19,6 +19,8 @@
 
 Marked text and composition do not double-insert; full-width and half-width input accepted; per-character flags match Q-21 B; wrong answer reveals the correct one.
 
+`kana.Match` reports flags for kana answers only, so request per-character flags only when the typing-answer field has `input_kind = kana`; a `text` answer shows no per-cell feedback.
+
 ## Execution plan
 
 - Plan: `docs/plans/2026-11-08-m1a.md` (wp-08 section)

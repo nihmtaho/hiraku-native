@@ -2,11 +2,11 @@
 
 ## Contract
 
-- Status: review
+- Status: merged
 - Owner: coordinator / senior (Q-29)
 - Milestone / WP: M1a / WP-04
-- Branch / PR: `feat/wp-04-kana` / PR 84 (https://github.com/nihmtaho/hiraku-native/pull/84)
-- Base / head SHA: 4b97db3 / bbec0b2 (first review round)
+- Branch / PR: `feat/wp-04-kana` / PR 84 (merged `31ca018`)
+- Base / head SHA: 4b97db3 / bd61401 (merge `31ca018`)
 - Dependencies: WP-01
 - Required reading: DECISIONS Q-21; spec §7.2
 - Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
@@ -54,8 +54,11 @@ Record is authority for the contract; plan is authority for progress; issues tra
 ## Independent review
 
 - Round 1 on `bbec0b2`: FAIL — `Match` used an in-order pointer, so every character after a middle mismatch was reported wrong; missing middle-mismatch test. Fixed by comparing positionally and adding `TestMatchKeepsLaterCharactersAfterAMismatch`.
+- Round 2 on `bd61401`: PASS. Carry-forward: `kana.Match` takes kana answers only, so WP-08 must not request per-character flags for a `text` answer field (recorded in `wp-08-typing.md`).
 
 ## Delivery
+
+- `gh pr merge 84 --squash --match-head-commit bd61401` gave merge `31ca018`; CI `ci` and `swift` passed on `bd61401`; slices #54 and #55 closed by the PR.
 
 ## Next
 
