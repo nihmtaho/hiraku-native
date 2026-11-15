@@ -1,8 +1,11 @@
+import DesignSystem
 import SwiftUI
 
 @main
 struct HirakuApp: App {
-    init() { NotoFont.register() }
+    init() {
+        HKFont.registerBundledFonts()
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -16,10 +19,10 @@ struct HirakuApp: App {
         if ProcessInfo.processInfo.environment["HK_SPIKE_S4"] == "1" {
             AdaptiveCheckView()
         } else {
-            ShellView()
+            RootView()
         }
         #else
-        ShellView()
+        RootView()
         #endif
     }
 }

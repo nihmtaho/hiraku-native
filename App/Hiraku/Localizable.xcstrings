@@ -1,16 +1,256 @@
 {
-  "sourceLanguage" : "vi",
-  "strings" : {
-    "Khung M0 — chưa có tính năng" : {
-      "localizations" : {
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Khung M0 — chưa có tính năng"
+  "sourceLanguage": "vi",
+  "strings": {
+    "Khung M0 — chưa có tính năng": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Khung M0 — chưa có tính năng"
+          }
+        }
+      }
+    },
+    "folders.add": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thêm thư mục"
+          }
+        }
+      }
+    },
+    "folders.create.title": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thư mục mới"
+          }
+        }
+      }
+    },
+    "folders.rename.title": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Đổi tên thư mục"
+          }
+        }
+      }
+    },
+    "folders.name.label": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tên thư mục"
+          }
+        }
+      }
+    },
+    "folders.name.placeholder": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ví dụ: Tiếng Nhật N5"
+          }
+        }
+      }
+    },
+    "folders.name.error.empty": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nhập tên thư mục."
+          }
+        }
+      }
+    },
+    "folders.name.error.tooLong": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tên tối đa 100 ký tự."
+          }
+        }
+      }
+    },
+    "folders.menu.moveUp": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Di chuyển lên"
+          }
+        }
+      }
+    },
+    "folders.menu.moveDown": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Di chuyển xuống"
+          }
+        }
+      }
+    },
+    "folders.delete.title %@": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xóa thư mục “%@”?"
+          }
+        }
+      }
+    },
+    "folders.delete.message %lld %lld": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sẽ xóa %lld deck và %lld từ cùng toàn bộ tiến độ học."
+          }
+        }
+      }
+    },
+    "rename": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Đổi tên"
+          }
+        }
+      }
+    },
+    "delete": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xóa"
+          }
+        }
+      }
+    },
+    "cancel": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hủy"
+          }
+        }
+      }
+    },
+    "common.save": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lưu"
+          }
+        }
+      }
+    },
+    "common.close": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Đóng"
+          }
+        }
+      }
+    },
+    "common.retry": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thử lại"
+          }
+        }
+      }
+    },
+    "home.empty.title": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chưa có thư mục"
+          }
+        }
+      }
+    },
+    "home.empty.message": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tạo thư mục để bắt đầu thêm từ vựng."
+          }
+        }
+      }
+    },
+    "home.empty.cta": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tạo thư mục đầu tiên"
+          }
+        }
+      }
+    },
+    "error.generic.title": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Có lỗi xảy ra"
+          }
+        }
+      }
+    },
+    "error.generic.message": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Không thực hiện được. Thử lại."
+          }
+        }
+      }
+    },
+    "error.save.failed": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Không lưu được. Thử lại."
+          }
+        }
+      }
+    },
+    "%lld deck · %lld từ": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld deck · %lld từ"
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

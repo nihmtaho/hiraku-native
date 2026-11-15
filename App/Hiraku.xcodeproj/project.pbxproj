@@ -23,6 +23,10 @@
 		AA0000000000000000000041 /* HirakuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000040 /* HirakuTests.swift */; };
 		AA000000000000000000004D /* HirakuBridge in Frameworks */ = {isa = PBXBuildFile; productRef = AA0000000000000000000021 /* HirakuBridge */; };
 		AA0000000000000000000050 /* HirakuModels in Frameworks */ = {isa = PBXBuildFile; productRef = AA000000000000000000004F /* HirakuModels */; };
+		AA0000000000000000000051 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = AA0000000000000000000055 /* DesignSystem */; };
+		AA0000000000000000000052 /* FeatureFolders in Frameworks */ = {isa = PBXBuildFile; productRef = AA0000000000000000000056 /* FeatureFolders */; };
+		AA0000000000000000000058 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000057 /* RootView.swift */; };
+		AA000000000000000000005A /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000059 /* AppContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +45,8 @@
 		AA000000000000000000002E /* OFL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		AA0000000000000000000040 /* HirakuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HirakuTests.swift; sourceTree = "<group>"; };
 		AA0000000000000000000043 /* HirakuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HirakuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA0000000000000000000057 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		AA0000000000000000000059 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Composition/AppContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +55,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA0000000000000000000020 /* HirakuBridge in Frameworks */,
+				AA0000000000000000000051 /* DesignSystem in Frameworks */,
+				AA0000000000000000000052 /* FeatureFolders in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +110,8 @@
 				AA0000000000000000000030 /* KanaInputField.swift */,
 				AA0000000000000000000032 /* ImeCheckView.swift */,
 				AA0000000000000000000034 /* AdaptiveCheckView.swift */,
+				AA0000000000000000000057 /* RootView.swift */,
+				AA0000000000000000000059 /* AppContainer.swift */,
 				AA000000000000000000002B /* Fonts */,
 				AA0000000000000000000007 /* Localizable.xcstrings */,
 			);
@@ -136,6 +146,8 @@
 			packageProductDependencies = (
 				AA0000000000000000000021 /* HirakuBridge */,
 				AA000000000000000000004F /* HirakuModels */,
+				AA0000000000000000000055 /* DesignSystem */,
+				AA0000000000000000000056 /* FeatureFolders */,
 			);
 			productName = Hiraku;
 			productReference = AA0000000000000000000008 /* Hiraku.app */;
@@ -197,6 +209,9 @@
 			mainGroup = AA0000000000000000000002;
 			packageReferences = (
 				AA0000000000000000000022 /* XCLocalSwiftPackageReference "HirakuBridge" */,
+				AA000000000000000000004E /* XCLocalSwiftPackageReference "HirakuModels" */,
+				AA0000000000000000000053 /* XCLocalSwiftPackageReference "DesignSystem" */,
+				AA0000000000000000000054 /* XCLocalSwiftPackageReference "FeatureFolders" */,
 			);
 			productRefGroup = AA0000000000000000000004 /* Products */;
 			projectDirPath = "";
@@ -252,6 +267,8 @@
 				AA0000000000000000000031 /* KanaInputField.swift in Sources */,
 				AA0000000000000000000033 /* ImeCheckView.swift in Sources */,
 				AA0000000000000000000035 /* AdaptiveCheckView.swift in Sources */,
+				AA0000000000000000000058 /* RootView.swift in Sources */,
+				AA000000000000000000005A /* AppContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +446,14 @@
 			isa = XCLocalSwiftPackageReference;
 			"relativePath" = "../Packages/HirakuModels";
 		};
+		AA0000000000000000000053 /* XCLocalSwiftPackageReference "DesignSystem" */ = {
+			isa = XCLocalSwiftPackageReference;
+			"relativePath" = "../Packages/DesignSystem";
+		};
+		AA0000000000000000000054 /* XCLocalSwiftPackageReference "FeatureFolders" */ = {
+			isa = XCLocalSwiftPackageReference;
+			"relativePath" = "../Packages/Features/FeatureFolders";
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -441,6 +466,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AA000000000000000000004E /* XCLocalSwiftPackageReference "HirakuModels" */;
 			productName = HirakuModels;
+		};
+		AA0000000000000000000055 /* DesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA0000000000000000000053 /* XCLocalSwiftPackageReference "DesignSystem" */;
+			productName = DesignSystem;
+		};
+		AA0000000000000000000056 /* FeatureFolders */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA0000000000000000000054 /* XCLocalSwiftPackageReference "FeatureFolders" */;
+			productName = FeatureFolders;
 		};
 /* End XCSwiftPackageProductDependency section */
 
