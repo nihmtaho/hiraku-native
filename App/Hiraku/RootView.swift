@@ -1,4 +1,5 @@
 import DesignSystem
+import FeatureDecks
 import FeatureFolders
 import HirakuModels
 import SwiftUI
@@ -7,13 +8,30 @@ import SwiftUI
 struct RootView: View {
     @State private var container = AppContainer()
     @State private var controller: FoldersController?
+    @State private var decks: DecksController?
     @State private var failure: String?
 
     var body: some View {
         Group {
-            if let controller {
-                FeatureFolders.screen(controller: controller) { _ in
-                    // The deck screen arrives with FeatureDecks.
+            if let decks {
+                FeatureDecks.screen(
+                    controller: decks,
+                    onBack: { self.decks = nil },
+                    openDeck: { _ in
+                        // The word list arrives with FeatureWords.
+                    }
+                )
+            } else if let controller {
+                FeatureFolders.screen(controller: controller) { folder in
+                    guard let catalog = container.catalog else { return }
+                    decks = FeatureDecks.makeController(
+                        folder: folder,
+                        decks: catalog,
+                        folders: catalog,
+                        noteTypes: catalog,
+                        events: container.events,
+                        clock: container.clock
+                    )
                 }
             } else if failure != nil {
                 ContentUnavailableView {

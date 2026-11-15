@@ -1,7 +1,7 @@
 import Foundation
 
 /// A top-level grouping of decks with the counts its meta line shows.
-public struct Folder: Identifiable, Equatable, Sendable {
+public struct Folder: Identifiable, Hashable, Sendable {
     public let id: FolderID
     public var name: String
     public var position: Int
@@ -18,7 +18,7 @@ public struct Folder: Identifiable, Equatable, Sendable {
 }
 
 /// How many notes of a deck sit in each study state.
-public struct StateCounts: Equatable, Sendable {
+public struct StateCounts: Hashable, Sendable {
     public var new: Int
     public var learning: Int
     public var known: Int
@@ -31,7 +31,7 @@ public struct StateCounts: Equatable, Sendable {
 }
 
 /// A deck belongs to one folder and keeps one note type for its lifetime.
-public struct Deck: Identifiable, Equatable, Sendable {
+public struct Deck: Identifiable, Hashable, Sendable {
     public let id: DeckID
     public var folderID: FolderID
     public var name: String

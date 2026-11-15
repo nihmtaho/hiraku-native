@@ -41,6 +41,12 @@ public protocol ChangeEvents: Sendable {
     func changes() -> AsyncStream<Hiraku_V1_ChangeSet>
 }
 
+/// What a user-entered name may fail on; views map it to catalogue strings.
+public enum NameError: Equatable, Sendable {
+    case empty
+    case tooLong
+}
+
 /// Load state a controller exposes to its view.
 public enum LoadPhase: Equatable, Sendable {
     case loading

@@ -250,6 +250,176 @@
           }
         }
       }
+    },
+    "decks.add": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tạo deck"
+          }
+        }
+      }
+    },
+    "decks.create.title": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deck mới"
+          }
+        }
+      }
+    },
+    "decks.edit.title": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sửa deck"
+          }
+        }
+      }
+    },
+    "decks.name.label": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tên deck"
+          }
+        }
+      }
+    },
+    "decks.description.label": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mô tả"
+          }
+        }
+      }
+    },
+    "decks.noteType.label": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kiểu ghi chú"
+          }
+        }
+      }
+    },
+    "decks.noteType.locked": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Không đổi được kiểu khi deck đã có từ."
+          }
+        }
+      }
+    },
+    "decks.delete.title %@": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xóa deck “%@”?"
+          }
+        }
+      }
+    },
+    "decks.delete.message %lld": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sẽ xóa %lld từ và tiến độ học."
+          }
+        }
+      }
+    },
+    "decks.empty.title": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chưa có deck"
+          }
+        }
+      }
+    },
+    "decks.empty.message": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tạo deck để gom các từ cùng chủ đề."
+          }
+        }
+      }
+    },
+    "decks.empty.cta": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tạo deck"
+          }
+        }
+      }
+    },
+    "decks.move.disabledHint": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cần ít nhất 2 thư mục"
+          }
+        }
+      }
+    },
+    "common.wordCount %lld": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld từ"
+          }
+        }
+      }
+    },
+    "common.back": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quay lại"
+          }
+        }
+      }
+    },
+    "edit": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sửa"
+          }
+        }
+      }
+    },
+    "move": {
+      "localizations": {
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Di chuyển"
+          }
+        }
+      }
     }
   },
   "version": "1.0"
