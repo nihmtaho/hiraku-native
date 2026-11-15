@@ -165,7 +165,7 @@ App ──► Feature* ──► StudyKit ──► HirakuModels ◄── Hirak
 | `HirakuModels` | Foundation, `SwiftProtobuf`, module proto sinh (nằm trong package) | SwiftUI, UIKit, AppKit, `HirakuBridge`, mọi module khác |
 | `HirakuBridge` | Foundation, `HirakuModels`, `CHirakuBridge` (module map) | SwiftUI, Feature*, `DesignSystem`, `SwiftProtobuf` trực tiếp |
 | `HirakuTesting` | Foundation, `HirakuModels`, Swift Testing | `HirakuBridge`, UI |
-| `DesignSystem` | Foundation, SwiftUI | `HirakuModels` và mọi module khác |
+| `DesignSystem` | Foundation, SwiftUI, CoreText | `HirakuModels` và mọi module khác |
 | `StudyKit` | Foundation, SwiftUI, `HirakuModels`, `DesignSystem` | `HirakuBridge`, feature |
 | `Feature*` | Foundation, SwiftUI, `HirakuModels`, `DesignSystem`; thêm `StudyKit` chỉ với `FeatureStudy`, `FeatureFlashcard`, `FeatureTyping` | `HirakuBridge`, `hk_*`, feature khác, `App` |
 | `App` | tất cả | — |

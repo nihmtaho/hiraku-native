@@ -46,29 +46,124 @@ public enum HKColor {
     public static let kanaFill = Color(hex: HKHex.kanaFill)
 }
 
-/// One typography token: the platform size, the tracking in points and the scaled font.
+/// The phone / pad / mac column of a typography token.
+public enum HKSizeClass: Sendable {
+    case phone
+    case pad
+    case mac
+
+    /// Column for the current platform; an iPad caller passes `.pad` from a regular width.
+    public static var current: HKSizeClass {
+        #if os(macOS)
+        .mac
+        #else
+        .phone
+        #endif
+    }
+}
+
+/// One typography token: the three column sizes, the weight, the tracking and the line height.
 public struct HKTextStyle: Sendable {
-    public let size: CGFloat
-    public let tracking: CGFloat
-    public let font: Font
+    public let phone: CGFloat
+    public let pad: CGFloat
+    public let mac: CGFloat
+    public let weight: Font.Weight
+    public let trackingEm: CGFloat
+    public let lineHeight: CGFloat
+
+    private let family: String
+    private let relativeTo: Font.TextStyle?
+
+    public func size(_ sizeClass: HKSizeClass = .current) -> CGFloat {
+        switch sizeClass {
+        case .phone: phone
+        case .pad: pad
+        case .mac: mac
+        }
+    }
+
+    public func tracking(_ sizeClass: HKSizeClass = .current) -> CGFloat {
+        trackingEm * size(sizeClass)
+    }
+
+    public func lineSpacing(_ sizeClass: HKSizeClass = .current) -> CGFloat {
+        (lineHeight - 1) * size(sizeClass)
+    }
+
+    public func font(_ sizeClass: HKSizeClass = .current) -> Font {
+        let pointSize = size(sizeClass)
+        let font = relativeTo.map { Font.custom(family, size: pointSize, relativeTo: $0) }
+            ?? Font.custom(family, size: pointSize)
+        return font.weight(weight)
+    }
+
+    init(
+        family: String,
+        phone: CGFloat,
+        pad: CGFloat,
+        mac: CGFloat,
+        weight: Font.Weight,
+        trackingEm: CGFloat,
+        lineHeight: CGFloat,
+        relativeTo: Font.TextStyle? = nil
+    ) {
+        self.family = family
+        self.phone = phone
+        self.pad = pad
+        self.mac = mac
+        self.weight = weight
+        self.trackingEm = trackingEm
+        self.lineHeight = lineHeight
+        self.relativeTo = relativeTo
+    }
 }
 
 /// Typography of `docs/product/DESIGN.md` §Typography.
 public enum HKFont {
     public static let jpFamily = "NotoSansJP-Regular"
 
-    public static let display = style("Georgia", phone: 40, mac: 56, tracking: -0.02, relativeTo: .largeTitle)
-    public static let h1 = style("Georgia", phone: 30, mac: 34, tracking: -0.02, relativeTo: .title)
-    public static let h2 = style("Georgia", phone: 22, mac: 24, tracking: -0.02, relativeTo: .title2)
-    public static let jpHero = style(jpFamily, phone: 72, mac: 88, tracking: -0.03)
-    public static let jpTerm = style(jpFamily, phone: 20, mac: 18, tracking: -0.01, relativeTo: .title3)
-    public static let bodyMD = style("Helvetica Neue", phone: 15, mac: 13, tracking: 0, relativeTo: .body)
-    public static let bodySM = style("Helvetica Neue", phone: 13, mac: 11, tracking: 0, relativeTo: .footnote)
-    public static let labelCaps = style("Helvetica Neue", phone: 11, mac: 11, tracking: 0.2, relativeTo: .caption)
-    public static let eyebrow = style("Helvetica Neue", phone: 12, mac: 11, tracking: 0.24, relativeTo: .caption)
-    public static let button = style("Helvetica Neue", phone: 15, mac: 13, tracking: 0.01, relativeTo: .headline)
+    public static let display = HKTextStyle(
+        family: "Georgia", phone: 40, pad: 56, mac: 56,
+        weight: .regular, trackingEm: -0.02, lineHeight: 1.0, relativeTo: .largeTitle
+    )
+    public static let h1 = HKTextStyle(
+        family: "Georgia", phone: 30, pad: 34, mac: 34,
+        weight: .regular, trackingEm: -0.02, lineHeight: 1.05, relativeTo: .title
+    )
+    public static let h2 = HKTextStyle(
+        family: "Georgia", phone: 22, pad: 24, mac: 24,
+        weight: .regular, trackingEm: -0.02, lineHeight: 1.1, relativeTo: .title2
+    )
+    public static let jpHero = HKTextStyle(
+        family: jpFamily, phone: 72, pad: 88, mac: 88,
+        weight: .regular, trackingEm: -0.03, lineHeight: 1.1
+    )
+    public static let jpTerm = HKTextStyle(
+        family: jpFamily, phone: 20, pad: 20, mac: 18,
+        weight: .regular, trackingEm: -0.01, lineHeight: 1.2, relativeTo: .title3
+    )
+    public static let bodyMD = HKTextStyle(
+        family: "Helvetica Neue", phone: 15, pad: 15, mac: 13,
+        weight: .regular, trackingEm: 0, lineHeight: 1.45, relativeTo: .body
+    )
+    public static let bodySM = HKTextStyle(
+        family: "Helvetica Neue", phone: 13, pad: 13, mac: 11,
+        weight: .regular, trackingEm: 0, lineHeight: 1.4, relativeTo: .footnote
+    )
+    public static let labelCaps = HKTextStyle(
+        family: "Helvetica Neue", phone: 11, pad: 11, mac: 11,
+        weight: .bold, trackingEm: 0.2, lineHeight: 1.0, relativeTo: .caption
+    )
+    public static let eyebrow = HKTextStyle(
+        family: "Helvetica Neue", phone: 12, pad: 12, mac: 11,
+        weight: .bold, trackingEm: 0.24, lineHeight: 1.0, relativeTo: .caption
+    )
+    public static let button = HKTextStyle(
+        family: "Helvetica Neue", phone: 15, pad: 15, mac: 13,
+        weight: .bold, trackingEm: 0.01, lineHeight: 1.0, relativeTo: .headline
+    )
 
-    /// Registers the bundled Noto Sans JP subset; runtime registration works the same on iOS and macOS.
+    /// Registers the bundled Noto Sans JP subset; the app calls this at launch.
     @discardableResult
     public static func registerBundledFonts() -> Bool {
         guard let url = Bundle.module.url(
@@ -77,23 +172,6 @@ public enum HKFont {
             subdirectory: "Resources"
         ) else { return false }
         return CTFontManagerRegisterFontsForURL(url as CFURL, .process, nil)
-    }
-
-    private static func style(
-        _ family: String,
-        phone: CGFloat,
-        mac: CGFloat,
-        tracking: CGFloat,
-        relativeTo textStyle: Font.TextStyle? = nil
-    ) -> HKTextStyle {
-        #if os(macOS)
-        let size = mac
-        #else
-        let size = phone
-        #endif
-        let font = textStyle.map { Font.custom(family, size: size, relativeTo: $0) }
-            ?? Font.custom(family, size: size)
-        return HKTextStyle(size: size, tracking: tracking * size, font: font)
     }
 }
 
@@ -118,11 +196,19 @@ public enum HKRadius {
 public enum HKBorder {
     public static let width: CGFloat = 1.5
     public static let hairline: CGFloat = 1
+    /// Increase Contrast draws the ink border heavier instead of adding colour.
+    public static let increased: CGFloat = 2
 }
 
 public enum HKHitTarget {
     public static let touchMin: CGFloat = 44
     public static let pointerMin: CGFloat = 28
+}
+
+/// Control heights that differ from the minimum hit target.
+public enum HKControl {
+    public static let buttonTouch: CGFloat = 44
+    public static let buttonPointer: CGFloat = 32
 }
 
 extension Color {

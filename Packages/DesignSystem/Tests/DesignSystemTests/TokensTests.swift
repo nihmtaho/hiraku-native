@@ -30,6 +30,34 @@ import Testing
     }
 }
 
+@Test func colourTokensAreBuiltFromTheHexTable() throws {
+    #if canImport(AppKit)
+    let tokens: [(Color, UInt32)] = [
+        (HKColor.primary, HKHex.primary),
+        (HKColor.secondary, HKHex.secondary),
+        (HKColor.tertiary, HKHex.tertiary),
+        (HKColor.tertiaryHover, HKHex.tertiaryHover),
+        (HKColor.tertiaryContainer, HKHex.tertiaryContainer),
+        (HKColor.onTertiary, HKHex.onTertiary),
+        (HKColor.neutral, HKHex.neutral),
+        (HKColor.surface, HKHex.surface),
+        (HKColor.onPrimary, HKHex.onPrimary),
+        (HKColor.border, HKHex.border),
+        (HKColor.borderSoft, HKHex.borderSoft),
+        (HKColor.divider, HKHex.divider),
+        (HKColor.faint, HKHex.faint),
+        (HKColor.stateNew, HKHex.stateNew),
+        (HKColor.stateLearning, HKHex.stateLearning),
+        (HKColor.stateLearningInk, HKHex.stateLearningInk),
+        (HKColor.stateKnown, HKHex.stateKnown),
+        (HKColor.kanaFill, HKHex.kanaFill),
+    ]
+    for (color, hex) in tokens {
+        #expect(rgb(color) == hex, "expected \(hex), measured \(rgb(color))")
+    }
+    #endif
+}
+
 @Test func stateLearningSplitsInkFromFill() throws {
     #expect(HKHex.stateLearningInk == 0xA67C00)
     #expect(HKHex.stateLearning == 0xD9A300)
@@ -44,11 +72,19 @@ import Testing
         (HKHex.onPrimary, HKHex.primary, 16.41),
         (HKHex.tertiary, HKHex.primary, 5.60),
         (HKHex.faint, HKHex.primary, 6.80),
+        (HKHex.secondary, HKHex.primary, 3.21),
         (HKHex.onTertiary, HKHex.tertiary, 3.31),
+        (HKHex.onTertiary, HKHex.tertiaryHover, 4.07),
+        (HKHex.tertiary, HKHex.surface, 3.25),
+        (HKHex.tertiary, HKHex.neutral, 2.93),
+        (HKHex.tertiary, HKHex.tertiaryContainer, 2.84),
         (HKHex.stateKnown, HKHex.surface, 3.31),
+        (HKHex.stateKnown, HKHex.kanaFill, 3.11),
         (HKHex.stateNew, HKHex.surface, 5.22),
         (HKHex.stateLearningInk, HKHex.surface, 3.75),
         (HKHex.stateLearning, HKHex.surface, 2.25),
+        (HKHex.faint, HKHex.neutral, 2.41),
+        (HKHex.faint, HKHex.surface, 2.68),
     ]
     for (foreground, background, documented) in pairs {
         let measured = contrast(foreground, background)
@@ -56,36 +92,55 @@ import Testing
     }
 }
 
-@Test func typographyMatchesThePlatformColumn() throws {
-    #if os(macOS)
-    #expect(HKFont.display.size == 56)
-    #expect(HKFont.h1.size == 34)
-    #expect(HKFont.h2.size == 24)
-    #expect(HKFont.jpHero.size == 88)
-    #expect(HKFont.jpTerm.size == 18)
-    #expect(HKFont.bodyMD.size == 13)
-    #expect(HKFont.bodySM.size == 11)
-    #expect(HKFont.eyebrow.size == 11)
-    #expect(HKFont.button.size == 13)
-    #else
-    #expect(HKFont.display.size == 40)
-    #expect(HKFont.h1.size == 30)
-    #expect(HKFont.h2.size == 22)
-    #expect(HKFont.jpHero.size == 72)
-    #expect(HKFont.jpTerm.size == 20)
-    #expect(HKFont.bodyMD.size == 15)
-    #expect(HKFont.bodySM.size == 13)
-    #expect(HKFont.eyebrow.size == 12)
-    #expect(HKFont.button.size == 15)
-    #endif
-    #expect(HKFont.labelCaps.size == 11)
+@Test func typographySizesMatchTheThreeColumns() throws {
+    let columns: [(HKTextStyle, UInt32, CGFloat, CGFloat, CGFloat)] = [
+        (HKFont.display, 0, 40, 56, 56),
+        (HKFont.h1, 1, 30, 34, 34),
+        (HKFont.h2, 2, 22, 24, 24),
+        (HKFont.jpHero, 3, 72, 88, 88),
+        (HKFont.jpTerm, 4, 20, 20, 18),
+        (HKFont.bodyMD, 5, 15, 15, 13),
+        (HKFont.bodySM, 6, 13, 13, 11),
+        (HKFont.labelCaps, 7, 11, 11, 11),
+        (HKFont.eyebrow, 8, 12, 12, 11),
+        (HKFont.button, 9, 15, 15, 13),
+    ]
+    for (style, index, phone, pad, mac) in columns {
+        #expect(style.size(.phone) == phone, "style \(index) phone")
+        #expect(style.size(.pad) == pad, "style \(index) pad")
+        #expect(style.size(.mac) == mac, "style \(index) mac")
+    }
+}
+
+@Test func typographyWeightsAndLineHeightsMatchDesign() throws {
+    let bold: [HKTextStyle] = [HKFont.labelCaps, HKFont.eyebrow, HKFont.button]
+    let regular: [HKTextStyle] = [HKFont.display, HKFont.h1, HKFont.h2, HKFont.jpHero, HKFont.jpTerm, HKFont.bodyMD, HKFont.bodySM]
+    for style in bold {
+        #expect(style.weight == .bold)
+    }
+    for style in regular {
+        #expect(style.weight == .regular)
+    }
+    #expect(HKFont.display.lineHeight == 1.0)
+    #expect(HKFont.h1.lineHeight == 1.05)
+    #expect(HKFont.h2.lineHeight == 1.1)
+    #expect(HKFont.jpHero.lineHeight == 1.1)
+    #expect(HKFont.jpTerm.lineHeight == 1.2)
+    #expect(HKFont.bodyMD.lineHeight == 1.45)
+    #expect(HKFont.bodySM.lineHeight == 1.4)
 }
 
 @Test func trackingFollowsTheEmValue() throws {
-    #expect(abs(HKFont.display.tracking - (-0.02 * HKFont.display.size)) < 0.001)
-    #expect(abs(HKFont.labelCaps.tracking - 2.2) < 0.001)
-    #expect(abs(HKFont.eyebrow.tracking - 0.24 * HKFont.eyebrow.size) < 0.001)
-    #expect(HKFont.bodyMD.tracking == 0)
+    #expect(abs(HKFont.display.tracking(.phone) - (-0.02 * 40)) < 0.001)
+    #expect(abs(HKFont.display.tracking(.pad) - (-0.02 * 56)) < 0.001)
+    #expect(abs(HKFont.labelCaps.tracking(.mac) - 2.2) < 0.001)
+    #expect(abs(HKFont.eyebrow.tracking(.phone) - 0.24 * 12) < 0.001)
+    #expect(HKFont.bodyMD.tracking(.phone) == 0)
+}
+
+@Test func lineSpacingFollowsTheLineHeight() throws {
+    #expect(abs(HKFont.bodyMD.lineSpacing(.phone) - 0.45 * 15) < 0.001)
+    #expect(abs(HKFont.display.lineSpacing(.phone) - 0) < 0.001)
 }
 
 @Test func layoutTokensMatchTheDesignScale() throws {
@@ -101,8 +156,11 @@ import Testing
     #expect(HKRadius.lg == 20)
     #expect(HKBorder.width == 1.5)
     #expect(HKBorder.hairline == 1)
+    #expect(HKBorder.increased == 2)
     #expect(HKHitTarget.touchMin == 44)
     #expect(HKHitTarget.pointerMin == 28)
+    #expect(HKControl.buttonTouch == 44)
+    #expect(HKControl.buttonPointer == 32)
 }
 
 @Test func bundledNotoSansJPResolves() throws {
@@ -112,26 +170,49 @@ import Testing
     #expect(postScriptName == HKFont.jpFamily)
 }
 
-@Test func iconsCoverTheDocumentedSymbols() throws {
+@Test func iconsCoverEveryDocumentedSymbol() throws {
     let documented: [(AppIcon, String)] = [
         (.home, "house"),
         (.homeActive, "house.fill"),
         (.stats, "chart.bar"),
+        (.statsActive, "chart.bar.fill"),
         (.settings, "gearshape"),
+        (.settingsActive, "gearshape.fill"),
         (.search, "magnifyingglass"),
         (.add, "plus"),
+        (.refresh, "arrow.clockwise"),
+        (.close, "xmark"),
         (.chevronBack, "chevron.left"),
+        (.chevronForward, "chevron.right"),
+        (.ellipsis, "ellipsis"),
+        (.edit, "pencil"),
+        (.delete, "trash"),
+        (.folder, "folder"),
+        (.decks, "rectangle.stack"),
         (.keyboard, "keyboard"),
+        (.skip, "forward.end"),
         (.submit, "return"),
         (.backspace, "delete.left"),
         (.correct, "checkmark"),
         (.wrong, "xmark"),
     ]
+    #expect(documented.count == AppIcon.allCases.count)
     for (icon, symbol) in documented {
         #expect(icon.systemName == symbol)
     }
-    #expect(AppIcon.allCases.allSatisfy { !$0.systemName.isEmpty })
 }
+
+#if canImport(AppKit)
+import AppKit
+
+private func rgb(_ color: Color) -> UInt32 {
+    guard let srgb = NSColor(color).usingColorSpace(.sRGB) else { return 0 }
+    let red = UInt32((srgb.redComponent * 255).rounded())
+    let green = UInt32((srgb.greenComponent * 255).rounded())
+    let blue = UInt32((srgb.blueComponent * 255).rounded())
+    return red << 16 | green << 8 | blue
+}
+#endif
 
 private func contrast(_ foreground: UInt32, _ background: UInt32) -> Double {
     let one = luminance(foreground)

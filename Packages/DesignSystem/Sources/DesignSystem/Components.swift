@@ -6,7 +6,7 @@ public enum HKButtonVariant: Sendable {
     case dark
 }
 
-/// Filled, outlined or inverted capsule button with the pressed, hover and disabled states of DESIGN §Components.
+/// Capsule button with the default, pressed, hover, focus and disabled states of DESIGN §Components.
 public struct HKButton: View {
     @Environment(\.isEnabled) private var isEnabled
     @State private var hovering = false
@@ -24,8 +24,8 @@ public struct HKButton: View {
     public var body: some View {
         Button(action: action) {
             Text(title)
-                .font(HKFont.button.font)
-                .tracking(HKFont.button.tracking)
+                .font(HKFont.button.font())
+                .tracking(HKFont.button.tracking())
         }
         .buttonStyle(HKButtonBody(variant: variant, hovering: hovering))
         .onHover { hovering = $0 }
@@ -41,7 +41,7 @@ private struct HKButtonBody: ButtonStyle {
         configuration.label
             .foregroundStyle(foreground)
             .padding(.horizontal, 20)
-            .frame(minHeight: HKHitTarget.touchMin)
+            .frame(minHeight: minHeight)
             .background(background(pressed: configuration.isPressed), in: Capsule())
             .overlay {
                 if variant == .secondary {
@@ -49,6 +49,14 @@ private struct HKButtonBody: ButtonStyle {
                 }
             }
             .scaleEffect(configuration.isPressed ? 0.97 : 1)
+    }
+
+    private var minHeight: CGFloat {
+        #if os(macOS)
+        HKControl.buttonPointer
+        #else
+        HKControl.buttonTouch
+        #endif
     }
 
     private var foreground: Color {
@@ -62,14 +70,16 @@ private struct HKButtonBody: ButtonStyle {
     private func background(pressed: Bool) -> Color {
         switch variant {
         case .primary: (pressed || hovering) ? HKColor.tertiaryHover : HKColor.tertiary
-        case .secondary: HKColor.surface
-        case .dark: HKColor.primary
+        case .secondary: hovering ? HKColor.divider : HKColor.surface
+        case .dark: hovering ? HKColor.tertiaryHover : HKColor.primary
         }
     }
 }
 
 /// Ink-bordered paper card: `RoundedRectangle` in the md radius, lg padding, no shadow.
 public struct HKCard<Content: View>: View {
+    @Environment(\.colorSchemeContrast) private var contrast
+
     private let content: Content
 
     public init(@ViewBuilder content: () -> Content) {
@@ -78,10 +88,15 @@ public struct HKCard<Content: View>: View {
 
     public var body: some View {
         content
+            .foregroundStyle(HKColor.primary)
             .padding(HKSpacing.lg)
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(HKColor.surface, in: shape)
-            .overlay { shape.strokeBorder(HKColor.border, lineWidth: HKBorder.width) }
+            .overlay { shape.strokeBorder(HKColor.border, lineWidth: borderWidth) }
+    }
+
+    private var borderWidth: CGFloat {
+        contrast == .increased ? HKBorder.increased : HKBorder.width
     }
 
     private var shape: RoundedRectangle {
@@ -91,6 +106,8 @@ public struct HKCard<Content: View>: View {
 
 /// Labelled text field with the inline error row of DESIGN §Components; the error uses ink, never Ember.
 public struct HKField: View {
+    @Environment(\.colorSchemeContrast) private var contrast
+
     private let label: LocalizedStringKey
     private let placeholder: LocalizedStringKey
     @Binding private var text: String
@@ -111,26 +128,34 @@ public struct HKField: View {
     public var body: some View {
         VStack(alignment: .leading, spacing: HKSpacing.sm) {
             Text(label)
-                .font(HKFont.labelCaps.font)
-                .tracking(HKFont.labelCaps.tracking)
+                .font(HKFont.labelCaps.font())
+                .tracking(HKFont.labelCaps.tracking())
                 .textCase(.uppercase)
-                .foregroundStyle(HKColor.secondary)
+                .foregroundStyle(labelColor)
             TextField(placeholder, text: $text)
                 .textFieldStyle(.plain)
-                .font(HKFont.bodyMD.font)
+                .font(HKFont.bodyMD.font())
                 .padding(HKSpacing.md)
                 .background(HKColor.surface, in: shape)
-                .overlay { shape.strokeBorder(HKColor.border, lineWidth: HKBorder.width) }
+                .overlay { shape.strokeBorder(HKColor.border, lineWidth: borderWidth) }
                 .accessibilityLabel(Text(label))
             if let error {
                 Label {
-                    Text(error).font(HKFont.bodySM.font)
+                    Text(error).font(HKFont.bodySM.font())
                 } icon: {
                     AppIcon.wrong.image
                 }
                 .foregroundStyle(HKColor.primary)
             }
         }
+    }
+
+    private var labelColor: Color {
+        contrast == .increased ? HKColor.primary : HKColor.secondary
+    }
+
+    private var borderWidth: CGFloat {
+        contrast == .increased ? HKBorder.increased : HKBorder.width
     }
 
     private var shape: RoundedRectangle {

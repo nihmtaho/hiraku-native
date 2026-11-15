@@ -198,7 +198,7 @@ Bảng so sánh với `docs/product/DESIGN.md` web: `CHANGELOG.md`.
 
 ## Colors
 
-Bảng màu xây trên tương phản cao giữa mực và giấy, cộng một màu nhấn. Màu lưu trong Asset Catalog (một appearance "Any"); mã truy cập qua `HKColor` (§Triển khai).
+Bảng màu xây trên tương phản cao giữa mực và giấy, cộng một màu nhấn. Màu là hằng sRGB trong `HKColor`, một appearance sáng (§Triển khai).
 
 - **Primary (#16130F):** mực — tiêu đề, chữ chính, viền, nền thẻ mặt sau, banner, header bảng.
 - **Secondary (#6B655C):** chú thích, metadata, nhãn phụ (trên nền giấy/thẻ).
@@ -440,10 +440,10 @@ DesignSystem/Sources/DesignSystem/
 
 - **Đặt tên:** spec dự kiến `Color.primary/secondary/tertiary…`, nhưng `Color.primary` và `Color.secondary` đã tồn tại trong SwiftUI nên không khai báo lại được. Dùng namespace `HKColor.primary`, `HKColor.tertiary`… (cùng quy ước cho `HKFont`, `HKRadius`, `HKSpacing`).
 - **Màu:** hằng sRGB trong `Tokens.swift`, một appearance sáng; hex chỉ nằm trong tệp đó.
-- **Font:** `HKFont` chọn cỡ theo nền tảng và áp `relativeTo`; Noto Sans JP đăng ký lúc chạy bằng `CTFontManagerRegisterFontsForURL` từ resource của gói, fallback Hiragino Sans.
+- **Font:** `HKTextStyle` giữ ba cột cỡ (phone/pad/mac), weight, tracking và lineHeight; `.font(for:)` nhận `HKSizeClass` (mặc định theo nền tảng) và áp `relativeTo`. Noto Sans JP đăng ký lúc chạy bằng `CTFontManagerRegisterFontsForURL` từ resource của gói; app gọi `HKFont.registerBundledFonts()` khi khởi động, nối ở WP-06 khi màn đầu tiên dùng font. Fallback Hiragino Sans.
 - **Giao diện sáng:** `preferredColorScheme(.light)` ở gốc scene.
 - **Tint:** `.tint(HKColor.tertiary)` ở gốc scene; asset `AccentColor` của app đặt cùng Ember khi dựng shell; chrome gốc theo kiểu hệ thống (ADR-15).
-- **Kiểm thử:** test đơn vị kiểm tỷ lệ tương phản của mọi cặp màu trong bảng §Colors từ cùng giá trị token, cùng test font resolve. Snapshot 3 cỡ Dynamic Type là nợ: cần thư viện snapshot, phải qua ADR trước.
+- **Kiểm thử:** test đơn vị kiểm tỷ lệ tương phản của **cả 20** cặp màu trong bảng §Colors từ cùng giá trị token, cùng test font resolve và cột cỡ chữ của cả ba nền tảng. Snapshot 3 cỡ Dynamic Type là nợ: cần thư viện snapshot, phải qua ADR trước.
 
 ## Quyết định thiết kế (ngoại lệ có chủ đích)
 
