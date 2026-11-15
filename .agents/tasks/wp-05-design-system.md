@@ -6,7 +6,7 @@
 - Owner: coordinator / senior (Q-29)
 - Milestone / WP: M1a / WP-05
 - Branch / PR: `feat/wp-05-design-system` / PR 88
-- Base / head SHA: 3a749ca / —
+- Base / head SHA: 3a749ca / 22ed10e (review rounds 1-2)
 - Dependencies: Q-5, Q-D2
 - Required reading: docs/product/DESIGN.md; ADR-15; DECISIONS Q-5, Q-D2
 - Blocking Q / gate: GATE-1 decisions closed 2026-11-08; waiver for device debt (S-1 iOS/60 fps, S-3 real IME); S-7 verified by slice #43
@@ -51,6 +51,7 @@ Record is authority for the contract; plan is authority for progress; issues tra
 - Tests: token values, contrast ratios from the DESIGN table, typography per platform column, font resolve, icon mapping, component construction.
 - DESIGN §Triển khai updated where the plan and the spike already differ from the old text: colours are code tokens, the font registers at runtime, snapshots stay debt.
 - CI now builds and tests the package; `check-imports.sh` gained the DesignSystem allowlist.
+- PO decision 2026-11-15: the mac button column becomes 15pt so the white-on-Ember CTA keeps the 3:1 bold-text contrast on every platform; `jp-hero` uses `Font.custom(fixedSize:)` so it does not scale with Dynamic Type.
 - Review round 1 fixes: `HKTextStyle` carries weight and lineHeight and all three DESIGN size columns with `.font(for:)`; the button is bold, so the CTA meets the documented 3.31:1 only as bold text; hover added for secondary and dark; Increase Contrast draws a 2pt border and lifts secondary text to ink; the contrast test covers all 20 rows of the DESIGN table; icons pinned for all 23 cases; ARCHITECTURE §4.1 names CoreText for DesignSystem.
 
 ## Independent review

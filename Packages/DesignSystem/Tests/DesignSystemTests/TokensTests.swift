@@ -93,7 +93,7 @@ import Testing
 }
 
 @Test func typographySizesMatchTheThreeColumns() throws {
-    let columns: [(HKTextStyle, UInt32, CGFloat, CGFloat, CGFloat)] = [
+    let columns: [(HKTextStyle, Int, CGFloat, CGFloat, CGFloat)] = [
         (HKFont.display, 0, 40, 56, 56),
         (HKFont.h1, 1, 30, 34, 34),
         (HKFont.h2, 2, 22, 24, 24),
@@ -103,7 +103,7 @@ import Testing
         (HKFont.bodySM, 6, 13, 13, 11),
         (HKFont.labelCaps, 7, 11, 11, 11),
         (HKFont.eyebrow, 8, 12, 12, 11),
-        (HKFont.button, 9, 15, 15, 13),
+        (HKFont.button, 9, 15, 15, 15),
     ]
     for (style, index, phone, pad, mac) in columns {
         #expect(style.size(.phone) == phone, "style \(index) phone")

@@ -90,10 +90,14 @@ public struct HKTextStyle: Sendable {
         (lineHeight - 1) * size(sizeClass)
     }
 
+    /// A style without a Dynamic Type anchor keeps its size; `jp-hero` self-shrinks in the view.
     public func font(_ sizeClass: HKSizeClass = .current) -> Font {
         let pointSize = size(sizeClass)
-        let font = relativeTo.map { Font.custom(family, size: pointSize, relativeTo: $0) }
-            ?? Font.custom(family, size: pointSize)
+        let font: Font = if let relativeTo {
+            Font.custom(family, size: pointSize, relativeTo: relativeTo)
+        } else {
+            Font.custom(family, fixedSize: pointSize)
+        }
         return font.weight(weight)
     }
 
@@ -159,7 +163,7 @@ public enum HKFont {
         weight: .bold, trackingEm: 0.24, lineHeight: 1.0, relativeTo: .caption
     )
     public static let button = HKTextStyle(
-        family: "Helvetica Neue", phone: 15, pad: 15, mac: 13,
+        family: "Helvetica Neue", phone: 15, pad: 15, mac: 15,
         weight: .bold, trackingEm: 0.01, lineHeight: 1.0, relativeTo: .headline
     )
 
