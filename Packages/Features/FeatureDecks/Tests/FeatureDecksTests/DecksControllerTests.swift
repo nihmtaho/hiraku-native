@@ -28,8 +28,7 @@ private func makeController(catalog: FakeCatalog, folder: Folder = folder) async
         decks: catalog,
         folders: catalog,
         noteTypes: catalog,
-        events: FakeChangeEvents(),
-        clock: ManualClock()
+        events: FakeChangeEvents()
     )
 }
 
@@ -129,8 +128,7 @@ private func makeController(catalog: FakeCatalog, folder: Folder = folder) async
         decks: FailingDecks(),
         folders: FailingDecks(),
         noteTypes: FailingDecks(),
-        events: FakeChangeEvents(),
-        clock: ManualClock()
+        events: FakeChangeEvents()
     )
     await controller.load()
     #expect(controller.phase == .failed)

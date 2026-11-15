@@ -334,7 +334,7 @@ func (s *Service) reorderDecks(ctx context.Context, req *hirakuv1.ReorderDecksRe
 	if req.GetFolderId() == "" || len(req.GetDeckIds()) == 0 || req.GetNowMs() <= 0 {
 		return nil, invalidArgument()
 	}
-	if err := s.repo.ReorderDecks(ctx, req.GetNowMs(), req.GetDeckIds()); err != nil {
+	if err := s.repo.ReorderDecks(ctx, req.GetNowMs(), req.GetFolderId(), req.GetDeckIds()); err != nil {
 		return nil, MapError(err)
 	}
 	changes := make([]*hirakuv1.Change, 0, len(req.GetDeckIds()))

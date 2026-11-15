@@ -11,13 +11,11 @@ public final class FoldersController {
 
     private let folders: any FolderRepository
     private let events: any ChangeEvents
-    private let clock: any AppClock
     private var listener: Task<Void, Never>?
 
-    public init(folders: any FolderRepository, events: any ChangeEvents, clock: any AppClock) {
+    public init(folders: any FolderRepository, events: any ChangeEvents) {
         self.folders = folders
         self.events = events
-        self.clock = clock
     }
 
     /// Loads once and again whenever the core reports a change; no I/O before this call.

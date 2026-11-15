@@ -8,16 +8,14 @@ public enum FeatureDecks {
         decks: any DeckRepository,
         folders: any FolderRepository,
         noteTypes: any NoteTypeRepository,
-        events: any ChangeEvents,
-        clock: any AppClock
+        events: any ChangeEvents
     ) -> DecksController {
         DecksController(
             folder: folder,
             decks: decks,
             folders: folders,
             noteTypes: noteTypes,
-            events: events,
-            clock: clock
+            events: events
         )
     }
 

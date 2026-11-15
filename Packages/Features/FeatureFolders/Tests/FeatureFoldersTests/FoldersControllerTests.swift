@@ -10,7 +10,7 @@ private func makeController(
     catalog: FakeCatalog = FakeCatalog(),
     events: FakeChangeEvents = FakeChangeEvents()
 ) -> FoldersController {
-    FoldersController(folders: catalog, events: events, clock: ManualClock())
+    FoldersController(folders: catalog, events: events)
 }
 
 @MainActor
@@ -88,7 +88,7 @@ private func makeController(
 @MainActor
 @Test func repositoryFailureShowsTheErrorAndKeepsThePhase() async {
     let failing = FailingFolders()
-    let controller = FoldersController(folders: failing, events: FakeChangeEvents(), clock: ManualClock())
+    let controller = FoldersController(folders: failing, events: FakeChangeEvents())
     await controller.load()
     #expect(controller.phase == .failed)
     #expect(controller.lastError == "error.generic.message")

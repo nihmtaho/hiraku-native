@@ -17,7 +17,6 @@ public final class DecksController {
     private let folderRepository: any FolderRepository
     private let types: any NoteTypeRepository
     private let events: any ChangeEvents
-    private let clock: any AppClock
     private var listener: Task<Void, Never>?
 
     public init(
@@ -25,15 +24,13 @@ public final class DecksController {
         decks: any DeckRepository,
         folders: any FolderRepository,
         noteTypes: any NoteTypeRepository,
-        events: any ChangeEvents,
-        clock: any AppClock
+        events: any ChangeEvents
     ) {
         self.folder = folder
         self.decks = decks
         self.folderRepository = folders
         self.types = noteTypes
         self.events = events
-        self.clock = clock
     }
 
     public func start() {

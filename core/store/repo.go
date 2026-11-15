@@ -222,13 +222,15 @@ func (r *Repo) DeleteDeck(ctx context.Context, nowMs int64, deckID string) error
 	})
 }
 
-// ReorderDecks writes positions 1..n in the given order in one transaction.
-func (r *Repo) ReorderDecks(ctx context.Context, nowMs int64, ids []string) error {
+// ReorderDecks writes positions 1..n for the decks of one folder in one transaction.
+func (r *Repo) ReorderDecks(ctx context.Context, nowMs int64, folderID string, ids []string) error {
 	return r.Tx(ctx, func(r *Repo) error {
 		for i, deckID := range ids {
-			if _, err := r.q.ExecContext(ctx, `
-				UPDATE decks SET position = ?, updated_at = ? WHERE id = ?`,
-				i+1, nowMs, deckID); err != nil {
+			result, err := r.q.ExecContext(ctx, `
+				UPDATE decks SET position = ?, updated_at = ?
+				WHERE id = ? AND folder_id = ? AND deleted_at IS NULL`,
+				i+1, nowMs, deckID, folderID)
+			if err := requireOneRow(result, err); err != nil {
 				return err
 			}
 		}

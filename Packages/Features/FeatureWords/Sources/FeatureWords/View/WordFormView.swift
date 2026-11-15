@@ -97,7 +97,9 @@ public struct WordFormView: View {
                         .foregroundStyle(HKColor.secondary)
                 }
             }
-            TextField(placeholder(field), text: binding(field))
+            TextField(text: binding(field), prompt: placeholder(field)) {
+                Text(verbatim: field.name)
+            }
                 .textFieldStyle(.plain)
                 .font(field.role == .term ? HKFont.jpTerm.font() : HKFont.bodyMD.font())
                 .padding(HKSpacing.md)
@@ -168,13 +170,13 @@ public struct WordFormView: View {
         )
     }
 
-    private func placeholder(_ field: NoteTypeField) -> LocalizedStringKey {
+    private func placeholder(_ field: NoteTypeField) -> Text {
         switch field.role {
-        case .term: "words.field.word.placeholder"
-        case .reading: "words.field.reading.placeholder"
-        case .meaning: "words.field.meaning.placeholder"
-        case .example: "words.field.example.placeholder"
-        case .text: LocalizedStringKey(field.name)
+        case .term: Text("words.field.word.placeholder")
+        case .reading: Text("words.field.reading.placeholder")
+        case .meaning: Text("words.field.meaning.placeholder")
+        case .example: Text("words.field.example.placeholder")
+        case .text: Text(verbatim: field.name)
         }
     }
 

@@ -60,8 +60,7 @@ struct RootView: View {
                         decks: catalog,
                         folders: catalog,
                         noteTypes: catalog,
-                        events: container.events,
-                        clock: container.clock
+                        events: container.events
                     )
                 }
             } else if failure != nil {
@@ -89,11 +88,7 @@ struct RootView: View {
         do {
             try await container.start()
             guard let catalog = container.catalog else { return }
-            controller = FeatureFolders.makeController(
-                folders: catalog,
-                events: container.events,
-                clock: container.clock
-            )
+            controller = FeatureFolders.makeController(folders: catalog, events: container.events)
         } catch {
             failure = "error.generic.message"
         }

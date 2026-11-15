@@ -195,7 +195,7 @@ func TestDecksDefaultTypeAndReorder(t *testing.T) {
 		t.Fatalf("note type = %q", first.NoteTypeID)
 	}
 	second, _ := r.CreateDeck(ctx, 32, store.Deck{FolderID: folder.ID, Name: "B"})
-	if err := r.ReorderDecks(ctx, 33, []string{second.ID, first.ID}); err != nil {
+	if err := r.ReorderDecks(ctx, 33, folder.ID, []string{second.ID, first.ID}); err != nil {
 		t.Fatal(err)
 	}
 	decks, _ := r.Decks(ctx, folder.ID)

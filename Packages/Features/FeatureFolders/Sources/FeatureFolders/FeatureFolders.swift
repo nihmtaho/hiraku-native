@@ -5,10 +5,9 @@ import SwiftUI
 public enum FeatureFolders {
     @MainActor public static func makeController(
         folders: any FolderRepository,
-        events: any ChangeEvents,
-        clock: any AppClock
+        events: any ChangeEvents
     ) -> FoldersController {
-        FoldersController(folders: folders, events: events, clock: clock)
+        FoldersController(folders: folders, events: events)
     }
 
     @MainActor public static func screen(

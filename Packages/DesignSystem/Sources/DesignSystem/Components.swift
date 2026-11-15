@@ -182,6 +182,8 @@ public struct StateDot: View {
 
     private let kind: Kind
 
+    public static let size: CGFloat = 8
+
     public init(_ kind: Kind) {
         self.kind = kind
     }
@@ -189,7 +191,7 @@ public struct StateDot: View {
     public var body: some View {
         Circle()
             .fill(color)
-            .frame(width: 8, height: 8)
+            .frame(width: StateDot.size, height: StateDot.size)
     }
 
     private var color: Color {
