@@ -239,6 +239,26 @@ func TestPurgeDeletesStatesAndLogsForStudiedCards(t *testing.T) {
 	}
 }
 
+func TestReorderDecksRejectsAForeignDeck(t *testing.T) {
+	_, repo := openRepo(t)
+	ctx := context.Background()
+	first, err := repo.CreateFolder(ctx, 1, "A")
+	if err != nil {
+		t.Fatal(err)
+	}
+	second, err := repo.CreateFolder(ctx, 2, "B")
+	if err != nil {
+		t.Fatal(err)
+	}
+	deck, err := repo.CreateDeck(ctx, 3, store.Deck{FolderID: second.ID, Name: "D"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := repo.ReorderDecks(ctx, 4, first.ID, []string{deck.ID}); err == nil {
+		t.Fatal("foreign deck accepted")
+	}
+}
+
 func TestSearchEscapesLikeMetacharacters(t *testing.T) {
 	ctx := context.Background()
 	_, r := openRepo(t)

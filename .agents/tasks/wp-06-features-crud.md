@@ -47,8 +47,8 @@ Record is authority for the contract; plan is authority for progress; issues tra
 
 | Criterion | Command / manual check | Result / exit code | Revision / artifact |
 |---|---|---|---|
-| Feature controller tests | `xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination "platform=macOS"` | Not run | — |
-| Search timing | `manual: 50,000 notes, search < 150 ms` | Not run | — |
+| App tests | `xcodebuild test -project App/Hiraku.xcodeproj -scheme Hiraku -destination 'platform=macOS' CODE_SIGNING_ALLOWED=NO` | exit 0, TEST SUCCEEDED, 7 tests | `d5fc566` |
+| Search timing | `manual: 50,000 notes, search < 150 ms` | Not run — fixture not measured; deferred to S-1 follow-up | — |
 
 ## Coding
 
@@ -57,7 +57,8 @@ Record is authority for the contract; plan is authority for progress; issues tra
 - Swift: `HirakuModels` (IDs, `Folder`/`Deck`/`NoteType`/`Note`, repositories, `AppClock`, `ChangeEvents`, `Route`, `LoadPhase`, `NameError`), `CatalogClient`, `HirakuBridge.changeSet` covers 13 methods (grade included), `ManualClock`/`FakeChangeEvents`/`FakeCatalog`, folder/deck/word controllers + views + entry points, App container/root with folder → deck → word navigation.
 - Strings: 78 keys added to `App/Hiraku/Localizable.xcstrings` from COPY.md.
 - `Scripts/check-imports.sh` now skips `.build` checkouts (dependency sources produced false positives).
-- Review round 2 fixes: the accidentally committed `docs/archive/` bundle was removed from the branch (files stay untracked on disk), COPY.md applies Q-28 "bộ thẻ"/"hồ sơ" at the source, custom field placeholders render verbatim, `reorderDecks` is scoped to its folder, and the unused `AppClock` left the folder/deck controllers.
+- Review round 3 fixes: the `docs/archive/` bundle is removed from the branch for real (`git rm --cached`, files stay untracked on disk), the folder meta line uses the catalogue key, a store test proves a foreign deck cannot be reordered, and the record rows carry the evidence.
+- Review round 2 fixes: COPY.md applies Q-28 "bộ thẻ"/"hồ sơ" at the source, custom field placeholders render verbatim, `reorderDecks` is scoped to its folder, and the unused `AppClock` left the folder/deck controllers.
 - Review round 1 fixes: unsaved-change guard on the folder and deck sheets, Q-28 "bộ thẻ" across the deck copy, deck-specific name errors, word rows with reading and a state dot (`StateDot` in DesignSystem), CI runs the three feature test suites, deletes report `NOT_FOUND`, `now_ms > 0` on every mutation, `reorderDecks` requires the folder, and the deck/folder sheets read `isSaving` live.
 - Debts recorded in the plan: contract golden bytes, `.pad` wiring for iPad, UI tests, "view existing word" navigation, first-field autofocus and keyboard shortcuts.
 

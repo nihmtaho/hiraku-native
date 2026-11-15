@@ -128,7 +128,7 @@ public struct FoldersView: View {
                                 Text(folder.name)
                                     .font(HKFont.h2.font())
                                     .foregroundStyle(HKColor.primary)
-                                Text("\(folder.deckCount) deck · \(folder.noteCount) từ")
+                                Text("common.folderMeta \(folder.deckCount) \(folder.noteCount)")
                                     .font(HKFont.bodySM.font())
                                     .foregroundStyle(HKColor.secondary)
                             }
