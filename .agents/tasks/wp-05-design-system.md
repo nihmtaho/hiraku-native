@@ -2,10 +2,10 @@
 
 ## Contract
 
-- Status: coding
+- Status: review
 - Owner: coordinator / senior (Q-29)
 - Milestone / WP: M1a / WP-05
-- Branch / PR: `feat/wp-05-design-system` from `develop`
+- Branch / PR: `feat/wp-05-design-system` / PR 88
 - Base / head SHA: 3a749ca / —
 - Dependencies: Q-5, Q-D2
 - Required reading: docs/product/DESIGN.md; ADR-15; DECISIONS Q-5, Q-D2
