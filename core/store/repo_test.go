@@ -195,7 +195,7 @@ func TestDecksDefaultTypeAndReorder(t *testing.T) {
 		t.Fatalf("note type = %q", first.NoteTypeID)
 	}
 	second, _ := r.CreateDeck(ctx, 32, store.Deck{FolderID: folder.ID, Name: "B"})
-	if err := r.ReorderDecks(ctx, 33, []string{second.ID, first.ID}); err != nil {
+	if err := r.ReorderDecks(ctx, 33, folder.ID, []string{second.ID, first.ID}); err != nil {
 		t.Fatal(err)
 	}
 	decks, _ := r.Decks(ctx, folder.ID)
@@ -236,6 +236,26 @@ func TestPurgeDeletesStatesAndLogsForStudiedCards(t *testing.T) {
 		if count != 0 {
 			t.Fatalf("%s rows = %d, want 0", table, count)
 		}
+	}
+}
+
+func TestReorderDecksRejectsAForeignDeck(t *testing.T) {
+	_, repo := openRepo(t)
+	ctx := context.Background()
+	first, err := repo.CreateFolder(ctx, 1, "A")
+	if err != nil {
+		t.Fatal(err)
+	}
+	second, err := repo.CreateFolder(ctx, 2, "B")
+	if err != nil {
+		t.Fatal(err)
+	}
+	deck, err := repo.CreateDeck(ctx, 3, store.Deck{FolderID: second.ID, Name: "D"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := repo.ReorderDecks(ctx, 4, first.ID, []string{deck.ID}); err == nil {
+		t.Fatal("foreign deck accepted")
 	}
 }
 

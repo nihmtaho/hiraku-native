@@ -24,25 +24,76 @@ const (
 type Method int32
 
 const (
-	Method_METHOD_UNSPECIFIED Method = 0
-	Method_METHOD_PING        Method = 1
-	Method_METHOD_GRADE       Method = 2
-	Method_METHOD_BUILD_QUEUE Method = 3
+	Method_METHOD_UNSPECIFIED     Method = 0
+	Method_METHOD_PING            Method = 1
+	Method_METHOD_GRADE           Method = 2
+	Method_METHOD_BUILD_QUEUE     Method = 3
+	Method_METHOD_LIST_FOLDERS    Method = 4
+	Method_METHOD_CREATE_FOLDER   Method = 5
+	Method_METHOD_UPDATE_FOLDER   Method = 6
+	Method_METHOD_DELETE_FOLDER   Method = 7
+	Method_METHOD_REORDER_FOLDERS Method = 8
+	Method_METHOD_LIST_DECKS      Method = 9
+	Method_METHOD_CREATE_DECK     Method = 10
+	Method_METHOD_UPDATE_DECK     Method = 11
+	Method_METHOD_DELETE_DECK     Method = 12
+	Method_METHOD_REORDER_DECKS   Method = 13
+	Method_METHOD_MOVE_DECK       Method = 14
+	Method_METHOD_LIST_NOTE_TYPES Method = 15
+	Method_METHOD_LIST_NOTES      Method = 16
+	Method_METHOD_CREATE_NOTE     Method = 17
+	Method_METHOD_UPDATE_NOTE     Method = 18
+	Method_METHOD_DELETE_NOTE     Method = 19
+	Method_METHOD_CHECK_DUPLICATE Method = 20
 )
 
 // Enum value maps for Method.
 var (
 	Method_name = map[int32]string{
-		0: "METHOD_UNSPECIFIED",
-		1: "METHOD_PING",
-		2: "METHOD_GRADE",
-		3: "METHOD_BUILD_QUEUE",
+		0:  "METHOD_UNSPECIFIED",
+		1:  "METHOD_PING",
+		2:  "METHOD_GRADE",
+		3:  "METHOD_BUILD_QUEUE",
+		4:  "METHOD_LIST_FOLDERS",
+		5:  "METHOD_CREATE_FOLDER",
+		6:  "METHOD_UPDATE_FOLDER",
+		7:  "METHOD_DELETE_FOLDER",
+		8:  "METHOD_REORDER_FOLDERS",
+		9:  "METHOD_LIST_DECKS",
+		10: "METHOD_CREATE_DECK",
+		11: "METHOD_UPDATE_DECK",
+		12: "METHOD_DELETE_DECK",
+		13: "METHOD_REORDER_DECKS",
+		14: "METHOD_MOVE_DECK",
+		15: "METHOD_LIST_NOTE_TYPES",
+		16: "METHOD_LIST_NOTES",
+		17: "METHOD_CREATE_NOTE",
+		18: "METHOD_UPDATE_NOTE",
+		19: "METHOD_DELETE_NOTE",
+		20: "METHOD_CHECK_DUPLICATE",
 	}
 	Method_value = map[string]int32{
-		"METHOD_UNSPECIFIED": 0,
-		"METHOD_PING":        1,
-		"METHOD_GRADE":       2,
-		"METHOD_BUILD_QUEUE": 3,
+		"METHOD_UNSPECIFIED":     0,
+		"METHOD_PING":            1,
+		"METHOD_GRADE":           2,
+		"METHOD_BUILD_QUEUE":     3,
+		"METHOD_LIST_FOLDERS":    4,
+		"METHOD_CREATE_FOLDER":   5,
+		"METHOD_UPDATE_FOLDER":   6,
+		"METHOD_DELETE_FOLDER":   7,
+		"METHOD_REORDER_FOLDERS": 8,
+		"METHOD_LIST_DECKS":      9,
+		"METHOD_CREATE_DECK":     10,
+		"METHOD_UPDATE_DECK":     11,
+		"METHOD_DELETE_DECK":     12,
+		"METHOD_REORDER_DECKS":   13,
+		"METHOD_MOVE_DECK":       14,
+		"METHOD_LIST_NOTE_TYPES": 15,
+		"METHOD_LIST_NOTES":      16,
+		"METHOD_CREATE_NOTE":     17,
+		"METHOD_UPDATE_NOTE":     18,
+		"METHOD_DELETE_NOTE":     19,
+		"METHOD_CHECK_DUPLICATE": 20,
 	}
 )
 
@@ -456,12 +507,30 @@ const file_hiraku_v1_common_proto_rawDesc = "" +
 	"\achanges\x18\x01 \x03(\v2\x11.hiraku.v1.ChangeR\achanges\"e\n" +
 	"\x05Error\x12(\n" +
 	"\x04code\x18\x01 \x01(\x0e2\x14.hiraku.v1.ErrorCodeR\x04code\x122\n" +
-	"\bsub_code\x18\x02 \x01(\x0e2\x17.hiraku.v1.ErrorSubCodeR\asubCode*[\n" +
+	"\bsub_code\x18\x02 \x01(\x0e2\x17.hiraku.v1.ErrorSubCodeR\asubCode*\x84\x04\n" +
 	"\x06Method\x12\x16\n" +
 	"\x12METHOD_UNSPECIFIED\x10\x00\x12\x0f\n" +
 	"\vMETHOD_PING\x10\x01\x12\x10\n" +
 	"\fMETHOD_GRADE\x10\x02\x12\x16\n" +
-	"\x12METHOD_BUILD_QUEUE\x10\x03*\xae\x01\n" +
+	"\x12METHOD_BUILD_QUEUE\x10\x03\x12\x17\n" +
+	"\x13METHOD_LIST_FOLDERS\x10\x04\x12\x18\n" +
+	"\x14METHOD_CREATE_FOLDER\x10\x05\x12\x18\n" +
+	"\x14METHOD_UPDATE_FOLDER\x10\x06\x12\x18\n" +
+	"\x14METHOD_DELETE_FOLDER\x10\a\x12\x1a\n" +
+	"\x16METHOD_REORDER_FOLDERS\x10\b\x12\x15\n" +
+	"\x11METHOD_LIST_DECKS\x10\t\x12\x16\n" +
+	"\x12METHOD_CREATE_DECK\x10\n" +
+	"\x12\x16\n" +
+	"\x12METHOD_UPDATE_DECK\x10\v\x12\x16\n" +
+	"\x12METHOD_DELETE_DECK\x10\f\x12\x18\n" +
+	"\x14METHOD_REORDER_DECKS\x10\r\x12\x14\n" +
+	"\x10METHOD_MOVE_DECK\x10\x0e\x12\x1a\n" +
+	"\x16METHOD_LIST_NOTE_TYPES\x10\x0f\x12\x15\n" +
+	"\x11METHOD_LIST_NOTES\x10\x10\x12\x16\n" +
+	"\x12METHOD_CREATE_NOTE\x10\x11\x12\x16\n" +
+	"\x12METHOD_UPDATE_NOTE\x10\x12\x12\x16\n" +
+	"\x12METHOD_DELETE_NOTE\x10\x13\x12\x1a\n" +
+	"\x16METHOD_CHECK_DUPLICATE\x10\x14*\xae\x01\n" +
 	"\tErrorCode\x12\x1a\n" +
 	"\x16ERROR_CODE_UNSPECIFIED\x10\x00\x12\x1f\n" +
 	"\x1bERROR_CODE_INVALID_ARGUMENT\x10\x01\x12\x18\n" +

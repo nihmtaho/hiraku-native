@@ -69,12 +69,12 @@
 | common.required | Bắt buộc | Nhãn phụ dưới ô nhập |
 | common.optional | Tùy chọn | |
 | common.wordCount | %lld từ | |
-| common.deckCount | %lld deck | |
-| common.folderMeta | %lld deck · %lld từ | Thẻ thư mục |
+| common.deckCount | %lld bộ thẻ | |
+| common.folderMeta | %lld bộ thẻ · %lld từ | Thẻ thư mục |
 | common.undo | Hoàn tác | Nút trên toast (FR-020, FR-077) |
 | undo.graded | Đã chấm: %@ | Toast sau khi chấm; `%@` = nhãn nút |
 | undo.deleted.word | Đã xóa “%@” | Toast sau khi xóa từ (P1) |
-| undo.deleted.deck | Đã xóa deck “%@” | |
+| undo.deleted.deck | Đã xóa bộ thẻ “%@” | |
 | undo.deleted.folder | Đã xóa thư mục “%@” | |
 | undo.moved | Đã di chuyển | |
 | undo.reordered | Đã sắp xếp lại | |
@@ -137,31 +137,31 @@ Khung giờ lời chào theo đồng hồ máy: 04:00–10:59 sáng · 11:00–1
 | folders.menu.moveUp | Di chuyển lên | |
 | folders.menu.moveDown | Di chuyển xuống | |
 | folders.delete.title | Xóa thư mục “%@”? | `%@` = tên |
-| folders.delete.message | Sẽ xóa %lld deck và %lld từ cùng toàn bộ tiến độ học. | UC-01 A3; biến: số deck, số từ |
+| folders.delete.message | Sẽ xóa %lld bộ thẻ và %lld từ cùng toàn bộ tiến độ học. | UC-01 A3; biến: số deck, số từ |
 | folders.openStudy | Ôn cả thư mục | Toolbar màn thư mục |
 
 ## 8. Deck (FeatureDecks)
 
 | Key | Tiếng Việt | Ghi chú |
 |---|---|---|
-| decks.add | Tạo deck | |
-| decks.create.title | Deck mới | |
-| decks.edit.title | Sửa deck | |
-| decks.name.label | Tên deck | |
+| decks.add | Tạo bộ thẻ | |
+| decks.create.title | Bộ thẻ mới | |
+| decks.edit.title | Sửa bộ thẻ | |
+| decks.name.label | Tên bộ thẻ | |
 | decks.description.label | Mô tả | Kèm nhãn "Tùy chọn" |
 | decks.noteType.label | Kiểu ghi chú | UC-02 bước 2; M1a chỉ hiện "Từ vựng Nhật", chọn kiểu khác từ M3 |
-| decks.noteType.locked | Không đổi được kiểu khi deck đã có từ. | Ghi chú dưới ô khi sửa deck |
+| decks.noteType.locked | Không đổi được kiểu khi bộ thẻ đã có từ. | Ghi chú dưới ô khi sửa deck |
 | decks.editFields | Sửa trường | Mục menu ⋯ của deck (M3) |
-| decks.name.error.empty | Nhập tên deck. | |
+| decks.name.error.empty | Nhập tên bộ thẻ. | |
 | decks.name.error.tooLong | Tên tối đa 100 ký tự. | |
-| decks.move.title | Di chuyển deck | |
+| decks.move.title | Di chuyển bộ thẻ | |
 | decks.move.prompt | Chọn thư mục đích | |
 | decks.move.disabledHint | Cần ít nhất 2 thư mục | UC-02 A2 |
-| decks.delete.title | Xóa deck “%@”? | |
+| decks.delete.title | Xóa bộ thẻ “%@”? | |
 | decks.delete.message | Sẽ xóa %lld từ và tiến độ học. | UC-02 A3 |
-| decks.empty.title | Chưa có deck | |
-| decks.empty.message | Tạo deck để gom các từ cùng chủ đề. | |
-| decks.empty.cta | Tạo deck | |
+| decks.empty.title | Chưa có bộ thẻ | |
+| decks.empty.message | Tạo bộ thẻ để gom các từ cùng chủ đề. | |
+| decks.empty.cta | Tạo bộ thẻ | |
 
 ## 9. Từ vựng (FeatureWords)
 
@@ -214,7 +214,7 @@ Khung giờ lời chào theo đồng hồ máy: 04:00–10:59 sáng · 11:00–1
 | quickadd.menu | Thêm từ nhanh | Mục trong menu "+" ở Trang chủ (P1) |
 | quickadd.title | Thêm từ nhanh | Tiêu đề sheet |
 | quickadd.deck.label | Deck | |
-| quickadd.deck.prompt | Chọn deck | |
+| quickadd.deck.prompt | Chọn bộ thẻ | |
 | quickadd.added | Đã thêm vào “%@” | Toast; `%@` = tên deck |
 
 ## 10. Phiên học (FeatureStudy, StudyKit)
@@ -321,7 +321,7 @@ Khung giờ lời chào theo đồng hồ máy: 04:00–10:59 sáng · 11:00–1
 | noteTypes.duplicate.defaultName | %@ (bản sao) | `%@` = tên kiểu gốc |
 | noteTypes.name.label | Tên kiểu | |
 | noteTypes.name.error.duplicate | Tên này đã có. | |
-| noteTypes.usage | Dùng cho %lld deck | |
+| noteTypes.usage | Dùng cho %lld bộ thẻ | |
 | noteTypes.section.fields | Trường | |
 | noteTypes.section.template | Mẫu thẻ | |
 | noteTypes.section.preview | Xem trước | |
@@ -355,9 +355,9 @@ Khung giờ lời chào theo đồng hồ máy: 04:00–10:59 sáng · 11:00–1
 | template.front.error.empty | Chọn ít nhất một trường cho mặt trước. | |
 | template.typingAnswer | Đáp án khi gõ từ | |
 | template.typingAnswer.none | Không dùng gõ từ | |
-| template.typingAnswer.hint | Không chọn thì chế độ Gõ từ bị ẩn ở các deck dùng kiểu này. | UC-31 E3 |
+| template.typingAnswer.hint | Không chọn thì chế độ Gõ từ bị ẩn ở các bộ thẻ dùng kiểu này. | UC-31 E3 |
 | template.preview.tapToFlip | Chạm để lật | |
-| study.typing.unavailable | Kiểu ghi chú của deck này không có trường đáp án để gõ. | Thay mục "Gõ từ" bị vô hiệu |
+| study.typing.unavailable | Kiểu ghi chú của bộ thẻ này không có trường đáp án để gõ. | Thay mục "Gõ từ" bị vô hiệu |
 | a11y.fieldRow | %@, vai trò %@ | `%@` = tên, vai trò; thêm "bắt buộc" khi có |
 | a11y.fieldReorder | Sắp xếp trường | |
 
@@ -365,34 +365,34 @@ Khung giờ lời chào theo đồng hồ máy: 04:00–10:59 sáng · 11:00–1
 
 | Key | Tiếng Việt | Ghi chú |
 |---|---|---|
-| profiles.title | Profile | Mục Cài đặt và tiêu đề màn |
-| profiles.help | Mỗi profile có dữ liệu riêng, ví dụ một profile cho mỗi ngôn ngữ. | Mô tả đầu màn |
-| profiles.default.name | Profile chính | Tên profile tạo ở lần chạy đầu |
-| profiles.add | Tạo profile | |
-| profiles.create.title | Profile mới | |
-| profiles.name.label | Tên profile | Placeholder: "Tiếng Nhật" |
-| profiles.name.error.empty | Nhập tên profile. | |
+| profiles.title | Hồ sơ | Mục Cài đặt và tiêu đề màn |
+| profiles.help | Mỗi hồ sơ có dữ liệu riêng, ví dụ một hồ sơ cho mỗi ngôn ngữ. | Mô tả đầu màn |
+| profiles.default.name | Hồ sơ chính | Tên profile tạo ở lần chạy đầu |
+| profiles.add | Tạo hồ sơ | |
+| profiles.create.title | Hồ sơ mới | |
+| profiles.name.label | Tên hồ sơ | Placeholder: "Tiếng Nhật" |
+| profiles.name.error.empty | Nhập tên hồ sơ. | |
 | profiles.name.error.tooLong | Tên tối đa 40 ký tự. | |
 | profiles.name.error.duplicate | Tên này đã có. | |
 | profiles.rename | Đổi tên | |
-| profiles.row.detail | %lld deck · %@ | `%@` = dung lượng (ByteCountFormatter) |
+| profiles.row.detail | %lld bộ thẻ · %@ | `%@` = dung lượng (ByteCountFormatter) |
 | profiles.current | Đang mở | Nhãn VoiceOver cho dấu tích |
-| profiles.switch | Chuyển profile | Menu và tiêu đề menu ứng dụng (Mac) |
+| profiles.switch | Chuyển hồ sơ | Menu và tiêu đề menu ứng dụng (Mac) |
 | profiles.switch.ask | Chuyển sang “%@”? | Sau khi tạo |
 | profiles.switch.confirm | Chuyển | |
 | profiles.switch.stay | Ở lại | |
 | profiles.switch.sessionWarning | Phiên học đang mở sẽ kết thúc. Các thẻ đã chấm vẫn được giữ. | |
-| profiles.switch.error | Không mở được profile này. Vẫn dùng “%@”. | UC-32 E2 |
-| profiles.delete.title | Xóa profile “%@”? | |
-| profiles.delete.message | Sẽ xóa %lld deck, %lld từ và tiến độ học. Nên sao lưu trước. | UC-32 A2, bước 1 |
+| profiles.switch.error | Không mở được hồ sơ này. Vẫn dùng “%@”. | UC-32 E2 |
+| profiles.delete.title | Xóa hồ sơ “%@”? | |
+| profiles.delete.message | Sẽ xóa %lld bộ thẻ, %lld từ và tiến độ học. Nên sao lưu trước. | UC-32 A2, bước 1 |
 | profiles.delete.backupFirst | Sao lưu trước | |
 | profiles.delete.final.title | Xóa vĩnh viễn? | Bước 2 |
 | profiles.delete.final.message | Không hoàn tác được. | |
-| profiles.delete.disabled.current | Không xóa được profile đang mở. | |
-| profiles.delete.disabled.only | Cần ít nhất một profile. | |
-| data.storage.profile | Dung lượng profile này: %@ | Màn dữ liệu, FR-091 |
-| backup.profileName | Profile: %@ | Hiện khi chọn tệp khôi phục |
-| a11y.profileBadge | Profile: %@. Chạm để chuyển. | |
+| profiles.delete.disabled.current | Không xóa được hồ sơ đang mở. | |
+| profiles.delete.disabled.only | Cần ít nhất một hồ sơ. | |
+| data.storage.profile | Dung lượng hồ sơ này: %@ | Màn dữ liệu, FR-091 |
+| backup.profileName | Hồ sơ: %@ | Hiện khi chọn tệp khôi phục |
+| a11y.profileBadge | Hồ sơ: %@. Chạm để chuyển. | |
 
 ## 14. Menu macOS (M1b)
 
@@ -406,7 +406,7 @@ Khung giờ lời chào theo đồng hồ máy: 04:00–10:59 sáng · 11:00–1
 | menu.study.flip | Lật thẻ | |
 | menu.study.exit | Thoát phiên học | |
 | menu.help.shortcuts | Phím tắt | P1 |
-| menu.app.switchProfile | Chuyển profile | M3; menu con liệt kê profile |
+| menu.app.switchProfile | Chuyển hồ sơ | M3; menu con liệt kê profile |
 
 ## 15. Trợ năng chung
 

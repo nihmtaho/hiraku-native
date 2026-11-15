@@ -28,8 +28,11 @@ func (r *Repo) Tx(ctx context.Context, fn func(*Repo) error) error {
 // Folders lists live folders ordered by position.
 func (r *Repo) Folders(ctx context.Context) ([]Folder, error) {
 	rows, err := r.q.QueryContext(ctx, `
-		SELECT id, name, position FROM folders
-		WHERE deleted_at IS NULL ORDER BY position, created_at`)
+		SELECT f.id, f.name, f.position,
+			(SELECT COUNT(*) FROM decks d WHERE d.folder_id = f.id AND d.deleted_at IS NULL),
+			(SELECT COUNT(*) FROM notes n JOIN decks d ON d.id = n.deck_id
+				WHERE d.folder_id = f.id AND d.deleted_at IS NULL AND n.deleted_at IS NULL)
+		FROM folders f WHERE f.deleted_at IS NULL ORDER BY f.position, f.created_at`)
 	if err != nil {
 		return nil, err
 	}
@@ -37,7 +40,7 @@ func (r *Repo) Folders(ctx context.Context) ([]Folder, error) {
 	var out []Folder
 	for rows.Next() {
 		var f Folder
-		if err := rows.Scan(&f.ID, &f.Name, &f.Position); err != nil {
+		if err := rows.Scan(&f.ID, &f.Name, &f.Position, &f.DeckCount, &f.NoteCount); err != nil {
 			return nil, err
 		}
 		out = append(out, f)
@@ -80,12 +83,16 @@ func (r *Repo) UpdateFolder(ctx context.Context, nowMs int64, f Folder) error {
 // DeleteFolder soft deletes the folder and its decks, notes and cards in one transaction.
 func (r *Repo) DeleteFolder(ctx context.Context, nowMs int64, folderID string) error {
 	return r.Tx(ctx, func(r *Repo) error {
+		result, err := r.q.ExecContext(ctx, `
+			UPDATE folders SET deleted_at = ? WHERE id = ? AND deleted_at IS NULL`, nowMs, folderID)
+		if err := requireOneRow(result, err); err != nil {
+			return err
+		}
 		for _, step := range []string{
 			`UPDATE cards SET deleted_at = ? WHERE note_id IN (
 				SELECT n.id FROM notes n JOIN decks d ON d.id = n.deck_id WHERE d.folder_id = ?)`,
 			`UPDATE notes SET deleted_at = ? WHERE deck_id IN (SELECT id FROM decks WHERE folder_id = ?)`,
 			`UPDATE decks SET deleted_at = ? WHERE folder_id = ?`,
-			`UPDATE folders SET deleted_at = ? WHERE id = ?`,
 		} {
 			if _, err := r.q.ExecContext(ctx, step, nowMs, folderID); err != nil {
 				return err
@@ -131,8 +138,19 @@ func (r *Repo) PurgeDeleted(ctx context.Context, beforeMs int64) error {
 // Decks lists live decks in a folder ordered by position.
 func (r *Repo) Decks(ctx context.Context, folderID string) ([]Deck, error) {
 	rows, err := r.q.QueryContext(ctx, `
-		SELECT id, folder_id, note_type_id, name, COALESCE(description, ''), position
-		FROM decks WHERE folder_id = ? AND deleted_at IS NULL ORDER BY position, created_at`, folderID)
+		SELECT d.id, d.folder_id, d.note_type_id, d.name, COALESCE(d.description, ''), d.position,
+			(SELECT COUNT(*) FROM notes n WHERE n.deck_id = d.id AND n.deleted_at IS NULL),
+			(SELECT COUNT(*) FROM notes n
+				LEFT JOIN cards c ON c.note_id = n.id AND c.deleted_at IS NULL
+				LEFT JOIN card_states cs ON cs.card_id = c.id
+				WHERE n.deck_id = d.id AND n.deleted_at IS NULL AND COALESCE(cs.state, 0) = 0),
+			(SELECT COUNT(*) FROM notes n JOIN cards c ON c.note_id = n.id
+				JOIN card_states cs ON cs.card_id = c.id
+				WHERE n.deck_id = d.id AND n.deleted_at IS NULL AND cs.state IN (1, 3)),
+			(SELECT COUNT(*) FROM notes n JOIN cards c ON c.note_id = n.id
+				JOIN card_states cs ON cs.card_id = c.id
+				WHERE n.deck_id = d.id AND n.deleted_at IS NULL AND cs.state = 2)
+		FROM decks d WHERE d.folder_id = ? AND d.deleted_at IS NULL ORDER BY d.position, d.created_at`, folderID)
 	if err != nil {
 		return nil, err
 	}
@@ -140,7 +158,8 @@ func (r *Repo) Decks(ctx context.Context, folderID string) ([]Deck, error) {
 	var out []Deck
 	for rows.Next() {
 		var d Deck
-		if err := rows.Scan(&d.ID, &d.FolderID, &d.NoteTypeID, &d.Name, &d.Description, &d.Position); err != nil {
+		if err := rows.Scan(&d.ID, &d.FolderID, &d.NoteTypeID, &d.Name, &d.Description, &d.Position,
+			&d.NoteCount, &d.StateNew, &d.StateLearn, &d.StateKnown); err != nil {
 			return nil, err
 		}
 		out = append(out, d)
@@ -186,10 +205,14 @@ func (r *Repo) UpdateDeck(ctx context.Context, nowMs int64, d Deck) error {
 // DeleteDeck soft deletes the deck with its notes and cards in one transaction.
 func (r *Repo) DeleteDeck(ctx context.Context, nowMs int64, deckID string) error {
 	return r.Tx(ctx, func(r *Repo) error {
+		result, err := r.q.ExecContext(ctx, `
+			UPDATE decks SET deleted_at = ? WHERE id = ? AND deleted_at IS NULL`, nowMs, deckID)
+		if err := requireOneRow(result, err); err != nil {
+			return err
+		}
 		for _, step := range []string{
 			`UPDATE cards SET deleted_at = ? WHERE note_id IN (SELECT id FROM notes WHERE deck_id = ?)`,
 			`UPDATE notes SET deleted_at = ? WHERE deck_id = ?`,
-			`UPDATE decks SET deleted_at = ? WHERE id = ?`,
 		} {
 			if _, err := r.q.ExecContext(ctx, step, nowMs, deckID); err != nil {
 				return err
@@ -199,13 +222,15 @@ func (r *Repo) DeleteDeck(ctx context.Context, nowMs int64, deckID string) error
 	})
 }
 
-// ReorderDecks writes positions 1..n in the given order in one transaction.
-func (r *Repo) ReorderDecks(ctx context.Context, nowMs int64, ids []string) error {
+// ReorderDecks writes positions 1..n for the decks of one folder in one transaction.
+func (r *Repo) ReorderDecks(ctx context.Context, nowMs int64, folderID string, ids []string) error {
 	return r.Tx(ctx, func(r *Repo) error {
 		for i, deckID := range ids {
-			if _, err := r.q.ExecContext(ctx, `
-				UPDATE decks SET position = ?, updated_at = ? WHERE id = ?`,
-				i+1, nowMs, deckID); err != nil {
+			result, err := r.q.ExecContext(ctx, `
+				UPDATE decks SET position = ?, updated_at = ?
+				WHERE id = ? AND folder_id = ? AND deleted_at IS NULL`,
+				i+1, nowMs, deckID, folderID)
+			if err := requireOneRow(result, err); err != nil {
 				return err
 			}
 		}
