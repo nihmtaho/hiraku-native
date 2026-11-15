@@ -84,7 +84,7 @@ receives `release/vX.Y.Z` and `hotfix/*`.
   verdict. `main` uses a merge commit.
 - The skills in `.agents/skills/` are the evaluated Flowkit copies; the only local edit
   is `git-pr` §Rules, which now matches §Status tracking on a `develop` base. Record any
-  further edit to a skill in this list.
+  further edit to a skill in this bullet.
 - Human operator reviews these before merge (no automated gate): `AGENTS.md`,
   `PROJECT.md`, `docs/process/`, `docs/architecture/DECISIONS.md`, `.github/`,
   `.agents/` except `.agents/tasks/`, agent tool config and `opencode.json`, any
