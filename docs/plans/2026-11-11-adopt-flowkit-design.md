@@ -37,7 +37,7 @@ khác; `.agents/skills/` nhận bản cài.
 
 ## Không làm
 
-- Không sửa nội dung 20 skill (bản cài = bản đã eval).
+- Không sửa nội dung 20 skill (bản cài = bản đã eval). *(nới 2026-11-15: `git-pr` sửa một dòng §Rules về cách đóng issue; delta ghi trong `PROJECT.md` §Git & PR.)*
 - Không xóa `.tmp/flowkit/` (bản phân phối).
 - Không đổi contract, Go/Swift, dữ liệu.
 - Không promote PM license thành license repo.
@@ -45,7 +45,7 @@ khác; `.agents/skills/` nhận bản cài.
 ## Rủi ro
 
 - PR chạm `AGENTS.md`, `docs/process/`, `DECISIONS.md`, `.github/`, `.agents/` → người vận hành review
-  trước merge (quy ước repo).
+  trước merge (quy ước repo). *(danh sách hiện hành, gồm cả `PROJECT.md`: `PROJECT.md` §Git & PR.)*
 - Xóa `hiraku-*` đổi tên skill agent dùng; đã quét hết nơi tham chiếu, kiểm lại bằng grep sau khi làm.
 - Script đổi chỗ: nếu còn chỗ nào gọi đường dẫn cũ, CI hoặc workflow gãy — verify bằng test + `--check` + grep.
 
